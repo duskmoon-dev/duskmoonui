@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sunshine">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DuskMoonUI Demo - Extended Color System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Sunshine Theme (Light) */
+    [data-theme="sunshine"] {
+      /* Primary Colors - Warm Orange */
+      --color-primary: 38 92% 50%;
+      --color-primary-focus: 38 92% 40%;
+      --color-primary-content: 0 0% 100%;
+      --color-primary-container: 38 100% 90%;
+      --color-on-primary-container: 38 92% 15%;
+
+      /* Secondary Colors - Pink */
+      --color-secondary: 330 81% 60%;
+      --color-secondary-focus: 330 81% 50%;
+      --color-secondary-content: 0 0% 100%;
+      --color-secondary-container: 330 100% 92%;
+      --color-on-secondary-container: 330 81% 18%;
+
+      /* Tertiary Colors - Purple */
+      --color-tertiary: 258 90% 66%;
+      --color-tertiary-focus: 258 90% 56%;
+      --color-tertiary-content: 0 0% 100%;
+      --color-tertiary-container: 258 100% 92%;
+      --color-on-tertiary-container: 258 90% 20%;
+
+      /* Surface Colors */
+      --color-surface: 0 0% 99%;
+      --color-surface-container-lowest: 0 0% 100%;
+      --color-surface-container-low: 220 13% 97%;
+      --color-surface-container: 220 13% 96%;
+      --color-surface-container-high: 220 13% 94%;
+      --color-surface-container-highest: 220 13% 91%;
+      --color-on-surface: 217 33% 17%;
+      --color-on-surface-variant: 220 9% 30%;
+
+      /* Semantic Colors */
+      --color-info: 199 89% 48%;
+      --color-info-content: 0 0% 100%;
+      --color-success: 142 71% 45%;
+      --color-success-content: 0 0% 100%;
+      --color-warning: 38 92% 50%;
+      --color-warning-content: 0 0% 100%;
+      --color-error: 0 72% 51%;
+      --color-error-content: 0 0% 100%;
+
+      /* Outline */
+      --color-outline: 220 9% 55%;
+      --color-outline-variant: 220 14% 80%;
+    }
+
+    /* Moonlight Theme (Dark) */
+    [data-theme="moonlight"] {
+      /* Primary Colors - Soft Blue */
+      --color-primary: 217 91% 60%;
+      --color-primary-focus: 217 91% 70%;
+      --color-primary-content: 0 0% 100%;
+      --color-primary-container: 217 91% 20%;
+      --color-on-primary-container: 217 91% 90%;
+
+      /* Secondary Colors - Purple */
+      --color-secondary: 262 83% 70%;
+      --color-secondary-focus: 262 83% 80%;
+      --color-secondary-content: 0 0% 100%;
+      --color-secondary-container: 262 83% 25%;
+      --color-on-secondary-container: 262 83% 90%;
+
+      /* Tertiary Colors - Teal */
+      --color-tertiary: 173 80% 50%;
+      --color-tertiary-focus: 173 80% 60%;
+      --color-tertiary-content: 0 0% 100%;
+      --color-tertiary-container: 173 80% 20%;
+      --color-on-tertiary-container: 173 80% 90%;
+
+      /* Surface Colors */
+      --color-surface: 220 13% 11%;
+      --color-surface-container-lowest: 220 13% 7%;
+      --color-surface-container-low: 220 13% 9%;
+      --color-surface-container: 220 13% 11%;
+      --color-surface-container-high: 220 13% 14%;
+      --color-surface-container-highest: 220 13% 17%;
+      --color-on-surface: 220 13% 91%;
+      --color-on-surface-variant: 220 9% 70%;
+
+      /* Semantic Colors */
+      --color-info: 199 89% 60%;
+      --color-info-content: 0 0% 100%;
+      --color-success: 142 76% 60%;
+      --color-success-content: 0 0% 100%;
+      --color-warning: 38 92% 60%;
+      --color-warning-content: 0 0% 100%;
+      --color-error: 0 84% 70%;
+      --color-error-content: 0 0% 100%;
+
+      /* Outline */
+      --color-outline: 220 9% 46%;
+      --color-outline-variant: 220 9% 30%;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'hsl(var(--color-primary) / <alpha-value>)',
+            'primary-focus': 'hsl(var(--color-primary-focus) / <alpha-value>)',
+            'primary-content': 'hsl(var(--color-primary-content) / <alpha-value>)',
+            'primary-container': 'hsl(var(--color-primary-container) / <alpha-value>)',
+            'on-primary-container': 'hsl(var(--color-on-primary-container) / <alpha-value>)',
+
+            secondary: 'hsl(var(--color-secondary) / <alpha-value>)',
+            'secondary-focus': 'hsl(var(--color-secondary-focus) / <alpha-value>)',
+            'secondary-content': 'hsl(var(--color-secondary-content) / <alpha-value>)',
+            'secondary-container': 'hsl(var(--color-secondary-container) / <alpha-value>)',
+            'on-secondary-container': 'hsl(var(--color-on-secondary-container) / <alpha-value>)',
+
+            tertiary: 'hsl(var(--color-tertiary) / <alpha-value>)',
+            'tertiary-focus': 'hsl(var(--color-tertiary-focus) / <alpha-value>)',
+            'tertiary-content': 'hsl(var(--color-tertiary-content) / <alpha-value>)',
+            'tertiary-container': 'hsl(var(--color-tertiary-container) / <alpha-value>)',
+            'on-tertiary-container': 'hsl(var(--color-on-tertiary-container) / <alpha-value>)',
+
+            surface: 'hsl(var(--color-surface) / <alpha-value>)',
+            'surface-container-lowest': 'hsl(var(--color-surface-container-lowest) / <alpha-value>)',
+            'surface-container-low': 'hsl(var(--color-surface-container-low) / <alpha-value>)',
+            'surface-container': 'hsl(var(--color-surface-container) / <alpha-value>)',
+            'surface-container-high': 'hsl(var(--color-surface-container-high) / <alpha-value>)',
+            'surface-container-highest': 'hsl(var(--color-surface-container-highest) / <alpha-value>)',
+            'on-surface': 'hsl(var(--color-on-surface) / <alpha-value>)',
+            'on-surface-variant': 'hsl(var(--color-on-surface-variant) / <alpha-value>)',
+
+            info: 'hsl(var(--color-info) / <alpha-value>)',
+            'info-content': 'hsl(var(--color-info-content) / <alpha-value>)',
+            success: 'hsl(var(--color-success) / <alpha-value>)',
+            'success-content': 'hsl(var(--color-success-content) / <alpha-value>)',
+            warning: 'hsl(var(--color-warning) / <alpha-value>)',
+            'warning-content': 'hsl(var(--color-warning-content) / <alpha-value>)',
+            error: 'hsl(var(--color-error) / <alpha-value>)',
+            'error-content': 'hsl(var(--color-error-content) / <alpha-value>)',
+
+            outline: 'hsl(var(--color-outline) / <alpha-value>)',
+            'outline-variant': 'hsl(var(--color-outline-variant) / <alpha-value>)',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-surface text-on-surface transition-colors duration-300">
+  <!-- Header -->
+  <header class="bg-surface-container shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-primary">DuskMoonUI</h1>
+          <p class="text-sm text-on-surface-variant">Tailwind CSS with Extended Color System</p>
+        </div>
+        <button
+          id="theme-toggle"
+          class="px-6 py-3 rounded-lg bg-primary text-primary-content hover:bg-primary-focus transition-all duration-200 font-semibold shadow-lg"
+        >
+          ☀️ Light Mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- Introduction -->
+    <section class="mb-12 bg-surface-container p-8 rounded-xl">
+      <h2 class="text-3xl font-bold mb-4 text-primary">🎨 Extended Color System</h2>
+      <p class="text-lg text-on-surface-variant mb-4">
+        DuskMoonUI brings Material Design 3's comprehensive color system to Tailwind CSS,
+        featuring <strong class="text-tertiary">tertiary colors</strong>, surface containers, and semantic variants.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">🎯</span>
+          <div>
+            <h3 class="font-bold text-primary">65+ Color Tokens</h3>
+            <p class="text-sm text-on-surface-variant">Complete Material Design 3 palette</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">⭐</span>
+          <div>
+            <h3 class="font-bold text-secondary">Tertiary Colors</h3>
+            <p class="text-sm text-on-surface-variant">Third brand color for flexibility</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">🌓</span>
+          <div>
+            <h3 class="font-bold text-tertiary">Dark Mode Ready</h3>
+            <p class="text-sm text-on-surface-variant">Beautiful light & dark themes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Primary Colors -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Primary Colors</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-primary text-primary-content p-8 rounded-xl shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Primary</h4>
+          <p>Main brand color for primary actions and key UI elements</p>
+        </div>
+        <div class="bg-primary-focus text-primary-content p-8 rounded-xl shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Primary Focus</h4>
+          <p>Darker variant for hover and active states</p>
+        </div>
+        <div class="bg-primary-container text-on-primary-container p-8 rounded-xl shadow-lg border-2 border-primary">
+          <h4 class="font-bold text-xl mb-2">Primary Container</h4>
+          <p>Subtle background with guaranteed contrast</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secondary Colors -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Secondary Colors</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-secondary text-secondary-content p-8 rounded-xl shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Secondary</h4>
+          <p>Complementary brand color</p>
+        </div>
+        <div class="bg-secondary-focus text-secondary-content p-8 rounded-xl shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Secondary Focus</h4>
+          <p>Hover state variant</p>
+        </div>
+        <div class="bg-secondary-container text-on-secondary-container p-8 rounded-xl shadow-lg border-2 border-secondary">
+          <h4 class="font-bold text-xl mb-2">Secondary Container</h4>
+          <p>Tinted background variant</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tertiary Colors (NEW!) -->
+    <section class="mb-12 bg-tertiary-container p-8 rounded-xl">
+      <div class="flex items-center gap-3 mb-6">
+        <h3 class="text-2xl font-bold text-on-tertiary-container">Tertiary Colors</h3>
+        <span class="px-3 py-1 bg-tertiary text-tertiary-content rounded-full text-sm font-bold">NEW!</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-tertiary text-tertiary-content p-8 rounded-xl shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Tertiary</h4>
+          <p>Third brand color for additional variety and emphasis</p>
+        </div>
+        <div class="bg-tertiary-focus text-tertiary-content p-8 rounded-xl shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Tertiary Focus</h4>
+          <p>Interactive state variant</p>
+        </div>
+        <div class="bg-surface-container text-on-surface p-8 rounded-xl shadow-lg border-2 border-tertiary">
+          <h4 class="font-bold text-xl mb-2 text-on-tertiary-container">On Container</h4>
+          <p class="text-on-tertiary-container">Text with guaranteed accessibility</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Surface Elevation -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Surface Elevation System</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="bg-surface-container-lowest text-on-surface p-6 rounded-xl border border-outline-variant">
+          <h4 class="font-bold mb-2">Lowest</h4>
+          <p class="text-sm">Base level</p>
+        </div>
+        <div class="bg-surface-container-low text-on-surface p-6 rounded-xl shadow">
+          <h4 class="font-bold mb-2">Low</h4>
+          <p class="text-sm">Level 1</p>
+        </div>
+        <div class="bg-surface-container text-on-surface p-6 rounded-xl shadow-md">
+          <h4 class="font-bold mb-2">Default</h4>
+          <p class="text-sm">Level 2</p>
+        </div>
+        <div class="bg-surface-container-high text-on-surface p-6 rounded-xl shadow-lg">
+          <h4 class="font-bold mb-2">High</h4>
+          <p class="text-sm">Level 3</p>
+        </div>
+        <div class="bg-surface-container-highest text-on-surface p-6 rounded-xl shadow-xl">
+          <h4 class="font-bold mb-2">Highest</h4>
+          <p class="text-sm">Level 4</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic Colors -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Semantic Colors</h3>
+      <div class="space-y-4">
+        <div class="bg-info text-info-content p-6 rounded-xl flex items-start gap-4 shadow-lg">
+          <span class="text-3xl">ℹ️</span>
+          <div>
+            <h4 class="font-bold text-lg mb-2">Information</h4>
+            <p>Informational messages and notifications to guide users</p>
+          </div>
+        </div>
+        <div class="bg-success text-success-content p-6 rounded-xl flex items-start gap-4 shadow-lg">
+          <span class="text-3xl">✅</span>
+          <div>
+            <h4 class="font-bold text-lg mb-2">Success</h4>
+            <p>Success confirmations and positive feedback</p>
+          </div>
+        </div>
+        <div class="bg-warning text-warning-content p-6 rounded-xl flex items-start gap-4 shadow-lg">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h4 class="font-bold text-lg mb-2">Warning</h4>
+            <p>Important warnings that require user attention</p>
+          </div>
+        </div>
+        <div class="bg-error text-error-content p-6 rounded-xl flex items-start gap-4 shadow-lg">
+          <span class="text-3xl">❌</span>
+          <div>
+            <h4 class="font-bold text-lg mb-2">Error</h4>
+            <p>Error messages and critical issues</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Components -->
+    <section class="mb-12 bg-surface-container p-8 rounded-xl">
+      <h3 class="text-2xl font-bold mb-6">Interactive Components</h3>
+
+      <!-- Buttons -->
+      <div class="mb-8">
+        <h4 class="font-semibold text-lg mb-4">Buttons</h4>
+        <div class="flex flex-wrap gap-4">
+          <button class="px-6 py-3 bg-primary text-primary-content rounded-lg hover:bg-primary-focus transition-all shadow-md hover:shadow-lg">
+            Primary Button
+          </button>
+          <button class="px-6 py-3 bg-secondary text-secondary-content rounded-lg hover:bg-secondary-focus transition-all shadow-md hover:shadow-lg">
+            Secondary Button
+          </button>
+          <button class="px-6 py-3 bg-tertiary text-tertiary-content rounded-lg hover:bg-tertiary-focus transition-all shadow-md hover:shadow-lg">
+            Tertiary Button
+          </button>
+          <button class="px-6 py-3 border-2 border-outline text-on-surface rounded-lg hover:bg-surface-container-high transition-all">
+            Outlined
+          </button>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="mb-8">
+        <h4 class="font-semibold text-lg mb-4">Cards</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-surface-container-high p-6 rounded-xl border border-outline-variant hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4">
+              <span class="text-primary-content text-2xl">🎨</span>
+            </div>
+            <h5 class="font-bold text-lg mb-2 text-primary">Design System</h5>
+            <p class="text-on-surface-variant">Complete color tokens for any design need</p>
+          </div>
+          <div class="bg-secondary-container p-6 rounded-xl hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mb-4">
+              <span class="text-secondary-content text-2xl">⚡</span>
+            </div>
+            <h5 class="font-bold text-lg mb-2 text-on-secondary-container">Performance</h5>
+            <p class="text-on-secondary-container opacity-80">Optimized CSS generation with Bun</p>
+          </div>
+          <div class="bg-tertiary-container p-6 rounded-xl hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-tertiary flex items-center justify-center mb-4">
+              <span class="text-tertiary-content text-2xl">🔧</span>
+            </div>
+            <h5 class="font-bold text-lg mb-2 text-on-tertiary-container">Developer Experience</h5>
+            <p class="text-on-tertiary-container opacity-80">TypeScript types and autocomplete</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Example -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Usage Example</h3>
+      <div class="bg-surface-container-highest p-6 rounded-xl font-mono text-sm overflow-x-auto">
+        <div class="text-on-surface-variant">// tailwind.config.js</div>
+        <div class="text-on-surface mt-2">
+          <span class="text-tertiary">import</span> duskmoonui <span class="text-tertiary">from</span> <span class="text-success">'@duskmoon-dev/core'</span>;
+        </div>
+        <div class="text-on-surface mt-4">
+          <span class="text-tertiary">export default</span> {
+        </div>
+        <div class="text-on-surface ml-4">
+          plugins: [
+        </div>
+        <div class="text-on-surface ml-8">
+          duskmoonui({
+        </div>
+        <div class="text-on-surface ml-12">
+          themes: [<span class="text-success">'sunshine'</span>, <span class="text-success">'moonlight'</span>],
+        </div>
+        <div class="text-on-surface ml-12">
+          darkTheme: <span class="text-success">'moonlight'</span>,
+        </div>
+        <div class="text-on-surface ml-8">
+          }),
+        </div>
+        <div class="text-on-surface ml-4">
+          ],
+        </div>
+        <div class="text-on-surface">
+          };
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-high text-on-surface-variant py-12 mt-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold text-primary mb-2">DuskMoonUI</h3>
+        <p class="text-lg mb-4">Tailwind CSS with Extended Color System</p>
+        <p class="text-sm">Material Design 3 • Tertiary Colors • TypeScript • Bun</p>
+      </div>
+      <div class="text-center text-sm">
+        <p>© 2025 DuskMoonUI. MIT License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme') || 'sunshine';
+    html.setAttribute('data-theme', savedTheme);
+    updateButtonText();
+
+    // Toggle theme
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'sunshine' ? 'moonlight' : 'sunshine';
+
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateButtonText();
+    });
+
+    function updateButtonText() {
+      const currentTheme = html.getAttribute('data-theme');
+      themeToggle.textContent = currentTheme === 'sunshine' ? '🌙 Dark Mode' : '☀️ Light Mode';
+    }
+  </script>
+</body>
+</html>

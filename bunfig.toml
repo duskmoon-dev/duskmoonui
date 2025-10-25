@@ -1,0 +1,23 @@
+# Bun configuration file
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Use exact versions in lockfile
+exact = true
+
+# Registry configuration - force use of public npm registry
+registry = "https://registry.npmjs.org/"
+"@types:registry" = "https://registry.npmjs.org/"
+"@astrojs:registry" = "https://registry.npmjs.org/"
+
+[install.cache]
+# Cache directory
+dir = ".bun-cache"
+
+[test]
+# Test configuration
+preload = []
+
+[run]
+# Runtime configuration
+bun = true

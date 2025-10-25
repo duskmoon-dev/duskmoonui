@@ -1,0 +1,62 @@
+{
+  "name": "@duskmoon-dev/core",
+  "version": "0.1.0",
+  "description": "DuskMoonUI - Tailwind CSS component library with extended color system",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "bun run build --watch",
+    "build": "bun run clean && bun run build:bundle && bun run build:types",
+    "build:bundle": "bun build src/index.ts --outdir dist --target node --format esm --sourcemap && bun build src/index.ts --target node --format cjs --outfile src/index.cjs --sourcemap && mv src/index.cjs src/index.cjs.map dist/",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "tailwind-plugin",
+    "component-library",
+    "ui-library",
+    "design-system",
+    "tertiary-colors",
+    "material-design-3",
+    "css-framework"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "tailwindcss": "^3.4.0 || ^4.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,12 +1,23 @@
 {
-  "name": "@duskmoon-dev/ui",
-  "module": "index.ts",
-  "type": "module",
+  "name": "duskmoonui",
+  "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter @duskmoon-dev/docs dev",
+    "dev:core": "bun run --filter @duskmoon-dev/core dev",
+    "build": "bun run build:core && bun run build:docs",
+    "build:core": "bun run --filter @duskmoon-dev/core build",
+    "build:docs": "bun run --filter @duskmoon-dev/docs build",
+    "preview": "bun run --filter @duskmoon-dev/docs preview",
+    "typecheck": "bun run --filter @duskmoon-dev/core typecheck && bun run --filter @duskmoon-dev/docs astro check"
   },
-  "peerDependencies": {
-    "typescript": "^5"
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.0"
   }
 }

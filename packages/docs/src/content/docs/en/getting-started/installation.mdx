@@ -1,0 +1,68 @@
+---
+title: Installation
+description: Get started with DuskMoonUI by installing the library in your project
+category: getting-started
+order: 1
+published: true
+tags: ['setup', 'installation', 'getting-started']
+---
+
+# Installation
+
+Get started with DuskMoonUI in just a few steps.
+
+## Prerequisites
+
+Before installing DuskMoonUI, ensure you have:
+
+- Node.js 18+ or Bun 1.0+
+- Tailwind CSS 4.0+
+
+## Install with Bun (Recommended)
+
+```bash
+bun add duskmoonui
+```
+
+## Install with npm
+
+```bash
+npm install duskmoonui
+```
+
+## Install with pnpm
+
+```bash
+pnpm add duskmoonui
+```
+
+## Configure Tailwind CSS
+
+Add DuskMoonUI to your Tailwind configuration:
+
+### Using Tailwind CSS 4.0+
+
+In your `globals.css` or main CSS file:
+
+```css
+@import "tailwindcss";
+@plugin "duskmoonui";
+```
+
+### Using Tailwind CSS 3.x
+
+In your `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  plugins: [
+    require('duskmoonui'),
+  ],
+}
+```
+
+## What's Next?
+
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
+- [Configuration Options](/docs/en/getting-started/configuration/)
+- [Your First Component](/components/)

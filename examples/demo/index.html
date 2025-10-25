@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sunshine">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DuskMoonUI Demo - Tailwind CSS with Tertiary Colors</title>
+  <link rel="stylesheet" href="./dist/output.css">
+</head>
+<body class="min-h-screen bg-surface text-on-surface">
+  <!-- Header -->
+  <header class="bg-surface-container shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-3xl font-bold text-primary">DuskMoonUI</h1>
+        <button
+          id="theme-toggle"
+          class="px-4 py-2 rounded-lg bg-primary text-primary-content hover:bg-primary-focus transition-colors"
+        >
+          Toggle Theme
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- Introduction -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Extended Color System with Tertiary Colors</h2>
+      <p class="text-on-surface-variant mb-4">
+        DuskMoonUI extends Tailwind CSS with Material Design 3's comprehensive color system,
+        including tertiary colors, surface containers, and semantic variants.
+      </p>
+    </section>
+
+    <!-- Primary Colors -->
+    <section class="mb-12">
+      <h3 class="text-xl font-bold mb-4">Primary Colors</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-primary text-primary-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Primary</h4>
+          <p>Main brand color</p>
+        </div>
+        <div class="bg-primary-focus text-primary-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Primary Focus</h4>
+          <p>Hover state</p>
+        </div>
+        <div class="bg-primary-container text-on-primary-container p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Primary Container</h4>
+          <p>Subtle backgrounds</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secondary Colors -->
+    <section class="mb-12">
+      <h3 class="text-xl font-bold mb-4">Secondary Colors</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-secondary text-secondary-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Secondary</h4>
+          <p>Complementary color</p>
+        </div>
+        <div class="bg-secondary-focus text-secondary-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Secondary Focus</h4>
+          <p>Hover state</p>
+        </div>
+        <div class="bg-secondary-container text-on-secondary-container p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Secondary Container</h4>
+          <p>Subtle backgrounds</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tertiary Colors (NEW!) -->
+    <section class="mb-12">
+      <h3 class="text-xl font-bold mb-4">Tertiary Colors ⭐ NEW!</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-tertiary text-tertiary-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Tertiary</h4>
+          <p>Third brand color</p>
+        </div>
+        <div class="bg-tertiary-focus text-tertiary-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Tertiary Focus</h4>
+          <p>Hover state</p>
+        </div>
+        <div class="bg-tertiary-container text-on-tertiary-container p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Tertiary Container</h4>
+          <p>Subtle backgrounds</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Surface Containers -->
+    <section class="mb-12">
+      <h3 class="text-xl font-bold mb-4">Surface Elevation System</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="bg-surface-container-lowest text-on-surface p-6 rounded-lg border border-outline-variant">
+          <h4 class="font-bold mb-2">Lowest</h4>
+          <p class="text-sm">Base surface</p>
+        </div>
+        <div class="bg-surface-container-low text-on-surface p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Low</h4>
+          <p class="text-sm">Level 1</p>
+        </div>
+        <div class="bg-surface-container text-on-surface p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Default</h4>
+          <p class="text-sm">Level 2</p>
+        </div>
+        <div class="bg-surface-container-high text-on-surface p-6 rounded-lg">
+          <h4 class="font-bold mb-2">High</h4>
+          <p class="text-sm">Level 3</p>
+        </div>
+        <div class="bg-surface-container-highest text-on-surface p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Highest</h4>
+          <p class="text-sm">Level 4</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic Colors -->
+    <section class="mb-12">
+      <h3 class="text-xl font-bold mb-4">Semantic Colors</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-info text-info-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Info</h4>
+          <p>Informational messages</p>
+        </div>
+        <div class="bg-success text-success-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Success</h4>
+          <p>Success messages</p>
+        </div>
+        <div class="bg-warning text-warning-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Warning</h4>
+          <p>Warning messages</p>
+        </div>
+        <div class="bg-error text-error-content p-6 rounded-lg">
+          <h4 class="font-bold mb-2">Error</h4>
+          <p>Error messages</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Components Demo -->
+    <section class="mb-12">
+      <h3 class="text-xl font-bold mb-4">Interactive Components</h3>
+      <div class="space-y-6">
+        <!-- Buttons -->
+        <div class="bg-surface-container p-6 rounded-lg">
+          <h4 class="font-semibold mb-4">Buttons</h4>
+          <div class="flex flex-wrap gap-4">
+            <button class="px-6 py-3 bg-primary text-primary-content rounded-lg hover:bg-primary-focus transition-colors">
+              Primary Button
+            </button>
+            <button class="px-6 py-3 bg-secondary text-secondary-content rounded-lg hover:bg-secondary-focus transition-colors">
+              Secondary Button
+            </button>
+            <button class="px-6 py-3 bg-tertiary text-tertiary-content rounded-lg hover:bg-tertiary-focus transition-colors">
+              Tertiary Button
+            </button>
+            <button class="px-6 py-3 border-2 border-outline text-on-surface rounded-lg hover:bg-surface-container-high transition-colors">
+              Outlined Button
+            </button>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="bg-surface-container p-6 rounded-lg">
+          <h4 class="font-semibold mb-4">Cards</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-surface-container-high p-6 rounded-lg border border-outline-variant">
+              <h5 class="font-bold text-primary mb-2">Card Title</h5>
+              <p class="text-on-surface-variant">This is a card with surface container styling.</p>
+            </div>
+            <div class="bg-secondary-container p-6 rounded-lg text-on-secondary-container">
+              <h5 class="font-bold mb-2">Colored Card</h5>
+              <p>Using container colors for subtle emphasis.</p>
+            </div>
+            <div class="bg-tertiary-container p-6 rounded-lg text-on-tertiary-container">
+              <h5 class="font-bold mb-2">Tertiary Card</h5>
+              <p>Tertiary container variant.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="bg-surface-container p-6 rounded-lg">
+          <h4 class="font-semibold mb-4">Alerts</h4>
+          <div class="space-y-4">
+            <div class="bg-info text-info-content p-4 rounded-lg flex items-start gap-3">
+              <span class="text-xl">ℹ️</span>
+              <div>
+                <h5 class="font-bold mb-1">Information</h5>
+                <p>This is an informational alert message.</p>
+              </div>
+            </div>
+            <div class="bg-success text-success-content p-4 rounded-lg flex items-start gap-3">
+              <span class="text-xl">✅</span>
+              <div>
+                <h5 class="font-bold mb-1">Success</h5>
+                <p>Your action was completed successfully!</p>
+              </div>
+            </div>
+            <div class="bg-warning text-warning-content p-4 rounded-lg flex items-start gap-3">
+              <span class="text-xl">⚠️</span>
+              <div>
+                <h5 class="font-bold mb-1">Warning</h5>
+                <p>Please review this warning carefully.</p>
+              </div>
+            </div>
+            <div class="bg-error text-error-content p-4 rounded-lg flex items-start gap-3">
+              <span class="text-xl">❌</span>
+              <div>
+                <h5 class="font-bold mb-1">Error</h5>
+                <p>An error occurred. Please try again.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-high text-on-surface-variant py-8 mt-12">
+    <div class="container mx-auto px-4 text-center">
+      <p class="mb-2">DuskMoonUI - Tailwind CSS with Extended Color System</p>
+      <p class="text-sm">Built with Bun, TypeScript, and Material Design 3</p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Initialize theme from localStorage or default to 'sunshine'
+    const savedTheme = localStorage.getItem('theme') || 'sunshine';
+    html.setAttribute('data-theme', savedTheme);
+    updateButtonText();
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'sunshine' ? 'moonlight' : 'sunshine';
+
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateButtonText();
+    });
+
+    function updateButtonText() {
+      const currentTheme = html.getAttribute('data-theme');
+      themeToggle.textContent = currentTheme === 'sunshine' ? '🌙 Dark Mode' : '☀️ Light Mode';
+    }
+  </script>
+</body>
+</html>

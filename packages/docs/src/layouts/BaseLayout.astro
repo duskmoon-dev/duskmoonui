@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import '../styles/themes.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  locale?: string;
+}
+
+const {
+  title,
+  description = 'DuskMoonUI - Modern Tailwind CSS Component Library with Tertiary Colors',
+  locale = 'en'
+} = Astro.props;
+
+const siteTitle = `${title} | DuskMoonUI`;
+---
+
+<!DOCTYPE html>
+<html lang={locale} data-theme="sunshine">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{siteTitle}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Prevent FOUC (Flash of Unstyled Content) -->
+    <script is:inline>
+      // Load theme before page renders
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'moonlight';
+        }
+        return 'sunshine';
+      };
+
+      const theme = getTheme();
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <!-- Theme persistence with view transitions -->
+    <script is:inline>
+      document.addEventListener('astro:after-swap', () => {
+        const theme = localStorage.getItem('theme') || 'sunshine';
+        document.documentElement.setAttribute('data-theme', theme);
+      });
+    </script>
+  </body>
+</html>
