@@ -11,48 +11,49 @@ interface Props {
 }
 
 const { currentPath = '' } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
 const navigation: NavItem[] = [
   {
     title: 'Getting Started',
     items: [
-      { title: 'Installation', href: '/docs/en/getting-started/installation/' },
-      { title: 'Quick Start', href: '/docs/en/getting-started/quick-start/' },
-      { title: 'Configuration', href: '/docs/en/getting-started/configuration/' },
+      { title: 'Installation', href: `${base}docs/en/getting-started/installation/` },
+      { title: 'Quick Start', href: `${base}docs/en/getting-started/quick-start/` },
+      { title: 'Configuration', href: `${base}docs/en/getting-started/configuration/` },
     ],
   },
   {
     title: 'Components',
     items: [
-      { title: 'Overview', href: '/components/' },
-      { title: 'Button', href: '/components/button/', badge: 'showcase' },
-      { title: 'Card', href: '/components/card/', badge: 'showcase' },
-      { title: 'Input', href: '/docs/en/components/input/' },
-      { title: 'Badge', href: '/docs/en/components/badge/' },
-      { title: 'Alert', href: '/docs/en/components/alert/' },
+      { title: 'Overview', href: `${base}components/` },
+      { title: 'Button', href: `${base}components/button/`, badge: 'showcase' },
+      { title: 'Card', href: `${base}components/card/`, badge: 'showcase' },
+      { title: 'Input', href: `${base}docs/en/components/input/` },
+      { title: 'Badge', href: `${base}docs/en/components/badge/` },
+      { title: 'Alert', href: `${base}docs/en/components/alert/` },
     ],
   },
   {
     title: 'Theming',
     items: [
-      { title: 'Overview', href: '/docs/en/theming/overview/' },
-      { title: 'Customization', href: '/docs/en/theming/customization/' },
+      { title: 'Overview', href: `${base}docs/en/theming/overview/` },
+      { title: 'Customization', href: `${base}docs/en/theming/customization/` },
     ],
   },
   {
     title: 'API Reference',
     items: [
-      { title: 'Plugin Options', href: '/docs/en/api/plugin-options/' },
-      { title: 'Theme Tokens', href: '/docs/en/api/theme-tokens/' },
+      { title: 'Plugin Options', href: `${base}docs/en/api/plugin-options/` },
+      { title: 'Theme Tokens', href: `${base}docs/en/api/theme-tokens/` },
     ],
   },
   {
     title: 'Guides',
     items: [
-      { title: 'Next.js', href: '/docs/en/guides/nextjs/' },
-      { title: 'Astro', href: '/docs/en/guides/astro/' },
-      { title: 'Vue', href: '/docs/en/guides/vue/' },
-      { title: 'React', href: '/docs/en/guides/react/' },
+      { title: 'Next.js', href: `${base}docs/en/guides/nextjs/` },
+      { title: 'Astro', href: `${base}docs/en/guides/astro/` },
+      { title: 'Vue', href: `${base}docs/en/guides/vue/` },
+      { title: 'React', href: `${base}docs/en/guides/react/` },
     ],
   },
 ];
@@ -64,7 +65,7 @@ function isActive(href: string, current: string): boolean {
 
 <aside class="sidebar">
   <div class="sidebar-header">
-    <a href="/" class="sidebar-logo">
+    <a href={base} class="sidebar-logo">
       <span class="logo-text">DuskMoonUI</span>
       <span class="logo-version">v0.1.0</span>
     </a>

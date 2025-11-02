@@ -1,13 +1,14 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 
+const base = import.meta.env.BASE_URL;
 const components = [
-  { name: 'Button', description: 'Versatile buttons with multiple variants', href: '/components/button/' },
-  { name: 'Card', description: 'Container for content with various styles', href: '/components/card/' },
-  { name: 'Input', description: 'Form inputs with validation states', href: '/components/input/' },
-  { name: 'Badge', description: 'Small status and label indicators', href: '/components/badge/' },
-  { name: 'Alert', description: 'Contextual feedback messages', href: '/components/alert/' },
-  { name: 'Modal', description: 'Dialog overlays for focused content', href: '/components/modal/' },
+  { name: 'Button', description: 'Versatile buttons with multiple variants', href: `${base}components/button/` },
+  { name: 'Card', description: 'Container for content with various styles', href: `${base}components/card/` },
+  { name: 'Input', description: 'Form inputs with validation states', href: `${base}components/input/` },
+  { name: 'Badge', description: 'Small status and label indicators', href: `${base}components/badge/` },
+  { name: 'Alert', description: 'Contextual feedback messages', href: `${base}components/alert/` },
+  { name: 'Modal', description: 'Dialog overlays for focused content', href: `${base}components/modal/` },
 ];
 ---
 

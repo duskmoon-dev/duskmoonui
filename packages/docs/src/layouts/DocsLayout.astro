@@ -9,6 +9,7 @@ export interface Props {
 }
 
 const { title, description, locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={title} description={description} locale={locale}>
@@ -16,12 +17,12 @@ const { title, description, locale } = Astro.props;
     <header class="docs-header">
       <div class="container">
         <nav class="header-nav">
-          <a href="/" class="logo">
+          <a href={base} class="logo">
             <span class="logo-text">DuskMoonUI</span>
           </a>
           <div class="nav-links">
-            <a href="/docs/en/getting-started/installation/">Docs</a>
-            <a href="/components/">Components</a>
+            <a href={`${base}docs/en/getting-started/installation/`}>Docs</a>
+            <a href={`${base}components/`}>Components</a>
             <a href="https://github.com/duskmoon-dev/duskmoonui" target="_blank">GitHub</a>
             <ThemeToggle client:load />
           </div>
