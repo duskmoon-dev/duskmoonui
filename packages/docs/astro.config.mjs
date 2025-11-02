@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://duskmoonui.dev',
-  base: '/',
+  site: 'https://duskmoon-dev.github.io',
+  base: '/duskmoonui',
   trailingSlash: 'always',
 
   // Internationalization
