@@ -40,10 +40,22 @@
     "design-system",
     "tertiary-colors",
     "material-design-3",
-    "css-framework"
+    "css-framework",
+    "color-system",
+    "theming",
+    "dark-mode"
   ],
-  "author": "Your Name",
+  "author": "DuskMoon Development",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duskmoon-dev/duskmoonui.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/duskmoon-dev/duskmoonui#readme",
+  "bugs": {
+    "url": "https://github.com/duskmoon-dev/duskmoonui/issues"
+  },
   "peerDependencies": {
     "tailwindcss": "^3.4.0 || ^4.0.0"
   },

@@ -1,0 +1,526 @@
+---
+title: Plugin Options
+description: Complete API reference for DuskMoonUI plugin configuration options
+category: api
+order: 1
+published: true
+tags: ['api', 'configuration', 'reference']
+---
+
+# Plugin Options
+
+Complete reference for all available configuration options in the DuskMoonUI Tailwind CSS plugin.
+
+## Options Object
+
+```typescript
+interface DuskMoonUIOptions {
+  themes?: (string | ThemeConfig)[];
+  defaultTheme?: string;
+  styled?: boolean;
+  components?: 'all' | string[];
+  prefix?: string;
+}
+```
+
+## `themes`
+
+**Type:** `(string | ThemeConfig)[]`
+**Default:** `['sunshine', 'moonlight']`
+
+Array of themes to include in your project. Can be built-in theme names or custom theme objects.
+
+### Usage
+
+```javascript
+// tailwind.config.js
+{
+  themes: ['sunshine', 'moonlight']  // Built-in themes only
+}
+```
+
+### With Custom Themes
+
+```javascript
+{
+  themes: [
+    'sunshine',           // Built-in theme
+    'moonlight',          // Built-in theme
+    {
+      name: 'brand',      // Custom theme
+      primary: '220 90% 50%',
+      // ... other tokens
+    }
+  ]
+}
+```
+
+### Built-in Themes
+
+- **`sunshine`**: Warm light theme with amber primary color
+- **`moonlight`**: Cool dark theme with blue primary color
+
+### Type Definition
+
+```typescript
+type ThemeConfig = {
+  name: string;
+  // Primary colors
+  primary: string;
+  'primary-focus': string;
+  'primary-content': string;
+  'primary-container': string;
+  'on-primary-container': string;
+  // ... (65+ tokens total)
+};
+```
+
+See [Theme Tokens](/docs/en/api/theme-tokens/) for the complete list of required tokens.
+
+## `defaultTheme`
+
+**Type:** `string`
+**Default:** `'sunshine'`
+
+The theme to use when no `data-theme` attribute is present on the HTML element.
+
+### Usage
+
+```javascript
+{
+  defaultTheme: 'moonlight'  // Use dark theme by default
+}
+```
+
+### Behavior
+
+```html
+<!-- Uses defaultTheme (moonlight) -->
+<html>
+  <body>Content</body>
+</html>
+
+<!-- Explicitly uses sunshine theme -->
+<html data-theme="sunshine">
+  <body>Content</body>
+</html>
+```
+
+### Validation
+
+The `defaultTheme` value must match a theme name in the `themes` array:
+
+```javascript
+{
+  themes: ['sunshine', 'moonlight', { name: 'brand', /* ... */ }],
+  defaultTheme: 'brand',  // ✅ Valid - 'brand' is in themes array
+}
+
+{
+  themes: ['sunshine', 'moonlight'],
+  defaultTheme: 'custom',  // ❌ Invalid - 'custom' not in themes array
+}
+```
+
+## `styled`
+
+**Type:** `boolean`
+**Default:** `true`
+
+Whether to include component styles. Set to `false` if you only want theme CSS variables.
+
+### Usage
+
+```javascript
+{
+  styled: true   // Include component styles (default)
+}
+
+{
+  styled: false  // Only theme CSS variables
+}
+```
+
+### When to Use `styled: false`
+
+- **Building custom components**: You want theme variables but will write your own components
+- **Reducing bundle size**: You don't need the pre-built components
+- **Using only themes**: You're only interested in the color system
+
+### Example with `styled: false`
+
+```javascript
+// tailwind.config.js
+{
+  plugins: [
+    duskmoonui({
+      styled: false,  // No component classes
+    }),
+  ],
+}
+```
+
+```css
+/* You can still use theme variables */
+.my-custom-button {
+  background-color: hsl(var(--color-primary));
+  color: hsl(var(--color-primary-content));
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+```
+
+## `components`
+
+**Type:** `'all' | string[]`
+**Default:** `'all'`
+
+Which components to include. Use `'all'` for all components, or specify an array of component names.
+
+### Usage
+
+```javascript
+// Include all components
+{
+  components: 'all'  // Default
+}
+
+// Include specific components only
+{
+  components: ['button', 'card', 'input']
+}
+```
+
+### Available Components
+
+- `'button'` - Button variants and icon buttons
+- `'card'` - Card containers with subcomponents
+- `'input'` - Form inputs (input, textarea, select, checkbox, radio)
+- `'badge'` - Badge indicators and notifications
+- `'alert'` - Alert messages and notifications
+
+### Component Sizes
+
+Approximate CSS output sizes (uncompressed):
+
+| Component | Variants | Approx. Size |
+|-----------|----------|--------------|
+| button    | 30+      | ~2.5 KB      |
+| card      | 20+      | ~2.0 KB      |
+| input     | 15+      | ~2.0 KB      |
+| badge     | 25+      | ~1.5 KB      |
+| alert     | 20+      | ~1.5 KB      |
+| **All**   | **110+** | **~8.0 KB**  |
+
+### Example: Button-Only Build
+
+```javascript
+{
+  components: ['button']  // Only include button styles (~2.5 KB)
+}
+```
+
+### Case Sensitivity
+
+Component names are case-insensitive:
+
+```javascript
+{
+  components: ['Button', 'CARD', 'input']  // All valid
+}
+```
+
+### Bundle Optimization
+
+For production builds, include only what you use:
+
+```javascript
+// Development: All components
+const isDev = process.env.NODE_ENV === 'development';
+
+{
+  components: isDev ? 'all' : ['button', 'card', 'input']
+}
+```
+
+## `prefix`
+
+**Type:** `string`
+**Default:** `''` (empty string)
+
+Prefix for all component classes. Useful to avoid naming conflicts.
+
+### Usage
+
+```javascript
+{
+  prefix: 'dm-'  // Prefix all classes with 'dm-'
+}
+```
+
+### Affected Classes
+
+With `prefix: 'dm-'`:
+
+```html
+<!-- Without prefix -->
+<button class="btn btn-primary">Button</button>
+
+<!-- With prefix -->
+<button class="dm-btn dm-btn-primary">Button</button>
+```
+
+### All Classes Are Prefixed
+
+```html
+<!-- Cards -->
+<div class="dm-card dm-card-default">
+  <div class="dm-card-body">
+    <h3 class="dm-card-title">Title</h3>
+  </div>
+</div>
+
+<!-- Inputs -->
+<input class="dm-input dm-input-outlined" />
+
+<!-- Badges -->
+<span class="dm-badge dm-badge-primary">Badge</span>
+
+<!-- Alerts -->
+<div class="dm-alert dm-alert-success">Alert</div>
+```
+
+### Prefix Recommendations
+
+Common prefixes:
+- `''` - No prefix (default, cleanest)
+- `'dm-'` - DuskMoon prefix
+- `'ui-'` - Generic UI prefix
+- `'app-'` - Application-specific prefix
+
+### Avoid Conflicts
+
+Use prefixes when integrating with other libraries:
+
+```javascript
+// Avoid conflicts with other component libraries
+{
+  prefix: 'dm-',
+  components: 'all'
+}
+```
+
+## Complete Configuration Example
+
+### Basic Configuration
+
+```javascript
+// tailwind.config.js
+const { duskmoonui } = require('duskmoonui');
+
+module.exports = {
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+  plugins: [
+    duskmoonui({
+      themes: ['sunshine', 'moonlight'],
+      defaultTheme: 'sunshine',
+      styled: true,
+      components: 'all',
+      prefix: '',
+    }),
+  ],
+};
+```
+
+### Advanced Configuration
+
+```javascript
+// tailwind.config.js
+const { duskmoonui } = require('duskmoonui');
+
+// Custom theme
+const brandTheme = {
+  name: 'brand',
+  primary: '220 90% 50%',
+  'primary-focus': '220 90% 40%',
+  // ... other tokens
+};
+
+// Environment-based configuration
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+  plugins: [
+    duskmoonui({
+      // Include all themes in dev, only brand theme in prod
+      themes: isDev ? ['sunshine', 'moonlight', brandTheme] : [brandTheme],
+
+      // Use system preference in dev, brand theme in prod
+      defaultTheme: isProd ? 'brand' : 'sunshine',
+
+      // Always include component styles
+      styled: true,
+
+      // All components in dev, specific components in prod
+      components: isDev ? 'all' : ['button', 'card', 'input', 'badge'],
+
+      // No prefix
+      prefix: '',
+    }),
+  ],
+};
+```
+
+### TypeScript Configuration
+
+```typescript
+// tailwind.config.ts
+import { duskmoonui, type DuskMoonUIOptions, type ThemeConfig } from 'duskmoonui';
+import type { Config } from 'tailwindcss';
+
+const brandTheme: ThemeConfig = {
+  name: 'brand',
+  primary: '220 90% 50%',
+  // ... other tokens
+};
+
+const options: Partial<DuskMoonUIOptions> = {
+  themes: ['sunshine', 'moonlight', brandTheme],
+  defaultTheme: 'sunshine',
+  styled: true,
+  components: 'all',
+  prefix: '',
+};
+
+const config: Config = {
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+  plugins: [duskmoonui(options)],
+};
+
+export default config;
+```
+
+## Tailwind CSS 4.0 Configuration
+
+For Tailwind CSS 4.0+, use the `@plugin` directive:
+
+```css
+/* app.css or global.css */
+@import "tailwindcss";
+
+@plugin "duskmoonui" {
+  @theme {
+    --theme: "sunshine";           /* defaultTheme */
+  }
+
+  @config {
+    themes: ["sunshine", "moonlight"];
+    components: ["button", "card", "input"];
+    prefix: "";
+  }
+}
+```
+
+### Tailwind CSS 4.0 Limitations
+
+Some options may have different syntax or limitations in Tailwind CSS 4.0. Refer to Tailwind's v4 documentation for details.
+
+## Default Values Summary
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `themes` | `(string \| ThemeConfig)[]` | `['sunshine', 'moonlight']` | Themes to include |
+| `defaultTheme` | `string` | `'sunshine'` | Default theme name |
+| `styled` | `boolean` | `true` | Include component styles |
+| `components` | `'all' \| string[]` | `'all'` | Components to include |
+| `prefix` | `string` | `''` | Class name prefix |
+
+## Related Documentation
+
+- [Configuration Guide](/docs/en/getting-started/configuration/) - Setup and configuration
+- [Theme Tokens](/docs/en/api/theme-tokens/) - Complete token reference
+- [Theme Customization](/docs/en/theming/customization/) - Creating custom themes
+
+## Migration Guide
+
+### From v0.1.x to v0.2.x
+
+No breaking changes expected. All options are backward compatible.
+
+### Adding New Themes
+
+```javascript
+// Before (v0.1.x)
+{
+  themes: ['sunshine', 'moonlight']
+}
+
+// After (v0.2.x) - Still works
+{
+  themes: ['sunshine', 'moonlight']
+}
+
+// New: Custom themes
+{
+  themes: ['sunshine', 'moonlight', customTheme]
+}
+```
+
+## Troubleshooting
+
+### Components Not Appearing
+
+**Problem**: Component classes don't work
+
+**Solution**: Ensure `styled: true` (default):
+
+```javascript
+{
+  styled: true  // Must be true for components
+}
+```
+
+### Theme Not Applying
+
+**Problem**: Theme colors don't apply
+
+**Solution**: Check `data-theme` attribute and `defaultTheme`:
+
+```html
+<html data-theme="moonlight">  <!-- Must match a theme in themes array -->
+```
+
+### Prefix Not Working
+
+**Problem**: Prefixed classes don't work
+
+**Solution**: Use prefix consistently:
+
+```javascript
+// Config
+{
+  prefix: 'dm-'
+}
+
+// HTML - Use prefix in all classes
+<button class="dm-btn dm-btn-primary">Button</button>
+```
+
+## Performance Tips
+
+1. **Include only needed components** for smaller bundles
+2. **Use one theme in production** if you don't need theme switching
+3. **Set `styled: false`** if you're building custom components
+4. **Use PurgeCSS/Tailwind purge** to remove unused classes
+
+```javascript
+// Optimized for production
+{
+  themes: [productionTheme],           // One theme only
+  defaultTheme: 'production',          // Explicit default
+  components: ['button', 'card'],      // Only used components
+  styled: true,                        // Keep component styles
+}
+```

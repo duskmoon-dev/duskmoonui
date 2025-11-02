@@ -1,0 +1,415 @@
+---
+title: Card
+description: Material Design 3 card container with elevation and subcomponents
+category: components
+order: 2
+published: true
+tags: ['card', 'components', 'material-design', 'container']
+---
+
+# Card
+
+Cards contain content and actions about a single subject. They follow Material Design 3's surface elevation system.
+
+## Basic Usage
+
+```html
+<div class="card">
+  <div class="card-body">
+    <p>Basic card content</p>
+  </div>
+</div>
+```
+
+## Elevation Levels
+
+Material Design 3 defines five elevation levels for cards:
+
+```html
+<!-- Level 0 - Lowest elevation -->
+<div class="card card-lowest">
+  <div class="card-body">Lowest elevation</div>
+</div>
+
+<!-- Level 1 - Low elevation -->
+<div class="card card-low">
+  <div class="card-body">Low elevation</div>
+</div>
+
+<!-- Level 2 - Default elevation -->
+<div class="card card-default">
+  <div class="card-body">Default elevation</div>
+</div>
+
+<!-- Level 3 - High elevation -->
+<div class="card card-high">
+  <div class="card-body">High elevation</div>
+</div>
+
+<!-- Level 4 - Highest elevation -->
+<div class="card card-highest">
+  <div class="card-body">Highest elevation</div>
+</div>
+```
+
+## Card Variants
+
+### Filled Card
+
+Filled cards use elevated surface colors:
+
+```html
+<div class="card card-filled">
+  <div class="card-body">
+    <p>Filled card with elevated surface color</p>
+  </div>
+</div>
+```
+
+### Outlined Card
+
+Outlined cards have a border and no elevation:
+
+```html
+<div class="card card-outlined">
+  <div class="card-body">
+    <p>Outlined card with border</p>
+  </div>
+</div>
+```
+
+### Interactive Card
+
+Interactive cards respond to hover and click:
+
+```html
+<div class="card card-interactive card-default">
+  <div class="card-body">
+    <p>Click or hover this card</p>
+  </div>
+</div>
+```
+
+## Card Structure
+
+### Complete Card
+
+A full-featured card with all subcomponents:
+
+```html
+<div class="card card-default">
+  <img class="card-image" src="/image.jpg" alt="Card image" />
+
+  <div class="card-header">
+    <h3 class="card-title">Card Title</h3>
+    <p class="card-subtitle">Supporting text goes here</p>
+  </div>
+
+  <div class="card-body">
+    <p>This is the main content area of the card. You can include paragraphs, lists, or other content here.</p>
+  </div>
+
+  <div class="card-actions">
+    <button class="btn btn-text">Action 1</button>
+    <button class="btn btn-tonal">Action 2</button>
+  </div>
+</div>
+```
+
+### Card Header
+
+The header contains the title and optional subtitle:
+
+```html
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Product Name</h3>
+    <p class="card-subtitle">$99.99</p>
+  </div>
+  <div class="card-body">
+    Product description goes here.
+  </div>
+</div>
+```
+
+### Card Body
+
+The main content area:
+
+```html
+<div class="card">
+  <div class="card-body">
+    <h4>Features</h4>
+    <ul>
+      <li>Feature 1</li>
+      <li>Feature 2</li>
+      <li>Feature 3</li>
+    </ul>
+  </div>
+</div>
+```
+
+### Card Actions
+
+Action buttons at the bottom of the card:
+
+```html
+<div class="card">
+  <div class="card-body">
+    <p>Card content</p>
+  </div>
+  <div class="card-actions">
+    <button class="btn btn-text">Cancel</button>
+    <button class="btn btn-tonal">Save</button>
+  </div>
+</div>
+```
+
+### Card Image
+
+Full-width image at the top:
+
+```html
+<div class="card card-default">
+  <img class="card-image" src="/photo.jpg" alt="Description" />
+  <div class="card-body">
+    <h3>Photo Title</h3>
+    <p>Photo description</p>
+  </div>
+</div>
+```
+
+## Density
+
+### Compact Cards
+
+Reduced padding for denser layouts:
+
+```html
+<div class="card card-compact">
+  <div class="card-body">
+    <p>Compact card with reduced padding</p>
+  </div>
+</div>
+```
+
+### Comfortable Cards
+
+Increased padding for more breathing room:
+
+```html
+<div class="card card-comfortable">
+  <div class="card-body">
+    <p>Comfortable card with increased padding</p>
+  </div>
+</div>
+```
+
+## Use Cases
+
+### Product Card
+
+```html
+<div class="card card-default card-interactive">
+  <img class="card-image" src="/product.jpg" alt="Product" />
+  <div class="card-body">
+    <h3 class="text-lg font-semibold">Wireless Headphones</h3>
+    <p class="text-sm text-on-surface-variant mt-1">Premium sound quality</p>
+    <p class="text-xl font-bold mt-4">$199.99</p>
+  </div>
+  <div class="card-actions">
+    <button class="btn btn-icon btn-text">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+    </button>
+    <button class="btn btn-tonal">Add to Cart</button>
+  </div>
+</div>
+```
+
+### Article Preview Card
+
+```html
+<div class="card card-outlined card-interactive">
+  <div class="card-header">
+    <span class="badge badge-primary badge-sm">Technology</span>
+    <p class="card-subtitle mt-2">5 min read • Oct 28, 2025</p>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">Understanding Material Design 3</h3>
+    <p>Material Design 3 is the latest evolution of Google's design system, featuring dynamic color, updated components...</p>
+  </div>
+  <div class="card-actions">
+    <button class="btn btn-text">Read More</button>
+  </div>
+</div>
+```
+
+### User Profile Card
+
+```html
+<div class="card card-default">
+  <div class="card-body">
+    <div class="flex items-center gap-4">
+      <img class="w-16 h-16 rounded-full" src="/avatar.jpg" alt="User" />
+      <div>
+        <h3 class="font-semibold">Jane Doe</h3>
+        <p class="text-sm text-on-surface-variant">Product Designer</p>
+      </div>
+    </div>
+    <p class="mt-4">
+      Passionate about creating beautiful and functional user experiences.
+    </p>
+  </div>
+  <div class="card-actions">
+    <button class="btn btn-outlined btn-block">Follow</button>
+  </div>
+</div>
+```
+
+### Dashboard Stat Card
+
+```html
+<div class="card card-filled card-comfortable">
+  <div class="card-body">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm text-on-surface-variant">Total Revenue</p>
+        <p class="text-3xl font-bold mt-2">$45,231.89</p>
+        <p class="text-sm text-success mt-2">↑ 20.1% from last month</p>
+      </div>
+      <div class="p-3 bg-primary/10 rounded-full">
+        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Grid Layouts
+
+Cards work well in grid layouts:
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="card card-default">
+    <div class="card-body">
+      <h3>Card 1</h3>
+      <p>Content</p>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <h3>Card 2</h3>
+      <p>Content</p>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <h3>Card 3</h3>
+      <p>Content</p>
+    </div>
+  </div>
+</div>
+```
+
+## Best Practices
+
+### Elevation Hierarchy
+
+Use elevation to show importance and hierarchy:
+
+- **Lowest/Low**: Background cards
+- **Default**: Standard cards
+- **High/Highest**: Important cards, popovers, dialogs
+
+### Content Guidelines
+
+- Keep titles concise (1-2 lines)
+- Limit body text to essential information
+- Use 1-2 action buttons maximum
+- Ensure card width accommodates content comfortably
+
+### Accessibility
+
+- Use semantic heading tags (`<h2>`, `<h3>`) for card titles
+- Provide alt text for card images
+- Ensure sufficient color contrast
+- Make interactive cards keyboard accessible
+
+```html
+<!-- Good: Interactive card with proper semantics -->
+<a href="/article" class="card card-interactive card-default">
+  <div class="card-body">
+    <h3 class="card-title">Article Title</h3>
+    <p>Article preview text...</p>
+  </div>
+</a>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface CardProps {
+  elevation?: 'lowest' | 'low' | 'default' | 'high' | 'highest';
+  variant?: 'filled' | 'outlined' | 'interactive';
+  children: React.ReactNode;
+}
+
+export function Card({ elevation = 'default', variant, children }: CardProps) {
+  const classes = ['card', `card-${elevation}`, variant && `card-${variant}`]
+    .filter(Boolean)
+    .join(' ');
+
+  return <div className={classes}>{children}</div>;
+}
+
+// Usage
+<Card elevation="high" variant="interactive">
+  <CardBody>
+    <h3>Card Title</h3>
+    <p>Card content</p>
+  </CardBody>
+</Card>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.card` | Base card styles (required) |
+| `.card-lowest` | Elevation level 0 |
+| `.card-low` | Elevation level 1 |
+| `.card-default` | Elevation level 2 (default) |
+| `.card-high` | Elevation level 3 |
+| `.card-highest` | Elevation level 4 |
+| `.card-filled` | Filled variant with surface color |
+| `.card-outlined` | Outlined variant with border |
+| `.card-interactive` | Interactive variant with hover/focus |
+| `.card-compact` | Reduced padding |
+| `.card-comfortable` | Increased padding |
+| `.card-header` | Header section |
+| `.card-title` | Card title |
+| `.card-subtitle` | Card subtitle |
+| `.card-body` | Main content area |
+| `.card-actions` | Action buttons section |
+| `.card-image` | Full-width card image |
+
+## Related Components
+
+- [Button](/docs/en/components/button/) - Action buttons in cards
+- [Badge](/docs/en/components/badge/) - Status indicators
+- [Alert](/docs/en/components/alert/) - Notification messages
+
+## See Also
+
+- [Card Design Guidelines (Material Design 3)](https://m3.material.io/components/cards/)

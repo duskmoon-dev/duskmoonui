@@ -1,0 +1,407 @@
+---
+title: Badge
+description: Material Design 3 badge indicators for status, notifications, and labels
+category: components
+order: 4
+published: true
+tags: ['badge', 'components', 'material-design', 'indicator']
+---
+
+# Badge
+
+Badges are small status descriptors for UI elements. They can display notification counts, status indicators, or labels.
+
+## Basic Usage
+
+```html
+<span class="badge">New</span>
+```
+
+## Color Variants
+
+### Brand Colors
+
+```html
+<span class="badge badge-primary">Primary</span>
+<span class="badge badge-secondary">Secondary</span>
+<span class="badge badge-tertiary">Tertiary</span>
+```
+
+### Semantic Colors
+
+```html
+<span class="badge badge-success">Success</span>
+<span class="badge badge-error">Error</span>
+<span class="badge badge-warning">Warning</span>
+<span class="badge badge-info">Info</span>
+```
+
+### Neutral
+
+```html
+<span class="badge badge-neutral">Neutral</span>
+```
+
+## Style Variants
+
+### Filled (Default)
+
+Filled badges have a solid background:
+
+```html
+<span class="badge badge-filled badge-primary">Filled</span>
+<span class="badge badge-filled badge-success">Success</span>
+```
+
+### Tonal
+
+Tonal badges use a subtle background with the theme's container colors:
+
+```html
+<span class="badge badge-tonal badge-primary">Tonal</span>
+<span class="badge badge-tonal badge-info">Info</span>
+```
+
+### Outlined
+
+Outlined badges have only a border:
+
+```html
+<span class="badge badge-outlined badge-primary">Outlined</span>
+<span class="badge badge-outlined badge-warning">Warning</span>
+```
+
+## Sizes
+
+```html
+<span class="badge badge-primary badge-sm">Small</span>
+<span class="badge badge-primary badge-md">Medium</span>
+<span class="badge badge-primary badge-lg">Large</span>
+```
+
+## Notification Badges
+
+### Basic Notification
+
+Notification badges are typically positioned on buttons or icons:
+
+```html
+<div class="relative inline-block">
+  <button class="btn btn-icon btn-outlined">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+    </svg>
+  </button>
+  <span class="badge badge-notification badge-error">5</span>
+</div>
+```
+
+### With Icon
+
+```html
+<div class="relative inline-block">
+  <svg class="w-10 h-10 text-on-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+  <span class="badge badge-notification badge-error">99+</span>
+</div>
+```
+
+## Dot Badges
+
+Small status indicators without text:
+
+```html
+<span class="badge badge-dot badge-success"></span>
+<span class="badge badge-dot badge-warning"></span>
+<span class="badge badge-dot badge-error"></span>
+```
+
+### Dot with Label
+
+```html
+<div class="flex items-center gap-2">
+  <span class="badge badge-dot badge-success"></span>
+  <span>Online</span>
+</div>
+
+<div class="flex items-center gap-2">
+  <span class="badge badge-dot badge-warning"></span>
+  <span>Away</span>
+</div>
+
+<div class="flex items-center gap-2">
+  <span class="badge badge-dot badge-error"></span>
+  <span>Offline</span>
+</div>
+```
+
+## Removable Badges
+
+Badges with a close button (requires JavaScript):
+
+```html
+<span class="badge badge-removable badge-primary">
+  Tag Name
+  <button class="ml-1 hover:opacity-75" onclick="this.parentElement.remove()">
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</span>
+```
+
+## Use Cases
+
+### Status Indicators
+
+```html
+<div class="flex items-center gap-2">
+  <span class="badge badge-success">Active</span>
+  <span class="badge badge-warning">Pending</span>
+  <span class="badge badge-error">Expired</span>
+</div>
+```
+
+### Category Tags
+
+```html
+<div class="flex flex-wrap gap-2">
+  <span class="badge badge-tonal badge-primary">Technology</span>
+  <span class="badge badge-tonal badge-secondary">Design</span>
+  <span class="badge badge-tonal badge-tertiary">Development</span>
+  <span class="badge badge-tonal badge-info">Tutorial</span>
+</div>
+```
+
+### User Roles
+
+```html
+<div class="flex items-center gap-2">
+  <img class="w-10 h-10 rounded-full" src="/avatar.jpg" alt="User" />
+  <div>
+    <div class="flex items-center gap-2">
+      <span class="font-semibold">Jane Doe</span>
+      <span class="badge badge-sm badge-primary">Admin</span>
+    </div>
+    <p class="text-sm text-on-surface-variant">jane@example.com</p>
+  </div>
+</div>
+```
+
+### Pill Labels
+
+```html
+<div class="card">
+  <div class="card-header">
+    <div class="flex items-center justify-between">
+      <h3 class="card-title">Premium Plan</h3>
+      <span class="badge badge-success">Recommended</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="text-3xl font-bold">$29.99<span class="text-sm font-normal">/month</span></p>
+  </div>
+</div>
+```
+
+### Counts
+
+```html
+<button class="btn btn-text">
+  Comments
+  <span class="badge badge-sm badge-tonal">42</span>
+</button>
+
+<button class="btn btn-text">
+  Notifications
+  <span class="badge badge-sm badge-error">3</span>
+</button>
+```
+
+### Table Badges
+
+```html
+<table class="w-full">
+  <thead>
+    <tr class="border-b border-outline-variant">
+      <th class="text-left p-4">Order ID</th>
+      <th class="text-left p-4">Status</th>
+      <th class="text-left p-4">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border-b border-outline-variant">
+      <td class="p-4">#1234</td>
+      <td class="p-4">
+        <span class="badge badge-success">Completed</span>
+      </td>
+      <td class="p-4">$99.99</td>
+    </tr>
+    <tr class="border-b border-outline-variant">
+      <td class="p-4">#1235</td>
+      <td class="p-4">
+        <span class="badge badge-warning">Processing</span>
+      </td>
+      <td class="p-4">$149.99</td>
+    </tr>
+    <tr class="border-b border-outline-variant">
+      <td class="p-4">#1236</td>
+      <td class="p-4">
+        <span class="badge badge-error">Failed</span>
+      </td>
+      <td class="p-4">$79.99</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Best Practices
+
+### Color Semantics
+
+Use colors consistently to convey meaning:
+
+- **Success (Green)**: Completed, Active, Available
+- **Warning (Yellow)**: Pending, Caution, In Progress
+- **Error (Red)**: Failed, Inactive, Urgent
+- **Info (Blue)**: Informational, New, Featured
+
+### Size Guidelines
+
+- **Small (`badge-sm`)**: Use in compact spaces, tables, or alongside small text
+- **Medium (default)**: Standard usage
+- **Large (`badge-lg`)**: Use for emphasis or with larger text
+
+### Accessibility
+
+- Use meaningful text in badges
+- Ensure sufficient color contrast
+- Provide context for screen readers
+
+```html
+<!-- Good: Descriptive text -->
+<span class="badge badge-success">Payment Received</span>
+
+<!-- Also good: With aria-label for icon badges -->
+<span class="badge badge-dot badge-success" aria-label="Online"></span>
+```
+
+### Don't Overuse
+
+Limit the number of badges to avoid visual clutter:
+
+```html
+<!-- Good: One or two badges for emphasis -->
+<h2 class="flex items-center gap-2">
+  Article Title
+  <span class="badge badge-sm badge-primary">New</span>
+</h2>
+
+<!-- Avoid: Too many badges -->
+<h2 class="flex items-center gap-2">
+  Article Title
+  <span class="badge badge-sm badge-primary">New</span>
+  <span class="badge badge-sm badge-info">Featured</span>
+  <span class="badge badge-sm badge-success">Popular</span>
+  <span class="badge badge-sm badge-warning">Trending</span>
+</h2>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface BadgeProps {
+  variant?: 'filled' | 'tonal' | 'outlined';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'error' | 'warning' | 'info';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+}
+
+export function Badge({ variant = 'filled', color = 'primary', size = 'md', children }: BadgeProps) {
+  return (
+    <span className={`badge badge-${variant} badge-${color} badge-${size}`}>
+      {children}
+    </span>
+  );
+}
+
+// Usage
+<Badge variant="tonal" color="success">Active</Badge>
+```
+
+### Vue
+
+```vue
+<template>
+  <span :class="`badge badge-${variant} badge-${color} badge-${size}`">
+    <slot />
+  </span>
+</template>
+
+<script setup>
+defineProps({
+  variant: {
+    type: String,
+    default: 'filled'
+  },
+  color: {
+    type: String,
+    default: 'primary'
+  },
+  size: {
+    type: String,
+    default: 'md'
+  }
+})
+</script>
+
+<!-- Usage -->
+<Badge variant="tonal" color="success">Active</Badge>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.badge` | Base badge styles (required) |
+| `.badge-primary` | Primary color |
+| `.badge-secondary` | Secondary color |
+| `.badge-tertiary` | Tertiary color |
+| `.badge-success` | Success color (green) |
+| `.badge-error` | Error color (red) |
+| `.badge-warning` | Warning color (yellow) |
+| `.badge-info` | Info color (blue) |
+| `.badge-neutral` | Neutral color (gray) |
+| `.badge-filled` | Filled variant (default) |
+| `.badge-tonal` | Tonal variant |
+| `.badge-outlined` | Outlined variant |
+| `.badge-sm` | Small size |
+| `.badge-md` | Medium size (default) |
+| `.badge-lg` | Large size |
+| `.badge-dot` | Dot indicator |
+| `.badge-notification` | Notification badge with positioning |
+| `.badge-removable` | Removable badge styling |
+
+### Combinations
+
+Combine variant, color, and size:
+
+```html
+<span class="badge badge-tonal badge-success badge-sm">Small Tonal Success</span>
+<span class="badge badge-outlined badge-warning badge-lg">Large Outlined Warning</span>
+```
+
+## Related Components
+
+- [Button](/docs/en/components/button/) - Buttons with badge counts
+- [Card](/docs/en/components/card/) - Cards with status badges
+- [Alert](/docs/en/components/alert/) - Alert notifications
+
+## See Also
+
+- [Badge Design Guidelines (Material Design 3)](https://m3.material.io/components/badges/)

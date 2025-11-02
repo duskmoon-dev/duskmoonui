@@ -1,0 +1,267 @@
+---
+interface NavItem {
+  title: string;
+  href?: string;
+  items?: NavItem[];
+  badge?: string;
+}
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navigation: NavItem[] = [
+  {
+    title: 'Getting Started',
+    items: [
+      { title: 'Installation', href: '/docs/en/getting-started/installation/' },
+      { title: 'Quick Start', href: '/docs/en/getting-started/quick-start/' },
+      { title: 'Configuration', href: '/docs/en/getting-started/configuration/' },
+    ],
+  },
+  {
+    title: 'Components',
+    items: [
+      { title: 'Overview', href: '/components/' },
+      { title: 'Button', href: '/components/button/', badge: 'showcase' },
+      { title: 'Card', href: '/components/card/', badge: 'showcase' },
+      { title: 'Input', href: '/docs/en/components/input/' },
+      { title: 'Badge', href: '/docs/en/components/badge/' },
+      { title: 'Alert', href: '/docs/en/components/alert/' },
+    ],
+  },
+  {
+    title: 'Theming',
+    items: [
+      { title: 'Overview', href: '/docs/en/theming/overview/' },
+      { title: 'Customization', href: '/docs/en/theming/customization/' },
+    ],
+  },
+  {
+    title: 'API Reference',
+    items: [
+      { title: 'Plugin Options', href: '/docs/en/api/plugin-options/' },
+      { title: 'Theme Tokens', href: '/docs/en/api/theme-tokens/' },
+    ],
+  },
+  {
+    title: 'Guides',
+    items: [
+      { title: 'Next.js', href: '/docs/en/guides/nextjs/' },
+      { title: 'Astro', href: '/docs/en/guides/astro/' },
+      { title: 'Vue', href: '/docs/en/guides/vue/' },
+      { title: 'React', href: '/docs/en/guides/react/' },
+    ],
+  },
+];
+
+function isActive(href: string, current: string): boolean {
+  return current.includes(href) || current === href;
+}
+---
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="/" class="sidebar-logo">
+      <span class="logo-text">DuskMoonUI</span>
+      <span class="logo-version">v0.1.0</span>
+    </a>
+  </div>
+
+  <nav class="sidebar-nav">
+    {navigation.map(section => (
+      <div class="nav-section">
+        <h3 class="nav-section-title">{section.title}</h3>
+        {section.items && (
+          <ul class="nav-list">
+            {section.items.map(item => (
+              <li class="nav-item">
+                <a
+                  href={item.href}
+                  class:list={[
+                    'nav-link',
+                    { active: item.href && isActive(item.href, currentPath) }
+                  ]}
+                >
+                  {item.title}
+                  {item.badge && (
+                    <span class="nav-badge">{item.badge}</span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    ))}
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-links">
+      <a href="https://github.com/duskmoon-dev/duskmoonui" target="_blank" rel="noopener" class="sidebar-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        GitHub
+      </a>
+      <a href="https://www.npmjs.com/package/@duskmoon-dev/core" target="_blank" rel="noopener" class="sidebar-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z"/>
+        </svg>
+        npm
+      </a>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .sidebar {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: hsl(var(--color-surface));
+    border-right: 1px solid hsl(var(--color-outline-variant));
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid hsl(var(--color-outline-variant));
+    flex-shrink: 0;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: hsl(var(--color-on-surface));
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .logo-version {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.125rem 0.5rem;
+    background: hsl(var(--color-primary) / 0.1);
+    color: hsl(var(--color-primary));
+    border-radius: 0.25rem;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    padding: 1rem 0;
+    overflow-y: auto;
+  }
+
+  .nav-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .nav-section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: hsl(var(--color-on-surface-variant));
+    padding: 0.5rem 1.5rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1.5rem;
+    color: hsl(var(--color-on-surface));
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-link:hover {
+    background: hsl(var(--color-surface-container));
+    border-left-color: hsl(var(--color-primary) / 0.3);
+  }
+
+  .nav-link.active {
+    background: hsl(var(--color-primary) / 0.1);
+    border-left-color: hsl(var(--color-primary));
+    color: hsl(var(--color-primary));
+    font-weight: 600;
+  }
+
+  .nav-badge {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+    background: hsl(var(--color-tertiary) / 0.15);
+    color: hsl(var(--color-tertiary));
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .sidebar-footer {
+    border-top: 1px solid hsl(var(--color-outline-variant));
+    padding: 1rem 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .sidebar-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: hsl(var(--color-on-surface-variant));
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+
+  .sidebar-link:hover {
+    background: hsl(var(--color-surface-container));
+    color: hsl(var(--color-on-surface));
+  }
+
+  .sidebar-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid hsl(var(--color-outline-variant));
+    }
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import CodeBlock from './CodeBlock.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  code: string;
+  showCode?: boolean;
+}
+
+const { title, description, code, showCode = true } = Astro.props;
+---
+
+<div class="component-showcase">
+  <div class="showcase-header">
+    <h3 class="showcase-title">{title}</h3>
+    {description && <p class="showcase-description">{description}</p>}
+  </div>
+
+  <div class="showcase-preview">
+    <Fragment set:html={code} />
+  </div>
+
+  {showCode && (
+    <div class="showcase-code">
+      <CodeBlock code={code} language="html" />
+    </div>
+  )}
+</div>
+
+<style>
+  .component-showcase {
+    margin: 2rem 0;
+    border: 1px solid hsl(var(--color-outline-variant));
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: hsl(var(--color-surface));
+  }
+
+  .showcase-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid hsl(var(--color-outline-variant));
+    background: hsl(var(--color-surface-container-low));
+  }
+
+  .showcase-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: hsl(var(--color-on-surface));
+  }
+
+  .showcase-description {
+    margin: 0;
+    font-size: 0.875rem;
+    color: hsl(var(--color-on-surface-variant));
+    line-height: 1.6;
+  }
+
+  .showcase-preview {
+    padding: 2rem;
+    background: hsl(var(--color-surface));
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .showcase-code {
+    border-top: 1px solid hsl(var(--color-outline-variant));
+  }
+
+  /* Ensure all components in preview are visible */
+  .showcase-preview :global(*) {
+    margin: 0.5rem;
+  }
+</style>

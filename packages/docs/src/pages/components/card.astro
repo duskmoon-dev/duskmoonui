@@ -1,0 +1,193 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import ComponentShowcase from '../../components/showcase/ComponentShowcase.astro';
+---
+
+<DocsLayout
+  title="Card Component"
+  description="Interactive showcase of DuskMoonUI card variants"
+>
+  <div class="showcase-page">
+    <header class="page-header">
+      <h1>Card Component</h1>
+      <p class="page-description">
+        Explore card components with Material Design 3 elevation levels and subcomponents.
+      </p>
+    </header>
+
+    <section class="showcase-section">
+      <h2>Elevation Levels</h2>
+      <ComponentShowcase
+        title="Surface Elevation"
+        description="Five elevation levels for visual hierarchy"
+        code={`<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="card card-lowest">
+    <div class="card-body">Lowest</div>
+  </div>
+  <div class="card card-low">
+    <div class="card-body">Low</div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">Default</div>
+  </div>
+  <div class="card card-high">
+    <div class="card-body">High</div>
+  </div>
+  <div class="card card-highest">
+    <div class="card-body">Highest</div>
+  </div>
+</div>`}
+      />
+    </section>
+
+    <section class="showcase-section">
+      <h2>Card Variants</h2>
+      <ComponentShowcase
+        title="Filled and Outlined"
+        description="Different card styles for various contexts"
+        code={`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="card card-filled">
+    <div class="card-body">
+      <h3 class="text-lg font-semibold">Filled Card</h3>
+      <p>Uses elevated surface color</p>
+    </div>
+  </div>
+  <div class="card card-outlined">
+    <div class="card-body">
+      <h3 class="text-lg font-semibold">Outlined Card</h3>
+      <p>Border with no elevation</p>
+    </div>
+  </div>
+</div>`}
+      />
+
+      <ComponentShowcase
+        title="Interactive Card"
+        description="Clickable cards with hover effects"
+        code={`<div class="card card-interactive card-default">
+  <div class="card-body">
+    <h3 class="text-lg font-semibold">Interactive Card</h3>
+    <p>Hover over this card to see the effect</p>
+  </div>
+</div>`}
+      />
+    </section>
+
+    <section class="showcase-section">
+      <h2>Card Structure</h2>
+      <ComponentShowcase
+        title="Complete Card"
+        description="Card with all subcomponents"
+        code={`<div class="card card-default" style="max-width: 400px;">
+  <div class="card-header">
+    <h3 class="card-title">Card Title</h3>
+    <p class="card-subtitle">Supporting text goes here</p>
+  </div>
+  <div class="card-body">
+    <p>This is the main content area of the card. It can contain text, images, or other components.</p>
+  </div>
+  <div class="card-actions">
+    <button class="btn btn-text">Cancel</button>
+    <button class="btn btn-tonal">Save</button>
+  </div>
+</div>`}
+      />
+
+      <ComponentShowcase
+        title="Card with Image"
+        description="Card with header image"
+        code={`<div class="card card-default" style="max-width: 400px;">
+  <div class="card-image" style="height: 200px; background: linear-gradient(135deg, hsl(var(--color-primary)) 0%, hsl(var(--color-secondary)) 100%);"></div>
+  <div class="card-body">
+    <h3 class="text-lg font-semibold">Photo Title</h3>
+    <p>Photo description and details</p>
+  </div>
+  <div class="card-actions">
+    <button class="btn btn-icon btn-text">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+    </button>
+    <button class="btn btn-tonal">View</button>
+  </div>
+</div>`}
+      />
+    </section>
+
+    <section class="showcase-section">
+      <h2>Density</h2>
+      <ComponentShowcase
+        title="Card Density Variants"
+        description="Compact and comfortable spacing options"
+        code={`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="card card-compact card-default">
+    <div class="card-body">
+      <h3 class="font-semibold">Compact</h3>
+      <p>Reduced padding</p>
+    </div>
+  </div>
+  <div class="card card-comfortable card-default">
+    <div class="card-body">
+      <h3 class="font-semibold">Comfortable</h3>
+      <p>Increased padding</p>
+    </div>
+  </div>
+</div>`}
+      />
+    </section>
+
+    <div class="docs-link">
+      <a href="/docs/en/components/card/" class="btn btn-outlined">
+        View Full Documentation →
+      </a>
+    </div>
+  </div>
+</DocsLayout>
+
+<style>
+  .showcase-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    margin-top: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: hsl(var(--color-on-surface));
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: hsl(var(--color-on-surface-variant));
+    max-width: 700px;
+    margin: 1rem auto 0;
+    line-height: 1.6;
+  }
+
+  .showcase-section {
+    margin: 3rem 0;
+  }
+
+  .showcase-section h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: hsl(var(--color-on-surface));
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid hsl(var(--color-primary) / 0.2);
+  }
+
+  .docs-link {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid hsl(var(--color-outline-variant));
+  }
+</style>

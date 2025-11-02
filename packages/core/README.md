@@ -2,6 +2,11 @@
 
 > DuskMoonUI - A Tailwind CSS component library with extended color system
 
+[![npm version](https://img.shields.io/npm/v/@duskmoon-dev/core.svg)](https://www.npmjs.com/package/@duskmoon-dev/core)
+[![npm downloads](https://img.shields.io/npm/dm/@duskmoon-dev/core.svg)](https://www.npmjs.com/package/@duskmoon-dev/core)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@duskmoon-dev/core)](https://bundlephobia.com/package/@duskmoon-dev/core)
+[![license](https://img.shields.io/npm/l/@duskmoon-dev/core.svg)](https://github.com/duskmoon-dev/duskmoonui/blob/main/LICENSE)
+
 ## Features
 
 - 🎨 Extended color system with tertiary colors

@@ -6,6 +6,7 @@
 import plugin from 'tailwindcss/plugin';
 import { themes } from './themes';
 import { generateCssVariables } from './generators';
+import { getComponentStyles } from './components';
 import type { DuskMoonUIOptions, ThemeColors, CustomTheme } from './types';
 
 /**
@@ -29,7 +30,10 @@ const duskmoonuiPlugin = plugin.withOptions<Partial<DuskMoonUIOptions>>(
   (options: Partial<DuskMoonUIOptions> = {}) => {
     const config: DuskMoonUIOptions = { ...defaultOptions, ...options };
 
-    return ({ addBase }: { addBase: (styles: Record<string, Record<string, string>>) => void }) => {
+    return ({ addBase, addComponents }: {
+      addBase: (styles: Record<string, Record<string, string>>) => void;
+      addComponents: (components: Record<string, any>) => void;
+    }) => {
       // Inject theme colors as CSS variables
       const selectedThemes = config.themes || ['sunshine', 'moonlight'];
       const baseStyles: Record<string, Record<string, string>> = {};
@@ -63,8 +67,11 @@ const duskmoonuiPlugin = plugin.withOptions<Partial<DuskMoonUIOptions>>(
         addBase(baseStyles);
       }
 
-      // TODO: Add component generation
-      // TODO: Add utility generation
+      // Add component styles
+      if (config.styled && config.components) {
+        const componentStyles = getComponentStyles(config.components);
+        addComponents(componentStyles);
+      }
     };
   },
   (_options: Partial<DuskMoonUIOptions> = {}) => {

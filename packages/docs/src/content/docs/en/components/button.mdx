@@ -1,0 +1,332 @@
+---
+title: Button
+description: Material Design 3 button component with multiple variants and sizes
+category: components
+order: 1
+published: true
+tags: ['button', 'components', 'material-design']
+---
+
+# Button
+
+Buttons allow users to take actions with a single tap. DuskMoonUI provides a complete set of Material Design 3 button variants.
+
+## Basic Usage
+
+```html
+<button class="btn btn-primary">Primary Button</button>
+```
+
+## Variants
+
+### Filled Buttons
+
+Filled buttons have the most visual impact and should be used for primary actions.
+
+```html
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-tertiary">Tertiary</button>
+```
+
+### Outlined Buttons
+
+Outlined buttons are medium-emphasis buttons. They're used for important but not primary actions.
+
+```html
+<button class="btn btn-outlined">Outlined</button>
+<button class="btn btn-outlined btn-primary">Outlined Primary</button>
+<button class="btn btn-outlined btn-secondary">Outlined Secondary</button>
+```
+
+### Text Buttons
+
+Text buttons are used for low-priority actions, such as "Cancel" or "Learn More".
+
+```html
+<button class="btn btn-text">Text Button</button>
+<button class="btn btn-text btn-primary">Text Primary</button>
+```
+
+### Tonal Buttons
+
+Tonal buttons use the theme's container colors for a subtle but noticeable effect.
+
+```html
+<button class="btn btn-tonal">Tonal</button>
+<button class="btn btn-tonal btn-primary">Tonal Primary</button>
+<button class="btn btn-tonal btn-secondary">Tonal Secondary</button>
+```
+
+## Semantic Colors
+
+Use semantic colors for user feedback:
+
+```html
+<button class="btn btn-success">Success</button>
+<button class="btn btn-error">Error</button>
+<button class="btn btn-warning">Warning</button>
+<button class="btn btn-info">Info</button>
+```
+
+Semantic colors work with all variants:
+
+```html
+<button class="btn btn-outlined btn-success">Success Outlined</button>
+<button class="btn btn-text btn-error">Error Text</button>
+<button class="btn btn-tonal btn-warning">Warning Tonal</button>
+```
+
+## Sizes
+
+Three sizes are available:
+
+```html
+<button class="btn btn-primary btn-sm">Small</button>
+<button class="btn btn-primary btn-md">Medium (default)</button>
+<button class="btn btn-primary btn-lg">Large</button>
+```
+
+## Icon Buttons
+
+### Buttons with Icons
+
+Add icons alongside text:
+
+```html
+<button class="btn btn-primary">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+  </svg>
+  Add Item
+</button>
+
+<button class="btn btn-outlined">
+  Download
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+  </svg>
+</button>
+```
+
+### Icon-Only Buttons
+
+For compact interfaces, use icon-only buttons:
+
+```html
+<button class="btn btn-icon btn-primary">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+
+<!-- Icon button sizes -->
+<button class="btn btn-icon btn-icon-sm btn-outlined">
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+  </svg>
+</button>
+
+<button class="btn btn-icon btn-icon-lg btn-tonal">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+  </svg>
+</button>
+```
+
+## States
+
+### Disabled State
+
+Disabled buttons are non-interactive:
+
+```html
+<button class="btn btn-primary" disabled>Disabled</button>
+<button class="btn btn-outlined" disabled>Disabled Outlined</button>
+<button class="btn btn-text" disabled>Disabled Text</button>
+```
+
+### Loading State
+
+Add loading indicators (requires custom implementation):
+
+```html
+<button class="btn btn-primary" disabled>
+  <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+  </svg>
+  Loading...
+</button>
+```
+
+## Block Buttons
+
+Full-width buttons:
+
+```html
+<button class="btn btn-primary btn-block">Block Button</button>
+```
+
+## Button Groups
+
+Group related buttons together:
+
+```html
+<div class="flex gap-2">
+  <button class="btn btn-text">Cancel</button>
+  <button class="btn btn-outlined">Save Draft</button>
+  <button class="btn btn-primary">Publish</button>
+</div>
+```
+
+## Best Practices
+
+### Visual Hierarchy
+
+Use button variants to create clear visual hierarchy:
+
+1. **Primary action**: `btn-primary` (filled)
+2. **Secondary action**: `btn-outlined` or `btn-tonal`
+3. **Tertiary action**: `btn-text`
+
+```html
+<div class="flex gap-2">
+  <button class="btn btn-text">Cancel</button>
+  <button class="btn btn-outlined">Save Draft</button>
+  <button class="btn btn-primary">Publish</button>
+</div>
+```
+
+### Accessibility
+
+- Always provide meaningful button text or `aria-label` for icon buttons
+- Use semantic HTML `<button>` elements
+- Ensure sufficient color contrast
+- Support keyboard navigation (built-in)
+
+```html
+<!-- Good: Icon button with aria-label -->
+<button class="btn btn-icon btn-primary" aria-label="Close dialog">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+```
+
+### Touch Targets
+
+Ensure buttons are large enough for touch interfaces (minimum 44×44px):
+
+```html
+<!-- Small buttons are okay for desktop, but use default or large for mobile -->
+<button class="btn btn-primary btn-md md:btn-sm">
+  Responsive Button
+</button>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface ButtonProps {
+  variant?: 'primary' | 'outlined' | 'text' | 'tonal';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export function Button({ variant = 'primary', size = 'md', children, ...props }: ButtonProps) {
+  return (
+    <button className={`btn btn-${variant} btn-${size}`} {...props}>
+      {children}
+    </button>
+  );
+}
+
+// Usage
+<Button variant="primary" onClick={() => console.log('clicked')}>
+  Click Me
+</Button>
+```
+
+### Vue
+
+```vue
+<template>
+  <button :class="`btn btn-${variant} btn-${size}`" v-bind="$attrs">
+    <slot />
+  </button>
+</template>
+
+<script setup>
+defineProps({
+  variant: {
+    type: String,
+    default: 'primary'
+  },
+  size: {
+    type: String,
+    default: 'md'
+  }
+})
+</script>
+
+<!-- Usage -->
+<Button variant="primary" @click="handleClick">
+  Click Me
+</Button>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.btn` | Base button styles (required) |
+| `.btn-primary` | Primary filled button (default) |
+| `.btn-secondary` | Secondary filled button |
+| `.btn-tertiary` | Tertiary filled button |
+| `.btn-outlined` | Outlined button variant |
+| `.btn-text` | Text button variant |
+| `.btn-tonal` | Tonal button variant |
+| `.btn-success` | Success semantic color |
+| `.btn-error` | Error semantic color |
+| `.btn-warning` | Warning semantic color |
+| `.btn-info` | Info semantic color |
+| `.btn-sm` | Small size |
+| `.btn-md` | Medium size (default) |
+| `.btn-lg` | Large size |
+| `.btn-icon` | Icon-only button |
+| `.btn-icon-sm` | Small icon button |
+| `.btn-icon-lg` | Large icon button |
+| `.btn-block` | Full-width button |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Outlined secondary button, large size -->
+<button class="btn btn-outlined btn-secondary btn-lg">
+  Large Outlined Secondary
+</button>
+
+<!-- Tonal error button, small size -->
+<button class="btn btn-tonal btn-error btn-sm">
+  Small Tonal Error
+</button>
+```
+
+## Related Components
+
+- [Badge](/docs/en/components/badge/) - Notification indicators
+- [Card](/docs/en/components/card/) - Container with actions
+- [Input](/docs/en/components/input/) - Form inputs
+
+## See Also
+
+- [Button Design Guidelines (Material Design 3)](https://m3.material.io/components/buttons/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

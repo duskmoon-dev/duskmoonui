@@ -1,0 +1,184 @@
+---
+title: Quick Start
+description: Build your first component with DuskMoonUI in under 5 minutes
+category: getting-started
+order: 2
+published: true
+tags: ['quick-start', 'tutorial', 'getting-started']
+---
+
+# Quick Start
+
+Get up and running with DuskMoonUI in under 5 minutes. This guide will walk you through creating your first Material Design 3 component.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- Completed the [Installation](/docs/en/getting-started/installation/) guide
+- A project with Tailwind CSS configured
+- Basic knowledge of HTML and CSS
+
+## Your First Button
+
+The simplest way to get started is with a button component:
+
+```html
+<button class="btn btn-primary">
+  Click Me
+</button>
+```
+
+That's it! You now have a fully-styled Material Design 3 button with:
+- Smooth hover and focus states
+- Proper accessibility
+- Theme-aware colors
+- Elevation effects
+
+## Exploring Variants
+
+DuskMoonUI components come with multiple variants. Try these button styles:
+
+```html
+<!-- Filled buttons (default) -->
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-tertiary">Tertiary</button>
+
+<!-- Outlined buttons -->
+<button class="btn btn-outlined">Outlined</button>
+<button class="btn btn-outlined btn-secondary">Outlined Secondary</button>
+
+<!-- Text buttons -->
+<button class="btn btn-text">Text Button</button>
+
+<!-- Tonal buttons -->
+<button class="btn btn-tonal">Tonal</button>
+```
+
+## Size Variants
+
+Adjust button sizes with size modifiers:
+
+```html
+<button class="btn btn-primary btn-sm">Small</button>
+<button class="btn btn-primary btn-md">Medium (default)</button>
+<button class="btn btn-primary btn-lg">Large</button>
+```
+
+## Adding Icons
+
+Buttons work great with icon libraries like Heroicons or Lucide:
+
+```html
+<button class="btn btn-primary">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+  </svg>
+  Add Item
+</button>
+
+<!-- Icon-only button -->
+<button class="btn btn-icon btn-primary">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+```
+
+## Building a Card
+
+Let's create a more complex component - a card:
+
+```html
+<div class="card card-default">
+  <div class="card-header">
+    <h3 class="card-title">Card Title</h3>
+    <p class="card-subtitle">Supporting text</p>
+  </div>
+  <div class="card-body">
+    <p>This is the main content area of the card. It can contain text, images, or other components.</p>
+  </div>
+  <div class="card-actions">
+    <button class="btn btn-text">Cancel</button>
+    <button class="btn btn-tonal">Save</button>
+  </div>
+</div>
+```
+
+## Form Inputs
+
+Create beautiful forms with input components:
+
+```html
+<div class="input-group">
+  <label class="input-label" for="email">Email</label>
+  <input
+    type="email"
+    id="email"
+    class="input input-outlined"
+    placeholder="you@example.com"
+  />
+  <span class="input-helper">We'll never share your email.</span>
+</div>
+
+<!-- With error state -->
+<div class="input-group">
+  <label class="input-label" for="password">Password</label>
+  <input
+    type="password"
+    id="password"
+    class="input input-outlined input-error"
+    placeholder="••••••••"
+  />
+  <span class="input-error-message">Password must be at least 8 characters</span>
+</div>
+```
+
+## Theme Switching
+
+DuskMoonUI includes two built-in themes: **Sunshine** (light) and **Moonlight** (dark). Enable theme switching:
+
+```html
+<!-- Add data-theme attribute to your HTML root -->
+<html data-theme="sunshine">
+  <!-- Your app -->
+</html>
+```
+
+Toggle themes with JavaScript:
+
+```javascript
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'sunshine' ? 'moonlight' : 'sunshine';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+}
+
+// Restore theme on page load
+const savedTheme = localStorage.getItem('theme') || 'sunshine';
+document.documentElement.setAttribute('data-theme', savedTheme);
+```
+
+## Next Steps
+
+Now that you've created your first components, explore more:
+
+- **[Components](/docs/en/components/)** - Browse all available components
+- **[Theming](/docs/en/theming/overview/)** - Customize colors and themes
+- **[Configuration](/docs/en/getting-started/configuration/)** - Configure plugin options
+- **[Framework Guides](/docs/en/guides/)** - Integration guides for Next.js, Astro, Vue, and more
+
+## Example Projects
+
+Check out our starter templates for complete examples:
+
+- [Next.js Starter](https://github.com/duskmoon-dev/duskmoonui/tree/main/examples/nextjs-starter)
+- [Astro Starter](https://github.com/duskmoon-dev/duskmoonui/tree/main/examples/astro-starter)
+
+## Need Help?
+
+- View the [API Reference](/docs/en/api/plugin-options/)
+- Check out [GitHub Discussions](https://github.com/duskmoon-dev/duskmoonui/discussions)
+- Report issues on [GitHub](https://github.com/duskmoon-dev/duskmoonui/issues)

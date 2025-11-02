@@ -1,0 +1,422 @@
+---
+title: Theming Overview
+description: Understanding DuskMoonUI's Material Design 3 theme system
+category: theming
+order: 1
+published: true
+tags: ['theming', 'customization', 'material-design', 'colors']
+---
+
+# Theming Overview
+
+DuskMoonUI implements Material Design 3's dynamic color system, providing a comprehensive theming solution that's both powerful and easy to customize.
+
+## What is Material Design 3?
+
+Material Design 3 (MD3) is Google's latest design system that emphasizes personalization, accessibility, and dynamic color. It introduces several key concepts:
+
+- **Dynamic Color**: A color system that adapts to user preferences
+- **Surface Elevation**: Five levels of surface containers for depth hierarchy
+- **Tertiary Colors**: A third brand color for more design flexibility
+- **Semantic Colors**: Dedicated colors for info, success, warning, and error states
+
+## Built-in Themes
+
+DuskMoonUI includes two carefully crafted themes:
+
+### Sunshine Theme (Light)
+
+A warm, energetic light theme perfect for daytime use:
+
+- **Primary**: Amber (warm orange-yellow)
+- **Secondary**: Blue
+- **Tertiary**: Teal
+- **Surface**: Light backgrounds with subtle elevation
+
+```html
+<html data-theme="sunshine">
+  <!-- Your app -->
+</html>
+```
+
+### Moonlight Theme (Dark)
+
+A cool, sophisticated dark theme ideal for low-light environments:
+
+- **Primary**: Blue
+- **Secondary**: Purple
+- **Tertiary**: Cyan
+- **Surface**: Dark backgrounds with subtle elevation
+
+```html
+<html data-theme="moonlight">
+  <!-- Your app -->
+</html>
+```
+
+## Color System
+
+### Color Roles
+
+Material Design 3 defines specific roles for colors:
+
+#### Primary Colors
+
+The main brand color used for key components:
+
+```css
+--color-primary              /* Primary brand color */
+--color-primary-focus        /* Hover/focus state */
+--color-primary-content      /* Text on primary */
+--color-primary-container    /* Container background */
+--color-on-primary-container /* Text on container */
+```
+
+#### Secondary Colors
+
+Accent color that complements primary:
+
+```css
+--color-secondary              /* Secondary brand color */
+--color-secondary-focus        /* Hover/focus state */
+--color-secondary-content      /* Text on secondary */
+--color-secondary-container    /* Container background */
+--color-on-secondary-container /* Text on container */
+```
+
+#### Tertiary Colors
+
+Third brand color for additional variety (unique to DuskMoonUI):
+
+```css
+--color-tertiary              /* Tertiary brand color */
+--color-tertiary-focus        /* Hover/focus state */
+--color-tertiary-content      /* Text on tertiary */
+--color-tertiary-container    /* Container background */
+--color-on-tertiary-container /* Text on container */
+```
+
+#### Surface Colors
+
+Background and surface colors with five elevation levels:
+
+```css
+--color-surface                  /* Base surface */
+--color-surface-dim              /* Dimmed surface */
+--color-surface-bright           /* Bright surface */
+--color-surface-container-lowest /* Level 0 */
+--color-surface-container-low    /* Level 1 */
+--color-surface-container        /* Level 2 */
+--color-surface-container-high   /* Level 3 */
+--color-surface-container-highest/* Level 4 */
+--color-on-surface               /* Text on surface */
+--color-on-surface-variant       /* Secondary text */
+--color-surface-variant          /* Alternative surface */
+```
+
+#### Semantic Colors
+
+Colors for specific states and feedback:
+
+```css
+/* Info (Blue) */
+--color-info
+--color-on-info
+--color-info-container
+--color-on-info-container
+
+/* Success (Green) */
+--color-success
+--color-on-success
+--color-success-container
+--color-on-success-container
+
+/* Warning (Yellow) */
+--color-warning
+--color-on-warning
+--color-warning-container
+--color-on-warning-container
+
+/* Error (Red) */
+--color-error
+--color-on-error
+--color-error-container
+--color-on-error-container
+```
+
+## Using Theme Colors
+
+### In HTML Classes
+
+Use Tailwind's utility classes with theme colors:
+
+```html
+<!-- Backgrounds -->
+<div class="bg-primary">Primary background</div>
+<div class="bg-surface-container">Surface container</div>
+
+<!-- Text -->
+<p class="text-primary">Primary text</p>
+<p class="text-on-surface">Surface text</p>
+
+<!-- Borders -->
+<div class="border border-outline">Bordered element</div>
+```
+
+### In Custom CSS
+
+Reference theme CSS variables directly:
+
+```css
+.custom-button {
+  background-color: hsl(var(--color-primary));
+  color: hsl(var(--color-primary-content));
+  border: 1px solid hsl(var(--color-outline));
+}
+
+/* With opacity */
+.custom-overlay {
+  background-color: hsl(var(--color-surface) / 0.8);
+}
+```
+
+### In Tailwind Arbitrary Values
+
+Use theme colors with Tailwind's arbitrary value syntax:
+
+```html
+<div class="bg-[hsl(var(--color-primary))]">
+  Custom background
+</div>
+
+<div class="text-[hsl(var(--color-tertiary))]">
+  Custom text color
+</div>
+```
+
+## Theme Switching
+
+### Basic Theme Toggle
+
+Implement theme switching with JavaScript:
+
+```html
+<button id="theme-toggle">Toggle Theme</button>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+
+  toggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'sunshine' ? 'moonlight' : 'sunshine';
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Restore saved theme
+  const savedTheme = localStorage.getItem('theme') || 'sunshine';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+</script>
+```
+
+### React Theme Toggle
+
+```tsx
+import { useEffect, useState } from 'react';
+
+export function ThemeToggle() {
+  const [theme, setTheme] = useState<'sunshine' | 'moonlight'>('sunshine');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme') as 'sunshine' | 'moonlight';
+    if (saved) {
+      setTheme(saved);
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'sunshine' ? 'moonlight' : 'sunshine';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  return (
+    <button onClick={toggleTheme} className="btn btn-outlined">
+      {theme === 'sunshine' ? '🌙' : '☀️'}
+      {theme === 'sunshine' ? 'Dark Mode' : 'Light Mode'}
+    </button>
+  );
+}
+```
+
+### Vue Theme Toggle
+
+```vue
+<template>
+  <button @click="toggleTheme" class="btn btn-outlined">
+    {{ theme === 'sunshine' ? '🌙 Dark Mode' : '☀️ Light Mode' }}
+  </button>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const theme = ref('sunshine');
+
+onMounted(() => {
+  const saved = localStorage.getItem('theme') || 'sunshine';
+  theme.value = saved;
+  document.documentElement.setAttribute('data-theme', saved);
+});
+
+const toggleTheme = () => {
+  theme.value = theme.value === 'sunshine' ? 'moonlight' : 'sunshine';
+  document.documentElement.setAttribute('data-theme', theme.value);
+  localStorage.setItem('theme', theme.value);
+};
+</script>
+```
+
+## Surface Elevation
+
+Material Design 3 uses five elevation levels for surface containers:
+
+```html
+<!-- Level 0 - Lowest -->
+<div class="card card-lowest">Lowest elevation</div>
+
+<!-- Level 1 - Low -->
+<div class="card card-low">Low elevation</div>
+
+<!-- Level 2 - Default -->
+<div class="card card-default">Default elevation</div>
+
+<!-- Level 3 - High -->
+<div class="card card-high">High elevation</div>
+
+<!-- Level 4 - Highest -->
+<div class="card card-highest">Highest elevation</div>
+```
+
+Use elevation to create visual hierarchy:
+- **Lowest/Low**: Background elements, less important content
+- **Default**: Standard UI elements, cards
+- **High/Highest**: Important dialogs, popovers, tooltips
+
+## Color Contrast
+
+DuskMoonUI ensures proper color contrast automatically:
+
+```html
+<!-- Light text on dark background -->
+<div class="bg-primary text-primary-content">
+  Automatically readable
+</div>
+
+<!-- Dark text on light background -->
+<div class="bg-surface text-on-surface">
+  Automatically readable
+</div>
+```
+
+All color combinations meet WCAG AA standards for accessibility.
+
+## HSL Color Format
+
+DuskMoonUI uses HSL (Hue, Saturation, Lightness) color format:
+
+```css
+/* Format: hue saturation% lightness% */
+--color-primary: 38 92% 50%;
+```
+
+This format allows Tailwind to apply opacity modifiers:
+
+```html
+<div class="bg-primary/50">   <!-- 50% opacity -->
+<div class="bg-primary/75">   <!-- 75% opacity -->
+<div class="bg-primary/100">  <!-- 100% opacity -->
+```
+
+## Theme Scope
+
+Themes can be scoped to specific sections:
+
+```html
+<!-- Global theme -->
+<html data-theme="sunshine">
+  <body>
+    <!-- Most of the app uses sunshine theme -->
+
+    <!-- Scoped dark theme section -->
+    <section data-theme="moonlight">
+      This section uses the moonlight theme
+    </section>
+  </body>
+</html>
+```
+
+## Best Practices
+
+### Consistent Color Usage
+
+Use color roles consistently throughout your app:
+
+- **Primary**: Main actions (submit buttons, primary CTAs)
+- **Secondary**: Secondary actions, alternative paths
+- **Tertiary**: Accent elements, decorative elements
+- **Semantic**: Feedback and status indicators
+
+### Respect User Preferences
+
+Detect and respect system theme preferences:
+
+```javascript
+// Check system preference
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const defaultTheme = prefersDark ? 'moonlight' : 'sunshine';
+
+// Also listen for changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  const newTheme = e.matches ? 'moonlight' : 'sunshine';
+  document.documentElement.setAttribute('data-theme', newTheme);
+});
+```
+
+### Test Both Themes
+
+Always test your UI in both light and dark themes to ensure:
+- Sufficient contrast
+- Consistent visual hierarchy
+- Proper color semantics
+
+### Avoid Hardcoded Colors
+
+Use theme variables instead of hardcoded colors:
+
+```html
+<!-- Good: Uses theme colors -->
+<div class="bg-primary text-primary-content">
+  Theme-aware button
+</div>
+
+<!-- Avoid: Hardcoded colors -->
+<div class="bg-blue-500 text-white">
+  Will not adapt to theme
+</div>
+```
+
+## Next Steps
+
+- [Theme Customization](/docs/en/theming/customization/) - Create custom themes
+- [API Reference](/docs/en/api/theme-tokens/) - Complete token reference
+- [Configuration](/docs/en/getting-started/configuration/) - Plugin configuration options
+
+## Resources
+
+- [Material Design 3 Color System](https://m3.material.io/styles/color/)
+- [Material Theme Builder](https://m3.material.io/theme-builder)
+- [WCAG Contrast Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
