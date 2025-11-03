@@ -66,7 +66,7 @@ function isActive(href: string, current: string): boolean {
 <aside class="sidebar">
   <div class="sidebar-header">
     <a href={base} class="sidebar-logo">
-      <span class="logo-text">DuskMoonUI</span>
+      <span class="logo-text">@duskmoon-dev/core</span>
       <span class="logo-version">v0.1.0</span>
     </a>
   </div>
@@ -152,7 +152,7 @@ function isActive(href: string, current: string): boolean {
     font-size: 0.75rem;
     font-weight: 500;
     padding: 0.125rem 0.5rem;
-    background: hsl(var(--color-primary) / 0.1);
+    background: hsl(var(--color-primary-container));
     color: hsl(var(--color-primary));
     border-radius: 0.25rem;
   }
@@ -201,11 +201,11 @@ function isActive(href: string, current: string): boolean {
 
   .nav-link:hover {
     background: hsl(var(--color-surface-container));
-    border-left-color: hsl(var(--color-primary) / 0.3);
+    border-left-color: hsl(var(--color-outline));
   }
 
   .nav-link.active {
-    background: hsl(var(--color-primary) / 0.1);
+    background: hsl(var(--color-primary-container));
     border-left-color: hsl(var(--color-primary));
     color: hsl(var(--color-primary));
     font-weight: 600;
@@ -214,7 +214,7 @@ function isActive(href: string, current: string): boolean {
   .nav-badge {
     font-size: 0.625rem;
     padding: 0.125rem 0.375rem;
-    background: hsl(var(--color-tertiary) / 0.15);
+    background: hsl(var(--color-tertiary-container));
     color: hsl(var(--color-tertiary));
     border-radius: 0.25rem;
     font-weight: 600;

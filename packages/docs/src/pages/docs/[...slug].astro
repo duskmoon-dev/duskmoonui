@@ -36,11 +36,11 @@ const { Content } = await entry.render();
     {entry.data.lastUpdated && (
       <footer class="doc-footer">
         <p class="text-muted">
-          Last updated: {entry.data.lastUpdated.toLocaleDateString('en-US', {
+          Last updated: {new Intl.DateTimeFormat('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
-          })}
+          }).format(entry.data.lastUpdated)}
         </p>
       </footer>
     )}
