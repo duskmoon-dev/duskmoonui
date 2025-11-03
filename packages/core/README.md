@@ -57,69 +57,55 @@ Then set the theme in your HTML:
 
 ## Components
 
-DuskMoonUI now includes **32 components** (5 original + 13 Phase 1 + 14 Phase 2 components):
+@duskmoon-dev/core includes **32 Material Design 3-inspired components** organized by category:
 
-### Original Components
-- **Button** - Multiple variants (filled, outlined, text, tonal), sizes, semantic colors
-- **Card** - Surface elevation, interactive cards, header/body/actions
-- **Input** - Text inputs, textarea, select, checkbox, radio
-- **Badge** - Status indicators, notification badges
-- **Alert** - Info/success/warning/error alerts
+### 🔘 Actions (2)
+- **Button** - Filled, outlined, text, tonal variants with all semantic colors
+- **File Upload** - Drag-and-drop file uploader with previews and progress
 
-### Phase 1 Components (NEW!)
+### 📊 Data Display (6)
+- **Avatar** - User profile pictures with circle, rounded, square shapes
+- **Badge** - Status indicators with dot, numeric, text variants
+- **Card** - Content containers with multiple elevation levels
+- **Chip** - Compact tags with input, filter, assist, suggestion types
+- **List** - Vertical lists with single/two/three line items
+- **Table** - Data tables with sorting, selection, striped rows
 
-**Navigation** (3 components)
-- **Navbar** - Primary app navigation with responsive mobile menu
-- **Tabs** - Horizontal/vertical tabs with multiple style variants
-- **Drawer** - Side navigation with modal/permanent/rail variants
+### 📝 Data Entry (5)
+- **Autocomplete** - Search with suggestions, multi-select, grouped options
+- **Date Picker** - Calendar selection with range support
+- **Input** - Text fields with outlined, filled, underlined styles
+- **Slider** - Range selector with single/range modes, vertical layout
+- **Switch** - Toggle controls with Material Design 3 styling
 
-**Layout** (2 components)
-- **Divider** - Horizontal/vertical separators with label support
-- **App Bar** - Top/bottom action bars with elevation
+### 💬 Feedback (6)
+- **Alert** - Important messages with success, error, warning, info types
+- **Dialog** - Modal dialogs with multiple sizes and actions
+- **Progress** - Linear and circular loading indicators
+- **Skeleton** - Loading placeholders with pulse and wave animations
+- **Snackbar** - Toast notifications with multiple positions
+- **Tooltip** - Contextual information with arrow indicators
 
-**Feedback** (4 components)
-- **Tooltip** - Contextual information with auto-positioning
-- **Snackbar** - Toast notifications with action buttons
-- **Dialog** - Modal dialogs with multiple sizes
-- **Progress** - Linear and circular progress indicators
+### 🎨 Layout (2)
+- **App Bar** - Top/bottom action bars with leading, title, trailing sections
+- **Divider** - Visual separators with solid, dashed, dotted, gradient styles
 
-**Data Display** (2 components)
-- **Table** - Data tables with sorting, selection, pagination
-- **List** - Vertical lists with icons, avatars, nested items
+### 🧭 Navigation (8)
+- **Bottom Navigation** - Mobile bottom nav bar with badges
+- **Breadcrumbs** - Hierarchical navigation with multiple separators
+- **Drawer** - Side navigation with left/right, permanent, rail modes
+- **Menu** - Dropdown menus with icons, shortcuts, selections
+- **Navbar** - Primary navigation with transparent, blur, fixed variants
+- **Pagination** - Page navigation with outlined and tonal styles
+- **Stepper** - Multi-step process guide with horizontal/vertical layouts
+- **Tabs** - Tab navigation with pill, tonal, boxed styles
 
-**Forms** (1 component)
-- **Switch** - Toggle switches with MD3 styling
+### 📦 Surfaces (3)
+- **Accordion** - Expandable panels with filled, outlined variants
+- **Bottom Sheet** - Mobile bottom panels with drag handle
+- **Popover** - Contextual overlays with arrow positioning
 
-**Overlay** (1 component)
-- **Menu** - Dropdown menus with icons, dividers, keyboard navigation
-
-### Phase 2 Components (NEW!)
-
-**Navigation** (4 components)
-- **Breadcrumbs** - Navigation hierarchy with multiple separator styles
-- **Bottom Navigation** - Mobile-first navigation bar with badges
-- **Pagination** - Page navigation with outlined/tonal variants
-- **Stepper** - Multi-step process guide (horizontal/vertical)
-
-**Feedback** (1 component)
-- **Skeleton** - Loading placeholders with pulse/wave animations
-
-**Data Display** (2 components)
-- **Chip** - Tags, filters with input/filter/assist variants
-- **Avatar** - User representations with status indicators, groups
-
-**Forms** (4 components)
-- **Slider** - Range selection with discrete/continuous modes
-- **Autocomplete** - Search input with suggestions and multi-select
-- **Date Picker** - Calendar date selection with range support
-- **File Upload** - Drag-and-drop file uploads with previews
-
-**Interactive** (1 component)
-- **Accordion** - Expandable content panels with multiple variants
-
-**Overlay** (2 components)
-- **Popover** - Contextual overlay with arrow positioning
-- **Bottom Sheet** - Mobile-first bottom panel with drag handle
+> 📖 See [COMPONENTS_CATEGORIZED.md](./docs/COMPONENTS_CATEGORIZED.md) for detailed documentation with examples
 
 ## Usage
 
