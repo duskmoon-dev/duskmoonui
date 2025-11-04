@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const categories = [
+  {
+    name: 'Actions',
+    emoji: '🔘',
+    components: [
+      { name: 'Button', slug: 'button', description: 'Clickable buttons for actions' },
+      { name: 'File Upload', slug: 'file-upload', description: 'Drag-and-drop file uploader' },
+    ]
+  },
+  {
+    name: 'Data Display',
+    emoji: '📊',
+    components: [
+      { name: 'Avatar', slug: 'avatar', description: 'User profile pictures' },
+      { name: 'Badge', slug: 'badge', description: 'Status indicators' },
+      { name: 'Card', slug: 'card', description: 'Content containers' },
+      { name: 'Chip', slug: 'chip', description: 'Compact tags' },
+      { name: 'List', slug: 'list', description: 'Vertical item lists' },
+      { name: 'Table', slug: 'table', description: 'Data tables' },
+    ]
+  },
+  {
+    name: 'Data Entry',
+    emoji: '📝',
+    components: [
+      { name: 'Autocomplete', slug: 'autocomplete', description: 'Search with suggestions' },
+      { name: 'Date Picker', slug: 'datepicker', description: 'Calendar selection' },
+      { name: 'Input', slug: 'input', description: 'Text input fields' },
+      { name: 'Slider', slug: 'slider', description: 'Range selector' },
+      { name: 'Switch', slug: 'switch', description: 'Toggle controls' },
+    ]
+  },
+  {
+    name: 'Feedback',
+    emoji: '💬',
+    components: [
+      { name: 'Alert', slug: 'alert', description: 'Important messages' },
+      { name: 'Dialog', slug: 'dialog', description: 'Modal dialogs' },
+      { name: 'Progress', slug: 'progress', description: 'Loading indicators' },
+      { name: 'Skeleton', slug: 'skeleton', description: 'Loading placeholders' },
+      { name: 'Snackbar', slug: 'snackbar', description: 'Toast notifications' },
+      { name: 'Tooltip', slug: 'tooltip', description: 'Contextual information' },
+    ]
+  },
+  {
+    name: 'Layout',
+    emoji: '🎨',
+    components: [
+      { name: 'App Bar', slug: 'appbar', description: 'Action bars' },
+      { name: 'Divider', slug: 'divider', description: 'Visual separators' },
+    ]
+  },
+  {
+    name: 'Navigation',
+    emoji: '🧭',
+    components: [
+      { name: 'Bottom Navigation', slug: 'bottom-navigation', description: 'Mobile bottom nav' },
+      { name: 'Breadcrumbs', slug: 'breadcrumbs', description: 'Hierarchical navigation' },
+      { name: 'Drawer', slug: 'drawer', description: 'Side navigation' },
+      { name: 'Menu', slug: 'menu', description: 'Dropdown menus' },
+      { name: 'Navbar', slug: 'navbar', description: 'Primary navigation' },
+      { name: 'Pagination', slug: 'pagination', description: 'Page navigation' },
+      { name: 'Stepper', slug: 'stepper', description: 'Multi-step guide' },
+      { name: 'Tabs', slug: 'tabs', description: 'Tab navigation' },
+    ]
+  },
+  {
+    name: 'Surfaces',
+    emoji: '📦',
+    components: [
+      { name: 'Accordion', slug: 'accordion', description: 'Expandable panels' },
+      { name: 'Bottom Sheet', slug: 'bottomsheet', description: 'Mobile panels' },
+      { name: 'Popover', slug: 'popover', description: 'Contextual overlays' },
+    ]
+  },
+];
+---
+
+<BaseLayout title="Components">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-bold mb-4">Components</h1>
+      <p class="text-xl text-on-surface-variant">
+        32 Material Design 3-inspired components organized by category
+      </p>
+    </header>
+
+    <div class="flex flex-col gap-16">
+      {categories.map((category, idx) => (
+        <section class={idx < categories.length - 1 ? "border-b border-outline-variant pb-12" : ""}>
+          <h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+            <span class="text-3xl">{category.emoji}</span>
+            {category.name}
+            <span class="text-2xl font-normal text-on-surface-variant">({category.components.length})</span>
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {category.components.map(component => (
+              <div class="p-6 bg-surface-container rounded-xl border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all hover:-translate-y-1">
+                <h3 class="text-xl font-semibold mb-2">{component.name}</h3>
+                <p class="text-sm text-on-surface-variant mb-4 leading-relaxed">{component.description}</p>
+                <a href={`${base}docs/en/components/${component.slug}/`} class="inline-block text-sm font-medium text-primary hover:text-tertiary hover:underline transition-colors">
+                  View Docs
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
