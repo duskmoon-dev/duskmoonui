@@ -61,6 +61,18 @@ export { accordionStyles } from "./accordion";
 export { popoverStyles } from "./popover";
 export { bottomSheetStyles } from "./bottomsheet";
 
+// Phase 3: Additional components
+export { checkboxStyles } from "./checkbox";
+export { radioStyles } from "./radio";
+export { selectStyles } from "./select";
+export { textareaStyles } from "./textarea";
+export { ratingStyles } from "./rating";
+export { timelineStyles } from "./timeline";
+export { collapseStyles } from "./collapse";
+export { modalStyles } from "./modal";
+export { toastStyles } from "./toast";
+export { toggleStyles } from "./toggle";
+
 import type { CSSRuleObject } from "tailwindcss/types/config";
 import { buttonStyles } from "./button";
 import { cardStyles } from "./card";
@@ -94,6 +106,16 @@ import { fileUploadStyles } from "./fileupload";
 import { accordionStyles } from "./accordion";
 import { popoverStyles } from "./popover";
 import { bottomSheetStyles } from "./bottomsheet";
+import { checkboxStyles } from "./checkbox";
+import { radioStyles } from "./radio";
+import { selectStyles } from "./select";
+import { textareaStyles } from "./textarea";
+import { ratingStyles } from "./rating";
+import { timelineStyles } from "./timeline";
+import { collapseStyles } from "./collapse";
+import { modalStyles } from "./modal";
+import { toastStyles } from "./toast";
+import { toggleStyles } from "./toggle";
 
 /**
  * Get all component styles combined
@@ -132,6 +154,16 @@ export function getAllComponentStyles(): Record<string, CSSRuleObject> {
     ...accordionStyles,
     ...popoverStyles,
     ...bottomSheetStyles,
+    ...checkboxStyles,
+    ...radioStyles,
+    ...selectStyles,
+    ...textareaStyles,
+    ...ratingStyles,
+    ...timelineStyles,
+    ...collapseStyles,
+    ...modalStyles,
+    ...toastStyles,
+    ...toggleStyles,
   };
 }
 
@@ -178,6 +210,16 @@ export function getComponentStyles(
     accordion: accordionStyles,
     popover: popoverStyles,
     bottomsheet: bottomSheetStyles,
+    checkbox: checkboxStyles,
+    radio: radioStyles,
+    select: selectStyles,
+    textarea: textareaStyles,
+    rating: ratingStyles,
+    timeline: timelineStyles,
+    collapse: collapseStyles,
+    modal: modalStyles,
+    toast: toastStyles,
+    toggle: toggleStyles,
   };
 
   const styles: Record<string, CSSRuleObject> = {};
@@ -225,5 +267,15 @@ export const componentsList = [
   "accordion",
   "popover",
   "bottomsheet",
+  "checkbox",
+  "radio",
+  "select",
+  "textarea",
+  "rating",
+  "timeline",
+  "collapse",
+  "modal",
+  "toast",
+  "toggle",
 ] as const;
 export type ComponentName = (typeof componentsList)[number];

@@ -1,6 +1,6 @@
 # @duskmoon-dev/core Components
 
-> Material Design 3-inspired component library with 32 components organized by category
+> Material Design 3-inspired component library with 42 components organized by category
 
 ## Component Categories
 
@@ -25,10 +25,12 @@ Components for displaying data and content.
 | [Badge](#badge) | Small status indicators | Dot, numeric, text badges |
 | [Card](#card) | Content container with elevation | Multiple elevation levels |
 | [Chip](#chip) | Compact elements for tags | Input, filter, assist, suggestion |
+| [Collapse](#collapse) | Expandable/collapsible content | Accordion style, bordered, ghost |
 | [List](#list) | Vertical list of items | Single/two/three line items |
 | [Table](#table) | Data tables | Sortable, selectable, striped |
+| [Timeline](#timeline) | Chronological event display | Vertical/horizontal, alternate layouts |
 
-**Total: 6 components**
+**Total: 8 components**
 
 ---
 
@@ -38,12 +40,18 @@ Components for user input and forms.
 | Component | Description | Key Features |
 |-----------|-------------|--------------|
 | [Autocomplete](#autocomplete) | Search with suggestions | Multi-select, grouped options |
+| [Checkbox](#checkbox) | Multi-selection checkboxes | Primary/secondary/tertiary, indeterminate state |
 | [Date Picker](#date-picker) | Calendar date selection | Range support, month/year picker |
 | [Input](#input) | Text input fields | Outlined, filled, underlined |
+| [Radio](#radio) | Single selection radio buttons | Grouped, horizontal/vertical layouts |
+| [Rating](#rating) | Star/heart rating input | Half-star precision, readonly, sizes |
+| [Select](#select) | Dropdown selection menus | Single/multiple, filled/outlined, searchable |
 | [Slider](#slider) | Range value selector | Single/range, vertical, marks |
 | [Switch](#switch) | Toggle on/off control | Material Design 3 styling |
+| [Textarea](#textarea) | Multi-line text input | Auto-resize, character counter |
+| [Toggle](#toggle) | Toggle button group | Single/multiple selection, segmented control |
 
-**Total: 5 components**
+**Total: 11 components**
 
 ---
 
@@ -54,12 +62,14 @@ Components for feedback, loading states, and user notifications.
 |-----------|-------------|--------------|
 | [Alert](#alert) | Important messages | Success, error, warning, info |
 | [Dialog](#dialog) | Modal dialogs | Multiple sizes, actions |
+| [Modal](#modal) | Full-featured modal overlays | Multiple positions, animations, backdrop variants |
 | [Progress](#progress) | Loading indicators | Linear, circular, determinate |
 | [Skeleton](#skeleton) | Loading placeholders | Pulse, wave animations |
 | [Snackbar](#snackbar) | Toast notifications | Multiple positions, actions |
+| [Toast](#toast) | Toast notification system | Auto-dismiss, progress bar, stacked |
 | [Tooltip](#tooltip) | Contextual information | Four directions, arrows |
 
-**Total: 6 components**
+**Total: 8 components**
 
 ---
 
@@ -111,22 +121,22 @@ Components for overlays and interactive containers.
 ### By Use Case
 
 **Building a Form?**
-- Input, Autocomplete, Date Picker, Slider, Switch, Button, File Upload
+- Input, Textarea, Select, Checkbox, Radio, Switch, Toggle, Rating, Autocomplete, Date Picker, Slider, Button, File Upload
 
 **Creating Navigation?**
 - Navbar, Drawer, Tabs, Menu, Breadcrumbs, Bottom Navigation, Pagination
 
 **Showing Data?**
-- Table, List, Card, Chip, Avatar, Badge
+- Table, List, Card, Chip, Avatar, Badge, Timeline, Collapse
 
 **User Feedback?**
-- Alert, Dialog, Snackbar, Tooltip, Progress, Skeleton
+- Alert, Dialog, Modal, Toast, Snackbar, Tooltip, Progress, Skeleton
 
 **Layout Structure?**
-- App Bar, Divider, Card, Accordion
+- App Bar, Divider, Card, Accordion, Collapse
 
 **Interactive Overlays?**
-- Dialog, Menu, Popover, Bottom Sheet, Drawer
+- Dialog, Modal, Menu, Popover, Bottom Sheet, Drawer, Toast
 
 ---
 
@@ -135,13 +145,13 @@ Components for overlays and interactive containers.
 | Category | Components | Count |
 |----------|-----------|-------|
 | 🔘 Actions | Button, File Upload | 2 |
-| 📊 Data Display | Avatar, Badge, Card, Chip, List, Table | 6 |
-| 📝 Data Entry | Autocomplete, Date Picker, Input, Slider, Switch | 5 |
-| 💬 Feedback | Alert, Dialog, Progress, Skeleton, Snackbar, Tooltip | 6 |
+| 📊 Data Display | Avatar, Badge, Card, Chip, Collapse, List, Table, Timeline | 8 |
+| 📝 Data Entry | Autocomplete, Checkbox, Date Picker, Input, Radio, Rating, Select, Slider, Switch, Textarea, Toggle | 11 |
+| 💬 Feedback | Alert, Dialog, Modal, Progress, Skeleton, Snackbar, Toast, Tooltip | 8 |
 | 🎨 Layout | App Bar, Divider | 2 |
 | 🧭 Navigation | Bottom Nav, Breadcrumbs, Drawer, Menu, Navbar, Pagination, Stepper, Tabs | 8 |
 | 📦 Surfaces | Accordion, Bottom Sheet, Popover | 3 |
-| **Total** | | **32** |
+| **Total** | | **42** |
 
 ---
 

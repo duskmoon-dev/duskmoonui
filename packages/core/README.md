@@ -57,33 +57,43 @@ Then set the theme in your HTML:
 
 ## Components
 
-@duskmoon-dev/core includes **32 Material Design 3-inspired components** organized by category:
+@duskmoon-dev/core includes **42 Material Design 3-inspired components** organized by category:
 
 ### 🔘 Actions (2)
 - **Button** - Filled, outlined, text, tonal variants with all semantic colors
 - **File Upload** - Drag-and-drop file uploader with previews and progress
 
-### 📊 Data Display (6)
+### 📊 Data Display (8)
 - **Avatar** - User profile pictures with circle, rounded, square shapes
 - **Badge** - Status indicators with dot, numeric, text variants
 - **Card** - Content containers with multiple elevation levels
 - **Chip** - Compact tags with input, filter, assist, suggestion types
+- **Collapse** - Expandable/collapsible content with accordion styling
 - **List** - Vertical lists with single/two/three line items
 - **Table** - Data tables with sorting, selection, striped rows
+- **Timeline** - Chronological event display with vertical/horizontal layouts
 
-### 📝 Data Entry (5)
+### 📝 Data Entry (11)
 - **Autocomplete** - Search with suggestions, multi-select, grouped options
+- **Checkbox** - Multi-selection checkboxes with indeterminate state
 - **Date Picker** - Calendar selection with range support
 - **Input** - Text fields with outlined, filled, underlined styles
+- **Radio** - Single selection radio buttons with grouped layouts
+- **Rating** - Star/heart rating input with half-star precision
+- **Select** - Dropdown selection menus with single/multiple options
 - **Slider** - Range selector with single/range modes, vertical layout
 - **Switch** - Toggle controls with Material Design 3 styling
+- **Textarea** - Multi-line text input with auto-resize
+- **Toggle** - Toggle button groups with segmented control styles
 
-### 💬 Feedback (6)
+### 💬 Feedback (8)
 - **Alert** - Important messages with success, error, warning, info types
 - **Dialog** - Modal dialogs with multiple sizes and actions
+- **Modal** - Full-featured modal overlays with animations
 - **Progress** - Linear and circular loading indicators
 - **Skeleton** - Loading placeholders with pulse and wave animations
 - **Snackbar** - Toast notifications with multiple positions
+- **Toast** - Toast notification system with auto-dismiss and progress
 - **Tooltip** - Contextual information with arrow indicators
 
 ### 🎨 Layout (2)
