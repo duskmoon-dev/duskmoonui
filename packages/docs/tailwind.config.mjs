@@ -6,6 +6,15 @@ export default {
   theme: {
     extend: {},
   },
+  corePlugins: {
+    // Disable features that generate CSS with / syntax
+    textOpacity: false,
+    backgroundOpacity: false,
+    borderOpacity: false,
+    divideOpacity: false,
+    placeholderOpacity: false,
+    ringOpacity: false,
+  },
   plugins: [
     duskmoonuiPlugin({
       themes: ["sunshine", "moonlight"],
