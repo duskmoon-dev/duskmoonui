@@ -9,13 +9,6 @@ export default defineConfig({
   base: "/duskmoonui",
   trailingSlash: "always",
 
-  // Use Lightning CSS instead of PostCSS for better modern CSS support
-  vite: {
-    css: {
-      transformer: "lightningcss",
-    },
-  },
-
   // Internationalization
   i18n: {
     defaultLocale: "en",
