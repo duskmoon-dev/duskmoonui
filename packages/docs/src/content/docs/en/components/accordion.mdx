@@ -1,0 +1,867 @@
+---
+title: Accordion
+description: Material Design 3 accordion component for expandable content panels
+category: components
+order: 30
+published: true
+tags: ['accordion', 'components', 'material-design', 'expandable', 'collapse']
+---
+
+# Accordion
+
+Accordions allow users to show and hide sections of related content on a page. @duskmoon-dev/core provides a complete set of Material Design 3 accordion variants.
+
+## Basic Usage
+
+```html
+<div class="accordion">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">What is Material Design?</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Material Design is a design system created by Google to help teams build high-quality digital experiences.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">How do I install?</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Install using npm: npm install @duskmoon-dev/core
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Variants
+
+### Default Accordion
+
+The default accordion has a clean, minimal appearance with bottom borders separating items.
+
+```html
+<div class="accordion">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Section 1</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Content for section 1
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Section 2</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Content for section 2
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Filled Accordion
+
+Filled accordions have a background color and are separated by spacing.
+
+```html
+<div class="accordion accordion-filled">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Filled Section 1</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Content with filled background
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Filled Section 2</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Content with filled background
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Outlined Accordion
+
+Outlined accordions have a border around the entire container.
+
+```html
+<div class="accordion accordion-outlined">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Outlined Section 1</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Content within outlined container
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Outlined Section 2</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Content within outlined container
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Separated Accordion
+
+Separated accordions display each item as an individual card with spacing between them.
+
+```html
+<div class="accordion accordion-separated">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Card 1</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Each item is a separate card
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Card 2</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Each item is a separate card
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Density
+
+### Compact
+
+Compact accordions have reduced padding for space-efficient layouts.
+
+```html
+<div class="accordion accordion-compact">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Compact Section</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Compact content with less padding
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Comfortable
+
+Comfortable accordions have increased padding for more spacious layouts.
+
+```html
+<div class="accordion accordion-comfortable">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Comfortable Section</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Comfortable content with more padding
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Color Variants
+
+Color variants change the text color of expanded items.
+
+### Primary
+
+```html
+<div class="accordion accordion-primary">
+  <div class="accordion-item accordion-item-open">
+    <button class="accordion-header">
+      <span class="accordion-title">Primary Accordion</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        The header text turns primary color when expanded
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Secondary
+
+```html
+<div class="accordion accordion-secondary">
+  <div class="accordion-item accordion-item-open">
+    <button class="accordion-header">
+      <span class="accordion-title">Secondary Accordion</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        The header text turns secondary color when expanded
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Tertiary
+
+```html
+<div class="accordion accordion-tertiary">
+  <div class="accordion-item accordion-item-open">
+    <button class="accordion-header">
+      <span class="accordion-title">Tertiary Accordion</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        The header text turns tertiary color when expanded
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Icons
+
+### Expansion Icon
+
+The accordion icon rotates 180 degrees when the item is expanded.
+
+```html
+<div class="accordion">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Section with Icon</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        The chevron icon rotates when expanded
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Leading Icons
+
+Add custom icons at the start of accordion headers.
+
+```html
+<div class="accordion">
+  <div class="accordion-item">
+    <button class="accordion-header accordion-header-icon">
+      <svg class="accordion-header-icon-leading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span class="accordion-title">Information</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Content with a leading icon
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## States
+
+### Open State
+
+Add the `accordion-item-open` class to expand an item by default.
+
+```html
+<div class="accordion">
+  <div class="accordion-item accordion-item-open">
+    <button class="accordion-header">
+      <span class="accordion-title">Open by Default</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        This section is expanded by default
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Closed by Default</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        This section is collapsed by default
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Disabled State
+
+Disable an accordion item to prevent interaction.
+
+```html
+<div class="accordion">
+  <div class="accordion-item accordion-item-disabled">
+    <button class="accordion-header">
+      <span class="accordion-title">Disabled Section</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        This content cannot be accessed
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Without Animation
+
+Remove animations for reduced motion preferences or performance.
+
+```html
+<div class="accordion accordion-no-animation">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">No Animation</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Expands instantly without animation
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Single vs Multiple Expansion
+
+### Single Expansion
+
+Only one item can be open at a time (requires JavaScript).
+
+```html
+<div class="accordion" data-accordion="single">
+  <div class="accordion-item">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <span class="accordion-title">Section 1</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Opening this closes other sections
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <span class="accordion-title">Section 2</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Opening this closes other sections
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleAccordion(button) {
+  const accordion = button.closest('.accordion');
+  const item = button.closest('.accordion-item');
+  const isSingle = accordion.dataset.accordion === 'single';
+
+  if (isSingle) {
+    // Close all items
+    accordion.querySelectorAll('.accordion-item').forEach(i => {
+      if (i !== item) {
+        i.classList.remove('accordion-item-open');
+      }
+    });
+  }
+
+  // Toggle current item
+  item.classList.toggle('accordion-item-open');
+}
+</script>
+```
+
+### Multiple Expansion
+
+Multiple items can be open simultaneously (requires JavaScript).
+
+```html
+<div class="accordion" data-accordion="multiple">
+  <div class="accordion-item">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <span class="accordion-title">Section 1</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Multiple sections can be open
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <span class="accordion-title">Section 2</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Multiple sections can be open
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Combining Variants
+
+You can combine different modifiers for custom layouts.
+
+```html
+<!-- Filled, comfortable, primary accordion -->
+<div class="accordion accordion-filled accordion-comfortable accordion-primary">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Combined Variants</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        This accordion is filled, comfortable, and uses primary color
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Separated, compact, secondary accordion -->
+<div class="accordion accordion-separated accordion-compact accordion-secondary">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Combined Variants</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        This accordion is separated, compact, and uses secondary color
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Best Practices
+
+### Content Organization
+
+Use accordions to organize related content sections:
+
+```html
+<div class="accordion accordion-separated">
+  <div class="accordion-item">
+    <button class="accordion-header accordion-header-icon">
+      <svg class="accordion-header-icon-leading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span class="accordion-title">Account Information</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Manage your account settings and preferences
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header accordion-header-icon">
+      <svg class="accordion-header-icon-leading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+      <span class="accordion-title">Privacy & Security</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Configure your privacy and security settings
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Accessibility
+
+- Use semantic HTML with `<button>` elements for headers
+- Implement proper ARIA attributes for screen readers
+- Ensure keyboard navigation support
+- Provide clear labels for all sections
+
+```html
+<div class="accordion">
+  <div class="accordion-item">
+    <button
+      class="accordion-header"
+      aria-expanded="false"
+      aria-controls="panel-1"
+      id="accordion-header-1"
+    >
+      <span class="accordion-title">Accessible Section</span>
+      <span class="accordion-icon" aria-hidden="true">▼</span>
+    </button>
+    <div
+      class="accordion-content"
+      id="panel-1"
+      role="region"
+      aria-labelledby="accordion-header-1"
+    >
+      <div class="accordion-body">
+        Content with proper ARIA attributes
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Avoid Overuse
+
+Don't use accordions when:
+- Content should be immediately visible
+- There are only 1-2 items
+- Users need to compare information across sections
+
+### Progressive Disclosure
+
+Use accordions to progressively reveal complex information:
+
+```html
+<div class="accordion accordion-outlined">
+  <div class="accordion-item accordion-item-open">
+    <button class="accordion-header">
+      <span class="accordion-title">Basic Settings</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Most commonly used settings
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-header">
+      <span class="accordion-title">Advanced Settings</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        Advanced options for power users
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState } from 'react';
+
+interface AccordionItemProps {
+  title: string;
+  children: React.ReactNode;
+  icon?: React.ReactNode;
+}
+
+function AccordionItem({ title, children, icon }: AccordionItemProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className={`accordion-item ${isOpen ? 'accordion-item-open' : ''}`}>
+      <button
+        className="accordion-header"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+      >
+        {icon && <span className="accordion-header-icon-leading">{icon}</span>}
+        <span className="accordion-title">{title}</span>
+        <span className="accordion-icon">▼</span>
+      </button>
+      <div className="accordion-content">
+        <div className="accordion-body">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface AccordionProps {
+  variant?: 'default' | 'filled' | 'outlined' | 'separated';
+  density?: 'default' | 'compact' | 'comfortable';
+  color?: 'primary' | 'secondary' | 'tertiary';
+  children: React.ReactNode;
+}
+
+export function Accordion({
+  variant = 'default',
+  density = 'default',
+  color,
+  children
+}: AccordionProps) {
+  const classes = [
+    'accordion',
+    variant !== 'default' && `accordion-${variant}`,
+    density !== 'default' && `accordion-${density}`,
+    color && `accordion-${color}`
+  ].filter(Boolean).join(' ');
+
+  return (
+    <div className={classes}>
+      {children}
+    </div>
+  );
+}
+
+// Usage
+<Accordion variant="filled" color="primary">
+  <AccordionItem title="Section 1">
+    Content for section 1
+  </AccordionItem>
+  <AccordionItem title="Section 2">
+    Content for section 2
+  </AccordionItem>
+</Accordion>
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="accordionClasses">
+    <slot />
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  variant: {
+    type: String,
+    default: 'default',
+    validator: (value) => ['default', 'filled', 'outlined', 'separated'].includes(value)
+  },
+  density: {
+    type: String,
+    default: 'default',
+    validator: (value) => ['default', 'compact', 'comfortable'].includes(value)
+  },
+  color: {
+    type: String,
+    validator: (value) => ['primary', 'secondary', 'tertiary'].includes(value)
+  }
+});
+
+const accordionClasses = computed(() => {
+  const classes = ['accordion'];
+  if (props.variant !== 'default') classes.push(`accordion-${props.variant}`);
+  if (props.density !== 'default') classes.push(`accordion-${props.density}`);
+  if (props.color) classes.push(`accordion-${props.color}`);
+  return classes.join(' ');
+});
+</script>
+
+<!-- AccordionItem.vue -->
+<template>
+  <div :class="itemClasses">
+    <button
+      class="accordion-header"
+      @click="toggle"
+      :aria-expanded="isOpen"
+    >
+      <span v-if="$slots.icon" class="accordion-header-icon-leading">
+        <slot name="icon" />
+      </span>
+      <span class="accordion-title">{{ title }}</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-body">
+        <slot />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+
+const props = defineProps({
+  title: {
+    type: String,
+    required: true
+  },
+  defaultOpen: {
+    type: Boolean,
+    default: false
+  }
+});
+
+const isOpen = ref(props.defaultOpen);
+
+const itemClasses = computed(() => {
+  return isOpen.value ? 'accordion-item accordion-item-open' : 'accordion-item';
+});
+
+function toggle() {
+  isOpen.value = !isOpen.value;
+}
+</script>
+
+<!-- Usage -->
+<Accordion variant="filled" color="primary">
+  <AccordionItem title="Section 1">
+    Content for section 1
+  </AccordionItem>
+  <AccordionItem title="Section 2">
+    Content for section 2
+  </AccordionItem>
+</Accordion>
+```
+
+## API Reference
+
+### Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.accordion` | Base accordion container (required) |
+| `.accordion-filled` | Filled variant with background color |
+| `.accordion-outlined` | Outlined variant with border |
+| `.accordion-separated` | Card-style separated items |
+| `.accordion-compact` | Reduced padding |
+| `.accordion-comfortable` | Increased padding |
+| `.accordion-primary` | Primary color for expanded items |
+| `.accordion-secondary` | Secondary color for expanded items |
+| `.accordion-tertiary` | Tertiary color for expanded items |
+| `.accordion-no-animation` | Disable animations |
+
+### Item Classes
+
+| Class | Description |
+|-------|-------------|
+| `.accordion-item` | Individual accordion item (required) |
+| `.accordion-item-open` | Expanded state |
+| `.accordion-item-disabled` | Disabled state |
+
+### Header Classes
+
+| Class | Description |
+|-------|-------------|
+| `.accordion-header` | Clickable header/trigger (required) |
+| `.accordion-header-icon` | Container for header with leading icon |
+| `.accordion-header-icon-leading` | Leading icon in header |
+| `.accordion-title` | Title text container |
+| `.accordion-icon` | Expansion indicator icon |
+
+### Content Classes
+
+| Class | Description |
+|-------|-------------|
+| `.accordion-content` | Collapsible content wrapper (required) |
+| `.accordion-body` | Content body with padding (required) |
+
+### Class Combinations
+
+```html
+<!-- Filled, comfortable, primary accordion -->
+<div class="accordion accordion-filled accordion-comfortable accordion-primary">
+  <!-- items -->
+</div>
+
+<!-- Separated, compact, secondary accordion -->
+<div class="accordion accordion-separated accordion-compact accordion-secondary">
+  <!-- items -->
+</div>
+
+<!-- Outlined, no animation accordion -->
+<div class="accordion accordion-outlined accordion-no-animation">
+  <!-- items -->
+</div>
+```
+
+## Related Components
+
+- [Card](/docs/en/components/card/) - Container component
+- [List](/docs/en/components/list/) - List display component
+- [Tabs](/docs/en/components/tabs/) - Tabbed navigation
+
+## See Also
+
+- [Lists Design Guidelines (Material Design 3)](https://m3.material.io/components/lists/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
