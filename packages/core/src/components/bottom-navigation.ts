@@ -41,11 +41,11 @@ export const bottomNavigationStyles: Record<string, CSSRuleObject> = {
     position: 'relative',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
   },
 
@@ -55,7 +55,7 @@ export const bottomNavigationStyles: Record<string, CSSRuleObject> = {
     backgroundColor: 'hsl(var(--color-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
     },
   },
 
@@ -65,7 +65,7 @@ export const bottomNavigationStyles: Record<string, CSSRuleObject> = {
     backgroundColor: 'hsl(var(--color-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
     },
   },
 
@@ -75,7 +75,7 @@ export const bottomNavigationStyles: Record<string, CSSRuleObject> = {
     backgroundColor: 'hsl(var(--color-tertiary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
     },
   },
 

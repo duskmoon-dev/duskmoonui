@@ -87,7 +87,7 @@ export const radioStyles: Record<string, CSSRuleObject> = {
   // Hover state
   '.radio:hover .radio-circle': {
     borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'hsl(var(--color-surface-variant) / 0.5)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 5%, transparent)',
   },
 
   '.radio:hover .radio-input:checked + .radio-circle, .radio:hover .radio-input:checked + .radio-primary': {
@@ -113,7 +113,7 @@ export const radioStyles: Record<string, CSSRuleObject> = {
     opacity: '0.38',
     cursor: 'not-allowed',
     borderColor: 'hsl(var(--color-outline))',
-    backgroundColor: 'hsl(var(--color-surface-variant) / 0.3)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 3%, transparent)',
   },
 
   '.radio:has(.radio-input:disabled)': {

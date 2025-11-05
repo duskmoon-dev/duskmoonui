@@ -49,7 +49,7 @@ export const selectStyles: Record<string, CSSRuleObject> = {
   // Hover state
   '.select:hover': {
     borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'hsl(var(--color-surface-variant) / 0.5)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 5%, transparent)',
   },
 
   // Focus state
@@ -57,7 +57,7 @@ export const selectStyles: Record<string, CSSRuleObject> = {
     borderColor: 'hsl(var(--color-primary))',
     borderWidth: '2px',
     padding: 'calc(0.75rem - 1px) calc(2.5rem - 1px) calc(0.75rem - 1px) calc(1rem - 1px)',
-    boxShadow: '0 0 0 3px hsl(var(--color-primary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-primary)) 1%, transparent)',
   },
 
   // Filled variant
@@ -84,17 +84,17 @@ export const selectStyles: Record<string, CSSRuleObject> = {
   // Color variants
   '.select-primary:focus': {
     borderColor: 'hsl(var(--color-primary))',
-    boxShadow: '0 0 0 3px hsl(var(--color-primary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-primary)) 1%, transparent)',
   },
 
   '.select-secondary:focus': {
     borderColor: 'hsl(var(--color-secondary))',
-    boxShadow: '0 0 0 3px hsl(var(--color-secondary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-secondary)) 1%, transparent)',
   },
 
   '.select-tertiary:focus': {
     borderColor: 'hsl(var(--color-tertiary))',
-    boxShadow: '0 0 0 3px hsl(var(--color-tertiary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-tertiary)) 1%, transparent)',
   },
 
   // Size variants
@@ -120,7 +120,7 @@ export const selectStyles: Record<string, CSSRuleObject> = {
   '.select:disabled': {
     opacity: '0.6',
     cursor: 'not-allowed',
-    backgroundColor: 'hsl(var(--color-surface-variant) / 0.5)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 5%, transparent)',
   },
 
   // Error state
@@ -130,7 +130,7 @@ export const selectStyles: Record<string, CSSRuleObject> = {
 
   '.select-error:focus': {
     borderColor: 'hsl(var(--color-error))',
-    boxShadow: '0 0 0 3px hsl(var(--color-error) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-error)) 1%, transparent)',
   },
 
   // Label

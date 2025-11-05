@@ -25,13 +25,13 @@ export const textareaStyles: Record<string, CSSRuleObject> = {
 
   // Placeholder
   '.textarea::placeholder': {
-    color: 'hsl(var(--color-on-surface-variant) / 0.6)',
+    color: 'color-mix(in srgb, hsl(var(--color-on-surface-variant)) 6%, transparent)',
   },
 
   // Hover state
   '.textarea:hover': {
     borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'hsl(var(--color-surface-variant) / 0.3)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 3%, transparent)',
   },
 
   // Focus state
@@ -39,7 +39,7 @@ export const textareaStyles: Record<string, CSSRuleObject> = {
     borderColor: 'hsl(var(--color-primary))',
     borderWidth: '2px',
     padding: 'calc(0.75rem - 1px) calc(1rem - 1px)',
-    boxShadow: '0 0 0 3px hsl(var(--color-primary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-primary)) 1%, transparent)',
   },
 
   // Filled variant
@@ -66,17 +66,17 @@ export const textareaStyles: Record<string, CSSRuleObject> = {
   // Color variants
   '.textarea-primary:focus': {
     borderColor: 'hsl(var(--color-primary))',
-    boxShadow: '0 0 0 3px hsl(var(--color-primary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-primary)) 1%, transparent)',
   },
 
   '.textarea-secondary:focus': {
     borderColor: 'hsl(var(--color-secondary))',
-    boxShadow: '0 0 0 3px hsl(var(--color-secondary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-secondary)) 1%, transparent)',
   },
 
   '.textarea-tertiary:focus': {
     borderColor: 'hsl(var(--color-tertiary))',
-    boxShadow: '0 0 0 3px hsl(var(--color-tertiary) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-tertiary)) 1%, transparent)',
   },
 
   // Size variants
@@ -104,13 +104,13 @@ export const textareaStyles: Record<string, CSSRuleObject> = {
   '.textarea:disabled': {
     opacity: '0.6',
     cursor: 'not-allowed',
-    backgroundColor: 'hsl(var(--color-surface-variant) / 0.5)',
-    color: 'hsl(var(--color-on-surface) / 0.6)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 5%, transparent)',
+    color: 'color-mix(in srgb, hsl(var(--color-on-surface)) 6%, transparent)',
   },
 
   // Readonly state
   '.textarea:read-only': {
-    backgroundColor: 'hsl(var(--color-surface-variant) / 0.3)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 3%, transparent)',
     cursor: 'default',
   },
 
@@ -121,7 +121,7 @@ export const textareaStyles: Record<string, CSSRuleObject> = {
 
   '.textarea-error:focus': {
     borderColor: 'hsl(var(--color-error))',
-    boxShadow: '0 0 0 3px hsl(var(--color-error) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-error)) 1%, transparent)',
   },
 
   // Success state
@@ -131,7 +131,7 @@ export const textareaStyles: Record<string, CSSRuleObject> = {
 
   '.textarea-success:focus': {
     borderColor: 'hsl(var(--color-success))',
-    boxShadow: '0 0 0 3px hsl(var(--color-success) / 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in srgb, hsl(var(--color-success)) 1%, transparent)',
   },
 
   // Resize variants

@@ -101,7 +101,7 @@ export const breadcrumbsStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&::before': {

@@ -99,7 +99,7 @@ export const datepickerStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
   },
 
@@ -138,7 +138,7 @@ export const datepickerStyles: Record<string, CSSRuleObject> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
   },
 
@@ -207,7 +207,7 @@ export const datepickerStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
   },
 
@@ -216,7 +216,7 @@ export const datepickerStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-primary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
     },
   },
 

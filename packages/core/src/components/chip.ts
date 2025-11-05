@@ -34,7 +34,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
       boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
     },
 
@@ -44,7 +44,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
   },
 
   '.chip-outlined.chip-clickable:hover': {
-    backgroundColor: 'hsl(var(--color-on-surface) / 0.04)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 04%, transparent)',
   },
 
   // Selectable/Filter chips
@@ -52,7 +52,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
   },
 
@@ -62,7 +62,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
     },
   },
 
@@ -72,7 +72,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
     },
   },
 
@@ -82,7 +82,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-tertiary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
     },
   },
 
@@ -103,22 +103,22 @@ export const chipStyles: Record<string, CSSRuleObject> = {
   },
 
   '.chip-success': {
-    backgroundColor: 'hsl(var(--color-success) / 0.15)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-success)) 15%, transparent)',
     color: 'hsl(var(--color-success))',
   },
 
   '.chip-error': {
-    backgroundColor: 'hsl(var(--color-error) / 0.15)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 15%, transparent)',
     color: 'hsl(var(--color-error))',
   },
 
   '.chip-warning': {
-    backgroundColor: 'hsl(var(--color-warning) / 0.15)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-warning)) 15%, transparent)',
     color: 'hsl(var(--color-warning))',
   },
 
   '.chip-info': {
-    backgroundColor: 'hsl(var(--color-info) / 0.15)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-info)) 15%, transparent)',
     color: 'hsl(var(--color-info))',
   },
 

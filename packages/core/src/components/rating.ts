@@ -214,6 +214,6 @@ export const ratingStyles: Record<string, CSSRuleObject> = {
 
   '.rating-clear-btn:hover': {
     color: 'hsl(var(--color-error))',
-    backgroundColor: 'hsl(var(--color-error) / 0.1)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 1%, transparent)',
   },
 };

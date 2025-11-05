@@ -97,7 +97,7 @@ export const appBarStyles: Record<string, CSSRuleObject> = {
   // Blur effect
   '.appbar-blur': {
     backdropFilter: 'blur(8px)',
-    backgroundColor: 'hsl(var(--color-surface) / 0.8)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface)) 8%, transparent)',
   },
 
   // App bar sections
@@ -168,11 +168,11 @@ export const appBarStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
 
     '&:focus-visible': {
@@ -212,11 +212,11 @@ export const appBarStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
   },
 

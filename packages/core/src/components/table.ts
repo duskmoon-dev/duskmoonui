@@ -39,7 +39,7 @@ export const tableStyles: Record<string, CSSRuleObject> = {
 
   // Hoverable rows
   '.table-hover tbody tr:hover': {
-    backgroundColor: 'hsl(var(--color-on-surface) / 0.04)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 04%, transparent)',
   },
 
   // Striped rows
@@ -48,7 +48,7 @@ export const tableStyles: Record<string, CSSRuleObject> = {
   },
 
   '.table-striped.table-hover tbody tr:nth-child(even):hover': {
-    backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
   },
 
   // Bordered variant
@@ -96,7 +96,7 @@ export const tableStyles: Record<string, CSSRuleObject> = {
     paddingRight: '1.5rem',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.04)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 04%, transparent)',
     },
   },
 
@@ -119,7 +119,7 @@ export const tableStyles: Record<string, CSSRuleObject> = {
   },
 
   '.table-selectable tbody tr:hover': {
-    backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
   },
 
   '.table-selectable tbody tr.selected': {

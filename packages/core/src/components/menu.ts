@@ -52,11 +52,11 @@ export const menuStyles: Record<string, CSSRuleObject> = {
     width: '100%',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
 
     '&:focus-visible': {
@@ -71,7 +71,7 @@ export const menuStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-primary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
     },
   },
 
@@ -80,7 +80,7 @@ export const menuStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
     },
   },
 
@@ -89,7 +89,7 @@ export const menuStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-tertiary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
     },
   },
 

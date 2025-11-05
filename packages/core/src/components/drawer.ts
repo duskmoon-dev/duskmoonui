@@ -115,11 +115,11 @@ export const drawerStyles: Record<string, CSSRuleObject> = {
     margin: '0.125rem 0',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
 
     '&:focus-visible': {
@@ -134,7 +134,7 @@ export const drawerStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-primary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
     },
   },
 
@@ -144,7 +144,7 @@ export const drawerStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
     },
   },
 
@@ -154,7 +154,7 @@ export const drawerStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-tertiary-container))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
     },
   },
 
@@ -298,11 +298,11 @@ export const drawerStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
   },
 

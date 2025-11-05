@@ -137,20 +137,20 @@ export const navbarStyles: Record<string, CSSRuleObject> = {
     whiteSpace: 'nowrap',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
   },
 
   '.navbar-item-active': {
-    backgroundColor: 'hsl(var(--color-primary) / 0.12)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 12%, transparent)',
     color: 'hsl(var(--color-primary))',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary) / 0.16)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 16%, transparent)',
     },
   },
 
@@ -206,11 +206,11 @@ export const navbarStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.12)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
     },
   },
 
@@ -257,6 +257,6 @@ export const navbarStyles: Record<string, CSSRuleObject> = {
   // Blur effect (for transparent navbar)
   '.navbar-blur': {
     backdropFilter: 'blur(8px)',
-    backgroundColor: 'hsl(var(--color-surface) / 0.8)',
+    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface)) 8%, transparent)',
   },
 };

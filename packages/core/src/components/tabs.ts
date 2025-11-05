@@ -55,7 +55,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-on-surface))',
-      backgroundColor: 'hsl(var(--color-on-surface) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
     },
 
     '&:focus-visible': {
@@ -77,7 +77,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-primary))',
-      backgroundColor: 'hsl(var(--color-primary) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 08%, transparent)',
     },
   },
 
@@ -88,7 +88,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-secondary))',
-      backgroundColor: 'hsl(var(--color-secondary) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary)) 08%, transparent)',
     },
   },
 
@@ -99,7 +99,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-tertiary))',
-      backgroundColor: 'hsl(var(--color-tertiary) / 0.08)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary)) 08%, transparent)',
     },
   },
 
@@ -170,7 +170,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
       color: 'hsl(var(--color-on-primary-container))',
     },
   },
@@ -181,7 +181,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
       color: 'hsl(var(--color-on-secondary-container))',
     },
   },
@@ -192,7 +192,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-container) / 0.9)',
+      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
       color: 'hsl(var(--color-on-tertiary-container))',
     },
   },
