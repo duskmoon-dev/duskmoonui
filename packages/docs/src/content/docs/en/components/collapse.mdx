@@ -1,0 +1,643 @@
+---
+title: Collapse
+description: Material Design 3-inspired expandable/collapsible component with smooth animations
+category: components
+order: 39
+published: true
+tags: ['collapse', 'accordion', 'expandable', 'components', 'material-design']
+---
+
+# Collapse
+
+The Collapse component allows users to show and hide content sections with smooth animations. It's perfect for FAQs, navigation menus, and content-heavy interfaces where space management is crucial.
+
+## Basic Usage
+
+```html
+<div class="collapse collapse-open">
+  <button class="collapse-trigger">
+    <span>Click to toggle</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>This is the collapsible content that can be shown or hidden.</p>
+  </div>
+</div>
+```
+
+## States
+
+### Open State
+
+Add `collapse-open` class to show the content:
+
+```html
+<div class="collapse collapse-open">
+  <button class="collapse-trigger">
+    <span>Expanded Section</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>This content is visible by default.</p>
+  </div>
+</div>
+```
+
+### Closed State
+
+Add `collapse-closed` class to hide the content:
+
+```html
+<div class="collapse collapse-closed">
+  <button class="collapse-trigger">
+    <span>Collapsed Section</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>This content is hidden by default.</p>
+  </div>
+</div>
+```
+
+## Variants
+
+### Bordered Variant
+
+Add a border to the collapse component:
+
+```html
+<div class="collapse collapse-bordered collapse-closed">
+  <button class="collapse-trigger">
+    <span>Bordered Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content with a border around it.</p>
+  </div>
+</div>
+```
+
+### Card Variant
+
+Card variant with shadow and border:
+
+```html
+<div class="collapse collapse-card collapse-closed">
+  <button class="collapse-trigger">
+    <span>Card Style Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>This collapse has a card appearance with shadow.</p>
+  </div>
+</div>
+```
+
+### Ghost Variant
+
+Minimal styling for a clean look:
+
+```html
+<div class="collapse collapse-ghost collapse-closed">
+  <button class="collapse-trigger">
+    <span>Ghost Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Minimal styling with transparent background.</p>
+  </div>
+</div>
+```
+
+## Color Variants
+
+### Primary
+
+```html
+<div class="collapse collapse-primary collapse-closed">
+  <button class="collapse-trigger">
+    <span>Primary Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content with primary color theme.</p>
+  </div>
+</div>
+```
+
+### Secondary
+
+```html
+<div class="collapse collapse-secondary collapse-closed">
+  <button class="collapse-trigger">
+    <span>Secondary Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content with secondary color theme.</p>
+  </div>
+</div>
+```
+
+### Tertiary
+
+```html
+<div class="collapse collapse-tertiary collapse-closed">
+  <button class="collapse-trigger">
+    <span>Tertiary Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content with tertiary color theme.</p>
+  </div>
+</div>
+```
+
+## Sizes
+
+### Small
+
+```html
+<div class="collapse collapse-sm collapse-closed">
+  <button class="collapse-trigger">
+    <span>Small Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Compact size for space-constrained layouts.</p>
+  </div>
+</div>
+```
+
+### Medium (Default)
+
+```html
+<div class="collapse collapse-closed">
+  <button class="collapse-trigger">
+    <span>Medium Collapse (Default)</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Standard size for most use cases.</p>
+  </div>
+</div>
+```
+
+### Large
+
+```html
+<div class="collapse collapse-lg collapse-closed">
+  <button class="collapse-trigger">
+    <span>Large Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Larger size for emphasis and better touch targets.</p>
+  </div>
+</div>
+```
+
+## Accordion Groups
+
+Create an accordion by grouping multiple collapse components:
+
+```html
+<div class="collapse-group">
+  <div class="collapse collapse-open">
+    <button class="collapse-trigger">
+      <span>Section 1</span>
+      <span class="collapse-icon">▼</span>
+    </button>
+    <div class="collapse-content">
+      <p>First section content is expanded by default.</p>
+    </div>
+  </div>
+
+  <div class="collapse collapse-closed">
+    <button class="collapse-trigger">
+      <span>Section 2</span>
+      <span class="collapse-icon">▼</span>
+    </button>
+    <div class="collapse-content">
+      <p>Second section content is collapsed.</p>
+    </div>
+  </div>
+
+  <div class="collapse collapse-closed">
+    <button class="collapse-trigger">
+      <span>Section 3</span>
+      <span class="collapse-icon">▼</span>
+    </button>
+    <div class="collapse-content">
+      <p>Third section content is collapsed.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Animation Variants
+
+### Fade Animation
+
+Smooth fade in/out effect:
+
+```html
+<div class="collapse collapse-fade collapse-closed">
+  <button class="collapse-trigger">
+    <span>Fade Animation</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content fades in and out smoothly.</p>
+  </div>
+</div>
+```
+
+### Slide Animation
+
+Slide with transform effect:
+
+```html
+<div class="collapse collapse-slide collapse-closed">
+  <button class="collapse-trigger">
+    <span>Slide Animation</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content slides in from above with a transform.</p>
+  </div>
+</div>
+```
+
+## Additional Features
+
+### With Divider
+
+Add a divider between trigger and content:
+
+```html
+<div class="collapse collapse-divider collapse-closed">
+  <button class="collapse-trigger">
+    <span>With Divider</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content separated by a divider line.</p>
+  </div>
+</div>
+```
+
+### Disabled State
+
+Prevent interaction with the collapse:
+
+```html
+<div class="collapse collapse-disabled collapse-closed">
+  <button class="collapse-trigger">
+    <span>Disabled Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>This collapse cannot be toggled.</p>
+  </div>
+</div>
+```
+
+### Loading State
+
+Show a loading indicator:
+
+```html
+<div class="collapse collapse-loading collapse-closed">
+  <button class="collapse-trigger">
+    <span>Loading Content</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Content is being loaded...</p>
+  </div>
+</div>
+```
+
+## Nested Collapse
+
+Collapse components can be nested within each other:
+
+```html
+<div class="collapse collapse-open">
+  <button class="collapse-trigger">
+    <span>Parent Section</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Parent content with nested collapse below:</p>
+
+    <div class="collapse collapse-closed">
+      <button class="collapse-trigger">
+        <span>Nested Section</span>
+        <span class="collapse-icon">▼</span>
+      </button>
+      <div class="collapse-content">
+        <p>Nested collapse content with reduced padding.</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## JavaScript Integration
+
+Add interactivity with JavaScript to toggle the collapse state:
+
+```html
+<div class="collapse collapse-closed" id="myCollapse">
+  <button class="collapse-trigger" onclick="toggleCollapse('myCollapse')">
+    <span>Toggle Me</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>This content can be toggled with JavaScript.</p>
+  </div>
+</div>
+
+<script>
+function toggleCollapse(id) {
+  const collapse = document.getElementById(id);
+  collapse.classList.toggle('collapse-open');
+  collapse.classList.toggle('collapse-closed');
+}
+</script>
+```
+
+## Best Practices
+
+### Accessibility
+
+- Always use semantic `<button>` elements for triggers
+- Provide clear, descriptive labels
+- Ensure keyboard navigation support (Enter/Space to toggle)
+- Use ARIA attributes for better screen reader support
+
+```html
+<div class="collapse collapse-closed">
+  <button
+    class="collapse-trigger"
+    aria-expanded="false"
+    aria-controls="collapse-content-1"
+  >
+    <span>Accessible Collapse</span>
+    <span class="collapse-icon" aria-hidden="true">▼</span>
+  </button>
+  <div class="collapse-content" id="collapse-content-1" role="region">
+    <p>Content with proper ARIA attributes.</p>
+  </div>
+</div>
+```
+
+### Performance
+
+- Keep content lightweight for smooth animations
+- Avoid heavy computations during expand/collapse
+- Use CSS transforms for better performance
+- Consider lazy loading content for large datasets
+
+### UX Guidelines
+
+1. **Clear Visual Feedback**: Use icons to indicate expanded/collapsed state
+2. **Smooth Animations**: Default 300ms cubic-bezier provides good balance
+3. **Touch Targets**: Ensure triggers are at least 44×44px for mobile
+4. **Context Preservation**: Consider scroll position when toggling
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState } from 'react';
+
+interface CollapseProps {
+  title: string;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+  variant?: 'default' | 'bordered' | 'card' | 'ghost';
+  color?: 'default' | 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export function Collapse({
+  title,
+  children,
+  defaultOpen = false,
+  variant = 'default',
+  color = 'default',
+  size = 'md'
+}: CollapseProps) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  const classes = [
+    'collapse',
+    isOpen ? 'collapse-open' : 'collapse-closed',
+    variant !== 'default' ? `collapse-${variant}` : '',
+    color !== 'default' ? `collapse-${color}` : '',
+    size !== 'md' ? `collapse-${size}` : ''
+  ].filter(Boolean).join(' ');
+
+  return (
+    <div className={classes}>
+      <button
+        className="collapse-trigger"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+      >
+        <span>{title}</span>
+        <span className="collapse-icon">▼</span>
+      </button>
+      <div className="collapse-content">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// Usage
+<Collapse title="FAQ Item" variant="bordered" color="primary">
+  <p>Answer to the frequently asked question.</p>
+</Collapse>
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="collapseClasses">
+    <button
+      class="collapse-trigger"
+      @click="toggle"
+      :aria-expanded="isOpen"
+    >
+      <span>{{ title }}</span>
+      <span class="collapse-icon">▼</span>
+    </button>
+    <div class="collapse-content">
+      <slot />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+
+interface Props {
+  title: string;
+  defaultOpen?: boolean;
+  variant?: 'default' | 'bordered' | 'card' | 'ghost';
+  color?: 'default' | 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  defaultOpen: false,
+  variant: 'default',
+  color: 'default',
+  size: 'md'
+});
+
+const isOpen = ref(props.defaultOpen);
+
+const collapseClasses = computed(() => [
+  'collapse',
+  isOpen.value ? 'collapse-open' : 'collapse-closed',
+  props.variant !== 'default' ? `collapse-${props.variant}` : '',
+  props.color !== 'default' ? `collapse-${props.color}` : '',
+  props.size !== 'md' ? `collapse-${props.size}` : ''
+].filter(Boolean).join(' '));
+
+const toggle = () => {
+  isOpen.value = !isOpen.value;
+};
+</script>
+
+<!-- Usage -->
+<Collapse title="FAQ Item" variant="bordered" color="primary">
+  <p>Answer to the frequently asked question.</p>
+</Collapse>
+```
+
+### Svelte
+
+```svelte
+<script lang="ts">
+  export let title: string;
+  export let defaultOpen = false;
+  export let variant: 'default' | 'bordered' | 'card' | 'ghost' = 'default';
+  export let color: 'default' | 'primary' | 'secondary' | 'tertiary' = 'default';
+  export let size: 'sm' | 'md' | 'lg' = 'md';
+
+  let isOpen = defaultOpen;
+
+  $: collapseClasses = [
+    'collapse',
+    isOpen ? 'collapse-open' : 'collapse-closed',
+    variant !== 'default' ? `collapse-${variant}` : '',
+    color !== 'default' ? `collapse-${color}` : '',
+    size !== 'md' ? `collapse-${size}` : ''
+  ].filter(Boolean).join(' ');
+</script>
+
+<div class={collapseClasses}>
+  <button
+    class="collapse-trigger"
+    on:click={() => isOpen = !isOpen}
+    aria-expanded={isOpen}
+  >
+    <span>{title}</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <slot />
+  </div>
+</div>
+
+<!-- Usage -->
+<Collapse title="FAQ Item" variant="bordered" color="primary">
+  <p>Answer to the frequently asked question.</p>
+</Collapse>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.collapse` | Base collapse container (required) |
+| `.collapse-open` | Expanded state - shows content |
+| `.collapse-closed` | Collapsed state - hides content |
+| `.collapse-trigger` | Clickable trigger/header element |
+| `.collapse-icon` | Icon that rotates on toggle |
+| `.collapse-content` | Content area that expands/collapses |
+| `.collapse-bordered` | Adds border around collapse |
+| `.collapse-card` | Card style with shadow and border |
+| `.collapse-ghost` | Minimal styling, transparent background |
+| `.collapse-primary` | Primary color theme |
+| `.collapse-secondary` | Secondary color theme |
+| `.collapse-tertiary` | Tertiary color theme |
+| `.collapse-sm` | Small size variant |
+| `.collapse-lg` | Large size variant |
+| `.collapse-group` | Container for accordion groups |
+| `.collapse-fade` | Fade animation effect |
+| `.collapse-slide` | Slide animation with transform |
+| `.collapse-divider` | Adds divider between trigger and content |
+| `.collapse-disabled` | Disables interaction |
+| `.collapse-loading` | Shows loading spinner |
+
+### Animation Details
+
+The collapse component uses the following animation timing:
+
+- **Duration**: 300ms
+- **Easing**: cubic-bezier(0.4, 0, 0.2, 1) - Material Design standard easing
+- **Icon Rotation**: 180deg on expand
+- **Fade Transition**: Opacity changes over 200ms
+- **Slide Transform**: translateY(-10px) when collapsed
+
+### Combinations
+
+Combine classes for customized appearance:
+
+```html
+<!-- Bordered primary collapse, large size -->
+<div class="collapse collapse-bordered collapse-primary collapse-lg collapse-closed">
+  <button class="collapse-trigger">
+    <span>Custom Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Combined styling options.</p>
+  </div>
+</div>
+
+<!-- Card with fade animation and divider -->
+<div class="collapse collapse-card collapse-fade collapse-divider collapse-closed">
+  <button class="collapse-trigger">
+    <span>Enhanced Collapse</span>
+    <span class="collapse-icon">▼</span>
+  </button>
+  <div class="collapse-content">
+    <p>Multiple variant combinations.</p>
+  </div>
+</div>
+```
+
+## Related Components
+
+- [Accordion](/docs/en/components/accordion/) - Multiple collapse components working together
+- [Card](/docs/en/components/card/) - Container component
+- [List](/docs/en/components/list/) - List items with expandable content
+- [Tabs](/docs/en/components/tabs/) - Alternative content organization
+
+## See Also
+
+- [Expansion Panels (Material Design 3)](https://m3.material.io/components/lists#expansion-panels)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
+- [Animation Guidelines](/docs/en/guides/animations/)
