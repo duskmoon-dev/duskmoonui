@@ -1,0 +1,588 @@
+---
+title: Radio
+description: Material Design 3 radio button component with multiple variants, colors, and sizes
+category: components
+order: 34
+published: true
+tags: ['radio', 'components', 'material-design', 'form']
+---
+
+# Radio
+
+Radio buttons allow users to select a single option from a set of mutually exclusive choices. @duskmoon-dev/core provides a complete set of Material Design 3 radio button variants.
+
+## Basic Usage
+
+```html
+<label class="radio">
+  <input type="radio" name="option" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Option 1</span>
+</label>
+```
+
+## Color Variants
+
+### Primary (Default)
+
+The primary color is used by default for radio buttons.
+
+```html
+<label class="radio">
+  <input type="radio" name="color-primary" class="radio-input" checked />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Primary</span>
+</label>
+```
+
+### Secondary
+
+Use the secondary color variant for alternative branding.
+
+```html
+<label class="radio">
+  <input type="radio" name="color-secondary" class="radio-input" checked />
+  <span class="radio-secondary">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Secondary</span>
+</label>
+```
+
+### Tertiary
+
+The tertiary color variant provides additional options.
+
+```html
+<label class="radio">
+  <input type="radio" name="color-tertiary" class="radio-input" checked />
+  <span class="radio-tertiary">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Tertiary</span>
+</label>
+```
+
+## Sizes
+
+Three sizes are available for radio buttons:
+
+```html
+<!-- Small -->
+<label class="radio radio-sm">
+  <input type="radio" name="size-sm" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Small</span>
+</label>
+
+<!-- Medium (default) -->
+<label class="radio">
+  <input type="radio" name="size-md" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Medium</span>
+</label>
+
+<!-- Large -->
+<label class="radio radio-lg">
+  <input type="radio" name="size-lg" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Large</span>
+</label>
+```
+
+## Radio Groups
+
+### Vertical Group (Default)
+
+Group radio buttons vertically for better readability.
+
+```html
+<div class="radio-group">
+  <label class="radio">
+    <input type="radio" name="option" class="radio-input" checked />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Option 1</span>
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="option" class="radio-input" />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Option 2</span>
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="option" class="radio-input" />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Option 3</span>
+  </label>
+</div>
+```
+
+### Horizontal Group
+
+Arrange radio buttons horizontally for compact layouts.
+
+```html
+<div class="radio-group radio-group-horizontal">
+  <label class="radio">
+    <input type="radio" name="horizontal" class="radio-input" checked />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Yes</span>
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="horizontal" class="radio-input" />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">No</span>
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="horizontal" class="radio-input" />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Maybe</span>
+  </label>
+</div>
+```
+
+## Label Positioning
+
+### Label on Right (Default)
+
+```html
+<label class="radio">
+  <input type="radio" name="label-right" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Label on the right</span>
+</label>
+```
+
+### Label on Left
+
+```html
+<label class="radio">
+  <input type="radio" name="label-left" class="radio-input" />
+  <span class="radio-label radio-label-left">Label on the left</span>
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+</label>
+```
+
+## States
+
+### Disabled State
+
+Disabled radio buttons are non-interactive.
+
+```html
+<label class="radio">
+  <input type="radio" name="disabled" class="radio-input" disabled />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Disabled unchecked</span>
+</label>
+
+<label class="radio">
+  <input type="radio" name="disabled" class="radio-input" checked disabled />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Disabled checked</span>
+</label>
+```
+
+### Error State
+
+Use the error state to indicate validation issues.
+
+```html
+<label class="radio radio-error">
+  <input type="radio" name="error" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Error option</span>
+</label>
+```
+
+### Loading State
+
+Show a loading state while processing.
+
+```html
+<label class="radio radio-loading">
+  <input type="radio" name="loading" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Loading...</span>
+</label>
+```
+
+## Helper Text
+
+Add helper text to provide additional context or show validation errors.
+
+```html
+<div class="radio-group">
+  <label class="radio">
+    <input type="radio" name="helper" class="radio-input" />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Option with helper text</span>
+  </label>
+  <span class="radio-helper">This is some helpful information</span>
+
+  <label class="radio radio-error">
+    <input type="radio" name="helper" class="radio-input" />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Option with error</span>
+  </label>
+  <span class="radio-helper">This field has an error</span>
+</div>
+```
+
+## Best Practices
+
+### Usage Guidelines
+
+1. **Use for mutually exclusive choices**: Radio buttons are ideal when users can select only one option from a set
+2. **Provide clear labels**: Each option should have a descriptive label
+3. **Group related options**: Use radio groups to organize related choices
+4. **Default selection**: Consider providing a sensible default selection
+5. **Limit options**: Keep the number of options manageable (typically 2-7 items)
+
+```html
+<!-- Good: Clear, concise options -->
+<div class="radio-group">
+  <label class="radio">
+    <input type="radio" name="shipping" class="radio-input" checked />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Standard Shipping (5-7 days)</span>
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="shipping" class="radio-input" />
+    <span class="radio-circle">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">Express Shipping (2-3 days)</span>
+  </label>
+</div>
+```
+
+### Accessibility
+
+- Always use semantic `<label>` elements that wrap or associate with inputs
+- Ensure sufficient color contrast for all states
+- Support keyboard navigation (built-in with native inputs)
+- Provide meaningful labels and helper text
+- Use `aria-describedby` for helper text associations
+
+```html
+<!-- Good: Accessible radio with helper text -->
+<label class="radio">
+  <input type="radio" name="accessible" class="radio-input" id="option-1" aria-describedby="helper-1" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Accessible option</span>
+</label>
+<span class="radio-helper" id="helper-1">Additional context for screen readers</span>
+```
+
+### Touch Targets
+
+Ensure radio buttons are large enough for touch interfaces. The default size provides adequate touch targets.
+
+```html
+<!-- For mobile-first designs, use default or large sizes -->
+<label class="radio radio-lg">
+  <input type="radio" name="touch" class="radio-input" />
+  <span class="radio-circle">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Mobile-friendly option</span>
+</label>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface RadioProps {
+  name: string;
+  value: string;
+  label: string;
+  checked?: boolean;
+  onChange?: (value: string) => void;
+  color?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  error?: boolean;
+}
+
+export function Radio({
+  name,
+  value,
+  label,
+  checked,
+  onChange,
+  color = 'primary',
+  size,
+  disabled,
+  error
+}: RadioProps) {
+  const circleClass = color === 'primary' ? 'radio-circle' : `radio-${color}`;
+  const sizeClass = size ? `radio-${size}` : '';
+  const errorClass = error ? 'radio-error' : '';
+
+  return (
+    <label className={`radio ${sizeClass} ${errorClass}`.trim()}>
+      <input
+        type="radio"
+        name={name}
+        value={value}
+        className="radio-input"
+        checked={checked}
+        onChange={(e) => onChange?.(e.target.value)}
+        disabled={disabled}
+      />
+      <span className={circleClass}>
+        <span className="radio-dot"></span>
+      </span>
+      <span className="radio-label">{label}</span>
+    </label>
+  );
+}
+
+// RadioGroup component
+interface RadioGroupProps {
+  name: string;
+  options: { value: string; label: string }[];
+  value?: string;
+  onChange?: (value: string) => void;
+  horizontal?: boolean;
+}
+
+export function RadioGroup({ name, options, value, onChange, horizontal }: RadioGroupProps) {
+  return (
+    <div className={`radio-group ${horizontal ? 'radio-group-horizontal' : ''}`}>
+      {options.map((option) => (
+        <Radio
+          key={option.value}
+          name={name}
+          value={option.value}
+          label={option.label}
+          checked={value === option.value}
+          onChange={onChange}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Usage
+<RadioGroup
+  name="plan"
+  value={selectedPlan}
+  onChange={setSelectedPlan}
+  options={[
+    { value: 'free', label: 'Free Plan' },
+    { value: 'pro', label: 'Pro Plan' },
+    { value: 'enterprise', label: 'Enterprise Plan' }
+  ]}
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <label :class="radioClasses">
+    <input
+      type="radio"
+      :name="name"
+      :value="value"
+      class="radio-input"
+      :checked="checked"
+      :disabled="disabled"
+      @change="$emit('change', value)"
+    />
+    <span :class="circleClass">
+      <span class="radio-dot"></span>
+    </span>
+    <span class="radio-label">{{ label }}</span>
+  </label>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  name: String,
+  value: String,
+  label: String,
+  checked: Boolean,
+  color: {
+    type: String,
+    default: 'primary'
+  },
+  size: String,
+  disabled: Boolean,
+  error: Boolean
+})
+
+const emit = defineEmits(['change'])
+
+const radioClasses = computed(() => {
+  return [
+    'radio',
+    props.size && `radio-${props.size}`,
+    props.error && 'radio-error'
+  ].filter(Boolean).join(' ')
+})
+
+const circleClass = computed(() => {
+  return props.color === 'primary' ? 'radio-circle' : `radio-${props.color}`
+})
+</script>
+
+<!-- RadioGroup component -->
+<template>
+  <div :class="groupClasses">
+    <Radio
+      v-for="option in options"
+      :key="option.value"
+      :name="name"
+      :value="option.value"
+      :label="option.label"
+      :checked="modelValue === option.value"
+      @change="$emit('update:modelValue', option.value)"
+    />
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+import Radio from './Radio.vue'
+
+const props = defineProps({
+  name: String,
+  options: Array,
+  modelValue: String,
+  horizontal: Boolean
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const groupClasses = computed(() => {
+  return [
+    'radio-group',
+    props.horizontal && 'radio-group-horizontal'
+  ].filter(Boolean).join(' ')
+})
+</script>
+
+<!-- Usage -->
+<RadioGroup
+  name="plan"
+  v-model="selectedPlan"
+  :options="[
+    { value: 'free', label: 'Free Plan' },
+    { value: 'pro', label: 'Pro Plan' },
+    { value: 'enterprise', label: 'Enterprise Plan' }
+  ]"
+/>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.radio` | Base radio button container (required) |
+| `.radio-input` | Hidden native radio input (required) |
+| `.radio-circle` | Radio circle/outer ring for primary color (required for primary) |
+| `.radio-primary` | Primary color variant (can replace `.radio-circle`) |
+| `.radio-secondary` | Secondary color variant |
+| `.radio-tertiary` | Tertiary color variant |
+| `.radio-dot` | Inner dot that appears when checked (required) |
+| `.radio-label` | Label text for the radio button |
+| `.radio-label-left` | Position label on the left side |
+| `.radio-sm` | Small size variant |
+| `.radio-lg` | Large size variant |
+| `.radio-group` | Container for multiple radio buttons (vertical) |
+| `.radio-group-horizontal` | Horizontal layout for radio group |
+| `.radio-helper` | Helper text below the radio button |
+| `.radio-error` | Error state styling |
+| `.radio-loading` | Loading state with pulse animation |
+
+### HTML Structure
+
+The basic structure for a radio button is:
+
+```html
+<label class="radio [size-class] [error-class]">
+  <input type="radio" name="group-name" class="radio-input" />
+  <span class="radio-circle|radio-[color]">
+    <span class="radio-dot"></span>
+  </span>
+  <span class="radio-label">Label Text</span>
+</label>
+```
+
+### State Classes
+
+| State | Class/Attribute | Description |
+|-------|----------------|-------------|
+| Checked | `checked` attribute | Selected state |
+| Disabled | `disabled` attribute | Non-interactive state |
+| Error | `.radio-error` | Validation error state |
+| Loading | `.radio-loading` | Processing state |
+| Focus | `:focus-visible` | Keyboard focus (automatic) |
+| Hover | `:hover` | Mouse hover (automatic) |
+
+## Related Components
+
+- [Checkbox](/docs/en/components/checkbox/) - Multi-select form control
+- [Switch](/docs/en/components/switch/) - Toggle control
+- [Input](/docs/en/components/input/) - Text input fields
+- [Select](/docs/en/components/select/) - Dropdown selection
+
+## See Also
+
+- [Radio Button Design Guidelines (Material Design 3)](https://m3.material.io/components/radio-button/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
