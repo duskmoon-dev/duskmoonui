@@ -1,0 +1,920 @@
+---
+title: Table
+description: Material Design 3 table component for displaying structured data with multiple variants and features
+category: components
+order: 15
+published: true
+tags: ['table', 'data', 'components', 'material-design']
+---
+
+# Table
+
+Tables display information in a grid-like format of rows and columns. @duskmoon-dev/core provides a complete set of Material Design 3 table variants with support for different layouts, interactions, and data presentations.
+
+## Basic Usage
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>Jane Smith</td>
+      <td>jane@example.com</td>
+      <td>Designer</td>
+    </tr>
+    <tr>
+      <td>Bob Johnson</td>
+      <td>bob@example.com</td>
+      <td>Manager</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Variants
+
+### Striped Table
+
+Alternate row colors for improved readability:
+
+```html
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Widget A</td>
+      <td>Hardware</td>
+      <td>$29.99</td>
+    </tr>
+    <tr>
+      <td>Widget B</td>
+      <td>Software</td>
+      <td>$49.99</td>
+    </tr>
+    <tr>
+      <td>Widget C</td>
+      <td>Hardware</td>
+      <td>$19.99</td>
+    </tr>
+    <tr>
+      <td>Widget D</td>
+      <td>Software</td>
+      <td>$99.99</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Bordered Table
+
+Add borders to all cells:
+
+```html
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>001</td>
+      <td>Project Alpha</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>002</td>
+      <td>Project Beta</td>
+      <td>Completed</td>
+    </tr>
+    <tr>
+      <td>003</td>
+      <td>Project Gamma</td>
+      <td>Pending</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Borderless Table
+
+Remove all borders for a clean look:
+
+```html
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Event</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2025-01-15</td>
+      <td>Team Meeting</td>
+      <td>Conference Room A</td>
+    </tr>
+    <tr>
+      <td>2025-01-20</td>
+      <td>Product Launch</td>
+      <td>Main Hall</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Hoverable Rows
+
+Add hover effects to table rows:
+
+```html
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Order ID</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alice Brown</td>
+      <td>#12345</td>
+      <td>$150.00</td>
+    </tr>
+    <tr>
+      <td>Charlie Davis</td>
+      <td>#12346</td>
+      <td>$275.50</td>
+    </tr>
+    <tr>
+      <td>Eve Wilson</td>
+      <td>#12347</td>
+      <td>$89.99</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Combined Variants
+
+Combine striped and hover effects:
+
+```html
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Assignee</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Update documentation</td>
+      <td>John</td>
+      <td>2025-01-15</td>
+    </tr>
+    <tr>
+      <td>Fix bug #123</td>
+      <td>Jane</td>
+      <td>2025-01-16</td>
+    </tr>
+    <tr>
+      <td>Review PR #45</td>
+      <td>Bob</td>
+      <td>2025-01-17</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Density Options
+
+### Compact Table
+
+Reduce padding for space-efficient layouts:
+
+```html
+<table class="table table-compact">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Qty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ABC-001</td>
+      <td>Component A</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>ABC-002</td>
+      <td>Component B</td>
+      <td>75</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Comfortable Table
+
+Increase padding for better readability:
+
+```html
+<table class="table table-comfortable">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The Great Gatsby</td>
+      <td>F. Scott Fitzgerald</td>
+      <td>1925</td>
+    </tr>
+    <tr>
+      <td>To Kill a Mockingbird</td>
+      <td>Harper Lee</td>
+      <td>1960</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Interactive Features
+
+### Selectable Rows
+
+Make rows selectable with visual feedback:
+
+```html
+<table class="table table-selectable">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Size</th>
+      <th>Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>document.pdf</td>
+      <td>2.4 MB</td>
+      <td>2025-01-10</td>
+    </tr>
+    <tr class="selected">
+      <td>spreadsheet.xlsx</td>
+      <td>1.8 MB</td>
+      <td>2025-01-11</td>
+    </tr>
+    <tr>
+      <td>presentation.pptx</td>
+      <td>5.2 MB</td>
+      <td>2025-01-12</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### With Checkboxes
+
+Add checkboxes for multi-selection:
+
+```html
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="table-checkbox">
+        <input type="checkbox" aria-label="Select all">
+      </th>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="table-checkbox">
+        <input type="checkbox" aria-label="Select row">
+      </td>
+      <td>Emma Thompson</td>
+      <td>Engineering</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td class="table-checkbox">
+        <input type="checkbox" aria-label="Select row">
+      </td>
+      <td>Michael Chen</td>
+      <td>Design</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Sortable Columns
+
+Add sort indicators to columns:
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th class="table-sort table-sort-asc">
+        Name
+        <span class="table-sort-icon">↑</span>
+      </th>
+      <th class="table-sort">
+        Email
+        <span class="table-sort-icon">↕</span>
+      </th>
+      <th class="table-sort">
+        Role
+        <span class="table-sort-icon">↕</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alice Johnson</td>
+      <td>alice@example.com</td>
+      <td>Engineer</td>
+    </tr>
+    <tr>
+      <td>Bob Smith</td>
+      <td>bob@example.com</td>
+      <td>Designer</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Column Alignment
+
+### Numeric Columns
+
+Right-align numeric data with tabular figures:
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th class="table-numeric">Price</th>
+      <th class="table-numeric">Stock</th>
+      <th class="table-numeric">Sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Widget Pro</td>
+      <td class="table-numeric">$1,234.56</td>
+      <td class="table-numeric">1,250</td>
+      <td class="table-numeric">3,456</td>
+    </tr>
+    <tr>
+      <td>Widget Lite</td>
+      <td class="table-numeric">$89.99</td>
+      <td class="table-numeric">850</td>
+      <td class="table-numeric">2,789</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Center Aligned
+
+Center-align content:
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="table-center">Status</th>
+      <th class="table-center">Badge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Project Alpha</td>
+      <td class="table-center">✓</td>
+      <td class="table-center">Gold</td>
+    </tr>
+    <tr>
+      <td>Project Beta</td>
+      <td class="table-center">⋯</td>
+      <td class="table-center">Silver</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Actions Column
+
+Right-align action buttons:
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th class="table-actions">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+      <td class="table-actions">
+        <button class="btn btn-text btn-sm">Edit</button>
+        <button class="btn btn-text btn-sm btn-error">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Jane Smith</td>
+      <td>jane@example.com</td>
+      <td class="table-actions">
+        <button class="btn btn-text btn-sm">Edit</button>
+        <button class="btn btn-text btn-sm btn-error">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Advanced Features
+
+### Sticky Header
+
+Keep header visible while scrolling:
+
+```html
+<div style="max-height: 300px; overflow-y: auto;">
+  <table class="table table-sticky">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>Item 1</td>
+        <td>Description for item 1</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>Item 2</td>
+        <td>Description for item 2</td>
+      </tr>
+      <!-- More rows... -->
+    </tbody>
+  </table>
+</div>
+```
+
+### With Caption
+
+Add a caption to describe the table:
+
+```html
+<table class="table">
+  <caption class="table-caption">
+    User Activity Report - January 2025
+  </caption>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Login Count</th>
+      <th>Last Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alice</td>
+      <td>45</td>
+      <td>2025-01-10</td>
+    </tr>
+    <tr>
+      <td>Bob</td>
+      <td>32</td>
+      <td>2025-01-11</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### With Footer
+
+Add footer totals or summaries:
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th class="table-numeric">Quantity</th>
+      <th class="table-numeric">Price</th>
+      <th class="table-numeric">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Product A</td>
+      <td class="table-numeric">10</td>
+      <td class="table-numeric">$25.00</td>
+      <td class="table-numeric">$250.00</td>
+    </tr>
+    <tr>
+      <td>Product B</td>
+      <td class="table-numeric">5</td>
+      <td class="table-numeric">$50.00</td>
+      <td class="table-numeric">$250.00</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Total</td>
+      <td class="table-numeric">$500.00</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+### Responsive Table
+
+Wrap table in a responsive container for horizontal scrolling:
+
+```html
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Location</th>
+        <th>Role</th>
+        <th>Start Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+        <td>+1-234-567-8900</td>
+        <td>Engineering</td>
+        <td>New York</td>
+        <td>Senior Developer</td>
+        <td>2023-01-15</td>
+        <td>Active</td>
+      </tr>
+      <!-- More rows... -->
+    </tbody>
+  </table>
+</div>
+```
+
+## Surface Variant
+
+Use alternative surface color:
+
+```html
+<table class="table table-surface table-striped">
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th class="table-numeric">Value</th>
+      <th class="table-numeric">Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Revenue</td>
+      <td class="table-numeric">$150,000</td>
+      <td class="table-numeric">+12%</td>
+    </tr>
+    <tr>
+      <td>Users</td>
+      <td class="table-numeric">5,432</td>
+      <td class="table-numeric">+8%</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Best Practices
+
+### Data Organization
+
+Structure data logically with appropriate headers:
+
+```html
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Quarter</th>
+      <th class="table-numeric">Revenue</th>
+      <th class="table-numeric">Expenses</th>
+      <th class="table-numeric">Profit</th>
+      <th class="table-numeric">Margin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Q1 2024</td>
+      <td class="table-numeric">$450,000</td>
+      <td class="table-numeric">$280,000</td>
+      <td class="table-numeric">$170,000</td>
+      <td class="table-numeric">37.8%</td>
+    </tr>
+    <tr>
+      <td>Q2 2024</td>
+      <td class="table-numeric">$520,000</td>
+      <td class="table-numeric">$310,000</td>
+      <td class="table-numeric">$210,000</td>
+      <td class="table-numeric">40.4%</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Accessibility
+
+- Use `<thead>`, `<tbody>`, and `<tfoot>` for semantic structure
+- Always include proper column headers with `<th>`
+- Add `scope` attributes to headers
+- Use `aria-label` for icon-only buttons in action columns
+- Provide table captions for screen readers
+
+```html
+<table class="table">
+  <caption class="table-caption">Employee Directory</caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+      <td>Engineering</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Mobile Responsiveness
+
+For complex tables, use responsive wrapper:
+
+```html
+<div class="table-responsive">
+  <table class="table table-striped">
+    <!-- Many columns that may overflow on mobile -->
+  </table>
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface TableProps {
+  data: Array<Record<string, any>>;
+  columns: Array<{ key: string; header: string; align?: 'left' | 'center' | 'right' }>;
+  striped?: boolean;
+  hover?: boolean;
+  bordered?: boolean;
+}
+
+export function Table({ data, columns, striped, hover, bordered }: TableProps) {
+  const className = [
+    'table',
+    striped && 'table-striped',
+    hover && 'table-hover',
+    bordered && 'table-bordered',
+  ].filter(Boolean).join(' ');
+
+  return (
+    <table className={className}>
+      <thead>
+        <tr>
+          {columns.map((col) => (
+            <th
+              key={col.key}
+              className={col.align === 'right' ? 'table-numeric' : col.align === 'center' ? 'table-center' : ''}
+            >
+              {col.header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, idx) => (
+          <tr key={idx}>
+            {columns.map((col) => (
+              <td
+                key={col.key}
+                className={col.align === 'right' ? 'table-numeric' : col.align === 'center' ? 'table-center' : ''}
+              >
+                {row[col.key]}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+// Usage
+<Table
+  data={users}
+  columns={[
+    { key: 'name', header: 'Name' },
+    { key: 'email', header: 'Email' },
+    { key: 'count', header: 'Count', align: 'right' },
+  ]}
+  striped
+  hover
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <table :class="tableClasses">
+    <thead>
+      <tr>
+        <th
+          v-for="col in columns"
+          :key="col.key"
+          :class="getAlignClass(col.align)"
+        >
+          {{ col.header }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(row, idx) in data" :key="idx">
+        <td
+          v-for="col in columns"
+          :key="col.key"
+          :class="getAlignClass(col.align)"
+        >
+          {{ row[col.key] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  data: Array,
+  columns: Array,
+  striped: Boolean,
+  hover: Boolean,
+  bordered: Boolean,
+});
+
+const tableClasses = computed(() => {
+  return [
+    'table',
+    props.striped && 'table-striped',
+    props.hover && 'table-hover',
+    props.bordered && 'table-bordered',
+  ].filter(Boolean).join(' ');
+});
+
+function getAlignClass(align) {
+  if (align === 'right') return 'table-numeric';
+  if (align === 'center') return 'table-center';
+  return '';
+}
+</script>
+
+<!-- Usage -->
+<Table
+  :data="users"
+  :columns="columns"
+  striped
+  hover
+/>
+```
+
+## API Reference
+
+### Table Classes
+
+| Class | Description |
+|-------|-------------|
+| `.table` | Base table styles (required) |
+| `.table-striped` | Alternate row background colors |
+| `.table-bordered` | Add borders to all cells |
+| `.table-borderless` | Remove all borders |
+| `.table-hover` | Add hover effect to rows |
+| `.table-compact` | Reduce cell padding |
+| `.table-comfortable` | Increase cell padding |
+| `.table-selectable` | Make rows selectable with cursor |
+| `.table-sticky` | Sticky table header |
+| `.table-surface` | Use surface background color |
+| `.table-responsive` | Horizontal scroll wrapper |
+
+### Column Classes
+
+| Class | Description |
+|-------|-------------|
+| `.table-numeric` | Right-align with tabular numbers |
+| `.table-center` | Center-align content |
+| `.table-checkbox` | Checkbox column (width: 3rem) |
+| `.table-actions` | Actions column (right-aligned) |
+
+### Row Classes
+
+| Class | Description |
+|-------|-------------|
+| `.selected` | Mark row as selected (use with `.table-selectable`) |
+
+### Sort Classes
+
+| Class | Description |
+|-------|-------------|
+| `.table-sort` | Sortable column header |
+| `.table-sort-icon` | Sort indicator icon |
+| `.table-sort-asc` | Ascending sort state |
+| `.table-sort-desc` | Descending sort state |
+
+### Other Classes
+
+| Class | Description |
+|-------|-------------|
+| `.table-caption` | Table caption styling |
+
+### Combinations
+
+Combine multiple classes for different effects:
+
+```html
+<!-- Striped table with hover and borders -->
+<table class="table table-striped table-hover table-bordered">
+  <!-- ... -->
+</table>
+
+<!-- Compact selectable table with sticky header -->
+<table class="table table-compact table-selectable table-sticky">
+  <!-- ... -->
+</table>
+```
+
+## Related Components
+
+- [Card](/docs/en/components/card/) - Container for tables
+- [Badge](/docs/en/components/badge/) - Status indicators in tables
+- [Button](/docs/en/components/button/) - Action buttons in table cells
+
+## See Also
+
+- [Data Tables Design Guidelines (Material Design 3)](https://m3.material.io/components/data-tables/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
