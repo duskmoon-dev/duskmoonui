@@ -1,0 +1,607 @@
+---
+title: Textarea
+description: Material Design 3 textarea component with multiple variants, sizes, and auto-resize functionality
+category: components
+order: 36
+published: true
+tags: ['textarea', 'components', 'material-design', 'forms', 'input']
+---
+
+# Textarea
+
+Textareas allow users to enter multi-line text input. @duskmoon-dev/core provides a complete set of Material Design 3 textarea variants with features like auto-resize, character counting, and validation states.
+
+## Basic Usage
+
+```html
+<textarea class="textarea" placeholder="Enter your message..."></textarea>
+```
+
+## Variants
+
+### Outlined Textarea (Default)
+
+Outlined textareas have a transparent background with a visible border, making them stand out on any surface.
+
+```html
+<textarea class="textarea textarea-outlined" placeholder="Outlined textarea..."></textarea>
+```
+
+### Filled Textarea
+
+Filled textareas have a solid background with a bottom border, providing a more subtle appearance.
+
+```html
+<textarea class="textarea textarea-filled" placeholder="Filled textarea..."></textarea>
+```
+
+## Color Variants
+
+Focus colors can be customized using color variants:
+
+```html
+<textarea class="textarea textarea-primary" placeholder="Primary focus color..."></textarea>
+<textarea class="textarea textarea-secondary" placeholder="Secondary focus color..."></textarea>
+<textarea class="textarea textarea-tertiary" placeholder="Tertiary focus color..."></textarea>
+```
+
+## Sizes
+
+Three sizes are available:
+
+```html
+<textarea class="textarea textarea-sm" placeholder="Small textarea..."></textarea>
+<textarea class="textarea" placeholder="Medium textarea (default)..."></textarea>
+<textarea class="textarea textarea-lg" placeholder="Large textarea..."></textarea>
+```
+
+## Resize Options
+
+Control how users can resize the textarea:
+
+```html
+<!-- Vertical resize (default) -->
+<textarea class="textarea textarea-resize-vertical" placeholder="Resize vertically..."></textarea>
+
+<!-- No resize -->
+<textarea class="textarea textarea-resize-none" placeholder="Cannot be resized..."></textarea>
+
+<!-- Horizontal resize -->
+<textarea class="textarea textarea-resize-horizontal" placeholder="Resize horizontally..."></textarea>
+
+<!-- Both directions -->
+<textarea class="textarea textarea-resize-both" placeholder="Resize in any direction..."></textarea>
+```
+
+## Auto-Resize
+
+Automatically adjust height based on content:
+
+```html
+<textarea class="textarea textarea-auto-resize" placeholder="Grows with content..."></textarea>
+```
+
+**Note:** Auto-resize requires JavaScript to function. Example implementation:
+
+```html
+<textarea class="textarea textarea-auto-resize" placeholder="Auto-growing textarea..."></textarea>
+
+<script>
+  const textarea = document.querySelector('.textarea-auto-resize');
+
+  function autoResize() {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
+
+  textarea.addEventListener('input', autoResize);
+  // Initialize on load
+  autoResize();
+</script>
+```
+
+## With Label
+
+### Standard Label
+
+```html
+<div class="textarea-container">
+  <label class="textarea-label" for="message">Message</label>
+  <textarea id="message" class="textarea" placeholder="Enter your message..."></textarea>
+</div>
+```
+
+### Floating Label
+
+For filled variant with animated label:
+
+```html
+<div class="textarea-container">
+  <textarea class="textarea textarea-filled" placeholder=" " id="floating-message"></textarea>
+  <label class="textarea-label-floating" for="floating-message">Message</label>
+</div>
+```
+
+## Helper Text
+
+Add helpful information below the textarea:
+
+```html
+<div class="textarea-container">
+  <label class="textarea-label" for="description">Description</label>
+  <textarea id="description" class="textarea" placeholder="Enter description..."></textarea>
+  <span class="textarea-helper">Provide a detailed description of your project</span>
+</div>
+```
+
+## Character Counter
+
+Display character count with optional maximum limit:
+
+```html
+<div class="textarea-container">
+  <label class="textarea-label" for="bio">Bio</label>
+  <textarea id="bio" class="textarea" maxlength="200" placeholder="Tell us about yourself..."></textarea>
+  <div class="textarea-counter">
+    <span id="char-count">0</span> / 200
+  </div>
+</div>
+
+<script>
+  const bioTextarea = document.getElementById('bio');
+  const charCount = document.getElementById('char-count');
+
+  bioTextarea.addEventListener('input', () => {
+    const count = bioTextarea.value.length;
+    charCount.textContent = count;
+    charCount.parentElement.classList.toggle('textarea-counter-exceeded', count > 200);
+  });
+</script>
+```
+
+## Validation States
+
+### Error State
+
+Indicate validation errors:
+
+```html
+<div class="textarea-container textarea-container-error">
+  <label class="textarea-label" for="error-example">Comments</label>
+  <textarea id="error-example" class="textarea textarea-error" placeholder="Enter comments..."></textarea>
+  <span class="textarea-helper">This field is required</span>
+</div>
+```
+
+### Success State
+
+Indicate successful validation:
+
+```html
+<div class="textarea-container textarea-container-success">
+  <label class="textarea-label" for="success-example">Feedback</label>
+  <textarea id="success-example" class="textarea textarea-success" placeholder="Your feedback...">Great work!</textarea>
+  <span class="textarea-helper">Thank you for your feedback!</span>
+</div>
+```
+
+## States
+
+### Disabled State
+
+Non-interactive textarea:
+
+```html
+<textarea class="textarea" disabled placeholder="Disabled textarea..."></textarea>
+```
+
+### Read-only State
+
+Display-only content:
+
+```html
+<textarea class="textarea" readonly>This content cannot be edited</textarea>
+```
+
+## Full Width
+
+Ensure textarea spans the full container width:
+
+```html
+<textarea class="textarea textarea-full" placeholder="Full width textarea..."></textarea>
+```
+
+## Complete Examples
+
+### Contact Form
+
+```html
+<div class="space-y-4">
+  <div class="textarea-container">
+    <label class="textarea-label" for="contact-message">Your Message</label>
+    <textarea
+      id="contact-message"
+      class="textarea"
+      rows="6"
+      placeholder="How can we help you?"
+      required
+    ></textarea>
+    <span class="textarea-helper">We'll get back to you within 24 hours</span>
+  </div>
+</div>
+```
+
+### Feedback Form with Character Limit
+
+```html
+<div class="textarea-container">
+  <label class="textarea-label" for="feedback">Feedback</label>
+  <textarea
+    id="feedback"
+    class="textarea textarea-primary"
+    maxlength="500"
+    placeholder="Share your thoughts..."
+  ></textarea>
+  <div class="flex justify-between items-center mt-1">
+    <span class="textarea-helper">Your opinion matters to us</span>
+    <div class="textarea-counter">
+      <span id="feedback-count">0</span> / 500
+    </div>
+  </div>
+</div>
+
+<script>
+  const feedbackTextarea = document.getElementById('feedback');
+  const feedbackCount = document.getElementById('feedback-count');
+
+  feedbackTextarea.addEventListener('input', () => {
+    const count = feedbackTextarea.value.length;
+    feedbackCount.textContent = count;
+    feedbackCount.parentElement.classList.toggle('textarea-counter-exceeded', count > 500);
+  });
+</script>
+```
+
+### Auto-Resize Comment Box
+
+```html
+<div class="textarea-container">
+  <label class="textarea-label" for="comment">Add a comment</label>
+  <textarea
+    id="comment"
+    class="textarea textarea-auto-resize textarea-resize-none"
+    placeholder="Write a comment..."
+    rows="3"
+  ></textarea>
+</div>
+
+<script>
+  const commentBox = document.getElementById('comment');
+
+  function autoResize() {
+    commentBox.style.height = 'auto';
+    commentBox.style.height = commentBox.scrollHeight + 'px';
+  }
+
+  commentBox.addEventListener('input', autoResize);
+  autoResize();
+</script>
+```
+
+## Best Practices
+
+### Placeholder Text
+
+- Use placeholders to provide examples, not labels
+- Keep placeholder text concise
+- Don't rely solely on placeholders for critical information
+
+```html
+<!-- Good: Clear example -->
+<textarea class="textarea" placeholder="e.g., I'm interested in learning more about..."></textarea>
+
+<!-- Bad: Using placeholder as label -->
+<textarea class="textarea" placeholder="Comments*"></textarea>
+```
+
+### Labels and Helper Text
+
+- Always provide visible labels for accessibility
+- Use helper text for formatting requirements or examples
+- Place error messages in helper text
+
+```html
+<div class="textarea-container">
+  <label class="textarea-label" for="description">Project Description</label>
+  <textarea id="description" class="textarea" placeholder="Describe your project..."></textarea>
+  <span class="textarea-helper">Include key features and goals (minimum 50 characters)</span>
+</div>
+```
+
+### Sizing
+
+- Set appropriate `rows` attribute for expected content length
+- Use `textarea-sm` for compact interfaces
+- Use `textarea-lg` for primary content input
+- Consider auto-resize for variable-length content
+
+```html
+<!-- Short feedback -->
+<textarea class="textarea textarea-sm" rows="2" placeholder="Quick feedback..."></textarea>
+
+<!-- Long-form content -->
+<textarea class="textarea textarea-lg" rows="8" placeholder="Write your article..."></textarea>
+```
+
+### Accessibility
+
+- Always provide a `<label>` element
+- Use `aria-describedby` for helper text
+- Mark required fields clearly
+- Ensure sufficient color contrast
+
+```html
+<div class="textarea-container">
+  <label class="textarea-label" for="accessible-textarea">
+    Comments <span class="text-error">*</span>
+  </label>
+  <textarea
+    id="accessible-textarea"
+    class="textarea"
+    aria-describedby="textarea-help"
+    required
+    placeholder="Enter your comments..."
+  ></textarea>
+  <span id="textarea-help" class="textarea-helper">
+    This field is required. Please provide detailed comments.
+  </span>
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState } from 'react';
+
+interface TextareaProps {
+  label?: string;
+  helperText?: string;
+  maxLength?: number;
+  variant?: 'outlined' | 'filled';
+  size?: 'sm' | 'md' | 'lg';
+  error?: boolean;
+  success?: boolean;
+  autoResize?: boolean;
+  placeholder?: string;
+  onChange?: (value: string) => void;
+}
+
+export function Textarea({
+  label,
+  helperText,
+  maxLength,
+  variant = 'outlined',
+  size = 'md',
+  error = false,
+  success = false,
+  autoResize = false,
+  placeholder,
+  onChange,
+  ...props
+}: TextareaProps) {
+  const [value, setValue] = useState('');
+  const [height, setHeight] = useState('auto');
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+    onChange?.(newValue);
+
+    if (autoResize) {
+      e.target.style.height = 'auto';
+      e.target.style.height = `${e.target.scrollHeight}px`;
+    }
+  };
+
+  const textareaClasses = [
+    'textarea',
+    variant === 'filled' && 'textarea-filled',
+    variant === 'outlined' && 'textarea-outlined',
+    size === 'sm' && 'textarea-sm',
+    size === 'lg' && 'textarea-lg',
+    error && 'textarea-error',
+    success && 'textarea-success',
+    autoResize && 'textarea-auto-resize'
+  ].filter(Boolean).join(' ');
+
+  return (
+    <div className="textarea-container">
+      {label && (
+        <label className="textarea-label">
+          {label}
+        </label>
+      )}
+      <textarea
+        className={textareaClasses}
+        value={value}
+        onChange={handleChange}
+        maxLength={maxLength}
+        placeholder={placeholder}
+        {...props}
+      />
+      <div className="flex justify-between items-center mt-1">
+        {helperText && (
+          <span className="textarea-helper">{helperText}</span>
+        )}
+        {maxLength && (
+          <div className={`textarea-counter ${value.length > maxLength ? 'textarea-counter-exceeded' : ''}`}>
+            {value.length} / {maxLength}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Usage
+<Textarea
+  label="Message"
+  placeholder="Enter your message..."
+  maxLength={200}
+  helperText="Provide a detailed message"
+  autoResize
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <div class="textarea-container">
+    <label v-if="label" class="textarea-label">
+      {{ label }}
+    </label>
+    <textarea
+      :class="textareaClasses"
+      :value="modelValue"
+      :placeholder="placeholder"
+      :maxlength="maxLength"
+      @input="handleInput"
+      v-bind="$attrs"
+    />
+    <div v-if="helperText || maxLength" class="flex justify-between items-center mt-1">
+      <span v-if="helperText" class="textarea-helper">{{ helperText }}</span>
+      <div
+        v-if="maxLength"
+        :class="['textarea-counter', { 'textarea-counter-exceeded': charCount > maxLength }]"
+      >
+        {{ charCount }} / {{ maxLength }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+
+const props = defineProps({
+  modelValue: String,
+  label: String,
+  helperText: String,
+  maxLength: Number,
+  variant: {
+    type: String,
+    default: 'outlined'
+  },
+  size: {
+    type: String,
+    default: 'md'
+  },
+  error: Boolean,
+  success: Boolean,
+  autoResize: Boolean,
+  placeholder: String
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+const charCount = computed(() => props.modelValue?.length || 0);
+
+const textareaClasses = computed(() => [
+  'textarea',
+  props.variant === 'filled' && 'textarea-filled',
+  props.variant === 'outlined' && 'textarea-outlined',
+  props.size === 'sm' && 'textarea-sm',
+  props.size === 'lg' && 'textarea-lg',
+  props.error && 'textarea-error',
+  props.success && 'textarea-success',
+  props.autoResize && 'textarea-auto-resize'
+].filter(Boolean).join(' '));
+
+const handleInput = (e) => {
+  emit('update:modelValue', e.target.value);
+
+  if (props.autoResize) {
+    e.target.style.height = 'auto';
+    e.target.style.height = `${e.target.scrollHeight}px`;
+  }
+};
+</script>
+
+<!-- Usage -->
+<Textarea
+  v-model="message"
+  label="Message"
+  placeholder="Enter your message..."
+  :max-length="200"
+  helper-text="Provide a detailed message"
+  auto-resize
+/>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.textarea` | Base textarea styles (required) |
+| `.textarea-outlined` | Outlined variant with transparent background |
+| `.textarea-filled` | Filled variant with solid background |
+| `.textarea-primary` | Primary focus color |
+| `.textarea-secondary` | Secondary focus color |
+| `.textarea-tertiary` | Tertiary focus color |
+| `.textarea-sm` | Small size (4rem min-height) |
+| `.textarea-lg` | Large size (8rem min-height) |
+| `.textarea-error` | Error state styling |
+| `.textarea-success` | Success state styling |
+| `.textarea-resize-none` | Disable resizing |
+| `.textarea-resize-vertical` | Allow vertical resize (default) |
+| `.textarea-resize-horizontal` | Allow horizontal resize |
+| `.textarea-resize-both` | Allow resizing in both directions |
+| `.textarea-auto-resize` | Auto-resize with content (requires JS) |
+| `.textarea-full` | Full width |
+| `.textarea-container` | Wrapper for label and helper text |
+| `.textarea-label` | Label styling |
+| `.textarea-label-floating` | Floating label for filled variant |
+| `.textarea-helper` | Helper text styling |
+| `.textarea-counter` | Character counter styling |
+| `.textarea-counter-exceeded` | Exceeded character limit styling |
+
+### Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.textarea-container-error` | Error state for container |
+| `.textarea-container-success` | Success state for container |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Filled tertiary textarea, large size with error -->
+<textarea class="textarea textarea-filled textarea-tertiary textarea-lg textarea-error">
+</textarea>
+
+<!-- Small outlined textarea with no resize -->
+<textarea class="textarea textarea-outlined textarea-sm textarea-resize-none">
+</textarea>
+
+<!-- Auto-resize primary textarea with success state -->
+<textarea class="textarea textarea-primary textarea-auto-resize textarea-success">
+</textarea>
+```
+
+## Related Components
+
+- [Input](/docs/en/components/input/) - Single-line text input
+- [Select](/docs/en/components/select/) - Dropdown selection
+- [Form](/docs/en/components/form/) - Form containers and validation
+
+## See Also
+
+- [Text Fields Design Guidelines (Material Design 3)](https://m3.material.io/components/text-fields/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
