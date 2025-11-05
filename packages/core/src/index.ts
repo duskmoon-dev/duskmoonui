@@ -30,9 +30,11 @@ const duskmoonuiPlugin = plugin.withOptions<Partial<DuskMoonUIOptions>>(
   (options: Partial<DuskMoonUIOptions> = {}) => {
     const config: DuskMoonUIOptions = { ...defaultOptions, ...options };
 
-    return ({ addBase, addComponents }: {
+    return ({ addBase, addComponents, matchUtilities, theme }: {
       addBase: (styles: Record<string, Record<string, string>>) => void;
       addComponents: (components: Record<string, any>) => void;
+      matchUtilities: any;
+      theme: any;
     }) => {
       // Inject theme colors as CSS variables
       const selectedThemes = config.themes || ['sunshine', 'moonlight'];
@@ -76,23 +78,25 @@ const duskmoonuiPlugin = plugin.withOptions<Partial<DuskMoonUIOptions>>(
   },
   (_options: Partial<DuskMoonUIOptions> = {}) => {
     // Extend Tailwind config
+    // Note: We're NOT using <alpha-value> placeholder to avoid PostCSS issues with '/' syntax
+    // Instead, opacity modifiers (bg-primary/50) will use color-mix or Tailwind's opacity utilities
     return {
       theme: {
         extend: {
           colors: {
             // Map color variables to Tailwind's color system using CSS variable references
-            // Note: values are stored as "H S L" (e.g., "38 92% 50%")
-            primary: 'hsl(var(--color-primary) / <alpha-value>)',
-            'primary-focus': 'hsl(var(--color-primary-focus) / <alpha-value>)',
-            'primary-content': 'hsl(var(--color-primary-content) / <alpha-value>)',
+            // Values are stored as "H S L" (e.g., "38 92% 50%") in CSS variables
+            primary: 'hsl(var(--color-primary))',
+            'primary-focus': 'hsl(var(--color-primary-focus))',
+            'primary-content': 'hsl(var(--color-primary-content))',
 
-            secondary: 'hsl(var(--color-secondary) / <alpha-value>)',
-            'secondary-focus': 'hsl(var(--color-secondary-focus) / <alpha-value>)',
-            'secondary-content': 'hsl(var(--color-secondary-content) / <alpha-value>)',
+            secondary: 'hsl(var(--color-secondary))',
+            'secondary-focus': 'hsl(var(--color-secondary-focus))',
+            'secondary-content': 'hsl(var(--color-secondary-content))',
 
-            tertiary: 'hsl(var(--color-tertiary) / <alpha-value>)',
-            'tertiary-focus': 'hsl(var(--color-tertiary-focus) / <alpha-value>)',
-            'tertiary-content': 'hsl(var(--color-tertiary-content) / <alpha-value>)',
+            tertiary: 'hsl(var(--color-tertiary))',
+            'tertiary-focus': 'hsl(var(--color-tertiary-focus))',
+            'tertiary-content': 'hsl(var(--color-tertiary-content))',
 
             // Add more colors as needed
           },
