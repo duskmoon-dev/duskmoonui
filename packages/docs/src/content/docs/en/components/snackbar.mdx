@@ -1,0 +1,222 @@
+---
+title: Snackbar
+description: Material Design 3 snackbar component for brief messages and notifications
+category: components
+order: 12
+published: true
+tags: ['snackbar', 'toast', 'notification', 'components', 'material-design']
+---
+
+# Snackbar
+
+Snackbars provide brief messages about app processes at the bottom of the screen.
+
+## Basic Usage
+
+```html
+<div class="snackbar snackbar-bottom snackbar-show">
+  <span class="snackbar-message">Message sent</span>
+</div>
+```
+
+## Positions
+
+### Bottom (Default)
+
+```html
+<div class="snackbar snackbar-bottom snackbar-show">
+  <span class="snackbar-message">Bottom center</span>
+</div>
+```
+
+### Bottom Left
+
+```html
+<div class="snackbar snackbar-bottom-left snackbar-show">
+  <span class="snackbar-message">Bottom left</span>
+</div>
+```
+
+### Bottom Right
+
+```html
+<div class="snackbar snackbar-bottom-right snackbar-show">
+  <span class="snackbar-message">Bottom right</span>
+</div>
+```
+
+### Top
+
+```html
+<div class="snackbar snackbar-top snackbar-show">
+  <span class="snackbar-message">Top center</span>
+</div>
+```
+
+### Top Left
+
+```html
+<div class="snackbar snackbar-top-left snackbar-show">
+  <span class="snackbar-message">Top left</span>
+</div>
+```
+
+### Top Right
+
+```html
+<div class="snackbar snackbar-top-right snackbar-show">
+  <span class="snackbar-message">Top right</span>
+</div>
+```
+
+## With Action
+
+```html
+<div class="snackbar snackbar-bottom snackbar-show">
+  <span class="snackbar-message">Message sent</span>
+  <button class="snackbar-action">Undo</button>
+</div>
+```
+
+## With Close Button
+
+```html
+<div class="snackbar snackbar-bottom snackbar-show">
+  <span class="snackbar-message">This is a snackbar message</span>
+  <button class="snackbar-close" aria-label="Close">×</button>
+</div>
+```
+
+## With Icon
+
+```html
+<div class="snackbar snackbar-bottom snackbar-show">
+  <span class="snackbar-icon">✓</span>
+  <span class="snackbar-message">Action completed</span>
+</div>
+```
+
+## Semantic Colors
+
+### Success
+
+```html
+<div class="snackbar snackbar-bottom snackbar-success snackbar-show">
+  <span class="snackbar-icon">✓</span>
+  <span class="snackbar-message">Successfully saved</span>
+</div>
+```
+
+### Error
+
+```html
+<div class="snackbar snackbar-bottom snackbar-error snackbar-show">
+  <span class="snackbar-icon">✕</span>
+  <span class="snackbar-message">An error occurred</span>
+</div>
+```
+
+### Warning
+
+```html
+<div class="snackbar snackbar-bottom snackbar-warning snackbar-show">
+  <span class="snackbar-icon">⚠</span>
+  <span class="snackbar-message">Warning message</span>
+</div>
+```
+
+### Info
+
+```html
+<div class="snackbar snackbar-bottom snackbar-info snackbar-show">
+  <span class="snackbar-icon">ℹ</span>
+  <span class="snackbar-message">Information message</span>
+</div>
+```
+
+## Color Variants
+
+```html
+<div class="snackbar snackbar-bottom snackbar-primary snackbar-show">
+  <span class="snackbar-message">Primary</span>
+</div>
+
+<div class="snackbar snackbar-bottom snackbar-secondary snackbar-show">
+  <span class="snackbar-message">Secondary</span>
+</div>
+
+<div class="snackbar snackbar-bottom snackbar-tertiary snackbar-show">
+  <span class="snackbar-message">Tertiary</span>
+</div>
+```
+
+## Multiline
+
+```html
+<div class="snackbar snackbar-bottom snackbar-multiline snackbar-show">
+  <span class="snackbar-message">
+    This is a longer message that spans multiple lines.
+    It provides more detailed information.
+  </span>
+  <button class="snackbar-action">Action</button>
+</div>
+```
+
+## JavaScript Example
+
+```javascript
+function showSnackbar(message, duration = 3000) {
+  const snackbar = document.createElement('div');
+  snackbar.className = 'snackbar snackbar-bottom';
+  snackbar.innerHTML = `<span class="snackbar-message">${message}</span>`;
+
+  document.body.appendChild(snackbar);
+
+  // Trigger animation
+  setTimeout(() => snackbar.classList.add('snackbar-show'), 10);
+
+  // Auto hide
+  setTimeout(() => {
+    snackbar.classList.remove('snackbar-show');
+    setTimeout(() => snackbar.remove(), 300);
+  }, duration);
+}
+
+// Usage
+showSnackbar('Message sent successfully');
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.snackbar` | Base snackbar (required) |
+| `.snackbar-show` | Show snackbar |
+| `.snackbar-bottom` | Bottom center position |
+| `.snackbar-bottom-left` | Bottom left position |
+| `.snackbar-bottom-right` | Bottom right position |
+| `.snackbar-top` | Top center position |
+| `.snackbar-top-left` | Top left position |
+| `.snackbar-top-right` | Top right position |
+| `.snackbar-message` | Message text |
+| `.snackbar-action` | Action button |
+| `.snackbar-close` | Close button |
+| `.snackbar-icon` | Icon element |
+| `.snackbar-success` | Success color |
+| `.snackbar-error` | Error color |
+| `.snackbar-warning` | Warning color |
+| `.snackbar-info` | Info color |
+| `.snackbar-primary` | Primary color |
+| `.snackbar-secondary` | Secondary color |
+| `.snackbar-tertiary` | Tertiary color |
+| `.snackbar-multiline` | Multiline layout |
+
+## Related Components
+
+- [Toast](/docs/en/components/toast/) - Alternative toast implementation
+- [Alert](/docs/en/components/alert/) - Prominent alerts
+- [Dialog](/docs/en/components/dialog/) - Modal dialogs
+
+## See Also
+
+- [Snackbar (Material Design 3)](https://m3.material.io/components/snackbar/)
