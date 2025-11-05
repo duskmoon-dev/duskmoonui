@@ -1,0 +1,825 @@
+---
+title: Modal
+description: Material Design 3 modal dialog component with animations, positions, and customizable options
+category: components
+order: 40
+published: true
+tags: ['modal', 'dialog', 'overlay', 'components', 'material-design']
+---
+
+# Modal
+
+Modals are overlay dialogs that focus user attention on a specific task or message. @duskmoon-dev/core provides a complete set of Material Design 3-inspired modal variants with smooth animations and flexible positioning.
+
+## Basic Usage
+
+A basic modal consists of a backdrop and modal container with header, body, and footer sections.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Modal Title</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This is the modal content.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-text">Cancel</button>
+      <button class="btn btn-primary">Confirm</button>
+    </div>
+  </div>
+</div>
+```
+
+## Sizes
+
+Modals come in five different sizes to accommodate various content needs.
+
+### Small Modal
+
+For simple confirmations or short messages.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h2 class="modal-title">Small Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This is a small modal (20rem width).</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-text">Cancel</button>
+      <button class="btn btn-primary">OK</button>
+    </div>
+  </div>
+</div>
+```
+
+### Medium Modal (Default)
+
+The default size, suitable for most use cases.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-md">
+    <div class="modal-header">
+      <h2 class="modal-title">Medium Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This is a medium modal (32rem width).</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-text">Cancel</button>
+      <button class="btn btn-primary">Confirm</button>
+    </div>
+  </div>
+</div>
+```
+
+### Large Modal
+
+For more complex content or forms.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h2 class="modal-title">Large Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This is a large modal (48rem width).</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-text">Cancel</button>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</div>
+```
+
+### Extra Large Modal
+
+For extensive content or detailed forms.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-xl">
+    <div class="modal-header">
+      <h2 class="modal-title">Extra Large Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This is an extra large modal (64rem width).</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-text">Cancel</button>
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</div>
+```
+
+### Full Screen Modal
+
+Takes up almost the entire viewport (95vw × 95vh).
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-full">
+    <div class="modal-header">
+      <h2 class="modal-title">Full Screen Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal takes up 95% of the viewport.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-text">Close</button>
+    </div>
+  </div>
+</div>
+```
+
+## Positions
+
+Control where the modal appears on the screen.
+
+### Center Position (Default)
+
+Modal appears in the center of the viewport.
+
+```html
+<div class="modal-backdrop modal-backdrop-center modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Centered Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal is centered in the viewport.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Top Position
+
+Modal appears at the top of the viewport.
+
+```html
+<div class="modal-backdrop modal-backdrop-top modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Top Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal appears at the top.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Bottom Position
+
+Modal appears at the bottom of the viewport.
+
+```html
+<div class="modal-backdrop modal-backdrop-bottom modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Bottom Modal</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal appears at the bottom.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Animations
+
+Different animation effects for opening/closing modals.
+
+### Scale Animation (Default)
+
+The default scaling effect.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Scale Animation</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Modal with scale animation (default).</p>
+    </div>
+  </div>
+</div>
+```
+
+### Slide Up Animation
+
+Modal slides up from the bottom.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-slide-up">
+    <div class="modal-header">
+      <h2 class="modal-title">Slide Up</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal slides up from the bottom.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Slide Down Animation
+
+Modal slides down from the top.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-slide-down">
+    <div class="modal-header">
+      <h2 class="modal-title">Slide Down</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal slides down from the top.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Zoom Animation
+
+Modal zooms in with emphasis.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-zoom">
+    <div class="modal-header">
+      <h2 class="modal-title">Zoom Animation</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal zooms in dramatically.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Backdrop Variants
+
+Customize the appearance of the backdrop overlay.
+
+### Default Backdrop
+
+Standard dark semi-transparent backdrop.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Default Backdrop</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Standard dark backdrop.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Light Backdrop
+
+Light semi-transparent backdrop.
+
+```html
+<div class="modal-backdrop modal-backdrop-light modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Light Backdrop</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Light colored backdrop.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Blur Backdrop
+
+Backdrop with blur effect.
+
+```html
+<div class="modal-backdrop modal-backdrop-blur modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Blur Backdrop</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Backdrop with blur effect.</p>
+    </div>
+  </div>
+</div>
+```
+
+### No Backdrop
+
+Modal without backdrop (be cautious with accessibility).
+
+```html
+<div class="modal-backdrop modal-no-backdrop modal-open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">No Backdrop</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Modal without backdrop overlay.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Content Variants
+
+### Scrollable Body
+
+For long content that needs scrolling.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-scrollable">
+    <div class="modal-header">
+      <h2 class="modal-title">Scrollable Content</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Lorem ipsum dolor sit amet...</p>
+      <!-- Long content that scrolls -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-text">Close</button>
+    </div>
+  </div>
+</div>
+```
+
+### No Padding
+
+Remove default padding for custom layouts.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-no-padding">
+    <div class="modal-header">
+      <h2 class="modal-title">No Padding</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <!-- Full-width content like images -->
+      <img src="image.jpg" alt="Full width image" />
+    </div>
+  </div>
+</div>
+```
+
+### Centered Content
+
+Center content vertically and horizontally in the body.
+
+```html
+<div class="modal-backdrop modal-open">
+  <div class="modal modal-centered">
+    <div class="modal-header">
+      <h2 class="modal-title">Centered Content</h2>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <svg class="w-16 h-16 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <p>Operation completed successfully!</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary">Done</button>
+    </div>
+  </div>
+</div>
+```
+
+## JavaScript Control
+
+Modals can be controlled with JavaScript by toggling classes.
+
+```html
+<button id="openModal" class="btn btn-primary">Open Modal</button>
+
+<div id="myModal" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Controlled Modal</h2>
+      <button id="closeModal" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>This modal is controlled with JavaScript.</p>
+    </div>
+    <div class="modal-footer">
+      <button id="cancelModal" class="btn btn-text">Cancel</button>
+      <button class="btn btn-primary">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('myModal');
+  const openBtn = document.getElementById('openModal');
+  const closeBtn = document.getElementById('closeModal');
+  const cancelBtn = document.getElementById('cancelModal');
+
+  function openModal() {
+    modal.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+      closeModal();
+    }
+  });
+</script>
+```
+
+## Best Practices
+
+### Accessibility
+
+- Always include a close button with proper `aria-label`
+- Add focus trap to keep keyboard navigation within the modal
+- Return focus to trigger element when modal closes
+- Use `role="dialog"` and `aria-modal="true"` attributes
+- Provide descriptive titles with proper heading hierarchy
+
+```html
+<div class="modal-backdrop modal-open" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-title" class="modal-title">Accessible Modal</h2>
+      <button class="modal-close" aria-label="Close dialog">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Modal content with proper accessibility attributes.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Body Scroll Lock
+
+Prevent background scrolling when modal is open by adding `modal-open` class to body:
+
+```javascript
+// Open modal
+document.body.classList.add('modal-open');
+
+// Close modal
+document.body.classList.remove('modal-open');
+```
+
+### Modal Stacking
+
+Be cautious when stacking multiple modals. Consider using a single modal with dynamic content instead.
+
+### Mobile Responsiveness
+
+On mobile devices, modals automatically adjust to 95% viewport width. Consider using bottom-positioned modals for mobile-first designs.
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState, useEffect } from 'react';
+
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  position?: 'center' | 'top' | 'bottom';
+  animation?: 'scale' | 'slide-up' | 'slide-down' | 'zoom';
+}
+
+export function Modal({
+  isOpen,
+  onClose,
+  title,
+  children,
+  size = 'md',
+  position = 'center',
+  animation = 'scale'
+}: ModalProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    return () => document.body.classList.remove('modal-open');
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  const modalClasses = `modal modal-${size} ${animation !== 'scale' ? `modal-${animation}` : ''}`;
+  const backdropClasses = `modal-backdrop modal-backdrop-${position} modal-open`;
+
+  return (
+    <div className={backdropClasses} onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className={modalClasses}>
+        <div className="modal-header">
+          <h2 className="modal-title">{title}</h2>
+          <button className="modal-close" onClick={onClose} aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <div className="modal-body">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Usage
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
+        Open Modal
+      </button>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="My Modal"
+        size="lg"
+        animation="slide-up"
+      >
+        <p>Modal content goes here.</p>
+      </Modal>
+    </>
+  );
+}
+```
+
+### Vue
+
+```vue
+<template>
+  <Teleport to="body">
+    <div
+      v-if="isOpen"
+      :class="backdropClasses"
+      @click="handleBackdropClick"
+      role="dialog"
+      aria-modal="true"
+      :aria-labelledby="titleId"
+    >
+      <div :class="modalClasses">
+        <div class="modal-header">
+          <h2 :id="titleId" class="modal-title">{{ title }}</h2>
+          <button class="modal-close" @click="close" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <slot />
+        </div>
+        <div v-if="$slots.footer" class="modal-footer">
+          <slot name="footer" />
+        </div>
+      </div>
+    </div>
+  </Teleport>
+</template>
+
+<script setup>
+import { computed, watch, onMounted, onUnmounted } from 'vue';
+
+const props = defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  size: {
+    type: String,
+    default: 'md',
+    validator: (value) => ['sm', 'md', 'lg', 'xl', 'full'].includes(value)
+  },
+  position: {
+    type: String,
+    default: 'center',
+    validator: (value) => ['center', 'top', 'bottom'].includes(value)
+  },
+  animation: {
+    type: String,
+    default: 'scale',
+    validator: (value) => ['scale', 'slide-up', 'slide-down', 'zoom'].includes(value)
+  }
+});
+
+const emit = defineEmits(['close']);
+
+const titleId = `modal-title-${Math.random().toString(36).substr(2, 9)}`;
+
+const modalClasses = computed(() => {
+  const classes = ['modal', `modal-${props.size}`];
+  if (props.animation !== 'scale') {
+    classes.push(`modal-${props.animation}`);
+  }
+  return classes.join(' ');
+});
+
+const backdropClasses = computed(() =>
+  `modal-backdrop modal-backdrop-${props.position} ${props.isOpen ? 'modal-open' : ''}`
+);
+
+const close = () => emit('close');
+
+const handleBackdropClick = (e) => {
+  if (e.target === e.currentTarget) {
+    close();
+  }
+};
+
+const handleEscape = (e) => {
+  if (e.key === 'Escape' && props.isOpen) {
+    close();
+  }
+};
+
+watch(() => props.isOpen, (newValue) => {
+  if (newValue) {
+    document.body.classList.add('modal-open');
+  } else {
+    document.body.classList.remove('modal-open');
+  }
+});
+
+onMounted(() => {
+  document.addEventListener('keydown', handleEscape);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleEscape);
+  document.body.classList.remove('modal-open');
+});
+</script>
+
+<!-- Usage -->
+<template>
+  <button class="btn btn-primary" @click="isOpen = true">
+    Open Modal
+  </button>
+
+  <Modal
+    :is-open="isOpen"
+    title="My Modal"
+    size="lg"
+    animation="slide-up"
+    @close="isOpen = false"
+  >
+    <p>Modal content goes here.</p>
+
+    <template #footer>
+      <button class="btn btn-text" @click="isOpen = false">Cancel</button>
+      <button class="btn btn-primary" @click="handleConfirm">Confirm</button>
+    </template>
+  </Modal>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
+const handleConfirm = () => {
+  // Handle confirmation
+  isOpen.value = false;
+};
+</script>
+```
+
+## API Reference
+
+### Backdrop Classes
+
+| Class | Description |
+|-------|-------------|
+| `.modal-backdrop` | Base backdrop overlay (required) |
+| `.modal-open` | Opens the modal (shows backdrop and modal) |
+| `.modal-backdrop-center` | Centers modal in viewport (default) |
+| `.modal-backdrop-top` | Positions modal at top |
+| `.modal-backdrop-bottom` | Positions modal at bottom |
+| `.modal-backdrop-light` | Light colored backdrop |
+| `.modal-backdrop-blur` | Backdrop with blur effect |
+| `.modal-no-backdrop` | Removes backdrop background |
+
+### Modal Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.modal` | Base modal container (required) |
+| `.modal-sm` | Small modal (20rem width) |
+| `.modal-md` | Medium modal (32rem width, default) |
+| `.modal-lg` | Large modal (48rem width) |
+| `.modal-xl` | Extra large modal (64rem width) |
+| `.modal-full` | Full screen modal (95vw × 95vh) |
+
+### Animation Classes
+
+| Class | Description |
+|-------|-------------|
+| Default | Scale animation (no extra class needed) |
+| `.modal-slide-up` | Slides up from bottom |
+| `.modal-slide-down` | Slides down from top |
+| `.modal-zoom` | Zoom in animation |
+
+### Content Classes
+
+| Class | Description |
+|-------|-------------|
+| `.modal-header` | Modal header section |
+| `.modal-title` | Modal title text |
+| `.modal-close` | Close button |
+| `.modal-body` | Modal content area |
+| `.modal-footer` | Modal footer with actions |
+| `.modal-scrollable` | Makes body scrollable (max-height: 60vh) |
+| `.modal-no-padding` | Removes padding from sections |
+| `.modal-centered` | Centers content in body |
+
+### Body Class
+
+| Class | Description |
+|-------|-------------|
+| `body.modal-open` | Prevents body scroll when modal is open |
+
+## Related Components
+
+- [Button](/docs/en/components/button/) - Action buttons for modal footers
+- [Card](/docs/en/components/card/) - Similar container component
+- [Alert](/docs/en/components/alert/) - Inline notifications
+
+## See Also
+
+- [Dialog Design Guidelines (Material Design 3)](https://m3.material.io/components/dialogs/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
