@@ -176,7 +176,7 @@ Reference theme CSS variables directly:
 
 /* With opacity */
 .custom-overlay {
-  background-color: hsl(var(--color-surface) / 0.8);
+  background-color: color-mix(in srgb, hsl(var(--color-surface)) 80%, transparent);
 }
 ```
 
