@@ -1,0 +1,613 @@
+---
+title: Rating
+description: Material Design 3 rating component with stars, hearts, and customizable icons
+category: components
+order: 37
+published: true
+tags: ['rating', 'components', 'material-design', 'stars', 'feedback']
+---
+
+# Rating
+
+Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit their own rating. @duskmoon-dev/core provides a flexible and accessible rating component.
+
+## Basic Usage
+
+```html
+<div class="rating">
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Filled Rating
+
+Display a rating value with filled stars:
+
+```html
+<div class="rating">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Color Variants
+
+### Primary (Default)
+
+```html
+<div class="rating">
+  <span class="rating-item rating-item-primary-filled">★</span>
+  <span class="rating-item rating-item-primary-filled">★</span>
+  <span class="rating-item rating-item-primary-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+### Secondary
+
+```html
+<div class="rating rating-secondary">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+### Tertiary
+
+```html
+<div class="rating rating-tertiary">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+### Warning (Recommended for Ratings)
+
+The warning variant uses a golden/amber color, which is typical for rating displays:
+
+```html
+<div class="rating rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Sizes
+
+Four size variants are available:
+
+```html
+<!-- Small -->
+<div class="rating rating-sm rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+
+<!-- Medium (default) -->
+<div class="rating rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+
+<!-- Large -->
+<div class="rating rating-lg rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+
+<!-- Extra Large -->
+<div class="rating rating-xl rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Half Stars
+
+Display precise ratings with half-filled stars:
+
+```html
+<div class="rating rating-warning rating-precision-half">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-half">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Read-Only Rating
+
+Display a non-interactive rating:
+
+```html
+<div class="rating rating-readonly rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Disabled Rating
+
+Display a disabled rating:
+
+```html
+<div class="rating rating-disabled rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## With Label
+
+Add descriptive text to your rating:
+
+```html
+<div class="rating-label">
+  <span>Product Quality</span>
+  <div class="rating rating-warning">
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item">☆</span>
+  </div>
+</div>
+```
+
+## With Value Display
+
+Show the numeric rating value:
+
+```html
+<div class="rating rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-value">4.0</span>
+</div>
+```
+
+## With Review Count
+
+Display the number of reviews:
+
+```html
+<div class="rating rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-half">☆</span>
+  <span class="rating-value">4.5</span>
+  <span class="rating-count">(234 reviews)</span>
+</div>
+```
+
+## With Description
+
+Add contextual descriptions that update with the rating:
+
+```html
+<div class="rating-with-description">
+  <div class="rating rating-warning">
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item">☆</span>
+  </div>
+  <span class="rating-description">Excellent</span>
+</div>
+```
+
+## Interactive Rating
+
+Allow users to select their own rating:
+
+```html
+<div class="rating rating-interactive rating-warning">
+  <span class="rating-item" tabindex="0" role="radio" aria-label="1 star">☆</span>
+  <span class="rating-item" tabindex="0" role="radio" aria-label="2 stars">☆</span>
+  <span class="rating-item" tabindex="0" role="radio" aria-label="3 stars">☆</span>
+  <span class="rating-item" tabindex="0" role="radio" aria-label="4 stars">☆</span>
+  <span class="rating-item" tabindex="0" role="radio" aria-label="5 stars">☆</span>
+</div>
+```
+
+## Clearable Rating
+
+Add a clear button to reset the rating:
+
+```html
+<div class="rating rating-clearable rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <button class="rating-clear-btn" aria-label="Clear rating">✕</button>
+</div>
+```
+
+## Vertical Layout
+
+Display rating in a vertical orientation:
+
+```html
+<div class="rating rating-vertical rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Heart Icons
+
+Use heart icons instead of stars:
+
+```html
+<div class="rating rating-heart">
+  <span class="rating-item rating-item-filled">♥</span>
+  <span class="rating-item rating-item-filled">♥</span>
+  <span class="rating-item rating-item-filled">♥</span>
+  <span class="rating-item">♡</span>
+  <span class="rating-item">♡</span>
+</div>
+```
+
+## Precision Variants
+
+Control the precision of ratings:
+
+```html
+<!-- Full star precision (default) -->
+<div class="rating rating-precision-full rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+
+<!-- Half star precision -->
+<div class="rating rating-precision-half rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-half">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+
+<!-- Decimal precision -->
+<div class="rating rating-precision-decimal rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-value">3.7</span>
+</div>
+```
+
+## Best Practices
+
+### Accessibility
+
+- Use appropriate ARIA labels for interactive ratings
+- Ensure keyboard navigation is supported with `tabindex`
+- Provide `role="radio"` or `role="radiogroup"` for selectable ratings
+- Include visible labels or descriptions when possible
+
+```html
+<div role="radiogroup" aria-label="Rate this product">
+  <div class="rating rating-interactive rating-warning">
+    <span class="rating-item" tabindex="0" role="radio" aria-label="1 star">☆</span>
+    <span class="rating-item" tabindex="0" role="radio" aria-label="2 stars">☆</span>
+    <span class="rating-item" tabindex="0" role="radio" aria-label="3 stars">☆</span>
+    <span class="rating-item" tabindex="0" role="radio" aria-label="4 stars">☆</span>
+    <span class="rating-item" tabindex="0" role="radio" aria-label="5 stars">☆</span>
+  </div>
+</div>
+```
+
+### Display vs. Input
+
+- Use **read-only** ratings for displaying existing ratings
+- Use **interactive** ratings for collecting user input
+- Consider showing aggregate ratings separately from user input
+
+```html
+<!-- Display aggregate rating -->
+<div class="rating rating-readonly rating-warning">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-half">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-value">3.5</span>
+  <span class="rating-count">(128 reviews)</span>
+</div>
+
+<!-- Separate user input -->
+<div class="rating-label">
+  <span>Your rating:</span>
+  <div class="rating rating-interactive rating-warning">
+    <span class="rating-item" tabindex="0">☆</span>
+    <span class="rating-item" tabindex="0">☆</span>
+    <span class="rating-item" tabindex="0">☆</span>
+    <span class="rating-item" tabindex="0">☆</span>
+    <span class="rating-item" tabindex="0">☆</span>
+  </div>
+</div>
+```
+
+### Visual Clarity
+
+- Use the warning (golden) color for traditional star ratings
+- Provide clear visual feedback on hover and selection
+- Show the current value for clarity
+- Use half stars for more precise ratings
+
+### Context
+
+Always provide context for ratings:
+
+```html
+<article class="p-4 border rounded">
+  <h3>Product Review</h3>
+
+  <div class="rating-label">
+    <span>Overall</span>
+    <div class="rating rating-warning">
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-half">☆</span>
+      <span class="rating-value">4.5</span>
+    </div>
+  </div>
+
+  <div class="rating-label">
+    <span>Quality</span>
+    <div class="rating rating-sm rating-warning">
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+    </div>
+  </div>
+
+  <div class="rating-label">
+    <span>Value</span>
+    <div class="rating rating-sm rating-warning">
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item">☆</span>
+    </div>
+  </div>
+</article>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface RatingProps {
+  value: number;
+  max?: number;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'warning';
+  readonly?: boolean;
+  onChange?: (value: number) => void;
+}
+
+export function Rating({
+  value,
+  max = 5,
+  size = 'md',
+  color = 'warning',
+  readonly = false,
+  onChange
+}: RatingProps) {
+  const handleClick = (index: number) => {
+    if (!readonly && onChange) {
+      onChange(index + 1);
+    }
+  };
+
+  const classes = [
+    'rating',
+    size !== 'md' && `rating-${size}`,
+    color !== 'primary' && `rating-${color}`,
+    readonly && 'rating-readonly',
+    !readonly && 'rating-interactive'
+  ].filter(Boolean).join(' ');
+
+  return (
+    <div className={classes}>
+      {Array.from({ length: max }, (_, i) => (
+        <span
+          key={i}
+          className={`rating-item ${i < value ? 'rating-item-filled' : ''}`}
+          onClick={() => handleClick(i)}
+          tabIndex={readonly ? -1 : 0}
+          role={readonly ? undefined : 'radio'}
+          aria-label={`${i + 1} star${i > 0 ? 's' : ''}`}
+        >
+          {i < value ? '★' : '☆'}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+// Usage
+<Rating value={4} onChange={(val) => console.log('Rating:', val)} />
+<Rating value={3.5} readonly color="warning" />
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="classes">
+    <span
+      v-for="(_, i) in max"
+      :key="i"
+      :class="['rating-item', { 'rating-item-filled': i < value }]"
+      @click="handleClick(i)"
+      :tabindex="readonly ? -1 : 0"
+      :role="readonly ? undefined : 'radio'"
+      :aria-label="`${i + 1} star${i > 0 ? 's' : ''}`"
+    >
+      {{ i < value ? '★' : '☆' }}
+    </span>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  value: { type: Number, required: true },
+  max: { type: Number, default: 5 },
+  size: { type: String, default: 'md' },
+  color: { type: String, default: 'warning' },
+  readonly: { type: Boolean, default: false }
+});
+
+const emit = defineEmits(['update:value']);
+
+const classes = computed(() => [
+  'rating',
+  props.size !== 'md' && `rating-${props.size}`,
+  props.color !== 'primary' && `rating-${props.color}`,
+  props.readonly && 'rating-readonly',
+  !props.readonly && 'rating-interactive'
+].filter(Boolean).join(' '));
+
+const handleClick = (index) => {
+  if (!props.readonly) {
+    emit('update:value', index + 1);
+  }
+};
+</script>
+
+<!-- Usage -->
+<Rating :value="4" @update:value="handleRating" />
+<Rating :value="3.5" readonly color="warning" />
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.rating` | Base rating container (required) |
+| `.rating-item` | Individual rating icon (star, heart, etc.) |
+| `.rating-item-filled` | Filled/selected rating item |
+| `.rating-item-primary-filled` | Primary color filled item |
+| `.rating-item-half` | Half-filled rating item |
+| `.rating-primary` | Primary color variant |
+| `.rating-secondary` | Secondary color variant |
+| `.rating-tertiary` | Tertiary color variant |
+| `.rating-warning` | Warning/golden color (recommended) |
+| `.rating-sm` | Small size (1rem) |
+| `.rating-lg` | Large size (2rem) |
+| `.rating-xl` | Extra large size (2.5rem) |
+| `.rating-readonly` | Non-interactive display mode |
+| `.rating-disabled` | Disabled state |
+| `.rating-interactive` | Interactive/selectable mode |
+| `.rating-label` | Label container for rating |
+| `.rating-value` | Numeric value display |
+| `.rating-count` | Review count display |
+| `.rating-description` | Description text |
+| `.rating-with-description` | Container with description |
+| `.rating-vertical` | Vertical layout |
+| `.rating-clearable` | Rating with clear button |
+| `.rating-clear-btn` | Clear button element |
+| `.rating-heart` | Heart icon variant |
+| `.rating-precision-full` | Full star precision |
+| `.rating-precision-half` | Half star precision |
+| `.rating-precision-decimal` | Decimal precision |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Large, warning color, read-only rating -->
+<div class="rating rating-lg rating-warning rating-readonly">
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item rating-item-half">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+
+<!-- Small, interactive, secondary color rating -->
+<div class="rating rating-sm rating-secondary rating-interactive">
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+  <span class="rating-item">☆</span>
+</div>
+```
+
+## Related Components
+
+- [Button](/docs/en/components/button/) - Action triggers
+- [Badge](/docs/en/components/badge/) - Status indicators
+- [Chip](/docs/en/components/chip/) - Compact elements
+
+## See Also
+
+- [Material Design 3 - Selection Controls](https://m3.material.io/components/selection-controls/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
