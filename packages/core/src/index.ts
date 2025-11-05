@@ -80,7 +80,8 @@ const duskmoonuiPlugin = plugin.withOptions<Partial<DuskMoonUIOptions>>(
       theme: {
         extend: {
           colors: {
-            // Map color variables to Tailwind's color system
+            // Map color variables to Tailwind's color system using CSS variable references
+            // Note: values are stored as "H S L" (e.g., "38 92% 50%")
             primary: 'hsl(var(--color-primary) / <alpha-value>)',
             'primary-focus': 'hsl(var(--color-primary-focus) / <alpha-value>)',
             'primary-content': 'hsl(var(--color-primary-content) / <alpha-value>)',
