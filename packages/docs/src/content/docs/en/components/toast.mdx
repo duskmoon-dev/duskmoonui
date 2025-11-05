@@ -1,0 +1,758 @@
+---
+title: Toast
+description: Material Design 3 toast notification component with multiple variants, positions, and actions
+category: components
+order: 41
+published: true
+tags: ['toast', 'notification', 'snackbar', 'components', 'material-design']
+---
+
+# Toast
+
+Toast notifications provide brief messages about app processes at the bottom or top of the screen. They appear temporarily and shouldn't interrupt the user experience. @duskmoon-dev/core provides a complete set of Material Design 3-inspired toast variants.
+
+## Basic Usage
+
+```html
+<!-- Toast container (required wrapper) -->
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">This is a simple toast notification</div>
+    </div>
+  </div>
+</div>
+```
+
+## Container Positions
+
+Toast containers can be positioned in six different locations on the screen:
+
+### Top Positions
+
+```html
+<!-- Top Right (most common) -->
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Top right notification</div>
+    </div>
+  </div>
+</div>
+
+<!-- Top Left -->
+<div class="toast-container toast-container-top-left">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Top left notification</div>
+    </div>
+  </div>
+</div>
+
+<!-- Top Center -->
+<div class="toast-container toast-container-top-center">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Top center notification</div>
+    </div>
+  </div>
+</div>
+```
+
+### Bottom Positions
+
+```html
+<!-- Bottom Right -->
+<div class="toast-container toast-container-bottom-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Bottom right notification</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Left -->
+<div class="toast-container toast-container-bottom-left">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Bottom left notification</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Center -->
+<div class="toast-container toast-container-bottom-center">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Bottom center notification</div>
+    </div>
+  </div>
+</div>
+```
+
+## Toast Variants
+
+### Default Toast
+
+Basic toast with surface colors:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Default notification</div>
+    </div>
+  </div>
+</div>
+```
+
+### Info Toast
+
+For informational messages:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-info toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Information</div>
+      <div class="toast-message">Your changes have been saved</div>
+    </div>
+  </div>
+</div>
+```
+
+### Success Toast
+
+For successful operations:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-success toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Success</div>
+      <div class="toast-message">Profile updated successfully</div>
+    </div>
+  </div>
+</div>
+```
+
+### Warning Toast
+
+For warning messages:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-warning toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Warning</div>
+      <div class="toast-message">Your session will expire in 5 minutes</div>
+    </div>
+  </div>
+</div>
+```
+
+### Error Toast
+
+For error messages:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-error toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Error</div>
+      <div class="toast-message">Failed to save changes. Please try again.</div>
+    </div>
+  </div>
+</div>
+```
+
+## Toast with Icons
+
+Add icons to enhance visual communication:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-success toast-show">
+    <span class="toast-icon">✓</span>
+    <div class="toast-content">
+      <div class="toast-title">Success</div>
+      <div class="toast-message">Your changes have been saved</div>
+    </div>
+  </div>
+</div>
+
+<div class="toast toast-error toast-show">
+  <span class="toast-icon">✕</span>
+  <div class="toast-content">
+    <div class="toast-title">Error</div>
+    <div class="toast-message">Something went wrong</div>
+  </div>
+</div>
+
+<div class="toast toast-warning toast-show">
+  <span class="toast-icon">⚠</span>
+  <div class="toast-content">
+    <div class="toast-title">Warning</div>
+    <div class="toast-message">Please review your input</div>
+  </div>
+</div>
+
+<div class="toast toast-info toast-show">
+  <span class="toast-icon">ℹ</span>
+  <div class="toast-content">
+    <div class="toast-title">Info</div>
+    <div class="toast-message">New features available</div>
+  </div>
+</div>
+```
+
+### Using SVG Icons
+
+```html
+<div class="toast toast-success toast-show">
+  <svg class="toast-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+  </svg>
+  <div class="toast-content">
+    <div class="toast-title">Success</div>
+    <div class="toast-message">Operation completed</div>
+  </div>
+</div>
+```
+
+## Toast with Close Button
+
+Allow users to dismiss toasts manually:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Notification</div>
+      <div class="toast-message">This is a dismissible notification</div>
+    </div>
+    <button class="toast-close" aria-label="Close">×</button>
+  </div>
+</div>
+```
+
+## Toast with Actions
+
+Add action buttons for user interaction:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-info toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Update Available</div>
+      <div class="toast-message">A new version is available. Would you like to update?</div>
+      <button class="toast-action">Update Now</button>
+    </div>
+    <button class="toast-close" aria-label="Close">×</button>
+  </div>
+</div>
+```
+
+## Toast with Progress Bar
+
+Show auto-dismiss timing with a progress bar:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">This toast will auto-dismiss</div>
+    </div>
+    <button class="toast-close" aria-label="Close">×</button>
+    <div class="toast-progress" style="width: 100%; transition-duration: 5s;"></div>
+  </div>
+</div>
+```
+
+## Size Variants
+
+### Small Toast
+
+Compact toast for minimal information:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-sm toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Small notification</div>
+    </div>
+  </div>
+</div>
+```
+
+### Default Toast
+
+Standard size (default):
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Default size notification</div>
+    </div>
+  </div>
+</div>
+```
+
+### Large Toast
+
+For more prominent messages:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-lg toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Large Notification</div>
+      <div class="toast-message">This is a larger toast for important messages</div>
+    </div>
+  </div>
+</div>
+```
+
+## Compact Variant
+
+More condensed spacing for dense layouts:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-compact toast-show">
+    <span class="toast-icon">✓</span>
+    <div class="toast-content">
+      <div class="toast-title">Compact</div>
+      <div class="toast-message">Compact notification style</div>
+    </div>
+  </div>
+</div>
+```
+
+## Accent Border
+
+Add a colored accent border to the left side:
+
+```html
+<div class="toast-container toast-container-top-right">
+  <div class="toast toast-success toast-accent toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Success with Accent</div>
+      <div class="toast-message">Notice the colored border on the left</div>
+    </div>
+  </div>
+</div>
+```
+
+## Stacked Toasts
+
+Multiple toasts with stacked appearance:
+
+```html
+<div class="toast-container toast-container-stacked toast-container-top-right">
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">First notification</div>
+    </div>
+  </div>
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Second notification</div>
+    </div>
+  </div>
+  <div class="toast toast-show">
+    <div class="toast-content">
+      <div class="toast-message">Third notification</div>
+    </div>
+  </div>
+</div>
+```
+
+## Animation
+
+Toasts use the `toast-show` class to trigger entrance animations. Remove this class or remove the toast element to trigger exit animations.
+
+```html
+<!-- Hidden toast (initial state) -->
+<div class="toast">
+  <div class="toast-content">
+    <div class="toast-message">Hidden notification</div>
+  </div>
+</div>
+
+<!-- Visible toast (add toast-show class) -->
+<div class="toast toast-show">
+  <div class="toast-content">
+    <div class="toast-message">Visible notification</div>
+  </div>
+</div>
+```
+
+## Best Practices
+
+### Message Content
+
+- Keep messages brief and actionable
+- Use title for context, message for details
+- Avoid technical jargon in user-facing messages
+
+```html
+<!-- Good: Clear and concise -->
+<div class="toast toast-success toast-show">
+  <div class="toast-content">
+    <div class="toast-title">Saved</div>
+    <div class="toast-message">Your changes have been saved</div>
+  </div>
+</div>
+
+<!-- Avoid: Too verbose -->
+<div class="toast toast-success toast-show">
+  <div class="toast-content">
+    <div class="toast-title">Save Operation Successful</div>
+    <div class="toast-message">The system has successfully persisted all of your modifications to the database</div>
+  </div>
+</div>
+```
+
+### Timing
+
+- Brief messages: 3-4 seconds
+- Messages with actions: 5-7 seconds or user-dismissible
+- Error messages: User-dismissible (don't auto-hide)
+
+### Positioning
+
+- Use top-right for most notifications
+- Use bottom positions for less important updates
+- Use center positions sparingly for critical messages
+
+### Visual Hierarchy
+
+```html
+<!-- Use semantic colors appropriately -->
+<div class="toast-container toast-container-top-right">
+  <!-- Error: High priority, requires attention -->
+  <div class="toast toast-error toast-show">
+    <div class="toast-content">
+      <div class="toast-title">Error</div>
+      <div class="toast-message">Payment failed</div>
+    </div>
+    <button class="toast-close">×</button>
+  </div>
+
+  <!-- Success: Positive feedback -->
+  <div class="toast toast-success toast-show">
+    <div class="toast-content">
+      <div class="toast-message">File uploaded</div>
+    </div>
+  </div>
+
+  <!-- Info: Neutral information -->
+  <div class="toast toast-info toast-show">
+    <div class="toast-content">
+      <div class="toast-message">New messages available</div>
+    </div>
+  </div>
+</div>
+```
+
+### Accessibility
+
+- Include close buttons for important messages
+- Use `aria-label` on close buttons
+- Ensure color isn't the only indicator (use icons)
+- Consider `role="alert"` for important notifications
+
+```html
+<div class="toast toast-error toast-show" role="alert" aria-live="assertive">
+  <span class="toast-icon">✕</span>
+  <div class="toast-content">
+    <div class="toast-title">Error</div>
+    <div class="toast-message">Failed to process payment</div>
+  </div>
+  <button class="toast-close" aria-label="Dismiss error notification">×</button>
+</div>
+```
+
+## Framework Examples
+
+### React Toast System
+
+```tsx
+import { useState, useEffect } from 'react';
+
+interface Toast {
+  id: string;
+  type: 'info' | 'success' | 'warning' | 'error';
+  title?: string;
+  message: string;
+  duration?: number;
+}
+
+export function ToastContainer() {
+  const [toasts, setToasts] = useState<Toast[]>([]);
+
+  const addToast = (toast: Omit<Toast, 'id'>) => {
+    const id = Math.random().toString(36).substr(2, 9);
+    setToasts((prev) => [...prev, { ...toast, id }]);
+
+    if (toast.duration !== 0) {
+      setTimeout(() => {
+        removeToast(id);
+      }, toast.duration || 5000);
+    }
+  };
+
+  const removeToast = (id: string) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  return (
+    <div className="toast-container toast-container-top-right">
+      {toasts.map((toast) => (
+        <div key={toast.id} className={`toast toast-${toast.type} toast-show`}>
+          <div className="toast-content">
+            {toast.title && <div className="toast-title">{toast.title}</div>}
+            <div className="toast-message">{toast.message}</div>
+          </div>
+          <button
+            className="toast-close"
+            onClick={() => removeToast(toast.id)}
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Usage
+function App() {
+  return (
+    <div>
+      <button onClick={() => addToast({ type: 'success', message: 'Saved!' })}>
+        Show Toast
+      </button>
+      <ToastContainer />
+    </div>
+  );
+}
+```
+
+### Vue Toast System
+
+```vue
+<template>
+  <div class="toast-container toast-container-top-right">
+    <div
+      v-for="toast in toasts"
+      :key="toast.id"
+      :class="['toast', `toast-${toast.type}`, 'toast-show']"
+    >
+      <div class="toast-content">
+        <div v-if="toast.title" class="toast-title">{{ toast.title }}</div>
+        <div class="toast-message">{{ toast.message }}</div>
+      </div>
+      <button class="toast-close" @click="removeToast(toast.id)" aria-label="Close">
+        ×
+      </button>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const toasts = ref([]);
+
+function addToast({ type, title, message, duration = 5000 }) {
+  const id = Math.random().toString(36).substr(2, 9);
+  toasts.value.push({ id, type, title, message });
+
+  if (duration > 0) {
+    setTimeout(() => {
+      removeToast(id);
+    }, duration);
+  }
+}
+
+function removeToast(id) {
+  toasts.value = toasts.value.filter((t) => t.id !== id);
+}
+
+// Expose for parent components
+defineExpose({ addToast });
+</script>
+
+<!-- Usage -->
+<template>
+  <div>
+    <button @click="showToast">Show Toast</button>
+    <ToastContainer ref="toastContainer" />
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const toastContainer = ref(null);
+
+function showToast() {
+  toastContainer.value?.addToast({
+    type: 'success',
+    message: 'Operation successful!'
+  });
+}
+</script>
+```
+
+### Vanilla JavaScript
+
+```javascript
+class ToastManager {
+  constructor(position = 'top-right') {
+    this.container = document.createElement('div');
+    this.container.className = `toast-container toast-container-${position}`;
+    document.body.appendChild(this.container);
+  }
+
+  show({ type = 'info', title, message, duration = 5000, closable = true }) {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+
+    let html = '<div class="toast-content">';
+    if (title) html += `<div class="toast-title">${title}</div>`;
+    html += `<div class="toast-message">${message}</div>`;
+    html += '</div>';
+
+    if (closable) {
+      html += '<button class="toast-close" aria-label="Close">×</button>';
+    }
+
+    toast.innerHTML = html;
+    this.container.appendChild(toast);
+
+    // Trigger show animation
+    setTimeout(() => toast.classList.add('toast-show'), 10);
+
+    // Add close handler
+    if (closable) {
+      const closeBtn = toast.querySelector('.toast-close');
+      closeBtn.addEventListener('click', () => this.remove(toast));
+    }
+
+    // Auto-dismiss
+    if (duration > 0) {
+      setTimeout(() => this.remove(toast), duration);
+    }
+
+    return toast;
+  }
+
+  remove(toast) {
+    toast.classList.remove('toast-show');
+    setTimeout(() => toast.remove(), 300);
+  }
+
+  success(message, options = {}) {
+    return this.show({ ...options, type: 'success', message });
+  }
+
+  error(message, options = {}) {
+    return this.show({ ...options, type: 'error', message, duration: 0 });
+  }
+
+  warning(message, options = {}) {
+    return this.show({ ...options, type: 'warning', message });
+  }
+
+  info(message, options = {}) {
+    return this.show({ ...options, type: 'info', message });
+  }
+}
+
+// Usage
+const toast = new ToastManager('top-right');
+
+toast.success('Changes saved successfully!');
+toast.error('Failed to load data', { title: 'Error' });
+toast.warning('Your session will expire soon', { duration: 7000 });
+toast.info('New features available', { title: 'Update' });
+```
+
+## API Reference
+
+### Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.toast-container` | Base container for toasts (required) |
+| `.toast-container-top-right` | Position: top right corner |
+| `.toast-container-top-left` | Position: top left corner |
+| `.toast-container-top-center` | Position: top center |
+| `.toast-container-bottom-right` | Position: bottom right corner |
+| `.toast-container-bottom-left` | Position: bottom left corner |
+| `.toast-container-bottom-center` | Position: bottom center |
+| `.toast-container-stacked` | Apply stacked appearance to multiple toasts |
+
+### Toast Classes
+
+| Class | Description |
+|-------|-------------|
+| `.toast` | Base toast styles (required) |
+| `.toast-show` | Apply to show the toast with animation |
+| `.toast-info` | Info variant (primary colors) |
+| `.toast-success` | Success variant (success colors) |
+| `.toast-warning` | Warning variant (warning colors) |
+| `.toast-error` | Error variant (error colors) |
+| `.toast-sm` | Small size variant |
+| `.toast-lg` | Large size variant |
+| `.toast-compact` | Compact spacing variant |
+| `.toast-accent` | Add colored accent border on left |
+
+### Content Classes
+
+| Class | Description |
+|-------|-------------|
+| `.toast-icon` | Icon container |
+| `.toast-content` | Main content wrapper |
+| `.toast-title` | Toast title/heading |
+| `.toast-message` | Toast message text |
+| `.toast-close` | Close/dismiss button |
+| `.toast-action` | Action button |
+| `.toast-progress` | Progress bar for auto-dismiss timing |
+
+### Combinations
+
+```html
+<!-- Small success toast with accent -->
+<div class="toast toast-success toast-sm toast-accent toast-show">
+  <div class="toast-content">
+    <div class="toast-message">Quick success message</div>
+  </div>
+</div>
+
+<!-- Large error toast with icon and close button -->
+<div class="toast toast-error toast-lg toast-show">
+  <span class="toast-icon">✕</span>
+  <div class="toast-content">
+    <div class="toast-title">Critical Error</div>
+    <div class="toast-message">This is a detailed error message</div>
+  </div>
+  <button class="toast-close">×</button>
+</div>
+```
+
+## Related Components
+
+- [Alert](/docs/en/components/alert/) - Prominent messages and announcements
+- [Badge](/docs/en/components/badge/) - Notification indicators
+- [Dialog](/docs/en/components/dialog/) - Modal dialogs
+
+## See Also
+
+- [Snackbar Design Guidelines (Material Design 3)](https://m3.material.io/components/snackbar/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
