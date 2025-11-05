@@ -1,0 +1,658 @@
+---
+title: Progress
+description: Material Design 3 progress indicators with linear and circular variants
+category: components
+order: 14
+published: true
+tags: ['progress', 'components', 'material-design', 'indicators']
+---
+
+# Progress
+
+Progress indicators inform users about the status of ongoing processes, such as loading data, submitting a form, or saving updates. @duskmoon-dev/core provides both linear and circular progress indicators following Material Design 3 guidelines.
+
+## Basic Usage
+
+### Linear Progress (Determinate)
+
+```html
+<div class="progress">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+```
+
+### Circular Progress (Determinate)
+
+```html
+<div class="progress-circular">
+  <svg class="progress-circular-svg" width="48" height="48">
+    <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="24"
+      cy="24"
+      r="20"
+      stroke-dasharray="125.6"
+      stroke-dashoffset="50.24"
+    ></circle>
+  </svg>
+</div>
+```
+
+## Linear Progress
+
+### Determinate Progress
+
+Use determinate progress when the loading time is known:
+
+```html
+<!-- 25% progress -->
+<div class="progress">
+  <div class="progress-bar" style="width: 25%;"></div>
+</div>
+
+<!-- 50% progress -->
+<div class="progress">
+  <div class="progress-bar" style="width: 50%;"></div>
+</div>
+
+<!-- 75% progress -->
+<div class="progress">
+  <div class="progress-bar" style="width: 75%;"></div>
+</div>
+
+<!-- 100% progress -->
+<div class="progress">
+  <div class="progress-bar" style="width: 100%;"></div>
+</div>
+```
+
+### Indeterminate Progress
+
+Use indeterminate progress when the loading time is unknown:
+
+```html
+<div class="progress progress-indeterminate">
+  <div class="progress-bar"></div>
+</div>
+```
+
+### Progress with Label
+
+Display the progress percentage:
+
+```html
+<div class="progress-labeled">
+  <div class="progress" style="flex: 1;">
+    <div class="progress-bar" style="width: 60%;"></div>
+  </div>
+  <span class="progress-label">60%</span>
+</div>
+```
+
+### Buffer Progress
+
+For media players showing buffered content:
+
+```html
+<div class="progress progress-buffer">
+  <div class="progress-buffer-bar" style="width: 80%;"></div>
+  <div class="progress-bar" style="width: 45%;"></div>
+</div>
+```
+
+## Circular Progress
+
+### Determinate Circular
+
+```html
+<div class="progress-circular">
+  <svg class="progress-circular-svg" width="48" height="48">
+    <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="24"
+      cy="24"
+      r="20"
+      stroke-dasharray="125.6"
+      stroke-dashoffset="75.36"
+    ></circle>
+  </svg>
+</div>
+```
+
+Note: For a circle with radius 20, the circumference is `2πr = 125.6`. To show 40% progress, set `stroke-dashoffset` to `125.6 * (1 - 0.4) = 75.36`.
+
+### Indeterminate Circular
+
+```html
+<div class="progress-circular progress-circular-indeterminate">
+  <svg class="progress-circular-svg" width="48" height="48">
+    <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="24"
+      cy="24"
+      r="20"
+      stroke-dasharray="125.6"
+    ></circle>
+  </svg>
+</div>
+```
+
+### Circular with Percentage Label
+
+```html
+<div class="progress-circular">
+  <svg class="progress-circular-svg" width="48" height="48">
+    <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="24"
+      cy="24"
+      r="20"
+      stroke-dasharray="125.6"
+      stroke-dashoffset="37.68"
+    ></circle>
+  </svg>
+  <span class="progress-circular-label">70%</span>
+</div>
+```
+
+## Color Variants
+
+Progress indicators support all theme colors:
+
+### Primary (Default)
+
+```html
+<div class="progress">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+```
+
+### Secondary
+
+```html
+<div class="progress progress-secondary">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+```
+
+### Tertiary
+
+```html
+<div class="progress progress-tertiary">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+```
+
+### Semantic Colors
+
+Use semantic colors to indicate status:
+
+```html
+<!-- Success -->
+<div class="progress progress-success">
+  <div class="progress-bar" style="width: 100%;"></div>
+</div>
+
+<!-- Error -->
+<div class="progress progress-error">
+  <div class="progress-bar" style="width: 35%;"></div>
+</div>
+
+<!-- Warning -->
+<div class="progress progress-warning">
+  <div class="progress-bar" style="width: 75%;"></div>
+</div>
+
+<!-- Info -->
+<div class="progress progress-info">
+  <div class="progress-bar" style="width: 50%;"></div>
+</div>
+```
+
+## Size Variants
+
+### Linear Progress Sizes
+
+```html
+<!-- Small -->
+<div class="progress progress-sm">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+
+<!-- Medium (default) -->
+<div class="progress progress-md">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+
+<!-- Large -->
+<div class="progress progress-lg">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+
+<!-- Extra Large -->
+<div class="progress progress-xl">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+```
+
+### Circular Progress Sizes
+
+```html
+<!-- Small (32px) -->
+<div class="progress-circular progress-circular-sm">
+  <svg class="progress-circular-svg" width="32" height="32">
+    <circle class="progress-circular-track" cx="16" cy="16" r="12"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="16"
+      cy="16"
+      r="12"
+      stroke-dasharray="75.4"
+      stroke-dashoffset="30.16"
+    ></circle>
+  </svg>
+</div>
+
+<!-- Medium (48px - default) -->
+<div class="progress-circular progress-circular-md">
+  <svg class="progress-circular-svg" width="48" height="48">
+    <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="24"
+      cy="24"
+      r="20"
+      stroke-dasharray="125.6"
+      stroke-dashoffset="50.24"
+    ></circle>
+  </svg>
+</div>
+
+<!-- Large (64px) -->
+<div class="progress-circular progress-circular-lg">
+  <svg class="progress-circular-svg" width="64" height="64">
+    <circle class="progress-circular-track" cx="32" cy="32" r="28"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="32"
+      cy="32"
+      r="28"
+      stroke-dasharray="175.84"
+      stroke-dashoffset="70.34"
+    ></circle>
+  </svg>
+</div>
+
+<!-- Extra Large (96px) -->
+<div class="progress-circular progress-circular-xl">
+  <svg class="progress-circular-svg" width="96" height="96">
+    <circle class="progress-circular-track" cx="48" cy="48" r="44"></circle>
+    <circle
+      class="progress-circular-bar"
+      cx="48"
+      cy="48"
+      r="44"
+      stroke-dasharray="276.32"
+      stroke-dashoffset="110.53"
+    ></circle>
+  </svg>
+</div>
+```
+
+## Best Practices
+
+### When to Use
+
+**Linear Progress:**
+- File uploads/downloads
+- Form submissions
+- Page loading
+- Multi-step processes
+
+**Circular Progress:**
+- Loading content in a specific area
+- Button loading states
+- Refreshing data
+- Compact spaces
+
+### Determinate vs Indeterminate
+
+**Use Determinate When:**
+- You can calculate the percentage of completion
+- Users need to know how long they'll wait
+- The process has clear steps or milestones
+
+**Use Indeterminate When:**
+- The loading time is unknown or variable
+- The process depends on external factors (network speed, server response)
+- Initial loading before progress can be calculated
+
+### Accessibility
+
+- Provide appropriate ARIA attributes for screen readers
+- Announce progress updates for long-running operations
+- Use semantic HTML where possible
+
+```html
+<!-- Linear progress with ARIA -->
+<div
+  class="progress"
+  role="progressbar"
+  aria-valuenow="60"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-label="Upload progress"
+>
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+
+<!-- Indeterminate progress -->
+<div
+  class="progress progress-indeterminate"
+  role="progressbar"
+  aria-label="Loading content"
+  aria-busy="true"
+>
+  <div class="progress-bar"></div>
+</div>
+```
+
+### Visual Feedback
+
+- Always provide visual feedback for user actions
+- Use appropriate colors to indicate status (success, error, etc.)
+- Consider adding labels for clarity when showing specific percentages
+- Ensure sufficient contrast for accessibility
+
+## Framework Examples
+
+### React
+
+```tsx
+interface ProgressProps {
+  value?: number;
+  max?: number;
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'error' | 'warning' | 'info';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  indeterminate?: boolean;
+  label?: boolean;
+}
+
+export function LinearProgress({
+  value = 0,
+  max = 100,
+  variant = 'primary',
+  size = 'md',
+  indeterminate = false,
+  label = false
+}: ProgressProps) {
+  const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
+  const classes = [
+    'progress',
+    variant !== 'primary' && `progress-${variant}`,
+    size !== 'md' && `progress-${size}`,
+    indeterminate && 'progress-indeterminate'
+  ].filter(Boolean).join(' ');
+
+  const content = (
+    <div className={classes}>
+      <div
+        className="progress-bar"
+        style={!indeterminate ? { width: `${percentage}%` } : undefined}
+      />
+    </div>
+  );
+
+  if (label && !indeterminate) {
+    return (
+      <div className="progress-labeled">
+        {content}
+        <span className="progress-label">{Math.round(percentage)}%</span>
+      </div>
+    );
+  }
+
+  return content;
+}
+
+interface CircularProgressProps {
+  value?: number;
+  max?: number;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  indeterminate?: boolean;
+  label?: boolean;
+}
+
+export function CircularProgress({
+  value = 0,
+  max = 100,
+  size = 'md',
+  indeterminate = false,
+  label = false
+}: CircularProgressProps) {
+  const sizes = { sm: 32, md: 48, lg: 64, xl: 96 };
+  const radii = { sm: 12, md: 20, lg: 28, xl: 44 };
+
+  const dimension = sizes[size];
+  const radius = radii[size];
+  const center = dimension / 2;
+  const circumference = 2 * Math.PI * radius;
+  const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
+  const offset = circumference * (1 - percentage / 100);
+
+  return (
+    <div className={`progress-circular progress-circular-${size} ${indeterminate ? 'progress-circular-indeterminate' : ''}`}>
+      <svg className="progress-circular-svg" width={dimension} height={dimension}>
+        <circle className="progress-circular-track" cx={center} cy={center} r={radius} />
+        <circle
+          className="progress-circular-bar"
+          cx={center}
+          cy={center}
+          r={radius}
+          strokeDasharray={circumference}
+          strokeDashoffset={!indeterminate ? offset : undefined}
+        />
+      </svg>
+      {label && !indeterminate && (
+        <span className="progress-circular-label">{Math.round(percentage)}%</span>
+      )}
+    </div>
+  );
+}
+
+// Usage
+<LinearProgress value={60} label />
+<CircularProgress value={75} size="lg" label />
+<LinearProgress indeterminate />
+```
+
+### Vue
+
+```vue
+<template>
+  <div v-if="label && !indeterminate" class="progress-labeled">
+    <div :class="progressClasses">
+      <div
+        class="progress-bar"
+        :style="!indeterminate ? { width: `${percentage}%` } : undefined"
+      />
+    </div>
+    <span class="progress-label">{{ Math.round(percentage) }}%</span>
+  </div>
+  <div v-else :class="progressClasses">
+    <div
+      class="progress-bar"
+      :style="!indeterminate ? { width: `${percentage}%` } : undefined"
+    />
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  value: {
+    type: Number,
+    default: 0
+  },
+  max: {
+    type: Number,
+    default: 100
+  },
+  variant: {
+    type: String,
+    default: 'primary'
+  },
+  size: {
+    type: String,
+    default: 'md'
+  },
+  indeterminate: {
+    type: Boolean,
+    default: false
+  },
+  label: {
+    type: Boolean,
+    default: false
+  }
+});
+
+const percentage = computed(() => {
+  return Math.min(Math.max((props.value / props.max) * 100, 0), 100);
+});
+
+const progressClasses = computed(() => {
+  return [
+    'progress',
+    props.variant !== 'primary' && `progress-${props.variant}`,
+    props.size !== 'md' && `progress-${props.size}`,
+    props.indeterminate && 'progress-indeterminate'
+  ].filter(Boolean).join(' ');
+});
+</script>
+
+<!-- Usage -->
+<LinearProgress :value="60" label />
+<LinearProgress indeterminate />
+```
+
+### JavaScript
+
+```javascript
+// Helper function to update progress
+function updateProgress(element, value, max = 100) {
+  const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
+  const bar = element.querySelector('.progress-bar');
+  if (bar) {
+    bar.style.width = `${percentage}%`;
+  }
+
+  // Update label if present
+  const label = element.parentElement?.querySelector('.progress-label');
+  if (label) {
+    label.textContent = `${Math.round(percentage)}%`;
+  }
+
+  // Update ARIA
+  element.setAttribute('aria-valuenow', value);
+}
+
+// Helper for circular progress
+function updateCircularProgress(element, value, max = 100) {
+  const bar = element.querySelector('.progress-circular-bar');
+  if (!bar) return;
+
+  const radius = parseFloat(bar.getAttribute('r'));
+  const circumference = 2 * Math.PI * radius;
+  const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
+  const offset = circumference * (1 - percentage / 100);
+
+  bar.setAttribute('stroke-dasharray', circumference);
+  bar.setAttribute('stroke-dashoffset', offset);
+
+  // Update label if present
+  const label = element.querySelector('.progress-circular-label');
+  if (label) {
+    label.textContent = `${Math.round(percentage)}%`;
+  }
+}
+
+// Usage
+const progress = document.querySelector('.progress');
+updateProgress(progress, 75); // Set to 75%
+
+const circularProgress = document.querySelector('.progress-circular');
+updateCircularProgress(circularProgress, 60); // Set to 60%
+```
+
+## API Reference
+
+### Linear Progress Classes
+
+| Class | Description |
+|-------|-------------|
+| `.progress` | Base linear progress container (required) |
+| `.progress-bar` | Progress bar element (required) |
+| `.progress-indeterminate` | Indeterminate animation |
+| `.progress-primary` | Primary color (default) |
+| `.progress-secondary` | Secondary color |
+| `.progress-tertiary` | Tertiary color |
+| `.progress-success` | Success semantic color |
+| `.progress-error` | Error semantic color |
+| `.progress-warning` | Warning semantic color |
+| `.progress-info` | Info semantic color |
+| `.progress-sm` | Small size (2px height) |
+| `.progress-md` | Medium size (4px height, default) |
+| `.progress-lg` | Large size (8px height) |
+| `.progress-xl` | Extra large size (12px height) |
+| `.progress-labeled` | Container for progress with label |
+| `.progress-label` | Label element for percentage display |
+| `.progress-buffer` | Buffer progress container |
+| `.progress-buffer-bar` | Buffer bar element |
+
+### Circular Progress Classes
+
+| Class | Description |
+|-------|-------------|
+| `.progress-circular` | Base circular progress container (required) |
+| `.progress-circular-svg` | SVG element (required) |
+| `.progress-circular-track` | Background circle track |
+| `.progress-circular-bar` | Progress circle element |
+| `.progress-circular-indeterminate` | Indeterminate animation |
+| `.progress-circular-sm` | Small size (32px) |
+| `.progress-circular-md` | Medium size (48px, default) |
+| `.progress-circular-lg` | Large size (64px) |
+| `.progress-circular-xl` | Extra large size (96px) |
+| `.progress-circular-label` | Label element for percentage display |
+
+### Circular Progress Calculations
+
+For determinate circular progress, calculate the `stroke-dashoffset`:
+
+```javascript
+const radius = 20; // or your circle's radius
+const circumference = 2 * Math.PI * radius; // e.g., 125.6 for r=20
+const percentage = 60; // your progress percentage
+const offset = circumference * (1 - percentage / 100);
+```
+
+Circle radii by size:
+- **sm**: radius = 12, circumference ≈ 75.4
+- **md**: radius = 20, circumference ≈ 125.6
+- **lg**: radius = 28, circumference ≈ 175.84
+- **xl**: radius = 44, circumference ≈ 276.32
+
+## Related Components
+
+- [Button](/docs/en/components/button/) - For loading states
+- [Spinner](/docs/en/components/spinner/) - Alternative loading indicator
+- [Badge](/docs/en/components/badge/) - Status indicators
+
+## See Also
+
+- [Progress Indicators (Material Design 3)](https://m3.material.io/components/progress-indicators/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
