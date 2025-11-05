@@ -1,0 +1,581 @@
+---
+title: Breadcrumbs
+description: Material Design 3 breadcrumbs component for navigation hierarchy
+category: components
+order: 19
+published: true
+tags: ['breadcrumbs', 'navigation', 'components', 'material-design']
+---
+
+# Breadcrumbs
+
+Breadcrumbs show the current location within a navigational hierarchy. They help users understand where they are and provide quick access to parent pages.
+
+## Basic Usage
+
+```html
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/products" class="breadcrumb-link">Products</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Current Page</span>
+</nav>
+```
+
+## Separator Variants
+
+Choose from different separator styles to match your design:
+
+### Slash Separator (Default)
+
+```html
+<nav class="breadcrumbs breadcrumbs-slash">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+### Chevron Separator
+
+```html
+<nav class="breadcrumbs breadcrumbs-chevron">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+### Dot Separator
+
+```html
+<nav class="breadcrumbs breadcrumbs-dot">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+### Arrow Separator
+
+```html
+<nav class="breadcrumbs breadcrumbs-arrow">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+## Breadcrumbs with Icons
+
+Add icons to breadcrumb items for better visual clarity:
+
+```html
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">
+    <svg class="breadcrumb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    </svg>
+    Home
+  </a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/products" class="breadcrumb-link">
+    <svg class="breadcrumb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>
+    Products
+  </a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">
+    <svg class="breadcrumb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+    Product Details
+  </span>
+</nav>
+```
+
+## Color Variants
+
+Use color variants to highlight active breadcrumbs:
+
+### Primary
+
+```html
+<nav class="breadcrumbs breadcrumbs-primary">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Components</span>
+</nav>
+```
+
+### Secondary
+
+```html
+<nav class="breadcrumbs breadcrumbs-secondary">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Components</span>
+</nav>
+```
+
+### Tertiary
+
+```html
+<nav class="breadcrumbs breadcrumbs-tertiary">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Components</span>
+</nav>
+```
+
+## Size Variants
+
+Adjust breadcrumb sizes for different layouts:
+
+### Small
+
+```html
+<nav class="breadcrumbs breadcrumbs-sm">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+### Default
+
+```html
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+### Large
+
+```html
+<nav class="breadcrumbs breadcrumbs-lg">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+## Contained Variant
+
+Add background container for emphasis:
+
+```html
+<nav class="breadcrumbs breadcrumbs-contained">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
+</nav>
+```
+
+## No Wrap Variant
+
+Prevent wrapping for horizontal scrolling:
+
+```html
+<nav class="breadcrumbs breadcrumbs-nowrap">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/products" class="breadcrumb-link">Products</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/products/electronics" class="breadcrumb-link">Electronics</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/products/electronics/computers" class="breadcrumb-link">Computers</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Laptops</span>
+</nav>
+```
+
+## Collapsed Breadcrumbs (with Ellipsis)
+
+For long navigation paths, use ellipsis to show only key items:
+
+```html
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <button class="breadcrumb-ellipsis" aria-label="Show more breadcrumbs"></button>
+  <span class="breadcrumb-separator"></span>
+  <a href="/products/electronics/computers" class="breadcrumb-link">Computers</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Laptops</span>
+</nav>
+```
+
+## Disabled State
+
+Mark breadcrumb items as disabled:
+
+```html
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-disabled">Disabled</span>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Current</span>
+</nav>
+```
+
+## Best Practices
+
+### Hierarchy Representation
+
+Use breadcrumbs to show the hierarchical structure of your site:
+
+```html
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">
+    <svg class="breadcrumb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    </svg>
+    Home
+  </a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/category" class="breadcrumb-link">Category</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/category/subcategory" class="breadcrumb-link">Subcategory</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Current Page</span>
+</nav>
+```
+
+### Maximum Items
+
+For deep hierarchies, collapse middle items:
+
+```html
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <button class="breadcrumb-ellipsis"
+          onclick="showMoreBreadcrumbs()"
+          aria-label="Show hidden breadcrumbs"></button>
+  <span class="breadcrumb-separator"></span>
+  <a href="/parent" class="breadcrumb-link">Parent</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Current</span>
+</nav>
+```
+
+### Accessibility
+
+- Use semantic `<nav>` element with `aria-label`
+- Provide meaningful link text
+- Mark current page as `aria-current="page"`
+- Ensure sufficient color contrast
+
+```html
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator" aria-hidden="true"></span>
+  <a href="/docs" class="breadcrumb-link">Documentation</a>
+  <span class="breadcrumb-separator" aria-hidden="true"></span>
+  <span class="breadcrumb-item breadcrumb-item-active" aria-current="page">Breadcrumbs</span>
+</nav>
+```
+
+### Mobile Considerations
+
+Use smaller sizes and no-wrap variant for mobile:
+
+```html
+<nav class="breadcrumbs breadcrumbs-sm breadcrumbs-nowrap md:breadcrumbs-md">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Components</span>
+</nav>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+  icon?: React.ReactNode;
+}
+
+interface BreadcrumbsProps {
+  items: BreadcrumbItem[];
+  separator?: 'slash' | 'chevron' | 'dot' | 'arrow';
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'secondary' | 'tertiary';
+  contained?: boolean;
+  maxItems?: number;
+}
+
+export function Breadcrumbs({
+  items,
+  separator = 'slash',
+  size,
+  color,
+  contained = false,
+  maxItems
+}: BreadcrumbsProps) {
+  const displayItems = maxItems && items.length > maxItems
+    ? [...items.slice(0, 1), { label: '...', collapsed: true }, ...items.slice(-2)]
+    : items;
+
+  const classes = [
+    'breadcrumbs',
+    `breadcrumbs-${separator}`,
+    size && `breadcrumbs-${size}`,
+    color && `breadcrumbs-${color}`,
+    contained && 'breadcrumbs-contained'
+  ].filter(Boolean).join(' ');
+
+  return (
+    <nav className={classes} aria-label="Breadcrumb navigation">
+      {displayItems.map((item, index) => (
+        <React.Fragment key={index}>
+          {item.collapsed ? (
+            <button className="breadcrumb-ellipsis" aria-label="Show more breadcrumbs" />
+          ) : item.href ? (
+            <a href={item.href} className="breadcrumb-link">
+              {item.icon}
+              {item.label}
+            </a>
+          ) : (
+            <span className="breadcrumb-item breadcrumb-item-active" aria-current="page">
+              {item.icon}
+              {item.label}
+            </span>
+          )}
+          {index < displayItems.length - 1 && (
+            <span className="breadcrumb-separator" aria-hidden="true"></span>
+          )}
+        </React.Fragment>
+      ))}
+    </nav>
+  );
+}
+
+// Usage
+<Breadcrumbs
+  items={[
+    { label: 'Home', href: '/' },
+    { label: 'Docs', href: '/docs' },
+    { label: 'Components' }
+  ]}
+  separator="chevron"
+  color="primary"
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <nav :class="classes" aria-label="Breadcrumb navigation">
+    <template v-for="(item, index) in displayItems" :key="index">
+      <button
+        v-if="item.collapsed"
+        class="breadcrumb-ellipsis"
+        aria-label="Show more breadcrumbs"
+        @click="expandAll"
+      />
+      <a
+        v-else-if="item.href"
+        :href="item.href"
+        class="breadcrumb-link"
+      >
+        <component v-if="item.icon" :is="item.icon" class="breadcrumb-icon" />
+        {{ item.label }}
+      </a>
+      <span
+        v-else
+        class="breadcrumb-item breadcrumb-item-active"
+        aria-current="page"
+      >
+        <component v-if="item.icon" :is="item.icon" class="breadcrumb-icon" />
+        {{ item.label }}
+      </span>
+      <span
+        v-if="index < displayItems.length - 1"
+        class="breadcrumb-separator"
+        aria-hidden="true"
+      />
+    </template>
+  </nav>
+</template>
+
+<script setup>
+import { computed, ref } from 'vue'
+
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true
+  },
+  separator: {
+    type: String,
+    default: 'slash',
+    validator: (value) => ['slash', 'chevron', 'dot', 'arrow'].includes(value)
+  },
+  size: {
+    type: String,
+    validator: (value) => ['sm', 'md', 'lg'].includes(value)
+  },
+  color: {
+    type: String,
+    validator: (value) => ['primary', 'secondary', 'tertiary'].includes(value)
+  },
+  contained: {
+    type: Boolean,
+    default: false
+  },
+  maxItems: Number
+})
+
+const expanded = ref(false)
+
+const displayItems = computed(() => {
+  if (!props.maxItems || props.items.length <= props.maxItems || expanded.value) {
+    return props.items
+  }
+  return [
+    props.items[0],
+    { label: '...', collapsed: true },
+    ...props.items.slice(-2)
+  ]
+})
+
+const classes = computed(() => {
+  return [
+    'breadcrumbs',
+    `breadcrumbs-${props.separator}`,
+    props.size && `breadcrumbs-${props.size}`,
+    props.color && `breadcrumbs-${props.color}`,
+    props.contained && 'breadcrumbs-contained'
+  ].filter(Boolean).join(' ')
+})
+
+const expandAll = () => {
+  expanded.value = true
+}
+</script>
+
+<!-- Usage -->
+<Breadcrumbs
+  :items="[
+    { label: 'Home', href: '/' },
+    { label: 'Docs', href: '/docs' },
+    { label: 'Components' }
+  ]"
+  separator="chevron"
+  color="primary"
+  :max-items="3"
+/>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.breadcrumbs` | Base breadcrumbs container (required) |
+| `.breadcrumb-item` | Individual breadcrumb item |
+| `.breadcrumb-link` | Clickable breadcrumb link |
+| `.breadcrumb-item-active` | Current/active breadcrumb item |
+| `.breadcrumb-separator` | Separator between items |
+| `.breadcrumb-icon` | Icon within breadcrumb item |
+| `.breadcrumb-ellipsis` | Collapsed items button |
+| `.breadcrumb-item-disabled` | Disabled breadcrumb item |
+
+### Separator Variants
+
+| Class | Description |
+|-------|-------------|
+| `.breadcrumbs-slash` | Slash separator (/) |
+| `.breadcrumbs-chevron` | Chevron separator (›) |
+| `.breadcrumbs-dot` | Dot separator (•) |
+| `.breadcrumbs-arrow` | Arrow separator (→) |
+
+### Color Variants
+
+| Class | Description |
+|-------|-------------|
+| `.breadcrumbs-primary` | Primary color for hover/active |
+| `.breadcrumbs-secondary` | Secondary color for hover/active |
+| `.breadcrumbs-tertiary` | Tertiary color for hover/active |
+
+### Size Variants
+
+| Class | Description |
+|-------|-------------|
+| `.breadcrumbs-sm` | Small breadcrumbs (0.813rem) |
+| `.breadcrumbs-md` | Default breadcrumbs (0.875rem) |
+| `.breadcrumbs-lg` | Large breadcrumbs (1rem) |
+
+### Layout Variants
+
+| Class | Description |
+|-------|-------------|
+| `.breadcrumbs-contained` | Breadcrumbs with background container |
+| `.breadcrumbs-nowrap` | Prevent wrapping, enable horizontal scroll |
+
+### Combinations
+
+```html
+<!-- Contained breadcrumbs with chevron separator and primary color -->
+<nav class="breadcrumbs breadcrumbs-contained breadcrumbs-chevron breadcrumbs-primary">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Current</span>
+</nav>
+
+<!-- Large breadcrumbs with arrow separator and no wrap -->
+<nav class="breadcrumbs breadcrumbs-lg breadcrumbs-arrow breadcrumbs-nowrap">
+  <a href="/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-separator"></span>
+  <a href="/docs" class="breadcrumb-link">Docs</a>
+  <span class="breadcrumb-separator"></span>
+  <span class="breadcrumb-item breadcrumb-item-active">Components</span>
+</nav>
+```
+
+## Related Components
+
+- [Navigation](/docs/en/components/navigation/) - Primary navigation
+- [Tabs](/docs/en/components/tabs/) - Tabbed navigation
+- [Button](/docs/en/components/button/) - Interactive actions
+
+## See Also
+
+- [Breadcrumbs Design Guidelines (Material Design 3)](https://m3.material.io/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
