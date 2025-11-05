@@ -73,7 +73,6 @@ export { modalStyles } from "./modal";
 export { toastStyles } from "./toast";
 export { toggleStyles } from "./toggle";
 
-import type { CSSRuleObject } from "tailwindcss/types/config";
 import { buttonStyles } from "./button";
 import { cardStyles } from "./card";
 import { inputStyles } from "./input";

@@ -1,5 +1,3 @@
-import type { CSSRuleObject } from "tailwindcss/types/config";
-
 /**
  * Stepper component styles
  * Material Design 3-inspired stepper for multi-step processes
