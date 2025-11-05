@@ -1,9 +1,8 @@
 /**
- * DuskMoonUI - Tailwind CSS Plugin
+ * DuskMoonUI - Tailwind CSS 4 Plugin
  * Main entry point for the component library
  */
 
-import plugin from 'tailwindcss/plugin';
 import { themes } from './themes';
 import { generateCssVariables } from './generators';
 import { getComponentStyles } from './components';
@@ -24,89 +23,104 @@ const defaultOptions: DuskMoonUIOptions = {
 };
 
 /**
- * DuskMoonUI Tailwind CSS Plugin
+ * Generate CSS for Tailwind CSS 4 @plugin syntax
  */
-const duskmoonuiPlugin = plugin.withOptions<Partial<DuskMoonUIOptions>>(
-  (options: Partial<DuskMoonUIOptions> = {}) => {
-    const config: DuskMoonUIOptions = { ...defaultOptions, ...options };
+export function generatePluginCSS(options: Partial<DuskMoonUIOptions> = {}): string {
+  const config: DuskMoonUIOptions = { ...defaultOptions, ...options };
+  let css = '';
 
-    return ({ addBase, addComponents, matchUtilities, theme }: {
-      addBase: (styles: Record<string, Record<string, string>>) => void;
-      addComponents: (components: Record<string, any>) => void;
-      matchUtilities: any;
-      theme: any;
-    }) => {
-      // Inject theme colors as CSS variables
-      const selectedThemes = config.themes || ['sunshine', 'moonlight'];
-      const baseStyles: Record<string, Record<string, string>> = {};
+  // Generate theme CSS variables
+  const selectedThemes = config.themes || ['sunshine', 'moonlight'];
 
-      selectedThemes.forEach((themeConfig) => {
-        let themeName: string;
-        let themeColors: ThemeColors | CustomTheme | undefined;
+  selectedThemes.forEach((themeConfig) => {
+    let themeName: string;
+    let themeColors: ThemeColors | CustomTheme | undefined;
 
-        if (typeof themeConfig === 'string') {
-          themeName = themeConfig;
-          themeColors = themes[themeConfig as keyof typeof themes];
-        } else {
-          // Custom theme object
-          const entry = Object.entries(themeConfig)[0];
-          if (entry) {
-            const [name, colors] = entry;
-            themeName = name;
-            themeColors = colors;
-          } else {
-            return;
-          }
-        }
-
-        if (themeColors) {
-          const cssVars = generateCssVariables(themeColors as ThemeColors);
-          baseStyles[`[data-theme="${themeName}"]`] = cssVars;
-        }
-      });
-
-      if (config.base) {
-        addBase(baseStyles);
+    if (typeof themeConfig === 'string') {
+      themeName = themeConfig;
+      themeColors = themes[themeConfig as keyof typeof themes];
+    } else {
+      // Custom theme object
+      const entry = Object.entries(themeConfig)[0];
+      if (entry) {
+        const [name, colors] = entry;
+        themeName = name;
+        themeColors = colors;
+      } else {
+        return;
       }
+    }
 
-      // Add component styles
-      if (config.styled && config.components) {
-        const componentStyles = getComponentStyles(config.components);
-        addComponents(componentStyles);
+    if (themeColors && config.base) {
+      const cssVars = generateCssVariables(themeColors as ThemeColors);
+      css += `\n[data-theme="${themeName}"] {\n`;
+      for (const [key, value] of Object.entries(cssVars)) {
+        css += `  ${key}: ${value};\n`;
       }
-    };
-  },
-  (_options: Partial<DuskMoonUIOptions> = {}) => {
-    // Extend Tailwind config
-    // Note: We're NOT using <alpha-value> placeholder to avoid PostCSS issues with '/' syntax
-    // Instead, opacity modifiers (bg-primary/50) will use color-mix or Tailwind's opacity utilities
-    return {
-      theme: {
-        extend: {
-          colors: {
-            // Map color variables to Tailwind's color system using CSS variable references
-            // Values are stored as "H S L" (e.g., "38 92% 50%") in CSS variables
-            primary: 'hsl(var(--color-primary))',
-            'primary-focus': 'hsl(var(--color-primary-focus))',
-            'primary-content': 'hsl(var(--color-primary-content))',
+      css += `}\n`;
+    }
+  });
 
-            secondary: 'hsl(var(--color-secondary))',
-            'secondary-focus': 'hsl(var(--color-secondary-focus))',
-            'secondary-content': 'hsl(var(--color-secondary-content))',
-
-            tertiary: 'hsl(var(--color-tertiary))',
-            'tertiary-focus': 'hsl(var(--color-tertiary-focus))',
-            'tertiary-content': 'hsl(var(--color-tertiary-content))',
-
-            // Add more colors as needed
-          },
-        },
-      },
-    };
+  // Generate component styles
+  if (config.styled && config.components) {
+    const componentStyles = getComponentStyles(config.components);
+    css += '\n' + convertComponentStylesToCSS(componentStyles, config.prefix);
   }
-) as ReturnType<typeof plugin.withOptions<Partial<DuskMoonUIOptions>>>;
 
-export default duskmoonuiPlugin;
+  return css;
+}
+
+/**
+ * Convert component styles object to CSS string
+ */
+function convertComponentStylesToCSS(styles: Record<string, any>, prefix: string = ''): string {
+  let css = '';
+
+  for (const [selector, rules] of Object.entries(styles)) {
+    const prefixedSelector = prefix ? selector.replace(/^\./, `.${prefix}`) : selector;
+
+    if (selector.startsWith('@keyframes')) {
+      // Handle keyframes
+      css += `${selector} {\n`;
+      for (const [keyframe, props] of Object.entries(rules as Record<string, any>)) {
+        css += `  ${keyframe} {\n`;
+        for (const [prop, value] of Object.entries(props as Record<string, any>)) {
+          css += `    ${kebabCase(prop)}: ${value};\n`;
+        }
+        css += `  }\n`;
+      }
+      css += `}\n\n`;
+    } else if (typeof rules === 'object' && !Array.isArray(rules)) {
+      css += `${prefixedSelector} {\n`;
+      for (const [prop, value] of Object.entries(rules)) {
+        if (typeof value === 'object' && !Array.isArray(value)) {
+          // Nested selector
+          css += convertComponentStylesToCSS({ [prop]: value }, prefix);
+        } else {
+          css += `  ${kebabCase(prop)}: ${value};\n`;
+        }
+      }
+      css += `}\n\n`;
+    }
+  }
+
+  return css;
+}
+
+/**
+ * Convert camelCase to kebab-case
+ */
+function kebabCase(str: string): string {
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+/**
+ * Default export for Tailwind CSS 4
+ */
+export default generatePluginCSS;
+
+// Export named function
+export { generatePluginCSS as duskmoonui };
 
 // Export types
 export type {

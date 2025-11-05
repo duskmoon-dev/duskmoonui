@@ -13,58 +13,31 @@ tags: ['configuration', 'setup', 'customization']
 
 ## Basic Configuration
 
-The simplest configuration uses default settings:
-
-### Tailwind CSS 4.0+
+The simplest configuration uses default settings with Tailwind CSS 4:
 
 ```css
 @import "tailwindcss";
 @plugin "@duskmoon-dev/core";
 ```
 
-### Tailwind CSS 3.x
-
-```javascript
-// tailwind.config.js
-module.exports = {
-  plugins: [
-    require('@duskmoon-dev/core'),
-  ],
-}
-```
+**Note:** @duskmoon-dev/core requires Tailwind CSS 4.0 or later. Tailwind CSS 3.x is not supported.
 
 ## Plugin Options
 
-Customize @duskmoon-dev/core by passing options:
-
-### Tailwind CSS 4.0+
+Customize @duskmoon-dev/core by passing options in Tailwind CSS 4:
 
 ```css
 @import "tailwindcss";
 @plugin "@duskmoon-dev/core" {
   @theme {
     --theme: "sunshine";
+    --dark-theme: "moonlight";
   }
   @config {
     components: ["button", "card", "input"];
+    styled: true;
+    prefix: "";
   }
-}
-```
-
-### Tailwind CSS 3.x
-
-```javascript
-// tailwind.config.js
-module.exports = {
-  plugins: [
-    require('@duskmoon-dev/core')({
-      themes: ['sunshine', 'moonlight'],
-      defaultTheme: 'sunshine',
-      styled: true,
-      components: 'all',
-      prefix: '',
-    }),
-  ],
 }
 ```
 

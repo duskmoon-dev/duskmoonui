@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@duskmoon-dev/core" {
+  @theme {
+    --theme: "sunshine";
+    --dark-theme: "moonlight";
+  }
+}
 
 * {
   box-sizing: border-box;
