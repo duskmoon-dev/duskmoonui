@@ -1,0 +1,825 @@
+---
+title: Autocomplete
+description: Material Design 3 autocomplete/combobox component with single and multiple selection support
+category: components
+order: 27
+published: true
+tags: ['autocomplete', 'combobox', 'components', 'material-design', 'input']
+---
+
+# Autocomplete
+
+Autocomplete provides suggestions as users type, helping them quickly find and select from a list of options. @duskmoon-dev/core offers a complete Material Design 3 autocomplete/combobox implementation with support for single selection, multiple selection, and async loading.
+
+## Basic Usage
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Search..."
+      aria-autocomplete="list"
+      aria-controls="autocomplete-dropdown"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">
+      ▼
+    </button>
+  </div>
+  <div id="autocomplete-dropdown" class="autocomplete-dropdown autocomplete-dropdown-open">
+    <ul class="autocomplete-options" role="listbox">
+      <li role="option" class="autocomplete-option">Option 1</li>
+      <li role="option" class="autocomplete-option">Option 2</li>
+      <li role="option" class="autocomplete-option">Option 3</li>
+    </ul>
+  </div>
+</div>
+```
+
+## Variants
+
+### Filled Autocomplete (Default)
+
+The default autocomplete with a filled background:
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Choose a country..."
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown">
+    <ul class="autocomplete-options" role="listbox">
+      <li role="option" class="autocomplete-option">United States</li>
+      <li role="option" class="autocomplete-option">Canada</li>
+      <li role="option" class="autocomplete-option">Mexico</li>
+      <li role="option" class="autocomplete-option">United Kingdom</li>
+    </ul>
+  </div>
+</div>
+```
+
+### Outlined Autocomplete
+
+Autocomplete with an outlined border:
+
+```html
+<div class="autocomplete autocomplete-outlined">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Search products..."
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown">
+    <ul class="autocomplete-options" role="listbox">
+      <li role="option" class="autocomplete-option">Product A</li>
+      <li role="option" class="autocomplete-option">Product B</li>
+      <li role="option" class="autocomplete-option">Product C</li>
+    </ul>
+  </div>
+</div>
+```
+
+## Selection States
+
+### Single Selection
+
+Standard autocomplete with a single selected option:
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Select a language..."
+      value="JavaScript"
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown">
+    <ul class="autocomplete-options" role="listbox">
+      <li role="option" class="autocomplete-option autocomplete-option-selected">JavaScript</li>
+      <li role="option" class="autocomplete-option">TypeScript</li>
+      <li role="option" class="autocomplete-option">Python</li>
+      <li role="option" class="autocomplete-option">Java</li>
+    </ul>
+  </div>
+</div>
+```
+
+### Multiple Selection with Chips
+
+Autocomplete supporting multiple selections displayed as chips:
+
+```html
+<div class="autocomplete">
+  <!-- Selected items as chips -->
+  <div class="autocomplete-chips">
+    <span class="autocomplete-chip">
+      JavaScript
+      <button class="autocomplete-chip-remove" aria-label="Remove JavaScript">×</button>
+    </span>
+    <span class="autocomplete-chip">
+      TypeScript
+      <button class="autocomplete-chip-remove" aria-label="Remove TypeScript">×</button>
+    </span>
+  </div>
+
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Add more languages..."
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+
+  <div class="autocomplete-dropdown">
+    <ul class="autocomplete-options" role="listbox" aria-multiselectable="true">
+      <li role="option" class="autocomplete-option autocomplete-option-selected">JavaScript</li>
+      <li role="option" class="autocomplete-option autocomplete-option-selected">TypeScript</li>
+      <li role="option" class="autocomplete-option">Python</li>
+      <li role="option" class="autocomplete-option">Java</li>
+    </ul>
+  </div>
+</div>
+```
+
+## Options with Icons
+
+Add icons to autocomplete options for better visual context:
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Choose a file type..."
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown autocomplete-dropdown-open">
+    <ul class="autocomplete-options" role="listbox">
+      <li role="option" class="autocomplete-option">
+        <svg class="autocomplete-option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+        Document
+      </li>
+      <li role="option" class="autocomplete-option">
+        <svg class="autocomplete-option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        Image
+      </li>
+      <li role="option" class="autocomplete-option">
+        <svg class="autocomplete-option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+        </svg>
+        Audio
+      </li>
+    </ul>
+  </div>
+</div>
+```
+
+## Grouped Options
+
+Organize options into labeled groups:
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Search apps..."
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown autocomplete-dropdown-open">
+    <ul class="autocomplete-options" role="listbox">
+      <li class="autocomplete-group-label">Productivity</li>
+      <li role="option" class="autocomplete-option">Calendar</li>
+      <li role="option" class="autocomplete-option">Notes</li>
+      <li role="option" class="autocomplete-option">Tasks</li>
+
+      <li class="autocomplete-group-label">Communication</li>
+      <li role="option" class="autocomplete-option">Mail</li>
+      <li role="option" class="autocomplete-option">Chat</li>
+
+      <li class="autocomplete-group-label">Design</li>
+      <li role="option" class="autocomplete-option">Figma</li>
+      <li role="option" class="autocomplete-option">Sketch</li>
+    </ul>
+  </div>
+</div>
+```
+
+## States
+
+### Loading State
+
+Display a loading indicator while fetching async data:
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Search users..."
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown autocomplete-dropdown-open">
+    <div class="autocomplete-loading">
+      <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      Loading...
+    </div>
+  </div>
+</div>
+```
+
+### No Options
+
+Show a message when no matching options are found:
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Search..."
+      value="xyz123"
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown autocomplete-dropdown-open">
+    <div class="autocomplete-no-options">
+      No results found
+    </div>
+  </div>
+</div>
+```
+
+### Focused Option
+
+Keyboard navigation highlights the focused option:
+
+```html
+<div class="autocomplete">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Navigate with arrows..."
+      aria-autocomplete="list"
+      aria-activedescendant="option-2"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
+  </div>
+  <div class="autocomplete-dropdown autocomplete-dropdown-open">
+    <ul class="autocomplete-options" role="listbox">
+      <li role="option" id="option-1" class="autocomplete-option">Option 1</li>
+      <li role="option" id="option-2" class="autocomplete-option autocomplete-option-focused">Option 2</li>
+      <li role="option" id="option-3" class="autocomplete-option">Option 3</li>
+    </ul>
+  </div>
+</div>
+```
+
+### Disabled State
+
+Non-interactive autocomplete:
+
+```html
+<div class="autocomplete autocomplete-disabled">
+  <div class="autocomplete-input-wrapper">
+    <input
+      type="text"
+      class="autocomplete-input"
+      placeholder="Disabled..."
+      disabled
+      aria-autocomplete="list"
+    />
+    <button class="autocomplete-toggle" aria-label="Toggle dropdown" disabled>▼</button>
+  </div>
+</div>
+```
+
+## Dropdown Control
+
+The dropdown visibility is controlled by the `autocomplete-dropdown-open` class:
+
+```html
+<!-- Closed dropdown (hidden) -->
+<div class="autocomplete-dropdown">
+  <!-- options -->
+</div>
+
+<!-- Open dropdown (visible) -->
+<div class="autocomplete-dropdown autocomplete-dropdown-open">
+  <!-- options -->
+</div>
+```
+
+## Best Practices
+
+### Accessibility
+
+Autocomplete requires proper ARIA attributes for screen reader support:
+
+```html
+<div class="autocomplete">
+  <label for="autocomplete-input" class="block text-sm font-medium mb-2">
+    Country
+  </label>
+  <div class="autocomplete-input-wrapper">
+    <input
+      id="autocomplete-input"
+      type="text"
+      class="autocomplete-input"
+      placeholder="Type to search..."
+      role="combobox"
+      aria-autocomplete="list"
+      aria-controls="autocomplete-listbox"
+      aria-expanded="false"
+      aria-activedescendant=""
+    />
+    <button
+      class="autocomplete-toggle"
+      aria-label="Toggle dropdown"
+      tabindex="-1"
+    >
+      ▼
+    </button>
+  </div>
+  <div
+    id="autocomplete-listbox"
+    class="autocomplete-dropdown"
+    role="listbox"
+  >
+    <ul class="autocomplete-options">
+      <li role="option" id="option-1" class="autocomplete-option">United States</li>
+      <li role="option" id="option-2" class="autocomplete-option">Canada</li>
+    </ul>
+  </div>
+</div>
+```
+
+Key accessibility requirements:
+- Use `role="combobox"` on the input
+- Add `aria-autocomplete="list"` to indicate filtering behavior
+- Use `aria-controls` to link input to dropdown
+- Update `aria-expanded` based on dropdown state
+- Set `aria-activedescendant` to the focused option ID
+- Use unique IDs for each option
+- Provide clear labels
+
+### Keyboard Navigation
+
+Implement keyboard controls for better usability:
+
+- **Arrow Down**: Open dropdown and navigate to next option
+- **Arrow Up**: Navigate to previous option
+- **Enter**: Select focused option and close dropdown
+- **Escape**: Close dropdown without selecting
+- **Tab**: Move focus away and close dropdown
+- **Home**: Focus first option
+- **End**: Focus last option
+
+### Performance
+
+For large datasets or async operations:
+
+1. **Debounce search input**: Wait for user to finish typing before filtering
+2. **Virtualize long lists**: Render only visible options
+3. **Cache results**: Store previously fetched data
+4. **Limit results**: Show only top N matches (e.g., 50 items)
+
+### User Experience
+
+- Show loading state for async operations
+- Display helpful "no results" messages
+- Pre-populate with recent or suggested items
+- Allow clearing selection easily
+- Support both keyboard and mouse interaction
+- Auto-highlight first matching option
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState, useRef, useEffect } from 'react';
+
+interface Option {
+  value: string;
+  label: string;
+  icon?: React.ReactNode;
+}
+
+interface AutocompleteProps {
+  options: Option[];
+  placeholder?: string;
+  variant?: 'filled' | 'outlined';
+  onChange?: (value: string) => void;
+}
+
+export function Autocomplete({
+  options,
+  placeholder = 'Search...',
+  variant = 'filled',
+  onChange
+}: AutocompleteProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+
+  const filtered = options.filter(opt =>
+    opt.label.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const handleSelect = (option: Option) => {
+    setSearch(option.label);
+    setIsOpen(false);
+    onChange?.(option.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setIsOpen(true);
+        setFocusedIndex(prev =>
+          prev < filtered.length - 1 ? prev + 1 : prev
+        );
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setFocusedIndex(prev => prev > 0 ? prev - 1 : 0);
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (focusedIndex >= 0) {
+          handleSelect(filtered[focusedIndex]);
+        }
+        break;
+      case 'Escape':
+        setIsOpen(false);
+        break;
+    }
+  };
+
+  return (
+    <div className={`autocomplete ${variant === 'outlined' ? 'autocomplete-outlined' : ''}`}>
+      <div className="autocomplete-input-wrapper">
+        <input
+          type="text"
+          className="autocomplete-input"
+          placeholder={placeholder}
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setIsOpen(true);
+          }}
+          onKeyDown={handleKeyDown}
+          onFocus={() => setIsOpen(true)}
+          aria-autocomplete="list"
+          aria-expanded={isOpen}
+        />
+        <button
+          className="autocomplete-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle dropdown"
+        >
+          ▼
+        </button>
+      </div>
+
+      <div className={`autocomplete-dropdown ${isOpen ? 'autocomplete-dropdown-open' : ''}`}>
+        {filtered.length > 0 ? (
+          <ul className="autocomplete-options" role="listbox">
+            {filtered.map((option, index) => (
+              <li
+                key={option.value}
+                role="option"
+                className={`autocomplete-option ${
+                  index === focusedIndex ? 'autocomplete-option-focused' : ''
+                }`}
+                onClick={() => handleSelect(option)}
+              >
+                {option.icon && (
+                  <span className="autocomplete-option-icon">{option.icon}</span>
+                )}
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="autocomplete-no-options">No results found</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Usage
+const countries = [
+  { value: 'us', label: 'United States' },
+  { value: 'ca', label: 'Canada' },
+  { value: 'mx', label: 'Mexico' },
+];
+
+<Autocomplete
+  options={countries}
+  placeholder="Choose a country..."
+  onChange={(value) => console.log('Selected:', value)}
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="['autocomplete', { 'autocomplete-outlined': variant === 'outlined' }]">
+    <div class="autocomplete-input-wrapper">
+      <input
+        v-model="search"
+        type="text"
+        class="autocomplete-input"
+        :placeholder="placeholder"
+        @focus="isOpen = true"
+        @keydown="handleKeyDown"
+        aria-autocomplete="list"
+        :aria-expanded="isOpen"
+      />
+      <button
+        class="autocomplete-toggle"
+        @click="isOpen = !isOpen"
+        aria-label="Toggle dropdown"
+      >
+        ▼
+      </button>
+    </div>
+
+    <div :class="['autocomplete-dropdown', { 'autocomplete-dropdown-open': isOpen }]">
+      <ul v-if="filteredOptions.length > 0" class="autocomplete-options" role="listbox">
+        <li
+          v-for="(option, index) in filteredOptions"
+          :key="option.value"
+          role="option"
+          :class="[
+            'autocomplete-option',
+            { 'autocomplete-option-focused': index === focusedIndex }
+          ]"
+          @click="handleSelect(option)"
+        >
+          {{ option.label }}
+        </li>
+      </ul>
+      <div v-else class="autocomplete-no-options">
+        No results found
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+
+const props = defineProps({
+  options: {
+    type: Array,
+    required: true
+  },
+  placeholder: {
+    type: String,
+    default: 'Search...'
+  },
+  variant: {
+    type: String,
+    default: 'filled'
+  }
+});
+
+const emit = defineEmits(['change']);
+
+const search = ref('');
+const isOpen = ref(false);
+const focusedIndex = ref(-1);
+
+const filteredOptions = computed(() =>
+  props.options.filter(opt =>
+    opt.label.toLowerCase().includes(search.value.toLowerCase())
+  )
+);
+
+const handleSelect = (option) => {
+  search.value = option.label;
+  isOpen.value = false;
+  emit('change', option.value);
+};
+
+const handleKeyDown = (e) => {
+  switch (e.key) {
+    case 'ArrowDown':
+      e.preventDefault();
+      isOpen.value = true;
+      focusedIndex.value = Math.min(
+        focusedIndex.value + 1,
+        filteredOptions.value.length - 1
+      );
+      break;
+    case 'ArrowUp':
+      e.preventDefault();
+      focusedIndex.value = Math.max(focusedIndex.value - 1, 0);
+      break;
+    case 'Enter':
+      e.preventDefault();
+      if (focusedIndex.value >= 0) {
+        handleSelect(filteredOptions.value[focusedIndex.value]);
+      }
+      break;
+    case 'Escape':
+      isOpen.value = false;
+      break;
+  }
+};
+</script>
+
+<!-- Usage -->
+<Autocomplete
+  :options="countries"
+  placeholder="Choose a country..."
+  @change="handleChange"
+/>
+```
+
+### Async Loading Example
+
+```typescript
+// React example with async data fetching
+import { useState, useEffect } from 'react';
+
+interface AsyncAutocompleteProps {
+  fetchOptions: (query: string) => Promise<Option[]>;
+  placeholder?: string;
+  debounceMs?: number;
+}
+
+export function AsyncAutocomplete({
+  fetchOptions,
+  placeholder = 'Search...',
+  debounceMs = 300
+}: AsyncAutocompleteProps) {
+  const [search, setSearch] = useState('');
+  const [options, setOptions] = useState<Option[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!search) {
+      setOptions([]);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setIsLoading(true);
+      try {
+        const results = await fetchOptions(search);
+        setOptions(results);
+      } catch (error) {
+        console.error('Failed to fetch options:', error);
+        setOptions([]);
+      } finally {
+        setIsLoading(false);
+      }
+    }, debounceMs);
+
+    return () => clearTimeout(timer);
+  }, [search, fetchOptions, debounceMs]);
+
+  return (
+    <div className="autocomplete">
+      <div className="autocomplete-input-wrapper">
+        <input
+          type="text"
+          className="autocomplete-input"
+          placeholder={placeholder}
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setIsOpen(true);
+          }}
+        />
+        <button className="autocomplete-toggle" onClick={() => setIsOpen(!isOpen)}>
+          ▼
+        </button>
+      </div>
+
+      <div className={`autocomplete-dropdown ${isOpen ? 'autocomplete-dropdown-open' : ''}`}>
+        {isLoading ? (
+          <div className="autocomplete-loading">Loading...</div>
+        ) : options.length > 0 ? (
+          <ul className="autocomplete-options">
+            {options.map(option => (
+              <li key={option.value} className="autocomplete-option">
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        ) : search ? (
+          <div className="autocomplete-no-options">No results found</div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+// Usage
+<AsyncAutocomplete
+  fetchOptions={async (query) => {
+    const response = await fetch(`/api/search?q=${query}`);
+    return response.json();
+  }}
+  placeholder="Search users..."
+/>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.autocomplete` | Base autocomplete container (required) |
+| `.autocomplete-outlined` | Outlined variant with border |
+| `.autocomplete-disabled` | Disabled state styling |
+| `.autocomplete-input-wrapper` | Container for input and toggle button |
+| `.autocomplete-input` | Text input field |
+| `.autocomplete-toggle` | Dropdown toggle button |
+| `.autocomplete-dropdown` | Dropdown container (hidden by default) |
+| `.autocomplete-dropdown-open` | Makes dropdown visible |
+| `.autocomplete-options` | List container for options |
+| `.autocomplete-option` | Individual option item |
+| `.autocomplete-option-selected` | Selected option state |
+| `.autocomplete-option-focused` | Keyboard-focused option state |
+| `.autocomplete-option-icon` | Icon within an option |
+| `.autocomplete-loading` | Loading state indicator |
+| `.autocomplete-no-options` | Empty state message |
+| `.autocomplete-group-label` | Group label for categorized options |
+| `.autocomplete-chips` | Container for selected chips (multi-select) |
+| `.autocomplete-chip` | Individual chip for selected item |
+| `.autocomplete-chip-remove` | Remove button within a chip |
+
+### HTML Attributes
+
+Key ARIA attributes for accessibility:
+
+| Attribute | Element | Description |
+|-----------|---------|-------------|
+| `role="combobox"` | Input | Identifies the autocomplete pattern |
+| `aria-autocomplete="list"` | Input | Indicates list-based autocomplete |
+| `aria-controls` | Input | Links to dropdown listbox ID |
+| `aria-expanded` | Input | Boolean indicating dropdown state |
+| `aria-activedescendant` | Input | ID of currently focused option |
+| `role="listbox"` | Dropdown | Identifies options container |
+| `role="option"` | Option | Identifies selectable option |
+| `aria-multiselectable` | Listbox | Allows multiple selections |
+
+## Related Components
+
+- [Input](/docs/en/components/input/) - Text input fields
+- [Select](/docs/en/components/select/) - Dropdown selection
+- [Chip](/docs/en/components/chip/) - Selected items display
+- [List](/docs/en/components/list/) - List items
+
+## See Also
+
+- [Select Design Guidelines (Material Design 3)](https://m3.material.io/components/menus/overview)
+- [ARIA Combobox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
