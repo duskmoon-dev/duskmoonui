@@ -1,0 +1,176 @@
+---
+title: Tooltip
+description: Material Design 3 tooltip component for displaying helpful text
+category: components
+order: 11
+published: true
+tags: ['tooltip', 'hint', 'components', 'material-design']
+---
+
+# Tooltip
+
+Tooltips display informative text when users hover over, focus on, or tap an element.
+
+## Basic Usage
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button>Hover me</button>
+  <div class="tooltip tooltip-top">
+    Tooltip text
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+```
+
+## Positions
+
+### Top
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button>Top</button>
+  <div class="tooltip tooltip-top tooltip-show">
+    Top tooltip
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+```
+
+### Bottom
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button>Bottom</button>
+  <div class="tooltip tooltip-bottom tooltip-show">
+    Bottom tooltip
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+```
+
+### Left
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button>Left</button>
+  <div class="tooltip tooltip-left tooltip-show">
+    Left tooltip
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+```
+
+### Right
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button>Right</button>
+  <div class="tooltip tooltip-right tooltip-show">
+    Right tooltip
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+```
+
+## Without Arrow
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button>No arrow</button>
+  <div class="tooltip tooltip-top tooltip-no-arrow tooltip-show">
+    Tooltip without arrow
+  </div>
+</div>
+```
+
+## Sizes
+
+```html
+<!-- Small -->
+<div style="position: relative; display: inline-block;">
+  <button>Small</button>
+  <div class="tooltip tooltip-top tooltip-sm tooltip-show">
+    Small tooltip
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+
+<!-- Default -->
+<div style="position: relative; display: inline-block;">
+  <button>Default</button>
+  <div class="tooltip tooltip-top tooltip-show">
+    Default tooltip
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+
+<!-- Large -->
+<div style="position: relative; display: inline-block;">
+  <button>Large</button>
+  <div class="tooltip tooltip-top tooltip-lg tooltip-show">
+    Large tooltip with more content
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+```
+
+## Rich Content
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button>Rich tooltip</button>
+  <div class="tooltip tooltip-top tooltip-rich tooltip-show">
+    <strong>Title</strong><br>
+    Description with more details
+    <div class="tooltip-arrow"></div>
+  </div>
+</div>
+```
+
+## JavaScript Example
+
+```javascript
+// Show tooltip on hover
+document.querySelectorAll('[data-tooltip]').forEach(element => {
+  const tooltipText = element.getAttribute('data-tooltip');
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip tooltip-top';
+  tooltip.innerHTML = `${tooltipText}<div class="tooltip-arrow"></div>`;
+  element.style.position = 'relative';
+  element.appendChild(tooltip);
+
+  element.addEventListener('mouseenter', () => {
+    tooltip.classList.add('tooltip-show');
+  });
+
+  element.addEventListener('mouseleave', () => {
+    tooltip.classList.remove('tooltip-show');
+  });
+});
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.tooltip` | Base tooltip (required) |
+| `.tooltip-show` | Show tooltip |
+| `.tooltip-top` | Position above element |
+| `.tooltip-bottom` | Position below element |
+| `.tooltip-left` | Position to the left |
+| `.tooltip-right` | Position to the right |
+| `.tooltip-arrow` | Arrow element |
+| `.tooltip-no-arrow` | Hide arrow |
+| `.tooltip-sm` | Small size |
+| `.tooltip-lg` | Large size |
+| `.tooltip-rich` | Rich content tooltip |
+
+## Related Components
+
+- [Popover](/docs/en/components/popover/) - Richer popup content
+- [Snackbar](/docs/en/components/snackbar/) - Brief messages
+
+## See Also
+
+- [Tooltip (Material Design 3)](https://m3.material.io/components/tooltips/)
