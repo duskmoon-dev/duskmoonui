@@ -1,0 +1,736 @@
+---
+title: Select
+description: Material Design 3 select (dropdown) component with multiple variants and options
+category: components
+order: 35
+published: true
+tags: ['select', 'dropdown', 'components', 'material-design', 'form']
+---
+
+# Select
+
+Select components (also known as dropdowns) allow users to choose one or more options from a list. @duskmoon-dev/core provides a complete set of Material Design 3 select variants with support for various states and configurations.
+
+## Basic Usage
+
+The basic select component uses the outlined variant by default:
+
+```html
+<div class="select-container">
+  <select class="select">
+    <option value="">Choose an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## With Label
+
+Add a label to provide context for the select:
+
+```html
+<div class="select-container">
+  <label class="select-label" for="country">Country</label>
+  <select class="select" id="country">
+    <option value="">Select a country</option>
+    <option value="us">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="ca">Canada</option>
+    <option value="au">Australia</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## Variants
+
+### Outlined Select (Default)
+
+The outlined variant has a transparent background with a visible border:
+
+```html
+<div class="select-container">
+  <select class="select select-outlined">
+    <option value="">Choose an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+### Filled Select
+
+The filled variant has a filled background with a bottom border, perfect for forms with a consistent visual style:
+
+```html
+<div class="select-container select-container-filled">
+  <select class="select select-filled">
+    <option value="">Choose an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+### Filled Select with Floating Label
+
+Create a modern filled select with a floating label:
+
+```html
+<div class="select-container select-container-filled">
+  <select class="select select-filled" placeholder=" ">
+    <option value="">Choose an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <label class="select-label-floating">Select an option</label>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## Color Variants
+
+### Primary Select
+
+Use primary color for the focus state:
+
+```html
+<div class="select-container">
+  <select class="select select-primary">
+    <option value="">Primary select</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+### Secondary Select
+
+Use secondary color for the focus state:
+
+```html
+<div class="select-container">
+  <select class="select select-secondary">
+    <option value="">Secondary select</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+### Tertiary Select
+
+Use tertiary color for the focus state:
+
+```html
+<div class="select-container">
+  <select class="select select-tertiary">
+    <option value="">Tertiary select</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## Sizes
+
+Three sizes are available to fit different design needs:
+
+### Small
+
+```html
+<div class="select-container">
+  <select class="select select-sm">
+    <option value="">Small select</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+### Medium (Default)
+
+```html
+<div class="select-container">
+  <select class="select">
+    <option value="">Medium select</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+### Large
+
+```html
+<div class="select-container">
+  <select class="select select-lg">
+    <option value="">Large select</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## Multiple Selection
+
+Allow users to select multiple options:
+
+```html
+<div class="select-container">
+  <label class="select-label">Select multiple items</label>
+  <select class="select" multiple size="5">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+  </select>
+</div>
+```
+
+## Grouped Options
+
+Organize options using optgroups:
+
+```html
+<div class="select-container">
+  <label class="select-label">Select a fruit</label>
+  <select class="select">
+    <option value="">Choose a fruit</option>
+    <optgroup label="Citrus">
+      <option value="orange">Orange</option>
+      <option value="lemon">Lemon</option>
+      <option value="lime">Lime</option>
+    </optgroup>
+    <optgroup label="Berries">
+      <option value="strawberry">Strawberry</option>
+      <option value="blueberry">Blueberry</option>
+      <option value="raspberry">Raspberry</option>
+    </optgroup>
+    <optgroup label="Tropical">
+      <option value="mango">Mango</option>
+      <option value="pineapple">Pineapple</option>
+      <option value="papaya">Papaya</option>
+    </optgroup>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## States
+
+### Disabled State
+
+Disabled selects are non-interactive:
+
+```html
+<div class="select-container">
+  <label class="select-label">Disabled select</label>
+  <select class="select" disabled>
+    <option value="">This select is disabled</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+### Error State
+
+Show validation errors:
+
+```html
+<div class="select-container select-container-error">
+  <label class="select-label">Select with error</label>
+  <select class="select select-error">
+    <option value="">Please select an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+  <span class="select-icon">▼</span>
+  <span class="select-helper">This field is required</span>
+</div>
+```
+
+### Loading State
+
+Show a loading indicator:
+
+```html
+<div class="select-container">
+  <label class="select-label">Loading options...</label>
+  <select class="select select-loading" disabled>
+    <option value="">Loading...</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## Helper Text
+
+Provide additional context or instructions:
+
+```html
+<div class="select-container">
+  <label class="select-label">Language preference</label>
+  <select class="select">
+    <option value="">Select your language</option>
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+    <option value="fr">French</option>
+    <option value="de">German</option>
+  </select>
+  <span class="select-icon">▼</span>
+  <span class="select-helper">This will be used for all communications</span>
+</div>
+```
+
+## Full Width
+
+Make the select take the full width of its container:
+
+```html
+<div class="select-container select-full">
+  <label class="select-label">Full width select</label>
+  <select class="select">
+    <option value="">Select an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <span class="select-icon">▼</span>
+</div>
+```
+
+## Best Practices
+
+### Form Design
+
+Combine selects with other form elements for a cohesive design:
+
+```html
+<form class="space-y-4">
+  <div class="select-container">
+    <label class="select-label" for="title">Title</label>
+    <select class="select" id="title" required>
+      <option value="">Select title</option>
+      <option value="mr">Mr.</option>
+      <option value="mrs">Mrs.</option>
+      <option value="ms">Ms.</option>
+      <option value="dr">Dr.</option>
+    </select>
+    <span class="select-icon">▼</span>
+  </div>
+
+  <div class="select-container">
+    <label class="select-label" for="department">Department</label>
+    <select class="select" id="department" required>
+      <option value="">Select department</option>
+      <option value="engineering">Engineering</option>
+      <option value="design">Design</option>
+      <option value="marketing">Marketing</option>
+      <option value="sales">Sales</option>
+    </select>
+    <span class="select-icon">▼</span>
+    <span class="select-helper">Choose your primary department</span>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+```
+
+### Accessibility
+
+- Always provide a `<label>` element associated with the select
+- Use the first option as a prompt ("Choose an option")
+- Add `aria-label` or `aria-labelledby` if a visible label isn't present
+- Ensure proper color contrast for all states
+- Support keyboard navigation (built-in)
+- Use helper text for additional context
+
+```html
+<!-- Good: Accessible select with label and helper text -->
+<div class="select-container">
+  <label class="select-label" for="country-select">Country of residence</label>
+  <select class="select" id="country-select" aria-describedby="country-helper">
+    <option value="">Select your country</option>
+    <option value="us">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="ca">Canada</option>
+  </select>
+  <span class="select-icon">▼</span>
+  <span class="select-helper" id="country-helper">
+    This helps us provide relevant content
+  </span>
+</div>
+```
+
+### Error Handling
+
+Always provide clear error messages:
+
+```html
+<div class="select-container select-container-error">
+  <label class="select-label" for="payment-method">Payment method</label>
+  <select class="select select-error" id="payment-method" aria-invalid="true" aria-describedby="payment-error">
+    <option value="">Select payment method</option>
+    <option value="credit">Credit Card</option>
+    <option value="debit">Debit Card</option>
+    <option value="paypal">PayPal</option>
+  </select>
+  <span class="select-icon">▼</span>
+  <span class="select-helper" id="payment-error">Please select a payment method</span>
+</div>
+```
+
+### When to Use Multiple Select
+
+Use multiple select sparingly as they can be difficult to use:
+
+- ✅ Good: When users need to select 3-7 related items
+- ❌ Avoid: When users need to select more than 7 items (use checkboxes instead)
+- ❌ Avoid: For single selection (use regular select)
+
+## Framework Examples
+
+### React
+
+```tsx
+interface SelectProps {
+  label?: string;
+  helperText?: string;
+  error?: boolean;
+  variant?: 'outlined' | 'filled';
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'secondary' | 'tertiary';
+  disabled?: boolean;
+  multiple?: boolean;
+  children: React.ReactNode;
+  value?: string | string[];
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+export function Select({
+  label,
+  helperText,
+  error = false,
+  variant = 'outlined',
+  size = 'md',
+  color = 'primary',
+  disabled = false,
+  multiple = false,
+  children,
+  value,
+  onChange,
+  ...props
+}: SelectProps) {
+  const containerClass = `select-container ${
+    variant === 'filled' ? 'select-container-filled' : ''
+  } ${error ? 'select-container-error' : ''}`;
+
+  const selectClass = `select select-${variant} select-${color} select-${size} ${
+    error ? 'select-error' : ''
+  }`;
+
+  return (
+    <div className={containerClass}>
+      {label && <label className="select-label">{label}</label>}
+      <select
+        className={selectClass}
+        disabled={disabled}
+        multiple={multiple}
+        value={value}
+        onChange={onChange}
+        aria-invalid={error}
+        {...props}
+      >
+        {children}
+      </select>
+      <span className="select-icon">▼</span>
+      {helperText && <span className="select-helper">{helperText}</span>}
+    </div>
+  );
+}
+
+// Usage
+function App() {
+  const [country, setCountry] = useState('');
+
+  return (
+    <Select
+      label="Country"
+      value={country}
+      onChange={(e) => setCountry(e.target.value)}
+      helperText="Select your country of residence"
+    >
+      <option value="">Choose a country</option>
+      <option value="us">United States</option>
+      <option value="uk">United Kingdom</option>
+      <option value="ca">Canada</option>
+    </Select>
+  );
+}
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="containerClass">
+    <label v-if="label" class="select-label">{{ label }}</label>
+    <select
+      :class="selectClass"
+      :disabled="disabled"
+      :multiple="multiple"
+      :value="modelValue"
+      @change="handleChange"
+      :aria-invalid="error"
+      v-bind="$attrs"
+    >
+      <slot />
+    </select>
+    <span class="select-icon">▼</span>
+    <span v-if="helperText" class="select-helper">{{ helperText }}</span>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  label: String,
+  helperText: String,
+  error: {
+    type: Boolean,
+    default: false
+  },
+  variant: {
+    type: String,
+    default: 'outlined'
+  },
+  size: {
+    type: String,
+    default: 'md'
+  },
+  color: {
+    type: String,
+    default: 'primary'
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  multiple: {
+    type: Boolean,
+    default: false
+  },
+  modelValue: [String, Array]
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+const containerClass = computed(() => {
+  return [
+    'select-container',
+    props.variant === 'filled' && 'select-container-filled',
+    props.error && 'select-container-error'
+  ].filter(Boolean).join(' ');
+});
+
+const selectClass = computed(() => {
+  return [
+    'select',
+    `select-${props.variant}`,
+    `select-${props.color}`,
+    `select-${props.size}`,
+    props.error && 'select-error'
+  ].filter(Boolean).join(' ');
+});
+
+const handleChange = (e) => {
+  emit('update:modelValue', e.target.value);
+};
+</script>
+
+<!-- Usage -->
+<template>
+  <Select
+    v-model="selectedCountry"
+    label="Country"
+    helper-text="Select your country of residence"
+  >
+    <option value="">Choose a country</option>
+    <option value="us">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="ca">Canada</option>
+  </Select>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const selectedCountry = ref('');
+</script>
+```
+
+### Svelte
+
+```svelte
+<script>
+  export let label = '';
+  export let helperText = '';
+  export let error = false;
+  export let variant = 'outlined';
+  export let size = 'md';
+  export let color = 'primary';
+  export let disabled = false;
+  export let multiple = false;
+  export let value = '';
+
+  $: containerClass = [
+    'select-container',
+    variant === 'filled' && 'select-container-filled',
+    error && 'select-container-error'
+  ].filter(Boolean).join(' ');
+
+  $: selectClass = [
+    'select',
+    `select-${variant}`,
+    `select-${color}`,
+    `select-${size}`,
+    error && 'select-error'
+  ].filter(Boolean).join(' ');
+</script>
+
+<div class={containerClass}>
+  {#if label}
+    <label class="select-label">{label}</label>
+  {/if}
+  <select
+    class={selectClass}
+    {disabled}
+    {multiple}
+    bind:value
+    aria-invalid={error}
+    {...$$restProps}
+  >
+    <slot />
+  </select>
+  <span class="select-icon">▼</span>
+  {#if helperText}
+    <span class="select-helper">{helperText}</span>
+  {/if}
+</div>
+
+<!-- Usage -->
+<script>
+  let selectedCountry = '';
+</script>
+
+<Select
+  bind:value={selectedCountry}
+  label="Country"
+  helperText="Select your country of residence"
+>
+  <option value="">Choose a country</option>
+  <option value="us">United States</option>
+  <option value="uk">United Kingdom</option>
+  <option value="ca">Canada</option>
+</Select>
+```
+
+## API Reference
+
+### Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.select-container` | Base container (required) |
+| `.select-container-filled` | Container for filled variant |
+| `.select-container-error` | Container error state |
+| `.select-full` | Full width container |
+
+### Select Classes
+
+| Class | Description |
+|-------|-------------|
+| `.select` | Base select styles (required) |
+| `.select-outlined` | Outlined variant (default) |
+| `.select-filled` | Filled variant |
+| `.select-primary` | Primary color focus |
+| `.select-secondary` | Secondary color focus |
+| `.select-tertiary` | Tertiary color focus |
+| `.select-sm` | Small size |
+| `.select-lg` | Large size |
+| `.select-error` | Error state |
+| `.select-loading` | Loading state with spinner |
+
+### Label Classes
+
+| Class | Description |
+|-------|-------------|
+| `.select-label` | Standard label |
+| `.select-label-floating` | Floating label for filled variant |
+
+### Helper Classes
+
+| Class | Description |
+|-------|-------------|
+| `.select-helper` | Helper text |
+| `.select-icon` | Dropdown arrow icon |
+
+### HTML Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `disabled` | Disables the select |
+| `multiple` | Allows multiple selections |
+| `size` | Number of visible options (for multiple) |
+| `required` | Makes the field required |
+| `aria-invalid` | Indicates error state |
+| `aria-describedby` | Associates helper text |
+
+### Combinations
+
+```html
+<!-- Filled secondary select, large size with error -->
+<div class="select-container select-container-filled select-container-error">
+  <label class="select-label">Department</label>
+  <select class="select select-filled select-secondary select-lg select-error">
+    <option value="">Select department</option>
+    <option value="1">Engineering</option>
+    <option value="2">Design</option>
+  </select>
+  <span class="select-icon">▼</span>
+  <span class="select-helper">Please select a department</span>
+</div>
+```
+
+## Related Components
+
+- [Input](/docs/en/components/input/) - Text input fields
+- [Checkbox](/docs/en/components/checkbox/) - Multiple choice selection
+- [Radio](/docs/en/components/radio/) - Single choice selection
+- [Button](/docs/en/components/button/) - Action buttons for forms
+
+## See Also
+
+- [Select Design Guidelines (Material Design 3)](https://m3.material.io/components/menus/)
+- [Text Fields (Material Design 3)](https://m3.material.io/components/text-fields/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
