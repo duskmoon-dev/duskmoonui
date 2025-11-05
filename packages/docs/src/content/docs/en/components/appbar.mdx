@@ -1,0 +1,305 @@
+---
+title: App Bar
+description: Material Design 3 app bar component for top and bottom navigation
+category: components
+order: 10
+published: true
+tags: ['appbar', 'toolbar', 'navigation', 'components', 'material-design']
+---
+
+# App Bar
+
+App bars display information and actions related to the current screen. @duskmoon-dev/core provides flexible top and bottom app bars.
+
+## Basic Usage
+
+```html
+<header class="appbar">
+  <div class="appbar-leading">
+    <button class="appbar-action" aria-label="Menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Page Title</h1>
+  </div>
+  <div class="appbar-trailing">
+    <button class="appbar-action" aria-label="Search">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </button>
+  </div>
+</header>
+```
+
+## Position
+
+### Static (Default)
+
+```html
+<header class="appbar appbar-static">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Static App Bar</h1>
+  </div>
+</header>
+```
+
+### Fixed
+
+```html
+<header class="appbar appbar-fixed">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Fixed App Bar</h1>
+  </div>
+</header>
+```
+
+### Sticky
+
+```html
+<header class="appbar appbar-sticky">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Sticky App Bar</h1>
+  </div>
+</header>
+```
+
+## Surface Variants
+
+```html
+<header class="appbar appbar-surface">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Surface</h1>
+  </div>
+</header>
+
+<header class="appbar appbar-surface-container">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Surface Container</h1>
+  </div>
+</header>
+
+<header class="appbar appbar-surface-container-high">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Surface Container High</h1>
+  </div>
+</header>
+```
+
+## Color Variants
+
+```html
+<header class="appbar appbar-primary">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Primary</h1>
+  </div>
+</header>
+
+<header class="appbar appbar-secondary">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Secondary</h1>
+  </div>
+</header>
+
+<header class="appbar appbar-tertiary">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Tertiary</h1>
+  </div>
+</header>
+```
+
+## Transparent with Blur
+
+```html
+<header class="appbar appbar-transparent appbar-blur">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Transparent Blur</h1>
+  </div>
+</header>
+```
+
+## With Subtitle
+
+```html
+<header class="appbar">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Page Title</h1>
+    <p class="appbar-subtitle">Subtitle text</p>
+  </div>
+</header>
+```
+
+## With Back Button
+
+```html
+<header class="appbar">
+  <div class="appbar-leading">
+    <button class="appbar-back" aria-label="Go back">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+  </div>
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Detail Page</h1>
+  </div>
+</header>
+```
+
+## With Actions
+
+```html
+<header class="appbar">
+  <div class="appbar-leading">
+    <button class="appbar-action" aria-label="Menu">☰</button>
+  </div>
+  <div class="appbar-title">
+    <h1 class="appbar-heading">App Name</h1>
+  </div>
+  <div class="appbar-trailing">
+    <button class="appbar-action" aria-label="Search">🔍</button>
+    <button class="appbar-action" aria-label="Notifications">🔔</button>
+    <button class="appbar-action" aria-label="More">⋮</button>
+  </div>
+</header>
+```
+
+## With Search
+
+```html
+<header class="appbar">
+  <div class="appbar-leading">
+    <button class="appbar-action" aria-label="Menu">☰</button>
+  </div>
+  <input type="search" class="appbar-search" placeholder="Search..." />
+  <div class="appbar-trailing">
+    <button class="appbar-action" aria-label="Profile">👤</button>
+  </div>
+</header>
+```
+
+## Sizes
+
+```html
+<header class="appbar appbar-compact">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Compact</h1>
+  </div>
+</header>
+
+<header class="appbar">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Default</h1>
+  </div>
+</header>
+
+<header class="appbar appbar-comfortable">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Comfortable</h1>
+  </div>
+</header>
+```
+
+## Prominent (Large)
+
+```html
+<header class="appbar appbar-prominent">
+  <div class="appbar-leading">
+    <button class="appbar-action" aria-label="Menu">☰</button>
+  </div>
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Large Title</h1>
+  </div>
+  <div class="appbar-trailing">
+    <button class="appbar-action" aria-label="Search">🔍</button>
+  </div>
+</header>
+```
+
+## Bottom App Bar
+
+```html
+<footer class="appbar appbar-bottom">
+  <div class="appbar-leading">
+    <button class="appbar-action" aria-label="Menu">☰</button>
+  </div>
+  <div class="appbar-trailing">
+    <button class="appbar-action" aria-label="Search">🔍</button>
+    <button class="appbar-action" aria-label="Favorite">❤️</button>
+    <button class="appbar-action" aria-label="More">⋮</button>
+  </div>
+</footer>
+```
+
+## Styles
+
+```html
+<!-- Flat (no shadow) -->
+<header class="appbar appbar-flat">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Flat</h1>
+  </div>
+</header>
+
+<!-- Bordered -->
+<header class="appbar appbar-bordered">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Bordered</h1>
+  </div>
+</header>
+```
+
+## API Reference
+
+### App Bar Classes
+
+| Class | Description |
+|-------|-------------|
+| `.appbar` | Base app bar (required) |
+| `.appbar-top` | Top app bar (default) |
+| `.appbar-bottom` | Bottom app bar |
+| `.appbar-fixed` | Fixed position |
+| `.appbar-sticky` | Sticky position |
+| `.appbar-static` | Static position |
+| `.appbar-surface` | Surface background |
+| `.appbar-surface-container` | Surface container |
+| `.appbar-surface-container-low` | Surface container low |
+| `.appbar-surface-container-high` | Surface container high |
+| `.appbar-surface-container-highest` | Surface container highest |
+| `.appbar-primary` | Primary color |
+| `.appbar-secondary` | Secondary color |
+| `.appbar-tertiary` | Tertiary color |
+| `.appbar-transparent` | Transparent background |
+| `.appbar-blur` | Backdrop blur effect |
+| `.appbar-compact` | Compact size |
+| `.appbar-comfortable` | Comfortable size |
+| `.appbar-prominent` | Large/prominent variant |
+| `.appbar-flat` | No shadow |
+| `.appbar-bordered` | With border |
+| `.appbar-center` | Center-aligned title |
+
+### Content Classes
+
+| Class | Description |
+|-------|-------------|
+| `.appbar-leading` | Leading section (left) |
+| `.appbar-title` | Title section (center) |
+| `.appbar-trailing` | Trailing section (right) |
+| `.appbar-heading` | Main heading text |
+| `.appbar-subtitle` | Subtitle text |
+| `.appbar-action` | Action button |
+| `.appbar-back` | Back button |
+| `.appbar-search` | Search input |
+
+## Related Components
+
+- [Navbar](/docs/en/components/navbar/) - Navigation bar
+- [Bottom Navigation](/docs/en/components/bottom-navigation/) - Bottom navigation
+
+## See Also
+
+- [Top App Bar (Material Design 3)](https://m3.material.io/components/top-app-bar/)
+- [Bottom App Bar (Material Design 3)](https://m3.material.io/components/bottom-app-bar/)
