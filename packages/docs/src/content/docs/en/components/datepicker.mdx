@@ -1,0 +1,579 @@
+---
+title: Datepicker
+description: Material Design 3 datepicker component with single date, date range, and inline calendar support
+category: components
+order: 28
+published: true
+tags: ['datepicker', 'calendar', 'components', 'material-design', 'date', 'forms']
+---
+
+# Datepicker
+
+The Datepicker component allows users to select dates through an intuitive calendar interface. @duskmoon-dev/core provides a complete Material Design 3-inspired datepicker with support for single dates, date ranges, and inline calendars.
+
+## Basic Usage
+
+```html
+<div class="datepicker">
+  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <!-- Weekday headers -->
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <!-- Day cells -->
+      <button class="datepicker-day datepicker-day-other-month">31</button>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day">2</button>
+      <button class="datepicker-day datepicker-day-today">3</button>
+      <button class="datepicker-day datepicker-day-selected">15</button>
+      <!-- More days... -->
+    </div>
+  </div>
+</div>
+```
+
+## Variants
+
+### Single Date Selection
+
+The default behavior allows users to select a single date:
+
+```html
+<div class="datepicker">
+  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day">2</button>
+      <button class="datepicker-day datepicker-day-selected">15</button>
+      <!-- More days... -->
+    </div>
+  </div>
+</div>
+```
+
+### Date Range Selection
+
+For selecting a date range, use the range-specific classes:
+
+```html
+<div class="datepicker">
+  <input type="text" class="datepicker-input" placeholder="Select date range" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day datepicker-day-selected datepicker-day-range-start">10</button>
+      <button class="datepicker-day datepicker-day-in-range">11</button>
+      <button class="datepicker-day datepicker-day-in-range">12</button>
+      <button class="datepicker-day datepicker-day-in-range">13</button>
+      <button class="datepicker-day datepicker-day-in-range">14</button>
+      <button class="datepicker-day datepicker-day-selected datepicker-day-range-end">15</button>
+      <!-- More days... -->
+    </div>
+  </div>
+</div>
+```
+
+### Inline Calendar
+
+Display the calendar inline without a dropdown:
+
+```html
+<div class="datepicker">
+  <div class="datepicker-dropdown datepicker-inline">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day">2</button>
+      <button class="datepicker-day datepicker-day-selected">15</button>
+      <!-- More days... -->
+    </div>
+  </div>
+</div>
+```
+
+## Color Variants
+
+### Secondary Color
+
+Use the secondary theme color:
+
+```html
+<div class="datepicker datepicker-secondary">
+  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <!-- Calendar content -->
+    </div>
+  </div>
+</div>
+```
+
+### Tertiary Color
+
+Use the tertiary theme color:
+
+```html
+<div class="datepicker datepicker-tertiary">
+  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <!-- Calendar content -->
+    </div>
+  </div>
+</div>
+```
+
+## Special Day States
+
+### Today's Date
+
+Highlight the current date:
+
+```html
+<button class="datepicker-day datepicker-day-today">15</button>
+```
+
+### Selected Date
+
+Mark a date as selected:
+
+```html
+<button class="datepicker-day datepicker-day-selected">15</button>
+```
+
+### Disabled Date
+
+Disable certain dates:
+
+```html
+<button class="datepicker-day datepicker-day-disabled">15</button>
+```
+
+### Other Month Days
+
+Days from adjacent months:
+
+```html
+<button class="datepicker-day datepicker-day-other-month">31</button>
+```
+
+## Month and Year Picker
+
+Switch between month and year selection views:
+
+### Month Picker
+
+```html
+<div class="datepicker-dropdown">
+  <div class="datepicker-header">
+    <button class="datepicker-nav">‹</button>
+    <div class="datepicker-title">2024</div>
+    <button class="datepicker-nav">›</button>
+  </div>
+  <div class="datepicker-months">
+    <button class="datepicker-month datepicker-month-selected">Jan</button>
+    <button class="datepicker-month">Feb</button>
+    <button class="datepicker-month">Mar</button>
+    <button class="datepicker-month">Apr</button>
+    <button class="datepicker-month">May</button>
+    <button class="datepicker-month">Jun</button>
+    <button class="datepicker-month">Jul</button>
+    <button class="datepicker-month">Aug</button>
+    <button class="datepicker-month">Sep</button>
+    <button class="datepicker-month">Oct</button>
+    <button class="datepicker-month">Nov</button>
+    <button class="datepicker-month">Dec</button>
+  </div>
+</div>
+```
+
+### Year Picker
+
+```html
+<div class="datepicker-dropdown">
+  <div class="datepicker-header">
+    <button class="datepicker-nav">‹</button>
+    <div class="datepicker-title">2020-2029</div>
+    <button class="datepicker-nav">›</button>
+  </div>
+  <div class="datepicker-years">
+    <button class="datepicker-year">2020</button>
+    <button class="datepicker-year">2021</button>
+    <button class="datepicker-year">2022</button>
+    <button class="datepicker-year">2023</button>
+    <button class="datepicker-year datepicker-year-selected">2024</button>
+    <button class="datepicker-year">2025</button>
+    <button class="datepicker-year">2026</button>
+    <button class="datepicker-year">2027</button>
+    <button class="datepicker-year">2028</button>
+    <button class="datepicker-year">2029</button>
+  </div>
+</div>
+```
+
+## Footer Actions
+
+Add action buttons to the datepicker footer:
+
+```html
+<div class="datepicker-dropdown">
+  <div class="datepicker-header">
+    <button class="datepicker-nav">‹</button>
+    <div class="datepicker-title">January 2024</div>
+    <button class="datepicker-nav">›</button>
+  </div>
+  <div class="datepicker-calendar">
+    <!-- Calendar content -->
+  </div>
+  <div class="datepicker-footer">
+    <button class="btn btn-text">Clear</button>
+    <button class="btn btn-text btn-primary">Today</button>
+  </div>
+</div>
+```
+
+## Dropdown State
+
+### Opening the Dropdown
+
+Add the `datepicker-dropdown-open` class to show the calendar:
+
+```html
+<div class="datepicker">
+  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown datepicker-dropdown-open">
+    <!-- Calendar content -->
+  </div>
+</div>
+```
+
+## Best Practices
+
+### Accessibility
+
+- Use `readonly` attribute on the input to prevent manual text entry
+- Provide clear labels for navigation buttons with `aria-label`
+- Ensure keyboard navigation is supported
+- Mark disabled dates appropriately
+
+```html
+<div class="datepicker">
+  <label for="date-input" class="sr-only">Select a date</label>
+  <input id="date-input" type="text" class="datepicker-input" placeholder="Select date" readonly>
+  <span class="datepicker-icon" aria-hidden="true">📅</span>
+  <div class="datepicker-dropdown">
+    <div class="datepicker-header">
+      <button class="datepicker-nav" aria-label="Previous month">‹</button>
+      <div class="datepicker-title" aria-live="polite">January 2024</div>
+      <button class="datepicker-nav" aria-label="Next month">›</button>
+    </div>
+    <!-- Calendar content -->
+  </div>
+</div>
+```
+
+### Date Formatting
+
+Display dates in a user-friendly format:
+
+```html
+<!-- Good: Clear date format -->
+<input type="text" class="datepicker-input" value="January 15, 2024" readonly>
+
+<!-- Also good: ISO format for international users -->
+<input type="text" class="datepicker-input" value="2024-01-15" readonly>
+```
+
+### Range Selection UX
+
+When implementing range selection, provide clear visual feedback:
+
+```html
+<div class="datepicker">
+  <input type="text" class="datepicker-input" placeholder="Start date - End date" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown">
+    <div class="datepicker-calendar">
+      <!-- Start date -->
+      <button class="datepicker-day datepicker-day-selected datepicker-day-range-start">10</button>
+      <!-- Dates in range -->
+      <button class="datepicker-day datepicker-day-in-range">11</button>
+      <button class="datepicker-day datepicker-day-in-range">12</button>
+      <!-- End date -->
+      <button class="datepicker-day datepicker-day-selected datepicker-day-range-end">15</button>
+    </div>
+  </div>
+</div>
+```
+
+### Responsive Design
+
+Ensure the datepicker works well on mobile devices:
+
+```html
+<!-- Use appropriate viewport for mobile -->
+<div class="datepicker w-full max-w-sm">
+  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
+  <span class="datepicker-icon">📅</span>
+  <div class="datepicker-dropdown">
+    <!-- Calendar content -->
+  </div>
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState } from 'react';
+
+interface DatepickerProps {
+  value?: Date;
+  onChange?: (date: Date) => void;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  inline?: boolean;
+}
+
+export function Datepicker({
+  value,
+  onChange,
+  variant = 'primary',
+  inline = false
+}: DatepickerProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  return (
+    <div className={`datepicker ${variant ? `datepicker-${variant}` : ''}`}>
+      {!inline && (
+        <>
+          <input
+            type="text"
+            className="datepicker-input"
+            value={value ? formatDate(value) : ''}
+            placeholder="Select date"
+            readOnly
+            onClick={() => setIsOpen(!isOpen)}
+          />
+          <span className="datepicker-icon">📅</span>
+        </>
+      )}
+      <div className={`datepicker-dropdown ${isOpen || inline ? 'datepicker-dropdown-open' : ''} ${inline ? 'datepicker-inline' : ''}`}>
+        {/* Calendar implementation */}
+      </div>
+    </div>
+  );
+}
+
+// Usage
+<Datepicker
+  value={selectedDate}
+  onChange={setSelectedDate}
+  variant="primary"
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="['datepicker', variant && `datepicker-${variant}`]">
+    <input
+      v-if="!inline"
+      type="text"
+      class="datepicker-input"
+      :value="formattedDate"
+      placeholder="Select date"
+      readonly
+      @click="toggleDropdown"
+    />
+    <span v-if="!inline" class="datepicker-icon">📅</span>
+    <div
+      :class="[
+        'datepicker-dropdown',
+        { 'datepicker-dropdown-open': isOpen || inline },
+        { 'datepicker-inline': inline }
+      ]"
+    >
+      <!-- Calendar implementation -->
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+
+const props = defineProps({
+  modelValue: Date,
+  variant: {
+    type: String,
+    default: 'primary'
+  },
+  inline: {
+    type: Boolean,
+    default: false
+  }
+});
+
+const emit = defineEmits(['update:modelValue']);
+const isOpen = ref(false);
+
+const formattedDate = computed(() => {
+  if (!props.modelValue) return '';
+  return props.modelValue.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+});
+
+const toggleDropdown = () => {
+  isOpen.value = !isOpen.value;
+};
+</script>
+
+<!-- Usage -->
+<Datepicker
+  v-model="selectedDate"
+  variant="primary"
+/>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.datepicker` | Base datepicker container (required) |
+| `.datepicker-input` | Input field for displaying selected date |
+| `.datepicker-icon` | Calendar icon positioned over input |
+| `.datepicker-dropdown` | Calendar dropdown container |
+| `.datepicker-dropdown-open` | Show the dropdown calendar |
+| `.datepicker-inline` | Display calendar inline (always visible) |
+| `.datepicker-header` | Calendar header with navigation |
+| `.datepicker-title` | Month/Year title in header |
+| `.datepicker-nav` | Previous/Next navigation buttons |
+| `.datepicker-calendar` | Calendar grid container |
+| `.datepicker-weekday` | Weekday name header |
+| `.datepicker-day` | Individual day cell |
+| `.datepicker-day-today` | Current date highlight |
+| `.datepicker-day-selected` | Selected date |
+| `.datepicker-day-disabled` | Disabled/unavailable date |
+| `.datepicker-day-other-month` | Days from adjacent months |
+| `.datepicker-day-in-range` | Date within selected range |
+| `.datepicker-day-range-start` | Range start date |
+| `.datepicker-day-range-end` | Range end date |
+| `.datepicker-months` | Month picker grid |
+| `.datepicker-month` | Individual month cell |
+| `.datepicker-month-selected` | Selected month |
+| `.datepicker-years` | Year picker grid |
+| `.datepicker-year` | Individual year cell |
+| `.datepicker-year-selected` | Selected year |
+| `.datepicker-footer` | Footer with action buttons |
+| `.datepicker-secondary` | Use secondary theme color |
+| `.datepicker-tertiary` | Use tertiary theme color |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Secondary color with inline display -->
+<div class="datepicker datepicker-secondary">
+  <div class="datepicker-dropdown datepicker-inline">
+    <!-- Calendar content -->
+  </div>
+</div>
+
+<!-- Tertiary color with range selection -->
+<div class="datepicker datepicker-tertiary">
+  <div class="datepicker-calendar">
+    <button class="datepicker-day datepicker-day-selected datepicker-day-range-start">10</button>
+    <button class="datepicker-day datepicker-day-in-range">11</button>
+    <button class="datepicker-day datepicker-day-selected datepicker-day-range-end">15</button>
+  </div>
+</div>
+```
+
+## Related Components
+
+- [Input](/docs/en/components/input/) - Text input fields
+- [Button](/docs/en/components/button/) - Action buttons for footer
+- [Card](/docs/en/components/card/) - Container for inline calendar
+
+## See Also
+
+- [Date Pickers Design Guidelines (Material Design 3)](https://m3.material.io/components/date-pickers/overview)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
