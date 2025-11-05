@@ -19,6 +19,7 @@ export default {
     duskmoonuiPlugin({
       themes: ["sunshine", "moonlight"],
       darkTheme: "moonlight",
+      styled: false, // Disable component styles to avoid PostCSS issues
     }),
   ],
 };

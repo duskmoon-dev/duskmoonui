@@ -21,7 +21,7 @@ export const inputStyles: Record<string, CSSRuleObject> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&::placeholder': {
-      color: 'color-mix(in srgb, hsl(var(--color-on-surface-variant)) 6%, transparent)',
+      color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
     },
 
     '&:hover': {
@@ -181,7 +181,7 @@ export const inputStyles: Record<string, CSSRuleObject> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&::placeholder': {
-      color: 'color-mix(in srgb, hsl(var(--color-on-surface-variant)) 6%, transparent)',
+      color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
     },
 
     '&:hover': {
@@ -300,7 +300,7 @@ export const inputStyles: Record<string, CSSRuleObject> = {
     },
 
     '&:focus': {
-      outline: '2px solid color-mix(in srgb, hsl(var(--color-primary)) 2%, transparent)',
+      outline: '2px solid rgba(var(--color-primary-rgb), 0.2)',
       outlineOffset: '2px',
     },
 

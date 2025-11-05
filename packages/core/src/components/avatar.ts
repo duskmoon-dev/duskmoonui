@@ -96,22 +96,22 @@ export const avatarStyles: Record<string, CSSRuleObject> = {
   },
 
   '.avatar-success': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-success)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-success-rgb), 0.15)',
     color: 'hsl(var(--color-success))',
   },
 
   '.avatar-error': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-error-rgb), 0.15)',
     color: 'hsl(var(--color-error))',
   },
 
   '.avatar-warning': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-warning)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-warning-rgb), 0.15)',
     color: 'hsl(var(--color-warning))',
   },
 
   '.avatar-info': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-info)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-info-rgb), 0.15)',
     color: 'hsl(var(--color-info))',
   },
 

@@ -89,7 +89,7 @@ export const switchStyles: Record<string, CSSRuleObject> = {
 
   // Hover state
   '.switch:hover .switch-track': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 9%, transparent)',
+    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.9)',
   },
 
   '.switch:hover .switch-input:checked + .switch-track, .switch:hover .switch-input:checked + .switch-primary': {

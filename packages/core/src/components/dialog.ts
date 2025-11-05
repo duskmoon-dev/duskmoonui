@@ -116,11 +116,11 @@ export const dialogStyles: Record<string, CSSRuleObject> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
     },
   },
 
@@ -201,22 +201,22 @@ export const dialogStyles: Record<string, CSSRuleObject> = {
   },
 
   '.dialog-icon-success': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-success)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-success-rgb), 0.15)',
     color: 'hsl(var(--color-success))',
   },
 
   '.dialog-icon-error': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-error-rgb), 0.15)',
     color: 'hsl(var(--color-error))',
   },
 
   '.dialog-icon-warning': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-warning)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-warning-rgb), 0.15)',
     color: 'hsl(var(--color-warning))',
   },
 
   '.dialog-icon-info': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-info)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-info-rgb), 0.15)',
     color: 'hsl(var(--color-info))',
   },
 

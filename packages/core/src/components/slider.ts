@@ -58,7 +58,7 @@ export const sliderStyles: Record<string, CSSRuleObject> = {
     '&:active': {
       cursor: 'grabbing',
       transform: 'translate(-50%, -50%) scale(1.2)',
-      boxShadow: '0 0 0 8px color-mix(in srgb, hsl(var(--color-primary)) 12%, transparent)',
+      boxShadow: '0 0 0 8px rgba(var(--color-primary-rgb), 0.12)',
     },
   },
 
@@ -156,7 +156,7 @@ export const sliderStyles: Record<string, CSSRuleObject> = {
   },
 
   '.slider-secondary .slider-thumb:active': {
-    boxShadow: '0 0 0 8px color-mix(in srgb, hsl(var(--color-secondary)) 12%, transparent)',
+    boxShadow: '0 0 0 8px rgba(var(--color-secondary-rgb), 0.12)',
   },
 
   '.slider-tertiary .slider-track-filled, .slider-tertiary .slider-thumb': {
@@ -168,7 +168,7 @@ export const sliderStyles: Record<string, CSSRuleObject> = {
   },
 
   '.slider-tertiary .slider-thumb:active': {
-    boxShadow: '0 0 0 8px color-mix(in srgb, hsl(var(--color-tertiary)) 12%, transparent)',
+    boxShadow: '0 0 0 8px rgba(var(--color-tertiary-rgb), 0.12)',
   },
 
   // Size variants

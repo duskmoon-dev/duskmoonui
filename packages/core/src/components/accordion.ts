@@ -39,11 +39,11 @@ export const accordionStyles: Record<string, CSSRuleObject> = {
     textAlign: 'left',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 04%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.04)',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
     },
 
     '&:focus-visible': {

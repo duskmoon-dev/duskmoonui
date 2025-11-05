@@ -168,7 +168,7 @@ export const toastStyles: Record<string, CSSRuleObject> = {
   },
 
   '.toast-action:hover': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 1%, transparent)',
+    backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)',
   },
 
   // Progress bar

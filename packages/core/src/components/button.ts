@@ -86,12 +86,12 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     border: '1px solid hsl(var(--color-outline))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-rgb), 0.08)',
       borderColor: 'hsl(var(--color-primary))',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-rgb), 0.12)',
     },
   },
 
@@ -101,12 +101,12 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     border: '1px solid hsl(var(--color-outline))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.08)',
       borderColor: 'hsl(var(--color-secondary))',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.12)',
     },
   },
 
@@ -116,12 +116,12 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     border: '1px solid hsl(var(--color-outline))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.08)',
       borderColor: 'hsl(var(--color-tertiary))',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.12)',
     },
   },
 
@@ -132,11 +132,11 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-rgb), 0.08)',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-rgb), 0.12)',
     },
   },
 
@@ -146,11 +146,11 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.08)',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.12)',
     },
   },
 
@@ -160,11 +160,11 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.08)',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.12)',
     },
   },
 
@@ -175,7 +175,7 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
     },
 
     '&:active': {
@@ -189,7 +189,7 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
     },
 
     '&:active': {
@@ -203,7 +203,7 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
     },
 
     '&:active': {
@@ -256,7 +256,7 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-success-content))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-success)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-success-rgb), 0.9)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },
@@ -266,7 +266,7 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-error-content))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-error-rgb), 0.9)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },
@@ -276,7 +276,7 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-warning-content))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-warning)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-warning-rgb), 0.9)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },
@@ -286,7 +286,7 @@ export const buttonStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-info-content))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-info)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-info-rgb), 0.9)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },

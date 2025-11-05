@@ -31,11 +31,11 @@ export const listStyles: Record<string, CSSRuleObject> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
     },
 
     '&:active': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 12%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
     },
   },
 
@@ -45,7 +45,7 @@ export const listStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-primary-container))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
     },
   },
 
@@ -54,7 +54,7 @@ export const listStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
     },
   },
 
@@ -63,7 +63,7 @@ export const listStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-tertiary-container))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
     },
   },
 

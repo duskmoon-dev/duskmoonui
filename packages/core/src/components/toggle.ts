@@ -27,7 +27,7 @@ export const toggleStyles: Record<string, CSSRuleObject> = {
 
   // Hover state
   '.toggle-btn:hover': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 5%, transparent)',
+    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
     borderColor: 'hsl(var(--color-outline-variant))',
   },
 
@@ -39,7 +39,7 @@ export const toggleStyles: Record<string, CSSRuleObject> = {
   },
 
   '.toggle-btn-active:hover': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
+    backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
   },
 
   // Secondary variant
@@ -90,7 +90,7 @@ export const toggleStyles: Record<string, CSSRuleObject> = {
     border: '1px solid hsl(var(--color-outline))',
     borderRadius: '0.5rem',
     padding: '0.25rem',
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 3%, transparent)',
+    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.3)',
   },
 
   // Toggle buttons in group
@@ -176,7 +176,7 @@ export const toggleStyles: Record<string, CSSRuleObject> = {
   },
 
   '.toggle-outlined.toggle-btn-active': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 1%, transparent)',
+    backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)',
   },
 
   // Filled variant

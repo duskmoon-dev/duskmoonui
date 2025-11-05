@@ -29,14 +29,14 @@ export const fileUploadStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       borderColor: 'hsl(var(--color-primary))',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 1%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.1)',
     },
   },
 
   // Drag over state
   '.file-upload-dropzone-dragover': {
     borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 2%, transparent)',
+    backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.2)',
     borderStyle: 'solid',
   },
 
@@ -173,7 +173,7 @@ export const fileUploadStyles: Record<string, CSSRuleObject> = {
     flexShrink: '0',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 1%, transparent)',
+      backgroundColor: 'rgba(var(--color-error-rgb), 0.1)',
       color: 'hsl(var(--color-error))',
     },
   },
@@ -190,7 +190,7 @@ export const fileUploadStyles: Record<string, CSSRuleObject> = {
   // Error state
   '.file-upload-item-error': {
     borderColor: 'hsl(var(--color-error))',
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 05%, transparent)',
+    backgroundColor: 'rgba(var(--color-error-rgb), 0.05)',
   },
 
   '.file-upload-item-error .file-upload-item-icon': {

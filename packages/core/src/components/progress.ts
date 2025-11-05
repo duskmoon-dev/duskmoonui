@@ -64,7 +64,7 @@ export const progressStyles: Record<string, CSSRuleObject> = {
   },
 
   '.progress-success': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-success)) 2%, transparent)',
+    backgroundColor: 'rgba(var(--color-success-rgb), 0.2)',
   },
 
   '.progress-error .progress-bar': {
@@ -72,7 +72,7 @@ export const progressStyles: Record<string, CSSRuleObject> = {
   },
 
   '.progress-error': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 2%, transparent)',
+    backgroundColor: 'rgba(var(--color-error-rgb), 0.2)',
   },
 
   '.progress-warning .progress-bar': {
@@ -80,7 +80,7 @@ export const progressStyles: Record<string, CSSRuleObject> = {
   },
 
   '.progress-warning': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-warning)) 2%, transparent)',
+    backgroundColor: 'rgba(var(--color-warning-rgb), 0.2)',
   },
 
   '.progress-info .progress-bar': {
@@ -88,7 +88,7 @@ export const progressStyles: Record<string, CSSRuleObject> = {
   },
 
   '.progress-info': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-info)) 2%, transparent)',
+    backgroundColor: 'rgba(var(--color-info-rgb), 0.2)',
   },
 
   // Size variants
@@ -219,7 +219,7 @@ export const progressStyles: Record<string, CSSRuleObject> = {
     top: '0',
     left: '0',
     height: '100%',
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 3%, transparent)',
+    backgroundColor: 'rgba(var(--color-primary-rgb), 0.3)',
     borderRadius: '0.125rem',
     transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   },

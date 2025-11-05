@@ -114,27 +114,27 @@ export const alertStyles: Record<string, CSSRuleObject> = {
 
   // Tonal variant (softer, uses container colors)
   '.alert-tonal, .alert-info': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-info)) 1%, transparent)',
+    backgroundColor: 'rgba(var(--color-info-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'color-mix(in srgb, hsl(var(--color-info)) 2%, transparent)',
+    borderColor: 'rgba(var(--color-info-rgb), 0.2)',
   },
 
   '.alert-success': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-success)) 1%, transparent)',
+    backgroundColor: 'rgba(var(--color-success-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'color-mix(in srgb, hsl(var(--color-success)) 2%, transparent)',
+    borderColor: 'rgba(var(--color-success-rgb), 0.2)',
   },
 
   '.alert-warning': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-warning)) 1%, transparent)',
+    backgroundColor: 'rgba(var(--color-warning-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'color-mix(in srgb, hsl(var(--color-warning)) 2%, transparent)',
+    borderColor: 'rgba(var(--color-warning-rgb), 0.2)',
   },
 
   '.alert-error': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 1%, transparent)',
+    backgroundColor: 'rgba(var(--color-error-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'color-mix(in srgb, hsl(var(--color-error)) 2%, transparent)',
+    borderColor: 'rgba(var(--color-error-rgb), 0.2)',
   },
 
   // Outlined variant

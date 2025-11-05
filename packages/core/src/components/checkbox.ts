@@ -100,7 +100,7 @@ export const checkboxStyles: Record<string, CSSRuleObject> = {
   // Hover state
   '.checkbox:hover .checkbox-box': {
     borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 5%, transparent)',
+    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
   },
 
   '.checkbox:hover .checkbox-input:checked + .checkbox-box, .checkbox:hover .checkbox-input:checked + .checkbox-primary': {
@@ -129,7 +129,7 @@ export const checkboxStyles: Record<string, CSSRuleObject> = {
     opacity: '0.38',
     cursor: 'not-allowed',
     borderColor: 'hsl(var(--color-outline))',
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-surface-variant)) 3%, transparent)',
+    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.3)',
   },
 
   '.checkbox:has(.checkbox-input:disabled)': {

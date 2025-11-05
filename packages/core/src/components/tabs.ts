@@ -55,7 +55,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-on-surface))',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
     },
 
     '&:focus-visible': {
@@ -77,7 +77,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-primary))',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-rgb), 0.08)',
     },
   },
 
@@ -88,7 +88,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-secondary))',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.08)',
     },
   },
 
@@ -99,7 +99,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
 
     '&:hover': {
       color: 'hsl(var(--color-tertiary))',
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.08)',
     },
   },
 
@@ -170,7 +170,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
       color: 'hsl(var(--color-on-primary-container))',
     },
   },
@@ -181,7 +181,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
       color: 'hsl(var(--color-on-secondary-container))',
     },
   },
@@ -192,7 +192,7 @@ export const tabsStyles: Record<string, CSSRuleObject> = {
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
       color: 'hsl(var(--color-on-tertiary-container))',
     },
   },

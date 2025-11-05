@@ -35,7 +35,7 @@ export const autocompleteStyles: Record<string, CSSRuleObject> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&::placeholder': {
-      color: 'color-mix(in srgb, hsl(var(--color-on-surface-variant)) 6%, transparent)',
+      color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
     },
 
     '&:focus': {
@@ -64,7 +64,7 @@ export const autocompleteStyles: Record<string, CSSRuleObject> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
     },
   },
 
@@ -118,7 +118,7 @@ export const autocompleteStyles: Record<string, CSSRuleObject> = {
     width: '100%',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
     },
   },
 
@@ -127,12 +127,12 @@ export const autocompleteStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-primary-container))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
     },
   },
 
   '.autocomplete-option-focused': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+    backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
   },
 
   // Option with icon

@@ -109,7 +109,7 @@ export const collapseStyles: Record<string, CSSRuleObject> = {
   },
 
   '.collapse-primary .collapse-trigger:hover': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-primary-container)) 8%, transparent)',
+    backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.8)',
   },
 
   // Secondary variant
@@ -119,7 +119,7 @@ export const collapseStyles: Record<string, CSSRuleObject> = {
   },
 
   '.collapse-secondary .collapse-trigger:hover': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 8%, transparent)',
+    backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.8)',
   },
 
   // Tertiary variant
@@ -129,7 +129,7 @@ export const collapseStyles: Record<string, CSSRuleObject> = {
   },
 
   '.collapse-tertiary .collapse-trigger:hover': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 8%, transparent)',
+    backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.8)',
   },
 
   // Size variants

@@ -34,7 +34,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
       boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
     },
 
@@ -44,7 +44,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
   },
 
   '.chip-outlined.chip-clickable:hover': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 04%, transparent)',
+    backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.04)',
   },
 
   // Selectable/Filter chips
@@ -52,7 +52,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-on-surface)) 08%, transparent)',
+      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
     },
   },
 
@@ -62,7 +62,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
     },
   },
 
@@ -72,7 +72,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-secondary-container))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-secondary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
     },
   },
 
@@ -82,7 +82,7 @@ export const chipStyles: Record<string, CSSRuleObject> = {
     color: 'hsl(var(--color-on-tertiary-container))',
 
     '&:hover': {
-      backgroundColor: 'color-mix(in srgb, hsl(var(--color-tertiary-container)) 9%, transparent)',
+      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
     },
   },
 
@@ -103,22 +103,22 @@ export const chipStyles: Record<string, CSSRuleObject> = {
   },
 
   '.chip-success': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-success)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-success-rgb), 0.15)',
     color: 'hsl(var(--color-success))',
   },
 
   '.chip-error': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-error)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-error-rgb), 0.15)',
     color: 'hsl(var(--color-error))',
   },
 
   '.chip-warning': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-warning)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-warning-rgb), 0.15)',
     color: 'hsl(var(--color-warning))',
   },
 
   '.chip-info': {
-    backgroundColor: 'color-mix(in srgb, hsl(var(--color-info)) 15%, transparent)',
+    backgroundColor: 'rgba(var(--color-info-rgb), 0.15)',
     color: 'hsl(var(--color-info))',
   },
 

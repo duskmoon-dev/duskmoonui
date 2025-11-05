@@ -243,7 +243,7 @@ export const timelineStyles: Record<string, CSSRuleObject> = {
 
   '@keyframes timeline-pulse': {
     '0%, 100%': {
-      boxShadow: '0 0 0 2px hsl(var(--color-primary)), 0 0 0 6px color-mix(in srgb, hsl(var(--color-primary)) 2%, transparent)',
+      boxShadow: '0 0 0 2px hsl(var(--color-primary)), 0 0 0 6px rgba(var(--color-primary-rgb), 0.2)',
     },
     '50%': {
       boxShadow: '0 0 0 2px hsl(var(--color-primary)), 0 0 0 10px transparent',
