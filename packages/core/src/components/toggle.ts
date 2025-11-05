@@ -1,11 +1,11 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Toggle button component styles
  * Material Design 3-inspired toggle button (different from switch)
  * Used for selecting between multiple options or toggling states
  */
-export const toggleStyles: Record<string, CSSRuleObject> = {
+export const toggleStyles: Record<string, any> = {
   // Base toggle button
   '.toggle-btn': {
     display: 'inline-flex',

@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Table component styles
  * Material Design 3-inspired data tables
  */
-export const tableStyles: Record<string, CSSRuleObject> = {
+export const tableStyles: Record<string, any> = {
   // Base table
   '.table': {
     width: '100%',

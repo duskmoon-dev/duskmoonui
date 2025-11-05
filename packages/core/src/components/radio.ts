@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Radio Button component styles
  * Material Design 3-inspired radio button component
  */
-export const radioStyles: Record<string, CSSRuleObject> = {
+export const radioStyles: Record<string, any> = {
   // Base radio container
   '.radio': {
     position: 'relative',

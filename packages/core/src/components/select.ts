@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Select (Dropdown) component styles
  * Material Design 3-inspired select component
  */
-export const selectStyles: Record<string, CSSRuleObject> = {
+export const selectStyles: Record<string, any> = {
   // Base select container
   '.select-container': {
     position: 'relative',

@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Timeline component styles
  * Material Design 3-inspired timeline component
  */
-export const timelineStyles: Record<string, CSSRuleObject> = {
+export const timelineStyles: Record<string, any> = {
   // Base timeline container
   '.timeline': {
     position: 'relative',

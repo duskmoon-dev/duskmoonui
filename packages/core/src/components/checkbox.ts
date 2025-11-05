@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Checkbox component styles
  * Material Design 3-inspired checkbox component
  */
-export const checkboxStyles: Record<string, CSSRuleObject> = {
+export const checkboxStyles: Record<string, any> = {
   // Base checkbox container
   '.checkbox': {
     position: 'relative',

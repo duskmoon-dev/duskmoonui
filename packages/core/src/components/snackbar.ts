@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Snackbar (Toast) component styles
  * Material Design 3-inspired snackbars for brief messages
  */
-export const snackbarStyles: Record<string, CSSRuleObject> = {
+export const snackbarStyles: Record<string, any> = {
   // Base snackbar
   '.snackbar': {
     position: 'fixed',

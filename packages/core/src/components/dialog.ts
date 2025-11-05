@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Dialog (Modal) component styles
  * Material Design 3-inspired dialogs
  */
-export const dialogStyles: Record<string, CSSRuleObject> = {
+export const dialogStyles: Record<string, any> = {
   // Dialog overlay/backdrop
   '.dialog-backdrop': {
     position: 'fixed',

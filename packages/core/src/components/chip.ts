@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Chip component styles
  * Material Design 3-inspired chips for tags, filters, and selections
  */
-export const chipStyles: Record<string, CSSRuleObject> = {
+export const chipStyles: Record<string, any> = {
   // Base chip
   '.chip': {
     display: 'inline-flex',

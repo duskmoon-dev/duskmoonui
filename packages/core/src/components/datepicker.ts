@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Date Picker component styles
  * Material Design 3-inspired date picker
  */
-export const datepickerStyles: Record<string, CSSRuleObject> = {
+export const datepickerStyles: Record<string, any> = {
   // Base datepicker container
   '.datepicker': {
     position: 'relative',

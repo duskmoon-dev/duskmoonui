@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Toast notification component styles
  * Material Design 3-inspired toast/notification component
  */
-export const toastStyles: Record<string, CSSRuleObject> = {
+export const toastStyles: Record<string, any> = {
   // Toast container (holds multiple toasts)
   '.toast-container': {
     position: 'fixed',

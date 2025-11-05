@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Button component styles
  * Material Design 3-inspired button with multiple variants
  */
-export const buttonStyles: Record<string, CSSRuleObject> = {
+export const buttonStyles: Record<string, any> = {
   // Base button styles
   '.btn': {
     display: 'inline-flex',

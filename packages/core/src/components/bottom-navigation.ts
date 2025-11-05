@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Bottom Navigation component styles
  * Material Design 3-inspired bottom navigation bar
  */
-export const bottomNavigationStyles: Record<string, CSSRuleObject> = {
+export const bottomNavigationStyles: Record<string, any> = {
   // Base bottom navigation
   '.bottom-nav': {
     position: 'fixed',

@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Menu (Dropdown Menu) component styles
  * Material Design 3-inspired menus
  */
-export const menuStyles: Record<string, CSSRuleObject> = {
+export const menuStyles: Record<string, any> = {
   // Base menu container
   '.menu': {
     position: 'absolute',

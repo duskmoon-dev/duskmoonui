@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Tooltip component styles
  * Material Design 3-inspired tooltips
  */
-export const tooltipStyles: Record<string, CSSRuleObject> = {
+export const tooltipStyles: Record<string, any> = {
   // Base tooltip
   '.tooltip': {
     position: 'absolute',

@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Rating component styles
  * Material Design 3-inspired rating component
  */
-export const ratingStyles: Record<string, CSSRuleObject> = {
+export const ratingStyles: Record<string, any> = {
   // Base rating container
   '.rating': {
     display: 'inline-flex',

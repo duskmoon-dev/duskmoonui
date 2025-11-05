@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Alert component styles
  * Material Design 3-inspired alert messages
  */
-export const alertStyles: Record<string, CSSRuleObject> = {
+export const alertStyles: Record<string, any> = {
   // Base alert styles
   '.alert': {
     display: 'flex',

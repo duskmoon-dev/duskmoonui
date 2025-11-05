@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Input component styles
  * Material Design 3-inspired form inputs
  */
-export const inputStyles: Record<string, CSSRuleObject> = {
+export const inputStyles: Record<string, any> = {
   // Base input styles (filled variant - Material Design 3 default)
   '.input': {
     display: 'block',

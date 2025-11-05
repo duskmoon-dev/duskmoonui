@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Pagination component styles
  * Material Design 3-inspired pagination
  */
-export const paginationStyles: Record<string, CSSRuleObject> = {
+export const paginationStyles: Record<string, any> = {
   // Base pagination
   '.pagination': {
     display: 'flex',

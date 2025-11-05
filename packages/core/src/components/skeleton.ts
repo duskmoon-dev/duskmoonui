@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Skeleton Loader component styles
  * Material Design 3-inspired loading placeholders
  */
-export const skeletonStyles: Record<string, CSSRuleObject> = {
+export const skeletonStyles: Record<string, any> = {
   // Base skeleton
   '.skeleton': {
     display: 'block',

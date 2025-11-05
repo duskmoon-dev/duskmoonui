@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Drawer component styles
  * Material Design 3-inspired navigation drawer
  */
-export const drawerStyles: Record<string, CSSRuleObject> = {
+export const drawerStyles: Record<string, any> = {
   // Base drawer styles
   '.drawer': {
     position: 'fixed',

@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Tabs component styles
  * Material Design 3-inspired tabs navigation
  */
-export const tabsStyles: Record<string, CSSRuleObject> = {
+export const tabsStyles: Record<string, any> = {
   // Base tabs container
   '.tabs': {
     display: 'flex',

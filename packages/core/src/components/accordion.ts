@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Accordion component styles
  * Material Design 3-inspired expandable content panels
  */
-export const accordionStyles: Record<string, CSSRuleObject> = {
+export const accordionStyles: Record<string, any> = {
   // Base accordion container
   '.accordion': {
     display: 'flex',

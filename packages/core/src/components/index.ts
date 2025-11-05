@@ -120,7 +120,7 @@ import { toggleStyles } from "./toggle";
 /**
  * Get all component styles combined
  */
-export function getAllComponentStyles(): Record<string, CSSRuleObject> {
+export function getAllComponentStyles(): Record<string, any> {
   return {
     ...buttonStyles,
     ...cardStyles,
@@ -172,12 +172,12 @@ export function getAllComponentStyles(): Record<string, CSSRuleObject> {
  */
 export function getComponentStyles(
   components: string[] | "all",
-): Record<string, CSSRuleObject> {
+): Record<string, any> {
   if (components === "all") {
     return getAllComponentStyles();
   }
 
-  const componentMap: Record<string, Record<string, CSSRuleObject>> = {
+  const componentMap: Record<string, Record<string, any>> = {
     button: buttonStyles,
     card: cardStyles,
     input: inputStyles,
@@ -222,7 +222,7 @@ export function getComponentStyles(
     toggle: toggleStyles,
   };
 
-  const styles: Record<string, CSSRuleObject> = {};
+  const styles: Record<string, any> = {};
 
   for (const component of components) {
     const componentStyles = componentMap[component.toLowerCase()];

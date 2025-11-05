@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Textarea component styles
  * Material Design 3-inspired textarea component
  */
-export const textareaStyles: Record<string, CSSRuleObject> = {
+export const textareaStyles: Record<string, any> = {
   // Base textarea
   '.textarea': {
     width: '100%',

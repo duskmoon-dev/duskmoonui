@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Collapse component styles
  * Material Design 3-inspired collapse/expandable component
  */
-export const collapseStyles: Record<string, CSSRuleObject> = {
+export const collapseStyles: Record<string, any> = {
   // Base collapse container
   '.collapse': {
     overflow: 'hidden',

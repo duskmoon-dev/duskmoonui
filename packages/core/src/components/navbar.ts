@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Navbar component styles
  * Material Design 3-inspired navigation bar
  */
-export const navbarStyles: Record<string, CSSRuleObject> = {
+export const navbarStyles: Record<string, any> = {
   // Base navbar styles
   '.navbar': {
     display: 'flex',

@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Breadcrumbs component styles
  * Material Design 3-inspired breadcrumb navigation
  */
-export const breadcrumbsStyles: Record<string, CSSRuleObject> = {
+export const breadcrumbsStyles: Record<string, any> = {
   // Base breadcrumbs
   '.breadcrumbs': {
     display: 'flex',

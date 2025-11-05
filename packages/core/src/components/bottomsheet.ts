@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Bottom Sheet component styles
  * Material Design 3-inspired bottom sheet for mobile
  */
-export const bottomSheetStyles: Record<string, CSSRuleObject> = {
+export const bottomSheetStyles: Record<string, any> = {
   // Bottom sheet backdrop
   '.bottom-sheet-backdrop': {
     position: 'fixed',

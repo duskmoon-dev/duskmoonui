@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * File Upload component styles
  * Material Design 3-inspired file upload with drag-and-drop
  */
-export const fileUploadStyles: Record<string, CSSRuleObject> = {
+export const fileUploadStyles: Record<string, any> = {
   // Base file upload container
   '.file-upload': {
     position: 'relative',

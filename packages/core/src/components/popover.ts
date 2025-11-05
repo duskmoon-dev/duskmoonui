@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Popover component styles
  * Material Design 3-inspired popover for contextual content
  */
-export const popoverStyles: Record<string, CSSRuleObject> = {
+export const popoverStyles: Record<string, any> = {
   // Base popover
   '.popover': {
     position: 'absolute',

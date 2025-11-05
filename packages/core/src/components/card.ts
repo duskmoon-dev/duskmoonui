@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Card component styles
  * Material Design 3-inspired card with surface elevation
  */
-export const cardStyles: Record<string, CSSRuleObject> = {
+export const cardStyles: Record<string, any> = {
   // Base card styles
   '.card': {
     display: 'flex',

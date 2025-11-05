@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Slider component styles
  * Material Design 3-inspired slider for value selection
  */
-export const sliderStyles: Record<string, CSSRuleObject> = {
+export const sliderStyles: Record<string, any> = {
   // Base slider container
   '.slider': {
     position: 'relative',

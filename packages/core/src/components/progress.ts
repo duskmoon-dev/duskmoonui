@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Progress component styles
  * Material Design 3-inspired progress indicators (linear and circular)
  */
-export const progressStyles: Record<string, CSSRuleObject> = {
+export const progressStyles: Record<string, any> = {
   // Linear progress base
   '.progress': {
     position: 'relative',

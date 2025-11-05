@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Switch (Toggle) component styles
  * Material Design 3-inspired switch component
  */
-export const switchStyles: Record<string, CSSRuleObject> = {
+export const switchStyles: Record<string, any> = {
   // Base switch container
   '.switch': {
     position: 'relative',

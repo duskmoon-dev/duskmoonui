@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Autocomplete component styles
  * Material Design 3-inspired autocomplete/combobox
  */
-export const autocompleteStyles: Record<string, CSSRuleObject> = {
+export const autocompleteStyles: Record<string, any> = {
   // Base autocomplete container
   '.autocomplete': {
     position: 'relative',

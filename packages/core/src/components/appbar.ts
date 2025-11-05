@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * App Bar component styles
  * Material Design 3-inspired top and bottom app bars
  */
-export const appBarStyles: Record<string, CSSRuleObject> = {
+export const appBarStyles: Record<string, any> = {
   // Base app bar (top)
   '.appbar': {
     display: 'flex',

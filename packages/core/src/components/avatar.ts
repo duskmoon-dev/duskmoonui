@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Avatar component styles
  * Material Design 3-inspired avatars for user representation
  */
-export const avatarStyles: Record<string, CSSRuleObject> = {
+export const avatarStyles: Record<string, any> = {
   // Base avatar
   '.avatar': {
     display: 'inline-flex',

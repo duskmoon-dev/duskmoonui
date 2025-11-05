@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Divider component styles
  * Material Design 3-inspired dividers for content separation
  */
-export const dividerStyles: Record<string, CSSRuleObject> = {
+export const dividerStyles: Record<string, any> = {
   // Base divider (horizontal)
   '.divider': {
     height: '1px',

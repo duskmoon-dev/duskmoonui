@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * List component styles
  * Material Design 3-inspired lists
  */
-export const listStyles: Record<string, CSSRuleObject> = {
+export const listStyles: Record<string, any> = {
   // Base list
   '.list': {
     display: 'flex',
