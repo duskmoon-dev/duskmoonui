@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwindcssPostcss from "@tailwindcss/postcss";
 
 export default defineConfig({
   site: "https://duskmoon-dev.github.io",
@@ -44,15 +43,4 @@ export default defineConfig({
       },
     }),
   ],
-
-  // Vite configuration for PostCSS
-  vite: {
-    css: {
-      postcss: {
-        plugins: [
-          tailwindcssPostcss,
-        ],
-      },
-    },
-  },
 });
