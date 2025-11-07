@@ -71,7 +71,7 @@ jobs:
           bun-version: latest
 
       - name: Install root dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Build core package first
         run: bun run --filter @duskmoon-dev/core build
