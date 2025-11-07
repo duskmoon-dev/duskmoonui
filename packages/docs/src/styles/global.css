@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@source "../components/**/*.astro";
+@source "../components/**/*.tsx";
+@source "../layouts/**/*.astro";
+@source "../pages/**/*.astro";
+@source "../pages/**/*.mdx";
+
 @plugin "@duskmoon-dev/core";
 
 * {
