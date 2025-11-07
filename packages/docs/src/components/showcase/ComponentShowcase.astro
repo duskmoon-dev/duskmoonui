@@ -28,3 +28,47 @@ const { title, description, code, showCode = true } = Astro.props;
   )}
 </div>
 
+<style>
+  .component-showcase {
+    margin: 2rem 0;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--surface, #ffffff);
+  }
+
+  .showcase-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    background: var(--surface-variant, #f9fafb);
+  }
+
+  .showcase-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground, #1f2937);
+  }
+
+  .showcase-description {
+    margin: 0.5rem 0 0;
+    color: var(--foreground-muted, #6b7280);
+    font-size: 0.9rem;
+  }
+
+  .showcase-preview {
+    padding: 2rem;
+    background: var(--background, #ffffff);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .showcase-code {
+    background: var(--surface, #f9fafb);
+    border-top: 1px solid var(--border, #e5e7eb);
+  }
+</style>
