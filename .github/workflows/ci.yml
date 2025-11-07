@@ -21,7 +21,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Type check core package
         run: bun run --filter @duskmoon-dev/core typecheck
@@ -47,7 +47,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Run linter (when available)
         run: bun run lint || echo "No linting configured yet"
