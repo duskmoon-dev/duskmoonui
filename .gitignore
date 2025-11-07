@@ -42,3 +42,20 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Bun lock file
 bun.lock
+
+# Claude Code - Keep commands, ignore runtime artifacts
+.claude/.cache/
+.claude/logs/
+.claude/*.log
+.claude/oauth_token
+.claude/history/
+.claude/tmp/
+
+# Explicitly keep commands (optional, but documents intent)
+!.claude/commands/
+
+# Spec-kit
+.specify/.cache/
+
+
+
