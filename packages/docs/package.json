@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@duskmoon-dev/core": "^0.1.0",
+    "@duskmoon-dev/core": "workspace:*",
     "@astrojs/check": "latest",
     "@astrojs/mdx": "latest",
     "@astrojs/react": "latest",

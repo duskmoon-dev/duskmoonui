@@ -40,8 +40,6 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Playwright MCP artifacts
 .playwright-mcp
 
-# Bun lock file
-bun.lock
 
 # Claude Code - Keep commands, ignore runtime artifacts
 .claude/.cache/

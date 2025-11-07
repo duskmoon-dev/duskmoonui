@@ -1,14 +1,19 @@
 <!--
   Sync Impact Report:
-  Version Change: Initial → 1.0.0
-  Modified Principles: N/A (initial version)
-  Added Sections: All core principles, quality gates, development workflow, governance
-  Removed Sections: N/A
+  Version Change: 1.0.0 → 1.1.0
+  Modified Principles:
+    - Principle II "Tailwind-Native Architecture" → Made Tailwind v4 requirement explicit and mandatory
+  Added Sections:
+    - Explicit minimum Tailwind version requirement (>= 4.0.0) in Principle II
+  Removed Sections: None
   Templates Status:
-    ✅ plan-template.md - Validated, no updates needed (constitution check section compatible)
-    ✅ spec-template.md - Validated, no updates needed (requirements alignment compatible)
-    ✅ tasks-template.md - Validated, no updates needed (task structure compatible)
-  Follow-up TODOs: None
+    ✅ plan-template.md - Validated, constitution check section compatible
+    ✅ spec-template.md - Validated, requirements alignment compatible
+    ✅ tasks-template.md - Validated, task structure compatible
+  Follow-up TODOs:
+    ⚠️ Current @duskmoon-dev/core implementation violates Principle II (uses Tailwind v3 API)
+    ⚠️ Plugin must be refactored to use Tailwind v4 native @plugin and @theme syntax
+    ⚠️ This will require a MAJOR version bump of @duskmoon-dev/core when implemented
 -->
 
 # DuskMoonUI Constitution
@@ -27,13 +32,17 @@ DuskMoonUI is a design system foundation built on Material Design 3 color tokens
 
 ### II. Tailwind-Native Architecture
 
-All features MUST be implemented as Tailwind CSS v4 native constructs:
-- Colors via CSS custom properties (`@theme` blocks)
-- Components as utility compositions or `@layer components` declarations
-- NO runtime JavaScript for theming (CSS variables handle dynamic switching)
-- Plugin API follows Tailwind conventions (`addBase`, `addComponents`, `addUtilities`)
+**MANDATORY**: This project MUST support only Tailwind CSS >= 4.0.0.
 
-**Rationale**: Users expect Tailwind plugins to be statically analyzable, tree-shakeable, and JIT-compatible. Runtime dependencies violate these expectations.
+All features MUST be implemented as Tailwind CSS v4 native constructs:
+- Colors via CSS custom properties using `@theme` blocks in CSS files
+- Components as utility compositions or `@layer components` declarations
+- Plugin implementation using Tailwind v4 `@plugin` directive syntax
+- NO Tailwind v3 JavaScript plugin API (`addBase`, `addComponents`, `addUtilities`)
+- NO runtime JavaScript for theming (CSS variables handle dynamic switching)
+- Configuration via CSS `@theme` and `@plugin` blocks, NOT tailwind.config.js
+
+**Rationale**: Tailwind v4's CSS-first architecture provides better performance, simpler mental models, and native browser dev tools support. Supporting v3 would require maintaining two incompatible architectures.
 
 ### III. Component Independence
 
@@ -58,7 +67,7 @@ TypeScript type definitions are NON-NEGOTIABLE:
 ### V. Zero Runtime Dependencies
 
 The core package (`@duskmoon-dev/core`) MUST:
-- Have ONLY `tailwindcss` as a peer dependency
+- Have ONLY `tailwindcss` (>= 4.0.0) as a peer dependency
 - Emit pure CSS at build time (no client-side JS required)
 - Use Bun for development but remain Node.js 18+ compatible
 - Keep bundle size <10KB (minified) for the plugin itself
@@ -71,9 +80,9 @@ All features MUST include:
 - Inline JSDoc comments for public APIs
 - Live examples in the `/packages/docs` Astro site
 - Migration guides for breaking changes in CHANGELOG.md
-- Quickstart examples that work without build tooling (standalone.html pattern)
+- Quickstart examples that work with Tailwind v4 setup
 
-**Rationale**: Undocumented features don't exist. The standalone.html demos prove the library works without complex setup.
+**Rationale**: Undocumented features don't exist. Examples prove the library works with standard Tailwind v4 configuration.
 
 ### VII. Accessibility by Default
 
@@ -101,6 +110,7 @@ Before opening pull requests:
 - CHANGELOG.md MUST be updated for user-facing changes
 - New color tokens MUST include contrast ratio validation
 - New components MUST include Astro documentation page
+- Tailwind v4 compatibility MUST be verified
 
 ### Release Requirements
 
@@ -108,7 +118,7 @@ Before publishing to npm:
 - Version bump MUST follow semver (use `npm version`)
 - Git tag MUST match package.json version
 - Built artifacts in `dist/` MUST be committed (for GitHub releases)
-- README.md examples MUST be tested against built package
+- README.md examples MUST be tested against Tailwind v4
 
 ## Development Workflow
 
@@ -125,11 +135,12 @@ All PRs MUST:
 - Include before/after examples for visual changes
 - Pass CI checks (type checking, build, tests)
 - Have at least one approval from maintainer
+- Verify Tailwind v4 compatibility
 
 ### Monorepo Conventions
 
 Workspace structure:
-- `packages/core/`: The Tailwind plugin (published to npm)
+- `packages/core/`: The Tailwind v4 plugin (published to npm)
 - `packages/docs/`: Astro documentation site (deployed separately)
 - `examples/*/`: Integration examples (Next.js, Astro, vanilla)
 
@@ -159,6 +170,7 @@ Constitution changes require:
 
 Every feature PR MUST include constitution compliance checklist:
 - [ ] Maintains color system integrity (Principle I)
+- [ ] Uses Tailwind v4 native syntax (Principle II)
 - [ ] No runtime dependencies added (Principle V)
 - [ ] Type definitions exported (Principle IV)
 - [ ] Documentation included (Principle VI)
@@ -171,4 +183,4 @@ Any feature violating these principles MUST justify complexity:
 - **Why**: Problem that requires violation
 - **Alternatives**: Simpler approaches considered and rejected with reasons
 
-**Version**: 1.0.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-11-06
+**Version**: 1.1.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-11-07
