@@ -1,0 +1,180 @@
+/**
+ * DuskMoonUI Tailwind CSS v4 Plugin
+ * Theme definitions and component styles
+ */
+
+/* Sunshine Theme (Light) */
+[data-theme="sunshine"] {
+  --primary: 38 92% 50%;
+  --primary-focus: 38 92% 40%;
+  --primary-content: 0 0% 100%;
+  --primary-container: 38 100% 90%;
+  --on-primary-container: 38 92% 15%;
+
+  --secondary: 330 81% 60%;
+  --secondary-focus: 330 81% 50%;
+  --secondary-content: 0 0% 100%;
+  --secondary-container: 330 100% 92%;
+  --on-secondary-container: 330 81% 18%;
+
+  --tertiary: 258 90% 66%;
+  --tertiary-focus: 258 90% 56%;
+  --tertiary-content: 0 0% 100%;
+  --tertiary-container: 258 100% 92%;
+  --on-tertiary-container: 258 90% 20%;
+
+  --accent: 160 84% 39%;
+  --accent-focus: 160 84% 29%;
+  --accent-content: 0 0% 100%;
+
+  --neutral: 217 33% 17%;
+  --neutral-focus: 217 33% 12%;
+  --neutral-content: 0 0% 100%;
+  --neutral-variant: 220 14% 60%;
+
+  --surface: 0 0% 99%;
+  --surface-dim: 220 13% 94%;
+  --surface-bright: 0 0% 100%;
+  --surface-container-lowest: 0 0% 100%;
+  --surface-container-low: 220 13% 97%;
+  --surface-container: 220 13% 96%;
+  --surface-container-high: 220 13% 94%;
+  --surface-container-highest: 220 13% 91%;
+  --surface-variant: 220 14% 90%;
+  --on-surface: 217 33% 17%;
+  --on-surface-variant: 220 9% 30%;
+
+  --base-100: 0 0% 100%;
+  --base-200: 220 13% 96%;
+  --base-300: 220 13% 91%;
+  --base-content: 217 33% 17%;
+
+  --outline: 220 9% 55%;
+  --outline-variant: 220 14% 80%;
+
+  --inverse-surface: 217 33% 17%;
+  --inverse-on-surface: 220 13% 94%;
+  --inverse-primary: 38 100% 75%;
+
+  --shadow: 0 0% 0%;
+  --scrim: 0 0% 0%;
+
+  --info: 199 89% 48%;
+  --info-content: 0 0% 100%;
+  --success: 142 71% 45%;
+  --success-content: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-content: 0 0% 100%;
+  --error: 0 84% 60%;
+  --error-content: 0 0% 100%;
+}
+
+/* Moonlight Theme (Dark) */
+[data-theme="moonlight"] {
+  --primary: 38 100% 65%;
+  --primary-focus: 38 100% 55%;
+  --primary-content: 38 92% 15%;
+  --primary-container: 38 100% 20%;
+  --on-primary-container: 38 100% 90%;
+
+  --secondary: 330 81% 70%;
+  --secondary-focus: 330 81% 60%;
+  --secondary-content: 330 81% 18%;
+  --secondary-container: 330 100% 22%;
+  --on-secondary-container: 330 100% 92%;
+
+  --tertiary: 258 90% 76%;
+  --tertiary-focus: 258 90% 66%;
+  --tertiary-content: 258 90% 20%;
+  --tertiary-container: 258 100% 25%;
+  --on-tertiary-container: 258 100% 92%;
+
+  --accent: 160 84% 49%;
+  --accent-focus: 160 84% 39%;
+  --accent-content: 0 0% 100%;
+
+  --neutral: 217 13% 87%;
+  --neutral-focus: 217 33% 82%;
+  --neutral-content: 217 33% 17%;
+  --neutral-variant: 220 14% 45%;
+
+  --surface: 217 33% 17%;
+  --surface-dim: 217 33% 12%;
+  --surface-bright: 220 9% 30%;
+  --surface-container-lowest: 217 33% 12%;
+  --surface-container-low: 217 33% 19%;
+  --surface-container: 217 33% 21%;
+  --surface-container-high: 220 13% 24%;
+  --surface-container-highest: 220 13% 27%;
+  --surface-variant: 220 9% 30%;
+  --on-surface: 217 13% 87%;
+  --on-surface-variant: 220 14% 70%;
+
+  --base-100: 217 33% 17%;
+  --base-200: 217 33% 21%;
+  --base-300: 217 33% 25%;
+  --base-content: 217 13% 87%;
+
+  --outline: 220 14% 45%;
+  --outline-variant: 220 9% 30%;
+
+  --inverse-surface: 217 13% 87%;
+  --inverse-on-surface: 217 33% 17%;
+  --inverse-primary: 38 92% 40%;
+
+  --shadow: 0 0% 0%;
+  --scrim: 0 0% 0%;
+
+  --info: 199 89% 58%;
+  --info-content: 0 0% 100%;
+  --success: 142 71% 55%;
+  --success-content: 0 0% 100%;
+  --warning: 38 100% 65%;
+  --warning-content: 38 92% 15%;
+  --error: 0 84% 70%;
+  --error-content: 0 0% 100%;
+}
+
+/* Base Component Styles */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-content));
+  }
+
+  .btn-primary:hover {
+    background-color: hsl(var(--primary-focus));
+  }
+
+  .btn-secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-content));
+  }
+
+  .btn-secondary:hover {
+    background-color: hsl(var(--secondary-focus));
+  }
+
+  .btn-tertiary {
+    background-color: hsl(var(--tertiary));
+    color: hsl(var(--tertiary-content));
+  }
+
+  .btn-tertiary:hover {
+    background-color: hsl(var(--tertiary-focus));
+  }
+}

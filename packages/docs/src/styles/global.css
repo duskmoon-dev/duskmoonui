@@ -6,7 +6,7 @@
 @source "../pages/**/*.astro";
 @source "../pages/**/*.mdx";
 
-@plugin "@duskmoon-dev/core";
+@import "@duskmoon-dev/core/index.css";
 
 * {
   box-sizing: border-box;

@@ -10,15 +10,18 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "default": "./index.css"
     },
     "./theme": {
       "types": "./dist/theme.d.ts",
       "import": "./dist/theme.js"
-    }
+    },
+    "./index.css": "./index.css"
   },
   "files": [
     "dist",
+    "index.css",
     "README.md",
     "LICENSE"
   ],
