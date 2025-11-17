@@ -1,6 +1,8 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import ComponentShowcase from '../../components/showcase/ComponentShowcase.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <DocsLayout
@@ -147,7 +149,7 @@ import ComponentShowcase from '../../components/showcase/ComponentShowcase.astro
     </section>
 
     <div class="docs-link">
-      <a href="/docs/en/components/button/" class="btn btn-outlined">
+      <a href={`${base}docs/en/components/button/`} class="btn btn-outlined">
         View Full Documentation →
       </a>
     </div>

@@ -316,7 +316,7 @@ Use prefixes when integrating with other libraries:
 
 ```javascript
 // tailwind.config.js
-const { duskmoonui } = require('duskmoonui');
+const { duskmoonui } = require('@duskmoon-dev/core');
 
 module.exports = {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
@@ -336,7 +336,7 @@ module.exports = {
 
 ```javascript
 // tailwind.config.js
-const { duskmoonui } = require('duskmoonui');
+const { duskmoonui } = require('@duskmoon-dev/core');
 
 // Custom theme
 const brandTheme = {
@@ -377,7 +377,7 @@ module.exports = {
 
 ```typescript
 // tailwind.config.ts
-import { duskmoonui, type DuskMoonUIOptions, type ThemeConfig } from 'duskmoonui';
+import { duskmoonui, type DuskMoonUIOptions, type ThemeConfig } from '@duskmoon-dev/core';
 import type { Config } from 'tailwindcss';
 
 const brandTheme: ThemeConfig = {
@@ -410,7 +410,7 @@ For Tailwind CSS 4.0+, use the `@plugin` directive:
 /* app.css or global.css */
 @import "tailwindcss";
 
-@plugin "duskmoonui" {
+@plugin "@duskmoon-dev/core" {
   @theme {
     --theme: "sunshine";           /* defaultTheme */
   }

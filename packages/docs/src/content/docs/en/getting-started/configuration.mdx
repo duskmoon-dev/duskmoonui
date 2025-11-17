@@ -19,7 +19,7 @@ The simplest configuration uses default settings:
 
 ```css
 @import "tailwindcss";
-@plugin "duskmoonui";
+@plugin "@duskmoon-dev/core";
 ```
 
 ### Tailwind CSS 3.x
@@ -28,7 +28,7 @@ The simplest configuration uses default settings:
 // tailwind.config.js
 module.exports = {
   plugins: [
-    require('duskmoonui'),
+    require('@duskmoon-dev/core'),
   ],
 }
 ```
@@ -41,7 +41,7 @@ Customize DuskMoonUI by passing options:
 
 ```css
 @import "tailwindcss";
-@plugin "duskmoonui" {
+@plugin "@duskmoon-dev/core" {
   @theme {
     --theme: "sunshine";
   }
@@ -57,7 +57,7 @@ Customize DuskMoonUI by passing options:
 // tailwind.config.js
 module.exports = {
   plugins: [
-    require('duskmoonui')({
+    require('@duskmoon-dev/core')({
       themes: ['sunshine', 'moonlight'],
       defaultTheme: 'sunshine',
       styled: true,
@@ -86,7 +86,7 @@ Array of theme names to include. Built-in themes are `sunshine` (light) and `moo
 You can also provide custom theme objects:
 
 ```javascript
-import { duskmoonui } from 'duskmoonui';
+import { duskmoonui } from '@duskmoon-dev/core';
 
 {
   themes: [
@@ -174,7 +174,7 @@ Example usage with prefix:
 Create custom themes by extending or overriding the color palette:
 
 ```javascript
-import { duskmoonui, type ThemeConfig } from 'duskmoonui';
+import { duskmoonui, type ThemeConfig } from '@duskmoon-dev/core';
 
 const customTheme: ThemeConfig = {
   name: 'ocean',
@@ -302,7 +302,7 @@ Here's a complete configuration example:
 
 ```javascript
 // tailwind.config.js
-const { duskmoonui } = require('duskmoonui');
+const { duskmoonui } = require('@duskmoon-dev/core');
 
 module.exports = {
   content: [
@@ -344,7 +344,7 @@ module.exports = {
 DuskMoonUI includes full TypeScript definitions:
 
 ```typescript
-import { duskmoonui, type ThemeConfig, type DuskMoonUIOptions } from 'duskmoonui';
+import { duskmoonui, type ThemeConfig, type DuskMoonUIOptions } from '@duskmoon-dev/core';
 
 const options: Partial<DuskMoonUIOptions> = {
   themes: ['sunshine', 'moonlight'],
