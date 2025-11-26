@@ -7,6 +7,10 @@ import { sunshine } from './sunshine';
 import { moonlight } from './moonlight';
 import type { ThemeColors } from '../types';
 
+// Re-export individual themes
+export { sunshine } from './sunshine';
+export { moonlight } from './moonlight';
+
 /**
  * All available themes
  */

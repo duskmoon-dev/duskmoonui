@@ -1,0 +1,196 @@
+/**
+ * Card Component Styles
+ * DuskMoonUI - Material Design 3 inspired card system
+ */
+
+@layer components {
+  /* Base Card */
+  .card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    transition: box-shadow 150ms ease-in-out, transform 150ms ease-in-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  /* Card Image */
+  .card figure,
+  .card-image {
+    overflow: hidden;
+  }
+
+  .card figure img,
+  .card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Card Body */
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    flex: 1;
+  }
+
+  /* Card Title */
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.75rem;
+    color: var(--color-on-surface);
+  }
+
+  /* Card Actions */
+  .card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .card-actions.justify-end {
+    justify-content: flex-end;
+  }
+
+  .card-actions.justify-start {
+    justify-content: flex-start;
+  }
+
+  .card-actions.justify-center {
+    justify-content: center;
+  }
+
+  /* Card Bordered */
+  .card-bordered {
+    border: 1px solid var(--color-outline);
+    box-shadow: none;
+  }
+
+  .card-bordered:hover {
+    box-shadow: none;
+    border-color: var(--color-outline-variant);
+  }
+
+  /* Card Compact */
+  .card-compact .card-body {
+    padding: 1rem;
+  }
+
+  .card-compact .card-title {
+    font-size: 1rem;
+  }
+
+  /* Card Side - Horizontal Layout */
+  .card-side {
+    flex-direction: row;
+  }
+
+  .card-side figure,
+  .card-side .card-image {
+    width: 40%;
+    flex-shrink: 0;
+  }
+
+  .card-side figure img,
+  .card-side .card-image img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Color Variants */
+  .card-primary {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .card-primary .card-title {
+    color: var(--color-on-primary-container);
+  }
+
+  .card-secondary {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+  }
+
+  .card-secondary .card-title {
+    color: var(--color-on-secondary-container);
+  }
+
+  .card-tertiary {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+  }
+
+  .card-tertiary .card-title {
+    color: var(--color-on-tertiary-container);
+  }
+
+  /* Glass Effect */
+  .card-glass {
+    background-color: rgb(255 255 255 / 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgb(255 255 255 / 0.2);
+  }
+
+  /* Elevated Variants */
+  .card-elevated {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .card-elevated:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Interactive Card */
+  .card-interactive {
+    cursor: pointer;
+  }
+
+  .card-interactive:active {
+    transform: scale(0.99);
+  }
+
+  .card-interactive:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Full Image Card */
+  .card-full-image {
+    position: relative;
+  }
+
+  .card-full-image figure,
+  .card-full-image .card-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .card-full-image .card-body {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.7), transparent);
+    color: white;
+    margin-top: auto;
+    min-height: 50%;
+  }
+
+  .card-full-image .card-title {
+    color: white;
+  }
+}

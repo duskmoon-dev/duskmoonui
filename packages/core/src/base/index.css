@@ -1,0 +1,10 @@
+/**
+ * Base styles
+ * Core styling and color token definitions
+ */
+
+/* Root styles */
+@import "./root.css";
+
+/* Color token definitions */
+@import "./colors.css";

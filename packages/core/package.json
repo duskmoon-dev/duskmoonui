@@ -1,20 +1,24 @@
 {
   "name": "@duskmoon-dev/core",
-  "version": "0.1.0",
-  "description": "DuskMoonUI - Tailwind CSS component library with extended color system",
+  "version": "1.0.0",
+  "description": "DuskMoonUI - Tailwind CSS v4 plugin with Material Design 3 color system and component styles",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.css",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "default": "./dist/index.css",
+      "style": "./dist/index.css",
+      "types": "./dist/types/index.d.ts"
     },
-    "./theme": {
-      "types": "./dist/theme.d.ts",
-      "import": "./dist/theme.js"
+    "./themes/sunshine": {
+      "style": "./dist/themes/sunshine.css"
+    },
+    "./themes/moonlight": {
+      "style": "./dist/themes/moonlight.css"
+    },
+    "./components": {
+      "style": "./dist/components/index.css"
     }
   },
   "files": [
@@ -24,12 +28,17 @@
   ],
   "scripts": {
     "dev": "bun run build --watch",
-    "build": "bun run clean && bun run build:bundle && bun run build:types",
-    "build:bundle": "bun build src/index.ts --outdir dist --target node --format esm --sourcemap && bun build src/index.ts --target node --format cjs --outfile src/index.cjs --sourcemap && mv src/index.cjs src/index.cjs.map dist/",
-    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "build": "bun run clean && bun run build:css && bun run build:types",
+    "build:css": "bun run scripts/build-css.ts",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "test": "bun test"
+    "test": "bun test tests/unit",
+    "test:unit": "bun test tests/unit",
+    "test:visual": "playwright test --config=playwright.visual.config.ts",
+    "test:integration": "playwright test --config=playwright.integration.config.ts",
+    "test:a11y": "playwright test --config=playwright.integration.config.ts tests/accessibility/",
+    "test:all": "bun run test:unit && bun run test:visual && bun run test:integration && bun run test:a11y"
   },
   "keywords": [
     "tailwind",
@@ -60,9 +69,14 @@
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.8.0",
+    "@playwright/test": "^1.40.0",
     "@types/bun": "latest",
+    "axe-core": "^4.8.0",
+    "lightningcss": "^1.22.0",
     "tailwindcss": "^4.0.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "vitest": "^1.0.0"
   },
   "engines": {
     "node": ">=18.0.0",

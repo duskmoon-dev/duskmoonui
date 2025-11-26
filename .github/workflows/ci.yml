@@ -29,9 +29,8 @@ jobs:
       - name: Build core package
         run: bun run --filter @duskmoon-dev/core build
 
-      - name: Run tests (when available)
-        run: bun run --filter @duskmoon-dev/core test || echo "No tests configured yet"
-        continue-on-error: true
+      - name: Run unit tests
+        run: bun run --filter @duskmoon-dev/core test
 
   lint:
     name: Lint

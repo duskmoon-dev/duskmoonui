@@ -1,0 +1,15 @@
+/**
+ * @duskmoon-dev/core
+ * Tailwind CSS v4 plugin with Material Design 3 color system
+ *
+ * Import this file with @import "@duskmoon-dev/core" in your CSS
+ */
+
+/* Base styles and color tokens */
+@import "./base/index.css";
+
+/* Built-in themes */
+@import "./themes/index.css";
+
+/* Component styles */
+@import "./components/index.css";

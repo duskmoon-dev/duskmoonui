@@ -1,0 +1,521 @@
+---
+title: Color Tokens
+description: Complete showcase of all 65+ color tokens in @duskmoon-dev/core
+category: theming
+order: 3
+published: true
+tags: ['colors', 'tokens', 'material-design', 'theming']
+---
+
+# Color Tokens
+
+@duskmoon-dev/core provides 65+ color tokens based on Material Design 3's dynamic color system. Each token is designed for specific UI purposes and maintains WCAG AA contrast compliance.
+
+## Color Token Categories
+
+### Primary Colors
+
+The main brand color used for key UI elements like buttons, links, and active states.
+
+<div class="color-grid">
+  <div class="color-swatch" style="background: hsl(var(--color-primary, 38 92% 50%));">
+    <span class="swatch-label text-primary-content">primary</span>
+    <code class="swatch-code">--color-primary</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-primary-focus, 38 92% 40%));">
+    <span class="swatch-label text-primary-content">primary-focus</span>
+    <code class="swatch-code">--color-primary-focus</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-primary-content, 0 0% 10%));">
+    <span class="swatch-label" style="color: white;">primary-content</span>
+    <code class="swatch-code">--color-primary-content</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-primary-container, 38 60% 90%));">
+    <span class="swatch-label text-on-primary-container">primary-container</span>
+    <code class="swatch-code">--color-primary-container</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-on-primary-container, 38 60% 15%));">
+    <span class="swatch-label" style="color: white;">on-primary-container</span>
+    <code class="swatch-code">--color-on-primary-container</code>
+  </div>
+</div>
+
+```css
+/* Primary color tokens */
+--color-primary              /* Main brand color */
+--color-primary-focus        /* Hover/focus state */
+--color-primary-content      /* Text on primary */
+--color-primary-container    /* Light background variant */
+--color-on-primary-container /* Text on container */
+```
+
+### Secondary Colors
+
+Complementary accent color for secondary actions and elements.
+
+<div class="color-grid">
+  <div class="color-swatch" style="background: hsl(var(--color-secondary, 217 91% 60%));">
+    <span class="swatch-label text-secondary-content">secondary</span>
+    <code class="swatch-code">--color-secondary</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-secondary-focus, 217 91% 50%));">
+    <span class="swatch-label text-secondary-content">secondary-focus</span>
+    <code class="swatch-code">--color-secondary-focus</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-secondary-content, 0 0% 100%));">
+    <span class="swatch-label" style="color: black;">secondary-content</span>
+    <code class="swatch-code">--color-secondary-content</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-secondary-container, 217 70% 90%));">
+    <span class="swatch-label text-on-secondary-container">secondary-container</span>
+    <code class="swatch-code">--color-secondary-container</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-on-secondary-container, 217 70% 15%));">
+    <span class="swatch-label" style="color: white;">on-secondary-container</span>
+    <code class="swatch-code">--color-on-secondary-container</code>
+  </div>
+</div>
+
+```css
+/* Secondary color tokens */
+--color-secondary              /* Accent brand color */
+--color-secondary-focus        /* Hover/focus state */
+--color-secondary-content      /* Text on secondary */
+--color-secondary-container    /* Light background variant */
+--color-on-secondary-container /* Text on container */
+```
+
+### Tertiary Colors
+
+Third brand color unique to @duskmoon-dev/core for additional visual variety.
+
+<div class="color-grid">
+  <div class="color-swatch" style="background: hsl(var(--color-tertiary, 174 72% 40%));">
+    <span class="swatch-label text-tertiary-content">tertiary</span>
+    <code class="swatch-code">--color-tertiary</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-tertiary-focus, 174 72% 30%));">
+    <span class="swatch-label text-tertiary-content">tertiary-focus</span>
+    <code class="swatch-code">--color-tertiary-focus</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-tertiary-content, 0 0% 100%));">
+    <span class="swatch-label" style="color: black;">tertiary-content</span>
+    <code class="swatch-code">--color-tertiary-content</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-tertiary-container, 174 50% 85%));">
+    <span class="swatch-label text-on-tertiary-container">tertiary-container</span>
+    <code class="swatch-code">--color-tertiary-container</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-on-tertiary-container, 174 50% 15%));">
+    <span class="swatch-label" style="color: white;">on-tertiary-container</span>
+    <code class="swatch-code">--color-on-tertiary-container</code>
+  </div>
+</div>
+
+```css
+/* Tertiary color tokens */
+--color-tertiary              /* Third brand color */
+--color-tertiary-focus        /* Hover/focus state */
+--color-tertiary-content      /* Text on tertiary */
+--color-tertiary-container    /* Light background variant */
+--color-on-tertiary-container /* Text on container */
+```
+
+### Surface Colors
+
+Background and surface colors with Material Design 3's five-level elevation system.
+
+<div class="color-grid">
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface, 0 0% 100%));">
+    <span class="swatch-label text-on-surface">surface</span>
+    <code class="swatch-code">--color-surface</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface-dim, 45 10% 87%));">
+    <span class="swatch-label text-on-surface">surface-dim</span>
+    <code class="swatch-code">--color-surface-dim</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface-bright, 0 0% 100%));">
+    <span class="swatch-label text-on-surface">surface-bright</span>
+    <code class="swatch-code">--color-surface-bright</code>
+  </div>
+</div>
+
+#### Surface Container Elevation Levels
+
+<div class="color-grid">
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface-container-lowest, 0 0% 100%));">
+    <span class="swatch-label text-on-surface">lowest</span>
+    <code class="swatch-code">--color-surface-container-lowest</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface-container-low, 45 10% 96%));">
+    <span class="swatch-label text-on-surface">low</span>
+    <code class="swatch-code">--color-surface-container-low</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface-container, 45 10% 94%));">
+    <span class="swatch-label text-on-surface">container</span>
+    <code class="swatch-code">--color-surface-container</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface-container-high, 45 10% 92%));">
+    <span class="swatch-label text-on-surface">high</span>
+    <code class="swatch-code">--color-surface-container-high</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-surface-container-highest, 45 10% 90%));">
+    <span class="swatch-label text-on-surface">highest</span>
+    <code class="swatch-code">--color-surface-container-highest</code>
+  </div>
+</div>
+
+```css
+/* Surface color tokens */
+--color-surface                   /* Base surface */
+--color-surface-dim               /* Dimmed surface */
+--color-surface-bright            /* Bright surface */
+--color-surface-container-lowest  /* Elevation level 0 */
+--color-surface-container-low     /* Elevation level 1 */
+--color-surface-container         /* Elevation level 2 (default) */
+--color-surface-container-high    /* Elevation level 3 */
+--color-surface-container-highest /* Elevation level 4 */
+--color-on-surface                /* Primary text color */
+--color-on-surface-variant        /* Secondary text color */
+--color-surface-variant           /* Alternative surface */
+```
+
+### Base Colors (Neutral Scale)
+
+DaisyUI-compatible neutral color scale for general UI elements.
+
+<div class="color-grid">
+  <div class="color-swatch bordered" style="background: hsl(var(--color-base-100, 45 10% 96%));">
+    <span class="swatch-label text-base-content">base-100</span>
+    <code class="swatch-code">--color-base-100</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-base-200, 45 10% 92%));">
+    <span class="swatch-label text-base-content">base-200</span>
+    <code class="swatch-code">--color-base-200</code>
+  </div>
+  <div class="color-swatch bordered" style="background: hsl(var(--color-base-300, 45 10% 86%));">
+    <span class="swatch-label text-base-content">base-300</span>
+    <code class="swatch-code">--color-base-300</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-base-400, 45 8% 70%));">
+    <span class="swatch-label text-base-content">base-400</span>
+    <code class="swatch-code">--color-base-400</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-base-500, 45 5% 50%));">
+    <span class="swatch-label" style="color: white;">base-500</span>
+    <code class="swatch-code">--color-base-500</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-base-600, 45 5% 40%));">
+    <span class="swatch-label" style="color: white;">base-600</span>
+    <code class="swatch-code">--color-base-600</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-base-700, 45 5% 30%));">
+    <span class="swatch-label" style="color: white;">base-700</span>
+    <code class="swatch-code">--color-base-700</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-base-800, 45 5% 20%));">
+    <span class="swatch-label" style="color: white;">base-800</span>
+    <code class="swatch-code">--color-base-800</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-base-900, 45 5% 10%));">
+    <span class="swatch-label" style="color: white;">base-900</span>
+    <code class="swatch-code">--color-base-900</code>
+  </div>
+</div>
+
+```css
+/* Base (neutral) color scale */
+--color-base-100     /* Lightest neutral */
+--color-base-200
+--color-base-300
+--color-base-400
+--color-base-500
+--color-base-600
+--color-base-700
+--color-base-800
+--color-base-900     /* Darkest neutral */
+--color-base-content /* Text on base colors */
+```
+
+### Semantic Colors
+
+Dedicated colors for specific UI states and feedback.
+
+#### Info (Blue)
+
+<div class="color-grid">
+  <div class="color-swatch" style="background: hsl(var(--color-info, 200 90% 50%));">
+    <span class="swatch-label text-info-content">info</span>
+    <code class="swatch-code">--color-info</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-info-content, 0 0% 100%));">
+    <span class="swatch-label" style="color: black;">info-content</span>
+    <code class="swatch-code">--color-info-content</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-info-container, 200 70% 90%));">
+    <span class="swatch-label text-on-info-container">info-container</span>
+    <code class="swatch-code">--color-info-container</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-on-info-container, 200 70% 15%));">
+    <span class="swatch-label" style="color: white;">on-info-container</span>
+    <code class="swatch-code">--color-on-info-container</code>
+  </div>
+</div>
+
+#### Success (Green)
+
+<div class="color-grid">
+  <div class="color-swatch" style="background: hsl(var(--color-success, 140 70% 45%));">
+    <span class="swatch-label text-success-content">success</span>
+    <code class="swatch-code">--color-success</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-success-content, 0 0% 100%));">
+    <span class="swatch-label" style="color: black;">success-content</span>
+    <code class="swatch-code">--color-success-content</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-success-container, 140 50% 90%));">
+    <span class="swatch-label text-on-success-container">success-container</span>
+    <code class="swatch-code">--color-success-container</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-on-success-container, 140 50% 15%));">
+    <span class="swatch-label" style="color: white;">on-success-container</span>
+    <code class="swatch-code">--color-on-success-container</code>
+  </div>
+</div>
+
+#### Warning (Yellow)
+
+<div class="color-grid">
+  <div class="color-swatch" style="background: hsl(var(--color-warning, 45 95% 50%));">
+    <span class="swatch-label text-warning-content">warning</span>
+    <code class="swatch-code">--color-warning</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-warning-content, 0 0% 10%));">
+    <span class="swatch-label" style="color: white;">warning-content</span>
+    <code class="swatch-code">--color-warning-content</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-warning-container, 45 80% 90%));">
+    <span class="swatch-label text-on-warning-container">warning-container</span>
+    <code class="swatch-code">--color-warning-container</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-on-warning-container, 45 80% 15%));">
+    <span class="swatch-label" style="color: white;">on-warning-container</span>
+    <code class="swatch-code">--color-on-warning-container</code>
+  </div>
+</div>
+
+#### Error (Red)
+
+<div class="color-grid">
+  <div class="color-swatch" style="background: hsl(var(--color-error, 0 80% 50%));">
+    <span class="swatch-label text-error-content">error</span>
+    <code class="swatch-code">--color-error</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-error-content, 0 0% 100%));">
+    <span class="swatch-label" style="color: black;">error-content</span>
+    <code class="swatch-code">--color-error-content</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-error-container, 0 60% 90%));">
+    <span class="swatch-label text-on-error-container">error-container</span>
+    <code class="swatch-code">--color-error-container</code>
+  </div>
+  <div class="color-swatch" style="background: hsl(var(--color-on-error-container, 0 60% 15%));">
+    <span class="swatch-label" style="color: white;">on-error-container</span>
+    <code class="swatch-code">--color-on-error-container</code>
+  </div>
+</div>
+
+```css
+/* Semantic color tokens for each state */
+--color-info               --color-info-content
+--color-info-container     --color-on-info-container
+
+--color-success            --color-success-content
+--color-success-container  --color-on-success-container
+
+--color-warning            --color-warning-content
+--color-warning-container  --color-on-warning-container
+
+--color-error              --color-error-content
+--color-error-container    --color-on-error-container
+```
+
+### Outline Colors
+
+Border and divider colors.
+
+<div class="color-grid">
+  <div class="color-swatch bordered" style="background: white; border: 3px solid hsl(var(--color-outline, 0 0% 50%));">
+    <span class="swatch-label text-on-surface">outline</span>
+    <code class="swatch-code">--color-outline</code>
+  </div>
+  <div class="color-swatch bordered" style="background: white; border: 3px solid hsl(var(--color-outline-variant, 0 0% 75%));">
+    <span class="swatch-label text-on-surface">outline-variant</span>
+    <code class="swatch-code">--color-outline-variant</code>
+  </div>
+</div>
+
+```css
+/* Outline tokens */
+--color-outline         /* Primary borders */
+--color-outline-variant /* Subtle borders */
+```
+
+## Using Color Tokens
+
+### Tailwind Utility Classes
+
+```html
+<!-- Backgrounds -->
+<div class="bg-primary">Primary background</div>
+<div class="bg-surface-container">Elevated surface</div>
+
+<!-- Text -->
+<p class="text-primary">Primary colored text</p>
+<p class="text-on-surface">Standard body text</p>
+<p class="text-on-surface-variant">Secondary text</p>
+
+<!-- Borders -->
+<div class="border border-outline">Standard border</div>
+<div class="border border-outline-variant">Subtle border</div>
+```
+
+### CSS Custom Properties
+
+```css
+.custom-element {
+  background-color: hsl(var(--color-primary));
+  color: hsl(var(--color-primary-content));
+  border: 1px solid hsl(var(--color-outline));
+}
+
+/* With opacity */
+.overlay {
+  background-color: color-mix(in srgb, hsl(var(--color-surface)) 80%, transparent);
+}
+```
+
+### Opacity Variants
+
+Apply opacity to any color:
+
+```html
+<div class="bg-primary/50">50% opacity primary</div>
+<div class="bg-primary/75">75% opacity primary</div>
+<div class="text-primary/80">80% opacity text</div>
+```
+
+## Color Token Count
+
+| Category      | Token Count |
+|--------------|-------------|
+| Primary      | 5           |
+| Secondary    | 5           |
+| Tertiary     | 5           |
+| Surface      | 11          |
+| Base         | 10          |
+| Info         | 4           |
+| Success      | 4           |
+| Warning      | 4           |
+| Error        | 4           |
+| Outline      | 2           |
+| **Total**    | **54+**     |
+
+Additional tokens are generated for focus states, content variants, and theme-specific overrides, bringing the total to 65+ tokens.
+
+## Theme Comparison
+
+Switch between themes to see how colors adapt:
+
+<div class="theme-comparison">
+  <div class="theme-preview" data-theme="sunshine">
+    <h4>Sunshine (Light)</h4>
+    <div class="preview-swatches">
+      <div class="mini-swatch bg-primary"></div>
+      <div class="mini-swatch bg-secondary"></div>
+      <div class="mini-swatch bg-tertiary"></div>
+      <div class="mini-swatch bg-surface-container"></div>
+    </div>
+  </div>
+  <div class="theme-preview" data-theme="moonlight">
+    <h4>Moonlight (Dark)</h4>
+    <div class="preview-swatches">
+      <div class="mini-swatch bg-primary"></div>
+      <div class="mini-swatch bg-secondary"></div>
+      <div class="mini-swatch bg-tertiary"></div>
+      <div class="mini-swatch bg-surface-container"></div>
+    </div>
+  </div>
+</div>
+
+## Related Resources
+
+- [Theming Overview](/docs/en/theming/overview/) - Understanding the theme system
+- [Theme Customization](/docs/en/theming/customization/) - Create custom themes
+- [WCAG Contrast Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+
+<style>{`
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.color-swatch {
+  height: 100px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.color-swatch.bordered {
+  border: 1px solid hsl(var(--color-outline-variant, 0 0% 80%));
+}
+
+.swatch-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.swatch-code {
+  font-size: 0.625rem;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+  background: transparent;
+  padding: 0;
+}
+
+.theme-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.theme-preview {
+  padding: 1rem;
+  border-radius: 8px;
+  background: hsl(var(--color-surface-container));
+}
+
+.theme-preview h4 {
+  margin: 0 0 1rem 0;
+  color: hsl(var(--color-on-surface));
+}
+
+.preview-swatches {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mini-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+`}</style>
