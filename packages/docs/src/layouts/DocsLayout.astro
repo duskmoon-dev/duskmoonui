@@ -18,7 +18,7 @@ const base = import.meta.env.BASE_URL;
       <div class="container">
         <nav class="header-nav">
           <a href={base} class="logo">
-            <span class="logo-text">DuskMoonUI</span>
+            <span class="logo-text">@duskmoon-dev/core</span>
           </a>
           <div class="nav-links">
             <a href={`${base}docs/en/getting-started/installation/`}>Docs</a>
@@ -38,72 +38,9 @@ const base = import.meta.env.BASE_URL;
 
     <footer class="docs-footer">
       <div class="container">
-        <p>&copy; {new Date().getFullYear()} DuskMoonUI. MIT License.</p>
+        <p>&copy; {new Date().getFullYear()} @duskmoon-dev/core. MIT License.</p>
       </div>
     </footer>
   </div>
 </BaseLayout>
 
-<style>
-  .docs-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  .docs-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .header-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0;
-  }
-
-  .logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--foreground);
-  }
-
-  .logo:hover {
-    text-decoration: none;
-    color: var(--primary);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: var(--foreground-muted);
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover {
-    color: var(--primary);
-    text-decoration: none;
-  }
-
-  .docs-main {
-    flex: 1;
-    padding: 3rem 0;
-  }
-
-  .docs-footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 2rem 0;
-    text-align: center;
-    color: var(--foreground-muted);
-  }
-</style>

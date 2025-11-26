@@ -1,0 +1,624 @@
+---
+title: Chip
+description: Material Design 3 chip component for tags, filters, selections, and user input
+category: components
+order: 24
+published: true
+tags: ['chip', 'components', 'material-design', 'tag', 'filter']
+---
+
+# Chip
+
+Chips help users enter information, make selections, filter content, or trigger actions. @duskmoon-dev/core provides a complete set of Material Design 3 chip variants including assist, filter, input, and suggestion chips.
+
+## Basic Usage
+
+```html
+<span class="chip">Basic Chip</span>
+```
+
+## Chip Types
+
+Material Design 3 defines four types of chips, each serving a specific purpose:
+
+### Assist Chips
+
+Assist chips help users take contextual actions. They're commonly used for smart or automated actions.
+
+```html
+<button class="chip chip-clickable">
+  <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+  </svg>
+  Add to Calendar
+</button>
+
+<button class="chip chip-clickable">
+  <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+  </svg>
+  Set Reminder
+</button>
+
+<button class="chip chip-clickable">
+  <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+  </svg>
+  Share
+</button>
+```
+
+### Filter Chips
+
+Filter chips allow users to refine content. They can be selected or unselected and often appear in groups.
+
+```html
+<div class="chip-group">
+  <button class="chip chip-selectable chip-selected">All</button>
+  <button class="chip chip-selectable">Electronics</button>
+  <button class="chip chip-selectable">Clothing</button>
+  <button class="chip chip-selectable">Books</button>
+  <button class="chip chip-selectable">Home & Garden</button>
+</div>
+```
+
+### Input Chips
+
+Input chips represent discrete pieces of information entered by a user, such as tags or contacts. They typically include a remove button.
+
+```html
+<div class="chip-group">
+  <span class="chip">
+    JavaScript
+    <button class="chip-remove" aria-label="Remove JavaScript tag">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </span>
+
+  <span class="chip">
+    TypeScript
+    <button class="chip-remove" aria-label="Remove TypeScript tag">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </span>
+
+  <span class="chip">
+    React
+    <button class="chip-remove" aria-label="Remove React tag">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </span>
+</div>
+```
+
+### Suggestion Chips
+
+Suggestion chips help users explore related content or complete tasks. They're similar to assist chips but focused on content discovery.
+
+```html
+<div class="chip-group">
+  <button class="chip chip-clickable">Trending Topics</button>
+  <button class="chip chip-clickable">Popular Tags</button>
+  <button class="chip chip-clickable">Recommended</button>
+</div>
+```
+
+## Variants
+
+### Default Chips
+
+Default chips with filled background:
+
+```html
+<span class="chip">Default Chip</span>
+<span class="chip chip-primary">Primary</span>
+<span class="chip chip-secondary">Secondary</span>
+<span class="chip chip-tertiary">Tertiary</span>
+```
+
+### Outlined Chips
+
+Outlined chips with transparent background and border:
+
+```html
+<span class="chip chip-outlined">Outlined</span>
+<button class="chip chip-outlined chip-clickable">Clickable Outlined</button>
+<button class="chip chip-outlined chip-selectable">Selectable Outlined</button>
+```
+
+## Colors
+
+### Theme Colors
+
+```html
+<span class="chip chip-primary">Primary</span>
+<span class="chip chip-secondary">Secondary</span>
+<span class="chip chip-tertiary">Tertiary</span>
+```
+
+### Semantic Colors
+
+Use semantic colors to convey status or meaning:
+
+```html
+<span class="chip chip-success">Success</span>
+<span class="chip chip-error">Error</span>
+<span class="chip chip-warning">Warning</span>
+<span class="chip chip-info">Info</span>
+```
+
+## Selected States
+
+Filter chips support multiple selected state colors:
+
+```html
+<button class="chip chip-selectable chip-selected-primary">Selected Primary</button>
+<button class="chip chip-selectable chip-selected-secondary">Selected Secondary</button>
+<button class="chip chip-selectable chip-selected-tertiary">Selected Tertiary</button>
+```
+
+## With Icons
+
+Add leading icons to provide visual context:
+
+```html
+<span class="chip">
+  <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+  </svg>
+  Tag
+</span>
+
+<button class="chip chip-clickable chip-primary">
+  <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+  </svg>
+  Filter
+</button>
+
+<span class="chip chip-secondary">
+  <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+  </svg>
+  Featured
+</span>
+```
+
+## With Avatar
+
+Use avatars for chips representing people or user-generated content:
+
+```html
+<span class="chip">
+  <img src="/avatar1.jpg" alt="User avatar" class="chip-avatar" />
+  John Doe
+</span>
+
+<span class="chip chip-primary">
+  <img src="/avatar2.jpg" alt="User avatar" class="chip-avatar" />
+  Jane Smith
+  <button class="chip-remove" aria-label="Remove Jane Smith">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</span>
+```
+
+## Sizes
+
+Three sizes are available for different contexts:
+
+```html
+<span class="chip chip-sm">Small Chip</span>
+<span class="chip">Default Chip</span>
+<span class="chip chip-lg">Large Chip</span>
+```
+
+Sizes work with all variants:
+
+```html
+<span class="chip chip-sm chip-primary">
+  <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+  </svg>
+  Small
+</span>
+
+<span class="chip chip-lg chip-secondary">
+  <img src="/avatar.jpg" alt="Avatar" class="chip-avatar" />
+  Large with Avatar
+  <button class="chip-remove" aria-label="Remove">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</span>
+```
+
+## States
+
+### Disabled State
+
+Disabled chips are non-interactive:
+
+```html
+<span class="chip chip-disabled">Disabled Chip</span>
+<button class="chip chip-clickable chip-disabled">Disabled Clickable</button>
+<button class="chip chip-selectable chip-disabled">Disabled Selectable</button>
+```
+
+### Interactive States
+
+Chips can be clickable or selectable:
+
+```html
+<!-- Clickable chips (assist/suggestion) -->
+<button class="chip chip-clickable">Click Me</button>
+<button class="chip chip-outlined chip-clickable">Outlined Clickable</button>
+
+<!-- Selectable chips (filter) -->
+<button class="chip chip-selectable">Select Me</button>
+<button class="chip chip-selectable chip-selected">Selected</button>
+```
+
+## Chip Groups
+
+Group related chips together with consistent spacing:
+
+```html
+<div class="chip-group">
+  <span class="chip">React</span>
+  <span class="chip">Vue</span>
+  <span class="chip">Angular</span>
+  <span class="chip">Svelte</span>
+</div>
+```
+
+### Dense Chip Groups
+
+Use dense spacing for compact layouts:
+
+```html
+<div class="chip-group chip-group-dense">
+  <span class="chip chip-sm">HTML</span>
+  <span class="chip chip-sm">CSS</span>
+  <span class="chip chip-sm">JavaScript</span>
+  <span class="chip chip-sm">TypeScript</span>
+</div>
+```
+
+## Best Practices
+
+### Choosing the Right Chip Type
+
+1. **Assist Chips**: Use for smart suggestions and contextual actions (e.g., "Add to calendar", "Set reminder")
+2. **Filter Chips**: Use for filtering and refining content (e.g., category filters, search refinements)
+3. **Input Chips**: Use for user-entered discrete information (e.g., email recipients, tags)
+4. **Suggestion Chips**: Use for content discovery and exploration (e.g., "Trending", "Popular")
+
+```html
+<!-- Good: Clear purpose for each type -->
+<div class="chip-group">
+  <!-- Filter chips for categories -->
+  <button class="chip chip-selectable chip-selected">All</button>
+  <button class="chip chip-selectable">Active</button>
+  <button class="chip chip-selectable">Completed</button>
+</div>
+
+<!-- Input chips for tags -->
+<div class="chip-group">
+  <span class="chip">
+    React
+    <button class="chip-remove" aria-label="Remove React">×</button>
+  </span>
+  <span class="chip">
+    TypeScript
+    <button class="chip-remove" aria-label="Remove TypeScript">×</button>
+  </span>
+</div>
+```
+
+### Accessibility
+
+- Use `<button>` elements for clickable and selectable chips
+- Provide descriptive `aria-label` for remove buttons
+- Ensure sufficient color contrast
+- Support keyboard navigation (built-in for button elements)
+
+```html
+<!-- Good: Accessible chip with remove button -->
+<span class="chip">
+  JavaScript
+  <button class="chip-remove" aria-label="Remove JavaScript tag">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</span>
+
+<!-- Good: Accessible filter chip with ARIA state -->
+<button class="chip chip-selectable chip-selected" aria-pressed="true">
+  Active Filter
+</button>
+```
+
+### Label Length
+
+Keep chip labels concise - typically 1-3 words:
+
+```html
+<!-- Good: Concise labels -->
+<span class="chip">JavaScript</span>
+<span class="chip">Web Development</span>
+
+<!-- Avoid: Long labels -->
+<span class="chip">This is a very long label that wraps awkwardly</span>
+```
+
+### Visual Hierarchy
+
+Use color and variant thoughtfully to create clear hierarchy:
+
+```html
+<div class="chip-group">
+  <!-- Selected/active state stands out -->
+  <button class="chip chip-selectable chip-selected-primary">All Items</button>
+  <button class="chip chip-selectable">Active</button>
+  <button class="chip chip-selectable">Archived</button>
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState } from 'react';
+
+interface ChipProps {
+  children: React.ReactNode;
+  variant?: 'default' | 'outlined';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'error' | 'warning' | 'info';
+  size?: 'sm' | 'md' | 'lg';
+  selectable?: boolean;
+  selected?: boolean;
+  onRemove?: () => void;
+  onClick?: () => void;
+}
+
+export function Chip({
+  children,
+  variant = 'default',
+  color,
+  size,
+  selectable,
+  selected,
+  onRemove,
+  onClick
+}: ChipProps) {
+  const classes = [
+    'chip',
+    variant === 'outlined' && 'chip-outlined',
+    color && `chip-${color}`,
+    size && `chip-${size}`,
+    selectable && 'chip-selectable',
+    selected && 'chip-selected',
+    onClick && 'chip-clickable'
+  ].filter(Boolean).join(' ');
+
+  const Component = onClick || selectable ? 'button' : 'span';
+
+  return (
+    <Component className={classes} onClick={onClick}>
+      {children}
+      {onRemove && (
+        <button className="chip-remove" onClick={onRemove} aria-label="Remove">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      )}
+    </Component>
+  );
+}
+
+// Usage: Filter chips
+function FilterExample() {
+  const [selected, setSelected] = useState('all');
+
+  return (
+    <div className="chip-group">
+      <Chip selectable selected={selected === 'all'} onClick={() => setSelected('all')}>
+        All
+      </Chip>
+      <Chip selectable selected={selected === 'active'} onClick={() => setSelected('active')}>
+        Active
+      </Chip>
+      <Chip selectable selected={selected === 'completed'} onClick={() => setSelected('completed')}>
+        Completed
+      </Chip>
+    </div>
+  );
+}
+
+// Usage: Input chips with remove
+function TagsExample() {
+  const [tags, setTags] = useState(['React', 'TypeScript', 'Tailwind']);
+
+  return (
+    <div className="chip-group">
+      {tags.map(tag => (
+        <Chip key={tag} onRemove={() => setTags(tags.filter(t => t !== tag))}>
+          {tag}
+        </Chip>
+      ))}
+    </div>
+  );
+}
+```
+
+### Vue
+
+```vue
+<template>
+  <component
+    :is="componentType"
+    :class="chipClasses"
+    @click="handleClick"
+  >
+    <slot />
+    <button
+      v-if="onRemove"
+      class="chip-remove"
+      @click="onRemove"
+      aria-label="Remove"
+    >
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </component>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  variant: {
+    type: String,
+    default: 'default'
+  },
+  color: String,
+  size: String,
+  selectable: Boolean,
+  selected: Boolean,
+  clickable: Boolean,
+  onRemove: Function
+});
+
+const emit = defineEmits(['click']);
+
+const componentType = computed(() => {
+  return props.clickable || props.selectable ? 'button' : 'span';
+});
+
+const chipClasses = computed(() => {
+  return [
+    'chip',
+    props.variant === 'outlined' && 'chip-outlined',
+    props.color && `chip-${props.color}`,
+    props.size && `chip-${props.size}`,
+    props.selectable && 'chip-selectable',
+    props.selected && 'chip-selected',
+    props.clickable && 'chip-clickable'
+  ].filter(Boolean).join(' ');
+});
+
+const handleClick = () => {
+  if (props.clickable || props.selectable) {
+    emit('click');
+  }
+};
+</script>
+
+<!-- Usage -->
+<template>
+  <div class="chip-group">
+    <Chip
+      v-for="category in categories"
+      :key="category"
+      selectable
+      :selected="selectedCategory === category"
+      @click="selectedCategory = category"
+    >
+      {{ category }}
+    </Chip>
+  </div>
+</template>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.chip` | Base chip styles (required) |
+| `.chip-outlined` | Outlined variant with border |
+| `.chip-clickable` | Clickable chip with hover states (assist/suggestion chips) |
+| `.chip-selectable` | Selectable chip with selection states (filter chips) |
+| `.chip-selected` | Selected state (default/primary) |
+| `.chip-selected-primary` | Selected state with primary color |
+| `.chip-selected-secondary` | Selected state with secondary color |
+| `.chip-selected-tertiary` | Selected state with tertiary color |
+| `.chip-primary` | Primary color variant |
+| `.chip-secondary` | Secondary color variant |
+| `.chip-tertiary` | Tertiary color variant |
+| `.chip-success` | Success semantic color |
+| `.chip-error` | Error semantic color |
+| `.chip-warning` | Warning semantic color |
+| `.chip-info` | Info semantic color |
+| `.chip-sm` | Small size |
+| `.chip-lg` | Large size |
+| `.chip-disabled` | Disabled state |
+| `.chip-icon` | Leading icon |
+| `.chip-avatar` | Leading avatar image |
+| `.chip-remove` | Remove/delete button |
+| `.chip-group` | Container for multiple chips |
+| `.chip-group-dense` | Chip group with reduced spacing |
+
+### HTML Elements
+
+Use semantic HTML elements based on chip type:
+
+- **Static chips**: `<span>` element
+- **Clickable chips** (assist/suggestion): `<button>` element
+- **Selectable chips** (filter): `<button>` element with `aria-pressed` attribute
+- **Input chips**: `<span>` with `<button>` for remove action
+
+### Combinations
+
+Common chip combinations:
+
+```html
+<!-- Filter chip: selectable with selected state -->
+<button class="chip chip-selectable chip-selected-primary">
+  Selected Filter
+</button>
+
+<!-- Input chip: with avatar and remove button -->
+<span class="chip chip-primary">
+  <img src="/avatar.jpg" alt="User" class="chip-avatar" />
+  John Doe
+  <button class="chip-remove" aria-label="Remove John Doe">×</button>
+</span>
+
+<!-- Assist chip: clickable with icon -->
+<button class="chip chip-clickable chip-outlined">
+  <svg class="chip-icon">...</svg>
+  Add to Calendar
+</button>
+
+<!-- Small outlined filter chip -->
+<button class="chip chip-sm chip-outlined chip-selectable">
+  Compact Filter
+</button>
+```
+
+## Related Components
+
+- [Badge](/docs/en/components/badge/) - Notification indicators
+- [Button](/docs/en/components/button/) - Action triggers
+- [Input](/docs/en/components/input/) - Form inputs
+
+## See Also
+
+- [Chip Design Guidelines (Material Design 3)](https://m3.material.io/components/chips/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

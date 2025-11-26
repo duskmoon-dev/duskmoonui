@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
 
 const base = import.meta.env.BASE_URL;
+const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout title="Home">
@@ -11,7 +12,7 @@ const base = import.meta.env.BASE_URL;
     <div class="container">
       <nav class="header-nav">
         <a href={base} class="logo">
-          <span class="logo-text">DuskMoonUI</span>
+          <span class="logo-text">@duskmoon-dev/core</span>
         </a>
         <div class="nav-links">
           <a href={`${base}docs/en/getting-started/installation/`}>Docs</a>
@@ -27,7 +28,7 @@ const base = import.meta.env.BASE_URL;
   <div class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">DuskMoonUI</h1>
+        <h1 class="hero-title">@duskmoon-dev/core</h1>
         <p class="hero-subtitle">
           The most popular Tailwind CSS component library with enhanced tertiary colors
         </p>
@@ -60,35 +61,29 @@ const base = import.meta.env.BASE_URL;
   <!-- Features Section -->
   <section class="features">
     <div class="container">
-      <h2>Why DuskMoonUI?</h2>
+      <h2>Why @duskmoon-dev/core?</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon">🎨</div>
           <h3>Tertiary Colors</h3>
           <p>Extended color system with primary, secondary, and tertiary colors for richer visual hierarchy.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🌓</div>
           <h3>Dual Themes</h3>
           <p>Beautiful "sunshine" and "moonlight" themes with smooth transitions.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">♿</div>
           <h3>Accessible</h3>
           <p>WCAG 2.1 AA compliant with focus on semantic HTML and keyboard navigation.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">⚡</div>
           <h3>Tailwind 4.0</h3>
           <p>Built for Tailwind CSS 4.0+ with modern CSS-first configuration.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🎯</div>
           <h3>Material Design 3</h3>
           <p>Integrates Material Design 3 color system with 65+ color tokens.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🔧</div>
           <h3>Customizable</h3>
           <p>Easy to customize with CSS variables and Tailwind configuration.</p>
         </div>
@@ -100,10 +95,10 @@ const base = import.meta.env.BASE_URL;
   <section class="component-preview">
     <div class="container">
       <h2>Get Started</h2>
-      <p class="section-subtitle">Install DuskMoonUI and start building beautiful UIs</p>
+      <p class="section-subtitle">Install @duskmoon-dev/core and start building beautiful UIs</p>
 
       <div class="install-section">
-        <pre><code>bun add duskmoonui</code></pre>
+        <pre><code>bun add @duskmoon-dev/core</code></pre>
         <p class="install-note">Then add the plugin to your Tailwind CSS configuration</p>
       </div>
 
@@ -123,7 +118,7 @@ const base = import.meta.env.BASE_URL;
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h4>DuskMoonUI</h4>
+          <h4>@duskmoon-dev/core</h4>
           <p>Modern Tailwind CSS component library with enhanced tertiary colors</p>
         </div>
         <div class="footer-section">
@@ -144,344 +139,9 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} DuskMoonUI. MIT License.</p>
+        <p>&copy; {currentYear} @duskmoon-dev/core. MIT License.</p>
       </div>
     </div>
   </footer>
 </BaseLayout>
 
-<style>
-  /* Header */
-  .site-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .header-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0;
-  }
-
-  .logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--foreground);
-  }
-
-  .logo:hover {
-    text-decoration: none;
-    color: var(--primary);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: var(--foreground-muted);
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover {
-    color: var(--primary);
-    text-decoration: none;
-  }
-
-  /* Hero */
-  .hero {
-    padding: 6rem 0 4rem;
-    text-align: center;
-    background: linear-gradient(135deg, var(--primary-container) 0%, var(--tertiary-container) 100%);
-  }
-
-  .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .hero-title {
-    font-size: 4.5rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--foreground-muted);
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    margin: 3rem 0;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-value {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--primary);
-  }
-
-  .stat-title {
-    font-size: 1rem;
-    color: var(--foreground-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 600;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    transition: all 0.2s;
-    border: 2px solid transparent;
-  }
-
-  .btn-lg {
-    padding: 1rem 2.5rem;
-    font-size: 1.125rem;
-  }
-
-  .btn-primary {
-    background: var(--primary);
-    color: var(--primary-foreground);
-  }
-
-  .btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    text-decoration: none;
-  }
-
-  .btn-secondary {
-    background: var(--secondary);
-    color: var(--secondary-foreground);
-  }
-
-  .btn-secondary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    text-decoration: none;
-  }
-
-  .btn-outline {
-    background: transparent;
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-
-  .btn-outline:hover {
-    background: var(--primary);
-    color: var(--primary-foreground);
-    text-decoration: none;
-  }
-
-  /* Features */
-  .features {
-    padding: 6rem 0;
-  }
-
-  .features h2 {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .feature-card {
-    padding: 2rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 1rem;
-    transition: all 0.3s;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary);
-  }
-
-  .feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  .feature-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    font-size: 1.5rem;
-    color: var(--foreground);
-  }
-
-  .feature-card p {
-    margin: 0;
-    color: var(--foreground-muted);
-    line-height: 1.6;
-  }
-
-  /* Component Preview */
-  .component-preview {
-    padding: 6rem 0;
-    background: var(--surface);
-  }
-
-  .component-preview h2 {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .section-subtitle {
-    text-align: center;
-    font-size: 1.25rem;
-    color: var(--foreground-muted);
-    margin-bottom: 3rem;
-  }
-
-  .install-section {
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    text-align: center;
-  }
-
-  .install-section pre {
-    background: var(--background);
-    border: 2px solid var(--border);
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
-  }
-
-  .install-section code {
-    background: none;
-    color: var(--primary);
-    font-weight: 600;
-  }
-
-  .install-note {
-    color: var(--foreground-muted);
-    margin: 0;
-  }
-
-  .view-all {
-    text-align: center;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  /* Footer */
-  .site-footer {
-    background: var(--background);
-    border-top: 1px solid var(--border);
-    padding: 4rem 0 2rem;
-  }
-
-  .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .footer-section h4 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.125rem;
-    color: var(--foreground);
-  }
-
-  .footer-section p {
-    color: var(--foreground-muted);
-    line-height: 1.6;
-  }
-
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-section li {
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-section a {
-    color: var(--foreground-muted);
-    transition: color 0.2s;
-  }
-
-  .footer-section a:hover {
-    color: var(--primary);
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    color: var(--foreground-muted);
-    font-size: 0.875rem;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: 3rem;
-    }
-
-    .hero-stats {
-      gap: 2rem;
-    }
-
-    .stat-value {
-      font-size: 2rem;
-    }
-
-    .features h2,
-    .component-preview h2 {
-      font-size: 2rem;
-    }
-
-    .nav-links {
-      gap: 1rem;
-    }
-  }
-</style>

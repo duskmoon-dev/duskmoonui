@@ -1,113 +1,116 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL;
-const components = [
-  { name: 'Button', description: 'Versatile buttons with multiple variants', href: `${base}components/button/` },
-  { name: 'Card', description: 'Container for content with various styles', href: `${base}components/card/` },
-  { name: 'Input', description: 'Form inputs with validation states', href: `${base}components/input/` },
-  { name: 'Badge', description: 'Small status and label indicators', href: `${base}components/badge/` },
-  { name: 'Alert', description: 'Contextual feedback messages', href: `${base}components/alert/` },
-  { name: 'Modal', description: 'Dialog overlays for focused content', href: `${base}components/modal/` },
+
+const categories = [
+  {
+    name: 'Actions',
+    emoji: '🔘',
+    components: [
+      { name: 'Button', slug: 'button', description: 'Clickable buttons for actions' },
+      { name: 'File Upload', slug: 'file-upload', description: 'Drag-and-drop file uploader' },
+    ]
+  },
+  {
+    name: 'Data Display',
+    emoji: '📊',
+    components: [
+      { name: 'Avatar', slug: 'avatar', description: 'User profile pictures' },
+      { name: 'Badge', slug: 'badge', description: 'Status indicators' },
+      { name: 'Card', slug: 'card', description: 'Content containers' },
+      { name: 'Chip', slug: 'chip', description: 'Compact tags' },
+      { name: 'List', slug: 'list', description: 'Vertical item lists' },
+      { name: 'Table', slug: 'table', description: 'Data tables' },
+    ]
+  },
+  {
+    name: 'Data Entry',
+    emoji: '📝',
+    components: [
+      { name: 'Autocomplete', slug: 'autocomplete', description: 'Search with suggestions' },
+      { name: 'Date Picker', slug: 'datepicker', description: 'Calendar selection' },
+      { name: 'Input', slug: 'input', description: 'Text input fields' },
+      { name: 'Slider', slug: 'slider', description: 'Range selector' },
+      { name: 'Switch', slug: 'switch', description: 'Toggle controls' },
+    ]
+  },
+  {
+    name: 'Feedback',
+    emoji: '💬',
+    components: [
+      { name: 'Alert', slug: 'alert', description: 'Important messages' },
+      { name: 'Dialog', slug: 'dialog', description: 'Modal dialogs' },
+      { name: 'Progress', slug: 'progress', description: 'Loading indicators' },
+      { name: 'Skeleton', slug: 'skeleton', description: 'Loading placeholders' },
+      { name: 'Snackbar', slug: 'snackbar', description: 'Toast notifications' },
+      { name: 'Tooltip', slug: 'tooltip', description: 'Contextual information' },
+    ]
+  },
+  {
+    name: 'Layout',
+    emoji: '🎨',
+    components: [
+      { name: 'App Bar', slug: 'appbar', description: 'Action bars' },
+      { name: 'Divider', slug: 'divider', description: 'Visual separators' },
+    ]
+  },
+  {
+    name: 'Navigation',
+    emoji: '🧭',
+    components: [
+      { name: 'Bottom Navigation', slug: 'bottom-navigation', description: 'Mobile bottom nav' },
+      { name: 'Breadcrumbs', slug: 'breadcrumbs', description: 'Hierarchical navigation' },
+      { name: 'Drawer', slug: 'drawer', description: 'Side navigation' },
+      { name: 'Menu', slug: 'menu', description: 'Dropdown menus' },
+      { name: 'Navbar', slug: 'navbar', description: 'Primary navigation' },
+      { name: 'Pagination', slug: 'pagination', description: 'Page navigation' },
+      { name: 'Stepper', slug: 'stepper', description: 'Multi-step guide' },
+      { name: 'Tabs', slug: 'tabs', description: 'Tab navigation' },
+    ]
+  },
+  {
+    name: 'Surfaces',
+    emoji: '📦',
+    components: [
+      { name: 'Accordion', slug: 'accordion', description: 'Expandable panels' },
+      { name: 'Bottom Sheet', slug: 'bottomsheet', description: 'Mobile panels' },
+      { name: 'Popover', slug: 'popover', description: 'Contextual overlays' },
+    ]
+  },
 ];
 ---
 
-<DocsLayout
-  title="Components"
-  description="Browse all available DuskMoonUI components"
->
-  <div class="components-page">
-    <header class="page-header">
-      <h1>Components</h1>
-      <p class="page-description">
-        Explore our collection of accessible, customizable components built with Tailwind CSS.
+<BaseLayout title="Components">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-bold mb-4">Components</h1>
+      <p class="text-xl text-on-surface-variant">
+        32 Material Design 3-inspired components organized by category
       </p>
     </header>
 
-    <div class="components-grid">
-      {components.map(component => (
-        <a href={component.href} class="component-card">
-          <h2>{component.name}</h2>
-          <p>{component.description}</p>
-          <span class="card-arrow">→</span>
-        </a>
+    <div class="flex flex-col gap-16">
+      {categories.map((category, idx) => (
+        <section class={idx < categories.length - 1 ? "border-b border-outline-variant pb-12" : ""}>
+          <h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+            <span class="text-3xl">{category.emoji}</span>
+            {category.name}
+            <span class="text-2xl font-normal text-on-surface-variant">({category.components.length})</span>
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {category.components.map(component => (
+              <div class="p-6 bg-surface-container rounded-xl border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all hover:-translate-y-1">
+                <h3 class="text-xl font-semibold mb-2">{component.name}</h3>
+                <p class="text-sm text-on-surface-variant mb-4 leading-relaxed">{component.description}</p>
+                <a href={`${base}docs/en/components/${component.slug}/`} class="inline-block text-sm font-medium text-primary hover:text-tertiary hover:underline transition-colors">
+                  View Docs
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   </div>
-</DocsLayout>
-
-<style>
-  .components-page {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .page-header {
-    margin-bottom: 3rem;
-    text-align: center;
-  }
-
-  .page-header h1 {
-    margin-top: 0;
-    font-size: 3rem;
-    font-weight: 700;
-  }
-
-  .page-description {
-    font-size: 1.25rem;
-    color: var(--foreground-muted);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .components-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .component-card {
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: 1rem;
-    padding: 2rem;
-    transition: all 0.3s;
-    text-decoration: none;
-    color: var(--foreground);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .component-card:hover {
-    border-color: var(--primary);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-  }
-
-  .component-card h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.5rem;
-    color: var(--foreground);
-  }
-
-  .component-card p {
-    margin: 0;
-    color: var(--foreground-muted);
-    line-height: 1.6;
-    flex: 1;
-  }
-
-  .card-arrow {
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin-top: 1rem;
-    display: inline-block;
-    transition: transform 0.3s;
-  }
-
-  .component-card:hover .card-arrow {
-    transform: translateX(4px);
-  }
-</style>
+</BaseLayout>

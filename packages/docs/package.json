@@ -8,24 +8,33 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@duskmoon-dev/core": "^0.1.0",
     "@astrojs/check": "latest",
     "@astrojs/mdx": "latest",
     "@astrojs/react": "latest",
     "@astrojs/sitemap": "latest",
     "@astrojs/tailwind": "latest",
+    "@duskmoon-dev/core": "workspace:*",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.8.5",
+    "@playwright/test": "^1.40.0",
     "@types/bun": "latest",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "postcss": "^8.4.47",
+    "postcss-selector-parser": "^7.0.0",
+    "autoprefixer": "^10.4.20"
   }
 }

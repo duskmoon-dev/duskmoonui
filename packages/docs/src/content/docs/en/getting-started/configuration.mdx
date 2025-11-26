@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: Configure DuskMoonUI to match your project's needs
+description: Configure @duskmoon-dev/core to match your project's needs
 category: getting-started
 order: 3
 published: true
@@ -9,62 +9,35 @@ tags: ['configuration', 'setup', 'customization']
 
 # Configuration
 
-DuskMoonUI is highly configurable. This guide covers all available options to customize the plugin for your needs.
+@duskmoon-dev/core is highly configurable. This guide covers all available options to customize the plugin for your needs.
 
 ## Basic Configuration
 
-The simplest configuration uses default settings:
-
-### Tailwind CSS 4.0+
+The simplest configuration uses default settings with Tailwind CSS 4:
 
 ```css
 @import "tailwindcss";
-@plugin "duskmoonui";
+@plugin "@duskmoon-dev/core";
 ```
 
-### Tailwind CSS 3.x
-
-```javascript
-// tailwind.config.js
-module.exports = {
-  plugins: [
-    require('duskmoonui'),
-  ],
-}
-```
+**Note:** @duskmoon-dev/core requires Tailwind CSS 4.0 or later. Tailwind CSS 3.x is not supported.
 
 ## Plugin Options
 
-Customize DuskMoonUI by passing options:
-
-### Tailwind CSS 4.0+
+Customize @duskmoon-dev/core by passing options in Tailwind CSS 4:
 
 ```css
 @import "tailwindcss";
-@plugin "duskmoonui" {
+@plugin "@duskmoon-dev/core" {
   @theme {
     --theme: "sunshine";
+    --dark-theme: "moonlight";
   }
   @config {
     components: ["button", "card", "input"];
+    styled: true;
+    prefix: "";
   }
-}
-```
-
-### Tailwind CSS 3.x
-
-```javascript
-// tailwind.config.js
-module.exports = {
-  plugins: [
-    require('duskmoonui')({
-      themes: ['sunshine', 'moonlight'],
-      defaultTheme: 'sunshine',
-      styled: true,
-      components: 'all',
-      prefix: '',
-    }),
-  ],
 }
 ```
 
@@ -86,7 +59,7 @@ Array of theme names to include. Built-in themes are `sunshine` (light) and `moo
 You can also provide custom theme objects:
 
 ```javascript
-import { duskmoonui } from 'duskmoonui';
+import { duskmoonui } from '@duskmoon-dev/core';
 
 {
   themes: [
@@ -174,7 +147,7 @@ Example usage with prefix:
 Create custom themes by extending or overriding the color palette:
 
 ```javascript
-import { duskmoonui, type ThemeConfig } from 'duskmoonui';
+import { duskmoonui, type ThemeConfig } from '@duskmoon-dev/core';
 
 const customTheme: ThemeConfig = {
   name: 'ocean',
@@ -259,10 +232,10 @@ All colors use the HSL format without the `hsl()` wrapper:
 }
 ```
 
-This format allows Tailwind to apply opacity modifiers:
+This format allows Tailwind to apply opacity utilities:
 
 ```html
-<div class="bg-primary/50">  <!-- 50% opacity -->
+<div class="bg-primary bg-opacity-50">  <!-- 50% opacity -->
 ```
 
 ## Component Customization
@@ -302,7 +275,7 @@ Here's a complete configuration example:
 
 ```javascript
 // tailwind.config.js
-const { duskmoonui } = require('duskmoonui');
+const { duskmoonui } = require('@duskmoon-dev/core');
 
 module.exports = {
   content: [
@@ -341,10 +314,10 @@ module.exports = {
 
 ## TypeScript Support
 
-DuskMoonUI includes full TypeScript definitions:
+@duskmoon-dev/core includes full TypeScript definitions:
 
 ```typescript
-import { duskmoonui, type ThemeConfig, type DuskMoonUIOptions } from 'duskmoonui';
+import { duskmoonui, type ThemeConfig, type DuskMoonUIOptions } from '@duskmoon-dev/core';
 
 const options: Partial<DuskMoonUIOptions> = {
   themes: ['sunshine', 'moonlight'],

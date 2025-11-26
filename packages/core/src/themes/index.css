@@ -1,0 +1,7 @@
+/**
+ * Built-in themes
+ * Theme definitions for sunshine (light) and moonlight (dark)
+ */
+
+@import "./sunshine.css";
+@import "./moonlight.css";

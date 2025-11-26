@@ -21,66 +21,28 @@ const { Content } = await entry.render();
   title={entry.data.title}
   description={entry.data.description}
 >
-  <article class="doc-content">
-    <header class="doc-header">
-      <h1>{entry.data.title}</h1>
+  <article class="max-w-4xl mx-auto">
+    <header class="mb-12">
+      <h1 class="mt-0 text-5xl font-bold">{entry.data.title}</h1>
       {entry.data.description && (
-        <p class="doc-description">{entry.data.description}</p>
+        <p class="text-xl text-on-surface-variant mb-0">{entry.data.description}</p>
       )}
     </header>
 
-    <div class="doc-body">
+    <div class="prose prose-lg">
       <Content />
     </div>
 
     {entry.data.lastUpdated && (
-      <footer class="doc-footer">
-        <p class="text-muted">
-          Last updated: {entry.data.lastUpdated.toLocaleDateString('en-US', {
+      <footer class="mt-16 pt-8 border-t border-outline-variant">
+        <p class="text-sm text-on-surface-variant">
+          Last updated: {new Intl.DateTimeFormat('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
-          })}
+          }).format(entry.data.lastUpdated)}
         </p>
       </footer>
     )}
   </article>
 </DocsLayout>
-
-<style>
-  .doc-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .doc-header {
-    margin-bottom: 3rem;
-  }
-
-  .doc-header h1 {
-    margin-top: 0;
-    font-size: 3rem;
-    font-weight: 700;
-  }
-
-  .doc-description {
-    font-size: 1.25rem;
-    color: var(--foreground-muted);
-    margin-bottom: 0;
-  }
-
-  .doc-body {
-    line-height: 1.8;
-  }
-
-  .doc-footer {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .text-muted {
-    color: var(--foreground-muted);
-    font-size: 0.875rem;
-  }
-</style>

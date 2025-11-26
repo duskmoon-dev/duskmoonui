@@ -1,0 +1,535 @@
+---
+title: Tabs
+description: Material Design 3 tabs component for organizing content into separate views
+category: components
+order: 7
+published: true
+tags: ['tabs', 'navigation', 'components', 'material-design']
+---
+
+# Tabs
+
+Tabs organize content across different screens and views. @duskmoon-dev/core provides a flexible tabs component with multiple variants and layouts.
+
+## Basic Usage
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+## Tab Panels
+
+Tabs with content panels:
+
+```html
+<div class="tabs">
+  <button class="tab tab-active" data-tab="panel1">Tab 1</button>
+  <button class="tab" data-tab="panel2">Tab 2</button>
+  <button class="tab" data-tab="panel3">Tab 3</button>
+</div>
+
+<div class="tab-panel tab-panel-show" id="panel1">
+  <p>Content for Tab 1</p>
+</div>
+<div class="tab-panel" id="panel2">
+  <p>Content for Tab 2</p>
+</div>
+<div class="tab-panel" id="panel3">
+  <p>Content for Tab 3</p>
+</div>
+```
+
+## Variants
+
+### Default (Underline)
+
+Tabs with bottom border indicator:
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">Active</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Pill Variant
+
+Filled background for active state:
+
+```html
+<div class="tabs tabs-pill">
+  <button class="tab tab-active">Active</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Tonal Variant
+
+Tonal background for active state:
+
+```html
+<div class="tabs tabs-tonal">
+  <button class="tab tab-active">Active</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Boxed Variant
+
+Tabs with background container:
+
+```html
+<div class="tabs tabs-boxed">
+  <button class="tab tab-active">Active</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+## Color Variants
+
+### Primary (Default)
+
+```html
+<div class="tabs">
+  <button class="tab tab-active-primary">Active</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Secondary
+
+```html
+<div class="tabs">
+  <button class="tab tab-active-secondary">Active</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Tertiary
+
+```html
+<div class="tabs">
+  <button class="tab tab-active-tertiary">Active</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+## Orientation
+
+### Horizontal (Default)
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Vertical
+
+```html
+<div class="tabs tabs-vertical">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+## Alignment
+
+### Start-Aligned (Default)
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Centered
+
+```html
+<div class="tabs tabs-center">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### End-Aligned
+
+```html
+<div class="tabs tabs-end">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+## Sizes
+
+### Small
+
+```html
+<div class="tabs tabs-sm">
+  <button class="tab tab-active">Small Tab 1</button>
+  <button class="tab">Small Tab 2</button>
+  <button class="tab">Small Tab 3</button>
+</div>
+```
+
+### Medium (Default)
+
+```html
+<div class="tabs tabs-md">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+### Large
+
+```html
+<div class="tabs tabs-lg">
+  <button class="tab tab-active">Large Tab 1</button>
+  <button class="tab">Large Tab 2</button>
+  <button class="tab">Large Tab 3</button>
+</div>
+```
+
+## Full Width Tabs
+
+Tabs that stretch to fill the container:
+
+```html
+<div class="tabs tabs-full">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+```
+
+## Scrollable Tabs
+
+For many tabs that overflow the container:
+
+```html
+<div class="tabs tabs-scrollable">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+  <button class="tab">Tab 4</button>
+  <button class="tab">Tab 5</button>
+  <button class="tab">Tab 6</button>
+  <button class="tab">Tab 7</button>
+  <button class="tab">Tab 8</button>
+</div>
+```
+
+## With Icons
+
+### Icons with Text
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    </svg>
+    Home
+  </button>
+  <button class="tab">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+    </svg>
+    Profile
+  </button>
+  <button class="tab">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+    Settings
+  </button>
+</div>
+```
+
+### Icon-Only Tabs
+
+```html
+<div class="tabs">
+  <button class="tab tab-icon-only tab-active" aria-label="Home">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    </svg>
+  </button>
+  <button class="tab tab-icon-only" aria-label="Profile">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+    </svg>
+  </button>
+  <button class="tab tab-icon-only" aria-label="Settings">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  </button>
+</div>
+```
+
+## With Badges
+
+Show notification counts:
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">
+    Messages
+    <span class="tab-badge">5</span>
+  </button>
+  <button class="tab">
+    Notifications
+    <span class="tab-badge">12</span>
+  </button>
+  <button class="tab">Settings</button>
+</div>
+```
+
+## Disabled Tabs
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">Active</button>
+  <button class="tab">Enabled</button>
+  <button class="tab" disabled>Disabled</button>
+</div>
+```
+
+## Best Practices
+
+### Navigation Structure
+
+Use tabs for top-level content organization:
+
+```html
+<div class="tabs">
+  <button class="tab tab-active">Overview</button>
+  <button class="tab">Details</button>
+  <button class="tab">Reviews</button>
+  <button class="tab">Related</button>
+</div>
+```
+
+### Accessibility
+
+- Use semantic `<button>` elements for interactive tabs
+- Provide `aria-label` for icon-only tabs
+- Use `aria-selected` and ARIA roles for enhanced accessibility
+- Ensure keyboard navigation support
+
+```html
+<div class="tabs" role="tablist">
+  <button class="tab tab-active" role="tab" aria-selected="true" aria-controls="panel1">
+    Tab 1
+  </button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="panel2">
+    Tab 2
+  </button>
+</div>
+
+<div id="panel1" class="tab-panel tab-panel-show" role="tabpanel" aria-labelledby="tab1">
+  Content 1
+</div>
+<div id="panel2" class="tab-panel" role="tabpanel" aria-labelledby="tab2">
+  Content 2
+</div>
+```
+
+### Tab Count
+
+Limit tabs to avoid overwhelming users:
+
+- **Mobile**: 3-5 tabs maximum
+- **Desktop**: 5-7 tabs maximum
+- Use scrollable tabs if more are needed
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState } from 'react';
+
+interface TabsProps {
+  defaultTab?: number;
+  children: React.ReactNode;
+}
+
+export function Tabs({ defaultTab = 0, children }: TabsProps) {
+  const [activeTab, setActiveTab] = useState(defaultTab);
+
+  return (
+    <div>
+      <div className="tabs">
+        {React.Children.map(children, (child, index) => (
+          <button
+            className={`tab ${activeTab === index ? 'tab-active' : ''}`}
+            onClick={() => setActiveTab(index)}
+          >
+            {child.props.label}
+          </button>
+        ))}
+      </div>
+      {React.Children.map(children, (child, index) => (
+        <div className={`tab-panel ${activeTab === index ? 'tab-panel-show' : ''}`}>
+          {child}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Usage
+<Tabs defaultTab={0}>
+  <div label="Tab 1">Content 1</div>
+  <div label="Tab 2">Content 2</div>
+  <div label="Tab 3">Content 3</div>
+</Tabs>
+```
+
+### Vue
+
+```vue
+<template>
+  <div>
+    <div class="tabs">
+      <button
+        v-for="(tab, index) in tabs"
+        :key="index"
+        :class="['tab', { 'tab-active': activeTab === index }]"
+        @click="activeTab = index"
+      >
+        {{ tab }}
+      </button>
+    </div>
+    <div
+      v-for="(_, index) in tabs"
+      :key="`panel-${index}`"
+      :class="['tab-panel', { 'tab-panel-show': activeTab === index }]"
+    >
+      <slot :name="`panel-${index}`" />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps({
+  tabs: {
+    type: Array,
+    required: true
+  },
+  defaultTab: {
+    type: Number,
+    default: 0
+  }
+});
+
+const activeTab = ref(props.defaultTab);
+</script>
+
+<!-- Usage -->
+<Tabs :tabs="['Tab 1', 'Tab 2', 'Tab 3']">
+  <template #panel-0>Content 1</template>
+  <template #panel-1>Content 2</template>
+  <template #panel-2>Content 3</template>
+</Tabs>
+```
+
+### JavaScript (Vanilla)
+
+```javascript
+// Simple tabs functionality
+document.querySelectorAll('.tab').forEach((tab, index) => {
+  tab.addEventListener('click', () => {
+    // Remove active class from all tabs
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
+
+    // Add active class to clicked tab
+    tab.classList.add('tab-active');
+
+    // Hide all panels
+    document.querySelectorAll('.tab-panel').forEach(panel => {
+      panel.classList.remove('tab-panel-show');
+    });
+
+    // Show corresponding panel
+    document.querySelectorAll('.tab-panel')[index].classList.add('tab-panel-show');
+  });
+});
+```
+
+## API Reference
+
+### Tabs Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.tabs` | Base tabs container (required) |
+| `.tabs-pill` | Pill variant with filled active state |
+| `.tabs-tonal` | Tonal variant with tonal active state |
+| `.tabs-boxed` | Boxed variant with background container |
+| `.tabs-vertical` | Vertical orientation |
+| `.tabs-scrollable` | Enable horizontal scrolling |
+| `.tabs-center` | Center-align tabs |
+| `.tabs-end` | End-align tabs |
+| `.tabs-sm` | Small size |
+| `.tabs-md` | Medium size (default) |
+| `.tabs-lg` | Large size |
+| `.tabs-full` | Full width tabs |
+
+### Tab Classes
+
+| Class | Description |
+|-------|-------------|
+| `.tab` | Individual tab button (required) |
+| `.tab-active` | Active state (primary color) |
+| `.tab-active-primary` | Active state with primary color |
+| `.tab-active-secondary` | Active state with secondary color |
+| `.tab-active-tertiary` | Active state with tertiary color |
+| `.tab-icon` | Icon styling |
+| `.tab-icon-only` | Icon-only tab |
+| `.tab-badge` | Badge styling for notifications |
+
+### Panel Classes
+
+| Class | Description |
+|-------|-------------|
+| `.tab-panel` | Content panel container |
+| `.tab-panel-show` | Show the panel |
+
+## Related Components
+
+- [Navbar](/docs/en/components/navbar/) - Main navigation
+- [Breadcrumbs](/docs/en/components/breadcrumbs/) - Hierarchical navigation
+- [Bottom Navigation](/docs/en/components/bottom-navigation/) - Mobile navigation
+
+## See Also
+
+- [Tabs Design Guidelines (Material Design 3)](https://m3.material.io/components/tabs/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

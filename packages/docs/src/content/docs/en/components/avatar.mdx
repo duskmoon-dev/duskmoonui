@@ -1,0 +1,684 @@
+---
+title: Avatar
+description: Material Design 3 avatar component for user representation with multiple sizes, shapes, and status indicators
+category: components
+order: 25
+published: true
+tags: ['avatar', 'components', 'material-design', 'user', 'profile']
+---
+
+# Avatar
+
+Avatars are visual representations of users or entities. @duskmoon-dev/core provides a complete set of Material Design 3-inspired avatar styles with support for images, initials, icons, and status indicators.
+
+## Basic Usage
+
+### Avatar with Initials
+
+```html
+<div class="avatar">
+  JD
+</div>
+```
+
+### Avatar with Image
+
+```html
+<div class="avatar">
+  <img src="/path/to/image.jpg" alt="User name" class="avatar-image" />
+</div>
+```
+
+### Avatar with Icon
+
+```html
+<div class="avatar">
+  <svg class="avatar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  </svg>
+</div>
+```
+
+## Sizes
+
+Six sizes are available, from extra small to 2x large:
+
+```html
+<div class="avatar avatar-xs">XS</div>
+<div class="avatar avatar-sm">SM</div>
+<div class="avatar avatar-md">MD</div>
+<div class="avatar avatar-lg">LG</div>
+<div class="avatar avatar-xl">XL</div>
+<div class="avatar avatar-2xl">2XL</div>
+```
+
+### Size Specifications
+
+- **Extra Small** (`avatar-xs`): 1.5rem (24px)
+- **Small** (`avatar-sm`): 2rem (32px)
+- **Medium** (`avatar-md`): 2.5rem (40px) - default
+- **Large** (`avatar-lg`): 3rem (48px)
+- **Extra Large** (`avatar-xl`): 4rem (64px)
+- **2X Large** (`avatar-2xl`): 6rem (96px)
+
+## Shapes
+
+Three shape variants are available:
+
+```html
+<!-- Circle (default) -->
+<div class="avatar avatar-circle">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+
+<!-- Rounded -->
+<div class="avatar avatar-rounded">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+
+<!-- Square -->
+<div class="avatar avatar-square">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+```
+
+## Color Variants
+
+Use different color variants to distinguish between users or entity types:
+
+```html
+<div class="avatar avatar-primary">PR</div>
+<div class="avatar avatar-secondary">SE</div>
+<div class="avatar avatar-tertiary">TE</div>
+<div class="avatar avatar-success">SU</div>
+<div class="avatar avatar-error">ER</div>
+<div class="avatar avatar-warning">WA</div>
+<div class="avatar avatar-info">IN</div>
+```
+
+### Color Variant Uses
+
+- **Primary/Secondary/Tertiary**: General user avatars with theme colors
+- **Success**: Active users, online status, verified accounts
+- **Error**: Suspended accounts, error states
+- **Warning**: Users requiring attention
+- **Info**: Informational entities, bots, system users
+
+## Status Indicators
+
+Show user online status with status indicators:
+
+```html
+<!-- Online -->
+<div class="avatar avatar-status avatar-status-online">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+
+<!-- Offline -->
+<div class="avatar avatar-status avatar-status-offline">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+
+<!-- Busy -->
+<div class="avatar avatar-status avatar-status-busy">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+
+<!-- Away -->
+<div class="avatar avatar-status avatar-status-away">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+```
+
+### Status with Sizes
+
+Status indicators automatically scale with avatar size:
+
+```html
+<div class="avatar avatar-sm avatar-status avatar-status-online">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+
+<div class="avatar avatar-xl avatar-status avatar-status-busy">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+```
+
+## Bordered Avatars
+
+Add a border with outline for emphasis:
+
+```html
+<div class="avatar avatar-bordered">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+
+<!-- Bordered with status -->
+<div class="avatar avatar-bordered avatar-status avatar-status-online">
+  <img src="/path/to/image.jpg" alt="User" class="avatar-image" />
+</div>
+```
+
+## Clickable Avatars
+
+Make avatars interactive for profile navigation:
+
+```html
+<button class="avatar avatar-clickable">
+  <img src="/path/to/image.jpg" alt="User profile" class="avatar-image" />
+</button>
+
+<!-- Or with a link -->
+<a href="/profile" class="avatar avatar-clickable">
+  <img src="/path/to/image.jpg" alt="User profile" class="avatar-image" />
+</a>
+```
+
+Clickable avatars include hover effects:
+- Scale up on hover (1.05x)
+- Drop shadow appears
+- Scale down on active (0.98x)
+
+## Avatar Groups
+
+Display multiple users in a compact, stacked layout:
+
+### Basic Group
+
+```html
+<div class="avatar-group">
+  <div class="avatar">
+    <img src="/user1.jpg" alt="User 1" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user2.jpg" alt="User 2" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user3.jpg" alt="User 3" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user4.jpg" alt="User 4" class="avatar-image" />
+  </div>
+</div>
+```
+
+### Dense Group
+
+For more compact spacing:
+
+```html
+<div class="avatar-group avatar-group-dense">
+  <div class="avatar">
+    <img src="/user1.jpg" alt="User 1" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user2.jpg" alt="User 2" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user3.jpg" alt="User 3" class="avatar-image" />
+  </div>
+</div>
+```
+
+### Sized Groups
+
+Avatar groups automatically adjust spacing based on avatar size:
+
+```html
+<!-- Small avatar group -->
+<div class="avatar-group avatar-group-sm">
+  <div class="avatar avatar-sm">
+    <img src="/user1.jpg" alt="User 1" class="avatar-image" />
+  </div>
+  <div class="avatar avatar-sm">
+    <img src="/user2.jpg" alt="User 2" class="avatar-image" />
+  </div>
+  <div class="avatar avatar-sm">
+    <img src="/user3.jpg" alt="User 3" class="avatar-image" />
+  </div>
+</div>
+
+<!-- Large avatar group -->
+<div class="avatar-group avatar-group-lg">
+  <div class="avatar avatar-lg">
+    <img src="/user1.jpg" alt="User 1" class="avatar-image" />
+  </div>
+  <div class="avatar avatar-lg">
+    <img src="/user2.jpg" alt="User 2" class="avatar-image" />
+  </div>
+  <div class="avatar avatar-lg">
+    <img src="/user3.jpg" alt="User 3" class="avatar-image" />
+  </div>
+</div>
+```
+
+### Overflow Indicator
+
+Show a count for additional users:
+
+```html
+<div class="avatar-group">
+  <div class="avatar">
+    <img src="/user1.jpg" alt="User 1" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user2.jpg" alt="User 2" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user3.jpg" alt="User 3" class="avatar-image" />
+  </div>
+  <div class="avatar avatar-overflow">
+    +5
+  </div>
+</div>
+```
+
+### Interactive Groups
+
+Avatars in groups can be made interactive with hover effects:
+
+```html
+<div class="avatar-group">
+  <a href="/user/1" class="avatar avatar-clickable">
+    <img src="/user1.jpg" alt="User 1" class="avatar-image" />
+  </a>
+  <a href="/user/2" class="avatar avatar-clickable">
+    <img src="/user2.jpg" alt="User 2" class="avatar-image" />
+  </a>
+  <a href="/user/3" class="avatar avatar-clickable">
+    <img src="/user3.jpg" alt="User 3" class="avatar-image" />
+  </a>
+</div>
+```
+
+Group avatars automatically:
+- Scale up on hover (1.1x)
+- Move to the front (z-index: 1)
+- Smooth transition animation
+
+## Best Practices
+
+### Content Guidelines
+
+**Initials**: Use 1-2 uppercase letters
+```html
+<!-- Good -->
+<div class="avatar">JD</div>
+<div class="avatar">AB</div>
+
+<!-- Avoid -->
+<div class="avatar">john</div>
+<div class="avatar">ABC</div>
+```
+
+**Images**: Use square images for best results
+```html
+<!-- Good: square image -->
+<div class="avatar">
+  <img src="/avatar-400x400.jpg" alt="User name" class="avatar-image" />
+</div>
+```
+
+**Icons**: Keep icons simple and recognizable
+```html
+<div class="avatar">
+  <svg class="avatar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  </svg>
+</div>
+```
+
+### Accessibility
+
+Always provide descriptive alt text for images:
+
+```html
+<!-- Good -->
+<div class="avatar">
+  <img src="/john-doe.jpg" alt="John Doe" class="avatar-image" />
+</div>
+
+<!-- Better: include context -->
+<div class="avatar">
+  <img src="/john-doe.jpg" alt="John Doe, Senior Developer" class="avatar-image" />
+</div>
+```
+
+For clickable avatars, provide clear labels:
+
+```html
+<button class="avatar avatar-clickable" aria-label="View John Doe's profile">
+  <img src="/john-doe.jpg" alt="John Doe" class="avatar-image" />
+</button>
+```
+
+For avatar groups, provide group context:
+
+```html
+<div class="avatar-group" role="group" aria-label="Project team members">
+  <div class="avatar">
+    <img src="/user1.jpg" alt="Team member 1" class="avatar-image" />
+  </div>
+  <div class="avatar">
+    <img src="/user2.jpg" alt="Team member 2" class="avatar-image" />
+  </div>
+</div>
+```
+
+### Size Selection
+
+Choose sizes appropriate for your use case:
+
+- **Extra Small/Small** (`avatar-xs`, `avatar-sm`): Compact lists, mentions, tags
+- **Medium** (`avatar-md`): Default for most interfaces, comments, messages
+- **Large** (`avatar-lg`): User cards, prominent lists
+- **Extra Large/2X Large** (`avatar-xl`, `avatar-2xl`): Profile pages, headers
+
+### Performance
+
+For avatar images:
+
+1. **Optimize images**: Use appropriate dimensions (2x the display size for retina)
+2. **Use lazy loading**: Add `loading="lazy"` for images below the fold
+3. **Provide fallbacks**: Always have initials as fallback for failed image loads
+
+```html
+<div class="avatar">
+  <img
+    src="/avatar-400x400.jpg"
+    alt="User name"
+    class="avatar-image"
+    loading="lazy"
+    onerror="this.style.display='none'; this.parentElement.textContent='JD';"
+  />
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface AvatarProps {
+  src?: string;
+  alt?: string;
+  initials?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  shape?: 'circle' | 'rounded' | 'square';
+  status?: 'online' | 'offline' | 'busy' | 'away';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'error' | 'warning' | 'info';
+  bordered?: boolean;
+  clickable?: boolean;
+  onClick?: () => void;
+}
+
+export function Avatar({
+  src,
+  alt = '',
+  initials,
+  size = 'md',
+  shape = 'circle',
+  status,
+  color,
+  bordered = false,
+  clickable = false,
+  onClick
+}: AvatarProps) {
+  const className = [
+    'avatar',
+    `avatar-${size}`,
+    `avatar-${shape}`,
+    color && `avatar-${color}`,
+    status && 'avatar-status',
+    status && `avatar-status-${status}`,
+    bordered && 'avatar-bordered',
+    clickable && 'avatar-clickable'
+  ].filter(Boolean).join(' ');
+
+  const Element = clickable ? 'button' : 'div';
+
+  return (
+    <Element className={className} onClick={onClick}>
+      {src ? (
+        <img src={src} alt={alt} className="avatar-image" />
+      ) : initials ? (
+        initials
+      ) : (
+        <svg className="avatar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      )}
+    </Element>
+  );
+}
+
+// Usage
+<Avatar src="/user.jpg" alt="John Doe" size="lg" status="online" />
+<Avatar initials="JD" color="primary" clickable onClick={() => console.log('clicked')} />
+```
+
+### Vue
+
+```vue
+<template>
+  <component
+    :is="clickable ? 'button' : 'div'"
+    :class="avatarClass"
+    @click="onClick"
+  >
+    <img
+      v-if="src"
+      :src="src"
+      :alt="alt"
+      class="avatar-image"
+    />
+    <template v-else-if="initials">
+      {{ initials }}
+    </template>
+    <svg
+      v-else
+      class="avatar-icon"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+      />
+    </svg>
+  </component>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  src: String,
+  alt: { type: String, default: '' },
+  initials: String,
+  size: { type: String, default: 'md' },
+  shape: { type: String, default: 'circle' },
+  status: String,
+  color: String,
+  bordered: Boolean,
+  clickable: Boolean
+})
+
+const emit = defineEmits(['click'])
+
+const avatarClass = computed(() => [
+  'avatar',
+  `avatar-${props.size}`,
+  `avatar-${props.shape}`,
+  props.color && `avatar-${props.color}`,
+  props.status && 'avatar-status',
+  props.status && `avatar-status-${props.status}`,
+  props.bordered && 'avatar-bordered',
+  props.clickable && 'avatar-clickable'
+].filter(Boolean).join(' '))
+
+const onClick = () => {
+  if (props.clickable) {
+    emit('click')
+  }
+}
+</script>
+
+<!-- Usage -->
+<Avatar
+  src="/user.jpg"
+  alt="John Doe"
+  size="lg"
+  status="online"
+/>
+<Avatar
+  initials="JD"
+  color="primary"
+  clickable
+  @click="handleClick"
+/>
+```
+
+### Avatar Group Component
+
+```tsx
+// React
+interface AvatarGroupProps {
+  max?: number;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  dense?: boolean;
+  children: React.ReactNode;
+}
+
+export function AvatarGroup({ max, size, dense = false, children }: AvatarGroupProps) {
+  const className = [
+    'avatar-group',
+    size && `avatar-group-${size}`,
+    dense && 'avatar-group-dense'
+  ].filter(Boolean).join(' ');
+
+  const avatars = React.Children.toArray(children);
+  const displayAvatars = max ? avatars.slice(0, max) : avatars;
+  const overflowCount = max ? avatars.length - max : 0;
+
+  return (
+    <div className={className}>
+      {displayAvatars}
+      {overflowCount > 0 && (
+        <div className={`avatar avatar-overflow ${size ? `avatar-${size}` : ''}`}>
+          +{overflowCount}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Usage
+<AvatarGroup max={3} size="md">
+  <Avatar src="/user1.jpg" alt="User 1" />
+  <Avatar src="/user2.jpg" alt="User 2" />
+  <Avatar src="/user3.jpg" alt="User 3" />
+  <Avatar src="/user4.jpg" alt="User 4" />
+  <Avatar src="/user5.jpg" alt="User 5" />
+</AvatarGroup>
+```
+
+## API Reference
+
+### Avatar Classes
+
+| Class | Description |
+|-------|-------------|
+| `.avatar` | Base avatar styles (required) |
+| `.avatar-image` | Image element within avatar |
+| `.avatar-icon` | Icon element within avatar |
+
+### Size Classes
+
+| Class | Dimensions | Font Size |
+|-------|-----------|-----------|
+| `.avatar-xs` | 1.5rem (24px) | 0.625rem |
+| `.avatar-sm` | 2rem (32px) | 0.813rem |
+| `.avatar-md` | 2.5rem (40px) - default | 1rem |
+| `.avatar-lg` | 3rem (48px) | 1.25rem |
+| `.avatar-xl` | 4rem (64px) | 1.5rem |
+| `.avatar-2xl` | 6rem (96px) | 2rem |
+
+### Shape Classes
+
+| Class | Description |
+|-------|-------------|
+| `.avatar-circle` | Circular avatar (default) |
+| `.avatar-rounded` | Rounded corners (0.5rem) |
+| `.avatar-square` | Square with no rounded corners |
+
+### Color Classes
+
+| Class | Description |
+|-------|-------------|
+| `.avatar-primary` | Primary theme color |
+| `.avatar-secondary` | Secondary theme color |
+| `.avatar-tertiary` | Tertiary theme color (default) |
+| `.avatar-success` | Success semantic color |
+| `.avatar-error` | Error semantic color |
+| `.avatar-warning` | Warning semantic color |
+| `.avatar-info` | Info semantic color |
+
+### Status Classes
+
+| Class | Description |
+|-------|-------------|
+| `.avatar-status` | Enable status indicator (required for status) |
+| `.avatar-status-online` | Green indicator for online status |
+| `.avatar-status-offline` | Gray indicator for offline status |
+| `.avatar-status-busy` | Red indicator for busy status |
+| `.avatar-status-away` | Yellow indicator for away status |
+
+### Modifier Classes
+
+| Class | Description |
+|-------|-------------|
+| `.avatar-bordered` | Add border with outline |
+| `.avatar-clickable` | Add hover/active effects for interaction |
+| `.avatar-overflow` | Overflow indicator for groups (+N more) |
+
+### Group Classes
+
+| Class | Description |
+|-------|-------------|
+| `.avatar-group` | Container for stacked avatars |
+| `.avatar-group-dense` | Tighter spacing for groups |
+| `.avatar-group-xs` | Group spacing for xs avatars |
+| `.avatar-group-sm` | Group spacing for sm avatars |
+| `.avatar-group-lg` | Group spacing for lg avatars |
+| `.avatar-group-xl` | Group spacing for xl avatars |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Large, rounded, primary color avatar with online status and border -->
+<div class="avatar avatar-lg avatar-rounded avatar-primary avatar-status avatar-status-online avatar-bordered">
+  <img src="/user.jpg" alt="User" class="avatar-image" />
+</div>
+
+<!-- Small, square, clickable avatar with busy status -->
+<button class="avatar avatar-sm avatar-square avatar-clickable avatar-status avatar-status-busy">
+  <img src="/user.jpg" alt="User" class="avatar-image" />
+</button>
+```
+
+## Related Components
+
+- [Badge](/docs/en/components/badge/) - Notification indicators that can be paired with avatars
+- [Card](/docs/en/components/card/) - Container for user profiles with avatars
+- [List](/docs/en/components/list/) - Lists with avatar items
+
+## See Also
+
+- [Avatar Design Guidelines (Material Design 3)](https://m3.material.io/components/avatars/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

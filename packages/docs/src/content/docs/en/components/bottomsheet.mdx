@@ -1,0 +1,685 @@
+---
+title: Bottom Sheet
+description: Material Design 3 bottom sheet component for mobile-first interactions
+category: components
+order: 32
+published: true
+tags: ['bottomsheet', 'components', 'material-design', 'mobile']
+---
+
+# Bottom Sheet
+
+Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen. They're commonly used on mobile devices for contextual actions, settings, or additional information.
+
+## Basic Usage
+
+```html
+<!-- Bottom sheet backdrop -->
+<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+
+<!-- Bottom sheet container -->
+<div class="bottom-sheet bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Bottom Sheet Title</h2>
+    <button class="bottom-sheet-close" aria-label="Close">×</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>Bottom sheet content goes here.</p>
+  </div>
+  <div class="bottom-sheet-footer">
+    <button class="btn btn-text">Cancel</button>
+    <button class="btn btn-primary">Confirm</button>
+  </div>
+</div>
+```
+
+## Modal vs Non-Modal
+
+### Modal Bottom Sheet
+
+Modal bottom sheets require user interaction before allowing interaction with the rest of the screen. They include a backdrop that prevents interaction with underlying content.
+
+```html
+<!-- Modal with backdrop -->
+<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+
+<div class="bottom-sheet bottom-sheet-modal bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Modal Bottom Sheet</h2>
+    <button class="bottom-sheet-close" aria-label="Close">×</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>This is a modal bottom sheet. Users must interact with it or dismiss it before continuing.</p>
+  </div>
+  <div class="bottom-sheet-footer">
+    <button class="btn btn-text">Cancel</button>
+    <button class="btn btn-primary">Save</button>
+  </div>
+</div>
+```
+
+### Persistent (Non-Modal) Bottom Sheet
+
+Persistent bottom sheets remain visible while allowing interaction with the main content. They don't have a backdrop.
+
+```html
+<!-- No backdrop for persistent -->
+<div class="bottom-sheet bottom-sheet-persistent bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Persistent Bottom Sheet</h2>
+    <button class="bottom-sheet-close" aria-label="Close">×</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>This sheet stays open while you interact with the page.</p>
+  </div>
+</div>
+```
+
+## Sizes
+
+Bottom sheets come in multiple height variants to accommodate different content needs.
+
+### Small (40vh)
+
+```html
+<div class="bottom-sheet bottom-sheet-sm bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-body">
+    <p>Small bottom sheet - 40% of viewport height</p>
+  </div>
+</div>
+```
+
+### Medium (60vh)
+
+```html
+<div class="bottom-sheet bottom-sheet-md bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-body">
+    <p>Medium bottom sheet - 60% of viewport height</p>
+  </div>
+</div>
+```
+
+### Large (80vh)
+
+```html
+<div class="bottom-sheet bottom-sheet-lg bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-body">
+    <p>Large bottom sheet - 80% of viewport height</p>
+  </div>
+</div>
+```
+
+### Full Height (100vh)
+
+```html
+<div class="bottom-sheet bottom-sheet-full bottom-sheet-show">
+  <div class="bottom-sheet-body">
+    <p>Full height bottom sheet - Takes entire viewport</p>
+  </div>
+</div>
+```
+
+## Handle Options
+
+### With Handle (Default)
+
+The drag handle provides a visual indicator that the sheet can be dismissed by dragging.
+
+```html
+<div class="bottom-sheet bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-body">
+    <p>Bottom sheet with drag handle</p>
+  </div>
+</div>
+```
+
+### Without Handle
+
+Remove the handle for a cleaner look when drag-to-dismiss isn't needed.
+
+```html
+<div class="bottom-sheet bottom-sheet-no-handle bottom-sheet-show">
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">No Handle</h2>
+    <button class="bottom-sheet-close" aria-label="Close">×</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>Bottom sheet without drag handle</p>
+  </div>
+</div>
+```
+
+## Surface Variants
+
+Bottom sheets support different surface color variants from the Material Design 3 color system.
+
+### Surface Container Low (Default)
+
+```html
+<div class="bottom-sheet bottom-sheet-show">
+  <div class="bottom-sheet-body">
+    <p>Default surface container low background</p>
+  </div>
+</div>
+```
+
+### Surface
+
+```html
+<div class="bottom-sheet bottom-sheet-surface bottom-sheet-show">
+  <div class="bottom-sheet-body">
+    <p>Surface background variant</p>
+  </div>
+</div>
+```
+
+### Surface Container
+
+```html
+<div class="bottom-sheet bottom-sheet-surface-container bottom-sheet-show">
+  <div class="bottom-sheet-body">
+    <p>Surface container background variant</p>
+  </div>
+</div>
+```
+
+### Surface Container High
+
+```html
+<div class="bottom-sheet bottom-sheet-surface-container-high bottom-sheet-show">
+  <div class="bottom-sheet-body">
+    <p>Surface container high background variant</p>
+  </div>
+</div>
+```
+
+## Content Options
+
+### Scrollable Content
+
+For long content that needs scrolling within the bottom sheet body.
+
+```html
+<div class="bottom-sheet bottom-sheet-scrollable bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Scrollable Content</h2>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>Long content that scrolls...</p>
+    <p>More content...</p>
+    <p>Even more content...</p>
+    <!-- Content continues -->
+  </div>
+</div>
+```
+
+### No Padding
+
+Remove default padding from the body for custom layouts.
+
+```html
+<div class="bottom-sheet bottom-sheet-no-padding bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-body">
+    <img src="image.jpg" alt="Full width image" class="w-full" />
+    <div class="p-4">
+      <p>Content with custom padding</p>
+    </div>
+  </div>
+</div>
+```
+
+### Compact Spacing
+
+Reduce padding for more compact layouts.
+
+```html
+<div class="bottom-sheet bottom-sheet-compact bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Compact Sheet</h2>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>Reduced padding for compact display</p>
+  </div>
+  <div class="bottom-sheet-footer">
+    <button class="btn btn-text btn-sm">Cancel</button>
+    <button class="btn btn-primary btn-sm">Save</button>
+  </div>
+</div>
+```
+
+## Partial Open State
+
+Bottom sheets can be partially opened to show a preview of content.
+
+```html
+<div class="bottom-sheet bottom-sheet-partial bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-body">
+    <p>This sheet opens partially at first</p>
+    <p>Drag up or tap to fully open</p>
+  </div>
+</div>
+```
+
+## Common Use Cases
+
+### Action Sheet
+
+Display a list of actions for the user to choose from.
+
+```html
+<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+
+<div class="bottom-sheet bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Choose an action</h2>
+  </div>
+  <div class="bottom-sheet-body bottom-sheet-no-padding">
+    <button class="w-full text-left px-6 py-4 hover:bg-surface-container">
+      <div class="flex items-center gap-3">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+        </svg>
+        Edit
+      </div>
+    </button>
+    <button class="w-full text-left px-6 py-4 hover:bg-surface-container">
+      <div class="flex items-center gap-3">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        </svg>
+        Share
+      </div>
+    </button>
+    <button class="w-full text-left px-6 py-4 hover:bg-surface-container text-error">
+      <div class="flex items-center gap-3">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+        Delete
+      </div>
+    </button>
+  </div>
+</div>
+```
+
+### Form Sheet
+
+Use for forms and data input.
+
+```html
+<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+
+<div class="bottom-sheet bottom-sheet-lg bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Add New Item</h2>
+    <button class="bottom-sheet-close" aria-label="Close">×</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <form>
+      <div class="mb-4">
+        <label for="item-name" class="block mb-2 text-sm font-medium">Name</label>
+        <input type="text" id="item-name" class="input w-full" placeholder="Item name" />
+      </div>
+      <div class="mb-4">
+        <label for="item-description" class="block mb-2 text-sm font-medium">Description</label>
+        <textarea id="item-description" class="input w-full" rows="3" placeholder="Item description"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="bottom-sheet-footer">
+    <button class="btn btn-text">Cancel</button>
+    <button class="btn btn-primary">Add Item</button>
+  </div>
+</div>
+```
+
+### Filter Sheet
+
+Display filtering options.
+
+```html
+<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+
+<div class="bottom-sheet bottom-sheet-md bottom-sheet-scrollable bottom-sheet-show">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Filters</h2>
+    <button class="btn btn-text btn-sm">Reset</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <div class="mb-6">
+      <h3 class="text-sm font-medium mb-3">Category</h3>
+      <div class="space-y-2">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="checkbox" />
+          <span>Electronics</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="checkbox" />
+          <span>Clothing</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="checkbox" />
+          <span>Home & Garden</span>
+        </label>
+      </div>
+    </div>
+    <div class="mb-6">
+      <h3 class="text-sm font-medium mb-3">Price Range</h3>
+      <div class="flex gap-2">
+        <input type="number" placeholder="Min" class="input flex-1" />
+        <input type="number" placeholder="Max" class="input flex-1" />
+      </div>
+    </div>
+  </div>
+  <div class="bottom-sheet-footer">
+    <button class="btn btn-text">Cancel</button>
+    <button class="btn btn-primary">Apply Filters</button>
+  </div>
+</div>
+```
+
+## JavaScript Control
+
+Basic JavaScript for controlling bottom sheet visibility:
+
+```html
+<button id="openSheet" class="btn btn-primary">Open Bottom Sheet</button>
+
+<div id="backdrop" class="bottom-sheet-backdrop"></div>
+
+<div id="bottomSheet" class="bottom-sheet">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h2 class="bottom-sheet-title">Bottom Sheet</h2>
+    <button id="closeSheet" class="bottom-sheet-close" aria-label="Close">×</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>Content here</p>
+  </div>
+</div>
+
+<script>
+  const backdrop = document.getElementById('backdrop');
+  const bottomSheet = document.getElementById('bottomSheet');
+  const openBtn = document.getElementById('openSheet');
+  const closeBtn = document.getElementById('closeSheet');
+
+  function openBottomSheet() {
+    backdrop.classList.add('bottom-sheet-backdrop-show');
+    bottomSheet.classList.add('bottom-sheet-show');
+  }
+
+  function closeBottomSheet() {
+    backdrop.classList.remove('bottom-sheet-backdrop-show');
+    bottomSheet.classList.remove('bottom-sheet-show');
+  }
+
+  openBtn.addEventListener('click', openBottomSheet);
+  closeBtn.addEventListener('click', closeBottomSheet);
+  backdrop.addEventListener('click', closeBottomSheet);
+</script>
+```
+
+## Best Practices
+
+### Mobile-First Design
+
+Bottom sheets are designed primarily for mobile interfaces:
+
+- Use them on smaller screens (typically < 768px)
+- Consider using modals or dialogs on desktop
+- Ensure touch targets are at least 44×44px
+- Test on actual mobile devices
+
+### Accessibility
+
+- Use semantic HTML elements
+- Include proper ARIA labels for close buttons
+- Ensure keyboard navigation works correctly
+- Provide clear focus indicators
+- Don't trap focus when using persistent sheets
+
+```html
+<div class="bottom-sheet" role="dialog" aria-labelledby="sheet-title" aria-modal="true">
+  <div class="bottom-sheet-handle" aria-hidden="true"></div>
+  <div class="bottom-sheet-header">
+    <h2 id="sheet-title" class="bottom-sheet-title">Accessible Bottom Sheet</h2>
+    <button class="bottom-sheet-close" aria-label="Close bottom sheet">×</button>
+  </div>
+  <div class="bottom-sheet-body">
+    <p>Content with proper accessibility attributes</p>
+  </div>
+</div>
+```
+
+### Content Guidelines
+
+- Keep content focused and concise
+- Use clear, actionable button labels
+- Provide a way to dismiss (handle, close button, or backdrop tap)
+- Don't nest multiple bottom sheets
+- Consider using partial open for previews
+
+### Performance
+
+- Use CSS transitions for smooth animations
+- Avoid heavy content in bottom sheets
+- Lazy load content when possible
+- Use `will-change` sparingly for animations
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.bottom-sheet` | Base bottom sheet container (required) |
+| `.bottom-sheet-backdrop` | Backdrop overlay for modal sheets |
+| `.bottom-sheet-backdrop-show` | Show the backdrop |
+| `.bottom-sheet-show` | Show the bottom sheet |
+| `.bottom-sheet-handle` | Drag handle indicator |
+| `.bottom-sheet-header` | Header section with title and close button |
+| `.bottom-sheet-title` | Title text in header |
+| `.bottom-sheet-body` | Main content area |
+| `.bottom-sheet-footer` | Footer section for actions |
+| `.bottom-sheet-close` | Close button styling |
+
+### Size Modifiers
+
+| Class | Description |
+|-------|-------------|
+| `.bottom-sheet-sm` | Small height (40vh) |
+| `.bottom-sheet-md` | Medium height (60vh) |
+| `.bottom-sheet-lg` | Large height (80vh) |
+| `.bottom-sheet-full` | Full height (100vh) |
+
+### Type Modifiers
+
+| Class | Description |
+|-------|-------------|
+| `.bottom-sheet-modal` | Modal bottom sheet (with backdrop) |
+| `.bottom-sheet-persistent` | Persistent bottom sheet (no backdrop) |
+| `.bottom-sheet-partial` | Partially opened state |
+
+### Surface Modifiers
+
+| Class | Description |
+|-------|-------------|
+| `.bottom-sheet-surface` | Surface background color |
+| `.bottom-sheet-surface-container` | Surface container background |
+| `.bottom-sheet-surface-container-high` | Surface container high background |
+
+### Content Modifiers
+
+| Class | Description |
+|-------|-------------|
+| `.bottom-sheet-no-handle` | Hide the drag handle |
+| `.bottom-sheet-scrollable` | Enable scrolling with max-height |
+| `.bottom-sheet-no-padding` | Remove body padding |
+| `.bottom-sheet-compact` | Reduced padding throughout |
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState } from 'react';
+
+interface BottomSheetProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+  size?: 'sm' | 'md' | 'lg' | 'full';
+  modal?: boolean;
+}
+
+export function BottomSheet({
+  isOpen,
+  onClose,
+  title,
+  children,
+  size = 'md',
+  modal = true
+}: BottomSheetProps) {
+  return (
+    <>
+      {modal && (
+        <div
+          className={`bottom-sheet-backdrop ${isOpen ? 'bottom-sheet-backdrop-show' : ''}`}
+          onClick={onClose}
+        />
+      )}
+      <div className={`bottom-sheet bottom-sheet-${size} ${isOpen ? 'bottom-sheet-show' : ''}`}>
+        <div className="bottom-sheet-handle" />
+        <div className="bottom-sheet-header">
+          <h2 className="bottom-sheet-title">{title}</h2>
+          <button className="bottom-sheet-close" onClick={onClose} aria-label="Close">
+            ×
+          </button>
+        </div>
+        <div className="bottom-sheet-body">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// Usage
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
+        Open Sheet
+      </button>
+      <BottomSheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="My Bottom Sheet"
+      >
+        <p>Content goes here</p>
+      </BottomSheet>
+    </>
+  );
+}
+```
+
+### Vue
+
+```vue
+<template>
+  <div>
+    <div
+      v-if="modal"
+      :class="['bottom-sheet-backdrop', { 'bottom-sheet-backdrop-show': isOpen }]"
+      @click="$emit('close')"
+    />
+    <div :class="sheetClasses">
+      <div class="bottom-sheet-handle" />
+      <div class="bottom-sheet-header">
+        <h2 class="bottom-sheet-title">{{ title }}</h2>
+        <button class="bottom-sheet-close" @click="$emit('close')" aria-label="Close">
+          ×
+        </button>
+      </div>
+      <div class="bottom-sheet-body">
+        <slot />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  isOpen: Boolean,
+  title: String,
+  size: {
+    type: String,
+    default: 'md'
+  },
+  modal: {
+    type: Boolean,
+    default: true
+  }
+});
+
+defineEmits(['close']);
+
+const sheetClasses = computed(() => [
+  'bottom-sheet',
+  `bottom-sheet-${props.size}`,
+  { 'bottom-sheet-show': props.isOpen }
+]);
+</script>
+
+<!-- Usage -->
+<template>
+  <button class="btn btn-primary" @click="isOpen = true">
+    Open Sheet
+  </button>
+  <BottomSheet
+    :is-open="isOpen"
+    @close="isOpen = false"
+    title="My Bottom Sheet"
+  >
+    <p>Content goes here</p>
+  </BottomSheet>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import BottomSheet from './BottomSheet.vue';
+
+const isOpen = ref(false);
+</script>
+```
+
+## Related Components
+
+- [Dialog](/docs/en/components/dialog/) - Modal dialogs for desktop
+- [Card](/docs/en/components/card/) - Container component
+- [Button](/docs/en/components/button/) - Action buttons
+
+## See Also
+
+- [Bottom sheets (Material Design 3)](https://m3.material.io/components/bottom-sheets/overview)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

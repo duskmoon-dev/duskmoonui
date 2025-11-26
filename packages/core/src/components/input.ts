@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Input component styles
  * Material Design 3-inspired form inputs
  */
-export const inputStyles: Record<string, CSSRuleObject> = {
+export const inputStyles: Record<string, any> = {
   // Base input styles (filled variant - Material Design 3 default)
   '.input': {
     display: 'block',
@@ -21,7 +21,7 @@ export const inputStyles: Record<string, CSSRuleObject> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&::placeholder': {
-      color: 'hsl(var(--color-on-surface-variant) / 0.6)',
+      color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
     },
 
     '&:hover': {
@@ -181,7 +181,7 @@ export const inputStyles: Record<string, CSSRuleObject> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&::placeholder': {
-      color: 'hsl(var(--color-on-surface-variant) / 0.6)',
+      color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
     },
 
     '&:hover': {
@@ -300,7 +300,7 @@ export const inputStyles: Record<string, CSSRuleObject> = {
     },
 
     '&:focus': {
-      outline: '2px solid hsl(var(--color-primary) / 0.2)',
+      outline: '2px solid rgba(var(--color-primary-rgb), 0.2)',
       outlineOffset: '2px',
     },
 

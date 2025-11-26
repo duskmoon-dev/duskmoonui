@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Badge component styles
  * Material Design 3-inspired badges for status indicators
  */
-export const badgeStyles: Record<string, CSSRuleObject> = {
+export const badgeStyles: Record<string, any> = {
   // Base badge styles
   '.badge': {
     display: 'inline-flex',

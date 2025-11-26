@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/themes.css';
+import '../styles/pages.css';
 
 export interface Props {
   title: string;
@@ -10,11 +11,11 @@ export interface Props {
 
 const {
   title,
-  description = 'DuskMoonUI - Modern Tailwind CSS Component Library with Tertiary Colors',
+  description = '@duskmoon-dev/core - Modern Tailwind CSS Component Library with Tertiary Colors',
   locale = 'en'
 } = Astro.props;
 
-const siteTitle = `${title} | DuskMoonUI`;
+const siteTitle = `${title} | @duskmoon-dev/core`;
 const base = import.meta.env.BASE_URL;
 ---
 

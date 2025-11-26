@@ -21,7 +21,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Type check core package
         run: bun run --filter @duskmoon-dev/core typecheck
@@ -29,9 +29,8 @@ jobs:
       - name: Build core package
         run: bun run --filter @duskmoon-dev/core build
 
-      - name: Run tests (when available)
-        run: bun run --filter @duskmoon-dev/core test || echo "No tests configured yet"
-        continue-on-error: true
+      - name: Run unit tests
+        run: bun run --filter @duskmoon-dev/core test
 
   lint:
     name: Lint
@@ -47,7 +46,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Run linter (when available)
         run: bun run lint || echo "No linting configured yet"
@@ -71,7 +70,7 @@ jobs:
           bun-version: latest
 
       - name: Install root dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Build core package first
         run: bun run --filter @duskmoon-dev/core build

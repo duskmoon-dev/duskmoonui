@@ -1,0 +1,172 @@
+/**
+ * Sunshine Theme - Light Mode
+ * A warm, bright theme optimized for daylight viewing
+ * Uses HSL space-separated format: "H S% L%"
+ */
+
+[data-theme="sunshine"] {
+  color-scheme: light;
+
+  /* ============================================
+   * BRAND COLORS
+   * ============================================ */
+
+  /* Primary Color Family - Warm Orange */
+  --color-primary: 30 90% 55%;
+  --color-primary-focus: 30 90% 45%;
+  --color-primary-content: 0 0% 100%;
+  --color-primary-container: 30 80% 92%;
+  --color-on-primary-container: 30 90% 20%;
+
+  /* Secondary Color Family - Coral Pink */
+  --color-secondary: 340 80% 60%;
+  --color-secondary-focus: 340 80% 50%;
+  --color-secondary-content: 0 0% 100%;
+  --color-secondary-container: 340 70% 92%;
+  --color-on-secondary-container: 340 80% 25%;
+
+  /* Tertiary Color Family - Violet */
+  --color-tertiary: 270 70% 60%;
+  --color-tertiary-focus: 270 70% 50%;
+  --color-tertiary-content: 0 0% 100%;
+  --color-tertiary-container: 270 60% 92%;
+  --color-on-tertiary-container: 270 70% 25%;
+
+  /* ============================================
+   * SURFACE COLORS
+   * ============================================ */
+
+  --color-surface: 0 0% 100%;
+  --color-surface-dim: 40 20% 94%;
+  --color-surface-bright: 0 0% 100%;
+  --color-surface-container-lowest: 0 0% 100%;
+  --color-surface-container-low: 40 30% 98%;
+  --color-surface-container: 40 25% 96%;
+  --color-surface-container-high: 40 20% 94%;
+  --color-surface-container-highest: 40 15% 92%;
+  --color-on-surface: 220 15% 15%;
+  --color-on-surface-variant: 220 10% 40%;
+
+  /* ============================================
+   * SEMANTIC COLORS
+   * ============================================ */
+
+  /* Info - Sky Blue */
+  --color-info: 200 90% 50%;
+  --color-info-content: 0 0% 100%;
+  --color-info-container: 200 80% 92%;
+  --color-on-info-container: 200 90% 20%;
+
+  /* Success - Green */
+  --color-success: 145 65% 42%;
+  --color-success-content: 0 0% 100%;
+  --color-success-container: 145 55% 90%;
+  --color-on-success-container: 145 65% 15%;
+
+  /* Warning - Amber */
+  --color-warning: 40 95% 50%;
+  --color-warning-content: 0 0% 10%;
+  --color-warning-container: 40 85% 90%;
+  --color-on-warning-container: 40 95% 20%;
+
+  /* Error - Red */
+  --color-error: 0 75% 55%;
+  --color-error-content: 0 0% 100%;
+  --color-error-container: 0 65% 92%;
+  --color-on-error-container: 0 75% 20%;
+
+  /* ============================================
+   * NEUTRAL COLORS (Base Scale)
+   * ============================================ */
+
+  --color-base-100: 0 0% 100%;
+  --color-base-200: 40 30% 97%;
+  --color-base-300: 40 25% 94%;
+  --color-base-400: 40 20% 88%;
+  --color-base-500: 40 15% 75%;
+  --color-base-600: 40 10% 55%;
+  --color-base-700: 40 8% 40%;
+  --color-base-800: 40 6% 25%;
+  --color-base-900: 40 5% 12%;
+  --color-base-content: 220 15% 15%;
+
+  /* ============================================
+   * OUTLINE COLORS
+   * ============================================ */
+
+  --color-outline: 220 10% 70%;
+  --color-outline-variant: 220 8% 82%;
+}
+
+/* Default theme - applies sunshine when no data-theme is set */
+:root {
+  color-scheme: light;
+
+  /* Brand Colors */
+  --color-primary: 30 90% 55%;
+  --color-primary-focus: 30 90% 45%;
+  --color-primary-content: 0 0% 100%;
+  --color-primary-container: 30 80% 92%;
+  --color-on-primary-container: 30 90% 20%;
+
+  --color-secondary: 340 80% 60%;
+  --color-secondary-focus: 340 80% 50%;
+  --color-secondary-content: 0 0% 100%;
+  --color-secondary-container: 340 70% 92%;
+  --color-on-secondary-container: 340 80% 25%;
+
+  --color-tertiary: 270 70% 60%;
+  --color-tertiary-focus: 270 70% 50%;
+  --color-tertiary-content: 0 0% 100%;
+  --color-tertiary-container: 270 60% 92%;
+  --color-on-tertiary-container: 270 70% 25%;
+
+  /* Surface Colors */
+  --color-surface: 0 0% 100%;
+  --color-surface-dim: 40 20% 94%;
+  --color-surface-bright: 0 0% 100%;
+  --color-surface-container-lowest: 0 0% 100%;
+  --color-surface-container-low: 40 30% 98%;
+  --color-surface-container: 40 25% 96%;
+  --color-surface-container-high: 40 20% 94%;
+  --color-surface-container-highest: 40 15% 92%;
+  --color-on-surface: 220 15% 15%;
+  --color-on-surface-variant: 220 10% 40%;
+
+  /* Semantic Colors */
+  --color-info: 200 90% 50%;
+  --color-info-content: 0 0% 100%;
+  --color-info-container: 200 80% 92%;
+  --color-on-info-container: 200 90% 20%;
+
+  --color-success: 145 65% 42%;
+  --color-success-content: 0 0% 100%;
+  --color-success-container: 145 55% 90%;
+  --color-on-success-container: 145 65% 15%;
+
+  --color-warning: 40 95% 50%;
+  --color-warning-content: 0 0% 10%;
+  --color-warning-container: 40 85% 90%;
+  --color-on-warning-container: 40 95% 20%;
+
+  --color-error: 0 75% 55%;
+  --color-error-content: 0 0% 100%;
+  --color-error-container: 0 65% 92%;
+  --color-on-error-container: 0 75% 20%;
+
+  /* Neutral Colors */
+  --color-base-100: 0 0% 100%;
+  --color-base-200: 40 30% 97%;
+  --color-base-300: 40 25% 94%;
+  --color-base-400: 40 20% 88%;
+  --color-base-500: 40 15% 75%;
+  --color-base-600: 40 10% 55%;
+  --color-base-700: 40 8% 40%;
+  --color-base-800: 40 6% 25%;
+  --color-base-900: 40 5% 12%;
+  --color-base-content: 220 15% 15%;
+
+  /* Outline Colors */
+  --color-outline: 220 10% 70%;
+  --color-outline-variant: 220 8% 82%;
+}

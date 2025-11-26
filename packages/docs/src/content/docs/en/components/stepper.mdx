@@ -1,0 +1,661 @@
+---
+title: Stepper
+description: Material Design 3 stepper component for multi-step processes
+category: components
+order: 22
+published: true
+tags: ['stepper', 'components', 'material-design', 'navigation']
+---
+
+# Stepper
+
+Steppers display progress through a sequence of logical and numbered steps. They guide users through multi-step processes like forms, checkouts, or wizards.
+
+## Basic Usage
+
+```html
+<div class="stepper">
+  <div class="stepper-step stepper-step-completed">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">1</div>
+      <span class="stepper-step-label">Account</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">2</div>
+      <span class="stepper-step-label">Profile</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">3</div>
+      <span class="stepper-step-label">Confirm</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+```
+
+## Variants
+
+### Horizontal Stepper
+
+The default horizontal layout is ideal for desktop interfaces:
+
+```html
+<div class="stepper">
+  <div class="stepper-step stepper-step-completed">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">✓</div>
+      <span class="stepper-step-label">Step 1</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">2</div>
+      <span class="stepper-step-label">Step 2</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">3</div>
+      <span class="stepper-step-label">Step 3</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+```
+
+### Vertical Stepper
+
+Vertical steppers work well for mobile devices or when steps require more detail:
+
+```html
+<div class="stepper stepper-vertical">
+  <div class="stepper-step stepper-step-completed">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">✓</div>
+      <div>
+        <div class="stepper-step-label">Select campaign settings</div>
+        <div class="stepper-step-description">Choose your targeting options</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+    <div class="stepper-step-content">
+      <p>Campaign settings content here...</p>
+    </div>
+  </div>
+
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">2</div>
+      <div>
+        <div class="stepper-step-label">Create an ad group</div>
+        <div class="stepper-step-description">Define your ad parameters</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+    <div class="stepper-step-content">
+      <p>Ad group content here...</p>
+    </div>
+  </div>
+
+  <div class="stepper-step">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">3</div>
+      <div>
+        <div class="stepper-step-label">Create your ad</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+```
+
+## Step States
+
+### Active Step
+
+The current step in the process:
+
+```html
+<div class="stepper-step stepper-step-active">
+  <button class="stepper-step-button">
+    <div class="stepper-step-icon">2</div>
+    <span class="stepper-step-label">Active Step</span>
+  </button>
+  <div class="stepper-step-connector"></div>
+</div>
+```
+
+### Completed Step
+
+Steps that have been successfully completed:
+
+```html
+<div class="stepper-step stepper-step-completed">
+  <button class="stepper-step-button">
+    <div class="stepper-step-icon">✓</div>
+    <span class="stepper-step-label">Completed</span>
+  </button>
+  <div class="stepper-step-connector"></div>
+</div>
+```
+
+### Error Step
+
+Steps with validation errors or issues:
+
+```html
+<div class="stepper-step stepper-step-error">
+  <button class="stepper-step-button">
+    <div class="stepper-step-icon">!</div>
+    <span class="stepper-step-label">Error</span>
+  </button>
+  <div class="stepper-step-connector"></div>
+</div>
+```
+
+### Disabled Step
+
+Steps that cannot be accessed yet:
+
+```html
+<div class="stepper-step stepper-step-disabled">
+  <button class="stepper-step-button">
+    <div class="stepper-step-icon">4</div>
+    <span class="stepper-step-label">Disabled</span>
+  </button>
+  <div class="stepper-step-connector"></div>
+</div>
+```
+
+### Optional Step
+
+Mark steps as optional:
+
+```html
+<div class="stepper-step stepper-step-optional">
+  <button class="stepper-step-button">
+    <div class="stepper-step-icon">3</div>
+    <span class="stepper-step-label">Optional Step</span>
+  </button>
+  <div class="stepper-step-connector"></div>
+</div>
+```
+
+## Color Variants
+
+### Primary (Default)
+
+```html
+<div class="stepper">
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">1</div>
+      <span class="stepper-step-label">Primary</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+```
+
+### Secondary
+
+```html
+<div class="stepper stepper-secondary">
+  <div class="stepper-step stepper-step-completed">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">✓</div>
+      <span class="stepper-step-label">Completed</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">2</div>
+      <span class="stepper-step-label">Secondary</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+```
+
+### Tertiary
+
+```html
+<div class="stepper stepper-tertiary">
+  <div class="stepper-step stepper-step-completed">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">✓</div>
+      <span class="stepper-step-label">Completed</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">2</div>
+      <span class="stepper-step-label">Tertiary</span>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+```
+
+## With Descriptions
+
+Add descriptions to provide context for each step:
+
+```html
+<div class="stepper">
+  <div class="stepper-step stepper-step-completed">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">✓</div>
+      <div>
+        <span class="stepper-step-label">Account Info</span>
+        <div class="stepper-step-description">Name and email</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">2</div>
+      <div>
+        <span class="stepper-step-label">Profile Details</span>
+        <div class="stepper-step-description">Personal information</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+
+  <div class="stepper-step">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">3</div>
+      <div>
+        <span class="stepper-step-label">Confirmation</span>
+        <div class="stepper-step-description">Review and submit</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+```
+
+## Interactive Example
+
+Here's a complete example with step content:
+
+```html
+<div class="stepper stepper-vertical">
+  <div class="stepper-step stepper-step-completed">
+    <button class="stepper-step-button" onclick="goToStep(1)">
+      <div class="stepper-step-icon">✓</div>
+      <div>
+        <div class="stepper-step-label">Account Setup</div>
+        <div class="stepper-step-description">Basic account information</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+    <div class="stepper-step-content">
+      <form>
+        <label>Email: user@example.com</label>
+        <label>Password: ••••••••</label>
+      </form>
+    </div>
+  </div>
+
+  <div class="stepper-step stepper-step-active">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">2</div>
+      <div>
+        <div class="stepper-step-label">Profile Information</div>
+        <div class="stepper-step-description">Tell us about yourself</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+    <div class="stepper-step-content">
+      <form>
+        <input type="text" placeholder="First Name" class="input">
+        <input type="text" placeholder="Last Name" class="input">
+        <textarea placeholder="Bio" class="input"></textarea>
+        <div class="flex gap-2 mt-4">
+          <button type="button" class="btn btn-text" onclick="previousStep()">Back</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="stepper-step">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">3</div>
+      <div>
+        <div class="stepper-step-label">Verification</div>
+        <div class="stepper-step-description">Verify your email</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+  </div>
+</div>
+
+<script>
+  function goToStep(step) {
+    console.log('Navigate to step:', step);
+  }
+
+  function previousStep() {
+    console.log('Go to previous step');
+  }
+
+  function nextStep() {
+    console.log('Go to next step');
+  }
+</script>
+```
+
+## Best Practices
+
+### Step Count
+
+- **3-5 steps**: Ideal for most processes
+- **More than 5 steps**: Consider grouping steps or using a different pattern
+- **2 steps**: Consider using tabs or a simpler layout
+
+### Labels
+
+- Keep step labels short and clear (1-2 words)
+- Use action verbs when possible
+- Ensure labels accurately describe the step content
+
+### Navigation
+
+- Allow users to navigate back to previous steps
+- Consider whether to allow skipping ahead
+- Always validate before moving to the next step
+
+### Accessibility
+
+```html
+<!-- Use semantic HTML and ARIA attributes -->
+<div class="stepper" role="navigation" aria-label="Registration progress">
+  <div class="stepper-step stepper-step-active" aria-current="step">
+    <button class="stepper-step-button" aria-label="Step 1 of 3: Account Info">
+      <div class="stepper-step-icon">1</div>
+      <span class="stepper-step-label">Account Info</span>
+    </button>
+    <div class="stepper-step-connector" aria-hidden="true"></div>
+  </div>
+
+  <div class="stepper-step">
+    <button class="stepper-step-button" aria-label="Step 2 of 3: Profile" aria-disabled="true">
+      <div class="stepper-step-icon">2</div>
+      <span class="stepper-step-label">Profile</span>
+    </button>
+    <div class="stepper-step-connector" aria-hidden="true"></div>
+  </div>
+
+  <div class="stepper-step">
+    <button class="stepper-step-button" aria-label="Step 3 of 3: Confirm" aria-disabled="true">
+      <div class="stepper-step-icon">3</div>
+      <span class="stepper-step-label">Confirm</span>
+    </button>
+  </div>
+</div>
+```
+
+### Mobile Considerations
+
+```html
+<!-- Use vertical stepper for mobile, horizontal for desktop -->
+<div class="stepper stepper-vertical md:stepper">
+  <!-- Steps here -->
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface Step {
+  label: string;
+  description?: string;
+  optional?: boolean;
+}
+
+interface StepperProps {
+  steps: Step[];
+  activeStep: number;
+  orientation?: 'horizontal' | 'vertical';
+  color?: 'primary' | 'secondary' | 'tertiary';
+  onStepClick?: (step: number) => void;
+}
+
+export function Stepper({
+  steps,
+  activeStep,
+  orientation = 'horizontal',
+  color = 'primary',
+  onStepClick
+}: StepperProps) {
+  const stepperClass = `stepper ${
+    orientation === 'vertical' ? 'stepper-vertical' : ''
+  } ${color !== 'primary' ? `stepper-${color}` : ''}`;
+
+  return (
+    <div className={stepperClass}>
+      {steps.map((step, index) => {
+        const isActive = index === activeStep;
+        const isCompleted = index < activeStep;
+
+        const stepClass = `stepper-step ${
+          isActive ? 'stepper-step-active' : ''
+        } ${isCompleted ? 'stepper-step-completed' : ''} ${
+          step.optional ? 'stepper-step-optional' : ''
+        }`;
+
+        return (
+          <div key={index} className={stepClass}>
+            <button
+              className="stepper-step-button"
+              onClick={() => onStepClick?.(index)}
+              disabled={index > activeStep}
+            >
+              <div className="stepper-step-icon">
+                {isCompleted ? '✓' : index + 1}
+              </div>
+              <div>
+                <span className="stepper-step-label">{step.label}</span>
+                {step.description && (
+                  <div className="stepper-step-description">
+                    {step.description}
+                  </div>
+                )}
+              </div>
+            </button>
+            {index < steps.length - 1 && (
+              <div className="stepper-step-connector" />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// Usage
+const steps = [
+  { label: 'Account', description: 'Basic info' },
+  { label: 'Profile', description: 'Personal details' },
+  { label: 'Confirm', description: 'Review', optional: true }
+];
+
+<Stepper steps={steps} activeStep={1} orientation="vertical" />
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="stepperClass">
+    <div
+      v-for="(step, index) in steps"
+      :key="index"
+      :class="getStepClass(index)"
+    >
+      <button
+        class="stepper-step-button"
+        @click="$emit('step-click', index)"
+        :disabled="index > activeStep"
+      >
+        <div class="stepper-step-icon">
+          {{ index < activeStep ? '✓' : index + 1 }}
+        </div>
+        <div>
+          <span class="stepper-step-label">{{ step.label }}</span>
+          <div
+            v-if="step.description"
+            class="stepper-step-description"
+          >
+            {{ step.description }}
+          </div>
+        </div>
+      </button>
+      <div
+        v-if="index < steps.length - 1"
+        class="stepper-step-connector"
+      />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  steps: {
+    type: Array,
+    required: true
+  },
+  activeStep: {
+    type: Number,
+    default: 0
+  },
+  orientation: {
+    type: String,
+    default: 'horizontal'
+  },
+  color: {
+    type: String,
+    default: 'primary'
+  }
+});
+
+const stepperClass = computed(() => {
+  return `stepper ${
+    props.orientation === 'vertical' ? 'stepper-vertical' : ''
+  } ${props.color !== 'primary' ? `stepper-${props.color}` : ''}`;
+});
+
+const getStepClass = (index) => {
+  const isActive = index === props.activeStep;
+  const isCompleted = index < props.activeStep;
+  const step = props.steps[index];
+
+  return `stepper-step ${
+    isActive ? 'stepper-step-active' : ''
+  } ${isCompleted ? 'stepper-step-completed' : ''} ${
+    step.optional ? 'stepper-step-optional' : ''
+  }`;
+};
+</script>
+
+<!-- Usage -->
+<Stepper
+  :steps="[
+    { label: 'Account', description: 'Basic info' },
+    { label: 'Profile', description: 'Personal details' },
+    { label: 'Confirm', description: 'Review', optional: true }
+  ]"
+  :active-step="1"
+  orientation="vertical"
+  @step-click="handleStepClick"
+/>
+```
+
+## API Reference
+
+### Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.stepper` | Base stepper container (required) |
+| `.stepper-vertical` | Vertical orientation |
+| `.stepper-secondary` | Secondary color variant |
+| `.stepper-tertiary` | Tertiary color variant |
+| `.stepper-alt-labels` | Alternative label positioning |
+
+### Step Classes
+
+| Class | Description |
+|-------|-------------|
+| `.stepper-step` | Individual step container (required) |
+| `.stepper-step-active` | Current active step |
+| `.stepper-step-completed` | Completed step |
+| `.stepper-step-error` | Step with error |
+| `.stepper-step-disabled` | Disabled step |
+| `.stepper-step-optional` | Optional step (shows "(Optional)" label) |
+
+### Step Element Classes
+
+| Class | Description |
+|-------|-------------|
+| `.stepper-step-button` | Clickable step button |
+| `.stepper-step-icon` | Step number or icon circle |
+| `.stepper-step-label` | Step label text |
+| `.stepper-step-description` | Optional step description |
+| `.stepper-step-connector` | Line connecting steps |
+| `.stepper-step-content` | Content area (for vertical stepper) |
+
+### Structure
+
+```html
+<div class="stepper [stepper-vertical] [stepper-{color}]">
+  <div class="stepper-step [stepper-step-{state}]">
+    <button class="stepper-step-button">
+      <div class="stepper-step-icon">{number|icon}</div>
+      <div>
+        <span class="stepper-step-label">{label}</span>
+        <div class="stepper-step-description">{description}</div>
+      </div>
+    </button>
+    <div class="stepper-step-connector"></div>
+    <div class="stepper-step-content">{content}</div>
+  </div>
+</div>
+```
+
+## Related Components
+
+- [Tabs](/docs/en/components/tabs/) - Alternative navigation pattern
+- [Breadcrumb](/docs/en/components/breadcrumb/) - Hierarchical navigation
+- [Progress](/docs/en/components/progress/) - Linear progress indicator
+- [Button](/docs/en/components/button/) - Action buttons for navigation
+
+## See Also
+
+- [Stepper Design Guidelines (Material Design 3)](https://m3.material.io/components/steppers/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

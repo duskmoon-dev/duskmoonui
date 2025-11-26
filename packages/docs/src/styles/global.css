@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+
+@source "../components/**/*.astro";
+@source "../components/**/*.tsx";
+@source "../layouts/**/*.astro";
+@source "../pages/**/*.astro";
+@source "../pages/**/*.mdx";
 
 * {
   box-sizing: border-box;

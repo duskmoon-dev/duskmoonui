@@ -1,0 +1,790 @@
+---
+title: Timeline
+description: Material Design 3 timeline component for displaying chronological events and milestones
+category: components
+order: 38
+published: true
+tags: ['timeline', 'components', 'material-design', 'chronological']
+---
+
+# Timeline
+
+Timelines display a list of events in chronological order, helping users understand the sequence of events and milestones. @duskmoon-dev/core provides a flexible Material Design 3-inspired timeline component.
+
+## Basic Usage
+
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">2 hours ago</span>
+      <h3 class="timeline-title">Project Started</h3>
+      <p class="timeline-description">
+        The project has been initialized and setup is complete.
+      </p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">1 hour ago</span>
+      <h3 class="timeline-title">First Commit</h3>
+      <p class="timeline-description">
+        Initial code structure and dependencies added.
+      </p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">30 minutes ago</span>
+      <h3 class="timeline-title">Tests Passing</h3>
+      <p class="timeline-description">
+        All unit tests are now passing successfully.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+## Layouts
+
+### Vertical Timeline (Default)
+
+The default layout displays events vertically with a connecting line:
+
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">January 15, 2025</span>
+      <h3 class="timeline-title">Planning Phase</h3>
+      <p class="timeline-description">Initial project planning and requirements gathering.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">February 1, 2025</span>
+      <h3 class="timeline-title">Development Begins</h3>
+      <p class="timeline-description">Started coding the core features.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Horizontal Timeline
+
+Display events horizontally for a different perspective:
+
+```html
+<div class="timeline timeline-horizontal">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Q1 2025</span>
+      <h3 class="timeline-title">Phase 1</h3>
+      <p class="timeline-description">Initial development</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Q2 2025</span>
+      <h3 class="timeline-title">Phase 2</h3>
+      <p class="timeline-description">Feature expansion</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Q3 2025</span>
+      <h3 class="timeline-title">Phase 3</h3>
+      <p class="timeline-description">Launch preparation</p>
+    </div>
+  </div>
+</div>
+```
+
+### Alternate Layout (Zigzag)
+
+Create a zigzag pattern with alternating sides:
+
+```html
+<div class="timeline timeline-alternate">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Step 1</span>
+      <h3 class="timeline-title">Discovery</h3>
+      <p class="timeline-description">Understanding user needs and requirements.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Step 2</span>
+      <h3 class="timeline-title">Design</h3>
+      <p class="timeline-description">Creating wireframes and prototypes.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Step 3</span>
+      <h3 class="timeline-title">Development</h3>
+      <p class="timeline-description">Building the product.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Marker Colors
+
+Use different colors to categorize events or show status:
+
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Now</span>
+      <h3 class="timeline-title">Primary Event</h3>
+      <p class="timeline-description">Default primary color marker.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-secondary"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">1 day ago</span>
+      <h3 class="timeline-title">Secondary Event</h3>
+      <p class="timeline-description">Secondary color marker.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-tertiary"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">2 days ago</span>
+      <h3 class="timeline-title">Tertiary Event</h3>
+      <p class="timeline-description">Tertiary color marker.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-success"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">3 days ago</span>
+      <h3 class="timeline-title">Completed Task</h3>
+      <p class="timeline-description">Successfully completed milestone.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-error"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">4 days ago</span>
+      <h3 class="timeline-title">Error Occurred</h3>
+      <p class="timeline-description">An error was detected and resolved.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Icon Markers
+
+Add icons to markers for better visual communication:
+
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-icon">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <div class="timeline-content">
+      <span class="timeline-time">Completed</span>
+      <h3 class="timeline-title">Task Finished</h3>
+      <p class="timeline-description">The task was completed successfully.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-icon timeline-marker-secondary">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+    </div>
+    <div class="timeline-content">
+      <span class="timeline-time">In Progress</span>
+      <h3 class="timeline-title">New Feature</h3>
+      <p class="timeline-description">Working on the new feature implementation.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-icon timeline-marker-success">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <div class="timeline-content">
+      <span class="timeline-time">Verified</span>
+      <h3 class="timeline-title">Quality Check</h3>
+      <p class="timeline-description">All tests passed verification.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Item States
+
+### Active/Current State
+
+Highlight the current or active timeline item with a pulsing animation:
+
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-success"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Yesterday</span>
+      <h3 class="timeline-title">Design Complete</h3>
+      <p class="timeline-description">All designs approved.</p>
+    </div>
+  </div>
+  <div class="timeline-item timeline-item-active">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Today</span>
+      <h3 class="timeline-title">Development in Progress</h3>
+      <p class="timeline-description">Currently implementing the features.</p>
+    </div>
+  </div>
+  <div class="timeline-item timeline-item-pending">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Tomorrow</span>
+      <h3 class="timeline-title">Testing Phase</h3>
+      <p class="timeline-description">Scheduled to begin testing.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Pending State
+
+Show future or pending items with reduced opacity:
+
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-success"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Completed</span>
+      <h3 class="timeline-title">Phase 1 Done</h3>
+      <p class="timeline-description">First phase successfully completed.</p>
+    </div>
+  </div>
+  <div class="timeline-item timeline-item-pending">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Upcoming</span>
+      <h3 class="timeline-title">Phase 2 Pending</h3>
+      <p class="timeline-description">Waiting to start the next phase.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Size Variants
+
+### Small Timeline
+
+```html
+<div class="timeline timeline-sm">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">10:00 AM</span>
+      <h3 class="timeline-title">Small Event</h3>
+      <p class="timeline-description">Compact timeline for tight spaces.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">11:00 AM</span>
+      <h3 class="timeline-title">Another Event</h3>
+      <p class="timeline-description">More concise display.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Large Timeline
+
+```html
+<div class="timeline timeline-lg">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">January 2025</span>
+      <h3 class="timeline-title">Major Milestone</h3>
+      <p class="timeline-description">
+        Larger timeline for prominent display with more visual impact and better readability.
+      </p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">February 2025</span>
+      <h3 class="timeline-title">Next Milestone</h3>
+      <p class="timeline-description">
+        Enhanced visibility for important events and detailed information.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+### Compact Timeline
+
+Reduce spacing for more condensed display:
+
+```html
+<div class="timeline timeline-compact">
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">08:00</span>
+      <h3 class="timeline-title">Morning Meeting</h3>
+      <p class="timeline-description">Team sync and planning.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">10:00</span>
+      <h3 class="timeline-title">Development</h3>
+      <p class="timeline-description">Coding session.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">14:00</span>
+      <h3 class="timeline-title">Code Review</h3>
+      <p class="timeline-description">PR review session.</p>
+    </div>
+  </div>
+</div>
+```
+
+## Card Content
+
+Display timeline content in card containers for better separation:
+
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-success"></div>
+    <div class="timeline-content timeline-content-card">
+      <span class="timeline-time">March 15, 2025</span>
+      <h3 class="timeline-title">Product Launch</h3>
+      <p class="timeline-description">
+        Successfully launched version 1.0 to production. All systems operational
+        and receiving positive user feedback.
+      </p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-secondary"></div>
+    <div class="timeline-content timeline-content-card">
+      <span class="timeline-time">March 20, 2025</span>
+      <h3 class="timeline-title">Feature Update</h3>
+      <p class="timeline-description">
+        Added new analytics dashboard and improved performance by 40%.
+      </p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content timeline-content-card">
+      <span class="timeline-time">March 25, 2025</span>
+      <h3 class="timeline-title">Mobile App Release</h3>
+      <p class="timeline-description">
+        iOS and Android apps now available on respective app stores.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+## Best Practices
+
+### Clear Chronological Order
+
+Always display events in chronological order (newest first or oldest first, consistently):
+
+```html
+<!-- Good: Clear chronological progression -->
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-success"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">March 1, 2025</span>
+      <h3 class="timeline-title">Project Kickoff</h3>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-success"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">March 15, 2025</span>
+      <h3 class="timeline-title">Milestone 1</h3>
+    </div>
+  </div>
+  <div class="timeline-item timeline-item-active">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">March 30, 2025</span>
+      <h3 class="timeline-title">Current Sprint</h3>
+    </div>
+  </div>
+</div>
+```
+
+### Meaningful Time Labels
+
+Use clear, contextual time labels:
+
+```html
+<div class="timeline">
+  <!-- Good: Specific and meaningful -->
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">January 15, 2025 at 2:30 PM</span>
+      <h3 class="timeline-title">Contract Signed</h3>
+    </div>
+  </div>
+
+  <!-- Good: Relative time for recent events -->
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">2 hours ago</span>
+      <h3 class="timeline-title">Update Deployed</h3>
+    </div>
+  </div>
+</div>
+```
+
+### Use Colors Meaningfully
+
+Apply colors to convey status or category:
+
+```html
+<div class="timeline">
+  <!-- Success: Completed tasks -->
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-success"></div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">Deployment Successful</h3>
+    </div>
+  </div>
+
+  <!-- Error: Issues or problems -->
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-error"></div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">Build Failed</h3>
+    </div>
+  </div>
+
+  <!-- Active: Current activity -->
+  <div class="timeline-item timeline-item-active">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">In Progress</h3>
+    </div>
+  </div>
+</div>
+```
+
+### Accessibility
+
+Ensure timeline content is accessible:
+
+```html
+<div class="timeline" role="list" aria-label="Project timeline">
+  <div class="timeline-item" role="listitem">
+    <div class="timeline-marker" aria-hidden="true"></div>
+    <div class="timeline-content">
+      <time datetime="2025-01-15" class="timeline-time">January 15, 2025</time>
+      <h3 class="timeline-title">Project Started</h3>
+      <p class="timeline-description">
+        Initial project setup and team onboarding completed.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface TimelineItemProps {
+  time: string;
+  title: string;
+  description: string;
+  markerColor?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'error';
+  state?: 'active' | 'pending';
+  icon?: React.ReactNode;
+}
+
+interface TimelineProps {
+  items: TimelineItemProps[];
+  layout?: 'vertical' | 'horizontal' | 'alternate';
+  size?: 'sm' | 'md' | 'lg';
+  compact?: boolean;
+}
+
+export function Timeline({ items, layout = 'vertical', size, compact }: TimelineProps) {
+  const baseClasses = ['timeline'];
+
+  if (layout === 'horizontal') baseClasses.push('timeline-horizontal');
+  if (layout === 'alternate') baseClasses.push('timeline-alternate');
+  if (size === 'sm') baseClasses.push('timeline-sm');
+  if (size === 'lg') baseClasses.push('timeline-lg');
+  if (compact) baseClasses.push('timeline-compact');
+
+  return (
+    <div className={baseClasses.join(' ')}>
+      {items.map((item, index) => (
+        <TimelineItem key={index} {...item} />
+      ))}
+    </div>
+  );
+}
+
+export function TimelineItem({
+  time,
+  title,
+  description,
+  markerColor,
+  state,
+  icon
+}: TimelineItemProps) {
+  const itemClasses = ['timeline-item'];
+  const markerClasses = ['timeline-marker'];
+
+  if (state === 'active') itemClasses.push('timeline-item-active');
+  if (state === 'pending') itemClasses.push('timeline-item-pending');
+
+  if (markerColor) markerClasses.push(`timeline-marker-${markerColor}`);
+  if (icon) markerClasses.push('timeline-marker-icon');
+
+  return (
+    <div className={itemClasses.join(' ')}>
+      <div className={markerClasses.join(' ')}>
+        {icon}
+      </div>
+      <div className="timeline-content">
+        <span className="timeline-time">{time}</span>
+        <h3 className="timeline-title">{title}</h3>
+        <p className="timeline-description">{description}</p>
+      </div>
+    </div>
+  );
+}
+
+// Usage
+<Timeline
+  layout="vertical"
+  items={[
+    {
+      time: '2 hours ago',
+      title: 'Project Started',
+      description: 'Initial setup complete',
+      markerColor: 'success'
+    },
+    {
+      time: '1 hour ago',
+      title: 'Development',
+      description: 'Working on features',
+      state: 'active'
+    }
+  ]}
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="timelineClasses">
+    <div
+      v-for="(item, index) in items"
+      :key="index"
+      :class="itemClasses(item)"
+    >
+      <div :class="markerClasses(item)">
+        <slot :name="`icon-${index}`">{{ item.icon }}</slot>
+      </div>
+      <div class="timeline-content" :class="{ 'timeline-content-card': item.card }">
+        <span class="timeline-time">{{ item.time }}</span>
+        <h3 class="timeline-title">{{ item.title }}</h3>
+        <p class="timeline-description">{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true
+  },
+  layout: {
+    type: String,
+    default: 'vertical',
+    validator: (value) => ['vertical', 'horizontal', 'alternate'].includes(value)
+  },
+  size: {
+    type: String,
+    validator: (value) => ['sm', 'md', 'lg'].includes(value)
+  },
+  compact: Boolean
+})
+
+const timelineClasses = computed(() => {
+  const classes = ['timeline']
+  if (props.layout === 'horizontal') classes.push('timeline-horizontal')
+  if (props.layout === 'alternate') classes.push('timeline-alternate')
+  if (props.size === 'sm') classes.push('timeline-sm')
+  if (props.size === 'lg') classes.push('timeline-lg')
+  if (props.compact) classes.push('timeline-compact')
+  return classes
+})
+
+const itemClasses = (item) => {
+  const classes = ['timeline-item']
+  if (item.state === 'active') classes.push('timeline-item-active')
+  if (item.state === 'pending') classes.push('timeline-item-pending')
+  return classes
+}
+
+const markerClasses = (item) => {
+  const classes = ['timeline-marker']
+  if (item.markerColor) classes.push(`timeline-marker-${item.markerColor}`)
+  if (item.icon) classes.push('timeline-marker-icon')
+  return classes
+}
+</script>
+
+<!-- Usage -->
+<Timeline
+  layout="vertical"
+  :items="[
+    {
+      time: '2 hours ago',
+      title: 'Project Started',
+      description: 'Initial setup complete',
+      markerColor: 'success'
+    },
+    {
+      time: '1 hour ago',
+      title: 'Development',
+      description: 'Working on features',
+      state: 'active'
+    }
+  ]"
+/>
+```
+
+## API Reference
+
+### Timeline Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.timeline` | Base timeline container (required) |
+| `.timeline-horizontal` | Horizontal layout |
+| `.timeline-alternate` | Alternating zigzag layout |
+| `.timeline-sm` | Small size variant |
+| `.timeline-lg` | Large size variant |
+| `.timeline-compact` | Compact spacing |
+
+### Timeline Item Classes
+
+| Class | Description |
+|-------|-------------|
+| `.timeline-item` | Individual timeline item (required) |
+| `.timeline-item-active` | Active/current item with pulsing animation |
+| `.timeline-item-pending` | Pending/future item with reduced opacity |
+
+### Marker Classes
+
+| Class | Description |
+|-------|-------------|
+| `.timeline-marker` | Timeline marker dot (required) |
+| `.timeline-marker-secondary` | Secondary color marker |
+| `.timeline-marker-tertiary` | Tertiary color marker |
+| `.timeline-marker-success` | Success/green marker |
+| `.timeline-marker-error` | Error/red marker |
+| `.timeline-marker-icon` | Marker with icon content |
+
+### Content Classes
+
+| Class | Description |
+|-------|-------------|
+| `.timeline-content` | Content container (required) |
+| `.timeline-content-card` | Card-styled content with border and shadow |
+| `.timeline-time` | Time/date label |
+| `.timeline-title` | Event title |
+| `.timeline-description` | Event description text |
+
+### Combinations
+
+```html
+<!-- Large horizontal timeline with card content -->
+<div class="timeline timeline-horizontal timeline-lg">
+  <div class="timeline-item timeline-item-active">
+    <div class="timeline-marker timeline-marker-icon timeline-marker-success">
+      <svg>...</svg>
+    </div>
+    <div class="timeline-content timeline-content-card">
+      <span class="timeline-time">Q1 2025</span>
+      <h3 class="timeline-title">Major Release</h3>
+      <p class="timeline-description">Version 2.0 launched</p>
+    </div>
+  </div>
+</div>
+
+<!-- Compact alternate timeline with small size -->
+<div class="timeline timeline-alternate timeline-compact timeline-sm">
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-secondary"></div>
+    <div class="timeline-content">
+      <span class="timeline-time">Step 1</span>
+      <h3 class="timeline-title">Initialize</h3>
+    </div>
+  </div>
+</div>
+```
+
+## Related Components
+
+- [Stepper](/docs/en/components/stepper/) - Step-by-step process indicator
+- [Badge](/docs/en/components/badge/) - Status indicators
+- [Card](/docs/en/components/card/) - Content containers
+
+## See Also
+
+- [Lists Design Guidelines (Material Design 3)](https://m3.material.io/components/lists/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

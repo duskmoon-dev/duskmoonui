@@ -33,3 +33,27 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# Astro build artifacts
+.astro
+
+# Playwright MCP artifacts
+.playwright-mcp
+
+
+# Claude Code - Keep commands, ignore runtime artifacts
+.claude/.cache/
+.claude/logs/
+.claude/*.log
+.claude/oauth_token
+.claude/history/
+.claude/tmp/
+
+# Explicitly keep commands (optional, but documents intent)
+!.claude/commands/
+
+# Spec-kit
+.specify/.cache/
+
+
+

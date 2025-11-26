@@ -1,6 +1,6 @@
 ---
 title: Theme Customization
-description: Create custom themes and customize DuskMoonUI's color system
+description: Create custom themes and customize @duskmoon-dev/core's color system
 category: theming
 order: 2
 published: true
@@ -19,7 +19,7 @@ Define a custom theme by providing color values in HSL format:
 
 ```javascript
 // tailwind.config.js
-const { duskmoonui } = require('duskmoonui');
+const { duskmoonui } = require('@duskmoon-dev/core');
 
 module.exports = {
   plugins: [
@@ -101,7 +101,7 @@ For type safety, use TypeScript:
 
 ```typescript
 // tailwind.config.ts
-import { duskmoonui, type ThemeConfig } from 'duskmoonui';
+import { duskmoonui, type ThemeConfig } from '@duskmoon-dev/core';
 import type { Config } from 'tailwindcss';
 
 const brandTheme: ThemeConfig = {
@@ -125,7 +125,7 @@ export default config;
 
 ## Understanding HSL Values
 
-DuskMoonUI uses HSL color format: `hue saturation% lightness%`
+@duskmoon-dev/core uses HSL color format: `hue saturation% lightness%`
 
 ### Hue (0-360)
 

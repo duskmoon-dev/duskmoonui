@@ -1,0 +1,441 @@
+/**
+ * Form Component Styles
+ * DuskMoonUI - Material Design 3 inspired form system
+ */
+
+@layer components {
+  /* Form Control */
+  .form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* Label */
+  .label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+  }
+
+  .label-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-base-content);
+    padding-bottom: 0.25rem;
+  }
+
+  .label-text-alt {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Checkbox */
+  .checkbox {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--color-outline);
+    border-radius: 0.25rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+    position: relative;
+  }
+
+  .checkbox:hover {
+    border-color: var(--color-primary);
+  }
+
+  .checkbox:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 0.0625rem;
+    width: 0.375rem;
+    height: 0.625rem;
+    border: solid var(--color-primary-content);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .checkbox:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .checkbox:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  /* Checkbox Color Variants */
+  .checkbox-primary:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .checkbox-secondary:checked {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+  }
+
+  .checkbox-success:checked {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+  }
+
+  .checkbox-error:checked {
+    background-color: var(--color-error);
+    border-color: var(--color-error);
+  }
+
+  /* Checkbox Sizes */
+  .checkbox-xs {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .checkbox-sm {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .checkbox-lg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* Radio */
+  .radio {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--color-outline);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+    position: relative;
+  }
+
+  .radio:hover {
+    border-color: var(--color-primary);
+  }
+
+  .radio:checked {
+    border-color: var(--color-primary);
+  }
+
+  .radio:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .radio:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .radio:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  /* Radio Color Variants */
+  .radio-primary:checked {
+    border-color: var(--color-primary);
+  }
+
+  .radio-primary:checked::after {
+    background-color: var(--color-primary);
+  }
+
+  .radio-secondary:checked {
+    border-color: var(--color-secondary);
+  }
+
+  .radio-secondary:checked::after {
+    background-color: var(--color-secondary);
+  }
+
+  /* Toggle/Switch */
+  .toggle {
+    appearance: none;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--color-surface-container-highest);
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+    position: relative;
+  }
+
+  .toggle::after {
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-on-surface-variant);
+    border-radius: 50%;
+    transition: all 150ms ease-in-out;
+  }
+
+  .toggle:checked {
+    background-color: var(--color-primary);
+  }
+
+  .toggle:checked::after {
+    left: calc(100% - 1.25rem);
+    background-color: var(--color-primary-content);
+  }
+
+  .toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .toggle:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  /* Toggle Sizes */
+  .toggle-xs {
+    width: 2rem;
+    height: 1rem;
+  }
+
+  .toggle-xs::after {
+    width: 0.625rem;
+    height: 0.625rem;
+    left: 0.1875rem;
+  }
+
+  .toggle-xs:checked::after {
+    left: calc(100% - 0.8125rem);
+  }
+
+  .toggle-sm {
+    width: 2.5rem;
+    height: 1.25rem;
+  }
+
+  .toggle-sm::after {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .toggle-lg {
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .toggle-lg::after {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* Select */
+  .select {
+    appearance: none;
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    transition: border-color 150ms ease-in-out;
+  }
+
+  .select:focus {
+    outline: none;
+  }
+
+  .select:focus-visible {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+
+  .select:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  /* Select Bordered */
+  .select-bordered {
+    border-color: var(--color-outline);
+  }
+
+  /* Select Color Variants */
+  .select-primary:focus-visible {
+    border-color: var(--color-primary);
+  }
+
+  .select-secondary:focus-visible {
+    border-color: var(--color-secondary);
+  }
+
+  /* Select Sizes */
+  .select-xs {
+    padding: 0.375rem 2rem 0.375rem 0.625rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .select-sm {
+    padding: 0.5rem 2.25rem 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .select-lg {
+    padding: 1rem 3rem 1rem 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  /* Textarea */
+  .textarea {
+    width: 100%;
+    min-height: 6rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    resize: vertical;
+    transition: border-color 150ms ease-in-out;
+  }
+
+  .textarea::placeholder {
+    color: var(--color-on-surface-variant);
+    opacity: 0.7;
+  }
+
+  .textarea:focus {
+    outline: none;
+  }
+
+  .textarea:focus-visible {
+    border-color: var(--color-primary);
+  }
+
+  .textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    resize: none;
+  }
+
+  .textarea-bordered {
+    border-color: var(--color-outline);
+  }
+
+  /* Validation States */
+  .form-control.error .input,
+  .form-control.error .select,
+  .form-control.error .textarea,
+  .input-error {
+    border-color: var(--color-error);
+  }
+
+  .form-control.error .label-text {
+    color: var(--color-error);
+  }
+
+  .form-control.success .input,
+  .form-control.success .select,
+  .form-control.success .textarea {
+    border-color: var(--color-success);
+  }
+
+  .form-control.success .label-text {
+    color: var(--color-success);
+  }
+
+  /* Helper Text */
+  .helper-text {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    margin-top: 0.25rem;
+  }
+
+  .helper-text.error {
+    color: var(--color-error);
+  }
+
+  .helper-text.success {
+    color: var(--color-success);
+  }
+
+  /* Required Field Indicator */
+  .label-text.required::after {
+    content: ' *';
+    color: var(--color-error);
+  }
+
+  /* Range Input */
+  .range {
+    appearance: none;
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--color-surface-container-highest);
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .range::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 150ms ease-in-out;
+  }
+
+  .range::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+
+  .range::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .range:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}

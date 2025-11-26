@@ -1,0 +1,640 @@
+---
+title: Menu
+description: Material Design 3 dropdown menu component with items, dividers, icons, and various positioning options
+category: components
+order: 18
+published: true
+tags: ['menu', 'dropdown', 'components', 'material-design']
+---
+
+# Menu
+
+Menus display a list of choices on temporary surfaces. @duskmoon-dev/core provides Material Design 3-inspired dropdown menus with support for items, dividers, icons, and various customization options.
+
+## Basic Usage
+
+A basic menu requires a container with the `menu` class. Use `menu-show` to toggle visibility.
+
+```html
+<ul class="menu menu-show">
+  <li><button class="menu-item">Menu Item 1</button></li>
+  <li><button class="menu-item">Menu Item 2</button></li>
+  <li><button class="menu-item">Menu Item 3</button></li>
+</ul>
+```
+
+## Menu Items
+
+### Standard Items
+
+Menu items can be buttons or links:
+
+```html
+<ul class="menu menu-show">
+  <li><button class="menu-item">Profile Settings</button></li>
+  <li><a href="/account" class="menu-item">Account</a></li>
+  <li><button class="menu-item">Sign Out</button></li>
+</ul>
+```
+
+### Items with Icons
+
+Add icons to menu items using the `menu-item-icon` class:
+
+```html
+<ul class="menu menu-show">
+  <li>
+    <button class="menu-item">
+      <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+      Profile
+    </button>
+  </li>
+  <li>
+    <button class="menu-item">
+      <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      Settings
+    </button>
+  </li>
+  <li>
+    <button class="menu-item">
+      <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+      </svg>
+      Sign Out
+    </button>
+  </li>
+</ul>
+```
+
+### Items with Trailing Elements
+
+Add keyboard shortcuts, badges, or other trailing elements:
+
+```html
+<ul class="menu menu-show">
+  <li>
+    <button class="menu-item">
+      <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      New Event
+      <span class="menu-item-trailing">⌘N</span>
+    </button>
+  </li>
+  <li>
+    <button class="menu-item">
+      <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+      </svg>
+      Copy
+      <span class="menu-item-trailing">⌘C</span>
+    </button>
+  </li>
+  <li>
+    <button class="menu-item">
+      <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+      Paste
+      <span class="menu-item-trailing">⌘V</span>
+    </button>
+  </li>
+</ul>
+```
+
+## Menu Dividers
+
+Use dividers to separate related groups of menu items:
+
+```html
+<ul class="menu menu-show">
+  <li><button class="menu-item">New File</button></li>
+  <li><button class="menu-item">Open File</button></li>
+  <li><hr class="menu-divider" /></li>
+  <li><button class="menu-item">Save</button></li>
+  <li><button class="menu-item">Save As...</button></li>
+  <li><hr class="menu-divider" /></li>
+  <li><button class="menu-item">Print</button></li>
+</ul>
+```
+
+## Menu Labels
+
+Add section headers to organize menu items:
+
+```html
+<ul class="menu menu-show">
+  <li><div class="menu-label">Account</div></li>
+  <li><button class="menu-item">Profile</button></li>
+  <li><button class="menu-item">Settings</button></li>
+  <li><hr class="menu-divider" /></li>
+  <li><div class="menu-label">Actions</div></li>
+  <li><button class="menu-item">Sign Out</button></li>
+</ul>
+```
+
+## Active States
+
+Highlight the currently selected menu item with active states:
+
+```html
+<ul class="menu menu-show">
+  <li><button class="menu-item menu-item-active">Dashboard</button></li>
+  <li><button class="menu-item">Projects</button></li>
+  <li><button class="menu-item">Team</button></li>
+</ul>
+```
+
+### Active Color Variants
+
+Use different color schemes for active items:
+
+```html
+<!-- Primary (default) -->
+<ul class="menu menu-show">
+  <li><button class="menu-item menu-item-active-primary">Home</button></li>
+  <li><button class="menu-item">About</button></li>
+</ul>
+
+<!-- Secondary -->
+<ul class="menu menu-show">
+  <li><button class="menu-item menu-item-active-secondary">Active Secondary</button></li>
+  <li><button class="menu-item">Normal Item</button></li>
+</ul>
+
+<!-- Tertiary -->
+<ul class="menu menu-show">
+  <li><button class="menu-item menu-item-active-tertiary">Active Tertiary</button></li>
+  <li><button class="menu-item">Normal Item</button></li>
+</ul>
+```
+
+## Disabled Items
+
+Disable menu items that are not currently available:
+
+```html
+<ul class="menu menu-show">
+  <li><button class="menu-item">Cut</button></li>
+  <li><button class="menu-item">Copy</button></li>
+  <li><button class="menu-item menu-item-disabled">Paste</button></li>
+</ul>
+```
+
+## Checkboxes and Radio Buttons
+
+Create selectable menu items:
+
+```html
+<!-- Checkbox items -->
+<ul class="menu menu-show">
+  <li><div class="menu-label">View Options</div></li>
+  <li><button class="menu-item menu-item-checkbox checked">Show Line Numbers</button></li>
+  <li><button class="menu-item menu-item-checkbox">Show Minimap</button></li>
+  <li><button class="menu-item menu-item-checkbox checked">Word Wrap</button></li>
+</ul>
+
+<!-- Radio items -->
+<ul class="menu menu-show">
+  <li><div class="menu-label">Theme</div></li>
+  <li><button class="menu-item menu-item-radio checked">Light</button></li>
+  <li><button class="menu-item menu-item-radio">Dark</button></li>
+  <li><button class="menu-item menu-item-radio">Auto</button></li>
+</ul>
+```
+
+## Menu Positioning
+
+Position menus relative to their trigger element:
+
+```html
+<!-- Bottom (default) -->
+<ul class="menu menu-show menu-bottom">
+  <li><button class="menu-item">Item 1</button></li>
+  <li><button class="menu-item">Item 2</button></li>
+</ul>
+
+<!-- Top -->
+<ul class="menu menu-show menu-top">
+  <li><button class="menu-item">Item 1</button></li>
+  <li><button class="menu-item">Item 2</button></li>
+</ul>
+
+<!-- Left -->
+<ul class="menu menu-show menu-left">
+  <li><button class="menu-item">Item 1</button></li>
+  <li><button class="menu-item">Item 2</button></li>
+</ul>
+
+<!-- Right -->
+<ul class="menu menu-show menu-right">
+  <li><button class="menu-item">Item 1</button></li>
+  <li><button class="menu-item">Item 2</button></li>
+</ul>
+```
+
+## Submenus
+
+Create nested submenus for hierarchical navigation:
+
+```html
+<ul class="menu menu-show">
+  <li><button class="menu-item">New</button></li>
+  <li><button class="menu-item">Open</button></li>
+  <li>
+    <button class="menu-item menu-item-submenu">Recent Files</button>
+    <ul class="menu menu-submenu menu-show">
+      <li><button class="menu-item">document.txt</button></li>
+      <li><button class="menu-item">project.html</button></li>
+      <li><button class="menu-item">styles.css</button></li>
+    </ul>
+  </li>
+  <li><hr class="menu-divider" /></li>
+  <li><button class="menu-item">Save</button></li>
+</ul>
+```
+
+## Size Variants
+
+### Compact Menu
+
+Smaller menu for dense interfaces:
+
+```html
+<ul class="menu menu-compact menu-show">
+  <li><button class="menu-item">Compact Item 1</button></li>
+  <li><button class="menu-item">Compact Item 2</button></li>
+  <li><button class="menu-item">Compact Item 3</button></li>
+</ul>
+```
+
+### Wide Menu
+
+Wider menu for longer text content:
+
+```html
+<ul class="menu menu-wide menu-show">
+  <li><button class="menu-item">This is a wider menu item with more text</button></li>
+  <li><button class="menu-item">Another longer menu item option</button></li>
+</ul>
+```
+
+### Dense Menu
+
+Remove padding between items for a more compact appearance:
+
+```html
+<ul class="menu menu-dense menu-show">
+  <li><button class="menu-item">Dense Item 1</button></li>
+  <li><button class="menu-item">Dense Item 2</button></li>
+  <li><button class="menu-item">Dense Item 3</button></li>
+</ul>
+```
+
+## Surface Variants
+
+Use alternative surface colors:
+
+```html
+<ul class="menu menu-surface-container-highest menu-show">
+  <li><button class="menu-item">Profile</button></li>
+  <li><button class="menu-item">Settings</button></li>
+  <li><button class="menu-item">Sign Out</button></li>
+</ul>
+```
+
+## Context Menu
+
+Create right-click context menus using fixed positioning:
+
+```html
+<ul class="menu menu-context menu-show" style="top: 100px; left: 200px;">
+  <li><button class="menu-item">Cut</button></li>
+  <li><button class="menu-item">Copy</button></li>
+  <li><button class="menu-item">Paste</button></li>
+  <li><hr class="menu-divider" /></li>
+  <li><button class="menu-item">Delete</button></li>
+</ul>
+```
+
+## Interactive Example
+
+Here's a complete example with JavaScript to toggle menu visibility:
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button id="menuTrigger" class="btn btn-primary">
+    Open Menu
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <ul id="dropdownMenu" class="menu menu-bottom">
+    <li>
+      <button class="menu-item">
+        <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        Profile
+      </button>
+    </li>
+    <li>
+      <button class="menu-item">
+        <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Settings
+      </button>
+    </li>
+    <li><hr class="menu-divider" /></li>
+    <li>
+      <button class="menu-item">
+        <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+        Sign Out
+      </button>
+    </li>
+  </ul>
+</div>
+
+<script>
+const trigger = document.getElementById('menuTrigger');
+const menu = document.getElementById('dropdownMenu');
+
+trigger.addEventListener('click', () => {
+  menu.classList.toggle('menu-show');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.remove('menu-show');
+  }
+});
+</script>
+```
+
+## Best Practices
+
+### Accessibility
+
+- Use semantic `<ul>` and `<li>` elements for proper structure
+- Ensure menu items are keyboard navigable
+- Add `aria-label` or `aria-labelledby` to menus
+- Use `role="menu"` and `role="menuitem"` when appropriate
+- Support ESC key to close menus
+
+```html
+<button id="menu-button" aria-haspopup="true" aria-expanded="false">
+  Options
+</button>
+
+<ul class="menu" role="menu" aria-labelledby="menu-button">
+  <li role="none">
+    <button class="menu-item" role="menuitem">Option 1</button>
+  </li>
+  <li role="none">
+    <button class="menu-item" role="menuitem">Option 2</button>
+  </li>
+</ul>
+```
+
+### Visual Hierarchy
+
+- Use dividers to group related items
+- Use labels for section headers
+- Limit menu depth (avoid deeply nested submenus)
+- Place destructive actions (like "Delete") at the bottom
+
+### Content Guidelines
+
+- Use clear, concise labels
+- Lead with strong verbs (e.g., "Create", "Edit", "Delete")
+- Group similar actions together
+- Show keyboard shortcuts for power users
+
+### Touch Targets
+
+Ensure menu items are large enough for touch interfaces (minimum 44×44px). The default menu-item padding meets this requirement.
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState, useRef, useEffect } from 'react';
+
+interface MenuProps {
+  trigger: React.ReactNode;
+  items: Array<{
+    label: string;
+    icon?: React.ReactNode;
+    onClick?: () => void;
+    disabled?: boolean;
+    divider?: boolean;
+  }>;
+}
+
+export function Menu({ trigger, items }: MenuProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={menuRef} style={{ position: 'relative', display: 'inline-block' }}>
+      <div onClick={() => setIsOpen(!isOpen)}>{trigger}</div>
+
+      <ul className={`menu menu-bottom ${isOpen ? 'menu-show' : ''}`}>
+        {items.map((item, index) => (
+          item.divider ? (
+            <li key={index}><hr className="menu-divider" /></li>
+          ) : (
+            <li key={index}>
+              <button
+                className={`menu-item ${item.disabled ? 'menu-item-disabled' : ''}`}
+                onClick={() => {
+                  item.onClick?.();
+                  setIsOpen(false);
+                }}
+                disabled={item.disabled}
+              >
+                {item.icon && <span className="menu-item-icon">{item.icon}</span>}
+                {item.label}
+              </button>
+            </li>
+          )
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// Usage
+<Menu
+  trigger={<button className="btn btn-primary">Options</button>}
+  items={[
+    { label: 'Edit', onClick: () => console.log('Edit') },
+    { label: 'Duplicate', onClick: () => console.log('Duplicate') },
+    { divider: true },
+    { label: 'Delete', onClick: () => console.log('Delete') },
+  ]}
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <div ref="menuContainer" class="inline-block relative">
+    <div @click="toggle">
+      <slot name="trigger" />
+    </div>
+
+    <ul :class="['menu', 'menu-bottom', { 'menu-show': isOpen }]">
+      <li v-for="(item, index) in items" :key="index">
+        <hr v-if="item.divider" class="menu-divider" />
+        <button
+          v-else
+          :class="['menu-item', { 'menu-item-disabled': item.disabled }]"
+          :disabled="item.disabled"
+          @click="handleClick(item)"
+        >
+          <span v-if="item.icon" class="menu-item-icon" v-html="item.icon" />
+          {{ item.label }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true
+  }
+});
+
+const isOpen = ref(false);
+const menuContainer = ref(null);
+
+const toggle = () => {
+  isOpen.value = !isOpen.value;
+};
+
+const handleClick = (item) => {
+  if (item.onClick) {
+    item.onClick();
+  }
+  isOpen.value = false;
+};
+
+const handleClickOutside = (e) => {
+  if (menuContainer.value && !menuContainer.value.contains(e.target)) {
+    isOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
+</script>
+
+<!-- Usage -->
+<Menu :items="menuItems">
+  <template #trigger>
+    <button class="btn btn-primary">Options</button>
+  </template>
+</Menu>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.menu` | Base menu container (required) |
+| `.menu-show` | Shows the menu (toggle visibility) |
+| `.menu-item` | Menu item (button or link) |
+| `.menu-item-icon` | Icon within a menu item |
+| `.menu-item-trailing` | Trailing element (shortcut, badge) |
+| `.menu-item-active` | Active menu item (primary variant) |
+| `.menu-item-active-primary` | Active menu item with primary color |
+| `.menu-item-active-secondary` | Active menu item with secondary color |
+| `.menu-item-active-tertiary` | Active menu item with tertiary color |
+| `.menu-item-disabled` | Disabled menu item |
+| `.menu-item-submenu` | Menu item with submenu indicator |
+| `.menu-item-checkbox` | Checkbox menu item |
+| `.menu-item-radio` | Radio button menu item |
+| `.checked` | Checked state for checkbox/radio items |
+| `.menu-divider` | Horizontal divider between items |
+| `.menu-label` | Section label/header |
+| `.menu-submenu` | Nested submenu container |
+| `.menu-top` | Position menu above trigger |
+| `.menu-bottom` | Position menu below trigger |
+| `.menu-left` | Position menu to the left |
+| `.menu-right` | Position menu to the right |
+| `.menu-compact` | Smaller, more compact menu |
+| `.menu-wide` | Wider menu for longer content |
+| `.menu-dense` | Remove padding between items |
+| `.menu-context` | Fixed positioning for context menus |
+| `.menu-surface-container-highest` | Alternative surface color |
+
+### Combinations
+
+Combine classes for different effects:
+
+```html
+<!-- Compact menu with active item -->
+<ul class="menu menu-compact menu-show">
+  <li><button class="menu-item menu-item-active">Active</button></li>
+  <li><button class="menu-item">Normal</button></li>
+</ul>
+
+<!-- Wide menu with icons and trailing elements -->
+<ul class="menu menu-wide menu-show">
+  <li>
+    <button class="menu-item">
+      <svg class="menu-item-icon">...</svg>
+      Save Document
+      <span class="menu-item-trailing">⌘S</span>
+    </button>
+  </li>
+</ul>
+```
+
+## Related Components
+
+- [Button](/docs/en/components/button/) - Trigger elements for menus
+- [Dropdown](/docs/en/components/dropdown/) - Alternative dropdown component
+- [Navigation](/docs/en/components/navigation/) - Navigation menus
+
+## See Also
+
+- [Menu Design Guidelines (Material Design 3)](https://m3.material.io/components/menus/overview)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

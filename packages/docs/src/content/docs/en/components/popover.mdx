@@ -1,0 +1,619 @@
+---
+title: Popover
+description: Material Design 3 popover component for displaying contextual content in an overlay
+category: components
+order: 31
+published: true
+tags: ['popover', 'components', 'material-design', 'overlay', 'tooltip']
+---
+
+# Popover
+
+Popovers display rich contextual content in an overlay positioned relative to a trigger element. They're useful for displaying additional information, actions, or interactive content without navigating away from the current context.
+
+## Basic Usage
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary" id="trigger">Show Popover</button>
+  <div class="popover popover-bottom popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      This is a basic popover with some informational content.
+    </div>
+  </div>
+</div>
+```
+
+## Positions
+
+Popovers can be positioned in four directions relative to the trigger element.
+
+### Top Position
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Top Popover</button>
+  <div class="popover popover-top popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Popover positioned above the trigger element.
+    </div>
+  </div>
+</div>
+```
+
+### Bottom Position
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Bottom Popover</button>
+  <div class="popover popover-bottom popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Popover positioned below the trigger element.
+    </div>
+  </div>
+</div>
+```
+
+### Left Position
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Left Popover</button>
+  <div class="popover popover-left popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Popover positioned to the left of the trigger element.
+    </div>
+  </div>
+</div>
+```
+
+### Right Position
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Right Popover</button>
+  <div class="popover popover-right popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Popover positioned to the right of the trigger element.
+    </div>
+  </div>
+</div>
+```
+
+## Size Variants
+
+Control the size of popovers with size modifier classes.
+
+### Small Popover
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Small Popover</button>
+  <div class="popover popover-bottom popover-sm popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Compact popover for brief messages.
+    </div>
+  </div>
+</div>
+```
+
+### Default Popover
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Default Popover</button>
+  <div class="popover popover-bottom popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Standard popover with balanced size for most use cases.
+    </div>
+  </div>
+</div>
+```
+
+### Large Popover
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Large Popover</button>
+  <div class="popover popover-bottom popover-lg popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Spacious popover for more detailed content or multiple elements.
+    </div>
+  </div>
+</div>
+```
+
+## Color Variants
+
+Apply theme colors to popovers for different contexts.
+
+### Primary Popover
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Primary Popover</button>
+  <div class="popover popover-bottom popover-primary popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Primary themed popover for emphasis.
+    </div>
+  </div>
+</div>
+```
+
+### Secondary Popover
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-secondary">Secondary Popover</button>
+  <div class="popover popover-bottom popover-secondary popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Secondary themed popover.
+    </div>
+  </div>
+</div>
+```
+
+### Tertiary Popover
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-tertiary">Tertiary Popover</button>
+  <div class="popover popover-bottom popover-tertiary popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Tertiary themed popover.
+    </div>
+  </div>
+</div>
+```
+
+### Surface Variant
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-outlined">Surface Popover</button>
+  <div class="popover popover-bottom popover-surface-highest popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Popover with highest surface elevation.
+    </div>
+  </div>
+</div>
+```
+
+## Rich Content
+
+Popovers can contain headers, body content, and footers for complex layouts.
+
+### With Header
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Popover with Header</button>
+  <div class="popover popover-bottom popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-header">
+      <h3 class="popover-title">Popover Title</h3>
+    </div>
+    <div class="popover-body">
+      This popover includes a header section with a title.
+    </div>
+  </div>
+</div>
+```
+
+### With Footer
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Popover with Footer</button>
+  <div class="popover popover-bottom popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Content with action buttons in the footer.
+    </div>
+    <div class="popover-footer">
+      <button class="btn btn-text btn-sm">Cancel</button>
+      <button class="btn btn-primary btn-sm">Confirm</button>
+    </div>
+  </div>
+</div>
+```
+
+### Complete Example
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Complete Popover</button>
+  <div class="popover popover-bottom popover-lg popover-show">
+    <div class="popover-arrow"></div>
+    <button class="popover-close" aria-label="Close popover">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="popover-header">
+      <h3 class="popover-title">Notification Settings</h3>
+    </div>
+    <div class="popover-body">
+      <p>Choose how you want to receive notifications about activity in your workspace.</p>
+    </div>
+    <div class="popover-footer">
+      <button class="btn btn-text btn-sm">Cancel</button>
+      <button class="btn btn-primary btn-sm">Save Changes</button>
+    </div>
+  </div>
+</div>
+```
+
+## Arrow Customization
+
+### No Arrow
+
+Remove the arrow indicator for a cleaner appearance:
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">No Arrow</button>
+  <div class="popover popover-bottom popover-no-arrow popover-show">
+    <div class="popover-body">
+      This popover has no arrow indicator.
+    </div>
+  </div>
+</div>
+```
+
+## Interactive Content
+
+For popovers with interactive elements like forms or buttons:
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary">Interactive Popover</button>
+  <div class="popover popover-bottom popover-interactive popover-show">
+    <div class="popover-arrow"></div>
+    <div class="popover-header">
+      <h3 class="popover-title">Quick Feedback</h3>
+    </div>
+    <div class="popover-body">
+      <label class="block text-sm mb-2">Your rating:</label>
+      <div class="flex gap-1 mb-3">
+        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+      </div>
+    </div>
+    <div class="popover-footer">
+      <button class="btn btn-text btn-sm">Skip</button>
+      <button class="btn btn-primary btn-sm">Submit</button>
+    </div>
+  </div>
+</div>
+```
+
+## Visibility Control
+
+Popovers are hidden by default. Add the `popover-show` class to display them:
+
+```html
+<!-- Hidden popover (default) -->
+<div class="popover popover-bottom">
+  <div class="popover-arrow"></div>
+  <div class="popover-body">This popover is hidden</div>
+</div>
+
+<!-- Visible popover -->
+<div class="popover popover-bottom popover-show">
+  <div class="popover-arrow"></div>
+  <div class="popover-body">This popover is visible</div>
+</div>
+```
+
+## JavaScript Integration
+
+Here's a simple example of toggling popover visibility with JavaScript:
+
+```html
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-primary" id="popover-trigger">Toggle Popover</button>
+  <div class="popover popover-bottom" id="my-popover">
+    <div class="popover-arrow"></div>
+    <div class="popover-body">
+      Toggle me with JavaScript!
+    </div>
+  </div>
+</div>
+
+<script>
+  const trigger = document.getElementById('popover-trigger');
+  const popover = document.getElementById('my-popover');
+
+  trigger.addEventListener('click', () => {
+    popover.classList.toggle('popover-show');
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!trigger.contains(e.target) && !popover.contains(e.target)) {
+      popover.classList.remove('popover-show');
+    }
+  });
+</script>
+```
+
+## Best Practices
+
+### Positioning
+
+- Choose positions that keep the popover on screen
+- Top and bottom positions work best for horizontal layouts
+- Left and right positions work best for vertical layouts
+- Ensure the popover doesn't overflow the viewport
+
+### Content
+
+- Keep content concise and relevant
+- Use headers for clarity when showing multiple pieces of information
+- Include close buttons for persistent popovers
+- Provide clear calls-to-action in footers when needed
+
+### Accessibility
+
+- Ensure popovers are keyboard accessible
+- Use appropriate ARIA attributes
+- Provide a way to dismiss the popover
+- Don't rely solely on color to convey meaning
+
+```html
+<!-- Accessible popover example -->
+<button
+  class="btn btn-primary"
+  id="info-trigger"
+  aria-describedby="info-popover"
+  aria-expanded="false">
+  More Info
+</button>
+<div
+  class="popover popover-bottom"
+  id="info-popover"
+  role="tooltip"
+  aria-hidden="true">
+  <div class="popover-arrow"></div>
+  <div class="popover-body">
+    Additional information about this feature.
+  </div>
+</div>
+```
+
+### Trigger Behavior
+
+Common trigger patterns:
+
+- **Click**: Toggle on click, close on outside click
+- **Hover**: Show on hover, hide on mouse leave
+- **Focus**: Show on focus, hide on blur
+- **Manual**: Control visibility programmatically
+
+### Performance
+
+- Hide popovers when not needed to reduce DOM complexity
+- Use event delegation for multiple popovers
+- Consider lazy-loading popover content for complex data
+- Avoid nesting multiple popovers
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState, useRef, useEffect } from 'react';
+
+interface PopoverProps {
+  trigger: React.ReactNode;
+  content: React.ReactNode;
+  position?: 'top' | 'bottom' | 'left' | 'right';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export function Popover({
+  trigger,
+  content,
+  position = 'bottom',
+  size = 'md'
+}: PopoverProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        popoverRef.current &&
+        triggerRef.current &&
+        !popoverRef.current.contains(event.target as Node) &&
+        !triggerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  return (
+    <div style={{ position: 'relative', display: 'inline-block' }}>
+      <div ref={triggerRef} onClick={() => setIsOpen(!isOpen)}>
+        {trigger}
+      </div>
+      <div
+        ref={popoverRef}
+        className={`popover popover-${position} ${size !== 'md' ? `popover-${size}` : ''} ${isOpen ? 'popover-show' : ''}`}
+      >
+        <div className="popover-arrow"></div>
+        <div className="popover-body">
+          {content}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Usage
+<Popover
+  trigger={<button className="btn btn-primary">Show Popover</button>}
+  content="This is the popover content"
+  position="bottom"
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <div style="position: relative; display: inline-block">
+    <div ref="triggerRef" @click="toggle">
+      <slot name="trigger" />
+    </div>
+    <div
+      ref="popoverRef"
+      :class="popoverClasses"
+    >
+      <div class="popover-arrow"></div>
+      <div class="popover-body">
+        <slot />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+
+const props = defineProps({
+  position: {
+    type: String,
+    default: 'bottom',
+    validator: (value) => ['top', 'bottom', 'left', 'right'].includes(value)
+  },
+  size: {
+    type: String,
+    default: 'md',
+    validator: (value) => ['sm', 'md', 'lg'].includes(value)
+  }
+});
+
+const isOpen = ref(false);
+const popoverRef = ref(null);
+const triggerRef = ref(null);
+
+const popoverClasses = computed(() => [
+  'popover',
+  `popover-${props.position}`,
+  props.size !== 'md' ? `popover-${props.size}` : '',
+  isOpen.value ? 'popover-show' : ''
+]);
+
+const toggle = () => {
+  isOpen.value = !isOpen.value;
+};
+
+const handleClickOutside = (event) => {
+  if (
+    popoverRef.value &&
+    triggerRef.value &&
+    !popoverRef.value.contains(event.target) &&
+    !triggerRef.value.contains(event.target)
+  ) {
+    isOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
+</script>
+
+<!-- Usage -->
+<Popover position="bottom" size="md">
+  <template #trigger>
+    <button class="btn btn-primary">Show Popover</button>
+  </template>
+  This is the popover content
+</Popover>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.popover` | Base popover styles (required) |
+| `.popover-show` | Makes the popover visible |
+| `.popover-top` | Position popover above trigger |
+| `.popover-bottom` | Position popover below trigger |
+| `.popover-left` | Position popover to the left of trigger |
+| `.popover-right` | Position popover to the right of trigger |
+| `.popover-sm` | Small size variant |
+| `.popover-lg` | Large size variant |
+| `.popover-primary` | Primary color theme |
+| `.popover-secondary` | Secondary color theme |
+| `.popover-tertiary` | Tertiary color theme |
+| `.popover-surface-highest` | Highest surface elevation |
+| `.popover-no-arrow` | Hide the arrow indicator |
+| `.popover-interactive` | For popovers with interactive content |
+
+### Structure Classes
+
+| Class | Description |
+|-------|-------------|
+| `.popover-arrow` | Arrow indicator pointing to trigger |
+| `.popover-header` | Header section container |
+| `.popover-title` | Title text in header |
+| `.popover-body` | Main content container |
+| `.popover-footer` | Footer section for actions |
+| `.popover-close` | Close button |
+
+### Combinations
+
+```html
+<!-- Large primary popover on top with no arrow -->
+<div class="popover popover-top popover-lg popover-primary popover-no-arrow popover-show">
+  <div class="popover-body">Combined modifiers</div>
+</div>
+
+<!-- Small interactive popover on right -->
+<div class="popover popover-right popover-sm popover-interactive popover-show">
+  <div class="popover-arrow"></div>
+  <div class="popover-body">Interactive content</div>
+</div>
+```
+
+## Related Components
+
+- [Tooltip](/docs/en/components/tooltip/) - Simple text hints
+- [Dialog](/docs/en/components/dialog/) - Modal overlays
+- [Menu](/docs/en/components/menu/) - Action menus
+- [Dropdown](/docs/en/components/dropdown/) - Selection menus
+
+## See Also
+
+- [Tooltips Design Guidelines (Material Design 3)](https://m3.material.io/components/tooltips/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

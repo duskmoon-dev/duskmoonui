@@ -1,6 +1,6 @@
-# DuskMoonUI Documentation Site
+# @duskmoon-dev/core Documentation Site
 
-This is the documentation website for DuskMoonUI, built with [Astro](https://astro.build).
+This is the documentation website for @duskmoon-dev/core, built with [Astro](https://astro.build).
 
 ## Installation
 
@@ -182,7 +182,7 @@ bun run preview
 
 ### Tailwind Config
 - Located in `tailwind.config.mjs`
-- Uses DuskMoonUI plugin from `@duskmoon-dev/core`
+- Uses @duskmoon-dev/core Tailwind plugin
 - Scans all source files for classes
 
 ### TypeScript Config

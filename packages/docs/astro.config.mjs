@@ -1,18 +1,19 @@
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: 'https://duskmoon-dev.github.io',
-  base: '/duskmoonui',
-  trailingSlash: 'always',
+  site: "https://duskmoon-dev.github.io",
+  base: "/duskmoonui",
+  trailingSlash: "always",
 
   // Internationalization
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr', 'es'],
+    defaultLocale: "en",
+    locales: ["en", "fr", "es"],
     routing: {
       prefixDefaultLocale: false,
     },
@@ -22,8 +23,8 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       themes: {
-        light: 'github-light',
-        dark: 'github-dark',
+        light: "github-light",
+        dark: "github-dark",
       },
       wrap: true,
     },
@@ -35,16 +36,17 @@ export default defineConfig({
     mdx(),
     sitemap({
       i18n: {
-        defaultLocale: 'en',
+        defaultLocale: "en",
         locales: {
-          en: 'en-US',
-          fr: 'fr-FR',
-          es: 'es-ES',
+          en: "en-US",
+          fr: "fr-FR",
+          es: "es-ES",
         },
       },
     }),
-    tailwind({
-      applyBaseStyles: false,
-    }),
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

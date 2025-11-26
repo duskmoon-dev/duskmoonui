@@ -1,0 +1,697 @@
+---
+title: Pagination
+description: Material Design 3 pagination component for navigating through pages of content
+category: components
+order: 21
+published: true
+tags: ['pagination', 'components', 'material-design', 'navigation']
+---
+
+# Pagination
+
+Pagination allows users to navigate through pages of content. @duskmoon-dev/core provides a complete set of Material Design 3 pagination styles with multiple variants and configurations.
+
+## Basic Usage
+
+```html
+<nav class="pagination">
+  <button class="pagination-prev" disabled>Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <a href="#" class="pagination-item">4</a>
+  <a href="#" class="pagination-item">5</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+## Variants
+
+### Default Variant
+
+The default pagination uses circular buttons with subtle hover effects:
+
+```html
+<nav class="pagination">
+  <button class="pagination-prev">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    Previous
+  </button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <button class="pagination-next">
+    Next
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</nav>
+```
+
+### Outlined Variant
+
+Outlined pagination adds borders to page items:
+
+```html
+<nav class="pagination pagination-outlined">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <a href="#" class="pagination-item">4</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+### Tonal Variant
+
+Tonal pagination uses container colors for active states:
+
+```html
+<nav class="pagination pagination-tonal">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <a href="#" class="pagination-item">4</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+## Active Page Colors
+
+### Primary (Default)
+
+```html
+<nav class="pagination">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active-primary">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+```
+
+### Secondary
+
+```html
+<nav class="pagination">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active-secondary">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+```
+
+### Tertiary
+
+```html
+<nav class="pagination">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active-tertiary">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+```
+
+## Sizes
+
+### Small
+
+```html
+<nav class="pagination pagination-sm">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+### Default (Medium)
+
+```html
+<nav class="pagination">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+### Large
+
+```html
+<nav class="pagination pagination-lg">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+## Spacing
+
+### Default Spacing
+
+```html
+<nav class="pagination">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+```
+
+### Compact
+
+Minimal spacing between items:
+
+```html
+<nav class="pagination pagination-compact">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+```
+
+## Ellipsis
+
+Use ellipsis to indicate more pages:
+
+```html
+<nav class="pagination">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <span class="pagination-ellipsis"></span>
+  <a href="#" class="pagination-item">10</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+## Disabled State
+
+Disable navigation buttons when at boundaries:
+
+```html
+<nav class="pagination">
+  <button class="pagination-prev" disabled>Previous</button>
+  <a href="#" class="pagination-item pagination-item-active">1</a>
+  <a href="#" class="pagination-item">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+You can also disable individual page items:
+
+```html
+<nav class="pagination">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item pagination-item-disabled">3</a>
+  <a href="#" class="pagination-item">4</a>
+</nav>
+```
+
+## With Page Info
+
+Display current page information:
+
+```html
+<div class="pagination-info">
+  <nav class="pagination">
+    <button class="pagination-prev">Previous</button>
+    <a href="#" class="pagination-item">1</a>
+    <a href="#" class="pagination-item pagination-item-active">2</a>
+    <a href="#" class="pagination-item">3</a>
+    <button class="pagination-next">Next</button>
+  </nav>
+  <span class="pagination-info-text">Page 2 of 10</span>
+</div>
+```
+
+## With Page Jump
+
+Allow users to jump to a specific page:
+
+```html
+<nav class="pagination">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <span class="pagination-input">
+    <span>Go to</span>
+    <input type="number" min="1" max="10" value="2" />
+  </span>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+## Responsive
+
+Pagination that wraps on smaller screens:
+
+```html
+<nav class="pagination pagination-responsive">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <a href="#" class="pagination-item">4</a>
+  <a href="#" class="pagination-item">5</a>
+  <a href="#" class="pagination-item">6</a>
+  <a href="#" class="pagination-item">7</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+## Advanced Examples
+
+### Complete Pagination
+
+Combining multiple features:
+
+```html
+<div class="pagination-info">
+  <nav class="pagination pagination-outlined">
+    <button class="pagination-prev">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Previous
+    </button>
+    <a href="#" class="pagination-item">1</a>
+    <a href="#" class="pagination-item">2</a>
+    <a href="#" class="pagination-item pagination-item-active-primary">3</a>
+    <a href="#" class="pagination-item">4</a>
+    <span class="pagination-ellipsis"></span>
+    <a href="#" class="pagination-item">20</a>
+    <button class="pagination-next">
+      Next
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </nav>
+  <span class="pagination-info-text">Showing 21-30 of 200 items</span>
+</div>
+```
+
+### Minimal Pagination
+
+Simple previous/next navigation:
+
+```html
+<nav class="pagination">
+  <button class="pagination-prev">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <span class="pagination-info-text">2 / 10</span>
+  <button class="pagination-next">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</nav>
+```
+
+## Best Practices
+
+### Visual Feedback
+
+Always provide clear visual feedback for the current page:
+
+```html
+<nav class="pagination">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active" aria-current="page">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+```
+
+### Appropriate Page Ranges
+
+Show a reasonable number of pages (typically 5-7) to avoid overwhelming users:
+
+```html
+<!-- Good: Limited page numbers -->
+<nav class="pagination">
+  <button class="pagination-prev">Previous</button>
+  <a href="#" class="pagination-item">1</a>
+  <span class="pagination-ellipsis"></span>
+  <a href="#" class="pagination-item">8</a>
+  <a href="#" class="pagination-item">9</a>
+  <a href="#" class="pagination-item pagination-item-active">10</a>
+  <a href="#" class="pagination-item">11</a>
+  <a href="#" class="pagination-item">12</a>
+  <span class="pagination-ellipsis"></span>
+  <a href="#" class="pagination-item">50</a>
+  <button class="pagination-next">Next</button>
+</nav>
+```
+
+### Accessibility
+
+Ensure pagination is accessible:
+
+```html
+<nav aria-label="Pagination" class="pagination">
+  <button class="pagination-prev" aria-label="Go to previous page">Previous</button>
+  <a href="#" class="pagination-item" aria-label="Go to page 1">1</a>
+  <a href="#" class="pagination-item pagination-item-active" aria-current="page" aria-label="Page 2, current page">2</a>
+  <a href="#" class="pagination-item" aria-label="Go to page 3">3</a>
+  <button class="pagination-next" aria-label="Go to next page">Next</button>
+</nav>
+```
+
+### Mobile Considerations
+
+Use compact or responsive variants on mobile devices:
+
+```html
+<!-- Mobile-friendly with fewer visible pages -->
+<nav class="pagination pagination-sm pagination-responsive">
+  <button class="pagination-prev">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item">3</a>
+  <span class="pagination-ellipsis"></span>
+  <a href="#" class="pagination-item">10</a>
+  <button class="pagination-next">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</nav>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  variant?: 'default' | 'outlined' | 'tonal';
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'secondary' | 'tertiary';
+}
+
+export function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  variant = 'default',
+  size = 'md',
+  color = 'primary'
+}: PaginationProps) {
+  const pages = [];
+  const maxVisible = 5;
+
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+  if (endPage - startPage < maxVisible - 1) {
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+
+  const variantClass = variant !== 'default' ? `pagination-${variant}` : '';
+  const sizeClass = size !== 'md' ? `pagination-${size}` : '';
+  const colorClass = color !== 'primary' ? `pagination-item-active-${color}` : 'pagination-item-active';
+
+  return (
+    <nav className={`pagination ${variantClass} ${sizeClass}`.trim()}>
+      <button
+        className="pagination-prev"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+
+      {startPage > 1 && (
+        <>
+          <a href="#" className="pagination-item" onClick={(e) => { e.preventDefault(); onPageChange(1); }}>
+            1
+          </a>
+          {startPage > 2 && <span className="pagination-ellipsis"></span>}
+        </>
+      )}
+
+      {pages.map((page) => (
+        <a
+          key={page}
+          href="#"
+          className={`pagination-item ${page === currentPage ? colorClass : ''}`}
+          onClick={(e) => { e.preventDefault(); onPageChange(page); }}
+        >
+          {page}
+        </a>
+      ))}
+
+      {endPage < totalPages && (
+        <>
+          {endPage < totalPages - 1 && <span className="pagination-ellipsis"></span>}
+          <a href="#" className="pagination-item" onClick={(e) => { e.preventDefault(); onPageChange(totalPages); }}>
+            {totalPages}
+          </a>
+        </>
+      )}
+
+      <button
+        className="pagination-next"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
+        Next
+      </button>
+    </nav>
+  );
+}
+
+// Usage
+<Pagination
+  currentPage={2}
+  totalPages={10}
+  onPageChange={(page) => console.log('Go to page', page)}
+  variant="outlined"
+  color="primary"
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <nav :class="paginationClasses">
+    <button
+      class="pagination-prev"
+      @click="$emit('update:currentPage', currentPage - 1)"
+      :disabled="currentPage === 1"
+    >
+      Previous
+    </button>
+
+    <a
+      v-if="startPage > 1"
+      href="#"
+      class="pagination-item"
+      @click.prevent="$emit('update:currentPage', 1)"
+    >
+      1
+    </a>
+    <span v-if="startPage > 2" class="pagination-ellipsis"></span>
+
+    <a
+      v-for="page in visiblePages"
+      :key="page"
+      href="#"
+      :class="['pagination-item', page === currentPage ? activeClass : '']"
+      @click.prevent="$emit('update:currentPage', page)"
+    >
+      {{ page }}
+    </a>
+
+    <span v-if="endPage < totalPages - 1" class="pagination-ellipsis"></span>
+    <a
+      v-if="endPage < totalPages"
+      href="#"
+      class="pagination-item"
+      @click.prevent="$emit('update:currentPage', totalPages)"
+    >
+      {{ totalPages }}
+    </a>
+
+    <button
+      class="pagination-next"
+      @click="$emit('update:currentPage', currentPage + 1)"
+      :disabled="currentPage === totalPages"
+    >
+      Next
+    </button>
+  </nav>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  currentPage: {
+    type: Number,
+    required: true
+  },
+  totalPages: {
+    type: Number,
+    required: true
+  },
+  variant: {
+    type: String,
+    default: 'default'
+  },
+  size: {
+    type: String,
+    default: 'md'
+  },
+  color: {
+    type: String,
+    default: 'primary'
+  },
+  maxVisible: {
+    type: Number,
+    default: 5
+  }
+});
+
+defineEmits(['update:currentPage']);
+
+const paginationClasses = computed(() => {
+  const classes = ['pagination'];
+  if (props.variant !== 'default') classes.push(`pagination-${props.variant}`);
+  if (props.size !== 'md') classes.push(`pagination-${props.size}`);
+  return classes.join(' ');
+});
+
+const activeClass = computed(() => {
+  return props.color !== 'primary'
+    ? `pagination-item-active-${props.color}`
+    : 'pagination-item-active';
+});
+
+const startPage = computed(() => {
+  let start = Math.max(1, props.currentPage - Math.floor(props.maxVisible / 2));
+  const end = Math.min(props.totalPages, start + props.maxVisible - 1);
+  if (end - start < props.maxVisible - 1) {
+    start = Math.max(1, end - props.maxVisible + 1);
+  }
+  return start;
+});
+
+const endPage = computed(() => {
+  return Math.min(props.totalPages, startPage.value + props.maxVisible - 1);
+});
+
+const visiblePages = computed(() => {
+  const pages = [];
+  for (let i = startPage.value; i <= endPage.value; i++) {
+    pages.push(i);
+  }
+  return pages;
+});
+</script>
+
+<!-- Usage -->
+<Pagination
+  v-model:current-page="currentPage"
+  :total-pages="10"
+  variant="outlined"
+  color="primary"
+/>
+```
+
+## API Reference
+
+### Container Classes
+
+| Class | Description |
+|-------|-------------|
+| `.pagination` | Base pagination container (required) |
+| `.pagination-outlined` | Outlined variant with borders |
+| `.pagination-tonal` | Tonal variant with container colors |
+| `.pagination-sm` | Small size variant |
+| `.pagination-lg` | Large size variant |
+| `.pagination-compact` | Minimal spacing between items |
+| `.pagination-info` | Container with page info display |
+| `.pagination-responsive` | Wrapping layout for mobile |
+
+### Item Classes
+
+| Class | Description |
+|-------|-------------|
+| `.pagination-item` | Individual page button/link |
+| `.pagination-item-active` | Active page (primary color) |
+| `.pagination-item-active-primary` | Active page with primary color |
+| `.pagination-item-active-secondary` | Active page with secondary color |
+| `.pagination-item-active-tertiary` | Active page with tertiary color |
+| `.pagination-item-disabled` | Disabled page item |
+
+### Navigation Classes
+
+| Class | Description |
+|-------|-------------|
+| `.pagination-prev` | Previous page button |
+| `.pagination-next` | Next page button |
+| `.pagination-ellipsis` | Ellipsis indicator |
+
+### Utility Classes
+
+| Class | Description |
+|-------|-------------|
+| `.pagination-info-text` | Page information text |
+| `.pagination-input` | Page jump input container |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Outlined pagination with secondary color, large size -->
+<nav class="pagination pagination-outlined pagination-lg">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active-secondary">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+
+<!-- Compact tonal pagination with tertiary color -->
+<nav class="pagination pagination-compact pagination-tonal">
+  <a href="#" class="pagination-item">1</a>
+  <a href="#" class="pagination-item pagination-item-active-tertiary">2</a>
+  <a href="#" class="pagination-item">3</a>
+</nav>
+```
+
+## Related Components
+
+- [Table](/docs/en/components/table/) - Tabular data display
+- [List](/docs/en/components/list/) - Ordered and unordered lists
+- [Button](/docs/en/components/button/) - Navigation buttons
+
+## See Also
+
+- [Material Design 3 Guidelines](https://m3.material.io/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

@@ -1,0 +1,149 @@
+---
+title: Divider
+description: Material Design 3 divider component for separating content
+category: components
+order: 9
+published: true
+tags: ['divider', 'separator', 'components', 'material-design']
+---
+
+# Divider
+
+Dividers separate content into clear groups. @duskmoon-dev/core provides horizontal and vertical dividers with multiple style options.
+
+## Basic Usage
+
+```html
+<div class="divider"></div>
+```
+
+## Orientation
+
+### Horizontal (Default)
+
+```html
+<div>Content above</div>
+<div class="divider"></div>
+<div>Content below</div>
+```
+
+### Vertical
+
+```html
+<div class="flex items-center">
+  <span>Left</span>
+  <div class="divider divider-vertical"></div>
+  <span>Right</span>
+</div>
+```
+
+## Styles
+
+### Solid (Default)
+
+```html
+<div class="divider divider-solid"></div>
+```
+
+### Dashed
+
+```html
+<div class="divider divider-dashed"></div>
+```
+
+### Dotted
+
+```html
+<div class="divider divider-dotted"></div>
+```
+
+## Thickness
+
+```html
+<div class="divider divider-thin"></div>
+<div class="divider divider-medium"></div>
+<div class="divider divider-thick"></div>
+```
+
+## Colors
+
+```html
+<div class="divider divider-primary"></div>
+<div class="divider divider-secondary"></div>
+<div class="divider divider-tertiary"></div>
+```
+
+## Gradients
+
+```html
+<div class="divider divider-gradient-primary"></div>
+<div class="divider divider-gradient-secondary"></div>
+<div class="divider divider-gradient-tertiary"></div>
+```
+
+## Spacing
+
+```html
+<div class="divider divider-compact"></div>
+<div class="divider"></div>
+<div class="divider divider-comfortable"></div>
+<div class="divider divider-spacious"></div>
+```
+
+## With Text
+
+```html
+<!-- Centered text -->
+<div class="divider-text">OR</div>
+
+<!-- Left-aligned text -->
+<div class="divider-text-left">Section Title</div>
+
+<!-- Right-aligned text -->
+<div class="divider-text-right">End</div>
+```
+
+## Inset
+
+For list items:
+
+```html
+<div class="divider divider-inset"></div>
+<div class="divider divider-inset-both"></div>
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.divider` | Base divider (horizontal) |
+| `.divider-vertical` | Vertical divider |
+| `.divider-solid` | Solid style (default) |
+| `.divider-dashed` | Dashed style |
+| `.divider-dotted` | Dotted style |
+| `.divider-thin` | Thin (1px) |
+| `.divider-medium` | Medium (2px) |
+| `.divider-thick` | Thick (4px) |
+| `.divider-primary` | Primary color |
+| `.divider-secondary` | Secondary color |
+| `.divider-tertiary` | Tertiary color |
+| `.divider-gradient-primary` | Primary gradient |
+| `.divider-gradient-secondary` | Secondary gradient |
+| `.divider-gradient-tertiary` | Tertiary gradient |
+| `.divider-compact` | Compact spacing |
+| `.divider-comfortable` | Comfortable spacing |
+| `.divider-spacious` | Spacious spacing |
+| `.divider-text` | Divider with centered text |
+| `.divider-text-left` | Divider with left text |
+| `.divider-text-right` | Divider with right text |
+| `.divider-inset` | Inset from left |
+| `.divider-inset-both` | Inset from both sides |
+
+## Related Components
+
+- [Card](/docs/en/components/card/) - Content containers
+- [List](/docs/en/components/list/) - List items
+
+## See Also
+
+- [Divider (Material Design 3)](https://m3.material.io/components/divider/)

@@ -1,0 +1,715 @@
+---
+title: File Upload
+description: Material Design 3 file upload component with drag-and-drop support, multiple files, and file previews
+category: components
+order: 29
+published: true
+tags: ['fileupload', 'components', 'material-design', 'drag-drop', 'upload']
+---
+
+# File Upload
+
+The File Upload component provides an intuitive way for users to upload files with drag-and-drop support, multiple file selection, progress tracking, and preview capabilities. Designed with Material Design 3 principles.
+
+## Basic Usage
+
+```html
+<div class="file-upload">
+  <label for="file-input" class="file-upload-dropzone">
+    <div class="file-upload-icon">📁</div>
+    <p class="file-upload-text">Drop files here or click to browse</p>
+    <p class="file-upload-hint">Supports: JPG, PNG, PDF (Max 10MB)</p>
+  </label>
+  <input type="file" id="file-input" class="file-upload-input" />
+</div>
+```
+
+## Drag and Drop
+
+The file upload component is designed to work seamlessly with drag-and-drop functionality.
+
+```html
+<div class="file-upload">
+  <label for="file-drop" class="file-upload-dropzone" id="dropzone">
+    <div class="file-upload-icon">☁️</div>
+    <p class="file-upload-text">Drag & drop files here</p>
+    <p class="file-upload-hint">or click to select files</p>
+  </label>
+  <input type="file" id="file-drop" class="file-upload-input" multiple />
+</div>
+
+<script>
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('file-drop');
+
+  dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropzone.classList.add('file-upload-dropzone-dragover');
+  });
+
+  dropzone.addEventListener('dragleave', () => {
+    dropzone.classList.remove('file-upload-dropzone-dragover');
+  });
+
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.classList.remove('file-upload-dropzone-dragover');
+    const files = e.dataTransfer.files;
+    handleFiles(files);
+  });
+
+  function handleFiles(files) {
+    // Handle file upload logic
+    console.log('Files selected:', files);
+  }
+</script>
+```
+
+## Multiple Files
+
+Enable multiple file selection using the `multiple` attribute:
+
+```html
+<div class="file-upload">
+  <label for="multiple-files" class="file-upload-dropzone">
+    <div class="file-upload-icon">📄</div>
+    <p class="file-upload-text">Upload multiple files</p>
+    <p class="file-upload-hint">Select or drop multiple files at once</p>
+  </label>
+  <input type="file" id="multiple-files" class="file-upload-input" multiple />
+
+  <div class="file-upload-list" id="file-list">
+    <!-- File items will be added here dynamically -->
+  </div>
+</div>
+```
+
+## File List with Preview
+
+Display uploaded files with information and remove functionality:
+
+```html
+<div class="file-upload">
+  <label for="files-preview" class="file-upload-dropzone">
+    <div class="file-upload-icon">🖼️</div>
+    <p class="file-upload-text">Upload with preview</p>
+    <p class="file-upload-hint">JPG, PNG, GIF up to 5MB</p>
+  </label>
+  <input type="file" id="files-preview" class="file-upload-input" multiple accept="image/*" />
+
+  <div class="file-upload-list">
+    <!-- File item with thumbnail -->
+    <div class="file-upload-item">
+      <img src="preview.jpg" alt="Preview" class="file-upload-item-thumbnail" />
+      <div class="file-upload-item-info">
+        <div class="file-upload-item-name">vacation-photo.jpg</div>
+        <div class="file-upload-item-size">2.4 MB</div>
+      </div>
+      <button class="file-upload-item-remove" aria-label="Remove file">
+        ✕
+      </button>
+    </div>
+
+    <!-- File item without thumbnail -->
+    <div class="file-upload-item">
+      <div class="file-upload-item-icon">📄</div>
+      <div class="file-upload-item-info">
+        <div class="file-upload-item-name">document.pdf</div>
+        <div class="file-upload-item-size">1.8 MB</div>
+      </div>
+      <button class="file-upload-item-remove" aria-label="Remove file">
+        ✕
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+## Upload Progress
+
+Show upload progress for individual files:
+
+```html
+<div class="file-upload">
+  <div class="file-upload-list">
+    <div class="file-upload-item">
+      <div class="file-upload-item-icon">📄</div>
+      <div class="file-upload-item-info">
+        <div class="file-upload-item-name">uploading-file.pdf</div>
+        <div class="file-upload-item-size">3.2 MB</div>
+        <div class="file-upload-progress">
+          <div class="file-upload-progress-bar" style="width: 65%"></div>
+        </div>
+      </div>
+      <button class="file-upload-item-remove" aria-label="Cancel upload">
+        ✕
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+## With Browse Button
+
+Add an explicit button for browsing files:
+
+```html
+<div class="file-upload">
+  <label for="file-browse" class="file-upload-dropzone">
+    <div class="file-upload-icon">📁</div>
+    <p class="file-upload-text">Drop files here</p>
+    <p class="file-upload-hint">or</p>
+    <button type="button" class="btn btn-primary file-upload-button" onclick="document.getElementById('file-browse').click()">
+      Browse Files
+    </button>
+  </label>
+  <input type="file" id="file-browse" class="file-upload-input" multiple />
+</div>
+```
+
+## States
+
+### Success State
+
+Show successfully uploaded files:
+
+```html
+<div class="file-upload-item file-upload-item-success">
+  <div class="file-upload-item-icon">✓</div>
+  <div class="file-upload-item-info">
+    <div class="file-upload-item-name">uploaded-successfully.pdf</div>
+    <div class="file-upload-item-size">1.2 MB</div>
+  </div>
+</div>
+```
+
+### Error State
+
+Display errors for failed uploads:
+
+```html
+<div class="file-upload-item file-upload-item-error">
+  <div class="file-upload-item-icon">⚠️</div>
+  <div class="file-upload-item-info">
+    <div class="file-upload-item-name">failed-upload.pdf</div>
+    <div class="file-upload-item-size">15.8 MB</div>
+    <div class="file-upload-item-error-message">File size exceeds 10MB limit</div>
+  </div>
+  <button class="file-upload-item-remove" aria-label="Remove file">
+    ✕
+  </button>
+</div>
+```
+
+### Disabled State
+
+Disable file upload when needed:
+
+```html
+<div class="file-upload file-upload-disabled">
+  <label for="file-disabled" class="file-upload-dropzone">
+    <div class="file-upload-icon">📁</div>
+    <p class="file-upload-text">Upload disabled</p>
+    <p class="file-upload-hint">Feature not available</p>
+  </label>
+  <input type="file" id="file-disabled" class="file-upload-input" disabled />
+</div>
+```
+
+### Max Files Reached
+
+Prevent additional uploads when file limit is reached:
+
+```html
+<div class="file-upload file-upload-max-reached">
+  <label for="file-max" class="file-upload-dropzone">
+    <div class="file-upload-icon">📁</div>
+    <p class="file-upload-text">Maximum files reached</p>
+    <p class="file-upload-hint">5 of 5 files uploaded</p>
+  </label>
+  <input type="file" id="file-max" class="file-upload-input" />
+</div>
+```
+
+## Variants
+
+### Compact Variant
+
+A smaller dropzone for space-constrained layouts:
+
+```html
+<div class="file-upload file-upload-compact">
+  <label for="file-compact" class="file-upload-dropzone">
+    <div class="file-upload-icon">📁</div>
+    <p class="file-upload-text">Drop files or click</p>
+  </label>
+  <input type="file" id="file-compact" class="file-upload-input" multiple />
+</div>
+```
+
+### Outlined Variant
+
+A more subtle appearance with transparent background:
+
+```html
+<div class="file-upload file-upload-outlined">
+  <label for="file-outlined" class="file-upload-dropzone">
+    <div class="file-upload-icon">📁</div>
+    <p class="file-upload-text">Upload files</p>
+    <p class="file-upload-hint">Drag & drop or click to browse</p>
+  </label>
+  <input type="file" id="file-outlined" class="file-upload-input" multiple />
+</div>
+```
+
+## Complete Example
+
+Here's a comprehensive example with all features:
+
+```html
+<div class="file-upload" id="complete-upload">
+  <label for="complete-input" class="file-upload-dropzone" id="complete-dropzone">
+    <div class="file-upload-icon">📁</div>
+    <p class="file-upload-text">Drop files here or click to browse</p>
+    <p class="file-upload-hint">Images, PDFs, Documents (Max 5 files, 10MB each)</p>
+  </label>
+  <input type="file" id="complete-input" class="file-upload-input" multiple accept="image/*,.pdf,.doc,.docx" />
+
+  <div class="file-upload-list" id="complete-list"></div>
+</div>
+
+<script>
+  const dropzone = document.getElementById('complete-dropzone');
+  const fileInput = document.getElementById('complete-input');
+  const fileList = document.getElementById('complete-list');
+  const maxFiles = 5;
+  const maxSize = 10 * 1024 * 1024; // 10MB
+  let uploadedFiles = [];
+
+  // Drag and drop handlers
+  dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropzone.classList.add('file-upload-dropzone-dragover');
+  });
+
+  dropzone.addEventListener('dragleave', () => {
+    dropzone.classList.remove('file-upload-dropzone-dragover');
+  });
+
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.classList.remove('file-upload-dropzone-dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    handleFiles(e.target.files);
+  });
+
+  function handleFiles(files) {
+    const filesArray = Array.from(files);
+
+    if (uploadedFiles.length + filesArray.length > maxFiles) {
+      alert(`Maximum ${maxFiles} files allowed`);
+      return;
+    }
+
+    filesArray.forEach(file => {
+      if (file.size > maxSize) {
+        addFileItem(file, true, 'File size exceeds 10MB limit');
+      } else {
+        addFileItem(file, false);
+        uploadedFiles.push(file);
+      }
+    });
+
+    updateMaxFilesState();
+  }
+
+  function addFileItem(file, hasError = false, errorMessage = '') {
+    const fileItem = document.createElement('div');
+    fileItem.className = `file-upload-item ${hasError ? 'file-upload-item-error' : ''}`;
+
+    const isImage = file.type.startsWith('image/');
+    let thumbnail = '';
+
+    if (isImage && !hasError) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = fileItem.querySelector('.file-upload-item-thumbnail');
+        if (img) img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+      thumbnail = '<img src="" alt="Preview" class="file-upload-item-thumbnail" />';
+    } else {
+      thumbnail = '<div class="file-upload-item-icon">📄</div>';
+    }
+
+    fileItem.innerHTML = `
+      ${thumbnail}
+      <div class="file-upload-item-info">
+        <div class="file-upload-item-name">${file.name}</div>
+        <div class="file-upload-item-size">${formatFileSize(file.size)}</div>
+        ${hasError ? `<div class="file-upload-item-error-message">${errorMessage}</div>` : ''}
+      </div>
+      <button class="file-upload-item-remove" aria-label="Remove file">✕</button>
+    `;
+
+    const removeBtn = fileItem.querySelector('.file-upload-item-remove');
+    removeBtn.addEventListener('click', () => {
+      fileItem.remove();
+      uploadedFiles = uploadedFiles.filter(f => f !== file);
+      updateMaxFilesState();
+    });
+
+    fileList.appendChild(fileItem);
+  }
+
+  function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+  }
+
+  function updateMaxFilesState() {
+    const container = document.getElementById('complete-upload');
+    if (uploadedFiles.length >= maxFiles) {
+      container.classList.add('file-upload-max-reached');
+    } else {
+      container.classList.remove('file-upload-max-reached');
+    }
+  }
+</script>
+```
+
+## Best Practices
+
+### File Validation
+
+Always validate files on both client and server:
+
+```javascript
+function validateFile(file) {
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
+  const maxSize = 10 * 1024 * 1024; // 10MB
+
+  if (!allowedTypes.includes(file.type)) {
+    return { valid: false, error: 'File type not supported' };
+  }
+
+  if (file.size > maxSize) {
+    return { valid: false, error: 'File size exceeds 10MB limit' };
+  }
+
+  return { valid: true };
+}
+```
+
+### Accessibility
+
+- Provide clear labels and instructions
+- Use `aria-label` for icon buttons
+- Ensure keyboard navigation works
+- Announce upload status to screen readers
+
+```html
+<label for="accessible-upload" class="file-upload-dropzone">
+  <div class="file-upload-icon" aria-hidden="true">📁</div>
+  <p class="file-upload-text">Upload your documents</p>
+  <p class="file-upload-hint">Accepted formats: PDF, DOC, DOCX (Max 10MB)</p>
+</label>
+<input
+  type="file"
+  id="accessible-upload"
+  class="file-upload-input"
+  multiple
+  accept=".pdf,.doc,.docx"
+  aria-describedby="upload-instructions"
+/>
+<div id="upload-instructions" class="sr-only">
+  You can upload multiple files by selecting them or dragging them into the upload area
+</div>
+```
+
+### User Feedback
+
+- Show upload progress for large files
+- Display clear error messages
+- Provide success confirmation
+- Allow users to cancel uploads
+
+### Security
+
+- Validate file types on the server
+- Scan uploaded files for malware
+- Sanitize file names
+- Implement size limits
+- Use secure file storage
+
+## Framework Examples
+
+### React
+
+```tsx
+import { useState, useRef } from 'react';
+
+interface FileUploadProps {
+  maxFiles?: number;
+  maxSize?: number;
+  accept?: string;
+  onFilesSelected?: (files: File[]) => void;
+}
+
+export function FileUpload({
+  maxFiles = 5,
+  maxSize = 10 * 1024 * 1024,
+  accept,
+  onFilesSelected
+}: FileUploadProps) {
+  const [files, setFiles] = useState<File[]>([]);
+  const [dragOver, setDragOver] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(true);
+  };
+
+  const handleDragLeave = () => {
+    setDragOver(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    handleFiles(Array.from(e.dataTransfer.files));
+  };
+
+  const handleFiles = (newFiles: File[]) => {
+    if (files.length + newFiles.length > maxFiles) {
+      alert(`Maximum ${maxFiles} files allowed`);
+      return;
+    }
+
+    const validFiles = newFiles.filter(file => file.size <= maxSize);
+    const updatedFiles = [...files, ...validFiles];
+    setFiles(updatedFiles);
+    onFilesSelected?.(updatedFiles);
+  };
+
+  const removeFile = (index: number) => {
+    const updatedFiles = files.filter((_, i) => i !== index);
+    setFiles(updatedFiles);
+    onFilesSelected?.(updatedFiles);
+  };
+
+  return (
+    <div className={`file-upload ${files.length >= maxFiles ? 'file-upload-max-reached' : ''}`}>
+      <label
+        className={`file-upload-dropzone ${dragOver ? 'file-upload-dropzone-dragover' : ''}`}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        <div className="file-upload-icon">📁</div>
+        <p className="file-upload-text">Drop files here or click to browse</p>
+        <p className="file-upload-hint">Max {maxFiles} files, {maxSize / 1024 / 1024}MB each</p>
+      </label>
+      <input
+        ref={inputRef}
+        type="file"
+        className="file-upload-input"
+        multiple
+        accept={accept}
+        onChange={(e) => e.target.files && handleFiles(Array.from(e.target.files))}
+      />
+
+      {files.length > 0 && (
+        <div className="file-upload-list">
+          {files.map((file, index) => (
+            <div key={index} className="file-upload-item">
+              <div className="file-upload-item-icon">📄</div>
+              <div className="file-upload-item-info">
+                <div className="file-upload-item-name">{file.name}</div>
+                <div className="file-upload-item-size">
+                  {(file.size / 1024 / 1024).toFixed(2)} MB
+                </div>
+              </div>
+              <button
+                className="file-upload-item-remove"
+                onClick={() => removeFile(index)}
+                aria-label="Remove file"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### Vue
+
+```vue
+<template>
+  <div
+    class="file-upload"
+    :class="{ 'file-upload-max-reached': files.length >= maxFiles }"
+  >
+    <label
+      class="file-upload-dropzone"
+      :class="{ 'file-upload-dropzone-dragover': dragOver }"
+      @dragover.prevent="dragOver = true"
+      @dragleave="dragOver = false"
+      @drop.prevent="handleDrop"
+    >
+      <div class="file-upload-icon">📁</div>
+      <p class="file-upload-text">Drop files here or click to browse</p>
+      <p class="file-upload-hint">Max {{ maxFiles }} files, {{ maxSize / 1024 / 1024 }}MB each</p>
+    </label>
+    <input
+      ref="fileInput"
+      type="file"
+      class="file-upload-input"
+      multiple
+      :accept="accept"
+      @change="handleFileSelect"
+    />
+
+    <div v-if="files.length > 0" class="file-upload-list">
+      <div
+        v-for="(file, index) in files"
+        :key="index"
+        class="file-upload-item"
+      >
+        <div class="file-upload-item-icon">📄</div>
+        <div class="file-upload-item-info">
+          <div class="file-upload-item-name">{{ file.name }}</div>
+          <div class="file-upload-item-size">
+            {{ (file.size / 1024 / 1024).toFixed(2) }} MB
+          </div>
+        </div>
+        <button
+          class="file-upload-item-remove"
+          @click="removeFile(index)"
+          aria-label="Remove file"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+
+interface Props {
+  maxFiles?: number;
+  maxSize?: number;
+  accept?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  maxFiles: 5,
+  maxSize: 10 * 1024 * 1024,
+  accept: undefined,
+});
+
+const emit = defineEmits<{
+  filesSelected: [files: File[]];
+}>();
+
+const files = ref<File[]>([]);
+const dragOver = ref(false);
+const fileInput = ref<HTMLInputElement>();
+
+const handleDrop = (e: DragEvent) => {
+  dragOver.value = false;
+  if (e.dataTransfer?.files) {
+    handleFiles(Array.from(e.dataTransfer.files));
+  }
+};
+
+const handleFileSelect = (e: Event) => {
+  const target = e.target as HTMLInputElement;
+  if (target.files) {
+    handleFiles(Array.from(target.files));
+  }
+};
+
+const handleFiles = (newFiles: File[]) => {
+  if (files.value.length + newFiles.length > props.maxFiles) {
+    alert(`Maximum ${props.maxFiles} files allowed`);
+    return;
+  }
+
+  const validFiles = newFiles.filter(file => file.size <= props.maxSize);
+  files.value = [...files.value, ...validFiles];
+  emit('filesSelected', files.value);
+};
+
+const removeFile = (index: number) => {
+  files.value = files.value.filter((_, i) => i !== index);
+  emit('filesSelected', files.value);
+};
+</script>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.file-upload` | Base container for file upload component |
+| `.file-upload-dropzone` | Drop zone area for dragging files |
+| `.file-upload-dropzone-dragover` | Applied when files are dragged over the dropzone |
+| `.file-upload-icon` | Icon displayed in the dropzone |
+| `.file-upload-text` | Main text in the dropzone |
+| `.file-upload-hint` | Helper text in the dropzone |
+| `.file-upload-input` | Hidden file input element |
+| `.file-upload-button` | Browse button inside dropzone |
+| `.file-upload-list` | Container for uploaded file items |
+| `.file-upload-item` | Individual file item |
+| `.file-upload-item-icon` | Icon for file item |
+| `.file-upload-item-thumbnail` | Image thumbnail for file preview |
+| `.file-upload-item-info` | Container for file name and size |
+| `.file-upload-item-name` | File name display |
+| `.file-upload-item-size` | File size display |
+| `.file-upload-item-remove` | Remove button for file item |
+| `.file-upload-progress` | Progress bar container |
+| `.file-upload-progress-bar` | Progress bar indicator |
+| `.file-upload-item-error` | Error state for file item |
+| `.file-upload-item-error-message` | Error message text |
+| `.file-upload-item-success` | Success state for file item |
+| `.file-upload-compact` | Compact variant with smaller dropzone |
+| `.file-upload-outlined` | Outlined variant with transparent background |
+| `.file-upload-disabled` | Disabled state |
+| `.file-upload-max-reached` | Applied when maximum files limit is reached |
+
+### Input Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `type="file"` | Required for file input |
+| `multiple` | Allow multiple file selection |
+| `accept` | Specify allowed file types (e.g., `"image/*,.pdf"`) |
+| `disabled` | Disable file upload |
+
+## Related Components
+
+- [Button](/docs/en/components/button/) - Action buttons
+- [Progress](/docs/en/components/progress/) - Progress indicators
+- [Card](/docs/en/components/card/) - Container components
+
+## See Also
+
+- [File Input Guidelines (Material Design 3)](https://m3.material.io/components/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
+- [HTML File Input Reference (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file)

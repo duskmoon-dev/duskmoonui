@@ -1,0 +1,521 @@
+---
+title: Navbar
+description: Material Design 3 navigation bar component for creating responsive headers
+category: components
+order: 6
+published: true
+tags: ['navbar', 'navigation', 'components', 'material-design']
+---
+
+# Navbar
+
+A navigation bar provides primary navigation for your application. @duskmoon-dev/core provides a flexible navbar component with multiple variants and layouts.
+
+## Basic Usage
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-center">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+    <a href="#" class="navbar-item">Services</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Login</a>
+  </div>
+</nav>
+```
+
+## Variants
+
+### Surface Variants
+
+Different surface levels for visual hierarchy:
+
+```html
+<!-- Default surface -->
+<nav class="navbar navbar-surface">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+
+<!-- Surface container -->
+<nav class="navbar navbar-surface-container">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+
+<!-- Surface container high -->
+<nav class="navbar navbar-surface-container-high">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+
+<!-- Surface container highest -->
+<nav class="navbar navbar-surface-container-highest">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+```
+
+### Color Variants
+
+Use theme colors for your navbar:
+
+```html
+<!-- Primary navbar -->
+<nav class="navbar navbar-primary">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+  </div>
+</nav>
+
+<!-- Secondary navbar -->
+<nav class="navbar navbar-secondary">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+
+<!-- Tertiary navbar -->
+<nav class="navbar navbar-tertiary">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+```
+
+### Transparent Navbar
+
+For overlay designs:
+
+```html
+<nav class="navbar navbar-transparent">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+  </div>
+</nav>
+```
+
+### Transparent with Blur
+
+Transparent navbar with backdrop blur effect:
+
+```html
+<nav class="navbar navbar-transparent navbar-blur">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+  </div>
+</nav>
+```
+
+## Positioning
+
+### Fixed Position
+
+Fixed to the top of the viewport:
+
+```html
+<nav class="navbar navbar-fixed">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+```
+
+### Sticky Position
+
+Stays at the top when scrolling:
+
+```html
+<nav class="navbar navbar-sticky">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+```
+
+### Static Position
+
+Default static positioning:
+
+```html
+<nav class="navbar navbar-static">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+```
+
+## Layout Sections
+
+### Three-Section Layout
+
+Use `navbar-start`, `navbar-center`, and `navbar-end` for flexible layouts:
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-center">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+    <a href="#" class="navbar-item">Services</a>
+    <a href="#" class="navbar-item">Contact</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Login</a>
+    <button class="btn btn-primary btn-sm">Sign Up</button>
+  </div>
+</nav>
+```
+
+### Start and End Only
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Login</a>
+  </div>
+</nav>
+```
+
+## Active Items
+
+Highlight the current page:
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-center">
+    <a href="#" class="navbar-item navbar-item-active">Home</a>
+    <a href="#" class="navbar-item">About</a>
+    <a href="#" class="navbar-item">Services</a>
+  </div>
+</nav>
+```
+
+## Size Variants
+
+### Compact
+
+Smaller padding for dense interfaces:
+
+```html
+<nav class="navbar navbar-compact">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+  </div>
+</nav>
+```
+
+### Comfortable
+
+Larger padding for better touch targets:
+
+```html
+<nav class="navbar navbar-comfortable">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+  </div>
+</nav>
+```
+
+## With Dividers
+
+Add visual separation between sections:
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+    <div class="navbar-divider"></div>
+    <a href="#" class="navbar-item">Login</a>
+  </div>
+</nav>
+```
+
+## Borderless
+
+Remove the bottom border:
+
+```html
+<nav class="navbar navbar-borderless">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+```
+
+## Mobile Menu
+
+Responsive navbar with hamburger menu:
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <!-- Desktop menu -->
+    <div class="hidden md:flex md:gap-2">
+      <a href="#" class="navbar-item">Home</a>
+      <a href="#" class="navbar-item">About</a>
+      <a href="#" class="navbar-item">Services</a>
+    </div>
+    <!-- Mobile hamburger -->
+    <button class="navbar-hamburger md:hidden" aria-label="Open menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</nav>
+```
+
+## With Icons
+
+Add icons to navbar items:
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+      Brand
+    </a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+      Home
+    </a>
+    <a href="#" class="navbar-item">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+      Profile
+    </a>
+  </div>
+</nav>
+```
+
+## Best Practices
+
+### Navigation Hierarchy
+
+Organize navigation items by importance:
+
+1. **Brand**: Always on the left in `navbar-start`
+2. **Primary navigation**: Center or right side
+3. **User actions**: Far right in `navbar-end`
+
+```html
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-center">
+    <a href="#" class="navbar-item">Products</a>
+    <a href="#" class="navbar-item">Solutions</a>
+    <a href="#" class="navbar-item">Pricing</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Login</a>
+    <button class="btn btn-primary btn-sm">Get Started</button>
+  </div>
+</nav>
+```
+
+### Accessibility
+
+- Use semantic `<nav>` element
+- Provide `aria-label` for hamburger buttons
+- Ensure sufficient color contrast
+- Support keyboard navigation
+
+```html
+<nav class="navbar" aria-label="Main navigation">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <button class="navbar-hamburger" aria-label="Toggle navigation menu">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+</nav>
+```
+
+### Fixed Navbar Spacing
+
+When using `navbar-fixed`, add top padding to your content:
+
+```html
+<nav class="navbar navbar-fixed">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+</nav>
+
+<!-- Add top padding equal to navbar height -->
+<main class="pt-16">
+  <!-- Your content -->
+</main>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface NavbarProps {
+  variant?: 'surface' | 'primary' | 'secondary' | 'tertiary' | 'transparent';
+  position?: 'static' | 'fixed' | 'sticky';
+  children: React.ReactNode;
+}
+
+export function Navbar({ variant = 'surface', position = 'static', children }: NavbarProps) {
+  return (
+    <nav className={`navbar navbar-${variant} navbar-${position}`}>
+      {children}
+    </nav>
+  );
+}
+
+// Usage
+<Navbar variant="primary" position="fixed">
+  <div className="navbar-start">
+    <a href="/" className="navbar-brand">Brand</a>
+  </div>
+  <div className="navbar-end">
+    <a href="#" className="navbar-item">Home</a>
+    <a href="#" className="navbar-item">About</a>
+  </div>
+</Navbar>
+```
+
+### Vue
+
+```vue
+<template>
+  <nav :class="`navbar navbar-${variant} navbar-${position}`">
+    <slot />
+  </nav>
+</template>
+
+<script setup>
+defineProps({
+  variant: {
+    type: String,
+    default: 'surface'
+  },
+  position: {
+    type: String,
+    default: 'static'
+  }
+})
+</script>
+
+<!-- Usage -->
+<Navbar variant="primary" position="fixed">
+  <div class="navbar-start">
+    <a href="/" class="navbar-brand">Brand</a>
+  </div>
+  <div class="navbar-end">
+    <a href="#" class="navbar-item">Home</a>
+    <a href="#" class="navbar-item">About</a>
+  </div>
+</Navbar>
+```
+
+## API Reference
+
+### Navbar Classes
+
+| Class | Description |
+|-------|-------------|
+| `.navbar` | Base navbar styles (required) |
+| `.navbar-surface` | Default surface background |
+| `.navbar-surface-container` | Surface container background |
+| `.navbar-surface-container-high` | Surface container high with subtle shadow |
+| `.navbar-surface-container-highest` | Surface container highest with shadow |
+| `.navbar-primary` | Primary color variant |
+| `.navbar-secondary` | Secondary color variant |
+| `.navbar-tertiary` | Tertiary color variant |
+| `.navbar-transparent` | Transparent background |
+| `.navbar-blur` | Backdrop blur effect (use with transparent) |
+| `.navbar-fixed` | Fixed to top of viewport |
+| `.navbar-sticky` | Sticky positioning |
+| `.navbar-static` | Static positioning (default) |
+| `.navbar-compact` | Compact size with less padding |
+| `.navbar-comfortable` | Comfortable size with more padding |
+| `.navbar-borderless` | Remove bottom border |
+
+### Layout Classes
+
+| Class | Description |
+|-------|-------------|
+| `.navbar-start` | Left section of navbar |
+| `.navbar-center` | Center section of navbar |
+| `.navbar-end` | Right section of navbar |
+| `.navbar-brand` | Brand/logo styles |
+| `.navbar-item` | Navigation item |
+| `.navbar-item-active` | Active navigation item |
+| `.navbar-divider` | Vertical divider |
+| `.navbar-hamburger` | Hamburger menu button |
+| `.navbar-menu` | Mobile menu container |
+
+## Related Components
+
+- [Tabs](/docs/en/components/tabs/) - Tab navigation
+- [Drawer](/docs/en/components/drawer/) - Side navigation
+- [Breadcrumbs](/docs/en/components/breadcrumbs/) - Hierarchical navigation
+
+## See Also
+
+- [Top App Bar (Material Design 3)](https://m3.material.io/components/top-app-bar/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

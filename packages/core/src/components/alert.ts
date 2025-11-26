@@ -1,10 +1,10 @@
-import type { CSSRuleObject } from 'tailwindcss/types/config';
+
 
 /**
  * Alert component styles
  * Material Design 3-inspired alert messages
  */
-export const alertStyles: Record<string, CSSRuleObject> = {
+export const alertStyles: Record<string, any> = {
   // Base alert styles
   '.alert': {
     display: 'flex',
@@ -114,27 +114,27 @@ export const alertStyles: Record<string, CSSRuleObject> = {
 
   // Tonal variant (softer, uses container colors)
   '.alert-tonal, .alert-info': {
-    backgroundColor: 'hsl(var(--color-info) / 0.1)',
+    backgroundColor: 'rgba(var(--color-info-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'hsl(var(--color-info) / 0.2)',
+    borderColor: 'rgba(var(--color-info-rgb), 0.2)',
   },
 
   '.alert-success': {
-    backgroundColor: 'hsl(var(--color-success) / 0.1)',
+    backgroundColor: 'rgba(var(--color-success-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'hsl(var(--color-success) / 0.2)',
+    borderColor: 'rgba(var(--color-success-rgb), 0.2)',
   },
 
   '.alert-warning': {
-    backgroundColor: 'hsl(var(--color-warning) / 0.1)',
+    backgroundColor: 'rgba(var(--color-warning-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'hsl(var(--color-warning) / 0.2)',
+    borderColor: 'rgba(var(--color-warning-rgb), 0.2)',
   },
 
   '.alert-error': {
-    backgroundColor: 'hsl(var(--color-error) / 0.1)',
+    backgroundColor: 'rgba(var(--color-error-rgb), 0.1)',
     color: 'hsl(var(--color-on-surface))',
-    borderColor: 'hsl(var(--color-error) / 0.2)',
+    borderColor: 'rgba(var(--color-error-rgb), 0.2)',
   },
 
   // Outlined variant

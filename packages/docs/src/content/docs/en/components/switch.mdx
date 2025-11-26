@@ -1,0 +1,552 @@
+---
+title: Switch
+description: Material Design 3 switch component for toggling between on and off states
+category: components
+order: 17
+published: true
+tags: ['switch', 'toggle', 'components', 'material-design']
+---
+
+# Switch
+
+Switches toggle the state of a single item on or off. @duskmoon-dev/core provides a Material Design 3 switch component with smooth animations and multiple variants.
+
+## Basic Usage
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input">
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+</label>
+```
+
+## With Label
+
+Add descriptive labels to provide context for the switch:
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input">
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Enable notifications</span>
+</label>
+```
+
+### Label Position
+
+Place labels before or after the switch:
+
+```html
+<!-- Label on the right (default) -->
+<label class="switch">
+  <input type="checkbox" class="switch-input">
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Dark mode</span>
+</label>
+
+<!-- Label on the left -->
+<label class="switch">
+  <input type="checkbox" class="switch-input">
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label switch-label-left">Auto-save</span>
+</label>
+```
+
+## Variants
+
+### Primary (Default)
+
+The primary variant uses the theme's primary color:
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track switch-primary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Primary switch</span>
+</label>
+```
+
+### Secondary
+
+Use the secondary color scheme:
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track switch-secondary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Secondary switch</span>
+</label>
+```
+
+### Tertiary
+
+Use the tertiary color scheme:
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track switch-tertiary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Tertiary switch</span>
+</label>
+```
+
+## Sizes
+
+Three sizes are available to fit different contexts:
+
+```html
+<!-- Small -->
+<label class="switch switch-sm">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Small</span>
+</label>
+
+<!-- Medium (default) -->
+<label class="switch">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Medium</span>
+</label>
+
+<!-- Large -->
+<label class="switch switch-lg">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Large</span>
+</label>
+```
+
+## States
+
+### Disabled State
+
+Disabled switches are non-interactive and visually muted:
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input" disabled>
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Disabled unchecked</span>
+</label>
+
+<label class="switch">
+  <input type="checkbox" class="switch-input" checked disabled>
+  <span class="switch-track switch-primary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Disabled checked</span>
+</label>
+```
+
+### Loading State
+
+Show loading state during async operations:
+
+```html
+<label class="switch switch-loading">
+  <input type="checkbox" class="switch-input" checked disabled>
+  <span class="switch-track switch-primary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Processing...</span>
+</label>
+```
+
+### Checked State
+
+Switches can be checked by default:
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track switch-primary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Enabled by default</span>
+</label>
+```
+
+## With Icons
+
+Add icons to the thumb for enhanced visual feedback:
+
+```html
+<label class="switch">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track switch-primary">
+    <span class="switch-thumb">
+      <svg class="switch-thumb-icon" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+      </svg>
+    </span>
+  </span>
+  <span class="switch-label">Confirmed</span>
+</label>
+```
+
+## Best Practices
+
+### When to Use
+
+Switches are best for:
+
+- **Instant changes**: Settings that take effect immediately
+- **On/off states**: Binary choices like enable/disable features
+- **System settings**: Preferences and configurations
+
+```html
+<div class="space-y-4">
+  <label class="switch">
+    <input type="checkbox" class="switch-input" checked>
+    <span class="switch-track switch-primary">
+      <span class="switch-thumb"></span>
+    </span>
+    <span class="switch-label">Enable notifications</span>
+  </label>
+
+  <label class="switch">
+    <input type="checkbox" class="switch-input">
+    <span class="switch-track">
+      <span class="switch-thumb"></span>
+    </span>
+    <span class="switch-label">Auto-update apps</span>
+  </label>
+
+  <label class="switch">
+    <input type="checkbox" class="switch-input" checked>
+    <span class="switch-track switch-primary">
+      <span class="switch-thumb"></span>
+    </span>
+    <span class="switch-label">Dark mode</span>
+  </label>
+</div>
+```
+
+### When Not to Use
+
+Avoid switches for:
+
+- **Form submission**: Use checkboxes instead when changes require user confirmation
+- **Multiple options**: Use radio buttons or select dropdowns
+- **Actions with delay**: If the change requires processing time, consider a button
+
+### Accessibility
+
+- Always use a `<label>` element for proper click area
+- Provide descriptive label text that explains what the switch controls
+- Use the native `<input type="checkbox">` for keyboard support
+- Ensure sufficient color contrast in both states
+- Support keyboard navigation (built-in with native input)
+
+```html
+<!-- Good: Accessible switch with clear label -->
+<label class="switch">
+  <input type="checkbox" class="switch-input" aria-describedby="wifi-description">
+  <span class="switch-track">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Wi-Fi</span>
+</label>
+<p id="wifi-description" class="text-sm text-gray-600">
+  Connect to available wireless networks
+</p>
+```
+
+### Visual Feedback
+
+Provide clear visual feedback for all states:
+
+1. **Default**: Clear unchecked appearance
+2. **Hover**: Subtle background change
+3. **Focus**: Visible outline for keyboard users
+4. **Checked**: Distinct color and thumb position
+5. **Disabled**: Reduced opacity
+
+## Framework Examples
+
+### React
+
+```tsx
+interface SwitchProps {
+  label: string;
+  checked?: boolean;
+  disabled?: boolean;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg';
+  onChange?: (checked: boolean) => void;
+}
+
+export function Switch({
+  label,
+  checked = false,
+  disabled = false,
+  variant = 'primary',
+  size = 'md',
+  onChange
+}: SwitchProps) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.checked);
+  };
+
+  const sizeClass = size !== 'md' ? `switch-${size}` : '';
+  const variantClass = variant !== 'primary' ? `switch-${variant}` : 'switch-primary';
+
+  return (
+    <label className={`switch ${sizeClass}`.trim()}>
+      <input
+        type="checkbox"
+        className="switch-input"
+        checked={checked}
+        disabled={disabled}
+        onChange={handleChange}
+      />
+      <span className={`switch-track ${variantClass}`}>
+        <span className="switch-thumb"></span>
+      </span>
+      <span className="switch-label">{label}</span>
+    </label>
+  );
+}
+
+// Usage
+<Switch
+  label="Enable notifications"
+  checked={isEnabled}
+  onChange={setIsEnabled}
+/>
+```
+
+### Vue
+
+```vue
+<template>
+  <label :class="switchClasses">
+    <input
+      type="checkbox"
+      class="switch-input"
+      :checked="modelValue"
+      :disabled="disabled"
+      @change="handleChange"
+    />
+    <span :class="trackClasses">
+      <span class="switch-thumb"></span>
+    </span>
+    <span class="switch-label">{{ label }}</span>
+  </label>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  label: String,
+  modelValue: Boolean,
+  disabled: Boolean,
+  variant: {
+    type: String,
+    default: 'primary'
+  },
+  size: {
+    type: String,
+    default: 'md'
+  }
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+const switchClasses = computed(() => {
+  const classes = ['switch'];
+  if (props.size !== 'md') {
+    classes.push(`switch-${props.size}`);
+  }
+  return classes.join(' ');
+});
+
+const trackClasses = computed(() => {
+  const classes = ['switch-track'];
+  if (props.variant !== 'primary') {
+    classes.push(`switch-${props.variant}`);
+  } else {
+    classes.push('switch-primary');
+  }
+  return classes.join(' ');
+});
+
+const handleChange = (e) => {
+  emit('update:modelValue', e.target.checked);
+};
+</script>
+
+<!-- Usage -->
+<Switch
+  label="Enable notifications"
+  v-model="isEnabled"
+/>
+```
+
+### Svelte
+
+```svelte
+<script>
+  export let label = '';
+  export let checked = false;
+  export let disabled = false;
+  export let variant = 'primary';
+  export let size = 'md';
+
+  $: switchClasses = ['switch', size !== 'md' ? `switch-${size}` : ''].filter(Boolean).join(' ');
+  $: trackClasses = ['switch-track', variant !== 'primary' ? `switch-${variant}` : 'switch-primary'].join(' ');
+</script>
+
+<label class={switchClasses}>
+  <input
+    type="checkbox"
+    class="switch-input"
+    bind:checked
+    {disabled}
+  />
+  <span class={trackClasses}>
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">{label}</span>
+</label>
+
+<!-- Usage -->
+<Switch
+  label="Enable notifications"
+  bind:checked={isEnabled}
+/>
+```
+
+## Form Integration
+
+### With Form Libraries
+
+Integrate switches with form validation libraries:
+
+```html
+<!-- Example with native form -->
+<form>
+  <fieldset>
+    <legend class="text-lg font-semibold mb-4">Privacy Settings</legend>
+
+    <div class="space-y-4">
+      <label class="switch">
+        <input type="checkbox" class="switch-input" name="cookies" checked>
+        <span class="switch-track switch-primary">
+          <span class="switch-thumb"></span>
+        </span>
+        <span class="switch-label">Essential cookies</span>
+      </label>
+
+      <label class="switch">
+        <input type="checkbox" class="switch-input" name="analytics">
+        <span class="switch-track">
+          <span class="switch-thumb"></span>
+        </span>
+        <span class="switch-label">Analytics cookies</span>
+      </label>
+
+      <label class="switch">
+        <input type="checkbox" class="switch-input" name="marketing">
+        <span class="switch-track">
+          <span class="switch-thumb"></span>
+        </span>
+        <span class="switch-label">Marketing cookies</span>
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="mt-6">
+    <button type="submit" class="btn btn-primary">Save Preferences</button>
+  </div>
+</form>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.switch` | Base switch container (required) |
+| `.switch-input` | Hidden checkbox input (required) |
+| `.switch-track` | Visual track background (required) |
+| `.switch-thumb` | Sliding thumb element (required) |
+| `.switch-primary` | Primary color variant (default) |
+| `.switch-secondary` | Secondary color variant |
+| `.switch-tertiary` | Tertiary color variant |
+| `.switch-sm` | Small size variant |
+| `.switch-lg` | Large size variant |
+| `.switch-label` | Label text |
+| `.switch-label-left` | Position label on the left |
+| `.switch-loading` | Loading animation state |
+| `.switch-thumb-icon` | Optional icon in thumb |
+
+### HTML Attributes
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `checked` | boolean | Sets the switch to checked state |
+| `disabled` | boolean | Disables the switch interaction |
+| `name` | string | Form field name |
+| `value` | string | Form field value |
+| `aria-describedby` | string | ID of element describing the switch |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Large secondary switch -->
+<label class="switch switch-lg">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track switch-secondary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label">Large secondary</span>
+</label>
+
+<!-- Small tertiary switch with left label -->
+<label class="switch switch-sm">
+  <input type="checkbox" class="switch-input" checked>
+  <span class="switch-track switch-tertiary">
+    <span class="switch-thumb"></span>
+  </span>
+  <span class="switch-label switch-label-left">Small tertiary</span>
+</label>
+```
+
+## Related Components
+
+- [Checkbox](/docs/en/components/checkbox/) - For multi-select options
+- [Radio](/docs/en/components/radio/) - For single-select options
+- [Button](/docs/en/components/button/) - For action triggers
+
+## See Also
+
+- [Switch Design Guidelines (Material Design 3)](https://m3.material.io/components/switch/)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)

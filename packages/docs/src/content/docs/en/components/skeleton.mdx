@@ -1,0 +1,551 @@
+---
+title: Skeleton
+description: Material Design 3 skeleton loader component for content loading states
+category: components
+order: 23
+published: true
+tags: ['skeleton', 'loader', 'loading', 'components', 'material-design']
+---
+
+# Skeleton
+
+Skeleton loaders provide a visual placeholder for content that is loading. They help improve perceived performance and reduce layout shifts by showing users where content will appear.
+
+## Basic Usage
+
+```html
+<div class="skeleton" style="width: 200px; height: 20px;"></div>
+```
+
+## Animation Types
+
+### Pulse Animation (Default)
+
+The default pulse animation gently fades the skeleton in and out.
+
+```html
+<div class="skeleton" style="width: 300px; height: 100px;"></div>
+```
+
+### Wave Animation
+
+The wave animation creates a shimmer effect that moves across the skeleton.
+
+```html
+<div class="skeleton skeleton-wave" style="width: 300px; height: 100px;"></div>
+```
+
+### Static (No Animation)
+
+Use the static variant when you need a skeleton without animation.
+
+```html
+<div class="skeleton skeleton-static" style="width: 300px; height: 100px;"></div>
+```
+
+## Shapes
+
+### Text Skeleton
+
+Text skeletons are optimized for loading text content with appropriate heights and spacing.
+
+```html
+<!-- Default text -->
+<div class="skeleton skeleton-text"></div>
+
+<!-- Small text -->
+<div class="skeleton skeleton-text skeleton-text-sm"></div>
+
+<!-- Large text -->
+<div class="skeleton skeleton-text skeleton-text-lg"></div>
+```
+
+### Text Width Variants
+
+Control the width of text skeletons to create realistic loading patterns:
+
+```html
+<div class="skeleton skeleton-text skeleton-w-full"></div>
+<div class="skeleton skeleton-text skeleton-w-3/4"></div>
+<div class="skeleton skeleton-text skeleton-w-1/2"></div>
+<div class="skeleton skeleton-text skeleton-w-1/4"></div>
+```
+
+### Circle Skeleton
+
+Perfect for avatars and circular images.
+
+```html
+<!-- Default circle (3rem) -->
+<div class="skeleton skeleton-circle"></div>
+
+<!-- Small circle (2rem) -->
+<div class="skeleton skeleton-circle skeleton-circle-sm"></div>
+
+<!-- Large circle (4rem) -->
+<div class="skeleton skeleton-circle skeleton-circle-lg"></div>
+
+<!-- Extra large circle (6rem) -->
+<div class="skeleton skeleton-circle skeleton-circle-xl"></div>
+```
+
+### Rectangle Skeleton
+
+Use for images, cards, or large content blocks.
+
+```html
+<!-- Default rectangle (12rem height) -->
+<div class="skeleton skeleton-rect"></div>
+
+<!-- Small rectangle (8rem height) -->
+<div class="skeleton skeleton-rect skeleton-rect-sm"></div>
+
+<!-- Large rectangle (16rem height) -->
+<div class="skeleton skeleton-rect skeleton-rect-lg"></div>
+```
+
+### Button Skeleton
+
+Optimized for button-shaped placeholders.
+
+```html
+<!-- Default button -->
+<div class="skeleton skeleton-button"></div>
+
+<!-- Small button -->
+<div class="skeleton skeleton-button skeleton-button-sm"></div>
+
+<!-- Large button -->
+<div class="skeleton skeleton-button skeleton-button-lg"></div>
+```
+
+### Input Skeleton
+
+For form input placeholders.
+
+```html
+<div class="skeleton skeleton-input"></div>
+```
+
+## Border Radius Variants
+
+### Rounded
+
+```html
+<div class="skeleton skeleton-rounded" style="width: 200px; height: 100px;"></div>
+```
+
+### Rounded Full
+
+```html
+<div class="skeleton skeleton-rounded-full" style="width: 200px; height: 50px;"></div>
+```
+
+## Common Patterns
+
+### Avatar with Text
+
+Create a skeleton for user profiles or list items.
+
+```html
+<div class="skeleton-avatar-text">
+  <div class="skeleton skeleton-circle"></div>
+  <div class="skeleton-group" style="flex: 1;">
+    <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+    <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
+  </div>
+</div>
+```
+
+### List Item
+
+```html
+<div class="skeleton-list-item">
+  <div class="skeleton skeleton-circle skeleton-circle-sm"></div>
+  <div class="skeleton-group" style="flex: 1;">
+    <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+    <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
+  </div>
+</div>
+```
+
+### Card Skeleton
+
+```html
+<div class="skeleton-card">
+  <div class="skeleton skeleton-rect skeleton-rect-sm"></div>
+  <div class="skeleton-group" style="margin-top: 1rem;">
+    <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+    <div class="skeleton skeleton-text skeleton-w-full"></div>
+    <div class="skeleton skeleton-text skeleton-w-1/2"></div>
+  </div>
+</div>
+```
+
+### Skeleton Group
+
+Group multiple skeletons with consistent spacing.
+
+```html
+<div class="skeleton-group">
+  <div class="skeleton skeleton-text"></div>
+  <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+  <div class="skeleton skeleton-text skeleton-w-1/2"></div>
+</div>
+```
+
+## Complex Examples
+
+### Article Loading
+
+```html
+<article>
+  <!-- Header -->
+  <div class="skeleton-group">
+    <div class="skeleton skeleton-text skeleton-text-lg skeleton-w-3/4"></div>
+    <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
+  </div>
+
+  <!-- Featured image -->
+  <div class="skeleton skeleton-rect" style="margin: 1.5rem 0;"></div>
+
+  <!-- Content -->
+  <div class="skeleton-group">
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+  </div>
+</article>
+```
+
+### User Profile Card
+
+```html
+<div class="skeleton-card">
+  <!-- Cover image -->
+  <div class="skeleton skeleton-rect skeleton-rect-sm"></div>
+
+  <!-- Avatar -->
+  <div style="margin-top: -2rem; padding: 0 1rem;">
+    <div class="skeleton skeleton-circle skeleton-circle-xl"></div>
+  </div>
+
+  <!-- Profile info -->
+  <div class="skeleton-group" style="margin-top: 1rem;">
+    <div class="skeleton skeleton-text skeleton-text-lg skeleton-w-1/2"></div>
+    <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-3/4"></div>
+    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+      <div class="skeleton skeleton-button skeleton-button-sm"></div>
+      <div class="skeleton skeleton-button skeleton-button-sm"></div>
+    </div>
+  </div>
+</div>
+```
+
+### Product Grid
+
+```html
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+  <!-- Product card 1 -->
+  <div class="skeleton-card">
+    <div class="skeleton skeleton-rect skeleton-rect-sm skeleton-wave"></div>
+    <div class="skeleton-group" style="margin-top: 1rem;">
+      <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+      <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
+      <div class="skeleton skeleton-button skeleton-button-sm"></div>
+    </div>
+  </div>
+
+  <!-- Product card 2 -->
+  <div class="skeleton-card">
+    <div class="skeleton skeleton-rect skeleton-rect-sm skeleton-wave"></div>
+    <div class="skeleton-group" style="margin-top: 1rem;">
+      <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+      <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
+      <div class="skeleton skeleton-button skeleton-button-sm"></div>
+    </div>
+  </div>
+
+  <!-- Product card 3 -->
+  <div class="skeleton-card">
+    <div class="skeleton skeleton-rect skeleton-rect-sm skeleton-wave"></div>
+    <div class="skeleton-group" style="margin-top: 1rem;">
+      <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+      <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
+      <div class="skeleton skeleton-button skeleton-button-sm"></div>
+    </div>
+  </div>
+</div>
+```
+
+## Best Practices
+
+### Match Content Structure
+
+Create skeleton layouts that closely match the actual content structure to minimize layout shifts.
+
+```html
+<!-- Good: Matches the actual content structure -->
+<div class="skeleton-avatar-text">
+  <div class="skeleton skeleton-circle"></div>
+  <div class="skeleton-group" style="flex: 1;">
+    <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+    <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
+  </div>
+</div>
+```
+
+### Use Appropriate Animation
+
+- **Pulse**: Best for small, quick-loading content
+- **Wave**: Best for larger content blocks and images
+- **Static**: Use when animation might be distracting or for accessibility
+
+```html
+<!-- Quick loading items: pulse (default) -->
+<div class="skeleton skeleton-text"></div>
+
+<!-- Large images: wave -->
+<div class="skeleton skeleton-rect skeleton-wave"></div>
+
+<!-- Reduced motion preference: static -->
+<div class="skeleton skeleton-static skeleton-text"></div>
+```
+
+### Progressive Loading
+
+Load content progressively to improve perceived performance.
+
+```html
+<div class="skeleton-card">
+  <!-- Load header first -->
+  <div class="skeleton-group">
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-3/4"></div>
+  </div>
+
+  <!-- Then load image -->
+  <div class="skeleton skeleton-rect skeleton-wave" style="margin-top: 1rem;"></div>
+
+  <!-- Finally load additional content -->
+  <div class="skeleton-group" style="margin-top: 1rem;">
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text skeleton-w-3/4"></div>
+  </div>
+</div>
+```
+
+### Accessibility
+
+Consider users with motion sensitivity by providing a static option:
+
+```html
+<!-- Respecting prefers-reduced-motion -->
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton {
+      animation: none;
+    }
+    .skeleton-wave::after {
+      animation: none;
+    }
+  }
+</style>
+```
+
+## Framework Examples
+
+### React
+
+```tsx
+interface SkeletonProps {
+  variant?: 'text' | 'circle' | 'rect' | 'button' | 'input';
+  animation?: 'pulse' | 'wave' | 'static';
+  width?: string;
+  height?: string;
+  className?: string;
+}
+
+export function Skeleton({
+  variant = 'text',
+  animation = 'pulse',
+  width,
+  height,
+  className = ''
+}: SkeletonProps) {
+  const classes = [
+    'skeleton',
+    variant !== 'text' ? `skeleton-${variant}` : 'skeleton-text',
+    animation !== 'pulse' ? `skeleton-${animation}` : '',
+    className
+  ].filter(Boolean).join(' ');
+
+  const style = {
+    ...(width && { width }),
+    ...(height && { height })
+  };
+
+  return <div className={classes} style={style} />;
+}
+
+// Usage
+<div>
+  <Skeleton variant="circle" width="48px" height="48px" />
+  <Skeleton variant="text" width="200px" />
+  <Skeleton variant="rect" animation="wave" height="200px" />
+</div>
+```
+
+### Vue
+
+```vue
+<template>
+  <div :class="classes" :style="style" />
+</template>
+
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  variant: {
+    type: String,
+    default: 'text',
+    validator: (value) => ['text', 'circle', 'rect', 'button', 'input'].includes(value)
+  },
+  animation: {
+    type: String,
+    default: 'pulse',
+    validator: (value) => ['pulse', 'wave', 'static'].includes(value)
+  },
+  width: String,
+  height: String
+})
+
+const classes = computed(() => {
+  return [
+    'skeleton',
+    props.variant !== 'text' ? `skeleton-${props.variant}` : 'skeleton-text',
+    props.animation !== 'pulse' ? `skeleton-${props.animation}` : ''
+  ].filter(Boolean).join(' ')
+})
+
+const style = computed(() => ({
+  ...(props.width && { width: props.width }),
+  ...(props.height && { height: props.height })
+}))
+</script>
+
+<!-- Usage -->
+<Skeleton variant="circle" width="48px" height="48px" />
+<Skeleton variant="text" width="200px" />
+<Skeleton variant="rect" animation="wave" height="200px" />
+```
+
+### Svelte
+
+```svelte
+<script>
+  export let variant = 'text';
+  export let animation = 'pulse';
+  export let width = undefined;
+  export let height = undefined;
+
+  $: classes = [
+    'skeleton',
+    variant !== 'text' ? `skeleton-${variant}` : 'skeleton-text',
+    animation !== 'pulse' ? `skeleton-${animation}` : ''
+  ].filter(Boolean).join(' ');
+
+  $: style = [
+    width && `width: ${width}`,
+    height && `height: ${height}`
+  ].filter(Boolean).join('; ');
+</script>
+
+<div class={classes} {style} />
+
+<!-- Usage -->
+<Skeleton variant="circle" width="48px" height="48px" />
+<Skeleton variant="text" width="200px" />
+<Skeleton variant="rect" animation="wave" height="200px" />
+```
+
+## API Reference
+
+### Base Classes
+
+| Class | Description |
+|-------|-------------|
+| `.skeleton` | Base skeleton styles (required) |
+| `.skeleton-wave` | Wave animation variant |
+| `.skeleton-static` | No animation variant |
+
+### Shape Variants
+
+| Class | Description |
+|-------|-------------|
+| `.skeleton-text` | Text line skeleton (1rem height) |
+| `.skeleton-text-sm` | Small text skeleton (0.875rem height) |
+| `.skeleton-text-lg` | Large text skeleton (1.25rem height) |
+| `.skeleton-circle` | Circle skeleton (3rem diameter) |
+| `.skeleton-circle-sm` | Small circle (2rem diameter) |
+| `.skeleton-circle-lg` | Large circle (4rem diameter) |
+| `.skeleton-circle-xl` | Extra large circle (6rem diameter) |
+| `.skeleton-rect` | Rectangle skeleton (12rem height) |
+| `.skeleton-rect-sm` | Small rectangle (8rem height) |
+| `.skeleton-rect-lg` | Large rectangle (16rem height) |
+| `.skeleton-button` | Button skeleton (2.5rem height, 6rem width) |
+| `.skeleton-button-sm` | Small button (2rem height, 5rem width) |
+| `.skeleton-button-lg` | Large button (3rem height, 8rem width) |
+| `.skeleton-input` | Input skeleton (2.75rem height) |
+
+### Width Variants
+
+| Class | Description |
+|-------|-------------|
+| `.skeleton-w-full` | Full width (100%) |
+| `.skeleton-w-3/4` | 75% width |
+| `.skeleton-w-1/2` | 50% width |
+| `.skeleton-w-1/4` | 25% width |
+
+### Border Radius
+
+| Class | Description |
+|-------|-------------|
+| `.skeleton-rounded` | Medium border radius (0.75rem) |
+| `.skeleton-rounded-full` | Fully rounded (9999px) |
+
+### Layout Helpers
+
+| Class | Description |
+|-------|-------------|
+| `.skeleton-group` | Container with vertical spacing (1rem gap) |
+| `.skeleton-avatar-text` | Horizontal layout for avatar + text |
+| `.skeleton-card` | Card container with padding and background |
+| `.skeleton-list-item` | List item layout with padding |
+
+### Combinations
+
+You can combine classes for different effects:
+
+```html
+<!-- Wave animation with custom size -->
+<div class="skeleton skeleton-wave" style="width: 300px; height: 150px;"></div>
+
+<!-- Static text skeleton -->
+<div class="skeleton skeleton-text skeleton-static skeleton-w-3/4"></div>
+
+<!-- Large circle with wave animation -->
+<div class="skeleton skeleton-circle skeleton-circle-lg skeleton-wave"></div>
+```
+
+## Related Components
+
+- [Card](/docs/en/components/card/) - Container component
+- [Avatar](/docs/en/components/avatar/) - User avatar component
+- [Progress](/docs/en/components/progress/) - Progress indicators
+
+## See Also
+
+- [Placeholder Design Guidelines (Material Design 3)](https://m3.material.io/foundations/content/placeholder-text)
+- [Quick Start Guide](/docs/en/getting-started/quick-start/)
