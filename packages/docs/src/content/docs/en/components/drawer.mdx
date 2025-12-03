@@ -7,14 +7,15 @@ published: true
 tags: ['drawer', 'navigation', 'sidebar', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Drawer
 
 Navigation drawers provide access to destinations in your app. @duskmoon-dev/core provides a flexible drawer component with multiple variants and positions.
 
 ## Basic Usage
 
-```html
-<div class="drawer drawer-left drawer-open">
+<ComponentShowcase title="Basic Drawer" code={`<div class="drawer drawer-left drawer-open">
   <div class="drawer-header">
     <h2 class="drawer-title">Menu</h2>
     <button class="drawer-close" aria-label="Close drawer">×</button>
@@ -32,133 +33,111 @@ Navigation drawers provide access to destinations in your app. @duskmoon-dev/cor
 </div>
 
 <!-- Backdrop -->
-<div class="drawer-backdrop drawer-backdrop-show"></div>
-```
+<div class="drawer-backdrop drawer-backdrop-show"></div>`} />
 
 ## Position
 
 ### Left Drawer (Default)
 
-```html
-<div class="drawer drawer-left drawer-open">
+<ComponentShowcase title="Left Drawer" code={`<div class="drawer drawer-left drawer-open">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Dashboard</a>
     <a href="#" class="drawer-item">Profile</a>
     <a href="#" class="drawer-item">Settings</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Right Drawer
 
-```html
-<div class="drawer drawer-right drawer-open">
+<ComponentShowcase title="Right Drawer" code={`<div class="drawer drawer-right drawer-open">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Notifications</a>
     <a href="#" class="drawer-item">Messages</a>
     <a href="#" class="drawer-item">Help</a>
   </div>
-</div>
-```
+</div>`} />
 
 ## Surface Variants
 
 ### Surface Container Low (Default)
 
-```html
-<div class="drawer drawer-left drawer-surface-container-low">
+<ComponentShowcase title="Surface Container Low" code={`<div class="drawer drawer-left drawer-surface-container-low">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Surface
 
-```html
-<div class="drawer drawer-left drawer-surface">
+<ComponentShowcase title="Surface Variant" code={`<div class="drawer drawer-left drawer-surface">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Surface Container
 
-```html
-<div class="drawer drawer-left drawer-surface-container">
+<ComponentShowcase title="Surface Container" code={`<div class="drawer drawer-left drawer-surface-container">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Surface Container High
 
-```html
-<div class="drawer drawer-left drawer-surface-container-high">
+<ComponentShowcase title="Surface Container High" code={`<div class="drawer drawer-left drawer-surface-container-high">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
 ### Small
 
-```html
-<div class="drawer drawer-left drawer-sm">
+<ComponentShowcase title="Small Drawer" code={`<div class="drawer drawer-left drawer-sm">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Medium (Default)
 
-```html
-<div class="drawer drawer-left drawer-md">
+<ComponentShowcase title="Medium Drawer" code={`<div class="drawer drawer-left drawer-md">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Large
 
-```html
-<div class="drawer drawer-left drawer-lg">
+<ComponentShowcase title="Large Drawer" code={`<div class="drawer drawer-left drawer-lg">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Extra Large
 
-```html
-<div class="drawer drawer-left drawer-xl">
+<ComponentShowcase title="Extra Large Drawer" code={`<div class="drawer drawer-left drawer-xl">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Item 1</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ## Rail Variant
 
 Collapsed icon-only drawer:
 
-```html
-<div class="drawer drawer-left drawer-rail drawer-open">
+<ComponentShowcase title="Rail Drawer" code={`<div class="drawer drawer-left drawer-rail drawer-open">
   <div class="drawer-body">
     <a href="#" class="drawer-item drawer-item-active">
       <span class="drawer-item-icon">
@@ -177,15 +156,13 @@ Collapsed icon-only drawer:
       Profile
     </a>
   </div>
-</div>
-```
+</div>`} />
 
 ## Permanent Drawer
 
 Always visible, no overlay:
 
-```html
-<div class="drawer drawer-left drawer-permanent">
+<ComponentShowcase title="Permanent Drawer" code={`<div class="drawer drawer-left drawer-permanent">
   <div class="drawer-header">
     <h2 class="drawer-title">Navigation</h2>
   </div>
@@ -194,13 +171,11 @@ Always visible, no overlay:
     <a href="#" class="drawer-item">Projects</a>
     <a href="#" class="drawer-item">Team</a>
   </div>
-</div>
-```
+</div>`} />
 
 ## With Sections and Labels
 
-```html
-<div class="drawer drawer-left drawer-open">
+<ComponentShowcase title="Drawer with Sections" code={`<div class="drawer drawer-left drawer-open">
   <div class="drawer-body">
     <div class="drawer-label">Main</div>
     <a href="#" class="drawer-item drawer-item-active">Dashboard</a>
@@ -212,13 +187,11 @@ Always visible, no overlay:
     <a href="#" class="drawer-item">Profile</a>
     <a href="#" class="drawer-item">Preferences</a>
   </div>
-</div>
-```
+</div>`} />
 
 ## With Icons and Badges
 
-```html
-<div class="drawer drawer-left drawer-open">
+<ComponentShowcase title="Drawer with Icons and Badges" code={`<div class="drawer drawer-left drawer-open">
   <div class="drawer-body">
     <a href="#" class="drawer-item drawer-item-active">
       <span class="drawer-item-icon">
@@ -247,48 +220,40 @@ Always visible, no overlay:
       <span class="drawer-item-badge">12</span>
     </a>
   </div>
-</div>
-```
+</div>`} />
 
 ## Active Item Colors
 
 ### Primary (Default)
 
-```html
-<div class="drawer drawer-left">
+<ComponentShowcase title="Active Primary" code={`<div class="drawer drawer-left">
   <div class="drawer-body">
     <a href="#" class="drawer-item drawer-item-active-primary">Active Primary</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Secondary
 
-```html
-<div class="drawer drawer-left">
+<ComponentShowcase title="Active Secondary" code={`<div class="drawer drawer-left">
   <div class="drawer-body">
     <a href="#" class="drawer-item drawer-item-active-secondary">Active Secondary</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ### Tertiary
 
-```html
-<div class="drawer drawer-left">
+<ComponentShowcase title="Active Tertiary" code={`<div class="drawer drawer-left">
   <div class="drawer-body">
     <a href="#" class="drawer-item drawer-item-active-tertiary">Active Tertiary</a>
     <a href="#" class="drawer-item">Item 2</a>
   </div>
-</div>
-```
+</div>`} />
 
 ## Complete Drawer with Header and Footer
 
-```html
-<div class="drawer drawer-left drawer-open">
+<ComponentShowcase title="Complete Drawer" code={`<div class="drawer drawer-left drawer-open">
   <div class="drawer-header">
     <h2 class="drawer-title">App Name</h2>
     <button class="drawer-close" aria-label="Close menu">
@@ -327,13 +292,11 @@ Always visible, no overlay:
   </div>
 </div>
 
-<div class="drawer-backdrop drawer-backdrop-show"></div>
-```
+<div class="drawer-backdrop drawer-backdrop-show"></div>`} />
 
 ## Nested Menu Items
 
-```html
-<div class="drawer drawer-left drawer-open">
+<ComponentShowcase title="Nested Menu Items" code={`<div class="drawer drawer-left drawer-open">
   <div class="drawer-body">
     <a href="#" class="drawer-item drawer-item-active">Dashboard</a>
     <a href="#" class="drawer-item">Projects</a>
@@ -342,8 +305,7 @@ Always visible, no overlay:
     <a href="#" class="drawer-item drawer-item-nested-2">Subproject B1</a>
     <a href="#" class="drawer-item">Settings</a>
   </div>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -362,8 +324,7 @@ Organize drawer items logically:
 - Support keyboard navigation
 - Include focus indicators
 
-```html
-<nav class="drawer drawer-left drawer-open" aria-label="Main navigation">
+<ComponentShowcase title="Accessible Drawer" code={`<nav class="drawer drawer-left drawer-open" aria-label="Main navigation">
   <div class="drawer-header">
     <h2 class="drawer-title">Menu</h2>
     <button class="drawer-close" aria-label="Close navigation menu">×</button>
@@ -372,15 +333,13 @@ Organize drawer items logically:
     <a href="#" class="drawer-item" aria-current="page">Home</a>
     <a href="#" class="drawer-item">Settings</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Responsive Design
 
 Use permanent drawer for desktop, modal drawer for mobile:
 
-```html
-<!-- Desktop: permanent drawer -->
+<ComponentShowcase title="Responsive Drawer" code={`<!-- Desktop: permanent drawer -->
 <div class="drawer drawer-left drawer-permanent hidden lg:flex">
   <div class="drawer-body">
     <a href="#" class="drawer-item">Dashboard</a>
@@ -395,8 +354,7 @@ Use permanent drawer for desktop, modal drawer for mobile:
     <a href="#" class="drawer-item">Settings</a>
   </div>
 </div>
-<div class="drawer-backdrop lg:hidden"></div>
-```
+<div class="drawer-backdrop lg:hidden"></div>`} />
 
 ## Framework Examples
 

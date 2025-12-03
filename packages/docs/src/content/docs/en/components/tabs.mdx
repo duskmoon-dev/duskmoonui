@@ -7,26 +7,25 @@ published: true
 tags: ['tabs', 'navigation', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Tabs
 
 Tabs organize content across different screens and views. @duskmoon-dev/core provides a flexible tabs component with multiple variants and layouts.
 
 ## Basic Usage
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Basic Tabs" code={`<div class="tabs">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ## Tab Panels
 
 Tabs with content panels:
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Tabs with Panels" code={`<div class="tabs">
   <button class="tab tab-active" data-tab="panel1">Tab 1</button>
   <button class="tab" data-tab="panel2">Tab 2</button>
   <button class="tab" data-tab="panel3">Tab 3</button>
@@ -40,8 +39,7 @@ Tabs with content panels:
 </div>
 <div class="tab-panel" id="panel3">
   <p>Content for Tab 3</p>
-</div>
-```
+</div>`} />
 
 ## Variants
 
@@ -49,186 +47,153 @@ Tabs with content panels:
 
 Tabs with bottom border indicator:
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Default Tabs" code={`<div class="tabs">
   <button class="tab tab-active">Active</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Pill Variant
 
 Filled background for active state:
 
-```html
-<div class="tabs tabs-pill">
+<ComponentShowcase title="Pill Variant" code={`<div class="tabs tabs-pill">
   <button class="tab tab-active">Active</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Tonal Variant
 
 Tonal background for active state:
 
-```html
-<div class="tabs tabs-tonal">
+<ComponentShowcase title="Tonal Variant" code={`<div class="tabs tabs-tonal">
   <button class="tab tab-active">Active</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Boxed Variant
 
 Tabs with background container:
 
-```html
-<div class="tabs tabs-boxed">
+<ComponentShowcase title="Boxed Variant" code={`<div class="tabs tabs-boxed">
   <button class="tab tab-active">Active</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
 ### Primary (Default)
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Primary Color" code={`<div class="tabs">
   <button class="tab tab-active-primary">Active</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Secondary
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Secondary Color" code={`<div class="tabs">
   <button class="tab tab-active-secondary">Active</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Tertiary
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Tertiary Color" code={`<div class="tabs">
   <button class="tab tab-active-tertiary">Active</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ## Orientation
 
 ### Horizontal (Default)
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Horizontal Tabs" code={`<div class="tabs">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Vertical
 
-```html
-<div class="tabs tabs-vertical">
+<ComponentShowcase title="Vertical Tabs" code={`<div class="tabs tabs-vertical">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ## Alignment
 
 ### Start-Aligned (Default)
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Start-Aligned" code={`<div class="tabs">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Centered
 
-```html
-<div class="tabs tabs-center">
+<ComponentShowcase title="Centered Tabs" code={`<div class="tabs tabs-center">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### End-Aligned
 
-```html
-<div class="tabs tabs-end">
+<ComponentShowcase title="End-Aligned Tabs" code={`<div class="tabs tabs-end">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
 ### Small
 
-```html
-<div class="tabs tabs-sm">
+<ComponentShowcase title="Small Tabs" code={`<div class="tabs tabs-sm">
   <button class="tab tab-active">Small Tab 1</button>
   <button class="tab">Small Tab 2</button>
   <button class="tab">Small Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Medium (Default)
 
-```html
-<div class="tabs tabs-md">
+<ComponentShowcase title="Medium Tabs" code={`<div class="tabs tabs-md">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ### Large
 
-```html
-<div class="tabs tabs-lg">
+<ComponentShowcase title="Large Tabs" code={`<div class="tabs tabs-lg">
   <button class="tab tab-active">Large Tab 1</button>
   <button class="tab">Large Tab 2</button>
   <button class="tab">Large Tab 3</button>
-</div>
-```
+</div>`} />
 
 ## Full Width Tabs
 
 Tabs that stretch to fill the container:
 
-```html
-<div class="tabs tabs-full">
+<ComponentShowcase title="Full Width Tabs" code={`<div class="tabs tabs-full">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
-</div>
-```
+</div>`} />
 
 ## Scrollable Tabs
 
 For many tabs that overflow the container:
 
-```html
-<div class="tabs tabs-scrollable">
+<ComponentShowcase title="Scrollable Tabs" code={`<div class="tabs tabs-scrollable">
   <button class="tab tab-active">Tab 1</button>
   <button class="tab">Tab 2</button>
   <button class="tab">Tab 3</button>
@@ -237,15 +202,13 @@ For many tabs that overflow the container:
   <button class="tab">Tab 6</button>
   <button class="tab">Tab 7</button>
   <button class="tab">Tab 8</button>
-</div>
-```
+</div>`} />
 
 ## With Icons
 
 ### Icons with Text
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Tabs with Icons and Text" code={`<div class="tabs">
   <button class="tab tab-active">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -265,13 +228,11 @@ For many tabs that overflow the container:
     </svg>
     Settings
   </button>
-</div>
-```
+</div>`} />
 
 ### Icon-Only Tabs
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Icon-Only Tabs" code={`<div class="tabs">
   <button class="tab tab-icon-only tab-active" aria-label="Home">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -288,15 +249,13 @@ For many tabs that overflow the container:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
   </button>
-</div>
-```
+</div>`} />
 
 ## With Badges
 
 Show notification counts:
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Tabs with Badges" code={`<div class="tabs">
   <button class="tab tab-active">
     Messages
     <span class="tab-badge">5</span>
@@ -306,18 +265,15 @@ Show notification counts:
     <span class="tab-badge">12</span>
   </button>
   <button class="tab">Settings</button>
-</div>
-```
+</div>`} />
 
 ## Disabled Tabs
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Disabled Tabs" code={`<div class="tabs">
   <button class="tab tab-active">Active</button>
   <button class="tab">Enabled</button>
   <button class="tab" disabled>Disabled</button>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -325,14 +281,12 @@ Show notification counts:
 
 Use tabs for top-level content organization:
 
-```html
-<div class="tabs">
+<ComponentShowcase title="Navigation Structure" code={`<div class="tabs">
   <button class="tab tab-active">Overview</button>
   <button class="tab">Details</button>
   <button class="tab">Reviews</button>
   <button class="tab">Related</button>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -341,8 +295,7 @@ Use tabs for top-level content organization:
 - Use `aria-selected` and ARIA roles for enhanced accessibility
 - Ensure keyboard navigation support
 
-```html
-<div class="tabs" role="tablist">
+<ComponentShowcase title="Accessible Tabs" code={`<div class="tabs" role="tablist">
   <button class="tab tab-active" role="tab" aria-selected="true" aria-controls="panel1">
     Tab 1
   </button>
@@ -356,8 +309,7 @@ Use tabs for top-level content organization:
 </div>
 <div id="panel2" class="tab-panel" role="tabpanel" aria-labelledby="tab2">
   Content 2
-</div>
-```
+</div>`} />
 
 ### Tab Count
 

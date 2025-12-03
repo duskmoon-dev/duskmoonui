@@ -6,6 +6,7 @@ order: 38
 published: true
 tags: ['timeline', 'components', 'material-design', 'chronological']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Timeline
 
@@ -13,8 +14,9 @@ Timelines display a list of events in chronological order, helping users underst
 
 ## Basic Usage
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Basic Timeline"
+  code={`<div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -45,8 +47,8 @@ Timelines display a list of events in chronological order, helping users underst
       </p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Layouts
 
@@ -54,8 +56,9 @@ Timelines display a list of events in chronological order, helping users underst
 
 The default layout displays events vertically with a connecting line:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Vertical Timeline"
+  code={`<div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -72,15 +75,16 @@ The default layout displays events vertically with a connecting line:
       <p class="timeline-description">Started coding the core features.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Horizontal Timeline
 
 Display events horizontally for a different perspective:
 
-```html
-<div class="timeline timeline-horizontal">
+<ComponentShowcase
+  title="Horizontal Timeline"
+  code={`<div class="timeline timeline-horizontal">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -105,15 +109,16 @@ Display events horizontally for a different perspective:
       <p class="timeline-description">Launch preparation</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Alternate Layout (Zigzag)
 
 Create a zigzag pattern with alternating sides:
 
-```html
-<div class="timeline timeline-alternate">
+<ComponentShowcase
+  title="Alternate Layout Timeline"
+  code={`<div class="timeline timeline-alternate">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -138,15 +143,16 @@ Create a zigzag pattern with alternating sides:
       <p class="timeline-description">Building the product.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Marker Colors
 
 Use different colors to categorize events or show status:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Timeline with Colored Markers"
+  code={`<div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -187,15 +193,16 @@ Use different colors to categorize events or show status:
       <p class="timeline-description">An error was detected and resolved.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Icon Markers
 
 Add icons to markers for better visual communication:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Timeline with Icon Markers"
+  code={`<div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker timeline-marker-icon">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -232,8 +239,8 @@ Add icons to markers for better visual communication:
       <p class="timeline-description">All tests passed verification.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Item States
 
@@ -241,8 +248,9 @@ Add icons to markers for better visual communication:
 
 Highlight the current or active timeline item with a pulsing animation:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Timeline with Active State"
+  code={`<div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker timeline-marker-success"></div>
     <div class="timeline-content">
@@ -267,15 +275,16 @@ Highlight the current or active timeline item with a pulsing animation:
       <p class="timeline-description">Scheduled to begin testing.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Pending State
 
 Show future or pending items with reduced opacity:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Timeline with Pending State"
+  code={`<div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker timeline-marker-success"></div>
     <div class="timeline-content">
@@ -292,15 +301,16 @@ Show future or pending items with reduced opacity:
       <p class="timeline-description">Waiting to start the next phase.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Size Variants
 
 ### Small Timeline
 
-```html
-<div class="timeline timeline-sm">
+<ComponentShowcase
+  title="Small Timeline"
+  code={`<div class="timeline timeline-sm">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -317,13 +327,14 @@ Show future or pending items with reduced opacity:
       <p class="timeline-description">More concise display.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Large Timeline
 
-```html
-<div class="timeline timeline-lg">
+<ComponentShowcase
+  title="Large Timeline"
+  code={`<div class="timeline timeline-lg">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -344,15 +355,16 @@ Show future or pending items with reduced opacity:
       </p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Compact Timeline
 
 Reduce spacing for more condensed display:
 
-```html
-<div class="timeline timeline-compact">
+<ComponentShowcase
+  title="Compact Timeline"
+  code={`<div class="timeline timeline-compact">
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -377,15 +389,16 @@ Reduce spacing for more condensed display:
       <p class="timeline-description">PR review session.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Card Content
 
 Display timeline content in card containers for better separation:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Timeline with Card Content"
+  code={`<div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker timeline-marker-success"></div>
     <div class="timeline-content timeline-content-card">
@@ -417,8 +430,8 @@ Display timeline content in card containers for better separation:
       </p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Best Practices
 
@@ -426,8 +439,9 @@ Display timeline content in card containers for better separation:
 
 Always display events in chronological order (newest first or oldest first, consistently):
 
-```html
-<!-- Good: Clear chronological progression -->
+<ComponentShowcase
+  title="Clear Chronological Order"
+  code={`<!-- Good: Clear chronological progression -->
 <div class="timeline">
   <div class="timeline-item">
     <div class="timeline-marker timeline-marker-success"></div>
@@ -450,15 +464,16 @@ Always display events in chronological order (newest first or oldest first, cons
       <h3 class="timeline-title">Current Sprint</h3>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Meaningful Time Labels
 
 Use clear, contextual time labels:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Meaningful Time Labels"
+  code={`<div class="timeline">
   <!-- Good: Specific and meaningful -->
   <div class="timeline-item">
     <div class="timeline-marker"></div>
@@ -476,15 +491,16 @@ Use clear, contextual time labels:
       <h3 class="timeline-title">Update Deployed</h3>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Use Colors Meaningfully
 
 Apply colors to convey status or category:
 
-```html
-<div class="timeline">
+<ComponentShowcase
+  title="Meaningful Color Usage"
+  code={`<div class="timeline">
   <!-- Success: Completed tasks -->
   <div class="timeline-item">
     <div class="timeline-marker timeline-marker-success"></div>
@@ -508,15 +524,16 @@ Apply colors to convey status or category:
       <h3 class="timeline-title">In Progress</h3>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Accessibility
 
 Ensure timeline content is accessible:
 
-```html
-<div class="timeline" role="list" aria-label="Project timeline">
+<ComponentShowcase
+  title="Accessible Timeline"
+  code={`<div class="timeline" role="list" aria-label="Project timeline">
   <div class="timeline-item" role="listitem">
     <div class="timeline-marker" aria-hidden="true"></div>
     <div class="timeline-content">
@@ -527,8 +544,8 @@ Ensure timeline content is accessible:
       </p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Framework Examples
 
@@ -751,8 +768,9 @@ const markerClasses = (item) => {
 
 ### Combinations
 
-```html
-<!-- Large horizontal timeline with card content -->
+<ComponentShowcase
+  title="Combined Timeline Features"
+  code={`<!-- Large horizontal timeline with card content -->
 <div class="timeline timeline-horizontal timeline-lg">
   <div class="timeline-item timeline-item-active">
     <div class="timeline-marker timeline-marker-icon timeline-marker-success">
@@ -775,8 +793,8 @@ const markerClasses = (item) => {
       <h3 class="timeline-title">Initialize</h3>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Related Components
 

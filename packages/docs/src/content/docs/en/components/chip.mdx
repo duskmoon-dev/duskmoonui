@@ -6,6 +6,7 @@ order: 24
 published: true
 tags: ['chip', 'components', 'material-design', 'tag', 'filter']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Chip
 
@@ -13,9 +14,7 @@ Chips help users enter information, make selections, filter content, or trigger 
 
 ## Basic Usage
 
-```html
-<span class="chip">Basic Chip</span>
-```
+<ComponentShowcase title="Basic Chip" code={`<span class="chip">Basic Chip</span>`} />
 
 ## Chip Types
 
@@ -25,8 +24,7 @@ Material Design 3 defines four types of chips, each serving a specific purpose:
 
 Assist chips help users take contextual actions. They're commonly used for smart or automated actions.
 
-```html
-<button class="chip chip-clickable">
+<ComponentShowcase title="Assist Chips" code={`<button class="chip chip-clickable">
   <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
   </svg>
@@ -45,29 +43,25 @@ Assist chips help users take contextual actions. They're commonly used for smart
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
   </svg>
   Share
-</button>
-```
+</button>`} />
 
 ### Filter Chips
 
 Filter chips allow users to refine content. They can be selected or unselected and often appear in groups.
 
-```html
-<div class="chip-group">
+<ComponentShowcase title="Filter Chips" code={`<div class="chip-group">
   <button class="chip chip-selectable chip-selected">All</button>
   <button class="chip chip-selectable">Electronics</button>
   <button class="chip chip-selectable">Clothing</button>
   <button class="chip chip-selectable">Books</button>
   <button class="chip chip-selectable">Home & Garden</button>
-</div>
-```
+</div>`} />
 
 ### Input Chips
 
 Input chips represent discrete pieces of information entered by a user, such as tags or contacts. They typically include a remove button.
 
-```html
-<div class="chip-group">
+<ComponentShowcase title="Input Chips" code={`<div class="chip-group">
   <span class="chip">
     JavaScript
     <button class="chip-remove" aria-label="Remove JavaScript tag">
@@ -94,20 +88,17 @@ Input chips represent discrete pieces of information entered by a user, such as 
       </svg>
     </button>
   </span>
-</div>
-```
+</div>`} />
 
 ### Suggestion Chips
 
 Suggestion chips help users explore related content or complete tasks. They're similar to assist chips but focused on content discovery.
 
-```html
-<div class="chip-group">
+<ComponentShowcase title="Suggestion Chips" code={`<div class="chip-group">
   <button class="chip chip-clickable">Trending Topics</button>
   <button class="chip chip-clickable">Popular Tags</button>
   <button class="chip chip-clickable">Recommended</button>
-</div>
-```
+</div>`} />
 
 ## Variants
 
@@ -115,60 +106,49 @@ Suggestion chips help users explore related content or complete tasks. They're s
 
 Default chips with filled background:
 
-```html
-<span class="chip">Default Chip</span>
+<ComponentShowcase title="Default Chips" code={`<span class="chip">Default Chip</span>
 <span class="chip chip-primary">Primary</span>
 <span class="chip chip-secondary">Secondary</span>
-<span class="chip chip-tertiary">Tertiary</span>
-```
+<span class="chip chip-tertiary">Tertiary</span>`} />
 
 ### Outlined Chips
 
 Outlined chips with transparent background and border:
 
-```html
-<span class="chip chip-outlined">Outlined</span>
+<ComponentShowcase title="Outlined Chips" code={`<span class="chip chip-outlined">Outlined</span>
 <button class="chip chip-outlined chip-clickable">Clickable Outlined</button>
-<button class="chip chip-outlined chip-selectable">Selectable Outlined</button>
-```
+<button class="chip chip-outlined chip-selectable">Selectable Outlined</button>`} />
 
 ## Colors
 
 ### Theme Colors
 
-```html
-<span class="chip chip-primary">Primary</span>
+<ComponentShowcase title="Theme Colors" code={`<span class="chip chip-primary">Primary</span>
 <span class="chip chip-secondary">Secondary</span>
-<span class="chip chip-tertiary">Tertiary</span>
-```
+<span class="chip chip-tertiary">Tertiary</span>`} />
 
 ### Semantic Colors
 
 Use semantic colors to convey status or meaning:
 
-```html
-<span class="chip chip-success">Success</span>
+<ComponentShowcase title="Semantic Colors" code={`<span class="chip chip-success">Success</span>
 <span class="chip chip-error">Error</span>
 <span class="chip chip-warning">Warning</span>
-<span class="chip chip-info">Info</span>
-```
+<span class="chip chip-info">Info</span>`} />
 
 ## Selected States
 
 Filter chips support multiple selected state colors:
 
-```html
-<button class="chip chip-selectable chip-selected-primary">Selected Primary</button>
+<ComponentShowcase title="Selected States" code={`<button class="chip chip-selectable chip-selected-primary">Selected Primary</button>
 <button class="chip chip-selectable chip-selected-secondary">Selected Secondary</button>
-<button class="chip chip-selectable chip-selected-tertiary">Selected Tertiary</button>
-```
+<button class="chip chip-selectable chip-selected-tertiary">Selected Tertiary</button>`} />
 
 ## With Icons
 
 Add leading icons to provide visual context:
 
-```html
-<span class="chip">
+<ComponentShowcase title="Chips with Icons" code={`<span class="chip">
   <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
   </svg>
@@ -187,15 +167,13 @@ Add leading icons to provide visual context:
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
   </svg>
   Featured
-</span>
-```
+</span>`} />
 
 ## With Avatar
 
 Use avatars for chips representing people or user-generated content:
 
-```html
-<span class="chip">
+<ComponentShowcase title="Chips with Avatar" code={`<span class="chip">
   <img src="/avatar1.jpg" alt="User avatar" class="chip-avatar" />
   John Doe
 </span>
@@ -208,23 +186,19 @@ Use avatars for chips representing people or user-generated content:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
-</span>
-```
+</span>`} />
 
 ## Sizes
 
 Three sizes are available for different contexts:
 
-```html
-<span class="chip chip-sm">Small Chip</span>
+<ComponentShowcase title="Chip Sizes" code={`<span class="chip chip-sm">Small Chip</span>
 <span class="chip">Default Chip</span>
-<span class="chip chip-lg">Large Chip</span>
-```
+<span class="chip chip-lg">Large Chip</span>`} />
 
 Sizes work with all variants:
 
-```html
-<span class="chip chip-sm chip-primary">
+<ComponentShowcase title="Chip Sizes with Variants" code={`<span class="chip chip-sm chip-primary">
   <svg class="chip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
   </svg>
@@ -239,8 +213,7 @@ Sizes work with all variants:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
-</span>
-```
+</span>`} />
 
 ## States
 
@@ -248,51 +221,43 @@ Sizes work with all variants:
 
 Disabled chips are non-interactive:
 
-```html
-<span class="chip chip-disabled">Disabled Chip</span>
+<ComponentShowcase title="Disabled Chips" code={`<span class="chip chip-disabled">Disabled Chip</span>
 <button class="chip chip-clickable chip-disabled">Disabled Clickable</button>
-<button class="chip chip-selectable chip-disabled">Disabled Selectable</button>
-```
+<button class="chip chip-selectable chip-disabled">Disabled Selectable</button>`} />
 
 ### Interactive States
 
 Chips can be clickable or selectable:
 
-```html
-<!-- Clickable chips (assist/suggestion) -->
+<ComponentShowcase title="Interactive States" code={`<!-- Clickable chips (assist/suggestion) -->
 <button class="chip chip-clickable">Click Me</button>
 <button class="chip chip-outlined chip-clickable">Outlined Clickable</button>
 
 <!-- Selectable chips (filter) -->
 <button class="chip chip-selectable">Select Me</button>
-<button class="chip chip-selectable chip-selected">Selected</button>
-```
+<button class="chip chip-selectable chip-selected">Selected</button>`} />
 
 ## Chip Groups
 
 Group related chips together with consistent spacing:
 
-```html
-<div class="chip-group">
+<ComponentShowcase title="Chip Groups" code={`<div class="chip-group">
   <span class="chip">React</span>
   <span class="chip">Vue</span>
   <span class="chip">Angular</span>
   <span class="chip">Svelte</span>
-</div>
-```
+</div>`} />
 
 ### Dense Chip Groups
 
 Use dense spacing for compact layouts:
 
-```html
-<div class="chip-group chip-group-dense">
+<ComponentShowcase title="Dense Chip Groups" code={`<div class="chip-group chip-group-dense">
   <span class="chip chip-sm">HTML</span>
   <span class="chip chip-sm">CSS</span>
   <span class="chip chip-sm">JavaScript</span>
   <span class="chip chip-sm">TypeScript</span>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -303,8 +268,7 @@ Use dense spacing for compact layouts:
 3. **Input Chips**: Use for user-entered discrete information (e.g., email recipients, tags)
 4. **Suggestion Chips**: Use for content discovery and exploration (e.g., "Trending", "Popular")
 
-```html
-<!-- Good: Clear purpose for each type -->
+<ComponentShowcase title="Best Practices - Clear Purpose" code={`<!-- Good: Clear purpose for each type -->
 <div class="chip-group">
   <!-- Filter chips for categories -->
   <button class="chip chip-selectable chip-selected">All</button>
@@ -322,8 +286,7 @@ Use dense spacing for compact layouts:
     TypeScript
     <button class="chip-remove" aria-label="Remove TypeScript">×</button>
   </span>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -332,8 +295,7 @@ Use dense spacing for compact layouts:
 - Ensure sufficient color contrast
 - Support keyboard navigation (built-in for button elements)
 
-```html
-<!-- Good: Accessible chip with remove button -->
+<ComponentShowcase title="Accessibility Examples" code={`<!-- Good: Accessible chip with remove button -->
 <span class="chip">
   JavaScript
   <button class="chip-remove" aria-label="Remove JavaScript tag">
@@ -346,34 +308,29 @@ Use dense spacing for compact layouts:
 <!-- Good: Accessible filter chip with ARIA state -->
 <button class="chip chip-selectable chip-selected" aria-pressed="true">
   Active Filter
-</button>
-```
+</button>`} />
 
 ### Label Length
 
 Keep chip labels concise - typically 1-3 words:
 
-```html
-<!-- Good: Concise labels -->
+<ComponentShowcase title="Label Length Best Practices" code={`<!-- Good: Concise labels -->
 <span class="chip">JavaScript</span>
 <span class="chip">Web Development</span>
 
 <!-- Avoid: Long labels -->
-<span class="chip">This is a very long label that wraps awkwardly</span>
-```
+<span class="chip">This is a very long label that wraps awkwardly</span>`} />
 
 ### Visual Hierarchy
 
 Use color and variant thoughtfully to create clear hierarchy:
 
-```html
-<div class="chip-group">
+<ComponentShowcase title="Visual Hierarchy" code={`<div class="chip-group">
   <!-- Selected/active state stands out -->
   <button class="chip chip-selectable chip-selected-primary">All Items</button>
   <button class="chip chip-selectable">Active</button>
   <button class="chip chip-selectable">Archived</button>
-</div>
-```
+</div>`} />
 
 ## Framework Examples
 
@@ -587,8 +544,7 @@ Use semantic HTML elements based on chip type:
 
 Common chip combinations:
 
-```html
-<!-- Filter chip: selectable with selected state -->
+<ComponentShowcase title="Common Chip Combinations" code={`<!-- Filter chip: selectable with selected state -->
 <button class="chip chip-selectable chip-selected-primary">
   Selected Filter
 </button>
@@ -609,8 +565,7 @@ Common chip combinations:
 <!-- Small outlined filter chip -->
 <button class="chip chip-sm chip-outlined chip-selectable">
   Compact Filter
-</button>
-```
+</button>`} />
 
 ## Related Components
 

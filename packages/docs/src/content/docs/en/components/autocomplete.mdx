@@ -6,6 +6,7 @@ order: 27
 published: true
 tags: ['autocomplete', 'combobox', 'components', 'material-design', 'input']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Autocomplete
 
@@ -13,8 +14,7 @@ Autocomplete provides suggestions as users type, helping them quickly find and s
 
 ## Basic Usage
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Basic Autocomplete" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -34,8 +34,7 @@ Autocomplete provides suggestions as users type, helping them quickly find and s
       <li role="option" class="autocomplete-option">Option 3</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ## Variants
 
@@ -43,8 +42,7 @@ Autocomplete provides suggestions as users type, helping them quickly find and s
 
 The default autocomplete with a filled background:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Filled Autocomplete" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -62,15 +60,13 @@ The default autocomplete with a filled background:
       <li role="option" class="autocomplete-option">United Kingdom</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ### Outlined Autocomplete
 
 Autocomplete with an outlined border:
 
-```html
-<div class="autocomplete autocomplete-outlined">
+<ComponentShowcase title="Outlined Autocomplete" code={`<div class="autocomplete autocomplete-outlined">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -87,8 +83,7 @@ Autocomplete with an outlined border:
       <li role="option" class="autocomplete-option">Product C</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ## Selection States
 
@@ -96,8 +91,7 @@ Autocomplete with an outlined border:
 
 Standard autocomplete with a single selected option:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Single Selection" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -116,15 +110,13 @@ Standard autocomplete with a single selected option:
       <li role="option" class="autocomplete-option">Java</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ### Multiple Selection with Chips
 
 Autocomplete supporting multiple selections displayed as chips:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Multiple Selection with Chips" code={`<div class="autocomplete">
   <!-- Selected items as chips -->
   <div class="autocomplete-chips">
     <span class="autocomplete-chip">
@@ -155,15 +147,13 @@ Autocomplete supporting multiple selections displayed as chips:
       <li role="option" class="autocomplete-option">Java</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ## Options with Icons
 
 Add icons to autocomplete options for better visual context:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Options with Icons" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -195,15 +185,13 @@ Add icons to autocomplete options for better visual context:
       </li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ## Grouped Options
 
 Organize options into labeled groups:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Grouped Options" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -229,8 +217,7 @@ Organize options into labeled groups:
       <li role="option" class="autocomplete-option">Sketch</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ## States
 
@@ -238,8 +225,7 @@ Organize options into labeled groups:
 
 Display a loading indicator while fetching async data:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Loading State" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -258,15 +244,13 @@ Display a loading indicator while fetching async data:
       Loading...
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### No Options
 
 Show a message when no matching options are found:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="No Options State" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -282,15 +266,13 @@ Show a message when no matching options are found:
       No results found
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Focused Option
 
 Keyboard navigation highlights the focused option:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Focused Option" code={`<div class="autocomplete">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -308,15 +290,13 @@ Keyboard navigation highlights the focused option:
       <li role="option" id="option-3" class="autocomplete-option">Option 3</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 ### Disabled State
 
 Non-interactive autocomplete:
 
-```html
-<div class="autocomplete autocomplete-disabled">
+<ComponentShowcase title="Disabled State" code={`<div class="autocomplete autocomplete-disabled">
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
@@ -327,15 +307,13 @@ Non-interactive autocomplete:
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown" disabled>▼</button>
   </div>
-</div>
-```
+</div>`} />
 
 ## Dropdown Control
 
 The dropdown visibility is controlled by the `autocomplete-dropdown-open` class:
 
-```html
-<!-- Closed dropdown (hidden) -->
+<ComponentShowcase title="Dropdown Control" code={`<!-- Closed dropdown (hidden) -->
 <div class="autocomplete-dropdown">
   <!-- options -->
 </div>
@@ -343,8 +321,7 @@ The dropdown visibility is controlled by the `autocomplete-dropdown-open` class:
 <!-- Open dropdown (visible) -->
 <div class="autocomplete-dropdown autocomplete-dropdown-open">
   <!-- options -->
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -352,8 +329,7 @@ The dropdown visibility is controlled by the `autocomplete-dropdown-open` class:
 
 Autocomplete requires proper ARIA attributes for screen reader support:
 
-```html
-<div class="autocomplete">
+<ComponentShowcase title="Accessible Autocomplete" code={`<div class="autocomplete">
   <label for="autocomplete-input" class="block text-sm font-medium mb-2">
     Country
   </label>
@@ -387,8 +363,7 @@ Autocomplete requires proper ARIA attributes for screen reader support:
       <li role="option" id="option-2" class="autocomplete-option">Canada</li>
     </ul>
   </div>
-</div>
-```
+</div>`} />
 
 Key accessibility requirements:
 - Use `role="combobox"` on the input

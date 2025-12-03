@@ -1,17 +1,16 @@
 <!--
   Sync Impact Report:
-  Version Change: 1.1.0 → 1.2.0
+  Version Change: 1.2.0 → 1.2.1
   Modified Principles:
-    - Principle VI "Documentation as Code" → Expanded to include Astro.js site structure and GitHub Pages deployment requirements
+    - Principle V "Zero Runtime Dependencies" → Clarified Bun as exclusive runtime (not just for development)
   Added Sections:
-    - Explicit requirement for packages/docs as Astro.js site deployed to GitHub Pages
-    - Documentation site must include interactive examples and theme switcher
-    - Documentation deployment workflow must be automated via GitHub Actions
+    - Explicit "Runtime & Package Manager" subsection in Project Overview
+    - Updated Version Policy to reference Bun instead of Node.js
   Removed Sections: None
   Templates Status:
-    ✅ plan-template.md - Validated, constitution check section compatible
-    ✅ spec-template.md - Validated, requirements alignment compatible
-    ✅ tasks-template.md - Validated, task structure compatible
+    ✅ plan-template.md - Validated, no changes needed
+    ✅ spec-template.md - Validated, no changes needed
+    ✅ tasks-template.md - Validated, no changes needed
   Follow-up TODOs:
     ⚠️ Current @duskmoon-dev/core implementation violates Principle II (uses Tailwind v3 API)
     ⚠️ Plugin must be refactored to use Tailwind v4 native @plugin and @theme syntax
@@ -26,8 +25,14 @@
 DuskMoonUI is a Tailwind CSS plugin library (similar to DaisyUI) providing a three-color system based on Material Design 3 tokens with pre-built component styles.
 
 **Package Structure**:
-- `packages/core`: Tailwind CSS plugin (`@duskmoon-dev/core`) - published to npm
+- `packages/core`: Tailwind CSS plugin (`@duskmoon-dev/core`) - published to npm registry
 - `packages/docs`: Documentation site built with Astro.js - deployed to GitHub Pages
+
+**Runtime & Package Manager**:
+- This project uses **Bun** exclusively as the JavaScript runtime and package manager
+- Do NOT use Node.js, npm, pnpm, or yarn for development or CI/CD
+- All scripts, dependencies, and workflows MUST be Bun-compatible
+- The published package remains compatible with Node.js 18+ for end users
 
 ## Core Principles
 
@@ -82,10 +87,11 @@ TypeScript type definitions are NON-NEGOTIABLE:
 The core package (`@duskmoon-dev/core`) MUST:
 - Have ONLY `tailwindcss` (>= 4.0.0) as a peer dependency
 - Emit pure CSS at build time (no client-side JS required)
-- Use Bun for development but remain Node.js 18+ compatible
+- Use Bun exclusively for development, testing, and CI/CD
+- Remain compatible with Node.js 18+ for end-user consumption
 - Keep bundle size <10KB (minified) for the plugin itself
 
-**Rationale**: Dependency bloat is a primary complaint about UI libraries. Keep the attack surface minimal. Users should not need to ship JavaScript for styling.
+**Rationale**: Dependency bloat is a primary complaint about UI libraries. Keep the attack surface minimal. Users should not need to ship JavaScript for styling. Bun provides faster development experience without affecting end-user compatibility.
 
 ### VI. Documentation as Code
 
@@ -107,6 +113,7 @@ All features MUST include:
 
 **Deployment Requirements**:
 - GitHub Actions workflow MUST build docs site on every push to main branch
+- GitHub Actions MUST use Bun for all build steps
 - Build dependencies (`@tailwindcss/vite`, `@tailwindcss/postcss`) MUST be properly installed
 - Build process MUST validate all examples compile successfully
 - Failed builds MUST block deployment
@@ -147,8 +154,8 @@ Before opening pull requests:
 
 ### Release Requirements
 
-Before publishing to npm:
-- Version bump MUST follow semver (use `npm version`)
+Before publishing to npm registry:
+- Version bump MUST follow semver (use `bun version` or manual edit)
 - Git tag MUST match package.json version
 - Built artifacts in `dist/` MUST be committed (for GitHub releases)
 - README.md examples MUST be tested against Tailwind v4
@@ -176,17 +183,19 @@ All PRs MUST:
 ### Monorepo Conventions
 
 Workspace structure:
-- `packages/core/`: The Tailwind v4 plugin (published to npm)
+- `packages/core/`: The Tailwind v4 plugin (published to npm registry)
 - `packages/docs/`: Astro.js documentation site (deployed to GitHub Pages)
 - `examples/*/`: Integration examples (Next.js, Astro, vanilla)
 
-Commands:
+Commands (all via Bun):
+- `bun install` - Install all workspace dependencies
 - `bun run build:core` - Build plugin only
 - `bun run build:docs` - Build documentation site
 - `bun run dev` - Start docs dev server (defaults to docs package)
 - `bun run dev:core` - Watch mode for core plugin development
 - `bun run typecheck` - Type check all workspaces
 - `bun run preview` - Preview built documentation site
+- `bun test` - Run all tests
 
 ## Governance
 
@@ -201,7 +210,7 @@ Constitution changes require:
 
 ### Version Policy
 
-- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Node.js requirement bump, breaking documentation site changes
+- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump, breaking documentation site changes
 - **MINOR**: New principle addition, expanded accessibility requirements, new documentation requirements
 - **PATCH**: Clarifications, typo fixes, example updates, non-breaking documentation improvements
 
@@ -224,4 +233,4 @@ Any feature violating these principles MUST justify complexity:
 - **Why**: Problem that requires violation
 - **Alternatives**: Simpler approaches considered and rejected with reasons
 
-**Version**: 1.2.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-11-19
+**Version**: 1.2.1 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-12-01

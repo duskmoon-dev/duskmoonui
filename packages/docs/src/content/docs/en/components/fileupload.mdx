@@ -7,29 +7,28 @@ published: true
 tags: ['fileupload', 'components', 'material-design', 'drag-drop', 'upload']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # File Upload
 
 The File Upload component provides an intuitive way for users to upload files with drag-and-drop support, multiple file selection, progress tracking, and preview capabilities. Designed with Material Design 3 principles.
 
 ## Basic Usage
 
-```html
-<div class="file-upload">
+<ComponentShowcase title="Basic File Upload" code={`<div class="file-upload">
   <label for="file-input" class="file-upload-dropzone">
     <div class="file-upload-icon">📁</div>
     <p class="file-upload-text">Drop files here or click to browse</p>
     <p class="file-upload-hint">Supports: JPG, PNG, PDF (Max 10MB)</p>
   </label>
   <input type="file" id="file-input" class="file-upload-input" />
-</div>
-```
+</div>`} />
 
 ## Drag and Drop
 
 The file upload component is designed to work seamlessly with drag-and-drop functionality.
 
-```html
-<div class="file-upload">
+<ComponentShowcase title="Drag and Drop Upload" code={`<div class="file-upload">
   <label for="file-drop" class="file-upload-dropzone" id="dropzone">
     <div class="file-upload-icon">☁️</div>
     <p class="file-upload-text">Drag & drop files here</p>
@@ -62,15 +61,13 @@ The file upload component is designed to work seamlessly with drag-and-drop func
     // Handle file upload logic
     console.log('Files selected:', files);
   }
-</script>
-```
+</script>`} />
 
 ## Multiple Files
 
 Enable multiple file selection using the `multiple` attribute:
 
-```html
-<div class="file-upload">
+<ComponentShowcase title="Multiple File Upload" code={`<div class="file-upload">
   <label for="multiple-files" class="file-upload-dropzone">
     <div class="file-upload-icon">📄</div>
     <p class="file-upload-text">Upload multiple files</p>
@@ -81,15 +78,13 @@ Enable multiple file selection using the `multiple` attribute:
   <div class="file-upload-list" id="file-list">
     <!-- File items will be added here dynamically -->
   </div>
-</div>
-```
+</div>`} />
 
 ## File List with Preview
 
 Display uploaded files with information and remove functionality:
 
-```html
-<div class="file-upload">
+<ComponentShowcase title="File Upload with Preview" code={`<div class="file-upload">
   <label for="files-preview" class="file-upload-dropzone">
     <div class="file-upload-icon">🖼️</div>
     <p class="file-upload-text">Upload with preview</p>
@@ -122,15 +117,13 @@ Display uploaded files with information and remove functionality:
       </button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Upload Progress
 
 Show upload progress for individual files:
 
-```html
-<div class="file-upload">
+<ComponentShowcase title="Upload Progress" code={`<div class="file-upload">
   <div class="file-upload-list">
     <div class="file-upload-item">
       <div class="file-upload-item-icon">📄</div>
@@ -146,15 +139,13 @@ Show upload progress for individual files:
       </button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## With Browse Button
 
 Add an explicit button for browsing files:
 
-```html
-<div class="file-upload">
+<ComponentShowcase title="File Upload with Browse Button" code={`<div class="file-upload">
   <label for="file-browse" class="file-upload-dropzone">
     <div class="file-upload-icon">📁</div>
     <p class="file-upload-text">Drop files here</p>
@@ -164,8 +155,7 @@ Add an explicit button for browsing files:
     </button>
   </label>
   <input type="file" id="file-browse" class="file-upload-input" multiple />
-</div>
-```
+</div>`} />
 
 ## States
 
@@ -173,22 +163,19 @@ Add an explicit button for browsing files:
 
 Show successfully uploaded files:
 
-```html
-<div class="file-upload-item file-upload-item-success">
+<ComponentShowcase title="Success State" code={`<div class="file-upload-item file-upload-item-success">
   <div class="file-upload-item-icon">✓</div>
   <div class="file-upload-item-info">
     <div class="file-upload-item-name">uploaded-successfully.pdf</div>
     <div class="file-upload-item-size">1.2 MB</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Error State
 
 Display errors for failed uploads:
 
-```html
-<div class="file-upload-item file-upload-item-error">
+<ComponentShowcase title="Error State" code={`<div class="file-upload-item file-upload-item-error">
   <div class="file-upload-item-icon">⚠️</div>
   <div class="file-upload-item-info">
     <div class="file-upload-item-name">failed-upload.pdf</div>
@@ -198,38 +185,33 @@ Display errors for failed uploads:
   <button class="file-upload-item-remove" aria-label="Remove file">
     ✕
   </button>
-</div>
-```
+</div>`} />
 
 ### Disabled State
 
 Disable file upload when needed:
 
-```html
-<div class="file-upload file-upload-disabled">
+<ComponentShowcase title="Disabled State" code={`<div class="file-upload file-upload-disabled">
   <label for="file-disabled" class="file-upload-dropzone">
     <div class="file-upload-icon">📁</div>
     <p class="file-upload-text">Upload disabled</p>
     <p class="file-upload-hint">Feature not available</p>
   </label>
   <input type="file" id="file-disabled" class="file-upload-input" disabled />
-</div>
-```
+</div>`} />
 
 ### Max Files Reached
 
 Prevent additional uploads when file limit is reached:
 
-```html
-<div class="file-upload file-upload-max-reached">
+<ComponentShowcase title="Max Files Reached State" code={`<div class="file-upload file-upload-max-reached">
   <label for="file-max" class="file-upload-dropzone">
     <div class="file-upload-icon">📁</div>
     <p class="file-upload-text">Maximum files reached</p>
     <p class="file-upload-hint">5 of 5 files uploaded</p>
   </label>
   <input type="file" id="file-max" class="file-upload-input" />
-</div>
-```
+</div>`} />
 
 ## Variants
 
@@ -237,37 +219,32 @@ Prevent additional uploads when file limit is reached:
 
 A smaller dropzone for space-constrained layouts:
 
-```html
-<div class="file-upload file-upload-compact">
+<ComponentShowcase title="Compact Variant" code={`<div class="file-upload file-upload-compact">
   <label for="file-compact" class="file-upload-dropzone">
     <div class="file-upload-icon">📁</div>
     <p class="file-upload-text">Drop files or click</p>
   </label>
   <input type="file" id="file-compact" class="file-upload-input" multiple />
-</div>
-```
+</div>`} />
 
 ### Outlined Variant
 
 A more subtle appearance with transparent background:
 
-```html
-<div class="file-upload file-upload-outlined">
+<ComponentShowcase title="Outlined Variant" code={`<div class="file-upload file-upload-outlined">
   <label for="file-outlined" class="file-upload-dropzone">
     <div class="file-upload-icon">📁</div>
     <p class="file-upload-text">Upload files</p>
     <p class="file-upload-hint">Drag & drop or click to browse</p>
   </label>
   <input type="file" id="file-outlined" class="file-upload-input" multiple />
-</div>
-```
+</div>`} />
 
 ## Complete Example
 
 Here's a comprehensive example with all features:
 
-```html
-<div class="file-upload" id="complete-upload">
+<ComponentShowcase title="Complete File Upload Example" code={`<div class="file-upload" id="complete-upload">
   <label for="complete-input" class="file-upload-dropzone" id="complete-dropzone">
     <div class="file-upload-icon">📁</div>
     <p class="file-upload-text">Drop files here or click to browse</p>
@@ -310,7 +287,7 @@ Here's a comprehensive example with all features:
     const filesArray = Array.from(files);
 
     if (uploadedFiles.length + filesArray.length > maxFiles) {
-      alert(`Maximum ${maxFiles} files allowed`);
+      alert(\`Maximum \${maxFiles} files allowed\`);
       return;
     }
 
@@ -328,7 +305,7 @@ Here's a comprehensive example with all features:
 
   function addFileItem(file, hasError = false, errorMessage = '') {
     const fileItem = document.createElement('div');
-    fileItem.className = `file-upload-item ${hasError ? 'file-upload-item-error' : ''}`;
+    fileItem.className = \`file-upload-item \${hasError ? 'file-upload-item-error' : ''}\`;
 
     const isImage = file.type.startsWith('image/');
     let thumbnail = '';
@@ -345,15 +322,15 @@ Here's a comprehensive example with all features:
       thumbnail = '<div class="file-upload-item-icon">📄</div>';
     }
 
-    fileItem.innerHTML = `
-      ${thumbnail}
+    fileItem.innerHTML = \`
+      \${thumbnail}
       <div class="file-upload-item-info">
-        <div class="file-upload-item-name">${file.name}</div>
-        <div class="file-upload-item-size">${formatFileSize(file.size)}</div>
-        ${hasError ? `<div class="file-upload-item-error-message">${errorMessage}</div>` : ''}
+        <div class="file-upload-item-name">\${file.name}</div>
+        <div class="file-upload-item-size">\${formatFileSize(file.size)}</div>
+        \${hasError ? \`<div class="file-upload-item-error-message">\${errorMessage}</div>\` : ''}
       </div>
       <button class="file-upload-item-remove" aria-label="Remove file">✕</button>
-    `;
+    \`;
 
     const removeBtn = fileItem.querySelector('.file-upload-item-remove');
     removeBtn.addEventListener('click', () => {
@@ -381,8 +358,7 @@ Here's a comprehensive example with all features:
       container.classList.remove('file-upload-max-reached');
     }
   }
-</script>
-```
+</script>`} />
 
 ## Best Practices
 
@@ -414,8 +390,7 @@ function validateFile(file) {
 - Ensure keyboard navigation works
 - Announce upload status to screen readers
 
-```html
-<label for="accessible-upload" class="file-upload-dropzone">
+<ComponentShowcase title="Accessible File Upload" code={`<label for="accessible-upload" class="file-upload-dropzone">
   <div class="file-upload-icon" aria-hidden="true">📁</div>
   <p class="file-upload-text">Upload your documents</p>
   <p class="file-upload-hint">Accepted formats: PDF, DOC, DOCX (Max 10MB)</p>
@@ -430,8 +405,7 @@ function validateFile(file) {
 />
 <div id="upload-instructions" class="sr-only">
   You can upload multiple files by selecting them or dragging them into the upload area
-</div>
-```
+</div>`} />
 
 ### User Feedback
 

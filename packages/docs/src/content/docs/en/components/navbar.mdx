@@ -7,14 +7,15 @@ published: true
 tags: ['navbar', 'navigation', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Navbar
 
 A navigation bar provides primary navigation for your application. @duskmoon-dev/core provides a flexible navbar component with multiple variants and layouts.
 
 ## Basic Usage
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="Basic Navbar" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -26,8 +27,7 @@ A navigation bar provides primary navigation for your application. @duskmoon-dev
   <div class="navbar-end">
     <a href="#" class="navbar-item">Login</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Variants
 
@@ -35,8 +35,7 @@ A navigation bar provides primary navigation for your application. @duskmoon-dev
 
 Different surface levels for visual hierarchy:
 
-```html
-<!-- Default surface -->
+<ComponentShowcase title="Surface Variants" code={`<!-- Default surface -->
 <nav class="navbar navbar-surface">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
@@ -62,15 +61,13 @@ Different surface levels for visual hierarchy:
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Color Variants
 
 Use theme colors for your navbar:
 
-```html
-<!-- Primary navbar -->
+<ComponentShowcase title="Color Variants" code={`<!-- Primary navbar -->
 <nav class="navbar navbar-primary">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
@@ -93,15 +90,13 @@ Use theme colors for your navbar:
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Transparent Navbar
 
 For overlay designs:
 
-```html
-<nav class="navbar navbar-transparent">
+<ComponentShowcase title="Transparent Navbar" code={`<nav class="navbar navbar-transparent">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -109,15 +104,13 @@ For overlay designs:
     <a href="#" class="navbar-item">Home</a>
     <a href="#" class="navbar-item">About</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Transparent with Blur
 
 Transparent navbar with backdrop blur effect:
 
-```html
-<nav class="navbar navbar-transparent navbar-blur">
+<ComponentShowcase title="Transparent with Blur" code={`<nav class="navbar navbar-transparent navbar-blur">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -125,8 +118,7 @@ Transparent navbar with backdrop blur effect:
     <a href="#" class="navbar-item">Home</a>
     <a href="#" class="navbar-item">About</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Positioning
 
@@ -134,37 +126,31 @@ Transparent navbar with backdrop blur effect:
 
 Fixed to the top of the viewport:
 
-```html
-<nav class="navbar navbar-fixed">
+<ComponentShowcase title="Fixed Position" code={`<nav class="navbar navbar-fixed">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Sticky Position
 
 Stays at the top when scrolling:
 
-```html
-<nav class="navbar navbar-sticky">
+<ComponentShowcase title="Sticky Position" code={`<nav class="navbar navbar-sticky">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Static Position
 
 Default static positioning:
 
-```html
-<nav class="navbar navbar-static">
+<ComponentShowcase title="Static Position" code={`<nav class="navbar navbar-static">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Layout Sections
 
@@ -172,8 +158,7 @@ Default static positioning:
 
 Use `navbar-start`, `navbar-center`, and `navbar-end` for flexible layouts:
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="Three-Section Layout" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -187,13 +172,11 @@ Use `navbar-start`, `navbar-center`, and `navbar-end` for flexible layouts:
     <a href="#" class="navbar-item">Login</a>
     <button class="btn btn-primary btn-sm">Sign Up</button>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Start and End Only
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="Start and End Only" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
     <a href="#" class="navbar-item">Home</a>
@@ -202,15 +185,13 @@ Use `navbar-start`, `navbar-center`, and `navbar-end` for flexible layouts:
   <div class="navbar-end">
     <a href="#" class="navbar-item">Login</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Active Items
 
 Highlight the current page:
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="Active Items" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -219,8 +200,7 @@ Highlight the current page:
     <a href="#" class="navbar-item">About</a>
     <a href="#" class="navbar-item">Services</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Size Variants
 
@@ -228,8 +208,7 @@ Highlight the current page:
 
 Smaller padding for dense interfaces:
 
-```html
-<nav class="navbar navbar-compact">
+<ComponentShowcase title="Compact" code={`<nav class="navbar navbar-compact">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -237,15 +216,13 @@ Smaller padding for dense interfaces:
     <a href="#" class="navbar-item">Home</a>
     <a href="#" class="navbar-item">About</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Comfortable
 
 Larger padding for better touch targets:
 
-```html
-<nav class="navbar navbar-comfortable">
+<ComponentShowcase title="Comfortable" code={`<nav class="navbar navbar-comfortable">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -253,15 +230,13 @@ Larger padding for better touch targets:
     <a href="#" class="navbar-item">Home</a>
     <a href="#" class="navbar-item">About</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## With Dividers
 
 Add visual separation between sections:
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="With Dividers" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -271,27 +246,23 @@ Add visual separation between sections:
     <div class="navbar-divider"></div>
     <a href="#" class="navbar-item">Login</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Borderless
 
 Remove the bottom border:
 
-```html
-<nav class="navbar navbar-borderless">
+<ComponentShowcase title="Borderless" code={`<nav class="navbar navbar-borderless">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Mobile Menu
 
 Responsive navbar with hamburger menu:
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="Mobile Menu" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -309,15 +280,13 @@ Responsive navbar with hamburger menu:
       </svg>
     </button>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## With Icons
 
 Add icons to navbar items:
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="With Icons" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,8 +309,7 @@ Add icons to navbar items:
       Profile
     </a>
   </div>
-</nav>
-```
+</nav>`} />
 
 ## Best Practices
 
@@ -353,8 +321,7 @@ Organize navigation items by importance:
 2. **Primary navigation**: Center or right side
 3. **User actions**: Far right in `navbar-end`
 
-```html
-<nav class="navbar">
+<ComponentShowcase title="Navigation Hierarchy" code={`<nav class="navbar">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -367,8 +334,7 @@ Organize navigation items by importance:
     <a href="#" class="navbar-item">Login</a>
     <button class="btn btn-primary btn-sm">Get Started</button>
   </div>
-</nav>
-```
+</nav>`} />
 
 ### Accessibility
 
@@ -377,8 +343,7 @@ Organize navigation items by importance:
 - Ensure sufficient color contrast
 - Support keyboard navigation
 
-```html
-<nav class="navbar" aria-label="Main navigation">
+<ComponentShowcase title="Accessibility" code={`<nav class="navbar" aria-label="Main navigation">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -387,15 +352,13 @@ Organize navigation items by importance:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
-</nav>
-```
+</nav>`} />
 
 ### Fixed Navbar Spacing
 
 When using `navbar-fixed`, add top padding to your content:
 
-```html
-<nav class="navbar navbar-fixed">
+<ComponentShowcase title="Fixed Navbar Spacing" code={`<nav class="navbar navbar-fixed">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
@@ -404,8 +367,7 @@ When using `navbar-fixed`, add top padding to your content:
 <!-- Add top padding equal to navbar height -->
 <main class="pt-16">
   <!-- Your content -->
-</main>
-```
+</main>`} />
 
 ## Framework Examples
 

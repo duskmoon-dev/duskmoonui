@@ -6,6 +6,7 @@ order: 19
 published: true
 tags: ['breadcrumbs', 'navigation', 'components', 'material-design']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Breadcrumbs
 
@@ -13,15 +14,13 @@ Breadcrumbs show the current location within a navigational hierarchy. They help
 
 ## Basic Usage
 
-```html
-<nav class="breadcrumbs">
+<ComponentShowcase title="Basic Breadcrumbs" code={`<nav class="breadcrumbs">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/products" class="breadcrumb-link">Products</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Current Page</span>
-</nav>
-```
+</nav>`} />
 
 ## Separator Variants
 
@@ -29,58 +28,49 @@ Choose from different separator styles to match your design:
 
 ### Slash Separator (Default)
 
-```html
-<nav class="breadcrumbs breadcrumbs-slash">
+<ComponentShowcase title="Slash Separator" code={`<nav class="breadcrumbs breadcrumbs-slash">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ### Chevron Separator
 
-```html
-<nav class="breadcrumbs breadcrumbs-chevron">
+<ComponentShowcase title="Chevron Separator" code={`<nav class="breadcrumbs breadcrumbs-chevron">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ### Dot Separator
 
-```html
-<nav class="breadcrumbs breadcrumbs-dot">
+<ComponentShowcase title="Dot Separator" code={`<nav class="breadcrumbs breadcrumbs-dot">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ### Arrow Separator
 
-```html
-<nav class="breadcrumbs breadcrumbs-arrow">
+<ComponentShowcase title="Arrow Separator" code={`<nav class="breadcrumbs breadcrumbs-arrow">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ## Breadcrumbs with Icons
 
 Add icons to breadcrumb items for better visual clarity:
 
-```html
-<nav class="breadcrumbs">
+<ComponentShowcase title="Breadcrumbs with Icons" code={`<nav class="breadcrumbs">
   <a href="/" class="breadcrumb-link">
     <svg class="breadcrumb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -101,8 +91,7 @@ Add icons to breadcrumb items for better visual clarity:
     </svg>
     Product Details
   </span>
-</nav>
-```
+</nav>`} />
 
 ## Color Variants
 
@@ -110,39 +99,33 @@ Use color variants to highlight active breadcrumbs:
 
 ### Primary
 
-```html
-<nav class="breadcrumbs breadcrumbs-primary">
+<ComponentShowcase title="Primary Color" code={`<nav class="breadcrumbs breadcrumbs-primary">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Components</span>
-</nav>
-```
+</nav>`} />
 
 ### Secondary
 
-```html
-<nav class="breadcrumbs breadcrumbs-secondary">
+<ComponentShowcase title="Secondary Color" code={`<nav class="breadcrumbs breadcrumbs-secondary">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Components</span>
-</nav>
-```
+</nav>`} />
 
 ### Tertiary
 
-```html
-<nav class="breadcrumbs breadcrumbs-tertiary">
+<ComponentShowcase title="Tertiary Color" code={`<nav class="breadcrumbs breadcrumbs-tertiary">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Components</span>
-</nav>
-```
+</nav>`} />
 
 ## Size Variants
 
@@ -150,60 +133,51 @@ Adjust breadcrumb sizes for different layouts:
 
 ### Small
 
-```html
-<nav class="breadcrumbs breadcrumbs-sm">
+<ComponentShowcase title="Small Size" code={`<nav class="breadcrumbs breadcrumbs-sm">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ### Default
 
-```html
-<nav class="breadcrumbs">
+<ComponentShowcase title="Default Size" code={`<nav class="breadcrumbs">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ### Large
 
-```html
-<nav class="breadcrumbs breadcrumbs-lg">
+<ComponentShowcase title="Large Size" code={`<nav class="breadcrumbs breadcrumbs-lg">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ## Contained Variant
 
 Add background container for emphasis:
 
-```html
-<nav class="breadcrumbs breadcrumbs-contained">
+<ComponentShowcase title="Contained Breadcrumbs" code={`<nav class="breadcrumbs breadcrumbs-contained">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ## No Wrap Variant
 
 Prevent wrapping for horizontal scrolling:
 
-```html
-<nav class="breadcrumbs breadcrumbs-nowrap">
+<ComponentShowcase title="No Wrap Breadcrumbs" code={`<nav class="breadcrumbs breadcrumbs-nowrap">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/products" class="breadcrumb-link">Products</a>
@@ -213,15 +187,13 @@ Prevent wrapping for horizontal scrolling:
   <a href="/products/electronics/computers" class="breadcrumb-link">Computers</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Laptops</span>
-</nav>
-```
+</nav>`} />
 
 ## Collapsed Breadcrumbs (with Ellipsis)
 
 For long navigation paths, use ellipsis to show only key items:
 
-```html
-<nav class="breadcrumbs">
+<ComponentShowcase title="Collapsed Breadcrumbs" code={`<nav class="breadcrumbs">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <button class="breadcrumb-ellipsis" aria-label="Show more breadcrumbs"></button>
@@ -229,22 +201,19 @@ For long navigation paths, use ellipsis to show only key items:
   <a href="/products/electronics/computers" class="breadcrumb-link">Computers</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Laptops</span>
-</nav>
-```
+</nav>`} />
 
 ## Disabled State
 
 Mark breadcrumb items as disabled:
 
-```html
-<nav class="breadcrumbs">
+<ComponentShowcase title="Disabled Breadcrumb Item" code={`<nav class="breadcrumbs">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-disabled">Disabled</span>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Current</span>
-</nav>
-```
+</nav>`} />
 
 ## Best Practices
 
@@ -252,8 +221,7 @@ Mark breadcrumb items as disabled:
 
 Use breadcrumbs to show the hierarchical structure of your site:
 
-```html
-<nav class="breadcrumbs">
+<ComponentShowcase title="Hierarchy Representation" code={`<nav class="breadcrumbs">
   <a href="/" class="breadcrumb-link">
     <svg class="breadcrumb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -266,15 +234,13 @@ Use breadcrumbs to show the hierarchical structure of your site:
   <a href="/category/subcategory" class="breadcrumb-link">Subcategory</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Current Page</span>
-</nav>
-```
+</nav>`} />
 
 ### Maximum Items
 
 For deep hierarchies, collapse middle items:
 
-```html
-<nav class="breadcrumbs">
+<ComponentShowcase title="Maximum Items with Ellipsis" code={`<nav class="breadcrumbs">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <button class="breadcrumb-ellipsis"
@@ -284,8 +250,7 @@ For deep hierarchies, collapse middle items:
   <a href="/parent" class="breadcrumb-link">Parent</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Current</span>
-</nav>
-```
+</nav>`} />
 
 ### Accessibility
 
@@ -294,29 +259,25 @@ For deep hierarchies, collapse middle items:
 - Mark current page as `aria-current="page"`
 - Ensure sufficient color contrast
 
-```html
-<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+<ComponentShowcase title="Accessible Breadcrumbs" code={`<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator" aria-hidden="true"></span>
   <a href="/docs" class="breadcrumb-link">Documentation</a>
   <span class="breadcrumb-separator" aria-hidden="true"></span>
   <span class="breadcrumb-item breadcrumb-item-active" aria-current="page">Breadcrumbs</span>
-</nav>
-```
+</nav>`} />
 
 ### Mobile Considerations
 
 Use smaller sizes and no-wrap variant for mobile:
 
-```html
-<nav class="breadcrumbs breadcrumbs-sm breadcrumbs-nowrap md:breadcrumbs-md">
+<ComponentShowcase title="Mobile-Optimized Breadcrumbs" code={`<nav class="breadcrumbs breadcrumbs-sm breadcrumbs-nowrap md:breadcrumbs-md">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Components</span>
-</nav>
-```
+</nav>`} />
 
 ## Framework Examples
 
@@ -551,23 +512,21 @@ const expandAll = () => {
 
 ### Combinations
 
-```html
-<!-- Contained breadcrumbs with chevron separator and primary color -->
+<ComponentShowcase title="Contained with Chevron and Primary Color" code={`<!-- Contained breadcrumbs with chevron separator and primary color -->
 <nav class="breadcrumbs breadcrumbs-contained breadcrumbs-chevron breadcrumbs-primary">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Current</span>
-</nav>
+</nav>`} />
 
-<!-- Large breadcrumbs with arrow separator and no wrap -->
+<ComponentShowcase title="Large with Arrow and No Wrap" code={`<!-- Large breadcrumbs with arrow separator and no wrap -->
 <nav class="breadcrumbs breadcrumbs-lg breadcrumbs-arrow breadcrumbs-nowrap">
   <a href="/" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-separator"></span>
   <a href="/docs" class="breadcrumb-link">Docs</a>
   <span class="breadcrumb-separator"></span>
   <span class="breadcrumb-item breadcrumb-item-active">Components</span>
-</nav>
-```
+</nav>`} />
 
 ## Related Components
 

@@ -7,14 +7,15 @@ published: true
 tags: ['list', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # List
 
 Lists are continuous, vertical indexes of text or images. They present multiple line items in a vertical arrangement as a single connected element.
 
 ## Basic Usage
 
-```html
-<ul class="list">
+<ComponentShowcase title="Basic List" code={`<ul class="list">
   <li class="list-item">
     <div class="list-item-content">
       <span class="list-item-text">List Item 1</span>
@@ -30,8 +31,7 @@ Lists are continuous, vertical indexes of text or images. They present multiple 
       <span class="list-item-text">List Item 3</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## List Items
 
@@ -39,8 +39,7 @@ Lists are continuous, vertical indexes of text or images. They present multiple 
 
 Basic single-line list items:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Simple List Items" code={`<ul class="list">
   <li class="list-item">
     <div class="list-item-content">
       <span class="list-item-text">Photos</span>
@@ -56,15 +55,13 @@ Basic single-line list items:
       <span class="list-item-text">Documents</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Two-Line List Items
 
 List items with primary and secondary text:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Two-Line List Items" code={`<ul class="list">
   <li class="list-item list-item-two-line">
     <div class="list-item-content">
       <span class="list-item-text">Brunch this weekend?</span>
@@ -77,15 +74,13 @@ List items with primary and secondary text:
       <span class="list-item-secondary">to Alex, Scott, Jennifer — Wish I could come</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Three-Line List Items
 
 List items with expanded secondary text:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Three-Line List Items" code={`<ul class="list">
   <li class="list-item list-item-three-line">
     <div class="list-item-content">
       <span class="list-item-text">Oui Oui</span>
@@ -98,8 +93,7 @@ List items with expanded secondary text:
       <span class="list-item-secondary">Trevor Hansen — Have any ideas about what we should get for the party? I was thinking about getting a board game.</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## Interactive Lists
 
@@ -107,8 +101,7 @@ List items with expanded secondary text:
 
 Add hover and active states to list items:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Clickable List Items" code={`<ul class="list">
   <li class="list-item list-item-interactive">
     <div class="list-item-content">
       <span class="list-item-text">Inbox</span>
@@ -124,15 +117,13 @@ Add hover and active states to list items:
       <span class="list-item-text">Sent Mail</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Selected List Items
 
 Show selected state with primary color:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Selected List Items" code={`<ul class="list">
   <li class="list-item list-item-interactive list-item-active">
     <div class="list-item-content">
       <span class="list-item-text">Inbox</span>
@@ -148,15 +139,13 @@ Show selected state with primary color:
       <span class="list-item-text">Sent Mail</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Active State Variants
 
 Use different color schemes for selected items:
 
-```html
-<!-- Primary active state (default) -->
+<ComponentShowcase title="Active State Variants" code={`<!-- Primary active state (default) -->
 <li class="list-item list-item-interactive list-item-active-primary">
   <div class="list-item-content">
     <span class="list-item-text">Primary Selected</span>
@@ -175,8 +164,7 @@ Use different color schemes for selected items:
   <div class="list-item-content">
     <span class="list-item-text">Tertiary Selected</span>
   </div>
-</li>
-```
+</li>`} />
 
 ## List Items with Icons
 
@@ -184,8 +172,7 @@ Use different color schemes for selected items:
 
 Add icons to the start of list items:
 
-```html
-<ul class="list">
+<ComponentShowcase title="List Items with Leading Icons" code={`<ul class="list">
   <li class="list-item list-item-interactive">
     <div class="list-item-leading">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,15 +203,13 @@ Add icons to the start of list items:
       <span class="list-item-text">Sent</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Trailing Icons
 
 Add icons or actions to the end of list items:
 
-```html
-<ul class="list">
+<ComponentShowcase title="List Items with Trailing Icons" code={`<ul class="list">
   <li class="list-item list-item-interactive">
     <div class="list-item-content">
       <span class="list-item-text">Notifications</span>
@@ -245,15 +230,13 @@ Add icons or actions to the end of list items:
       </svg>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Both Leading and Trailing Elements
 
 Combine leading and trailing elements:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Leading and Trailing Elements" code={`<ul class="list">
   <li class="list-item list-item-interactive list-item-two-line">
     <div class="list-item-leading">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -268,15 +251,13 @@ Combine leading and trailing elements:
       <span class="text-xs text-on-surface-variant">10:30 AM</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## List Items with Avatars
 
 Use avatars for user-centric lists:
 
-```html
-<ul class="list">
+<ComponentShowcase title="List Items with Avatars" code={`<ul class="list">
   <li class="list-item list-item-interactive list-item-two-line">
     <div class="list-item-leading">
       <img src="/avatar1.jpg" alt="Ali Connors" class="w-10 h-10 rounded-full">
@@ -295,8 +276,7 @@ Use avatars for user-centric lists:
       <span class="list-item-secondary">Dinner reservations</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## List Dividers
 
@@ -304,8 +284,7 @@ Use avatars for user-centric lists:
 
 Separate list items with dividers:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Standard Dividers" code={`<ul class="list">
   <li class="list-item">
     <div class="list-item-content">
       <span class="list-item-text">Item 1</span>
@@ -323,15 +302,13 @@ Separate list items with dividers:
       <span class="list-item-text">Item 3</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Inset Dividers
 
 Use inset dividers for lists with leading elements:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Inset Dividers" code={`<ul class="list">
   <li class="list-item">
     <div class="list-item-leading">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -353,15 +330,13 @@ Use inset dividers for lists with leading elements:
       <span class="list-item-text">Jane Smith</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## List Subheaders
 
 Organize lists with subheaders:
 
-```html
-<ul class="list">
+<ComponentShowcase title="List Subheaders" code={`<ul class="list">
   <div class="list-subheader">Today</div>
   <li class="list-item list-item-two-line">
     <div class="list-item-content">
@@ -383,8 +358,7 @@ Organize lists with subheaders:
       <span class="list-item-secondary">9:00 AM - 10:00 AM</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## List Density
 
@@ -392,8 +366,7 @@ Organize lists with subheaders:
 
 More condensed spacing for data-dense interfaces:
 
-```html
-<ul class="list list-compact">
+<ComponentShowcase title="Compact Lists" code={`<ul class="list list-compact">
   <li class="list-item">
     <div class="list-item-leading">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -414,15 +387,13 @@ More condensed spacing for data-dense interfaces:
       <span class="list-item-text">Compact Item 2</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Comfortable Lists
 
 More spacious for better readability:
 
-```html
-<ul class="list list-comfortable">
+<ComponentShowcase title="Comfortable Lists" code={`<ul class="list list-comfortable">
   <li class="list-item">
     <div class="list-item-leading">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -443,8 +414,7 @@ More spacious for better readability:
       <span class="list-item-text">Images</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## Surface Variants
 
@@ -452,8 +422,7 @@ More spacious for better readability:
 
 Apply different surface elevations:
 
-```html
-<!-- Default surface -->
+<ComponentShowcase title="Container Surfaces" code={`<!-- Default surface -->
 <ul class="list">
   <li class="list-item">
     <div class="list-item-content">
@@ -487,15 +456,13 @@ Apply different surface elevations:
       <span class="list-item-text">Container High Surface</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Bordered Lists
 
 Add borders to lists:
 
-```html
-<ul class="list list-bordered">
+<ComponentShowcase title="Bordered Lists" code={`<ul class="list list-bordered">
   <li class="list-item">
     <div class="list-item-content">
       <span class="list-item-text">Bordered Item 1</span>
@@ -511,15 +478,13 @@ Add borders to lists:
       <span class="list-item-text">Bordered Item 3</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## Nested Lists
 
 Create hierarchical list structures:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Nested Lists" code={`<ul class="list">
   <li class="list-item list-item-interactive">
     <div class="list-item-leading">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -554,15 +519,13 @@ Create hierarchical list structures:
       <span class="list-item-text">Team</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## Disabled State
 
 Disable interaction with list items:
 
-```html
-<ul class="list">
+<ComponentShowcase title="Disabled List Items" code={`<ul class="list">
   <li class="list-item list-item-interactive">
     <div class="list-item-content">
       <span class="list-item-text">Available Item</span>
@@ -578,8 +541,7 @@ Disable interaction with list items:
       <span class="list-item-text">Available Item</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## Best Practices
 
@@ -592,8 +554,7 @@ Disable interaction with list items:
 
 ### Visual Hierarchy
 
-```html
-<ul class="list">
+<ComponentShowcase title="Visual Hierarchy Best Practice" code={`<ul class="list">
   <!-- Important item with icon and active state -->
   <li class="list-item list-item-interactive list-item-active list-item-two-line">
     <div class="list-item-leading">
@@ -620,8 +581,7 @@ Disable interaction with list items:
       <span class="list-item-text">Unavailable Item</span>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Accessibility
 
@@ -630,8 +590,7 @@ Disable interaction with list items:
 - Ensure interactive items are keyboard accessible
 - Use `aria-label` for icon-only actions
 
-```html
-<ul class="list" role="list">
+<ComponentShowcase title="Accessible List Example" code={`<ul class="list" role="list">
   <li class="list-item list-item-interactive" role="listitem">
     <div class="list-item-leading">
       <img src="/avatar.jpg" alt="User profile picture" class="w-10 h-10 rounded-full">
@@ -648,8 +607,7 @@ Disable interaction with list items:
       </button>
     </div>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Touch Targets
 

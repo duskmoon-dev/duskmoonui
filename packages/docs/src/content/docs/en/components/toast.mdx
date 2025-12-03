@@ -7,22 +7,25 @@ published: true
 tags: ['toast', 'notification', 'snackbar', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Toast
 
 Toast notifications provide brief messages about app processes at the bottom or top of the screen. They appear temporarily and shouldn't interrupt the user experience. @duskmoon-dev/core provides a complete set of Material Design 3-inspired toast variants.
 
 ## Basic Usage
 
-```html
-<!-- Toast container (required wrapper) -->
+<ComponentShowcase
+  title="Basic Toast"
+  code={`<!-- Toast container (required wrapper) -->
 <div class="toast-container toast-container-top-right">
   <div class="toast toast-show">
     <div class="toast-content">
       <div class="toast-message">This is a simple toast notification</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Container Positions
 
@@ -30,8 +33,9 @@ Toast containers can be positioned in six different locations on the screen:
 
 ### Top Positions
 
-```html
-<!-- Top Right (most common) -->
+<ComponentShowcase
+  title="Top Positions"
+  code={`<!-- Top Right (most common) -->
 <div class="toast-container toast-container-top-right">
   <div class="toast toast-show">
     <div class="toast-content">
@@ -56,13 +60,14 @@ Toast containers can be positioned in six different locations on the screen:
       <div class="toast-message">Top center notification</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Bottom Positions
 
-```html
-<!-- Bottom Right -->
+<ComponentShowcase
+  title="Bottom Positions"
+  code={`<!-- Bottom Right -->
 <div class="toast-container toast-container-bottom-right">
   <div class="toast toast-show">
     <div class="toast-content">
@@ -87,8 +92,8 @@ Toast containers can be positioned in six different locations on the screen:
       <div class="toast-message">Bottom center notification</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Toast Variants
 
@@ -96,82 +101,88 @@ Toast containers can be positioned in six different locations on the screen:
 
 Basic toast with surface colors:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Default Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-show">
     <div class="toast-content">
       <div class="toast-message">Default notification</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Info Toast
 
 For informational messages:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Info Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-info toast-show">
     <div class="toast-content">
       <div class="toast-title">Information</div>
       <div class="toast-message">Your changes have been saved</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Success Toast
 
 For successful operations:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Success Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-success toast-show">
     <div class="toast-content">
       <div class="toast-title">Success</div>
       <div class="toast-message">Profile updated successfully</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Warning Toast
 
 For warning messages:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Warning Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-warning toast-show">
     <div class="toast-content">
       <div class="toast-title">Warning</div>
       <div class="toast-message">Your session will expire in 5 minutes</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Error Toast
 
 For error messages:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Error Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-error toast-show">
     <div class="toast-content">
       <div class="toast-title">Error</div>
       <div class="toast-message">Failed to save changes. Please try again.</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Toast with Icons
 
 Add icons to enhance visual communication:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Toast with Icons"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-success toast-show">
     <span class="toast-icon">✓</span>
     <div class="toast-content">
@@ -203,13 +214,14 @@ Add icons to enhance visual communication:
     <div class="toast-title">Info</div>
     <div class="toast-message">New features available</div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Using SVG Icons
 
-```html
-<div class="toast toast-success toast-show">
+<ComponentShowcase
+  title="Toast with SVG Icons"
+  code={`<div class="toast toast-success toast-show">
   <svg class="toast-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
   </svg>
@@ -217,15 +229,16 @@ Add icons to enhance visual communication:
     <div class="toast-title">Success</div>
     <div class="toast-message">Operation completed</div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Toast with Close Button
 
 Allow users to dismiss toasts manually:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Toast with Close Button"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-show">
     <div class="toast-content">
       <div class="toast-title">Notification</div>
@@ -233,15 +246,16 @@ Allow users to dismiss toasts manually:
     </div>
     <button class="toast-close" aria-label="Close">×</button>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Toast with Actions
 
 Add action buttons for user interaction:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Toast with Actions"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-info toast-show">
     <div class="toast-content">
       <div class="toast-title">Update Available</div>
@@ -250,15 +264,16 @@ Add action buttons for user interaction:
     </div>
     <button class="toast-close" aria-label="Close">×</button>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Toast with Progress Bar
 
 Show auto-dismiss timing with a progress bar:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Toast with Progress Bar"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-show">
     <div class="toast-content">
       <div class="toast-message">This toast will auto-dismiss</div>
@@ -266,8 +281,8 @@ Show auto-dismiss timing with a progress bar:
     <button class="toast-close" aria-label="Close">×</button>
     <div class="toast-progress" style="width: 100%; transition-duration: 5s;"></div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Size Variants
 
@@ -275,51 +290,55 @@ Show auto-dismiss timing with a progress bar:
 
 Compact toast for minimal information:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Small Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-sm toast-show">
     <div class="toast-content">
       <div class="toast-message">Small notification</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Default Toast
 
 Standard size (default):
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Default Size Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-show">
     <div class="toast-content">
       <div class="toast-message">Default size notification</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Large Toast
 
 For more prominent messages:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Large Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-lg toast-show">
     <div class="toast-content">
       <div class="toast-title">Large Notification</div>
       <div class="toast-message">This is a larger toast for important messages</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Compact Variant
 
 More condensed spacing for dense layouts:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Compact Toast"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-compact toast-show">
     <span class="toast-icon">✓</span>
     <div class="toast-content">
@@ -327,30 +346,32 @@ More condensed spacing for dense layouts:
       <div class="toast-message">Compact notification style</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Accent Border
 
 Add a colored accent border to the left side:
 
-```html
-<div class="toast-container toast-container-top-right">
+<ComponentShowcase
+  title="Toast with Accent Border"
+  code={`<div class="toast-container toast-container-top-right">
   <div class="toast toast-success toast-accent toast-show">
     <div class="toast-content">
       <div class="toast-title">Success with Accent</div>
       <div class="toast-message">Notice the colored border on the left</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Stacked Toasts
 
 Multiple toasts with stacked appearance:
 
-```html
-<div class="toast-container toast-container-stacked toast-container-top-right">
+<ComponentShowcase
+  title="Stacked Toasts"
+  code={`<div class="toast-container toast-container-stacked toast-container-top-right">
   <div class="toast toast-show">
     <div class="toast-content">
       <div class="toast-message">First notification</div>
@@ -366,15 +387,16 @@ Multiple toasts with stacked appearance:
       <div class="toast-message">Third notification</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Animation
 
 Toasts use the `toast-show` class to trigger entrance animations. Remove this class or remove the toast element to trigger exit animations.
 
-```html
-<!-- Hidden toast (initial state) -->
+<ComponentShowcase
+  title="Toast Animation States"
+  code={`<!-- Hidden toast (initial state) -->
 <div class="toast">
   <div class="toast-content">
     <div class="toast-message">Hidden notification</div>
@@ -386,8 +408,8 @@ Toasts use the `toast-show` class to trigger entrance animations. Remove this cl
   <div class="toast-content">
     <div class="toast-message">Visible notification</div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Best Practices
 
@@ -397,8 +419,9 @@ Toasts use the `toast-show` class to trigger entrance animations. Remove this cl
 - Use title for context, message for details
 - Avoid technical jargon in user-facing messages
 
-```html
-<!-- Good: Clear and concise -->
+<ComponentShowcase
+  title="Good vs Bad Message Content"
+  code={`<!-- Good: Clear and concise -->
 <div class="toast toast-success toast-show">
   <div class="toast-content">
     <div class="toast-title">Saved</div>
@@ -412,8 +435,8 @@ Toasts use the `toast-show` class to trigger entrance animations. Remove this cl
     <div class="toast-title">Save Operation Successful</div>
     <div class="toast-message">The system has successfully persisted all of your modifications to the database</div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Timing
 
@@ -429,8 +452,9 @@ Toasts use the `toast-show` class to trigger entrance animations. Remove this cl
 
 ### Visual Hierarchy
 
-```html
-<!-- Use semantic colors appropriately -->
+<ComponentShowcase
+  title="Semantic Colors for Visual Hierarchy"
+  code={`<!-- Use semantic colors appropriately -->
 <div class="toast-container toast-container-top-right">
   <!-- Error: High priority, requires attention -->
   <div class="toast toast-error toast-show">
@@ -454,8 +478,8 @@ Toasts use the `toast-show` class to trigger entrance animations. Remove this cl
       <div class="toast-message">New messages available</div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Accessibility
 
@@ -464,16 +488,17 @@ Toasts use the `toast-show` class to trigger entrance animations. Remove this cl
 - Ensure color isn't the only indicator (use icons)
 - Consider `role="alert"` for important notifications
 
-```html
-<div class="toast toast-error toast-show" role="alert" aria-live="assertive">
+<ComponentShowcase
+  title="Accessible Toast Example"
+  code={`<div class="toast toast-error toast-show" role="alert" aria-live="assertive">
   <span class="toast-icon">✕</span>
   <div class="toast-content">
     <div class="toast-title">Error</div>
     <div class="toast-message">Failed to process payment</div>
   </div>
   <button class="toast-close" aria-label="Dismiss error notification">×</button>
-</div>
-```
+</div>`}
+/>
 
 ## Framework Examples
 
@@ -727,8 +752,9 @@ toast.info('New features available', { title: 'Update' });
 
 ### Combinations
 
-```html
-<!-- Small success toast with accent -->
+<ComponentShowcase
+  title="Toast Class Combinations"
+  code={`<!-- Small success toast with accent -->
 <div class="toast toast-success toast-sm toast-accent toast-show">
   <div class="toast-content">
     <div class="toast-message">Quick success message</div>
@@ -743,8 +769,8 @@ toast.info('New features available', { title: 'Update' });
     <div class="toast-message">This is a detailed error message</div>
   </div>
   <button class="toast-close">×</button>
-</div>
-```
+</div>`}
+/>
 
 ## Related Components
 

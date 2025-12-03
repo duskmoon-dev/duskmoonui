@@ -7,6 +7,8 @@ published: true
 tags: ['dialog', 'modal', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Dialog
 
 Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks. @duskmoon-dev/core provides a complete set of Material Design 3 dialog variants.
@@ -15,8 +17,7 @@ Dialogs inform users about a task and can contain critical information, require 
 
 A basic dialog consists of a backdrop, dialog container, header, body, and actions.
 
-```html
-<div class="dialog-backdrop" id="myDialog">
+<ComponentShowcase title="Basic Dialog" code={`<div class="dialog-backdrop" id="myDialog">
   <div class="dialog">
     <div class="dialog-header">
       <h2 class="dialog-title">Dialog Title</h2>
@@ -34,16 +35,13 @@ A basic dialog consists of a backdrop, dialog container, header, body, and actio
       <button class="btn btn-primary">Confirm</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 To show the dialog, add the `dialog-backdrop-show` class to the backdrop:
 
-```html
-<div class="dialog-backdrop dialog-backdrop-show">
+<ComponentShowcase title="Showing Dialog" code={`<div class="dialog-backdrop dialog-backdrop-show">
   <!-- dialog content -->
-</div>
-```
+</div>`} />
 
 ## Size Variants
 
@@ -51,8 +49,7 @@ To show the dialog, add the `dialog-backdrop-show` class to the backdrop:
 
 Perfect for simple confirmations and alerts.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Small Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-sm">
     <div class="dialog-header">
       <h2 class="dialog-title">Small Dialog</h2>
@@ -66,15 +63,13 @@ Perfect for simple confirmations and alerts.
       <button class="btn btn-primary">OK</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Medium Dialog (Default)
 
 The default size, suitable for most use cases.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Medium Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-md">
     <div class="dialog-header">
       <h2 class="dialog-title">Medium Dialog</h2>
@@ -88,15 +83,13 @@ The default size, suitable for most use cases.
       <button class="btn btn-primary">Save</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Large Dialog
 
 For dialogs with more content.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Large Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-lg">
     <div class="dialog-header">
       <h2 class="dialog-title">Large Dialog</h2>
@@ -110,15 +103,13 @@ For dialogs with more content.
       <button class="btn btn-primary">Continue</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Extra Large Dialog
 
 For complex forms or detailed content.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Extra Large Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-xl">
     <div class="dialog-header">
       <h2 class="dialog-title">Extra Large Dialog</h2>
@@ -132,15 +123,13 @@ For complex forms or detailed content.
       <button class="btn btn-primary">Submit</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Full Dialog
 
 Uses nearly the entire viewport.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Full Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-full">
     <div class="dialog-header">
       <h2 class="dialog-title">Full Dialog</h2>
@@ -154,15 +143,13 @@ Uses nearly the entire viewport.
       <button class="btn btn-primary">Apply</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Fullscreen Dialog
 
 Covers the entire viewport, ideal for mobile experiences.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Fullscreen Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-fullscreen">
     <div class="dialog-header">
       <h2 class="dialog-title">Fullscreen Dialog</h2>
@@ -176,8 +163,7 @@ Covers the entire viewport, ideal for mobile experiences.
       <button class="btn btn-primary">Done</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Dialog Variants
 
@@ -185,8 +171,7 @@ Covers the entire viewport, ideal for mobile experiences.
 
 Simplified dialog for confirmations and alerts.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Alert Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-alert">
     <div class="dialog-header">
       <h2 class="dialog-title">Delete Item?</h2>
@@ -199,15 +184,13 @@ Simplified dialog for confirmations and alerts.
       <button class="btn btn-error">Delete</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Centered Dialog
 
 Centers all content including actions.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Centered Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-center">
     <div class="dialog-header">
       <h2 class="dialog-title">Centered Dialog</h2>
@@ -220,15 +203,13 @@ Centers all content including actions.
       <button class="btn btn-primary">OK</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Dialog with Icon
 
 Add visual emphasis with icons.
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Dialog with Icon" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-center">
     <div class="dialog-header">
       <h2 class="dialog-title">Success!</h2>
@@ -245,15 +226,13 @@ Add visual emphasis with icons.
       <button class="btn btn-primary">Continue</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Icon Variants
 
 Icons support multiple color schemes:
 
-```html
-<!-- Primary Icon -->
+<ComponentShowcase title="Icon Variants" code={`<!-- Primary Icon -->
 <div class="dialog-icon dialog-icon-primary">
   <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -300,53 +279,43 @@ Icons support multiple color schemes:
   <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
-</div>
-```
+</div>`} />
 
 ## Action Alignment
 
 ### Right-Aligned Actions (Default)
 
-```html
-<div class="dialog-actions">
+<ComponentShowcase title="Right-Aligned Actions" code={`<div class="dialog-actions">
   <button class="btn btn-text">Cancel</button>
   <button class="btn btn-primary">Confirm</button>
-</div>
-```
+</div>`} />
 
 ### Left-Aligned Actions
 
-```html
-<div class="dialog-actions dialog-actions-start">
+<ComponentShowcase title="Left-Aligned Actions" code={`<div class="dialog-actions dialog-actions-start">
   <button class="btn btn-text">Cancel</button>
   <button class="btn btn-primary">Confirm</button>
-</div>
-```
+</div>`} />
 
 ### Center-Aligned Actions
 
-```html
-<div class="dialog-actions dialog-actions-center">
+<ComponentShowcase title="Center-Aligned Actions" code={`<div class="dialog-actions dialog-actions-center">
   <button class="btn btn-text">Cancel</button>
   <button class="btn btn-primary">Confirm</button>
-</div>
-```
+</div>`} />
 
 ### Space-Between Actions
 
-```html
-<div class="dialog-actions dialog-actions-between">
+<ComponentShowcase title="Space-Between Actions" code={`<div class="dialog-actions dialog-actions-between">
   <button class="btn btn-text">Cancel</button>
   <button class="btn btn-primary">Confirm</button>
-</div>
-```
+</div>`} />
 
 ## Scrollable Dialog
 
 For dialogs with long content, add the `dialog-scrollable` class:
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="Scrollable Dialog" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-scrollable">
     <div class="dialog-header">
       <h2 class="dialog-title">Terms and Conditions</h2>
@@ -361,15 +330,13 @@ For dialogs with long content, add the `dialog-scrollable` class:
       <button class="btn btn-primary">Accept</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## No Padding Variant
 
 Remove body padding for custom layouts:
 
-```html
-<div class="dialog-backdrop">
+<ComponentShowcase title="No Padding Variant" code={`<div class="dialog-backdrop">
   <div class="dialog dialog-no-padding">
     <div class="dialog-header">
       <h2 class="dialog-title">Image Gallery</h2>
@@ -382,15 +349,13 @@ Remove body padding for custom layouts:
       <button class="btn btn-text">Close</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## JavaScript Integration
 
 Here's a simple example of showing and hiding dialogs:
 
-```html
-<button class="btn btn-primary" id="openDialog">Open Dialog</button>
+<ComponentShowcase title="JavaScript Integration" code={`<button class="btn btn-primary" id="openDialog">Open Dialog</button>
 
 <div class="dialog-backdrop" id="myDialog">
   <div class="dialog">
@@ -440,8 +405,7 @@ Here's a simple example of showing and hiding dialogs:
       closeDialog();
     }
   });
-</script>
-```
+</script>`} />
 
 ## Best Practices
 
@@ -453,8 +417,7 @@ Here's a simple example of showing and hiding dialogs:
 - Support keyboard navigation (Escape to close)
 - Provide clear labels for close buttons
 
-```html
-<div class="dialog-backdrop" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+<ComponentShowcase title="Accessible Dialog" code={`<div class="dialog-backdrop" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
   <div class="dialog">
     <div class="dialog-header">
       <h2 class="dialog-title" id="dialogTitle">Accessible Dialog</h2>
@@ -468,8 +431,7 @@ Here's a simple example of showing and hiding dialogs:
       <button class="btn btn-primary">Confirm</button>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### User Experience
 
@@ -483,13 +445,11 @@ Here's a simple example of showing and hiding dialogs:
 
 Use button variants to guide users:
 
-```html
-<div class="dialog-actions">
+<ComponentShowcase title="Visual Hierarchy" code={`<div class="dialog-actions">
   <button class="btn btn-text">Cancel</button>
   <button class="btn btn-outlined">Save Draft</button>
   <button class="btn btn-primary">Publish</button>
-</div>
-```
+</div>`} />
 
 ## Framework Examples
 
@@ -641,8 +601,7 @@ const isOpen = ref(false);
 
 You can combine classes for different effects:
 
-```html
-<!-- Large centered alert dialog -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Large centered alert dialog -->
 <div class="dialog dialog-lg dialog-center dialog-alert">
   <!-- content -->
 </div>
@@ -664,8 +623,7 @@ You can combine classes for different effects:
     <button class="btn btn-text">No</button>
     <button class="btn btn-primary">Yes</button>
   </div>
-</div>
-```
+</div>`} />
 
 ## Related Components
 

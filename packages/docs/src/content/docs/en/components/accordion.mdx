@@ -6,6 +6,7 @@ order: 30
 published: true
 tags: ['accordion', 'components', 'material-design', 'expandable', 'collapse']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Accordion
 
@@ -13,8 +14,7 @@ Accordions allow users to show and hide sections of related content on a page. @
 
 ## Basic Usage
 
-```html
-<div class="accordion">
+<ComponentShowcase title="Basic Accordion" code={`<div class="accordion">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">What is Material Design?</span>
@@ -38,8 +38,7 @@ Accordions allow users to show and hide sections of related content on a page. @
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Variants
 
@@ -47,8 +46,7 @@ Accordions allow users to show and hide sections of related content on a page. @
 
 The default accordion has a clean, minimal appearance with bottom borders separating items.
 
-```html
-<div class="accordion">
+<ComponentShowcase title="Default Accordion" code={`<div class="accordion">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">Section 1</span>
@@ -72,15 +70,13 @@ The default accordion has a clean, minimal appearance with bottom borders separa
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Filled Accordion
 
 Filled accordions have a background color and are separated by spacing.
 
-```html
-<div class="accordion accordion-filled">
+<ComponentShowcase title="Filled Accordion" code={`<div class="accordion accordion-filled">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">Filled Section 1</span>
@@ -104,15 +100,13 @@ Filled accordions have a background color and are separated by spacing.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Outlined Accordion
 
 Outlined accordions have a border around the entire container.
 
-```html
-<div class="accordion accordion-outlined">
+<ComponentShowcase title="Outlined Accordion" code={`<div class="accordion accordion-outlined">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">Outlined Section 1</span>
@@ -136,15 +130,13 @@ Outlined accordions have a border around the entire container.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Separated Accordion
 
 Separated accordions display each item as an individual card with spacing between them.
 
-```html
-<div class="accordion accordion-separated">
+<ComponentShowcase title="Separated Accordion" code={`<div class="accordion accordion-separated">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">Card 1</span>
@@ -168,8 +160,7 @@ Separated accordions display each item as an individual card with spacing betwee
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Density
 
@@ -177,8 +168,7 @@ Separated accordions display each item as an individual card with spacing betwee
 
 Compact accordions have reduced padding for space-efficient layouts.
 
-```html
-<div class="accordion accordion-compact">
+<ComponentShowcase title="Compact Accordion" code={`<div class="accordion accordion-compact">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">Compact Section</span>
@@ -190,15 +180,13 @@ Compact accordions have reduced padding for space-efficient layouts.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Comfortable
 
 Comfortable accordions have increased padding for more spacious layouts.
 
-```html
-<div class="accordion accordion-comfortable">
+<ComponentShowcase title="Comfortable Accordion" code={`<div class="accordion accordion-comfortable">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">Comfortable Section</span>
@@ -210,8 +198,7 @@ Comfortable accordions have increased padding for more spacious layouts.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
@@ -219,8 +206,7 @@ Color variants change the text color of expanded items.
 
 ### Primary
 
-```html
-<div class="accordion accordion-primary">
+<ComponentShowcase title="Primary Accordion" code={`<div class="accordion accordion-primary">
   <div class="accordion-item accordion-item-open">
     <button class="accordion-header">
       <span class="accordion-title">Primary Accordion</span>
@@ -232,13 +218,11 @@ Color variants change the text color of expanded items.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Secondary
 
-```html
-<div class="accordion accordion-secondary">
+<ComponentShowcase title="Secondary Accordion" code={`<div class="accordion accordion-secondary">
   <div class="accordion-item accordion-item-open">
     <button class="accordion-header">
       <span class="accordion-title">Secondary Accordion</span>
@@ -250,13 +234,11 @@ Color variants change the text color of expanded items.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Tertiary
 
-```html
-<div class="accordion accordion-tertiary">
+<ComponentShowcase title="Tertiary Accordion" code={`<div class="accordion accordion-tertiary">
   <div class="accordion-item accordion-item-open">
     <button class="accordion-header">
       <span class="accordion-title">Tertiary Accordion</span>
@@ -268,8 +250,7 @@ Color variants change the text color of expanded items.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Icons
 
@@ -277,8 +258,7 @@ Color variants change the text color of expanded items.
 
 The accordion icon rotates 180 degrees when the item is expanded.
 
-```html
-<div class="accordion">
+<ComponentShowcase title="Accordion with Expansion Icon" code={`<div class="accordion">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">Section with Icon</span>
@@ -290,15 +270,13 @@ The accordion icon rotates 180 degrees when the item is expanded.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Leading Icons
 
 Add custom icons at the start of accordion headers.
 
-```html
-<div class="accordion">
+<ComponentShowcase title="Accordion with Leading Icon" code={`<div class="accordion">
   <div class="accordion-item">
     <button class="accordion-header accordion-header-icon">
       <svg class="accordion-header-icon-leading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -313,8 +291,7 @@ Add custom icons at the start of accordion headers.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## States
 
@@ -322,8 +299,7 @@ Add custom icons at the start of accordion headers.
 
 Add the `accordion-item-open` class to expand an item by default.
 
-```html
-<div class="accordion">
+<ComponentShowcase title="Open and Closed States" code={`<div class="accordion">
   <div class="accordion-item accordion-item-open">
     <button class="accordion-header">
       <span class="accordion-title">Open by Default</span>
@@ -347,15 +323,13 @@ Add the `accordion-item-open` class to expand an item by default.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Disabled State
 
 Disable an accordion item to prevent interaction.
 
-```html
-<div class="accordion">
+<ComponentShowcase title="Disabled Accordion" code={`<div class="accordion">
   <div class="accordion-item accordion-item-disabled">
     <button class="accordion-header">
       <span class="accordion-title">Disabled Section</span>
@@ -367,15 +341,13 @@ Disable an accordion item to prevent interaction.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Without Animation
 
 Remove animations for reduced motion preferences or performance.
 
-```html
-<div class="accordion accordion-no-animation">
+<ComponentShowcase title="Accordion Without Animation" code={`<div class="accordion accordion-no-animation">
   <div class="accordion-item">
     <button class="accordion-header">
       <span class="accordion-title">No Animation</span>
@@ -387,8 +359,7 @@ Remove animations for reduced motion preferences or performance.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Single vs Multiple Expansion
 
@@ -396,8 +367,7 @@ Remove animations for reduced motion preferences or performance.
 
 Only one item can be open at a time (requires JavaScript).
 
-```html
-<div class="accordion" data-accordion="single">
+<ComponentShowcase title="Single Expansion Accordion" code={`<div class="accordion" data-accordion="single">
   <div class="accordion-item">
     <button class="accordion-header" onclick="toggleAccordion(this)">
       <span class="accordion-title">Section 1</span>
@@ -441,15 +411,13 @@ function toggleAccordion(button) {
   // Toggle current item
   item.classList.toggle('accordion-item-open');
 }
-</script>
-```
+</script>`} />
 
 ### Multiple Expansion
 
 Multiple items can be open simultaneously (requires JavaScript).
 
-```html
-<div class="accordion" data-accordion="multiple">
+<ComponentShowcase title="Multiple Expansion Accordion" code={`<div class="accordion" data-accordion="multiple">
   <div class="accordion-item">
     <button class="accordion-header" onclick="toggleAccordion(this)">
       <span class="accordion-title">Section 1</span>
@@ -473,15 +441,13 @@ Multiple items can be open simultaneously (requires JavaScript).
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Combining Variants
 
 You can combine different modifiers for custom layouts.
 
-```html
-<!-- Filled, comfortable, primary accordion -->
+<ComponentShowcase title="Combined Variants" code={`<!-- Filled, comfortable, primary accordion -->
 <div class="accordion accordion-filled accordion-comfortable accordion-primary">
   <div class="accordion-item">
     <button class="accordion-header">
@@ -509,8 +475,7 @@ You can combine different modifiers for custom layouts.
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -518,8 +483,7 @@ You can combine different modifiers for custom layouts.
 
 Use accordions to organize related content sections:
 
-```html
-<div class="accordion accordion-separated">
+<ComponentShowcase title="Organized Content with Icons" code={`<div class="accordion accordion-separated">
   <div class="accordion-item">
     <button class="accordion-header accordion-header-icon">
       <svg class="accordion-header-icon-leading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -549,8 +513,7 @@ Use accordions to organize related content sections:
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -559,8 +522,7 @@ Use accordions to organize related content sections:
 - Ensure keyboard navigation support
 - Provide clear labels for all sections
 
-```html
-<div class="accordion">
+<ComponentShowcase title="Accessible Accordion" code={`<div class="accordion">
   <div class="accordion-item">
     <button
       class="accordion-header"
@@ -582,8 +544,7 @@ Use accordions to organize related content sections:
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Avoid Overuse
 
@@ -596,8 +557,7 @@ Don't use accordions when:
 
 Use accordions to progressively reveal complex information:
 
-```html
-<div class="accordion accordion-outlined">
+<ComponentShowcase title="Progressive Disclosure" code={`<div class="accordion accordion-outlined">
   <div class="accordion-item accordion-item-open">
     <button class="accordion-header">
       <span class="accordion-title">Basic Settings</span>
@@ -621,8 +581,7 @@ Use accordions to progressively reveal complex information:
       </div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Framework Examples
 
@@ -838,8 +797,7 @@ function toggle() {
 
 ### Class Combinations
 
-```html
-<!-- Filled, comfortable, primary accordion -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Filled, comfortable, primary accordion -->
 <div class="accordion accordion-filled accordion-comfortable accordion-primary">
   <!-- items -->
 </div>
@@ -852,8 +810,7 @@ function toggle() {
 <!-- Outlined, no animation accordion -->
 <div class="accordion accordion-outlined accordion-no-animation">
   <!-- items -->
-</div>
-```
+</div>`} />
 
 ## Related Components
 

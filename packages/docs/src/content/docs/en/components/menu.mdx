@@ -6,6 +6,7 @@ order: 18
 published: true
 tags: ['menu', 'dropdown', 'components', 'material-design']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Menu
 
@@ -15,13 +16,11 @@ Menus display a list of choices on temporary surfaces. @duskmoon-dev/core provid
 
 A basic menu requires a container with the `menu` class. Use `menu-show` to toggle visibility.
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Basic Menu" code={`<ul class="menu menu-show">
   <li><button class="menu-item">Menu Item 1</button></li>
   <li><button class="menu-item">Menu Item 2</button></li>
   <li><button class="menu-item">Menu Item 3</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Menu Items
 
@@ -29,20 +28,17 @@ A basic menu requires a container with the `menu` class. Use `menu-show` to togg
 
 Menu items can be buttons or links:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Standard Menu Items" code={`<ul class="menu menu-show">
   <li><button class="menu-item">Profile Settings</button></li>
   <li><a href="/account" class="menu-item">Account</a></li>
   <li><button class="menu-item">Sign Out</button></li>
-</ul>
-```
+</ul>`} />
 
 ### Items with Icons
 
 Add icons to menu items using the `menu-item-icon` class:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Menu Items with Icons" code={`<ul class="menu menu-show">
   <li>
     <button class="menu-item">
       <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,15 +64,13 @@ Add icons to menu items using the `menu-item-icon` class:
       Sign Out
     </button>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Items with Trailing Elements
 
 Add keyboard shortcuts, badges, or other trailing elements:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Menu Items with Trailing Elements" code={`<ul class="menu menu-show">
   <li>
     <button class="menu-item">
       <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,15 +98,13 @@ Add keyboard shortcuts, badges, or other trailing elements:
       <span class="menu-item-trailing">⌘V</span>
     </button>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## Menu Dividers
 
 Use dividers to separate related groups of menu items:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Menu with Dividers" code={`<ul class="menu menu-show">
   <li><button class="menu-item">New File</button></li>
   <li><button class="menu-item">Open File</button></li>
   <li><hr class="menu-divider" /></li>
@@ -120,42 +112,36 @@ Use dividers to separate related groups of menu items:
   <li><button class="menu-item">Save As...</button></li>
   <li><hr class="menu-divider" /></li>
   <li><button class="menu-item">Print</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Menu Labels
 
 Add section headers to organize menu items:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Menu with Labels" code={`<ul class="menu menu-show">
   <li><div class="menu-label">Account</div></li>
   <li><button class="menu-item">Profile</button></li>
   <li><button class="menu-item">Settings</button></li>
   <li><hr class="menu-divider" /></li>
   <li><div class="menu-label">Actions</div></li>
   <li><button class="menu-item">Sign Out</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Active States
 
 Highlight the currently selected menu item with active states:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Active Menu Item" code={`<ul class="menu menu-show">
   <li><button class="menu-item menu-item-active">Dashboard</button></li>
   <li><button class="menu-item">Projects</button></li>
   <li><button class="menu-item">Team</button></li>
-</ul>
-```
+</ul>`} />
 
 ### Active Color Variants
 
 Use different color schemes for active items:
 
-```html
-<!-- Primary (default) -->
+<ComponentShowcase title="Active Color Variants" code={`<!-- Primary (default) -->
 <ul class="menu menu-show">
   <li><button class="menu-item menu-item-active-primary">Home</button></li>
   <li><button class="menu-item">About</button></li>
@@ -171,27 +157,23 @@ Use different color schemes for active items:
 <ul class="menu menu-show">
   <li><button class="menu-item menu-item-active-tertiary">Active Tertiary</button></li>
   <li><button class="menu-item">Normal Item</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Disabled Items
 
 Disable menu items that are not currently available:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Disabled Menu Item" code={`<ul class="menu menu-show">
   <li><button class="menu-item">Cut</button></li>
   <li><button class="menu-item">Copy</button></li>
   <li><button class="menu-item menu-item-disabled">Paste</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Checkboxes and Radio Buttons
 
 Create selectable menu items:
 
-```html
-<!-- Checkbox items -->
+<ComponentShowcase title="Checkbox and Radio Menu Items" code={`<!-- Checkbox items -->
 <ul class="menu menu-show">
   <li><div class="menu-label">View Options</div></li>
   <li><button class="menu-item menu-item-checkbox checked">Show Line Numbers</button></li>
@@ -205,15 +187,13 @@ Create selectable menu items:
   <li><button class="menu-item menu-item-radio checked">Light</button></li>
   <li><button class="menu-item menu-item-radio">Dark</button></li>
   <li><button class="menu-item menu-item-radio">Auto</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Menu Positioning
 
 Position menus relative to their trigger element:
 
-```html
-<!-- Bottom (default) -->
+<ComponentShowcase title="Menu Positioning" code={`<!-- Bottom (default) -->
 <ul class="menu menu-show menu-bottom">
   <li><button class="menu-item">Item 1</button></li>
   <li><button class="menu-item">Item 2</button></li>
@@ -235,15 +215,13 @@ Position menus relative to their trigger element:
 <ul class="menu menu-show menu-right">
   <li><button class="menu-item">Item 1</button></li>
   <li><button class="menu-item">Item 2</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Submenus
 
 Create nested submenus for hierarchical navigation:
 
-```html
-<ul class="menu menu-show">
+<ComponentShowcase title="Menu with Submenu" code={`<ul class="menu menu-show">
   <li><button class="menu-item">New</button></li>
   <li><button class="menu-item">Open</button></li>
   <li>
@@ -256,8 +234,7 @@ Create nested submenus for hierarchical navigation:
   </li>
   <li><hr class="menu-divider" /></li>
   <li><button class="menu-item">Save</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Size Variants
 
@@ -265,69 +242,58 @@ Create nested submenus for hierarchical navigation:
 
 Smaller menu for dense interfaces:
 
-```html
-<ul class="menu menu-compact menu-show">
+<ComponentShowcase title="Compact Menu" code={`<ul class="menu menu-compact menu-show">
   <li><button class="menu-item">Compact Item 1</button></li>
   <li><button class="menu-item">Compact Item 2</button></li>
   <li><button class="menu-item">Compact Item 3</button></li>
-</ul>
-```
+</ul>`} />
 
 ### Wide Menu
 
 Wider menu for longer text content:
 
-```html
-<ul class="menu menu-wide menu-show">
+<ComponentShowcase title="Wide Menu" code={`<ul class="menu menu-wide menu-show">
   <li><button class="menu-item">This is a wider menu item with more text</button></li>
   <li><button class="menu-item">Another longer menu item option</button></li>
-</ul>
-```
+</ul>`} />
 
 ### Dense Menu
 
 Remove padding between items for a more compact appearance:
 
-```html
-<ul class="menu menu-dense menu-show">
+<ComponentShowcase title="Dense Menu" code={`<ul class="menu menu-dense menu-show">
   <li><button class="menu-item">Dense Item 1</button></li>
   <li><button class="menu-item">Dense Item 2</button></li>
   <li><button class="menu-item">Dense Item 3</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Surface Variants
 
 Use alternative surface colors:
 
-```html
-<ul class="menu menu-surface-container-highest menu-show">
+<ComponentShowcase title="Menu Surface Variant" code={`<ul class="menu menu-surface-container-highest menu-show">
   <li><button class="menu-item">Profile</button></li>
   <li><button class="menu-item">Settings</button></li>
   <li><button class="menu-item">Sign Out</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Context Menu
 
 Create right-click context menus using fixed positioning:
 
-```html
-<ul class="menu menu-context menu-show" style="top: 100px; left: 200px;">
+<ComponentShowcase title="Context Menu" code={`<ul class="menu menu-context menu-show" style="top: 100px; left: 200px;">
   <li><button class="menu-item">Cut</button></li>
   <li><button class="menu-item">Copy</button></li>
   <li><button class="menu-item">Paste</button></li>
   <li><hr class="menu-divider" /></li>
   <li><button class="menu-item">Delete</button></li>
-</ul>
-```
+</ul>`} />
 
 ## Interactive Example
 
 Here's a complete example with JavaScript to toggle menu visibility:
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Interactive Menu Example" code={`<div style="position: relative; display: inline-block;">
   <button id="menuTrigger" class="btn btn-primary">
     Open Menu
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -379,8 +345,7 @@ document.addEventListener('click', (e) => {
     menu.classList.remove('menu-show');
   }
 });
-</script>
-```
+</script>`} />
 
 ## Best Practices
 
@@ -392,8 +357,7 @@ document.addEventListener('click', (e) => {
 - Use `role="menu"` and `role="menuitem"` when appropriate
 - Support ESC key to close menus
 
-```html
-<button id="menu-button" aria-haspopup="true" aria-expanded="false">
+<ComponentShowcase title="Accessible Menu" code={`<button id="menu-button" aria-haspopup="true" aria-expanded="false">
   Options
 </button>
 
@@ -404,8 +368,7 @@ document.addEventListener('click', (e) => {
   <li role="none">
     <button class="menu-item" role="menuitem">Option 2</button>
   </li>
-</ul>
-```
+</ul>`} />
 
 ### Visual Hierarchy
 
@@ -609,8 +572,7 @@ onUnmounted(() => {
 
 Combine classes for different effects:
 
-```html
-<!-- Compact menu with active item -->
+<ComponentShowcase title="Combined Menu Classes" code={`<!-- Compact menu with active item -->
 <ul class="menu menu-compact menu-show">
   <li><button class="menu-item menu-item-active">Active</button></li>
   <li><button class="menu-item">Normal</button></li>
@@ -625,8 +587,7 @@ Combine classes for different effects:
       <span class="menu-item-trailing">⌘S</span>
     </button>
   </li>
-</ul>
-```
+</ul>`} />
 
 ## Related Components
 

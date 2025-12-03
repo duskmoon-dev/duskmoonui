@@ -7,15 +7,15 @@ published: true
 tags: ['input', 'form', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Input
 
 Form inputs allow users to enter text. @duskmoon-dev/core provides Material Design 3 input variants and complete form components.
 
 ## Basic Usage
 
-```html
-<input type="text" class="input" placeholder="Enter text" />
-```
+<ComponentShowcase title="Basic Input" code={`<input type="text" class="input" placeholder="Enter text" />`} />
 
 ## Input Variants
 
@@ -23,54 +23,41 @@ Form inputs allow users to enter text. @duskmoon-dev/core provides Material Desi
 
 Filled inputs have a background color:
 
-```html
-<input type="text" class="input" placeholder="Filled input" />
-```
+<ComponentShowcase title="Filled Input" code={`<input type="text" class="input" placeholder="Filled input" />`} />
 
 ### Outlined Input
 
 Outlined inputs have a border:
 
-```html
-<input type="text" class="input input-outlined" placeholder="Outlined input" />
-```
+<ComponentShowcase title="Outlined Input" code={`<input type="text" class="input input-outlined" placeholder="Outlined input" />`} />
 
 ## Sizes
 
 Three sizes are available:
 
-```html
-<input type="text" class="input input-sm" placeholder="Small" />
+<ComponentShowcase title="Input Sizes" code={`<input type="text" class="input input-sm" placeholder="Small" />
 <input type="text" class="input input-md" placeholder="Medium (default)" />
-<input type="text" class="input input-lg" placeholder="Large" />
-```
+<input type="text" class="input input-lg" placeholder="Large" />`} />
 
 ## Input States
 
 ### Error State
 
-```html
-<input type="email" class="input input-error" placeholder="email@example.com" />
-```
+<ComponentShowcase title="Error State" code={`<input type="email" class="input input-error" placeholder="email@example.com" />`} />
 
 ### Success State
 
-```html
-<input type="email" class="input input-success" value="valid@example.com" />
-```
+<ComponentShowcase title="Success State" code={`<input type="email" class="input input-success" value="valid@example.com" />`} />
 
 ### Disabled State
 
-```html
-<input type="text" class="input" placeholder="Disabled" disabled />
-```
+<ComponentShowcase title="Disabled State" code={`<input type="text" class="input" placeholder="Disabled" disabled />`} />
 
 ## Complete Input Group
 
 Combine label, input, and helper text:
 
-```html
-<div class="input-group">
+<ComponentShowcase title="Input Group" code={`<div class="input-group">
   <label class="input-label" for="username">Username</label>
   <input
     type="text"
@@ -79,13 +66,11 @@ Combine label, input, and helper text:
     placeholder="Enter your username"
   />
   <span class="input-helper">Choose a unique username</span>
-</div>
-```
+</div>`} />
 
 ### Input with Error
 
-```html
-<div class="input-group">
+<ComponentShowcase title="Input with Error" code={`<div class="input-group">
   <label class="input-label" for="email">Email</label>
   <input
     type="email"
@@ -95,13 +80,11 @@ Combine label, input, and helper text:
     value="invalid-email"
   />
   <span class="input-error-message">Please enter a valid email address</span>
-</div>
-```
+</div>`} />
 
 ### Input with Success
 
-```html
-<div class="input-group">
+<ComponentShowcase title="Input with Success" code={`<div class="input-group">
   <label class="input-label" for="password">Password</label>
   <input
     type="password"
@@ -110,15 +93,13 @@ Combine label, input, and helper text:
     value="••••••••"
   />
   <span class="input-helper text-success">Strong password!</span>
-</div>
-```
+</div>`} />
 
 ## Textarea
 
 Multi-line text input:
 
-```html
-<textarea
+<ComponentShowcase title="Textarea" code={`<textarea
   class="textarea"
   rows="4"
   placeholder="Enter your message"
@@ -129,13 +110,11 @@ Multi-line text input:
   class="textarea textarea-outlined"
   rows="4"
   placeholder="Enter your message"
-></textarea>
-```
+></textarea>`} />
 
 ### Textarea with Label
 
-```html
-<div class="input-group">
+<ComponentShowcase title="Textarea with Label" code={`<div class="input-group">
   <label class="input-label" for="bio">Bio</label>
   <textarea
     id="bio"
@@ -144,15 +123,13 @@ Multi-line text input:
     placeholder="Tell us about yourself"
   ></textarea>
   <span class="input-helper">Maximum 500 characters</span>
-</div>
-```
+</div>`} />
 
 ## Select
 
 Dropdown selection:
 
-```html
-<select class="select">
+<ComponentShowcase title="Select" code={`<select class="select">
   <option>Select an option</option>
   <option>Option 1</option>
   <option>Option 2</option>
@@ -165,13 +142,11 @@ Dropdown selection:
   <option>Red</option>
   <option>Green</option>
   <option>Blue</option>
-</select>
-```
+</select>`} />
 
 ### Select with Label
 
-```html
-<div class="input-group">
+<ComponentShowcase title="Select with Label" code={`<div class="input-group">
   <label class="input-label" for="country">Country</label>
   <select id="country" class="select select-outlined">
     <option value="">Select a country</option>
@@ -179,13 +154,11 @@ Dropdown selection:
     <option value="uk">United Kingdom</option>
     <option value="ca">Canada</option>
   </select>
-</div>
-```
+</div>`} />
 
 ## Checkbox
 
-```html
-<label class="flex items-center gap-2 cursor-pointer">
+<ComponentShowcase title="Checkbox" code={`<label class="flex items-center gap-2 cursor-pointer">
   <input type="checkbox" class="checkbox" />
   <span>I agree to the terms and conditions</span>
 </label>
@@ -200,13 +173,11 @@ Dropdown selection:
 <label class="flex items-center gap-2 cursor-pointer opacity-50">
   <input type="checkbox" class="checkbox" disabled />
   <span>Disabled option</span>
-</label>
-```
+</label>`} />
 
 ### Checkbox Group
 
-```html
-<div class="space-y-2">
+<ComponentShowcase title="Checkbox Group" code={`<div class="space-y-2">
   <p class="font-medium mb-2">Select your interests:</p>
 
   <label class="flex items-center gap-2 cursor-pointer">
@@ -223,13 +194,11 @@ Dropdown selection:
     <input type="checkbox" class="checkbox" name="interests" value="marketing" />
     <span>Marketing</span>
   </label>
-</div>
-```
+</div>`} />
 
 ## Radio Buttons
 
-```html
-<div class="space-y-2">
+<ComponentShowcase title="Radio Buttons" code={`<div class="space-y-2">
   <p class="font-medium mb-2">Choose a plan:</p>
 
   <label class="flex items-center gap-2 cursor-pointer">
@@ -246,15 +215,13 @@ Dropdown selection:
     <input type="radio" class="radio" name="plan" value="enterprise" />
     <span>Enterprise - Custom pricing</span>
   </label>
-</div>
-```
+</div>`} />
 
 ## Form Examples
 
 ### Login Form
 
-```html
-<form class="space-y-4 max-w-sm">
+<ComponentShowcase title="Login Form" code={`<form class="space-y-4 max-w-sm">
   <h2 class="text-2xl font-bold">Sign In</h2>
 
   <div class="input-group">
@@ -291,13 +258,11 @@ Dropdown selection:
   <p class="text-sm text-center text-on-surface-variant">
     Don't have an account? <a href="/signup" class="text-primary">Sign up</a>
   </p>
-</form>
-```
+</form>`} />
 
 ### Contact Form
 
-```html
-<form class="space-y-4 max-w-lg">
+<ComponentShowcase title="Contact Form" code={`<form class="space-y-4 max-w-lg">
   <h2 class="text-2xl font-bold">Contact Us</h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -362,13 +327,11 @@ Dropdown selection:
     <button type="button" class="btn btn-outlined">Cancel</button>
     <button type="submit" class="btn btn-primary">Send Message</button>
   </div>
-</form>
-```
+</form>`} />
 
 ### Survey Form
 
-```html
-<form class="space-y-6 max-w-2xl">
+<ComponentShowcase title="Survey Form" code={`<form class="space-y-6 max-w-2xl">
   <h2 class="text-2xl font-bold">Product Feedback Survey</h2>
 
   <div class="input-group">
@@ -422,8 +385,7 @@ Dropdown selection:
   </div>
 
   <button type="submit" class="btn btn-primary">Submit Survey</button>
-</form>
-```
+</form>`} />
 
 ## Best Practices
 
@@ -431,33 +393,28 @@ Dropdown selection:
 
 Always provide labels for inputs:
 
-```html
-<!-- Good -->
+<ComponentShowcase title="Input Labels" code={`<!-- Good -->
 <label class="input-label" for="email">Email</label>
 <input type="email" id="email" class="input" />
 
 <!-- Also good: Using aria-label for icon inputs -->
-<input type="search" class="input" aria-label="Search" placeholder="Search..." />
-```
+<input type="search" class="input" aria-label="Search" placeholder="Search..." />`} />
 
 ### Helper Text
 
 Use helper text for additional guidance:
 
-```html
-<div class="input-group">
+<ComponentShowcase title="Helper Text" code={`<div class="input-group">
   <label class="input-label" for="username">Username</label>
   <input type="text" id="username" class="input input-outlined" />
   <span class="input-helper">Must be 3-20 characters, letters and numbers only</span>
-</div>
-```
+</div>`} />
 
 ### Error Handling
 
 Provide clear error messages:
 
-```html
-<div class="input-group">
+<ComponentShowcase title="Error Handling" code={`<div class="input-group">
   <label class="input-label" for="password">Password</label>
   <input
     type="password"
@@ -469,8 +426,7 @@ Provide clear error messages:
   <span id="password-error" class="input-error-message" role="alert">
     Password must be at least 8 characters
   </span>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 

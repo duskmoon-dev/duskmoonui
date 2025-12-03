@@ -6,6 +6,7 @@ order: 23
 published: true
 tags: ['skeleton', 'loader', 'loading', 'components', 'material-design']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Skeleton
 
@@ -13,9 +14,7 @@ Skeleton loaders provide a visual placeholder for content that is loading. They 
 
 ## Basic Usage
 
-```html
-<div class="skeleton" style="width: 200px; height: 20px;"></div>
-```
+<ComponentShowcase title="Basic Skeleton" code={`<div class="skeleton" style="width: 200px; height: 20px;"></div>`} />
 
 ## Animation Types
 
@@ -23,25 +22,19 @@ Skeleton loaders provide a visual placeholder for content that is loading. They 
 
 The default pulse animation gently fades the skeleton in and out.
 
-```html
-<div class="skeleton" style="width: 300px; height: 100px;"></div>
-```
+<ComponentShowcase title="Pulse Animation" code={`<div class="skeleton" style="width: 300px; height: 100px;"></div>`} />
 
 ### Wave Animation
 
 The wave animation creates a shimmer effect that moves across the skeleton.
 
-```html
-<div class="skeleton skeleton-wave" style="width: 300px; height: 100px;"></div>
-```
+<ComponentShowcase title="Wave Animation" code={`<div class="skeleton skeleton-wave" style="width: 300px; height: 100px;"></div>`} />
 
 ### Static (No Animation)
 
 Use the static variant when you need a skeleton without animation.
 
-```html
-<div class="skeleton skeleton-static" style="width: 300px; height: 100px;"></div>
-```
+<ComponentShowcase title="Static Skeleton" code={`<div class="skeleton skeleton-static" style="width: 300px; height: 100px;"></div>`} />
 
 ## Shapes
 
@@ -49,34 +42,29 @@ Use the static variant when you need a skeleton without animation.
 
 Text skeletons are optimized for loading text content with appropriate heights and spacing.
 
-```html
-<!-- Default text -->
+<ComponentShowcase title="Text Skeleton Variants" code={`<!-- Default text -->
 <div class="skeleton skeleton-text"></div>
 
 <!-- Small text -->
 <div class="skeleton skeleton-text skeleton-text-sm"></div>
 
 <!-- Large text -->
-<div class="skeleton skeleton-text skeleton-text-lg"></div>
-```
+<div class="skeleton skeleton-text skeleton-text-lg"></div>`} />
 
 ### Text Width Variants
 
 Control the width of text skeletons to create realistic loading patterns:
 
-```html
-<div class="skeleton skeleton-text skeleton-w-full"></div>
+<ComponentShowcase title="Text Width Variants" code={`<div class="skeleton skeleton-text skeleton-w-full"></div>
 <div class="skeleton skeleton-text skeleton-w-3/4"></div>
 <div class="skeleton skeleton-text skeleton-w-1/2"></div>
-<div class="skeleton skeleton-text skeleton-w-1/4"></div>
-```
+<div class="skeleton skeleton-text skeleton-w-1/4"></div>`} />
 
 ### Circle Skeleton
 
 Perfect for avatars and circular images.
 
-```html
-<!-- Default circle (3rem) -->
+<ComponentShowcase title="Circle Skeleton Sizes" code={`<!-- Default circle (3rem) -->
 <div class="skeleton skeleton-circle"></div>
 
 <!-- Small circle (2rem) -->
@@ -86,60 +74,49 @@ Perfect for avatars and circular images.
 <div class="skeleton skeleton-circle skeleton-circle-lg"></div>
 
 <!-- Extra large circle (6rem) -->
-<div class="skeleton skeleton-circle skeleton-circle-xl"></div>
-```
+<div class="skeleton skeleton-circle skeleton-circle-xl"></div>`} />
 
 ### Rectangle Skeleton
 
 Use for images, cards, or large content blocks.
 
-```html
-<!-- Default rectangle (12rem height) -->
+<ComponentShowcase title="Rectangle Skeleton Sizes" code={`<!-- Default rectangle (12rem height) -->
 <div class="skeleton skeleton-rect"></div>
 
 <!-- Small rectangle (8rem height) -->
 <div class="skeleton skeleton-rect skeleton-rect-sm"></div>
 
 <!-- Large rectangle (16rem height) -->
-<div class="skeleton skeleton-rect skeleton-rect-lg"></div>
-```
+<div class="skeleton skeleton-rect skeleton-rect-lg"></div>`} />
 
 ### Button Skeleton
 
 Optimized for button-shaped placeholders.
 
-```html
-<!-- Default button -->
+<ComponentShowcase title="Button Skeleton Sizes" code={`<!-- Default button -->
 <div class="skeleton skeleton-button"></div>
 
 <!-- Small button -->
 <div class="skeleton skeleton-button skeleton-button-sm"></div>
 
 <!-- Large button -->
-<div class="skeleton skeleton-button skeleton-button-lg"></div>
-```
+<div class="skeleton skeleton-button skeleton-button-lg"></div>`} />
 
 ### Input Skeleton
 
 For form input placeholders.
 
-```html
-<div class="skeleton skeleton-input"></div>
-```
+<ComponentShowcase title="Input Skeleton" code={`<div class="skeleton skeleton-input"></div>`} />
 
 ## Border Radius Variants
 
 ### Rounded
 
-```html
-<div class="skeleton skeleton-rounded" style="width: 200px; height: 100px;"></div>
-```
+<ComponentShowcase title="Rounded Skeleton" code={`<div class="skeleton skeleton-rounded" style="width: 200px; height: 100px;"></div>`} />
 
 ### Rounded Full
 
-```html
-<div class="skeleton skeleton-rounded-full" style="width: 200px; height: 50px;"></div>
-```
+<ComponentShowcase title="Rounded Full Skeleton" code={`<div class="skeleton skeleton-rounded-full" style="width: 200px; height: 50px;"></div>`} />
 
 ## Common Patterns
 
@@ -147,59 +124,50 @@ For form input placeholders.
 
 Create a skeleton for user profiles or list items.
 
-```html
-<div class="skeleton-avatar-text">
+<ComponentShowcase title="Avatar with Text Pattern" code={`<div class="skeleton-avatar-text">
   <div class="skeleton skeleton-circle"></div>
   <div class="skeleton-group" style="flex: 1;">
     <div class="skeleton skeleton-text skeleton-w-3/4"></div>
     <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### List Item
 
-```html
-<div class="skeleton-list-item">
+<ComponentShowcase title="List Item Pattern" code={`<div class="skeleton-list-item">
   <div class="skeleton skeleton-circle skeleton-circle-sm"></div>
   <div class="skeleton-group" style="flex: 1;">
     <div class="skeleton skeleton-text skeleton-w-3/4"></div>
     <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Card Skeleton
 
-```html
-<div class="skeleton-card">
+<ComponentShowcase title="Card Skeleton Pattern" code={`<div class="skeleton-card">
   <div class="skeleton skeleton-rect skeleton-rect-sm"></div>
   <div class="skeleton-group" style="margin-top: 1rem;">
     <div class="skeleton skeleton-text skeleton-w-3/4"></div>
     <div class="skeleton skeleton-text skeleton-w-full"></div>
     <div class="skeleton skeleton-text skeleton-w-1/2"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Skeleton Group
 
 Group multiple skeletons with consistent spacing.
 
-```html
-<div class="skeleton-group">
+<ComponentShowcase title="Skeleton Group" code={`<div class="skeleton-group">
   <div class="skeleton skeleton-text"></div>
   <div class="skeleton skeleton-text skeleton-w-3/4"></div>
   <div class="skeleton skeleton-text skeleton-w-1/2"></div>
-</div>
-```
+</div>`} />
 
 ## Complex Examples
 
 ### Article Loading
 
-```html
-<article>
+<ComponentShowcase title="Article Loading Pattern" code={`<article>
   <!-- Header -->
   <div class="skeleton-group">
     <div class="skeleton skeleton-text skeleton-text-lg skeleton-w-3/4"></div>
@@ -215,13 +183,11 @@ Group multiple skeletons with consistent spacing.
     <div class="skeleton skeleton-text"></div>
     <div class="skeleton skeleton-text skeleton-w-3/4"></div>
   </div>
-</article>
-```
+</article>`} />
 
 ### User Profile Card
 
-```html
-<div class="skeleton-card">
+<ComponentShowcase title="User Profile Card Pattern" code={`<div class="skeleton-card">
   <!-- Cover image -->
   <div class="skeleton skeleton-rect skeleton-rect-sm"></div>
 
@@ -239,13 +205,11 @@ Group multiple skeletons with consistent spacing.
       <div class="skeleton skeleton-button skeleton-button-sm"></div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Product Grid
 
-```html
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+<ComponentShowcase title="Product Grid Pattern" code={`<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
   <!-- Product card 1 -->
   <div class="skeleton-card">
     <div class="skeleton skeleton-rect skeleton-rect-sm skeleton-wave"></div>
@@ -275,8 +239,7 @@ Group multiple skeletons with consistent spacing.
       <div class="skeleton skeleton-button skeleton-button-sm"></div>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -284,16 +247,14 @@ Group multiple skeletons with consistent spacing.
 
 Create skeleton layouts that closely match the actual content structure to minimize layout shifts.
 
-```html
-<!-- Good: Matches the actual content structure -->
+<ComponentShowcase title="Matching Content Structure" code={`<!-- Good: Matches the actual content structure -->
 <div class="skeleton-avatar-text">
   <div class="skeleton skeleton-circle"></div>
   <div class="skeleton-group" style="flex: 1;">
     <div class="skeleton skeleton-text skeleton-w-3/4"></div>
     <div class="skeleton skeleton-text skeleton-text-sm skeleton-w-1/2"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Use Appropriate Animation
 
@@ -301,23 +262,20 @@ Create skeleton layouts that closely match the actual content structure to minim
 - **Wave**: Best for larger content blocks and images
 - **Static**: Use when animation might be distracting or for accessibility
 
-```html
-<!-- Quick loading items: pulse (default) -->
+<ComponentShowcase title="Animation Types" code={`<!-- Quick loading items: pulse (default) -->
 <div class="skeleton skeleton-text"></div>
 
 <!-- Large images: wave -->
 <div class="skeleton skeleton-rect skeleton-wave"></div>
 
 <!-- Reduced motion preference: static -->
-<div class="skeleton skeleton-static skeleton-text"></div>
-```
+<div class="skeleton skeleton-static skeleton-text"></div>`} />
 
 ### Progressive Loading
 
 Load content progressively to improve perceived performance.
 
-```html
-<div class="skeleton-card">
+<ComponentShowcase title="Progressive Loading" code={`<div class="skeleton-card">
   <!-- Load header first -->
   <div class="skeleton-group">
     <div class="skeleton skeleton-text"></div>
@@ -332,8 +290,7 @@ Load content progressively to improve perceived performance.
     <div class="skeleton skeleton-text"></div>
     <div class="skeleton skeleton-text skeleton-w-3/4"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -528,16 +485,14 @@ const style = computed(() => ({
 
 You can combine classes for different effects:
 
-```html
-<!-- Wave animation with custom size -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Wave animation with custom size -->
 <div class="skeleton skeleton-wave" style="width: 300px; height: 150px;"></div>
 
 <!-- Static text skeleton -->
 <div class="skeleton skeleton-text skeleton-static skeleton-w-3/4"></div>
 
 <!-- Large circle with wave animation -->
-<div class="skeleton skeleton-circle skeleton-circle-lg skeleton-wave"></div>
-```
+<div class="skeleton skeleton-circle skeleton-circle-lg skeleton-wave"></div>`} />
 
 ## Related Components
 

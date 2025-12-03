@@ -7,21 +7,21 @@ published: true
 tags: ['radio', 'components', 'material-design', 'form']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Radio
 
 Radio buttons allow users to select a single option from a set of mutually exclusive choices. @duskmoon-dev/core provides a complete set of Material Design 3 radio button variants.
 
 ## Basic Usage
 
-```html
-<label class="radio">
+<ComponentShowcase title="Basic Radio" code={`<label class="radio">
   <input type="radio" name="option" class="radio-input" />
   <span class="radio-circle">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Option 1</span>
-</label>
-```
+</label>`} />
 
 ## Color Variants
 
@@ -29,50 +29,43 @@ Radio buttons allow users to select a single option from a set of mutually exclu
 
 The primary color is used by default for radio buttons.
 
-```html
-<label class="radio">
+<ComponentShowcase title="Primary Radio" code={`<label class="radio">
   <input type="radio" name="color-primary" class="radio-input" checked />
   <span class="radio-circle">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Primary</span>
-</label>
-```
+</label>`} />
 
 ### Secondary
 
 Use the secondary color variant for alternative branding.
 
-```html
-<label class="radio">
+<ComponentShowcase title="Secondary Radio" code={`<label class="radio">
   <input type="radio" name="color-secondary" class="radio-input" checked />
   <span class="radio-secondary">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Secondary</span>
-</label>
-```
+</label>`} />
 
 ### Tertiary
 
 The tertiary color variant provides additional options.
 
-```html
-<label class="radio">
+<ComponentShowcase title="Tertiary Radio" code={`<label class="radio">
   <input type="radio" name="color-tertiary" class="radio-input" checked />
   <span class="radio-tertiary">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Tertiary</span>
-</label>
-```
+</label>`} />
 
 ## Sizes
 
 Three sizes are available for radio buttons:
 
-```html
-<!-- Small -->
+<ComponentShowcase title="Radio Sizes" code={`<!-- Small -->
 <label class="radio radio-sm">
   <input type="radio" name="size-sm" class="radio-input" />
   <span class="radio-circle">
@@ -97,8 +90,7 @@ Three sizes are available for radio buttons:
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Large</span>
-</label>
-```
+</label>`} />
 
 ## Radio Groups
 
@@ -106,8 +98,7 @@ Three sizes are available for radio buttons:
 
 Group radio buttons vertically for better readability.
 
-```html
-<div class="radio-group">
+<ComponentShowcase title="Vertical Radio Group" code={`<div class="radio-group">
   <label class="radio">
     <input type="radio" name="option" class="radio-input" checked />
     <span class="radio-circle">
@@ -131,15 +122,13 @@ Group radio buttons vertically for better readability.
     </span>
     <span class="radio-label">Option 3</span>
   </label>
-</div>
-```
+</div>`} />
 
 ### Horizontal Group
 
 Arrange radio buttons horizontally for compact layouts.
 
-```html
-<div class="radio-group radio-group-horizontal">
+<ComponentShowcase title="Horizontal Radio Group" code={`<div class="radio-group radio-group-horizontal">
   <label class="radio">
     <input type="radio" name="horizontal" class="radio-input" checked />
     <span class="radio-circle">
@@ -163,34 +152,29 @@ Arrange radio buttons horizontally for compact layouts.
     </span>
     <span class="radio-label">Maybe</span>
   </label>
-</div>
-```
+</div>`} />
 
 ## Label Positioning
 
 ### Label on Right (Default)
 
-```html
-<label class="radio">
+<ComponentShowcase title="Label on Right" code={`<label class="radio">
   <input type="radio" name="label-right" class="radio-input" />
   <span class="radio-circle">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Label on the right</span>
-</label>
-```
+</label>`} />
 
 ### Label on Left
 
-```html
-<label class="radio">
+<ComponentShowcase title="Label on Left" code={`<label class="radio">
   <input type="radio" name="label-left" class="radio-input" />
   <span class="radio-label radio-label-left">Label on the left</span>
   <span class="radio-circle">
     <span class="radio-dot"></span>
   </span>
-</label>
-```
+</label>`} />
 
 ## States
 
@@ -198,8 +182,7 @@ Arrange radio buttons horizontally for compact layouts.
 
 Disabled radio buttons are non-interactive.
 
-```html
-<label class="radio">
+<ComponentShowcase title="Disabled Radio" code={`<label class="radio">
   <input type="radio" name="disabled" class="radio-input" disabled />
   <span class="radio-circle">
     <span class="radio-dot"></span>
@@ -213,43 +196,37 @@ Disabled radio buttons are non-interactive.
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Disabled checked</span>
-</label>
-```
+</label>`} />
 
 ### Error State
 
 Use the error state to indicate validation issues.
 
-```html
-<label class="radio radio-error">
+<ComponentShowcase title="Error State" code={`<label class="radio radio-error">
   <input type="radio" name="error" class="radio-input" />
   <span class="radio-circle">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Error option</span>
-</label>
-```
+</label>`} />
 
 ### Loading State
 
 Show a loading state while processing.
 
-```html
-<label class="radio radio-loading">
+<ComponentShowcase title="Loading State" code={`<label class="radio radio-loading">
   <input type="radio" name="loading" class="radio-input" />
   <span class="radio-circle">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Loading...</span>
-</label>
-```
+</label>`} />
 
 ## Helper Text
 
 Add helper text to provide additional context or show validation errors.
 
-```html
-<div class="radio-group">
+<ComponentShowcase title="Radio with Helper Text" code={`<div class="radio-group">
   <label class="radio">
     <input type="radio" name="helper" class="radio-input" />
     <span class="radio-circle">
@@ -267,8 +244,7 @@ Add helper text to provide additional context or show validation errors.
     <span class="radio-label">Option with error</span>
   </label>
   <span class="radio-helper">This field has an error</span>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -280,8 +256,7 @@ Add helper text to provide additional context or show validation errors.
 4. **Default selection**: Consider providing a sensible default selection
 5. **Limit options**: Keep the number of options manageable (typically 2-7 items)
 
-```html
-<!-- Good: Clear, concise options -->
+<ComponentShowcase title="Best Practice Example" code={`<!-- Good: Clear, concise options -->
 <div class="radio-group">
   <label class="radio">
     <input type="radio" name="shipping" class="radio-input" checked />
@@ -298,8 +273,7 @@ Add helper text to provide additional context or show validation errors.
     </span>
     <span class="radio-label">Express Shipping (2-3 days)</span>
   </label>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -309,8 +283,7 @@ Add helper text to provide additional context or show validation errors.
 - Provide meaningful labels and helper text
 - Use `aria-describedby` for helper text associations
 
-```html
-<!-- Good: Accessible radio with helper text -->
+<ComponentShowcase title="Accessible Radio" code={`<!-- Good: Accessible radio with helper text -->
 <label class="radio">
   <input type="radio" name="accessible" class="radio-input" id="option-1" aria-describedby="helper-1" />
   <span class="radio-circle">
@@ -318,23 +291,20 @@ Add helper text to provide additional context or show validation errors.
   </span>
   <span class="radio-label">Accessible option</span>
 </label>
-<span class="radio-helper" id="helper-1">Additional context for screen readers</span>
-```
+<span class="radio-helper" id="helper-1">Additional context for screen readers</span>`} />
 
 ### Touch Targets
 
 Ensure radio buttons are large enough for touch interfaces. The default size provides adequate touch targets.
 
-```html
-<!-- For mobile-first designs, use default or large sizes -->
+<ComponentShowcase title="Mobile-Friendly Radio" code={`<!-- For mobile-first designs, use default or large sizes -->
 <label class="radio radio-lg">
   <input type="radio" name="touch" class="radio-input" />
   <span class="radio-circle">
     <span class="radio-dot"></span>
   </span>
   <span class="radio-label">Mobile-friendly option</span>
-</label>
-```
+</label>`} />
 
 ## Framework Examples
 

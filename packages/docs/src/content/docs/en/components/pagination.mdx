@@ -7,14 +7,15 @@ published: true
 tags: ['pagination', 'components', 'material-design', 'navigation']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Pagination
 
 Pagination allows users to navigate through pages of content. @duskmoon-dev/core provides a complete set of Material Design 3 pagination styles with multiple variants and configurations.
 
 ## Basic Usage
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Basic Pagination" code={`<nav class="pagination">
   <button class="pagination-prev" disabled>Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
@@ -22,8 +23,7 @@ Pagination allows users to navigate through pages of content. @duskmoon-dev/core
   <a href="#" class="pagination-item">4</a>
   <a href="#" class="pagination-item">5</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ## Variants
 
@@ -31,8 +31,7 @@ Pagination allows users to navigate through pages of content. @duskmoon-dev/core
 
 The default pagination uses circular buttons with subtle hover effects:
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Default Variant with Icons" code={`<nav class="pagination">
   <button class="pagination-prev">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -48,139 +47,117 @@ The default pagination uses circular buttons with subtle hover effects:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
     </svg>
   </button>
-</nav>
-```
+</nav>`} />
 
 ### Outlined Variant
 
 Outlined pagination adds borders to page items:
 
-```html
-<nav class="pagination pagination-outlined">
+<ComponentShowcase title="Outlined Variant" code={`<nav class="pagination pagination-outlined">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item">3</a>
   <a href="#" class="pagination-item">4</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ### Tonal Variant
 
 Tonal pagination uses container colors for active states:
 
-```html
-<nav class="pagination pagination-tonal">
+<ComponentShowcase title="Tonal Variant" code={`<nav class="pagination pagination-tonal">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item">3</a>
   <a href="#" class="pagination-item">4</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ## Active Page Colors
 
 ### Primary (Default)
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Primary Color" code={`<nav class="pagination">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active-primary">2</a>
   <a href="#" class="pagination-item">3</a>
-</nav>
-```
+</nav>`} />
 
 ### Secondary
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Secondary Color" code={`<nav class="pagination">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active-secondary">2</a>
   <a href="#" class="pagination-item">3</a>
-</nav>
-```
+</nav>`} />
 
 ### Tertiary
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Tertiary Color" code={`<nav class="pagination">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active-tertiary">2</a>
   <a href="#" class="pagination-item">3</a>
-</nav>
-```
+</nav>`} />
 
 ## Sizes
 
 ### Small
 
-```html
-<nav class="pagination pagination-sm">
+<ComponentShowcase title="Small Size" code={`<nav class="pagination pagination-sm">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item">3</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ### Default (Medium)
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Medium Size" code={`<nav class="pagination">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item">3</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ### Large
 
-```html
-<nav class="pagination pagination-lg">
+<ComponentShowcase title="Large Size" code={`<nav class="pagination pagination-lg">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item">3</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ## Spacing
 
 ### Default Spacing
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Default Spacing" code={`<nav class="pagination">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item">3</a>
-</nav>
-```
+</nav>`} />
 
 ### Compact
 
 Minimal spacing between items:
 
-```html
-<nav class="pagination pagination-compact">
+<ComponentShowcase title="Compact Spacing" code={`<nav class="pagination pagination-compact">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item">3</a>
-</nav>
-```
+</nav>`} />
 
 ## Ellipsis
 
 Use ellipsis to indicate more pages:
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Pagination with Ellipsis" code={`<nav class="pagination">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
@@ -188,40 +165,34 @@ Use ellipsis to indicate more pages:
   <span class="pagination-ellipsis"></span>
   <a href="#" class="pagination-item">10</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ## Disabled State
 
 Disable navigation buttons when at boundaries:
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Disabled Previous Button" code={`<nav class="pagination">
   <button class="pagination-prev" disabled>Previous</button>
   <a href="#" class="pagination-item pagination-item-active">1</a>
   <a href="#" class="pagination-item">2</a>
   <a href="#" class="pagination-item">3</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 You can also disable individual page items:
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Disabled Page Item" code={`<nav class="pagination">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
   <a href="#" class="pagination-item pagination-item-disabled">3</a>
   <a href="#" class="pagination-item">4</a>
-</nav>
-```
+</nav>`} />
 
 ## With Page Info
 
 Display current page information:
 
-```html
-<div class="pagination-info">
+<ComponentShowcase title="Pagination with Page Info" code={`<div class="pagination-info">
   <nav class="pagination">
     <button class="pagination-prev">Previous</button>
     <a href="#" class="pagination-item">1</a>
@@ -230,15 +201,13 @@ Display current page information:
     <button class="pagination-next">Next</button>
   </nav>
   <span class="pagination-info-text">Page 2 of 10</span>
-</div>
-```
+</div>`} />
 
 ## With Page Jump
 
 Allow users to jump to a specific page:
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Pagination with Page Jump" code={`<nav class="pagination">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
@@ -248,15 +217,13 @@ Allow users to jump to a specific page:
     <input type="number" min="1" max="10" value="2" />
   </span>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ## Responsive
 
 Pagination that wraps on smaller screens:
 
-```html
-<nav class="pagination pagination-responsive">
+<ComponentShowcase title="Responsive Pagination" code={`<nav class="pagination pagination-responsive">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
@@ -266,8 +233,7 @@ Pagination that wraps on smaller screens:
   <a href="#" class="pagination-item">6</a>
   <a href="#" class="pagination-item">7</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ## Advanced Examples
 
@@ -275,8 +241,7 @@ Pagination that wraps on smaller screens:
 
 Combining multiple features:
 
-```html
-<div class="pagination-info">
+<ComponentShowcase title="Complete Pagination" code={`<div class="pagination-info">
   <nav class="pagination pagination-outlined">
     <button class="pagination-prev">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -298,15 +263,13 @@ Combining multiple features:
     </button>
   </nav>
   <span class="pagination-info-text">Showing 21-30 of 200 items</span>
-</div>
-```
+</div>`} />
 
 ### Minimal Pagination
 
 Simple previous/next navigation:
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Minimal Pagination" code={`<nav class="pagination">
   <button class="pagination-prev">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -318,8 +281,7 @@ Simple previous/next navigation:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
     </svg>
   </button>
-</nav>
-```
+</nav>`} />
 
 ## Best Practices
 
@@ -327,20 +289,17 @@ Simple previous/next navigation:
 
 Always provide clear visual feedback for the current page:
 
-```html
-<nav class="pagination">
+<ComponentShowcase title="Visual Feedback Example" code={`<nav class="pagination">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active" aria-current="page">2</a>
   <a href="#" class="pagination-item">3</a>
-</nav>
-```
+</nav>`} />
 
 ### Appropriate Page Ranges
 
 Show a reasonable number of pages (typically 5-7) to avoid overwhelming users:
 
-```html
-<!-- Good: Limited page numbers -->
+<ComponentShowcase title="Appropriate Page Range" code={`<!-- Good: Limited page numbers -->
 <nav class="pagination">
   <button class="pagination-prev">Previous</button>
   <a href="#" class="pagination-item">1</a>
@@ -353,29 +312,25 @@ Show a reasonable number of pages (typically 5-7) to avoid overwhelming users:
   <span class="pagination-ellipsis"></span>
   <a href="#" class="pagination-item">50</a>
   <button class="pagination-next">Next</button>
-</nav>
-```
+</nav>`} />
 
 ### Accessibility
 
 Ensure pagination is accessible:
 
-```html
-<nav aria-label="Pagination" class="pagination">
+<ComponentShowcase title="Accessible Pagination" code={`<nav aria-label="Pagination" class="pagination">
   <button class="pagination-prev" aria-label="Go to previous page">Previous</button>
   <a href="#" class="pagination-item" aria-label="Go to page 1">1</a>
   <a href="#" class="pagination-item pagination-item-active" aria-current="page" aria-label="Page 2, current page">2</a>
   <a href="#" class="pagination-item" aria-label="Go to page 3">3</a>
   <button class="pagination-next" aria-label="Go to next page">Next</button>
-</nav>
-```
+</nav>`} />
 
 ### Mobile Considerations
 
 Use compact or responsive variants on mobile devices:
 
-```html
-<!-- Mobile-friendly with fewer visible pages -->
+<ComponentShowcase title="Mobile-Friendly Pagination" code={`<!-- Mobile-friendly with fewer visible pages -->
 <nav class="pagination pagination-sm pagination-responsive">
   <button class="pagination-prev">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -392,8 +347,7 @@ Use compact or responsive variants on mobile devices:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
     </svg>
   </button>
-</nav>
-```
+</nav>`} />
 
 ## Framework Examples
 
@@ -669,8 +623,7 @@ const visiblePages = computed(() => {
 
 You can combine classes for different effects:
 
-```html
-<!-- Outlined pagination with secondary color, large size -->
+<ComponentShowcase title="Outlined Large with Secondary Color" code={`<!-- Outlined pagination with secondary color, large size -->
 <nav class="pagination pagination-outlined pagination-lg">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active-secondary">2</a>
@@ -682,8 +635,7 @@ You can combine classes for different effects:
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active-tertiary">2</a>
   <a href="#" class="pagination-item">3</a>
-</nav>
-```
+</nav>`} />
 
 ## Related Components
 

@@ -7,14 +7,15 @@ published: true
 tags: ['bottomsheet', 'components', 'material-design', 'mobile']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Bottom Sheet
 
 Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen. They're commonly used on mobile devices for contextual actions, settings, or additional information.
 
 ## Basic Usage
 
-```html
-<!-- Bottom sheet backdrop -->
+<ComponentShowcase title="Basic Bottom Sheet" code={`<!-- Bottom sheet backdrop -->
 <div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
 
 <!-- Bottom sheet container -->
@@ -31,8 +32,7 @@ Bottom sheets are surfaces containing supplementary content that are anchored to
     <button class="btn btn-text">Cancel</button>
     <button class="btn btn-primary">Confirm</button>
   </div>
-</div>
-```
+</div>`} />
 
 ## Modal vs Non-Modal
 
@@ -40,8 +40,7 @@ Bottom sheets are surfaces containing supplementary content that are anchored to
 
 Modal bottom sheets require user interaction before allowing interaction with the rest of the screen. They include a backdrop that prevents interaction with underlying content.
 
-```html
-<!-- Modal with backdrop -->
+<ComponentShowcase title="Modal Bottom Sheet" code={`<!-- Modal with backdrop -->
 <div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
 
 <div class="bottom-sheet bottom-sheet-modal bottom-sheet-show">
@@ -57,15 +56,13 @@ Modal bottom sheets require user interaction before allowing interaction with th
     <button class="btn btn-text">Cancel</button>
     <button class="btn btn-primary">Save</button>
   </div>
-</div>
-```
+</div>`} />
 
 ### Persistent (Non-Modal) Bottom Sheet
 
 Persistent bottom sheets remain visible while allowing interaction with the main content. They don't have a backdrop.
 
-```html
-<!-- No backdrop for persistent -->
+<ComponentShowcase title="Persistent Bottom Sheet" code={`<!-- No backdrop for persistent -->
 <div class="bottom-sheet bottom-sheet-persistent bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-header">
@@ -75,8 +72,7 @@ Persistent bottom sheets remain visible while allowing interaction with the main
   <div class="bottom-sheet-body">
     <p>This sheet stays open while you interact with the page.</p>
   </div>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
@@ -84,46 +80,38 @@ Bottom sheets come in multiple height variants to accommodate different content 
 
 ### Small (40vh)
 
-```html
-<div class="bottom-sheet bottom-sheet-sm bottom-sheet-show">
+<ComponentShowcase title="Small Bottom Sheet" code={`<div class="bottom-sheet bottom-sheet-sm bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-body">
     <p>Small bottom sheet - 40% of viewport height</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Medium (60vh)
 
-```html
-<div class="bottom-sheet bottom-sheet-md bottom-sheet-show">
+<ComponentShowcase title="Medium Bottom Sheet" code={`<div class="bottom-sheet bottom-sheet-md bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-body">
     <p>Medium bottom sheet - 60% of viewport height</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Large (80vh)
 
-```html
-<div class="bottom-sheet bottom-sheet-lg bottom-sheet-show">
+<ComponentShowcase title="Large Bottom Sheet" code={`<div class="bottom-sheet bottom-sheet-lg bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-body">
     <p>Large bottom sheet - 80% of viewport height</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Full Height (100vh)
 
-```html
-<div class="bottom-sheet bottom-sheet-full bottom-sheet-show">
+<ComponentShowcase title="Full Height Bottom Sheet" code={`<div class="bottom-sheet bottom-sheet-full bottom-sheet-show">
   <div class="bottom-sheet-body">
     <p>Full height bottom sheet - Takes entire viewport</p>
   </div>
-</div>
-```
+</div>`} />
 
 ## Handle Options
 
@@ -131,21 +119,18 @@ Bottom sheets come in multiple height variants to accommodate different content 
 
 The drag handle provides a visual indicator that the sheet can be dismissed by dragging.
 
-```html
-<div class="bottom-sheet bottom-sheet-show">
+<ComponentShowcase title="Bottom Sheet with Handle" code={`<div class="bottom-sheet bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-body">
     <p>Bottom sheet with drag handle</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Without Handle
 
 Remove the handle for a cleaner look when drag-to-dismiss isn't needed.
 
-```html
-<div class="bottom-sheet bottom-sheet-no-handle bottom-sheet-show">
+<ComponentShowcase title="Bottom Sheet without Handle" code={`<div class="bottom-sheet bottom-sheet-no-handle bottom-sheet-show">
   <div class="bottom-sheet-header">
     <h2 class="bottom-sheet-title">No Handle</h2>
     <button class="bottom-sheet-close" aria-label="Close">×</button>
@@ -153,8 +138,7 @@ Remove the handle for a cleaner look when drag-to-dismiss isn't needed.
   <div class="bottom-sheet-body">
     <p>Bottom sheet without drag handle</p>
   </div>
-</div>
-```
+</div>`} />
 
 ## Surface Variants
 
@@ -162,43 +146,35 @@ Bottom sheets support different surface color variants from the Material Design 
 
 ### Surface Container Low (Default)
 
-```html
-<div class="bottom-sheet bottom-sheet-show">
+<ComponentShowcase title="Surface Container Low" code={`<div class="bottom-sheet bottom-sheet-show">
   <div class="bottom-sheet-body">
     <p>Default surface container low background</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Surface
 
-```html
-<div class="bottom-sheet bottom-sheet-surface bottom-sheet-show">
+<ComponentShowcase title="Surface Variant" code={`<div class="bottom-sheet bottom-sheet-surface bottom-sheet-show">
   <div class="bottom-sheet-body">
     <p>Surface background variant</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Surface Container
 
-```html
-<div class="bottom-sheet bottom-sheet-surface-container bottom-sheet-show">
+<ComponentShowcase title="Surface Container Variant" code={`<div class="bottom-sheet bottom-sheet-surface-container bottom-sheet-show">
   <div class="bottom-sheet-body">
     <p>Surface container background variant</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Surface Container High
 
-```html
-<div class="bottom-sheet bottom-sheet-surface-container-high bottom-sheet-show">
+<ComponentShowcase title="Surface Container High Variant" code={`<div class="bottom-sheet bottom-sheet-surface-container-high bottom-sheet-show">
   <div class="bottom-sheet-body">
     <p>Surface container high background variant</p>
   </div>
-</div>
-```
+</div>`} />
 
 ## Content Options
 
@@ -206,8 +182,7 @@ Bottom sheets support different surface color variants from the Material Design 
 
 For long content that needs scrolling within the bottom sheet body.
 
-```html
-<div class="bottom-sheet bottom-sheet-scrollable bottom-sheet-show">
+<ComponentShowcase title="Scrollable Content" code={`<div class="bottom-sheet bottom-sheet-scrollable bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-header">
     <h2 class="bottom-sheet-title">Scrollable Content</h2>
@@ -218,15 +193,13 @@ For long content that needs scrolling within the bottom sheet body.
     <p>Even more content...</p>
     <!-- Content continues -->
   </div>
-</div>
-```
+</div>`} />
 
 ### No Padding
 
 Remove default padding from the body for custom layouts.
 
-```html
-<div class="bottom-sheet bottom-sheet-no-padding bottom-sheet-show">
+<ComponentShowcase title="No Padding" code={`<div class="bottom-sheet bottom-sheet-no-padding bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-body">
     <img src="image.jpg" alt="Full width image" class="w-full" />
@@ -234,15 +207,13 @@ Remove default padding from the body for custom layouts.
       <p>Content with custom padding</p>
     </div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Compact Spacing
 
 Reduce padding for more compact layouts.
 
-```html
-<div class="bottom-sheet bottom-sheet-compact bottom-sheet-show">
+<ComponentShowcase title="Compact Spacing" code={`<div class="bottom-sheet bottom-sheet-compact bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-header">
     <h2 class="bottom-sheet-title">Compact Sheet</h2>
@@ -254,22 +225,19 @@ Reduce padding for more compact layouts.
     <button class="btn btn-text btn-sm">Cancel</button>
     <button class="btn btn-primary btn-sm">Save</button>
   </div>
-</div>
-```
+</div>`} />
 
 ## Partial Open State
 
 Bottom sheets can be partially opened to show a preview of content.
 
-```html
-<div class="bottom-sheet bottom-sheet-partial bottom-sheet-show">
+<ComponentShowcase title="Partial Open State" code={`<div class="bottom-sheet bottom-sheet-partial bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-body">
     <p>This sheet opens partially at first</p>
     <p>Drag up or tap to fully open</p>
   </div>
-</div>
-```
+</div>`} />
 
 ## Common Use Cases
 
@@ -277,8 +245,7 @@ Bottom sheets can be partially opened to show a preview of content.
 
 Display a list of actions for the user to choose from.
 
-```html
-<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+<ComponentShowcase title="Action Sheet" code={`<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
 
 <div class="bottom-sheet bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
@@ -311,15 +278,13 @@ Display a list of actions for the user to choose from.
       </div>
     </button>
   </div>
-</div>
-```
+</div>`} />
 
 ### Form Sheet
 
 Use for forms and data input.
 
-```html
-<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+<ComponentShowcase title="Form Sheet" code={`<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
 
 <div class="bottom-sheet bottom-sheet-lg bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
@@ -343,15 +308,13 @@ Use for forms and data input.
     <button class="btn btn-text">Cancel</button>
     <button class="btn btn-primary">Add Item</button>
   </div>
-</div>
-```
+</div>`} />
 
 ### Filter Sheet
 
 Display filtering options.
 
-```html
-<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
+<ComponentShowcase title="Filter Sheet" code={`<div class="bottom-sheet-backdrop bottom-sheet-backdrop-show"></div>
 
 <div class="bottom-sheet bottom-sheet-md bottom-sheet-scrollable bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
@@ -389,15 +352,13 @@ Display filtering options.
     <button class="btn btn-text">Cancel</button>
     <button class="btn btn-primary">Apply Filters</button>
   </div>
-</div>
-```
+</div>`} />
 
 ## JavaScript Control
 
 Basic JavaScript for controlling bottom sheet visibility:
 
-```html
-<button id="openSheet" class="btn btn-primary">Open Bottom Sheet</button>
+<ComponentShowcase title="JavaScript Control" code={`<button id="openSheet" class="btn btn-primary">Open Bottom Sheet</button>
 
 <div id="backdrop" class="bottom-sheet-backdrop"></div>
 
@@ -431,8 +392,7 @@ Basic JavaScript for controlling bottom sheet visibility:
   openBtn.addEventListener('click', openBottomSheet);
   closeBtn.addEventListener('click', closeBottomSheet);
   backdrop.addEventListener('click', closeBottomSheet);
-</script>
-```
+</script>`} />
 
 ## Best Practices
 
@@ -453,8 +413,7 @@ Bottom sheets are designed primarily for mobile interfaces:
 - Provide clear focus indicators
 - Don't trap focus when using persistent sheets
 
-```html
-<div class="bottom-sheet" role="dialog" aria-labelledby="sheet-title" aria-modal="true">
+<ComponentShowcase title="Accessible Bottom Sheet" code={`<div class="bottom-sheet" role="dialog" aria-labelledby="sheet-title" aria-modal="true">
   <div class="bottom-sheet-handle" aria-hidden="true"></div>
   <div class="bottom-sheet-header">
     <h2 id="sheet-title" class="bottom-sheet-title">Accessible Bottom Sheet</h2>
@@ -463,8 +422,7 @@ Bottom sheets are designed primarily for mobile interfaces:
   <div class="bottom-sheet-body">
     <p>Content with proper accessibility attributes</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Content Guidelines
 
