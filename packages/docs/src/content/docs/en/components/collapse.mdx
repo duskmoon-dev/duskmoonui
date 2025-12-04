@@ -7,14 +7,17 @@ published: true
 tags: ['collapse', 'accordion', 'expandable', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Collapse
 
 The Collapse component allows users to show and hide content sections with smooth animations. It's perfect for FAQs, navigation menus, and content-heavy interfaces where space management is crucial.
 
 ## Basic Usage
 
-```html
-<div class="collapse collapse-open">
+<ComponentShowcase
+  title="Basic Collapse"
+  code={`<div class="collapse collapse-open">
   <button class="collapse-trigger">
     <span>Click to toggle</span>
     <span class="collapse-icon">▼</span>
@@ -22,8 +25,8 @@ The Collapse component allows users to show and hide content sections with smoot
   <div class="collapse-content">
     <p>This is the collapsible content that can be shown or hidden.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## States
 
@@ -31,8 +34,9 @@ The Collapse component allows users to show and hide content sections with smoot
 
 Add `collapse-open` class to show the content:
 
-```html
-<div class="collapse collapse-open">
+<ComponentShowcase
+  title="Open State"
+  code={`<div class="collapse collapse-open">
   <button class="collapse-trigger">
     <span>Expanded Section</span>
     <span class="collapse-icon">▼</span>
@@ -40,15 +44,16 @@ Add `collapse-open` class to show the content:
   <div class="collapse-content">
     <p>This content is visible by default.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Closed State
 
 Add `collapse-closed` class to hide the content:
 
-```html
-<div class="collapse collapse-closed">
+<ComponentShowcase
+  title="Closed State"
+  code={`<div class="collapse collapse-closed">
   <button class="collapse-trigger">
     <span>Collapsed Section</span>
     <span class="collapse-icon">▼</span>
@@ -56,8 +61,8 @@ Add `collapse-closed` class to hide the content:
   <div class="collapse-content">
     <p>This content is hidden by default.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Variants
 
@@ -65,8 +70,9 @@ Add `collapse-closed` class to hide the content:
 
 Add a border to the collapse component:
 
-```html
-<div class="collapse collapse-bordered collapse-closed">
+<ComponentShowcase
+  title="Bordered Variant"
+  code={`<div class="collapse collapse-bordered collapse-closed">
   <button class="collapse-trigger">
     <span>Bordered Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -74,15 +80,16 @@ Add a border to the collapse component:
   <div class="collapse-content">
     <p>Content with a border around it.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Card Variant
 
 Card variant with shadow and border:
 
-```html
-<div class="collapse collapse-card collapse-closed">
+<ComponentShowcase
+  title="Card Variant"
+  code={`<div class="collapse collapse-card collapse-closed">
   <button class="collapse-trigger">
     <span>Card Style Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -90,15 +97,16 @@ Card variant with shadow and border:
   <div class="collapse-content">
     <p>This collapse has a card appearance with shadow.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Ghost Variant
 
 Minimal styling for a clean look:
 
-```html
-<div class="collapse collapse-ghost collapse-closed">
+<ComponentShowcase
+  title="Ghost Variant"
+  code={`<div class="collapse collapse-ghost collapse-closed">
   <button class="collapse-trigger">
     <span>Ghost Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -106,15 +114,16 @@ Minimal styling for a clean look:
   <div class="collapse-content">
     <p>Minimal styling with transparent background.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Color Variants
 
 ### Primary
 
-```html
-<div class="collapse collapse-primary collapse-closed">
+<ComponentShowcase
+  title="Primary Color"
+  code={`<div class="collapse collapse-primary collapse-closed">
   <button class="collapse-trigger">
     <span>Primary Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -122,13 +131,14 @@ Minimal styling for a clean look:
   <div class="collapse-content">
     <p>Content with primary color theme.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Secondary
 
-```html
-<div class="collapse collapse-secondary collapse-closed">
+<ComponentShowcase
+  title="Secondary Color"
+  code={`<div class="collapse collapse-secondary collapse-closed">
   <button class="collapse-trigger">
     <span>Secondary Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -136,13 +146,14 @@ Minimal styling for a clean look:
   <div class="collapse-content">
     <p>Content with secondary color theme.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Tertiary
 
-```html
-<div class="collapse collapse-tertiary collapse-closed">
+<ComponentShowcase
+  title="Tertiary Color"
+  code={`<div class="collapse collapse-tertiary collapse-closed">
   <button class="collapse-trigger">
     <span>Tertiary Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -150,15 +161,16 @@ Minimal styling for a clean look:
   <div class="collapse-content">
     <p>Content with tertiary color theme.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Sizes
 
 ### Small
 
-```html
-<div class="collapse collapse-sm collapse-closed">
+<ComponentShowcase
+  title="Small Size"
+  code={`<div class="collapse collapse-sm collapse-closed">
   <button class="collapse-trigger">
     <span>Small Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -166,13 +178,14 @@ Minimal styling for a clean look:
   <div class="collapse-content">
     <p>Compact size for space-constrained layouts.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Medium (Default)
 
-```html
-<div class="collapse collapse-closed">
+<ComponentShowcase
+  title="Medium Size (Default)"
+  code={`<div class="collapse collapse-closed">
   <button class="collapse-trigger">
     <span>Medium Collapse (Default)</span>
     <span class="collapse-icon">▼</span>
@@ -180,13 +193,14 @@ Minimal styling for a clean look:
   <div class="collapse-content">
     <p>Standard size for most use cases.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Large
 
-```html
-<div class="collapse collapse-lg collapse-closed">
+<ComponentShowcase
+  title="Large Size"
+  code={`<div class="collapse collapse-lg collapse-closed">
   <button class="collapse-trigger">
     <span>Large Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -194,15 +208,16 @@ Minimal styling for a clean look:
   <div class="collapse-content">
     <p>Larger size for emphasis and better touch targets.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Accordion Groups
 
 Create an accordion by grouping multiple collapse components:
 
-```html
-<div class="collapse-group">
+<ComponentShowcase
+  title="Accordion Group"
+  code={`<div class="collapse-group">
   <div class="collapse collapse-open">
     <button class="collapse-trigger">
       <span>Section 1</span>
@@ -232,8 +247,8 @@ Create an accordion by grouping multiple collapse components:
       <p>Third section content is collapsed.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Animation Variants
 
@@ -241,8 +256,9 @@ Create an accordion by grouping multiple collapse components:
 
 Smooth fade in/out effect:
 
-```html
-<div class="collapse collapse-fade collapse-closed">
+<ComponentShowcase
+  title="Fade Animation"
+  code={`<div class="collapse collapse-fade collapse-closed">
   <button class="collapse-trigger">
     <span>Fade Animation</span>
     <span class="collapse-icon">▼</span>
@@ -250,15 +266,16 @@ Smooth fade in/out effect:
   <div class="collapse-content">
     <p>Content fades in and out smoothly.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Slide Animation
 
 Slide with transform effect:
 
-```html
-<div class="collapse collapse-slide collapse-closed">
+<ComponentShowcase
+  title="Slide Animation"
+  code={`<div class="collapse collapse-slide collapse-closed">
   <button class="collapse-trigger">
     <span>Slide Animation</span>
     <span class="collapse-icon">▼</span>
@@ -266,8 +283,8 @@ Slide with transform effect:
   <div class="collapse-content">
     <p>Content slides in from above with a transform.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Additional Features
 
@@ -275,8 +292,9 @@ Slide with transform effect:
 
 Add a divider between trigger and content:
 
-```html
-<div class="collapse collapse-divider collapse-closed">
+<ComponentShowcase
+  title="With Divider"
+  code={`<div class="collapse collapse-divider collapse-closed">
   <button class="collapse-trigger">
     <span>With Divider</span>
     <span class="collapse-icon">▼</span>
@@ -284,15 +302,16 @@ Add a divider between trigger and content:
   <div class="collapse-content">
     <p>Content separated by a divider line.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Disabled State
 
 Prevent interaction with the collapse:
 
-```html
-<div class="collapse collapse-disabled collapse-closed">
+<ComponentShowcase
+  title="Disabled State"
+  code={`<div class="collapse collapse-disabled collapse-closed">
   <button class="collapse-trigger">
     <span>Disabled Collapse</span>
     <span class="collapse-icon">▼</span>
@@ -300,15 +319,16 @@ Prevent interaction with the collapse:
   <div class="collapse-content">
     <p>This collapse cannot be toggled.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Loading State
 
 Show a loading indicator:
 
-```html
-<div class="collapse collapse-loading collapse-closed">
+<ComponentShowcase
+  title="Loading State"
+  code={`<div class="collapse collapse-loading collapse-closed">
   <button class="collapse-trigger">
     <span>Loading Content</span>
     <span class="collapse-icon">▼</span>
@@ -316,15 +336,16 @@ Show a loading indicator:
   <div class="collapse-content">
     <p>Content is being loaded...</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Nested Collapse
 
 Collapse components can be nested within each other:
 
-```html
-<div class="collapse collapse-open">
+<ComponentShowcase
+  title="Nested Collapse"
+  code={`<div class="collapse collapse-open">
   <button class="collapse-trigger">
     <span>Parent Section</span>
     <span class="collapse-icon">▼</span>
@@ -342,15 +363,16 @@ Collapse components can be nested within each other:
       </div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## JavaScript Integration
 
 Add interactivity with JavaScript to toggle the collapse state:
 
-```html
-<div class="collapse collapse-closed" id="myCollapse">
+<ComponentShowcase
+  title="JavaScript Integration"
+  code={`<div class="collapse collapse-closed" id="myCollapse">
   <button class="collapse-trigger" onclick="toggleCollapse('myCollapse')">
     <span>Toggle Me</span>
     <span class="collapse-icon">▼</span>
@@ -366,8 +388,8 @@ function toggleCollapse(id) {
   collapse.classList.toggle('collapse-open');
   collapse.classList.toggle('collapse-closed');
 }
-</script>
-```
+</script>`}
+/>
 
 ## Best Practices
 
@@ -378,8 +400,9 @@ function toggleCollapse(id) {
 - Ensure keyboard navigation support (Enter/Space to toggle)
 - Use ARIA attributes for better screen reader support
 
-```html
-<div class="collapse collapse-closed">
+<ComponentShowcase
+  title="Accessible Collapse"
+  code={`<div class="collapse collapse-closed">
   <button
     class="collapse-trigger"
     aria-expanded="false"
@@ -391,8 +414,8 @@ function toggleCollapse(id) {
   <div class="collapse-content" id="collapse-content-1" role="region">
     <p>Content with proper ARIA attributes.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Performance
 
@@ -605,8 +628,9 @@ The collapse component uses the following animation timing:
 
 Combine classes for customized appearance:
 
-```html
-<!-- Bordered primary collapse, large size -->
+<ComponentShowcase
+  title="Combined Variants"
+  code={`<!-- Bordered primary collapse, large size -->
 <div class="collapse collapse-bordered collapse-primary collapse-lg collapse-closed">
   <button class="collapse-trigger">
     <span>Custom Collapse</span>
@@ -626,8 +650,8 @@ Combine classes for customized appearance:
   <div class="collapse-content">
     <p>Multiple variant combinations.</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Related Components
 

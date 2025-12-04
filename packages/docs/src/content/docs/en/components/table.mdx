@@ -6,6 +6,7 @@ order: 15
 published: true
 tags: ['table', 'data', 'components', 'material-design']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Table
 
@@ -13,8 +14,7 @@ Tables display information in a grid-like format of rows and columns. @duskmoon-
 
 ## Basic Usage
 
-```html
-<table class="table">
+<ComponentShowcase title="Basic Table" code={`<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -39,8 +39,7 @@ Tables display information in a grid-like format of rows and columns. @duskmoon-
       <td>Manager</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ## Variants
 
@@ -48,8 +47,7 @@ Tables display information in a grid-like format of rows and columns. @duskmoon-
 
 Alternate row colors for improved readability:
 
-```html
-<table class="table table-striped">
+<ComponentShowcase title="Striped Table" code={`<table class="table table-striped">
   <thead>
     <tr>
       <th>Product</th>
@@ -79,15 +77,13 @@ Alternate row colors for improved readability:
       <td>$99.99</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Bordered Table
 
 Add borders to all cells:
 
-```html
-<table class="table table-bordered">
+<ComponentShowcase title="Bordered Table" code={`<table class="table table-bordered">
   <thead>
     <tr>
       <th>ID</th>
@@ -112,15 +108,13 @@ Add borders to all cells:
       <td>Pending</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Borderless Table
 
 Remove all borders for a clean look:
 
-```html
-<table class="table table-borderless">
+<ComponentShowcase title="Borderless Table" code={`<table class="table table-borderless">
   <thead>
     <tr>
       <th>Date</th>
@@ -140,15 +134,13 @@ Remove all borders for a clean look:
       <td>Main Hall</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Hoverable Rows
 
 Add hover effects to table rows:
 
-```html
-<table class="table table-hover">
+<ComponentShowcase title="Hoverable Table" code={`<table class="table table-hover">
   <thead>
     <tr>
       <th>Customer</th>
@@ -173,15 +165,13 @@ Add hover effects to table rows:
       <td>$89.99</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Combined Variants
 
 Combine striped and hover effects:
 
-```html
-<table class="table table-striped table-hover">
+<ComponentShowcase title="Striped and Hoverable Table" code={`<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Task</th>
@@ -206,8 +196,7 @@ Combine striped and hover effects:
       <td>2025-01-17</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ## Density Options
 
@@ -215,8 +204,7 @@ Combine striped and hover effects:
 
 Reduce padding for space-efficient layouts:
 
-```html
-<table class="table table-compact">
+<ComponentShowcase title="Compact Table" code={`<table class="table table-compact">
   <thead>
     <tr>
       <th>Code</th>
@@ -236,15 +224,13 @@ Reduce padding for space-efficient layouts:
       <td>75</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Comfortable Table
 
 Increase padding for better readability:
 
-```html
-<table class="table table-comfortable">
+<ComponentShowcase title="Comfortable Table" code={`<table class="table table-comfortable">
   <thead>
     <tr>
       <th>Title</th>
@@ -264,8 +250,7 @@ Increase padding for better readability:
       <td>1960</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ## Interactive Features
 
@@ -273,8 +258,7 @@ Increase padding for better readability:
 
 Make rows selectable with visual feedback:
 
-```html
-<table class="table table-selectable">
+<ComponentShowcase title="Selectable Rows" code={`<table class="table table-selectable">
   <thead>
     <tr>
       <th>File Name</th>
@@ -299,15 +283,13 @@ Make rows selectable with visual feedback:
       <td>2025-01-12</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### With Checkboxes
 
 Add checkboxes for multi-selection:
 
-```html
-<table class="table table-hover">
+<ComponentShowcase title="Table with Checkboxes" code={`<table class="table table-hover">
   <thead>
     <tr>
       <th class="table-checkbox">
@@ -336,15 +318,13 @@ Add checkboxes for multi-selection:
       <td>Active</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Sortable Columns
 
 Add sort indicators to columns:
 
-```html
-<table class="table">
+<ComponentShowcase title="Sortable Columns" code={`<table class="table">
   <thead>
     <tr>
       <th class="table-sort table-sort-asc">
@@ -373,8 +353,7 @@ Add sort indicators to columns:
       <td>Designer</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ## Column Alignment
 
@@ -382,8 +361,7 @@ Add sort indicators to columns:
 
 Right-align numeric data with tabular figures:
 
-```html
-<table class="table">
+<ComponentShowcase title="Numeric Columns" code={`<table class="table">
   <thead>
     <tr>
       <th>Product</th>
@@ -406,15 +384,13 @@ Right-align numeric data with tabular figures:
       <td class="table-numeric">2,789</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Center Aligned
 
 Center-align content:
 
-```html
-<table class="table">
+<ComponentShowcase title="Center Aligned Columns" code={`<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -434,15 +410,13 @@ Center-align content:
       <td class="table-center">Silver</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Actions Column
 
 Right-align action buttons:
 
-```html
-<table class="table">
+<ComponentShowcase title="Actions Column" code={`<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -468,8 +442,7 @@ Right-align action buttons:
       </td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ## Advanced Features
 
@@ -477,8 +450,7 @@ Right-align action buttons:
 
 Keep header visible while scrolling:
 
-```html
-<div style="max-height: 300px; overflow-y: auto;">
+<ComponentShowcase title="Sticky Header" code={`<div style="max-height: 300px; overflow-y: auto;">
   <table class="table table-sticky">
     <thead>
       <tr>
@@ -501,15 +473,13 @@ Keep header visible while scrolling:
       <!-- More rows... -->
     </tbody>
   </table>
-</div>
-```
+</div>`} />
 
 ### With Caption
 
 Add a caption to describe the table:
 
-```html
-<table class="table">
+<ComponentShowcase title="Table with Caption" code={`<table class="table">
   <caption class="table-caption">
     User Activity Report - January 2025
   </caption>
@@ -532,15 +502,13 @@ Add a caption to describe the table:
       <td>2025-01-11</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### With Footer
 
 Add footer totals or summaries:
 
-```html
-<table class="table">
+<ComponentShowcase title="Table with Footer" code={`<table class="table">
   <thead>
     <tr>
       <th>Item</th>
@@ -569,15 +537,13 @@ Add footer totals or summaries:
       <td class="table-numeric">$500.00</td>
     </tr>
   </tfoot>
-</table>
-```
+</table>`} />
 
 ### Responsive Table
 
 Wrap table in a responsive container for horizontal scrolling:
 
-```html
-<div class="table-responsive">
+<ComponentShowcase title="Responsive Table" code={`<div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
@@ -605,15 +571,13 @@ Wrap table in a responsive container for horizontal scrolling:
       <!-- More rows... -->
     </tbody>
   </table>
-</div>
-```
+</div>`} />
 
 ## Surface Variant
 
 Use alternative surface color:
 
-```html
-<table class="table table-surface table-striped">
+<ComponentShowcase title="Surface Variant" code={`<table class="table table-surface table-striped">
   <thead>
     <tr>
       <th>Metric</th>
@@ -633,8 +597,7 @@ Use alternative surface color:
       <td class="table-numeric">+8%</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ## Best Practices
 
@@ -642,8 +605,7 @@ Use alternative surface color:
 
 Structure data logically with appropriate headers:
 
-```html
-<table class="table table-striped table-hover">
+<ComponentShowcase title="Well-Organized Data" code={`<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Quarter</th>
@@ -669,8 +631,7 @@ Structure data logically with appropriate headers:
       <td class="table-numeric">40.4%</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Accessibility
 
@@ -680,8 +641,7 @@ Structure data logically with appropriate headers:
 - Use `aria-label` for icon-only buttons in action columns
 - Provide table captions for screen readers
 
-```html
-<table class="table">
+<ComponentShowcase title="Accessible Table" code={`<table class="table">
   <caption class="table-caption">Employee Directory</caption>
   <thead>
     <tr>
@@ -697,20 +657,17 @@ Structure data logically with appropriate headers:
       <td>Engineering</td>
     </tr>
   </tbody>
-</table>
-```
+</table>`} />
 
 ### Mobile Responsiveness
 
 For complex tables, use responsive wrapper:
 
-```html
-<div class="table-responsive">
+<ComponentShowcase title="Mobile Responsive" code={`<div class="table-responsive">
   <table class="table table-striped">
     <!-- Many columns that may overflow on mobile -->
   </table>
-</div>
-```
+</div>`} />
 
 ## Framework Examples
 
@@ -894,19 +851,15 @@ function getAlignClass(align) {
 
 ### Combinations
 
-Combine multiple classes for different effects:
-
-```html
-<!-- Striped table with hover and borders -->
+<ComponentShowcase title="Combined Classes Example 1" code={`<!-- Striped table with hover and borders -->
 <table class="table table-striped table-hover table-bordered">
   <!-- ... -->
-</table>
+</table>`} />
 
-<!-- Compact selectable table with sticky header -->
+<ComponentShowcase title="Combined Classes Example 2" code={`<!-- Compact selectable table with sticky header -->
 <table class="table table-compact table-selectable table-sticky">
   <!-- ... -->
-</table>
-```
+</table>`} />
 
 ## Related Components
 

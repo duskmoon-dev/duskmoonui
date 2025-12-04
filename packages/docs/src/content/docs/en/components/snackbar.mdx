@@ -7,137 +7,110 @@ published: true
 tags: ['snackbar', 'toast', 'notification', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Snackbar
 
 Snackbars provide brief messages about app processes at the bottom of the screen.
 
 ## Basic Usage
 
-```html
-<div class="snackbar snackbar-bottom snackbar-show">
+<ComponentShowcase title="Basic Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-show">
   <span class="snackbar-message">Message sent</span>
-</div>
-```
+</div>`} />
 
 ## Positions
 
 ### Bottom (Default)
 
-```html
-<div class="snackbar snackbar-bottom snackbar-show">
+<ComponentShowcase title="Bottom Position" code={`<div class="snackbar snackbar-bottom snackbar-show">
   <span class="snackbar-message">Bottom center</span>
-</div>
-```
+</div>`} />
 
 ### Bottom Left
 
-```html
-<div class="snackbar snackbar-bottom-left snackbar-show">
+<ComponentShowcase title="Bottom Left Position" code={`<div class="snackbar snackbar-bottom-left snackbar-show">
   <span class="snackbar-message">Bottom left</span>
-</div>
-```
+</div>`} />
 
 ### Bottom Right
 
-```html
-<div class="snackbar snackbar-bottom-right snackbar-show">
+<ComponentShowcase title="Bottom Right Position" code={`<div class="snackbar snackbar-bottom-right snackbar-show">
   <span class="snackbar-message">Bottom right</span>
-</div>
-```
+</div>`} />
 
 ### Top
 
-```html
-<div class="snackbar snackbar-top snackbar-show">
+<ComponentShowcase title="Top Position" code={`<div class="snackbar snackbar-top snackbar-show">
   <span class="snackbar-message">Top center</span>
-</div>
-```
+</div>`} />
 
 ### Top Left
 
-```html
-<div class="snackbar snackbar-top-left snackbar-show">
+<ComponentShowcase title="Top Left Position" code={`<div class="snackbar snackbar-top-left snackbar-show">
   <span class="snackbar-message">Top left</span>
-</div>
-```
+</div>`} />
 
 ### Top Right
 
-```html
-<div class="snackbar snackbar-top-right snackbar-show">
+<ComponentShowcase title="Top Right Position" code={`<div class="snackbar snackbar-top-right snackbar-show">
   <span class="snackbar-message">Top right</span>
-</div>
-```
+</div>`} />
 
 ## With Action
 
-```html
-<div class="snackbar snackbar-bottom snackbar-show">
+<ComponentShowcase title="Snackbar with Action" code={`<div class="snackbar snackbar-bottom snackbar-show">
   <span class="snackbar-message">Message sent</span>
   <button class="snackbar-action">Undo</button>
-</div>
-```
+</div>`} />
 
 ## With Close Button
 
-```html
-<div class="snackbar snackbar-bottom snackbar-show">
+<ComponentShowcase title="Snackbar with Close Button" code={`<div class="snackbar snackbar-bottom snackbar-show">
   <span class="snackbar-message">This is a snackbar message</span>
   <button class="snackbar-close" aria-label="Close">×</button>
-</div>
-```
+</div>`} />
 
 ## With Icon
 
-```html
-<div class="snackbar snackbar-bottom snackbar-show">
+<ComponentShowcase title="Snackbar with Icon" code={`<div class="snackbar snackbar-bottom snackbar-show">
   <span class="snackbar-icon">✓</span>
   <span class="snackbar-message">Action completed</span>
-</div>
-```
+</div>`} />
 
 ## Semantic Colors
 
 ### Success
 
-```html
-<div class="snackbar snackbar-bottom snackbar-success snackbar-show">
+<ComponentShowcase title="Success Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-success snackbar-show">
   <span class="snackbar-icon">✓</span>
   <span class="snackbar-message">Successfully saved</span>
-</div>
-```
+</div>`} />
 
 ### Error
 
-```html
-<div class="snackbar snackbar-bottom snackbar-error snackbar-show">
+<ComponentShowcase title="Error Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-error snackbar-show">
   <span class="snackbar-icon">✕</span>
   <span class="snackbar-message">An error occurred</span>
-</div>
-```
+</div>`} />
 
 ### Warning
 
-```html
-<div class="snackbar snackbar-bottom snackbar-warning snackbar-show">
+<ComponentShowcase title="Warning Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-warning snackbar-show">
   <span class="snackbar-icon">⚠</span>
   <span class="snackbar-message">Warning message</span>
-</div>
-```
+</div>`} />
 
 ### Info
 
-```html
-<div class="snackbar snackbar-bottom snackbar-info snackbar-show">
+<ComponentShowcase title="Info Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-info snackbar-show">
   <span class="snackbar-icon">ℹ</span>
   <span class="snackbar-message">Information message</span>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
-```html
-<div class="snackbar snackbar-bottom snackbar-primary snackbar-show">
+<ComponentShowcase title="Color Variants" code={`<div class="snackbar snackbar-bottom snackbar-primary snackbar-show">
   <span class="snackbar-message">Primary</span>
 </div>
 
@@ -147,20 +120,17 @@ Snackbars provide brief messages about app processes at the bottom of the screen
 
 <div class="snackbar snackbar-bottom snackbar-tertiary snackbar-show">
   <span class="snackbar-message">Tertiary</span>
-</div>
-```
+</div>`} />
 
 ## Multiline
 
-```html
-<div class="snackbar snackbar-bottom snackbar-multiline snackbar-show">
+<ComponentShowcase title="Multiline Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-multiline snackbar-show">
   <span class="snackbar-message">
     This is a longer message that spans multiple lines.
     It provides more detailed information.
   </span>
   <button class="snackbar-action">Action</button>
-</div>
-```
+</div>`} />
 
 ## JavaScript Example
 

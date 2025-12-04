@@ -7,50 +7,49 @@ published: true
 tags: ['card', 'components', 'material-design', 'container']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Card
 
 Cards contain content and actions about a single subject. They follow Material Design 3's surface elevation system.
 
 ## Basic Usage
 
-```html
-<div class="card">
+<ComponentShowcase
+  title="Basic Card"
+  code={`<div class="card">
   <div class="card-body">
     <p>Basic card content</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Elevation Levels
 
 Material Design 3 defines five elevation levels for cards:
 
-```html
-<!-- Level 0 - Lowest elevation -->
-<div class="card card-lowest">
+<ComponentShowcase
+  title="Elevation Levels"
+  code={`<div class="card card-lowest">
   <div class="card-body">Lowest elevation</div>
 </div>
 
-<!-- Level 1 - Low elevation -->
 <div class="card card-low">
   <div class="card-body">Low elevation</div>
 </div>
 
-<!-- Level 2 - Default elevation -->
 <div class="card card-default">
   <div class="card-body">Default elevation</div>
 </div>
 
-<!-- Level 3 - High elevation -->
 <div class="card card-high">
   <div class="card-body">High elevation</div>
 </div>
 
-<!-- Level 4 - Highest elevation -->
 <div class="card card-highest">
   <div class="card-body">Highest elevation</div>
-</div>
-```
+</div>`}
+/>
 
 ## Card Variants
 
@@ -58,37 +57,40 @@ Material Design 3 defines five elevation levels for cards:
 
 Filled cards use elevated surface colors:
 
-```html
-<div class="card card-filled">
+<ComponentShowcase
+  title="Filled Card"
+  code={`<div class="card card-filled">
   <div class="card-body">
     <p>Filled card with elevated surface color</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Outlined Card
 
 Outlined cards have a border and no elevation:
 
-```html
-<div class="card card-outlined">
+<ComponentShowcase
+  title="Outlined Card"
+  code={`<div class="card card-outlined">
   <div class="card-body">
     <p>Outlined card with border</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Interactive Card
 
 Interactive cards respond to hover and click:
 
-```html
-<div class="card card-interactive card-default">
+<ComponentShowcase
+  title="Interactive Card"
+  code={`<div class="card card-interactive card-default">
   <div class="card-body">
     <p>Click or hover this card</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Card Structure
 
@@ -96,10 +98,9 @@ Interactive cards respond to hover and click:
 
 A full-featured card with all subcomponents:
 
-```html
-<div class="card card-default">
-  <img class="card-image" src="/image.jpg" alt="Card image" />
-
+<ComponentShowcase
+  title="Complete Card"
+  code={`<div class="card card-default">
   <div class="card-header">
     <h3 class="card-title">Card Title</h3>
     <p class="card-subtitle">Supporting text goes here</p>
@@ -113,15 +114,16 @@ A full-featured card with all subcomponents:
     <button class="btn btn-text">Action 1</button>
     <button class="btn btn-tonal">Action 2</button>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Card Header
 
 The header contains the title and optional subtitle:
 
-```html
-<div class="card">
+<ComponentShowcase
+  title="Card Header"
+  code={`<div class="card">
   <div class="card-header">
     <h3 class="card-title">Product Name</h3>
     <p class="card-subtitle">$99.99</p>
@@ -129,15 +131,16 @@ The header contains the title and optional subtitle:
   <div class="card-body">
     Product description goes here.
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Card Body
 
 The main content area:
 
-```html
-<div class="card">
+<ComponentShowcase
+  title="Card Body"
+  code={`<div class="card">
   <div class="card-body">
     <h4>Features</h4>
     <ul>
@@ -146,15 +149,16 @@ The main content area:
       <li>Feature 3</li>
     </ul>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Card Actions
 
 Action buttons at the bottom of the card:
 
-```html
-<div class="card">
+<ComponentShowcase
+  title="Card Actions"
+  code={`<div class="card">
   <div class="card-body">
     <p>Card content</p>
   </div>
@@ -162,22 +166,22 @@ Action buttons at the bottom of the card:
     <button class="btn btn-text">Cancel</button>
     <button class="btn btn-tonal">Save</button>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Card Image
 
 Full-width image at the top:
 
-```html
-<div class="card card-default">
-  <img class="card-image" src="/photo.jpg" alt="Description" />
+<ComponentShowcase
+  title="Card with Image"
+  code={`<div class="card card-default">
   <div class="card-body">
     <h3>Photo Title</h3>
     <p>Photo description</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Density
 
@@ -185,33 +189,35 @@ Full-width image at the top:
 
 Reduced padding for denser layouts:
 
-```html
-<div class="card card-compact">
+<ComponentShowcase
+  title="Compact Card"
+  code={`<div class="card card-compact">
   <div class="card-body">
     <p>Compact card with reduced padding</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Comfortable Cards
 
 Increased padding for more breathing room:
 
-```html
-<div class="card card-comfortable">
+<ComponentShowcase
+  title="Comfortable Card"
+  code={`<div class="card card-comfortable">
   <div class="card-body">
     <p>Comfortable card with increased padding</p>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Use Cases
 
 ### Product Card
 
-```html
-<div class="card card-default card-interactive">
-  <img class="card-image" src="/product.jpg" alt="Product" />
+<ComponentShowcase
+  title="Product Card"
+  code={`<div class="card card-default card-interactive">
   <div class="card-body">
     <h3 class="text-lg font-semibold">Wireless Headphones</h3>
     <p class="text-sm text-on-surface-variant mt-1">Premium sound quality</p>
@@ -225,13 +231,14 @@ Increased padding for more breathing room:
     </button>
     <button class="btn btn-tonal">Add to Cart</button>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Article Preview Card
 
-```html
-<div class="card card-outlined card-interactive">
+<ComponentShowcase
+  title="Article Preview Card"
+  code={`<div class="card card-outlined card-interactive">
   <div class="card-header">
     <span class="badge badge-primary badge-sm">Technology</span>
     <p class="card-subtitle mt-2">5 min read • Oct 28, 2025</p>
@@ -243,16 +250,19 @@ Increased padding for more breathing room:
   <div class="card-actions">
     <button class="btn btn-text">Read More</button>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### User Profile Card
 
-```html
-<div class="card card-default">
+<ComponentShowcase
+  title="User Profile Card"
+  code={`<div class="card card-default">
   <div class="card-body">
     <div class="flex items-center gap-4">
-      <img class="w-16 h-16 rounded-full" src="/avatar.jpg" alt="User" />
+      <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center">
+        <span class="text-2xl">JD</span>
+      </div>
       <div>
         <h3 class="font-semibold">Jane Doe</h3>
         <p class="text-sm text-on-surface-variant">Product Designer</p>
@@ -265,13 +275,14 @@ Increased padding for more breathing room:
   <div class="card-actions">
     <button class="btn btn-outlined btn-block">Follow</button>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Dashboard Stat Card
 
-```html
-<div class="card card-filled card-comfortable">
+<ComponentShowcase
+  title="Dashboard Stat Card"
+  code={`<div class="card card-filled card-comfortable">
   <div class="card-body">
     <div class="flex items-center justify-between">
       <div>
@@ -286,15 +297,16 @@ Increased padding for more breathing room:
       </div>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Grid Layouts
 
 Cards work well in grid layouts:
 
-```html
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<ComponentShowcase
+  title="Card Grid Layout"
+  code={`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   <div class="card card-default">
     <div class="card-body">
       <h3>Card 1</h3>
@@ -315,8 +327,8 @@ Cards work well in grid layouts:
       <p>Content</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Best Practices
 
@@ -342,15 +354,15 @@ Use elevation to show importance and hierarchy:
 - Ensure sufficient color contrast
 - Make interactive cards keyboard accessible
 
-```html
-<!-- Good: Interactive card with proper semantics -->
-<a href="/article" class="card card-interactive card-default">
+<ComponentShowcase
+  title="Accessible Interactive Card"
+  code={`<a href="/article" class="card card-interactive card-default">
   <div class="card-body">
     <h3 class="card-title">Article Title</h3>
     <p>Article preview text...</p>
   </div>
-</a>
-```
+</a>`}
+/>
 
 ## Framework Examples
 

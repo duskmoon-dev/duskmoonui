@@ -7,14 +7,15 @@ published: true
 tags: ['stepper', 'components', 'material-design', 'navigation']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Stepper
 
 Steppers display progress through a sequence of logical and numbered steps. They guide users through multi-step processes like forms, checkouts, or wizards.
 
 ## Basic Usage
 
-```html
-<div class="stepper">
+<ComponentShowcase title="Basic Stepper" code={`<div class="stepper">
   <div class="stepper-step stepper-step-completed">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">1</div>
@@ -38,8 +39,7 @@ Steppers display progress through a sequence of logical and numbered steps. They
     </button>
     <div class="stepper-step-connector"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Variants
 
@@ -47,8 +47,7 @@ Steppers display progress through a sequence of logical and numbered steps. They
 
 The default horizontal layout is ideal for desktop interfaces:
 
-```html
-<div class="stepper">
+<ComponentShowcase title="Horizontal Stepper" code={`<div class="stepper">
   <div class="stepper-step stepper-step-completed">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">✓</div>
@@ -72,15 +71,13 @@ The default horizontal layout is ideal for desktop interfaces:
     </button>
     <div class="stepper-step-connector"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Vertical Stepper
 
 Vertical steppers work well for mobile devices or when steps require more detail:
 
-```html
-<div class="stepper stepper-vertical">
+<ComponentShowcase title="Vertical Stepper" code={`<div class="stepper stepper-vertical">
   <div class="stepper-step stepper-step-completed">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">✓</div>
@@ -118,8 +115,7 @@ Vertical steppers work well for mobile devices or when steps require more detail
     </button>
     <div class="stepper-step-connector"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Step States
 
@@ -127,78 +123,67 @@ Vertical steppers work well for mobile devices or when steps require more detail
 
 The current step in the process:
 
-```html
-<div class="stepper-step stepper-step-active">
+<ComponentShowcase title="Active Step" code={`<div class="stepper-step stepper-step-active">
   <button class="stepper-step-button">
     <div class="stepper-step-icon">2</div>
     <span class="stepper-step-label">Active Step</span>
   </button>
   <div class="stepper-step-connector"></div>
-</div>
-```
+</div>`} />
 
 ### Completed Step
 
 Steps that have been successfully completed:
 
-```html
-<div class="stepper-step stepper-step-completed">
+<ComponentShowcase title="Completed Step" code={`<div class="stepper-step stepper-step-completed">
   <button class="stepper-step-button">
     <div class="stepper-step-icon">✓</div>
     <span class="stepper-step-label">Completed</span>
   </button>
   <div class="stepper-step-connector"></div>
-</div>
-```
+</div>`} />
 
 ### Error Step
 
 Steps with validation errors or issues:
 
-```html
-<div class="stepper-step stepper-step-error">
+<ComponentShowcase title="Error Step" code={`<div class="stepper-step stepper-step-error">
   <button class="stepper-step-button">
     <div class="stepper-step-icon">!</div>
     <span class="stepper-step-label">Error</span>
   </button>
   <div class="stepper-step-connector"></div>
-</div>
-```
+</div>`} />
 
 ### Disabled Step
 
 Steps that cannot be accessed yet:
 
-```html
-<div class="stepper-step stepper-step-disabled">
+<ComponentShowcase title="Disabled Step" code={`<div class="stepper-step stepper-step-disabled">
   <button class="stepper-step-button">
     <div class="stepper-step-icon">4</div>
     <span class="stepper-step-label">Disabled</span>
   </button>
   <div class="stepper-step-connector"></div>
-</div>
-```
+</div>`} />
 
 ### Optional Step
 
 Mark steps as optional:
 
-```html
-<div class="stepper-step stepper-step-optional">
+<ComponentShowcase title="Optional Step" code={`<div class="stepper-step stepper-step-optional">
   <button class="stepper-step-button">
     <div class="stepper-step-icon">3</div>
     <span class="stepper-step-label">Optional Step</span>
   </button>
   <div class="stepper-step-connector"></div>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
 ### Primary (Default)
 
-```html
-<div class="stepper">
+<ComponentShowcase title="Primary Stepper" code={`<div class="stepper">
   <div class="stepper-step stepper-step-active">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">1</div>
@@ -206,13 +191,11 @@ Mark steps as optional:
     </button>
     <div class="stepper-step-connector"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Secondary
 
-```html
-<div class="stepper stepper-secondary">
+<ComponentShowcase title="Secondary Stepper" code={`<div class="stepper stepper-secondary">
   <div class="stepper-step stepper-step-completed">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">✓</div>
@@ -228,13 +211,11 @@ Mark steps as optional:
     </button>
     <div class="stepper-step-connector"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Tertiary
 
-```html
-<div class="stepper stepper-tertiary">
+<ComponentShowcase title="Tertiary Stepper" code={`<div class="stepper stepper-tertiary">
   <div class="stepper-step stepper-step-completed">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">✓</div>
@@ -250,15 +231,13 @@ Mark steps as optional:
     </button>
     <div class="stepper-step-connector"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## With Descriptions
 
 Add descriptions to provide context for each step:
 
-```html
-<div class="stepper">
+<ComponentShowcase title="Stepper with Descriptions" code={`<div class="stepper">
   <div class="stepper-step stepper-step-completed">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">✓</div>
@@ -291,15 +270,13 @@ Add descriptions to provide context for each step:
     </button>
     <div class="stepper-step-connector"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Interactive Example
 
 Here's a complete example with step content:
 
-```html
-<div class="stepper stepper-vertical">
+<ComponentShowcase title="Interactive Stepper Example" code={`<div class="stepper stepper-vertical">
   <div class="stepper-step stepper-step-completed">
     <button class="stepper-step-button" onclick="goToStep(1)">
       <div class="stepper-step-icon">✓</div>
@@ -363,8 +340,7 @@ Here's a complete example with step content:
   function nextStep() {
     console.log('Go to next step');
   }
-</script>
-```
+</script>`} />
 
 ## Best Practices
 
@@ -388,8 +364,7 @@ Here's a complete example with step content:
 
 ### Accessibility
 
-```html
-<!-- Use semantic HTML and ARIA attributes -->
+<ComponentShowcase title="Accessible Stepper" code={`<!-- Use semantic HTML and ARIA attributes -->
 <div class="stepper" role="navigation" aria-label="Registration progress">
   <div class="stepper-step stepper-step-active" aria-current="step">
     <button class="stepper-step-button" aria-label="Step 1 of 3: Account Info">
@@ -413,17 +388,14 @@ Here's a complete example with step content:
       <span class="stepper-step-label">Confirm</span>
     </button>
   </div>
-</div>
-```
+</div>`} />
 
 ### Mobile Considerations
 
-```html
-<!-- Use vertical stepper for mobile, horizontal for desktop -->
+<ComponentShowcase title="Responsive Stepper" code={`<!-- Use vertical stepper for mobile, horizontal for desktop -->
 <div class="stepper stepper-vertical md:stepper">
   <!-- Steps here -->
-</div>
-```
+</div>`} />
 
 ## Framework Examples
 

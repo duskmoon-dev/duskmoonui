@@ -7,87 +7,76 @@ published: true
 tags: ['tooltip', 'hint', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Tooltip
 
 Tooltips display informative text when users hover over, focus on, or tap an element.
 
 ## Basic Usage
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Basic Tooltip" code={`<div style="position: relative; display: inline-block;">
   <button>Hover me</button>
   <div class="tooltip tooltip-top">
     Tooltip text
     <div class="tooltip-arrow"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Positions
 
 ### Top
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Top Position" code={`<div style="position: relative; display: inline-block;">
   <button>Top</button>
   <div class="tooltip tooltip-top tooltip-show">
     Top tooltip
     <div class="tooltip-arrow"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Bottom
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Bottom Position" code={`<div style="position: relative; display: inline-block;">
   <button>Bottom</button>
   <div class="tooltip tooltip-bottom tooltip-show">
     Bottom tooltip
     <div class="tooltip-arrow"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Left
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Left Position" code={`<div style="position: relative; display: inline-block;">
   <button>Left</button>
   <div class="tooltip tooltip-left tooltip-show">
     Left tooltip
     <div class="tooltip-arrow"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Right
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Right Position" code={`<div style="position: relative; display: inline-block;">
   <button>Right</button>
   <div class="tooltip tooltip-right tooltip-show">
     Right tooltip
     <div class="tooltip-arrow"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Without Arrow
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Tooltip Without Arrow" code={`<div style="position: relative; display: inline-block;">
   <button>No arrow</button>
   <div class="tooltip tooltip-top tooltip-no-arrow tooltip-show">
     Tooltip without arrow
   </div>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
-```html
-<!-- Small -->
+<ComponentShowcase title="Tooltip Sizes" code={`<!-- Small -->
 <div style="position: relative; display: inline-block;">
   <button>Small</button>
   <div class="tooltip tooltip-top tooltip-sm tooltip-show">
@@ -112,21 +101,18 @@ Tooltips display informative text when users hover over, focus on, or tap an ele
     Large tooltip with more content
     <div class="tooltip-arrow"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Rich Content
 
-```html
-<div style="position: relative; display: inline-block;">
+<ComponentShowcase title="Rich Content Tooltip" code={`<div style="position: relative; display: inline-block;">
   <button>Rich tooltip</button>
   <div class="tooltip tooltip-top tooltip-rich tooltip-show">
     <strong>Title</strong><br>
     Description with more details
     <div class="tooltip-arrow"></div>
   </div>
-</div>
-```
+</div>`} />
 
 ## JavaScript Example
 

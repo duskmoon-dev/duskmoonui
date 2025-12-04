@@ -7,6 +7,8 @@ published: true
 tags: ['select', 'dropdown', 'components', 'material-design', 'form']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Select
 
 Select components (also known as dropdowns) allow users to choose one or more options from a list. @duskmoon-dev/core provides a complete set of Material Design 3 select variants with support for various states and configurations.
@@ -15,8 +17,7 @@ Select components (also known as dropdowns) allow users to choose one or more op
 
 The basic select component uses the outlined variant by default:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Basic Select" code={`<div class="select-container">
   <select class="select">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
@@ -24,15 +25,13 @@ The basic select component uses the outlined variant by default:
     <option value="3">Option 3</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## With Label
 
 Add a label to provide context for the select:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Select with Label" code={`<div class="select-container">
   <label class="select-label" for="country">Country</label>
   <select class="select" id="country">
     <option value="">Select a country</option>
@@ -42,8 +41,7 @@ Add a label to provide context for the select:
     <option value="au">Australia</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## Variants
 
@@ -51,8 +49,7 @@ Add a label to provide context for the select:
 
 The outlined variant has a transparent background with a visible border:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Outlined Select" code={`<div class="select-container">
   <select class="select select-outlined">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
@@ -60,15 +57,13 @@ The outlined variant has a transparent background with a visible border:
     <option value="3">Option 3</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ### Filled Select
 
 The filled variant has a filled background with a bottom border, perfect for forms with a consistent visual style:
 
-```html
-<div class="select-container select-container-filled">
+<ComponentShowcase title="Filled Select" code={`<div class="select-container select-container-filled">
   <select class="select select-filled">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
@@ -76,15 +71,13 @@ The filled variant has a filled background with a bottom border, perfect for for
     <option value="3">Option 3</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ### Filled Select with Floating Label
 
 Create a modern filled select with a floating label:
 
-```html
-<div class="select-container select-container-filled">
+<ComponentShowcase title="Filled Select with Floating Label" code={`<div class="select-container select-container-filled">
   <select class="select select-filled" placeholder=" ">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
@@ -93,8 +86,7 @@ Create a modern filled select with a floating label:
   </select>
   <label class="select-label-floating">Select an option</label>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
@@ -102,46 +94,40 @@ Create a modern filled select with a floating label:
 
 Use primary color for the focus state:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Primary Select" code={`<div class="select-container">
   <select class="select select-primary">
     <option value="">Primary select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ### Secondary Select
 
 Use secondary color for the focus state:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Secondary Select" code={`<div class="select-container">
   <select class="select select-secondary">
     <option value="">Secondary select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ### Tertiary Select
 
 Use tertiary color for the focus state:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Tertiary Select" code={`<div class="select-container">
   <select class="select select-tertiary">
     <option value="">Tertiary select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
@@ -149,49 +135,42 @@ Three sizes are available to fit different design needs:
 
 ### Small
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Small Select" code={`<div class="select-container">
   <select class="select select-sm">
     <option value="">Small select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ### Medium (Default)
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Medium Select" code={`<div class="select-container">
   <select class="select">
     <option value="">Medium select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ### Large
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Large Select" code={`<div class="select-container">
   <select class="select select-lg">
     <option value="">Large select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## Multiple Selection
 
 Allow users to select multiple options:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Multiple Selection" code={`<div class="select-container">
   <label class="select-label">Select multiple items</label>
   <select class="select" multiple size="5">
     <option value="1">Option 1</option>
@@ -201,15 +180,13 @@ Allow users to select multiple options:
     <option value="5">Option 5</option>
     <option value="6">Option 6</option>
   </select>
-</div>
-```
+</div>`} />
 
 ## Grouped Options
 
 Organize options using optgroups:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Grouped Options" code={`<div class="select-container">
   <label class="select-label">Select a fruit</label>
   <select class="select">
     <option value="">Choose a fruit</option>
@@ -230,8 +207,7 @@ Organize options using optgroups:
     </optgroup>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## States
 
@@ -239,8 +215,7 @@ Organize options using optgroups:
 
 Disabled selects are non-interactive:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Disabled Select" code={`<div class="select-container">
   <label class="select-label">Disabled select</label>
   <select class="select" disabled>
     <option value="">This select is disabled</option>
@@ -248,15 +223,13 @@ Disabled selects are non-interactive:
     <option value="2">Option 2</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ### Error State
 
 Show validation errors:
 
-```html
-<div class="select-container select-container-error">
+<ComponentShowcase title="Error State" code={`<div class="select-container select-container-error">
   <label class="select-label">Select with error</label>
   <select class="select select-error">
     <option value="">Please select an option</option>
@@ -265,29 +238,25 @@ Show validation errors:
   </select>
   <span class="select-icon">▼</span>
   <span class="select-helper">This field is required</span>
-</div>
-```
+</div>`} />
 
 ### Loading State
 
 Show a loading indicator:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Loading State" code={`<div class="select-container">
   <label class="select-label">Loading options...</label>
   <select class="select select-loading" disabled>
     <option value="">Loading...</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## Helper Text
 
 Provide additional context or instructions:
 
-```html
-<div class="select-container">
+<ComponentShowcase title="Select with Helper Text" code={`<div class="select-container">
   <label class="select-label">Language preference</label>
   <select class="select">
     <option value="">Select your language</option>
@@ -298,15 +267,13 @@ Provide additional context or instructions:
   </select>
   <span class="select-icon">▼</span>
   <span class="select-helper">This will be used for all communications</span>
-</div>
-```
+</div>`} />
 
 ## Full Width
 
 Make the select take the full width of its container:
 
-```html
-<div class="select-container select-full">
+<ComponentShowcase title="Full Width Select" code={`<div class="select-container select-full">
   <label class="select-label">Full width select</label>
   <select class="select">
     <option value="">Select an option</option>
@@ -315,8 +282,7 @@ Make the select take the full width of its container:
     <option value="3">Option 3</option>
   </select>
   <span class="select-icon">▼</span>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -324,8 +290,7 @@ Make the select take the full width of its container:
 
 Combine selects with other form elements for a cohesive design:
 
-```html
-<form class="space-y-4">
+<ComponentShowcase title="Form Example" code={`<form class="space-y-4">
   <div class="select-container">
     <label class="select-label" for="title">Title</label>
     <select class="select" id="title" required>
@@ -352,8 +317,7 @@ Combine selects with other form elements for a cohesive design:
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-```
+</form>`} />
 
 ### Accessibility
 
@@ -364,8 +328,7 @@ Combine selects with other form elements for a cohesive design:
 - Support keyboard navigation (built-in)
 - Use helper text for additional context
 
-```html
-<!-- Good: Accessible select with label and helper text -->
+<ComponentShowcase title="Accessible Select" code={`<!-- Good: Accessible select with label and helper text -->
 <div class="select-container">
   <label class="select-label" for="country-select">Country of residence</label>
   <select class="select" id="country-select" aria-describedby="country-helper">
@@ -378,15 +341,13 @@ Combine selects with other form elements for a cohesive design:
   <span class="select-helper" id="country-helper">
     This helps us provide relevant content
   </span>
-</div>
-```
+</div>`} />
 
 ### Error Handling
 
 Always provide clear error messages:
 
-```html
-<div class="select-container select-container-error">
+<ComponentShowcase title="Error Handling Example" code={`<div class="select-container select-container-error">
   <label class="select-label" for="payment-method">Payment method</label>
   <select class="select select-error" id="payment-method" aria-invalid="true" aria-describedby="payment-error">
     <option value="">Select payment method</option>
@@ -396,8 +357,7 @@ Always provide clear error messages:
   </select>
   <span class="select-icon">▼</span>
   <span class="select-helper" id="payment-error">Please select a payment method</span>
-</div>
-```
+</div>`} />
 
 ### When to Use Multiple Select
 
@@ -708,8 +668,7 @@ const selectedCountry = ref('');
 
 ### Combinations
 
-```html
-<!-- Filled secondary select, large size with error -->
+<ComponentShowcase title="Combined Styles" code={`<!-- Filled secondary select, large size with error -->
 <div class="select-container select-container-filled select-container-error">
   <label class="select-label">Department</label>
   <select class="select select-filled select-secondary select-lg select-error">
@@ -719,8 +678,7 @@ const selectedCountry = ref('');
   </select>
   <span class="select-icon">▼</span>
   <span class="select-helper">Please select a department</span>
-</div>
-```
+</div>`} />
 
 ## Related Components
 

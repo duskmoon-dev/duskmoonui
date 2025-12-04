@@ -6,6 +6,7 @@ order: 26
 published: true
 tags: ['slider', 'components', 'material-design', 'input', 'range']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Slider
 
@@ -15,16 +16,14 @@ Sliders allow users to make selections from a range of values. @duskmoon-dev/cor
 
 A basic slider with default styling:
 
-```html
-<div class="slider">
+<ComponentShowcase title="Basic Slider" code={`<div class="slider">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 50%;"></div>
   </div>
   <div class="slider-thumb" style="left: 50%;">
     <div class="slider-thumb-label">50</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
@@ -32,46 +31,40 @@ A basic slider with default styling:
 
 The default primary color variant:
 
-```html
-<div class="slider">
+<ComponentShowcase title="Primary Slider" code={`<div class="slider">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 60%;"></div>
   </div>
   <div class="slider-thumb" style="left: 60%;">
     <div class="slider-thumb-label">60</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Secondary
 
 Secondary color variant for different emphasis:
 
-```html
-<div class="slider slider-secondary">
+<ComponentShowcase title="Secondary Slider" code={`<div class="slider slider-secondary">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 40%;"></div>
   </div>
   <div class="slider-thumb" style="left: 40%;">
     <div class="slider-thumb-label">40</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Tertiary
 
 Tertiary color variant:
 
-```html
-<div class="slider slider-tertiary">
+<ComponentShowcase title="Tertiary Slider" code={`<div class="slider slider-tertiary">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 75%;"></div>
   </div>
   <div class="slider-thumb" style="left: 75%;">
     <div class="slider-thumb-label">75</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
@@ -81,53 +74,46 @@ Sliders come in three sizes to fit different use cases:
 
 Compact slider for space-constrained interfaces:
 
-```html
-<div class="slider slider-sm">
+<ComponentShowcase title="Small Slider" code={`<div class="slider slider-sm">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 30%;"></div>
   </div>
   <div class="slider-thumb" style="left: 30%;">
     <div class="slider-thumb-label">30</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Medium (Default)
 
 Standard size for most use cases:
 
-```html
-<div class="slider">
+<ComponentShowcase title="Medium Slider" code={`<div class="slider">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 50%;"></div>
   </div>
   <div class="slider-thumb" style="left: 50%;">
     <div class="slider-thumb-label">50</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Large
 
 Larger slider for emphasis or better touch targets:
 
-```html
-<div class="slider slider-lg">
+<ComponentShowcase title="Large Slider" code={`<div class="slider slider-lg">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 70%;"></div>
   </div>
   <div class="slider-thumb" style="left: 70%;">
     <div class="slider-thumb-label">70</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Range Slider
 
 Range sliders allow users to select a range of values using two thumbs:
 
-```html
-<div class="slider slider-range">
+<ComponentShowcase title="Range Slider" code={`<div class="slider slider-range">
   <div class="slider-track">
     <div class="slider-track-filled" style="left: 20%; width: 60%;"></div>
   </div>
@@ -137,15 +123,13 @@ Range sliders allow users to select a range of values using two thumbs:
   <div class="slider-thumb" style="left: 80%;">
     <div class="slider-thumb-label">80</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Discrete Slider with Steps
 
 Sliders can snap to discrete values using marks:
 
-```html
-<div class="slider">
+<ComponentShowcase title="Discrete Slider with Steps" code={`<div class="slider">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 50%;"></div>
   </div>
@@ -160,15 +144,13 @@ Sliders can snap to discrete values using marks:
   <div class="slider-thumb" style="left: 50%;">
     <div class="slider-thumb-label">50</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Marks with Labels
 
 Add labels to marks for better context:
 
-```html
-<div class="slider" style="margin-bottom: 2rem;">
+<ComponentShowcase title="Marks with Labels" code={`<div class="slider" style="margin-bottom: 2rem;">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 25%;"></div>
   </div>
@@ -192,15 +174,13 @@ Add labels to marks for better context:
   <div class="slider-thumb" style="left: 25%;">
     <div class="slider-thumb-label">25</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Min/Max Labels
 
 Display minimum and maximum values:
 
-```html
-<div class="slider">
+<ComponentShowcase title="Slider with Min/Max Labels" code={`<div class="slider">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 60%;"></div>
   </div>
@@ -211,60 +191,52 @@ Display minimum and maximum values:
 <div class="slider-labels">
   <span>0</span>
   <span>100</span>
-</div>
-```
+</div>`} />
 
 ## Always Show Labels
 
 Show value labels permanently instead of only on hover/active:
 
-```html
-<div class="slider slider-labels-always">
+<ComponentShowcase title="Slider with Always-Visible Labels" code={`<div class="slider slider-labels-always">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 45%;"></div>
   </div>
   <div class="slider-thumb" style="left: 45%;">
     <div class="slider-thumb-label">45</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Vertical Slider
 
 Vertical orientation for space-constrained layouts:
 
-```html
-<div class="slider slider-vertical">
+<ComponentShowcase title="Vertical Slider" code={`<div class="slider slider-vertical">
   <div class="slider-track">
     <div class="slider-track-filled" style="height: 40%; bottom: 0;"></div>
   </div>
   <div class="slider-thumb" style="bottom: 40%;">
     <div class="slider-thumb-label">40</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Disabled State
 
 Disabled sliders are non-interactive:
 
-```html
-<div class="slider slider-disabled">
+<ComponentShowcase title="Disabled Slider" code={`<div class="slider slider-disabled">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 50%;"></div>
   </div>
   <div class="slider-thumb" style="left: 50%;">
     <div class="slider-thumb-label">50</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Interactive Examples
 
 ### Volume Control
 
-```html
-<div class="slider slider-secondary">
+<ComponentShowcase title="Volume Control Slider" code={`<div class="slider slider-secondary">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 70%;"></div>
   </div>
@@ -275,13 +247,11 @@ Disabled sliders are non-interactive:
 <div class="slider-labels">
   <span>🔇 Mute</span>
   <span>🔊 Max</span>
-</div>
-```
+</div>`} />
 
 ### Temperature Range
 
-```html
-<div class="slider slider-range slider-tertiary" style="margin-bottom: 2rem;">
+<ComponentShowcase title="Temperature Range Slider" code={`<div class="slider slider-range slider-tertiary" style="margin-bottom: 2rem;">
   <div class="slider-track">
     <div class="slider-track-filled" style="left: 20%; width: 50%;"></div>
   </div>
@@ -301,13 +271,11 @@ Disabled sliders are non-interactive:
   <div class="slider-thumb" style="left: 70%;">
     <div class="slider-thumb-label">22°C</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Price Range Filter
 
-```html
-<div class="slider slider-range" style="margin-bottom: 2rem;">
+<ComponentShowcase title="Price Range Filter" code={`<div class="slider slider-range" style="margin-bottom: 2rem;">
   <div class="slider-track">
     <div class="slider-track-filled" style="left: 15%; width: 70%;"></div>
   </div>
@@ -321,8 +289,7 @@ Disabled sliders are non-interactive:
 <div class="slider-labels">
   <span>$0</span>
   <span>$100</span>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -334,8 +301,7 @@ Disabled sliders are non-interactive:
 - Use `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-label` attributes
 - Consider always showing value labels for better accessibility
 
-```html
-<label for="volume-slider">Volume</label>
+<ComponentShowcase title="Accessible Slider" code={`<label for="volume-slider">Volume</label>
 <div
   class="slider"
   role="slider"
@@ -351,8 +317,7 @@ Disabled sliders are non-interactive:
   <div class="slider-thumb" style="left: 50%;">
     <div class="slider-thumb-label">50</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Value Feedback
 
@@ -367,8 +332,7 @@ Provide immediate visual feedback when values change:
 
 Ensure thumb controls are large enough for touch interfaces:
 
-```html
-<!-- Use default or large size for mobile -->
+<ComponentShowcase title="Responsive Touch Target" code={`<!-- Use default or large size for mobile -->
 <div class="slider slider-lg md:slider">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 50%;"></div>
@@ -376,8 +340,7 @@ Ensure thumb controls are large enough for touch interfaces:
   <div class="slider-thumb" style="left: 50%;">
     <div class="slider-thumb-label">50</div>
   </div>
-</div>
-```
+</div>`} />
 
 ### Step Granularity
 
@@ -561,8 +524,7 @@ const handleInput = (e) => {
 
 You can combine classes for different effects:
 
-```html
-<!-- Large secondary slider with always-visible labels -->
+<ComponentShowcase title="Large Secondary Slider with Always-Visible Labels" code={`<!-- Large secondary slider with always-visible labels -->
 <div class="slider slider-secondary slider-lg slider-labels-always">
   <div class="slider-track">
     <div class="slider-track-filled" style="width: 60%;"></div>
@@ -570,9 +532,9 @@ You can combine classes for different effects:
   <div class="slider-thumb" style="left: 60%;">
     <div class="slider-thumb-label">60</div>
   </div>
-</div>
+</div>`} />
 
-<!-- Small vertical tertiary slider with marks -->
+<ComponentShowcase title="Small Vertical Tertiary Slider with Marks" code={`<!-- Small vertical tertiary slider with marks -->
 <div class="slider slider-vertical slider-tertiary slider-sm">
   <div class="slider-track">
     <div class="slider-track-filled" style="height: 40%;"></div>
@@ -586,8 +548,7 @@ You can combine classes for different effects:
   <div class="slider-thumb" style="bottom: 40%;">
     <div class="slider-thumb-label">40</div>
   </div>
-</div>
-```
+</div>`} />
 
 ## Related Components
 

@@ -6,6 +6,7 @@ order: 36
 published: true
 tags: ['textarea', 'components', 'material-design', 'forms', 'input']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Textarea
 
@@ -13,9 +14,7 @@ Textareas allow users to enter multi-line text input. @duskmoon-dev/core provide
 
 ## Basic Usage
 
-```html
-<textarea class="textarea" placeholder="Enter your message..."></textarea>
-```
+<ComponentShowcase title="Basic Textarea" code={`<textarea class="textarea" placeholder="Enter your message..."></textarea>`} />
 
 ## Variants
 
@@ -23,44 +22,35 @@ Textareas allow users to enter multi-line text input. @duskmoon-dev/core provide
 
 Outlined textareas have a transparent background with a visible border, making them stand out on any surface.
 
-```html
-<textarea class="textarea textarea-outlined" placeholder="Outlined textarea..."></textarea>
-```
+<ComponentShowcase title="Outlined Textarea" code={`<textarea class="textarea textarea-outlined" placeholder="Outlined textarea..."></textarea>`} />
 
 ### Filled Textarea
 
 Filled textareas have a solid background with a bottom border, providing a more subtle appearance.
 
-```html
-<textarea class="textarea textarea-filled" placeholder="Filled textarea..."></textarea>
-```
+<ComponentShowcase title="Filled Textarea" code={`<textarea class="textarea textarea-filled" placeholder="Filled textarea..."></textarea>`} />
 
 ## Color Variants
 
 Focus colors can be customized using color variants:
 
-```html
-<textarea class="textarea textarea-primary" placeholder="Primary focus color..."></textarea>
+<ComponentShowcase title="Color Variants" code={`<textarea class="textarea textarea-primary" placeholder="Primary focus color..."></textarea>
 <textarea class="textarea textarea-secondary" placeholder="Secondary focus color..."></textarea>
-<textarea class="textarea textarea-tertiary" placeholder="Tertiary focus color..."></textarea>
-```
+<textarea class="textarea textarea-tertiary" placeholder="Tertiary focus color..."></textarea>`} />
 
 ## Sizes
 
 Three sizes are available:
 
-```html
-<textarea class="textarea textarea-sm" placeholder="Small textarea..."></textarea>
+<ComponentShowcase title="Textarea Sizes" code={`<textarea class="textarea textarea-sm" placeholder="Small textarea..."></textarea>
 <textarea class="textarea" placeholder="Medium textarea (default)..."></textarea>
-<textarea class="textarea textarea-lg" placeholder="Large textarea..."></textarea>
-```
+<textarea class="textarea textarea-lg" placeholder="Large textarea..."></textarea>`} />
 
 ## Resize Options
 
 Control how users can resize the textarea:
 
-```html
-<!-- Vertical resize (default) -->
+<ComponentShowcase title="Resize Options" code={`<!-- Vertical resize (default) -->
 <textarea class="textarea textarea-resize-vertical" placeholder="Resize vertically..."></textarea>
 
 <!-- No resize -->
@@ -70,16 +60,13 @@ Control how users can resize the textarea:
 <textarea class="textarea textarea-resize-horizontal" placeholder="Resize horizontally..."></textarea>
 
 <!-- Both directions -->
-<textarea class="textarea textarea-resize-both" placeholder="Resize in any direction..."></textarea>
-```
+<textarea class="textarea textarea-resize-both" placeholder="Resize in any direction..."></textarea>`} />
 
 ## Auto-Resize
 
 Automatically adjust height based on content:
 
-```html
-<textarea class="textarea textarea-auto-resize" placeholder="Grows with content..."></textarea>
-```
+<ComponentShowcase title="Auto-Resize Textarea" code={`<textarea class="textarea textarea-auto-resize" placeholder="Grows with content..."></textarea>`} />
 
 **Note:** Auto-resize requires JavaScript to function. Example implementation:
 
@@ -104,35 +91,29 @@ Automatically adjust height based on content:
 
 ### Standard Label
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Textarea with Label" code={`<div class="textarea-container">
   <label class="textarea-label" for="message">Message</label>
   <textarea id="message" class="textarea" placeholder="Enter your message..."></textarea>
-</div>
-```
+</div>`} />
 
 ### Floating Label
 
 For filled variant with animated label:
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Floating Label" code={`<div class="textarea-container">
   <textarea class="textarea textarea-filled" placeholder=" " id="floating-message"></textarea>
   <label class="textarea-label-floating" for="floating-message">Message</label>
-</div>
-```
+</div>`} />
 
 ## Helper Text
 
 Add helpful information below the textarea:
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Textarea with Helper Text" code={`<div class="textarea-container">
   <label class="textarea-label" for="description">Description</label>
   <textarea id="description" class="textarea" placeholder="Enter description..."></textarea>
   <span class="textarea-helper">Provide a detailed description of your project</span>
-</div>
-```
+</div>`} />
 
 ## Character Counter
 
@@ -165,25 +146,21 @@ Display character count with optional maximum limit:
 
 Indicate validation errors:
 
-```html
-<div class="textarea-container textarea-container-error">
+<ComponentShowcase title="Error State" code={`<div class="textarea-container textarea-container-error">
   <label class="textarea-label" for="error-example">Comments</label>
   <textarea id="error-example" class="textarea textarea-error" placeholder="Enter comments..."></textarea>
   <span class="textarea-helper">This field is required</span>
-</div>
-```
+</div>`} />
 
 ### Success State
 
 Indicate successful validation:
 
-```html
-<div class="textarea-container textarea-container-success">
+<ComponentShowcase title="Success State" code={`<div class="textarea-container textarea-container-success">
   <label class="textarea-label" for="success-example">Feedback</label>
   <textarea id="success-example" class="textarea textarea-success" placeholder="Your feedback...">Great work!</textarea>
   <span class="textarea-helper">Thank you for your feedback!</span>
-</div>
-```
+</div>`} />
 
 ## States
 
@@ -191,32 +168,25 @@ Indicate successful validation:
 
 Non-interactive textarea:
 
-```html
-<textarea class="textarea" disabled placeholder="Disabled textarea..."></textarea>
-```
+<ComponentShowcase title="Disabled State" code={`<textarea class="textarea" disabled placeholder="Disabled textarea..."></textarea>`} />
 
 ### Read-only State
 
 Display-only content:
 
-```html
-<textarea class="textarea" readonly>This content cannot be edited</textarea>
-```
+<ComponentShowcase title="Read-only State" code={`<textarea class="textarea" readonly>This content cannot be edited</textarea>`} />
 
 ## Full Width
 
 Ensure textarea spans the full container width:
 
-```html
-<textarea class="textarea textarea-full" placeholder="Full width textarea..."></textarea>
-```
+<ComponentShowcase title="Full Width Textarea" code={`<textarea class="textarea textarea-full" placeholder="Full width textarea..."></textarea>`} />
 
 ## Complete Examples
 
 ### Contact Form
 
-```html
-<div class="space-y-4">
+<ComponentShowcase title="Contact Form" code={`<div class="space-y-4">
   <div class="textarea-container">
     <label class="textarea-label" for="contact-message">Your Message</label>
     <textarea
@@ -228,8 +198,7 @@ Ensure textarea spans the full container width:
     ></textarea>
     <span class="textarea-helper">We'll get back to you within 24 hours</span>
   </div>
-</div>
-```
+</div>`} />
 
 ### Feedback Form with Character Limit
 
@@ -296,13 +265,11 @@ Ensure textarea spans the full container width:
 - Keep placeholder text concise
 - Don't rely solely on placeholders for critical information
 
-```html
-<!-- Good: Clear example -->
+<ComponentShowcase title="Placeholder Best Practices" code={`<!-- Good: Clear example -->
 <textarea class="textarea" placeholder="e.g., I'm interested in learning more about..."></textarea>
 
 <!-- Bad: Using placeholder as label -->
-<textarea class="textarea" placeholder="Comments*"></textarea>
-```
+<textarea class="textarea" placeholder="Comments*"></textarea>`} />
 
 ### Labels and Helper Text
 
@@ -310,13 +277,11 @@ Ensure textarea spans the full container width:
 - Use helper text for formatting requirements or examples
 - Place error messages in helper text
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Labels and Helper Text" code={`<div class="textarea-container">
   <label class="textarea-label" for="description">Project Description</label>
   <textarea id="description" class="textarea" placeholder="Describe your project..."></textarea>
   <span class="textarea-helper">Include key features and goals (minimum 50 characters)</span>
-</div>
-```
+</div>`} />
 
 ### Sizing
 
@@ -325,13 +290,11 @@ Ensure textarea spans the full container width:
 - Use `textarea-lg` for primary content input
 - Consider auto-resize for variable-length content
 
-```html
-<!-- Short feedback -->
+<ComponentShowcase title="Sizing Best Practices" code={`<!-- Short feedback -->
 <textarea class="textarea textarea-sm" rows="2" placeholder="Quick feedback..."></textarea>
 
 <!-- Long-form content -->
-<textarea class="textarea textarea-lg" rows="8" placeholder="Write your article..."></textarea>
-```
+<textarea class="textarea textarea-lg" rows="8" placeholder="Write your article..."></textarea>`} />
 
 ### Accessibility
 
@@ -340,8 +303,7 @@ Ensure textarea spans the full container width:
 - Mark required fields clearly
 - Ensure sufficient color contrast
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Accessible Textarea" code={`<div class="textarea-container">
   <label class="textarea-label" for="accessible-textarea">
     Comments <span class="text-error">*</span>
   </label>
@@ -355,8 +317,7 @@ Ensure textarea spans the full container width:
   <span id="textarea-help" class="textarea-helper">
     This field is required. Please provide detailed comments.
   </span>
-</div>
-```
+</div>`} />
 
 ## Framework Examples
 
@@ -581,8 +542,7 @@ const handleInput = (e) => {
 
 You can combine classes for different effects:
 
-```html
-<!-- Filled tertiary textarea, large size with error -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Filled tertiary textarea, large size with error -->
 <textarea class="textarea textarea-filled textarea-tertiary textarea-lg textarea-error">
 </textarea>
 
@@ -592,8 +552,7 @@ You can combine classes for different effects:
 
 <!-- Auto-resize primary textarea with success state -->
 <textarea class="textarea textarea-primary textarea-auto-resize textarea-success">
-</textarea>
-```
+</textarea>`} />
 
 ## Related Components
 

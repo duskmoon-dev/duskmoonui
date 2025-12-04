@@ -7,6 +7,8 @@ published: true
 tags: ['progress', 'components', 'material-design', 'indicators']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Progress
 
 Progress indicators inform users about the status of ongoing processes, such as loading data, submitting a form, or saving updates. @duskmoon-dev/core provides both linear and circular progress indicators following Material Design 3 guidelines.
@@ -15,16 +17,13 @@ Progress indicators inform users about the status of ongoing processes, such as 
 
 ### Linear Progress (Determinate)
 
-```html
-<div class="progress">
+<ComponentShowcase title="Linear Progress (Determinate)" code={`<div class="progress">
   <div class="progress-bar" style="width: 60%;"></div>
-</div>
-```
+</div>`} />
 
 ### Circular Progress (Determinate)
 
-```html
-<div class="progress-circular">
+<ComponentShowcase title="Circular Progress (Determinate)" code={`<div class="progress-circular">
   <svg class="progress-circular-svg" width="48" height="48">
     <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
     <circle
@@ -36,8 +35,7 @@ Progress indicators inform users about the status of ongoing processes, such as 
       stroke-dashoffset="50.24"
     ></circle>
   </svg>
-</div>
-```
+</div>`} />
 
 ## Linear Progress
 
@@ -45,8 +43,7 @@ Progress indicators inform users about the status of ongoing processes, such as 
 
 Use determinate progress when the loading time is known:
 
-```html
-<!-- 25% progress -->
+<ComponentShowcase title="Determinate Progress" code={`<!-- 25% progress -->
 <div class="progress">
   <div class="progress-bar" style="width: 25%;"></div>
 </div>
@@ -64,49 +61,41 @@ Use determinate progress when the loading time is known:
 <!-- 100% progress -->
 <div class="progress">
   <div class="progress-bar" style="width: 100%;"></div>
-</div>
-```
+</div>`} />
 
 ### Indeterminate Progress
 
 Use indeterminate progress when the loading time is unknown:
 
-```html
-<div class="progress progress-indeterminate">
+<ComponentShowcase title="Indeterminate Progress" code={`<div class="progress progress-indeterminate">
   <div class="progress-bar"></div>
-</div>
-```
+</div>`} />
 
 ### Progress with Label
 
 Display the progress percentage:
 
-```html
-<div class="progress-labeled">
+<ComponentShowcase title="Progress with Label" code={`<div class="progress-labeled">
   <div class="progress" style="flex: 1;">
     <div class="progress-bar" style="width: 60%;"></div>
   </div>
   <span class="progress-label">60%</span>
-</div>
-```
+</div>`} />
 
 ### Buffer Progress
 
 For media players showing buffered content:
 
-```html
-<div class="progress progress-buffer">
+<ComponentShowcase title="Buffer Progress" code={`<div class="progress progress-buffer">
   <div class="progress-buffer-bar" style="width: 80%;"></div>
   <div class="progress-bar" style="width: 45%;"></div>
-</div>
-```
+</div>`} />
 
 ## Circular Progress
 
 ### Determinate Circular
 
-```html
-<div class="progress-circular">
+<ComponentShowcase title="Determinate Circular" code={`<div class="progress-circular">
   <svg class="progress-circular-svg" width="48" height="48">
     <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
     <circle
@@ -118,15 +107,13 @@ For media players showing buffered content:
       stroke-dashoffset="75.36"
     ></circle>
   </svg>
-</div>
-```
+</div>`} />
 
 Note: For a circle with radius 20, the circumference is `2πr = 125.6`. To show 40% progress, set `stroke-dashoffset` to `125.6 * (1 - 0.4) = 75.36`.
 
 ### Indeterminate Circular
 
-```html
-<div class="progress-circular progress-circular-indeterminate">
+<ComponentShowcase title="Indeterminate Circular" code={`<div class="progress-circular progress-circular-indeterminate">
   <svg class="progress-circular-svg" width="48" height="48">
     <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
     <circle
@@ -137,13 +124,11 @@ Note: For a circle with radius 20, the circumference is `2πr = 125.6`. To show 
       stroke-dasharray="125.6"
     ></circle>
   </svg>
-</div>
-```
+</div>`} />
 
 ### Circular with Percentage Label
 
-```html
-<div class="progress-circular">
+<ComponentShowcase title="Circular with Percentage Label" code={`<div class="progress-circular">
   <svg class="progress-circular-svg" width="48" height="48">
     <circle class="progress-circular-track" cx="24" cy="24" r="20"></circle>
     <circle
@@ -156,8 +141,7 @@ Note: For a circle with radius 20, the circumference is `2πr = 125.6`. To show 
     ></circle>
   </svg>
   <span class="progress-circular-label">70%</span>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
@@ -165,34 +149,27 @@ Progress indicators support all theme colors:
 
 ### Primary (Default)
 
-```html
-<div class="progress">
+<ComponentShowcase title="Primary Color" code={`<div class="progress">
   <div class="progress-bar" style="width: 60%;"></div>
-</div>
-```
+</div>`} />
 
 ### Secondary
 
-```html
-<div class="progress progress-secondary">
+<ComponentShowcase title="Secondary Color" code={`<div class="progress progress-secondary">
   <div class="progress-bar" style="width: 60%;"></div>
-</div>
-```
+</div>`} />
 
 ### Tertiary
 
-```html
-<div class="progress progress-tertiary">
+<ComponentShowcase title="Tertiary Color" code={`<div class="progress progress-tertiary">
   <div class="progress-bar" style="width: 60%;"></div>
-</div>
-```
+</div>`} />
 
 ### Semantic Colors
 
 Use semantic colors to indicate status:
 
-```html
-<!-- Success -->
+<ComponentShowcase title="Semantic Colors" code={`<!-- Success -->
 <div class="progress progress-success">
   <div class="progress-bar" style="width: 100%;"></div>
 </div>
@@ -210,15 +187,13 @@ Use semantic colors to indicate status:
 <!-- Info -->
 <div class="progress progress-info">
   <div class="progress-bar" style="width: 50%;"></div>
-</div>
-```
+</div>`} />
 
 ## Size Variants
 
 ### Linear Progress Sizes
 
-```html
-<!-- Small -->
+<ComponentShowcase title="Linear Progress Sizes" code={`<!-- Small -->
 <div class="progress progress-sm">
   <div class="progress-bar" style="width: 60%;"></div>
 </div>
@@ -236,13 +211,11 @@ Use semantic colors to indicate status:
 <!-- Extra Large -->
 <div class="progress progress-xl">
   <div class="progress-bar" style="width: 60%;"></div>
-</div>
-```
+</div>`} />
 
 ### Circular Progress Sizes
 
-```html
-<!-- Small (32px) -->
+<ComponentShowcase title="Circular Progress Sizes" code={`<!-- Small (32px) -->
 <div class="progress-circular progress-circular-sm">
   <svg class="progress-circular-svg" width="32" height="32">
     <circle class="progress-circular-track" cx="16" cy="16" r="12"></circle>
@@ -300,8 +273,7 @@ Use semantic colors to indicate status:
       stroke-dashoffset="110.53"
     ></circle>
   </svg>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -337,8 +309,7 @@ Use semantic colors to indicate status:
 - Announce progress updates for long-running operations
 - Use semantic HTML where possible
 
-```html
-<!-- Linear progress with ARIA -->
+<ComponentShowcase title="Accessibility Examples" code={`<!-- Linear progress with ARIA -->
 <div
   class="progress"
   role="progressbar"
@@ -358,8 +329,7 @@ Use semantic colors to indicate status:
   aria-busy="true"
 >
   <div class="progress-bar"></div>
-</div>
-```
+</div>`} />
 
 ### Visual Feedback
 

@@ -7,110 +7,88 @@ published: true
 tags: ['divider', 'separator', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Divider
 
 Dividers separate content into clear groups. @duskmoon-dev/core provides horizontal and vertical dividers with multiple style options.
 
 ## Basic Usage
 
-```html
-<div class="divider"></div>
-```
+<ComponentShowcase title="Basic Divider" code={`<div class="divider"></div>`} />
 
 ## Orientation
 
 ### Horizontal (Default)
 
-```html
-<div>Content above</div>
+<ComponentShowcase title="Horizontal Divider" code={`<div>Content above</div>
 <div class="divider"></div>
-<div>Content below</div>
-```
+<div>Content below</div>`} />
 
 ### Vertical
 
-```html
-<div class="flex items-center">
+<ComponentShowcase title="Vertical Divider" code={`<div class="flex items-center">
   <span>Left</span>
   <div class="divider divider-vertical"></div>
   <span>Right</span>
-</div>
-```
+</div>`} />
 
 ## Styles
 
 ### Solid (Default)
 
-```html
-<div class="divider divider-solid"></div>
-```
+<ComponentShowcase title="Solid Divider" code={`<div class="divider divider-solid"></div>`} />
 
 ### Dashed
 
-```html
-<div class="divider divider-dashed"></div>
-```
+<ComponentShowcase title="Dashed Divider" code={`<div class="divider divider-dashed"></div>`} />
 
 ### Dotted
 
-```html
-<div class="divider divider-dotted"></div>
-```
+<ComponentShowcase title="Dotted Divider" code={`<div class="divider divider-dotted"></div>`} />
 
 ## Thickness
 
-```html
-<div class="divider divider-thin"></div>
+<ComponentShowcase title="Divider Thickness" code={`<div class="divider divider-thin"></div>
 <div class="divider divider-medium"></div>
-<div class="divider divider-thick"></div>
-```
+<div class="divider divider-thick"></div>`} />
 
 ## Colors
 
-```html
-<div class="divider divider-primary"></div>
+<ComponentShowcase title="Colored Dividers" code={`<div class="divider divider-primary"></div>
 <div class="divider divider-secondary"></div>
-<div class="divider divider-tertiary"></div>
-```
+<div class="divider divider-tertiary"></div>`} />
 
 ## Gradients
 
-```html
-<div class="divider divider-gradient-primary"></div>
+<ComponentShowcase title="Gradient Dividers" code={`<div class="divider divider-gradient-primary"></div>
 <div class="divider divider-gradient-secondary"></div>
-<div class="divider divider-gradient-tertiary"></div>
-```
+<div class="divider divider-gradient-tertiary"></div>`} />
 
 ## Spacing
 
-```html
-<div class="divider divider-compact"></div>
+<ComponentShowcase title="Divider Spacing" code={`<div class="divider divider-compact"></div>
 <div class="divider"></div>
 <div class="divider divider-comfortable"></div>
-<div class="divider divider-spacious"></div>
-```
+<div class="divider divider-spacious"></div>`} />
 
 ## With Text
 
-```html
-<!-- Centered text -->
+<ComponentShowcase title="Divider with Text" code={`<!-- Centered text -->
 <div class="divider-text">OR</div>
 
 <!-- Left-aligned text -->
 <div class="divider-text-left">Section Title</div>
 
 <!-- Right-aligned text -->
-<div class="divider-text-right">End</div>
-```
+<div class="divider-text-right">End</div>`} />
 
 ## Inset
 
 For list items:
 
-```html
-<div class="divider divider-inset"></div>
-<div class="divider divider-inset-both"></div>
-```
+<ComponentShowcase title="Inset Dividers" code={`<div class="divider divider-inset"></div>
+<div class="divider divider-inset-both"></div>`} />
 
 ## API Reference
 

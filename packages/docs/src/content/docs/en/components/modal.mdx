@@ -7,6 +7,8 @@ published: true
 tags: ['modal', 'dialog', 'overlay', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Modal
 
 Modals are overlay dialogs that focus user attention on a specific task or message. @duskmoon-dev/core provides a complete set of Material Design 3-inspired modal variants with smooth animations and flexible positioning.
@@ -15,8 +17,9 @@ Modals are overlay dialogs that focus user attention on a specific task or messa
 
 A basic modal consists of a backdrop and modal container with header, body, and footer sections.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Basic Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Modal Title</h2>
@@ -30,8 +33,8 @@ A basic modal consists of a backdrop and modal container with header, body, and 
       <button class="btn btn-primary">Confirm</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Sizes
 
@@ -41,8 +44,9 @@ Modals come in five different sizes to accommodate various content needs.
 
 For simple confirmations or short messages.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Small Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-sm">
     <div class="modal-header">
       <h2 class="modal-title">Small Modal</h2>
@@ -56,15 +60,16 @@ For simple confirmations or short messages.
       <button class="btn btn-primary">OK</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Medium Modal (Default)
 
 The default size, suitable for most use cases.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Medium Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-md">
     <div class="modal-header">
       <h2 class="modal-title">Medium Modal</h2>
@@ -78,15 +83,16 @@ The default size, suitable for most use cases.
       <button class="btn btn-primary">Confirm</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Large Modal
 
 For more complex content or forms.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Large Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-lg">
     <div class="modal-header">
       <h2 class="modal-title">Large Modal</h2>
@@ -100,15 +106,16 @@ For more complex content or forms.
       <button class="btn btn-primary">Save</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Extra Large Modal
 
 For extensive content or detailed forms.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Extra Large Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-xl">
     <div class="modal-header">
       <h2 class="modal-title">Extra Large Modal</h2>
@@ -122,15 +129,16 @@ For extensive content or detailed forms.
       <button class="btn btn-primary">Submit</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Full Screen Modal
 
 Takes up almost the entire viewport (95vw × 95vh).
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Full Screen Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-full">
     <div class="modal-header">
       <h2 class="modal-title">Full Screen Modal</h2>
@@ -143,8 +151,8 @@ Takes up almost the entire viewport (95vw × 95vh).
       <button class="btn btn-text">Close</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Positions
 
@@ -154,8 +162,9 @@ Control where the modal appears on the screen.
 
 Modal appears in the center of the viewport.
 
-```html
-<div class="modal-backdrop modal-backdrop-center modal-open">
+<ComponentShowcase
+  title="Center Position Modal"
+  code={`<div class="modal-backdrop modal-backdrop-center modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Centered Modal</h2>
@@ -165,15 +174,16 @@ Modal appears in the center of the viewport.
       <p>This modal is centered in the viewport.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Top Position
 
 Modal appears at the top of the viewport.
 
-```html
-<div class="modal-backdrop modal-backdrop-top modal-open">
+<ComponentShowcase
+  title="Top Position Modal"
+  code={`<div class="modal-backdrop modal-backdrop-top modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Top Modal</h2>
@@ -183,15 +193,16 @@ Modal appears at the top of the viewport.
       <p>This modal appears at the top.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Bottom Position
 
 Modal appears at the bottom of the viewport.
 
-```html
-<div class="modal-backdrop modal-backdrop-bottom modal-open">
+<ComponentShowcase
+  title="Bottom Position Modal"
+  code={`<div class="modal-backdrop modal-backdrop-bottom modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Bottom Modal</h2>
@@ -201,8 +212,8 @@ Modal appears at the bottom of the viewport.
       <p>This modal appears at the bottom.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Animations
 
@@ -212,8 +223,9 @@ Different animation effects for opening/closing modals.
 
 The default scaling effect.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Scale Animation"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Scale Animation</h2>
@@ -223,15 +235,16 @@ The default scaling effect.
       <p>Modal with scale animation (default).</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Slide Up Animation
 
 Modal slides up from the bottom.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Slide Up Animation"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-slide-up">
     <div class="modal-header">
       <h2 class="modal-title">Slide Up</h2>
@@ -241,15 +254,16 @@ Modal slides up from the bottom.
       <p>This modal slides up from the bottom.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Slide Down Animation
 
 Modal slides down from the top.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Slide Down Animation"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-slide-down">
     <div class="modal-header">
       <h2 class="modal-title">Slide Down</h2>
@@ -259,15 +273,16 @@ Modal slides down from the top.
       <p>This modal slides down from the top.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Zoom Animation
 
 Modal zooms in with emphasis.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Zoom Animation"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-zoom">
     <div class="modal-header">
       <h2 class="modal-title">Zoom Animation</h2>
@@ -277,8 +292,8 @@ Modal zooms in with emphasis.
       <p>This modal zooms in dramatically.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Backdrop Variants
 
@@ -288,8 +303,9 @@ Customize the appearance of the backdrop overlay.
 
 Standard dark semi-transparent backdrop.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Default Backdrop"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Default Backdrop</h2>
@@ -299,15 +315,16 @@ Standard dark semi-transparent backdrop.
       <p>Standard dark backdrop.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Light Backdrop
 
 Light semi-transparent backdrop.
 
-```html
-<div class="modal-backdrop modal-backdrop-light modal-open">
+<ComponentShowcase
+  title="Light Backdrop"
+  code={`<div class="modal-backdrop modal-backdrop-light modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Light Backdrop</h2>
@@ -317,15 +334,16 @@ Light semi-transparent backdrop.
       <p>Light colored backdrop.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Blur Backdrop
 
 Backdrop with blur effect.
 
-```html
-<div class="modal-backdrop modal-backdrop-blur modal-open">
+<ComponentShowcase
+  title="Blur Backdrop"
+  code={`<div class="modal-backdrop modal-backdrop-blur modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">Blur Backdrop</h2>
@@ -335,15 +353,16 @@ Backdrop with blur effect.
       <p>Backdrop with blur effect.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### No Backdrop
 
 Modal without backdrop (be cautious with accessibility).
 
-```html
-<div class="modal-backdrop modal-no-backdrop modal-open">
+<ComponentShowcase
+  title="No Backdrop"
+  code={`<div class="modal-backdrop modal-no-backdrop modal-open">
   <div class="modal">
     <div class="modal-header">
       <h2 class="modal-title">No Backdrop</h2>
@@ -353,8 +372,8 @@ Modal without backdrop (be cautious with accessibility).
       <p>Modal without backdrop overlay.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## Content Variants
 
@@ -362,8 +381,9 @@ Modal without backdrop (be cautious with accessibility).
 
 For long content that needs scrolling.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Scrollable Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-scrollable">
     <div class="modal-header">
       <h2 class="modal-title">Scrollable Content</h2>
@@ -377,15 +397,16 @@ For long content that needs scrolling.
       <button class="btn btn-text">Close</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### No Padding
 
 Remove default padding for custom layouts.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="No Padding Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-no-padding">
     <div class="modal-header">
       <h2 class="modal-title">No Padding</h2>
@@ -396,15 +417,16 @@ Remove default padding for custom layouts.
       <img src="image.jpg" alt="Full width image" />
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Centered Content
 
 Center content vertically and horizontally in the body.
 
-```html
-<div class="modal-backdrop modal-open">
+<ComponentShowcase
+  title="Centered Content Modal"
+  code={`<div class="modal-backdrop modal-open">
   <div class="modal modal-centered">
     <div class="modal-header">
       <h2 class="modal-title">Centered Content</h2>
@@ -420,15 +442,16 @@ Center content vertically and horizontally in the body.
       <button class="btn btn-primary">Done</button>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ## JavaScript Control
 
 Modals can be controlled with JavaScript by toggling classes.
 
-```html
-<button id="openModal" class="btn btn-primary">Open Modal</button>
+<ComponentShowcase
+  title="JavaScript Controlled Modal"
+  code={`<button id="openModal" class="btn btn-primary">Open Modal</button>
 
 <div id="myModal" class="modal-backdrop">
   <div class="modal">
@@ -479,8 +502,8 @@ Modals can be controlled with JavaScript by toggling classes.
       closeModal();
     }
   });
-</script>
-```
+</script>`}
+/>
 
 ## Best Practices
 
@@ -492,8 +515,9 @@ Modals can be controlled with JavaScript by toggling classes.
 - Use `role="dialog"` and `aria-modal="true"` attributes
 - Provide descriptive titles with proper heading hierarchy
 
-```html
-<div class="modal-backdrop modal-open" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<ComponentShowcase
+  title="Accessible Modal"
+  code={`<div class="modal-backdrop modal-open" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal">
     <div class="modal-header">
       <h2 id="modal-title" class="modal-title">Accessible Modal</h2>
@@ -503,8 +527,8 @@ Modals can be controlled with JavaScript by toggling classes.
       <p>Modal content with proper accessibility attributes.</p>
     </div>
   </div>
-</div>
-```
+</div>`}
+/>
 
 ### Body Scroll Lock
 

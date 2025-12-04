@@ -6,6 +6,7 @@ order: 42
 published: true
 tags: ['toggle', 'components', 'material-design', 'button-group']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Toggle
 
@@ -13,10 +14,8 @@ Toggle buttons allow users to select one or more options from a set of choices. 
 
 ## Basic Usage
 
-```html
-<button class="toggle-btn">Toggle Button</button>
-<button class="toggle-btn toggle-btn-active">Active Toggle</button>
-```
+<ComponentShowcase title="Basic Toggle" code={`<button class="toggle-btn">Toggle Button</button>
+<button class="toggle-btn toggle-btn-active">Active Toggle</button>`} />
 
 ## States
 
@@ -24,35 +23,27 @@ Toggle buttons allow users to select one or more options from a set of choices. 
 
 The default toggle button has an outlined appearance:
 
-```html
-<button class="toggle-btn">Unselected</button>
-```
+<ComponentShowcase title="Default State" code={`<button class="toggle-btn">Unselected</button>`} />
 
 ### Active State
 
 Use `toggle-btn-active` or `active` class to show the selected state:
 
-```html
-<button class="toggle-btn toggle-btn-active">Selected</button>
-<button class="toggle-btn active">Also Selected</button>
-```
+<ComponentShowcase title="Active State" code={`<button class="toggle-btn toggle-btn-active">Selected</button>
+<button class="toggle-btn active">Also Selected</button>`} />
 
 ### Disabled State
 
 Disabled toggles are non-interactive:
 
-```html
-<button class="toggle-btn" disabled>Disabled</button>
-<button class="toggle-btn toggle-btn-active" disabled>Disabled Active</button>
-```
+<ComponentShowcase title="Disabled State" code={`<button class="toggle-btn" disabled>Disabled</button>
+<button class="toggle-btn toggle-btn-active" disabled>Disabled Active</button>`} />
 
 ### Loading State
 
 Show a loading indicator for asynchronous operations:
 
-```html
-<button class="toggle-btn toggle-loading">Loading</button>
-```
+<ComponentShowcase title="Loading State" code={`<button class="toggle-btn toggle-loading">Loading</button>`} />
 
 ## Variants
 
@@ -60,60 +51,48 @@ Show a loading indicator for asynchronous operations:
 
 Toggle buttons support primary, secondary, and tertiary colors when active:
 
-```html
-<button class="toggle-btn toggle-btn-active">Primary (default)</button>
+<ComponentShowcase title="Color Variants" code={`<button class="toggle-btn toggle-btn-active">Primary (default)</button>
 <button class="toggle-btn toggle-btn-secondary toggle-btn-active">Secondary</button>
-<button class="toggle-btn toggle-btn-tertiary toggle-btn-active">Tertiary</button>
-```
+<button class="toggle-btn toggle-btn-tertiary toggle-btn-active">Tertiary</button>`} />
 
 ### Outlined Variant
 
 The default style with transparent background:
 
-```html
-<button class="toggle-btn toggle-outlined">Outlined</button>
-<button class="toggle-btn toggle-outlined toggle-btn-active">Outlined Active</button>
-```
+<ComponentShowcase title="Outlined Variant" code={`<button class="toggle-btn toggle-outlined">Outlined</button>
+<button class="toggle-btn toggle-outlined toggle-btn-active">Outlined Active</button>`} />
 
 ### Filled Variant
 
 Toggle with filled background:
 
-```html
-<button class="toggle-btn toggle-filled">Filled</button>
-<button class="toggle-btn toggle-filled toggle-btn-active">Filled Active</button>
-```
+<ComponentShowcase title="Filled Variant" code={`<button class="toggle-btn toggle-filled">Filled</button>
+<button class="toggle-btn toggle-filled toggle-btn-active">Filled Active</button>`} />
 
 ### Chip Style
 
 Rounded chip-like toggle buttons:
 
-```html
-<button class="toggle-btn toggle-chip">Chip</button>
-<button class="toggle-btn toggle-chip toggle-btn-active">Chip Active</button>
-```
+<ComponentShowcase title="Chip Style" code={`<button class="toggle-btn toggle-chip">Chip</button>
+<button class="toggle-btn toggle-chip toggle-btn-active">Chip Active</button>`} />
 
 ### Segmented Control
 
 iOS-style segmented control appearance:
 
-```html
-<div class="toggle-segmented">
+<ComponentShowcase title="Segmented Control" code={`<div class="toggle-segmented">
   <button class="toggle-btn toggle-btn-active">Option 1</button>
   <button class="toggle-btn">Option 2</button>
   <button class="toggle-btn">Option 3</button>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
 Three sizes are available:
 
-```html
-<button class="toggle-btn toggle-btn-sm">Small</button>
+<ComponentShowcase title="Toggle Sizes" code={`<button class="toggle-btn toggle-btn-sm">Small</button>
 <button class="toggle-btn">Medium (default)</button>
-<button class="toggle-btn toggle-btn-lg">Large</button>
-```
+<button class="toggle-btn toggle-btn-lg">Large</button>`} />
 
 ## Toggle with Icons
 
@@ -121,8 +100,7 @@ Three sizes are available:
 
 Combine icons with text labels:
 
-```html
-<button class="toggle-btn">
+<ComponentShowcase title="Icon and Text" code={`<button class="toggle-btn">
   <svg class="toggle-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
   </svg>
@@ -134,15 +112,13 @@ Combine icons with text labels:
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
   </svg>
   Favorited
-</button>
-```
+</button>`} />
 
 ### Icon-Only Toggle
 
 Compact icon-only toggles:
 
-```html
-<button class="toggle-btn toggle-btn-icon-only">
+<ComponentShowcase title="Icon-Only Toggle" code={`<button class="toggle-btn toggle-btn-icon-only">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
   </svg>
@@ -159,8 +135,7 @@ Compact icon-only toggles:
   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
   </svg>
-</button>
-```
+</button>`} />
 
 ## Toggle Groups
 
@@ -168,44 +143,37 @@ Compact icon-only toggles:
 
 Group multiple toggle buttons:
 
-```html
-<div class="toggle-group">
+<ComponentShowcase title="Horizontal Group" code={`<div class="toggle-group">
   <button class="toggle-btn toggle-btn-active">Left</button>
   <button class="toggle-btn">Center</button>
   <button class="toggle-btn">Right</button>
-</div>
-```
+</div>`} />
 
 ### Vertical Group
 
 Stack toggles vertically:
 
-```html
-<div class="toggle-group toggle-group-vertical">
+<ComponentShowcase title="Vertical Group" code={`<div class="toggle-group toggle-group-vertical">
   <button class="toggle-btn toggle-btn-active">Top</button>
   <button class="toggle-btn">Middle</button>
   <button class="toggle-btn">Bottom</button>
-</div>
-```
+</div>`} />
 
 ### Exclusive Selection
 
 Radio-like behavior where only one option can be selected:
 
-```html
-<div class="toggle-group toggle-group-exclusive">
+<ComponentShowcase title="Exclusive Selection" code={`<div class="toggle-group toggle-group-exclusive">
   <button class="toggle-btn toggle-btn-active">Option 1</button>
   <button class="toggle-btn">Option 2</button>
   <button class="toggle-btn">Option 3</button>
-</div>
-```
+</div>`} />
 
 ### Icon Group
 
 Group of icon-only toggles:
 
-```html
-<div class="toggle-group">
+<ComponentShowcase title="Icon Group" code={`<div class="toggle-group">
   <button class="toggle-btn toggle-btn-icon-only toggle-btn-active">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
@@ -221,43 +189,35 @@ Group of icon-only toggles:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16" />
     </svg>
   </button>
-</div>
-```
+</div>`} />
 
 ## Full Width
 
 ### Single Toggle
 
-```html
-<button class="toggle-btn toggle-full">Full Width Toggle</button>
-```
+<ComponentShowcase title="Full Width Single Toggle" code={`<button class="toggle-btn toggle-full">Full Width Toggle</button>`} />
 
 ### Full Width Group
 
-```html
-<div class="toggle-group toggle-group-full">
+<ComponentShowcase title="Full Width Group" code={`<div class="toggle-group toggle-group-full">
   <button class="toggle-btn toggle-btn-active">Option 1</button>
   <button class="toggle-btn">Option 2</button>
   <button class="toggle-btn">Option 3</button>
-</div>
-```
+</div>`} />
 
 ## Badge Indicator
 
 Toggle with a badge indicator (e.g., for notifications):
 
-```html
-<button class="toggle-btn toggle-badge">
+<ComponentShowcase title="Badge Indicator" code={`<button class="toggle-btn toggle-badge">
   Messages
-</button>
-```
+</button>`} />
 
 ## Common Patterns
 
 ### Text Formatting Toolbar
 
-```html
-<div class="toggle-group">
+<ComponentShowcase title="Text Formatting Toolbar" code={`<div class="toggle-group">
   <button class="toggle-btn toggle-btn-icon-only toggle-btn-active" aria-label="Bold">
     <strong class="text-base">B</strong>
   </button>
@@ -267,13 +227,11 @@ Toggle with a badge indicator (e.g., for notifications):
   <button class="toggle-btn toggle-btn-icon-only" aria-label="Underline">
     <span class="text-base underline">U</span>
   </button>
-</div>
-```
+</div>`} />
 
 ### View Switcher
 
-```html
-<div class="toggle-group">
+<ComponentShowcase title="View Switcher" code={`<div class="toggle-group">
   <button class="toggle-btn toggle-btn-icon-only toggle-btn-active" aria-label="Grid view">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -284,29 +242,24 @@ Toggle with a badge indicator (e.g., for notifications):
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
-</div>
-```
+</div>`} />
 
 ### Filter Chips
 
-```html
-<div class="flex gap-2 flex-wrap">
+<ComponentShowcase title="Filter Chips" code={`<div class="flex gap-2 flex-wrap">
   <button class="toggle-btn toggle-chip toggle-btn-active">All</button>
   <button class="toggle-btn toggle-chip">Active</button>
   <button class="toggle-btn toggle-chip">Archived</button>
   <button class="toggle-btn toggle-chip">Drafts</button>
-</div>
-```
+</div>`} />
 
 ### Tab-like Navigation
 
-```html
-<div class="toggle-segmented">
+<ComponentShowcase title="Tab-like Navigation" code={`<div class="toggle-segmented">
   <button class="toggle-btn toggle-btn-active">Overview</button>
   <button class="toggle-btn">Details</button>
   <button class="toggle-btn">Settings</button>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -316,8 +269,7 @@ Toggle with a badge indicator (e.g., for notifications):
 - **Single-select**: Use exclusive groups for mutually exclusive options
 - **Toggle**: Use for simple on/off states
 
-```html
-<!-- Multi-select: Independent options -->
+<ComponentShowcase title="Selection Behavior" code={`<!-- Multi-select: Independent options -->
 <div class="toggle-group">
   <button class="toggle-btn toggle-btn-active">Bold</button>
   <button class="toggle-btn toggle-btn-active">Italic</button>
@@ -329,8 +281,7 @@ Toggle with a badge indicator (e.g., for notifications):
   <button class="toggle-btn toggle-btn-active">Left</button>
   <button class="toggle-btn">Center</button>
   <button class="toggle-btn">Right</button>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -339,16 +290,14 @@ Toggle with a badge indicator (e.g., for notifications):
 - Ensure keyboard navigation works properly
 - Use sufficient color contrast
 
-```html
-<!-- Good: Icon button with aria attributes -->
+<ComponentShowcase title="Accessibility Example" code={`<!-- Good: Icon button with aria attributes -->
 <button
   class="toggle-btn toggle-btn-icon-only toggle-btn-active"
   aria-label="Bold text"
   aria-pressed="true"
 >
   <strong class="text-base">B</strong>
-</button>
-```
+</button>`} />
 
 ### Visual Feedback
 
@@ -362,15 +311,13 @@ Always provide clear visual feedback for:
 
 Ensure toggle buttons meet minimum touch target sizes (44×44px):
 
-```html
-<!-- Default size is touch-friendly -->
+<ComponentShowcase title="Touch Targets" code={`<!-- Default size is touch-friendly -->
 <button class="toggle-btn">Touch Friendly</button>
 
 <!-- Use larger sizes for mobile-first designs -->
 <button class="toggle-btn toggle-btn-lg md:toggle-btn">
   Responsive Size
-</button>
-```
+</button>`} />
 
 ## Framework Examples
 
@@ -637,8 +584,7 @@ multiButtons.forEach(button => {
 
 You can combine classes for different effects:
 
-```html
-<!-- Large secondary chip-style toggle -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Large secondary chip-style toggle -->
 <button class="toggle-btn toggle-chip toggle-btn-secondary toggle-btn-lg toggle-btn-active">
   Large Secondary Chip
 </button>
@@ -657,8 +603,7 @@ You can combine classes for different effects:
   <button class="toggle-btn toggle-btn-icon-only">
     <svg class="w-5 h-5">...</svg>
   </button>
-</div>
-```
+</div>`} />
 
 ## Related Components
 

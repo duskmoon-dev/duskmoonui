@@ -7,51 +7,43 @@ published: true
 tags: ['alert', 'components', 'material-design', 'notification']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Alert
 
 Alerts provide important messages to users in a visually prominent way. They communicate information about system status, user actions, or other contextual messages.
 
 ## Basic Usage
 
-```html
-<div class="alert">
+<ComponentShowcase title="Basic Alert" code={`<div class="alert">
   <p>This is a basic alert message.</p>
-</div>
-```
+</div>`} />
 
 ## Alert Types
 
 ### Info (Default)
 
-```html
-<div class="alert alert-info">
+<ComponentShowcase title="Info Alert" code={`<div class="alert alert-info">
   <p>This is an informational message.</p>
-</div>
-```
+</div>`} />
 
 ### Success
 
-```html
-<div class="alert alert-success">
+<ComponentShowcase title="Success Alert" code={`<div class="alert alert-success">
   <p>Your action was completed successfully!</p>
-</div>
-```
+</div>`} />
 
 ### Warning
 
-```html
-<div class="alert alert-warning">
+<ComponentShowcase title="Warning Alert" code={`<div class="alert alert-warning">
   <p>Please review this warning before proceeding.</p>
-</div>
-```
+</div>`} />
 
 ### Error
 
-```html
-<div class="alert alert-error">
+<ComponentShowcase title="Error Alert" code={`<div class="alert alert-error">
   <p>An error occurred. Please try again.</p>
-</div>
-```
+</div>`} />
 
 ## Style Variants
 
@@ -59,53 +51,45 @@ Alerts provide important messages to users in a visually prominent way. They com
 
 Tonal alerts use a subtle background color:
 
-```html
-<div class="alert alert-tonal alert-info">
+<ComponentShowcase title="Tonal Alerts" code={`<div class="alert alert-tonal alert-info">
   <p>Tonal info alert</p>
 </div>
 
 <div class="alert alert-tonal alert-success">
   <p>Tonal success alert</p>
-</div>
-```
+</div>`} />
 
 ### Filled
 
 Filled alerts have a solid background:
 
-```html
-<div class="alert alert-filled alert-info">
+<ComponentShowcase title="Filled Alerts" code={`<div class="alert alert-filled alert-info">
   <p>Filled info alert</p>
 </div>
 
 <div class="alert alert-filled alert-warning">
   <p>Filled warning alert</p>
-</div>
-```
+</div>`} />
 
 ### Outlined
 
 Outlined alerts have a border:
 
-```html
-<div class="alert alert-outlined alert-success">
+<ComponentShowcase title="Outlined Alerts" code={`<div class="alert alert-outlined alert-success">
   <p>Outlined success alert</p>
 </div>
 
 <div class="alert alert-outlined alert-error">
   <p>Outlined error alert</p>
-</div>
-```
+</div>`} />
 
 ### Standard
 
 Standard alerts are minimal with just an icon and text:
 
-```html
-<div class="alert alert-standard alert-info">
+<ComponentShowcase title="Standard Alert" code={`<div class="alert alert-standard alert-info">
   <p>Standard info alert</p>
-</div>
-```
+</div>`} />
 
 ## Alert Structure
 
@@ -113,8 +97,7 @@ Standard alerts are minimal with just an icon and text:
 
 A full-featured alert with all components:
 
-```html
-<div class="alert alert-info">
+<ComponentShowcase title="Complete Alert Structure" code={`<div class="alert alert-info">
   <div class="alert-icon">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -137,13 +120,11 @@ A full-featured alert with all components:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
-</div>
-```
+</div>`} />
 
 ### With Icon
 
-```html
-<div class="alert alert-success">
+<ComponentShowcase title="Alert with Icon" code={`<div class="alert alert-success">
   <div class="alert-icon">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -152,13 +133,11 @@ A full-featured alert with all components:
   <div class="alert-content">
     <p>Your changes have been saved successfully.</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### With Title and Description
 
-```html
-<div class="alert alert-warning">
+<ComponentShowcase title="Alert with Title and Description" code={`<div class="alert alert-warning">
   <div class="alert-icon">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -170,13 +149,11 @@ A full-featured alert with all components:
       You've used 95% of your available storage. Consider upgrading your plan or deleting old files.
     </p>
   </div>
-</div>
-```
+</div>`} />
 
 ### With Actions
 
-```html
-<div class="alert alert-error">
+<ComponentShowcase title="Alert with Actions" code={`<div class="alert alert-error">
   <div class="alert-icon">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -192,13 +169,11 @@ A full-featured alert with all components:
     <button class="btn btn-sm btn-text">Dismiss</button>
     <button class="btn btn-sm btn-tonal">Update Payment</button>
   </div>
-</div>
-```
+</div>`} />
 
 ### With Close Button
 
-```html
-<div class="alert alert-info">
+<ComponentShowcase title="Alert with Close Button" code={`<div class="alert alert-info">
   <div class="alert-content">
     <p>You have 3 unread notifications.</p>
   </div>
@@ -207,38 +182,32 @@ A full-featured alert with all components:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
-</div>
-```
+</div>`} />
 
 ## Density
 
 ### Compact
 
-```html
-<div class="alert alert-compact alert-info">
+<ComponentShowcase title="Compact Alert" code={`<div class="alert alert-compact alert-info">
   <div class="alert-content">
     <p>Compact alert with reduced padding.</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Comfortable
 
-```html
-<div class="alert alert-comfortable alert-success">
+<ComponentShowcase title="Comfortable Alert" code={`<div class="alert alert-comfortable alert-success">
   <div class="alert-content">
     <h4 class="alert-title">Success!</h4>
     <p class="alert-description">Comfortable alert with increased padding.</p>
   </div>
-</div>
-```
+</div>`} />
 
 ## Icon Examples
 
 ### Common Alert Icons
 
-```html
-<!-- Info -->
+<ComponentShowcase title="Common Alert Icons" code={`<!-- Info -->
 <div class="alert-icon">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -264,15 +233,13 @@ A full-featured alert with all components:
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
-</div>
-```
+</div>`} />
 
 ## Use Cases
 
 ### Form Validation
 
-```html
-<form class="space-y-4">
+<ComponentShowcase title="Form Validation Alert" code={`<form class="space-y-4">
   <div class="alert alert-error">
     <div class="alert-icon">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -289,13 +256,11 @@ A full-featured alert with all components:
   </div>
 
   <!-- Form fields -->
-</form>
-```
+</form>`} />
 
 ### System Status
 
-```html
-<div class="alert alert-warning">
+<ComponentShowcase title="System Status Alert" code={`<div class="alert alert-warning">
   <div class="alert-icon">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -307,13 +272,11 @@ A full-featured alert with all components:
       Our service will be offline for maintenance on Sunday, Oct 30 from 2:00 AM to 4:00 AM EST.
     </p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Action Confirmation
 
-```html
-<div class="alert alert-success">
+<ComponentShowcase title="Action Confirmation Alert" code={`<div class="alert alert-success">
   <div class="alert-icon">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -327,13 +290,11 @@ A full-featured alert with all components:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
-</div>
-```
+</div>`} />
 
 ### Feature Announcement
 
-```html
-<div class="alert alert-filled alert-info">
+<ComponentShowcase title="Feature Announcement Alert" code={`<div class="alert alert-filled alert-info">
   <div class="alert-icon">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
@@ -348,8 +309,7 @@ A full-featured alert with all components:
   <div class="alert-actions">
     <button class="btn btn-sm btn-text">Try It Now</button>
   </div>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -366,8 +326,7 @@ Match alert types to the message intent:
 
 Keep alert messages brief and actionable:
 
-```html
-<!-- Good: Clear and concise -->
+<ComponentShowcase title="Good Alert Example" code={`<!-- Good: Clear and concise -->
 <div class="alert alert-error">
   <div class="alert-content">
     <h4 class="alert-title">Upload Failed</h4>
@@ -380,15 +339,13 @@ Keep alert messages brief and actionable:
   <div class="alert-content">
     <p>We encountered an issue while attempting to upload your file to our servers. The file you selected appears to be larger than the maximum allowed file size...</p>
   </div>
-</div>
-```
+</div>`} />
 
 ### Provide Actions
 
 When possible, offer next steps:
 
-```html
-<div class="alert alert-warning">
+<ComponentShowcase title="Alert with Next Steps" code={`<div class="alert alert-warning">
   <div class="alert-content">
     <h4 class="alert-title">Session Expiring Soon</h4>
     <p class="alert-description">Your session will expire in 5 minutes.</p>
@@ -396,8 +353,7 @@ When possible, offer next steps:
   <div class="alert-actions">
     <button class="btn btn-sm btn-tonal">Stay Logged In</button>
   </div>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -406,8 +362,7 @@ When possible, offer next steps:
 - Provide descriptive close button labels
 - Use semantic HTML
 
-```html
-<div role="alert" class="alert alert-error">
+<ComponentShowcase title="Accessible Alert" code={`<div role="alert" class="alert alert-error">
   <div class="alert-content">
     <p>An error occurred</p>
   </div>
@@ -416,8 +371,7 @@ When possible, offer next steps:
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
-</div>
-```
+</div>`} />
 
 ## Framework Examples
 

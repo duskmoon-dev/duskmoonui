@@ -7,14 +7,15 @@ published: true
 tags: ['appbar', 'toolbar', 'navigation', 'components', 'material-design']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # App Bar
 
 App bars display information and actions related to the current screen. @duskmoon-dev/core provides flexible top and bottom app bars.
 
 ## Basic Usage
 
-```html
-<header class="appbar">
+<ComponentShowcase title="Basic App Bar" code={`<header class="appbar">
   <div class="appbar-leading">
     <button class="appbar-action" aria-label="Menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,45 +33,37 @@ App bars display information and actions related to the current screen. @duskmoo
       </svg>
     </button>
   </div>
-</header>
-```
+</header>`} />
 
 ## Position
 
 ### Static (Default)
 
-```html
-<header class="appbar appbar-static">
+<ComponentShowcase title="Static App Bar" code={`<header class="appbar appbar-static">
   <div class="appbar-title">
     <h1 class="appbar-heading">Static App Bar</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ### Fixed
 
-```html
-<header class="appbar appbar-fixed">
+<ComponentShowcase title="Fixed App Bar" code={`<header class="appbar appbar-fixed">
   <div class="appbar-title">
     <h1 class="appbar-heading">Fixed App Bar</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ### Sticky
 
-```html
-<header class="appbar appbar-sticky">
+<ComponentShowcase title="Sticky App Bar" code={`<header class="appbar appbar-sticky">
   <div class="appbar-title">
     <h1 class="appbar-heading">Sticky App Bar</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ## Surface Variants
 
-```html
-<header class="appbar appbar-surface">
+<ComponentShowcase title="Surface Variants" code={`<header class="appbar appbar-surface">
   <div class="appbar-title">
     <h1 class="appbar-heading">Surface</h1>
   </div>
@@ -86,13 +79,11 @@ App bars display information and actions related to the current screen. @duskmoo
   <div class="appbar-title">
     <h1 class="appbar-heading">Surface Container High</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ## Color Variants
 
-```html
-<header class="appbar appbar-primary">
+<ComponentShowcase title="Color Variants" code={`<header class="appbar appbar-primary">
   <div class="appbar-title">
     <h1 class="appbar-heading">Primary</h1>
   </div>
@@ -108,34 +99,28 @@ App bars display information and actions related to the current screen. @duskmoo
   <div class="appbar-title">
     <h1 class="appbar-heading">Tertiary</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ## Transparent with Blur
 
-```html
-<header class="appbar appbar-transparent appbar-blur">
+<ComponentShowcase title="Transparent with Blur" code={`<header class="appbar appbar-transparent appbar-blur">
   <div class="appbar-title">
     <h1 class="appbar-heading">Transparent Blur</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ## With Subtitle
 
-```html
-<header class="appbar">
+<ComponentShowcase title="App Bar with Subtitle" code={`<header class="appbar">
   <div class="appbar-title">
     <h1 class="appbar-heading">Page Title</h1>
     <p class="appbar-subtitle">Subtitle text</p>
   </div>
-</header>
-```
+</header>`} />
 
 ## With Back Button
 
-```html
-<header class="appbar">
+<ComponentShowcase title="App Bar with Back Button" code={`<header class="appbar">
   <div class="appbar-leading">
     <button class="appbar-back" aria-label="Go back">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,13 +131,11 @@ App bars display information and actions related to the current screen. @duskmoo
   <div class="appbar-title">
     <h1 class="appbar-heading">Detail Page</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ## With Actions
 
-```html
-<header class="appbar">
+<ComponentShowcase title="App Bar with Actions" code={`<header class="appbar">
   <div class="appbar-leading">
     <button class="appbar-action" aria-label="Menu">☰</button>
   </div>
@@ -164,13 +147,11 @@ App bars display information and actions related to the current screen. @duskmoo
     <button class="appbar-action" aria-label="Notifications">🔔</button>
     <button class="appbar-action" aria-label="More">⋮</button>
   </div>
-</header>
-```
+</header>`} />
 
 ## With Search
 
-```html
-<header class="appbar">
+<ComponentShowcase title="App Bar with Search" code={`<header class="appbar">
   <div class="appbar-leading">
     <button class="appbar-action" aria-label="Menu">☰</button>
   </div>
@@ -178,13 +159,11 @@ App bars display information and actions related to the current screen. @duskmoo
   <div class="appbar-trailing">
     <button class="appbar-action" aria-label="Profile">👤</button>
   </div>
-</header>
-```
+</header>`} />
 
 ## Sizes
 
-```html
-<header class="appbar appbar-compact">
+<ComponentShowcase title="App Bar Sizes" code={`<header class="appbar appbar-compact">
   <div class="appbar-title">
     <h1 class="appbar-heading">Compact</h1>
   </div>
@@ -200,13 +179,11 @@ App bars display information and actions related to the current screen. @duskmoo
   <div class="appbar-title">
     <h1 class="appbar-heading">Comfortable</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ## Prominent (Large)
 
-```html
-<header class="appbar appbar-prominent">
+<ComponentShowcase title="Prominent App Bar" code={`<header class="appbar appbar-prominent">
   <div class="appbar-leading">
     <button class="appbar-action" aria-label="Menu">☰</button>
   </div>
@@ -216,13 +193,11 @@ App bars display information and actions related to the current screen. @duskmoo
   <div class="appbar-trailing">
     <button class="appbar-action" aria-label="Search">🔍</button>
   </div>
-</header>
-```
+</header>`} />
 
 ## Bottom App Bar
 
-```html
-<footer class="appbar appbar-bottom">
+<ComponentShowcase title="Bottom App Bar" code={`<footer class="appbar appbar-bottom">
   <div class="appbar-leading">
     <button class="appbar-action" aria-label="Menu">☰</button>
   </div>
@@ -231,13 +206,11 @@ App bars display information and actions related to the current screen. @duskmoo
     <button class="appbar-action" aria-label="Favorite">❤️</button>
     <button class="appbar-action" aria-label="More">⋮</button>
   </div>
-</footer>
-```
+</footer>`} />
 
 ## Styles
 
-```html
-<!-- Flat (no shadow) -->
+<ComponentShowcase title="App Bar Styles" code={`<!-- Flat (no shadow) -->
 <header class="appbar appbar-flat">
   <div class="appbar-title">
     <h1 class="appbar-heading">Flat</h1>
@@ -249,8 +222,7 @@ App bars display information and actions related to the current screen. @duskmoo
   <div class="appbar-title">
     <h1 class="appbar-heading">Bordered</h1>
   </div>
-</header>
-```
+</header>`} />
 
 ## API Reference
 

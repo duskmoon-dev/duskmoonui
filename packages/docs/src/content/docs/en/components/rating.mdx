@@ -7,94 +7,83 @@ published: true
 tags: ['rating', 'components', 'material-design', 'stars', 'feedback']
 ---
 
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
 # Rating
 
 Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit their own rating. @duskmoon-dev/core provides a flexible and accessible rating component.
 
 ## Basic Usage
 
-```html
-<div class="rating">
+<ComponentShowcase title="Basic Rating" code={`<div class="rating">
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Filled Rating
 
 Display a rating value with filled stars:
 
-```html
-<div class="rating">
+<ComponentShowcase title="Filled Rating" code={`<div class="rating">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Color Variants
 
 ### Primary (Default)
 
-```html
-<div class="rating">
+<ComponentShowcase title="Primary Rating" code={`<div class="rating">
   <span class="rating-item rating-item-primary-filled">★</span>
   <span class="rating-item rating-item-primary-filled">★</span>
   <span class="rating-item rating-item-primary-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ### Secondary
 
-```html
-<div class="rating rating-secondary">
+<ComponentShowcase title="Secondary Rating" code={`<div class="rating rating-secondary">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ### Tertiary
 
-```html
-<div class="rating rating-tertiary">
+<ComponentShowcase title="Tertiary Rating" code={`<div class="rating rating-tertiary">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ### Warning (Recommended for Ratings)
 
 The warning variant uses a golden/amber color, which is typical for rating displays:
 
-```html
-<div class="rating rating-warning">
+<ComponentShowcase title="Warning Rating" code={`<div class="rating rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Sizes
 
 Four size variants are available:
 
-```html
-<!-- Small -->
+<ComponentShowcase title="Rating Sizes" code={`<!-- Small -->
 <div class="rating rating-sm rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
@@ -128,57 +117,49 @@ Four size variants are available:
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Half Stars
 
 Display precise ratings with half-filled stars:
 
-```html
-<div class="rating rating-warning rating-precision-half">
+<ComponentShowcase title="Half Stars" code={`<div class="rating rating-warning rating-precision-half">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-half">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Read-Only Rating
 
 Display a non-interactive rating:
 
-```html
-<div class="rating rating-readonly rating-warning">
+<ComponentShowcase title="Read-Only Rating" code={`<div class="rating rating-readonly rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Disabled Rating
 
 Display a disabled rating:
 
-```html
-<div class="rating rating-disabled rating-warning">
+<ComponentShowcase title="Disabled Rating" code={`<div class="rating rating-disabled rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## With Label
 
 Add descriptive text to your rating:
 
-```html
-<div class="rating-label">
+<ComponentShowcase title="Rating with Label" code={`<div class="rating-label">
   <span>Product Quality</span>
   <div class="rating rating-warning">
     <span class="rating-item rating-item-filled">★</span>
@@ -187,30 +168,26 @@ Add descriptive text to your rating:
     <span class="rating-item rating-item-filled">★</span>
     <span class="rating-item">☆</span>
   </div>
-</div>
-```
+</div>`} />
 
 ## With Value Display
 
 Show the numeric rating value:
 
-```html
-<div class="rating rating-warning">
+<ComponentShowcase title="Rating with Value" code={`<div class="rating rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-value">4.0</span>
-</div>
-```
+</div>`} />
 
 ## With Review Count
 
 Display the number of reviews:
 
-```html
-<div class="rating rating-warning">
+<ComponentShowcase title="Rating with Review Count" code={`<div class="rating rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
@@ -218,15 +195,13 @@ Display the number of reviews:
   <span class="rating-item rating-item-half">☆</span>
   <span class="rating-value">4.5</span>
   <span class="rating-count">(234 reviews)</span>
-</div>
-```
+</div>`} />
 
 ## With Description
 
 Add contextual descriptions that update with the rating:
 
-```html
-<div class="rating-with-description">
+<ComponentShowcase title="Rating with Description" code={`<div class="rating-with-description">
   <div class="rating rating-warning">
     <span class="rating-item rating-item-filled">★</span>
     <span class="rating-item rating-item-filled">★</span>
@@ -235,72 +210,62 @@ Add contextual descriptions that update with the rating:
     <span class="rating-item">☆</span>
   </div>
   <span class="rating-description">Excellent</span>
-</div>
-```
+</div>`} />
 
 ## Interactive Rating
 
 Allow users to select their own rating:
 
-```html
-<div class="rating rating-interactive rating-warning">
+<ComponentShowcase title="Interactive Rating" code={`<div class="rating rating-interactive rating-warning">
   <span class="rating-item" tabindex="0" role="radio" aria-label="1 star">☆</span>
   <span class="rating-item" tabindex="0" role="radio" aria-label="2 stars">☆</span>
   <span class="rating-item" tabindex="0" role="radio" aria-label="3 stars">☆</span>
   <span class="rating-item" tabindex="0" role="radio" aria-label="4 stars">☆</span>
   <span class="rating-item" tabindex="0" role="radio" aria-label="5 stars">☆</span>
-</div>
-```
+</div>`} />
 
 ## Clearable Rating
 
 Add a clear button to reset the rating:
 
-```html
-<div class="rating rating-clearable rating-warning">
+<ComponentShowcase title="Clearable Rating" code={`<div class="rating rating-clearable rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <button class="rating-clear-btn" aria-label="Clear rating">✕</button>
-</div>
-```
+</div>`} />
 
 ## Vertical Layout
 
 Display rating in a vertical orientation:
 
-```html
-<div class="rating rating-vertical rating-warning">
+<ComponentShowcase title="Vertical Rating" code={`<div class="rating rating-vertical rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Heart Icons
 
 Use heart icons instead of stars:
 
-```html
-<div class="rating rating-heart">
+<ComponentShowcase title="Heart Rating" code={`<div class="rating rating-heart">
   <span class="rating-item rating-item-filled">♥</span>
   <span class="rating-item rating-item-filled">♥</span>
   <span class="rating-item rating-item-filled">♥</span>
   <span class="rating-item">♡</span>
   <span class="rating-item">♡</span>
-</div>
-```
+</div>`} />
 
 ## Precision Variants
 
 Control the precision of ratings:
 
-```html
-<!-- Full star precision (default) -->
+<ComponentShowcase title="Precision Variants" code={`<!-- Full star precision (default) -->
 <div class="rating rating-precision-full rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
@@ -326,8 +291,7 @@ Control the precision of ratings:
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-value">3.7</span>
-</div>
-```
+</div>`} />
 
 ## Best Practices
 
@@ -338,8 +302,7 @@ Control the precision of ratings:
 - Provide `role="radio"` or `role="radiogroup"` for selectable ratings
 - Include visible labels or descriptions when possible
 
-```html
-<div role="radiogroup" aria-label="Rate this product">
+<ComponentShowcase title="Accessible Rating" code={`<div role="radiogroup" aria-label="Rate this product">
   <div class="rating rating-interactive rating-warning">
     <span class="rating-item" tabindex="0" role="radio" aria-label="1 star">☆</span>
     <span class="rating-item" tabindex="0" role="radio" aria-label="2 stars">☆</span>
@@ -347,8 +310,7 @@ Control the precision of ratings:
     <span class="rating-item" tabindex="0" role="radio" aria-label="4 stars">☆</span>
     <span class="rating-item" tabindex="0" role="radio" aria-label="5 stars">☆</span>
   </div>
-</div>
-```
+</div>`} />
 
 ### Display vs. Input
 
@@ -356,8 +318,7 @@ Control the precision of ratings:
 - Use **interactive** ratings for collecting user input
 - Consider showing aggregate ratings separately from user input
 
-```html
-<!-- Display aggregate rating -->
+<ComponentShowcase title="Display vs Input" code={`<!-- Display aggregate rating -->
 <div class="rating rating-readonly rating-warning">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
@@ -378,8 +339,7 @@ Control the precision of ratings:
     <span class="rating-item" tabindex="0">☆</span>
     <span class="rating-item" tabindex="0">☆</span>
   </div>
-</div>
-```
+</div>`} />
 
 ### Visual Clarity
 
@@ -392,8 +352,7 @@ Control the precision of ratings:
 
 Always provide context for ratings:
 
-```html
-<article class="p-4 border rounded">
+<ComponentShowcase title="Rating with Context" code={`<article class="p-4 border rounded">
   <h3>Product Review</h3>
 
   <div class="rating-label">
@@ -429,8 +388,7 @@ Always provide context for ratings:
       <span class="rating-item">☆</span>
     </div>
   </div>
-</article>
-```
+</article>`} />
 
 ## Framework Examples
 
@@ -581,8 +539,7 @@ const handleClick = (index) => {
 
 You can combine classes for different effects:
 
-```html
-<!-- Large, warning color, read-only rating -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Large, warning color, read-only rating -->
 <div class="rating rating-lg rating-warning rating-readonly">
   <span class="rating-item rating-item-filled">★</span>
   <span class="rating-item rating-item-filled">★</span>
@@ -598,8 +555,7 @@ You can combine classes for different effects:
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
-</div>
-```
+</div>`} />
 
 ## Related Components
 

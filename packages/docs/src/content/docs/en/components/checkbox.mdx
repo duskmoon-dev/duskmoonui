@@ -6,6 +6,7 @@ order: 33
 published: true
 tags: ['checkbox', 'components', 'material-design', 'forms', 'input']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Checkbox
 
@@ -13,23 +14,20 @@ Checkboxes allow users to select one or more items from a set or toggle a single
 
 ## Basic Usage
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Basic Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
     </svg>
   </span>
-</label>
-```
+</label>`} />
 
 ## With Label
 
 Add a label next to the checkbox for better user experience:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Checkbox with Label" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,15 +35,13 @@ Add a label next to the checkbox for better user experience:
     </svg>
   </span>
   <span class="checkbox-label">Accept terms and conditions</span>
-</label>
-```
+</label>`} />
 
 ### Label Position
 
 Place the label on the left side:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Checkbox with Left Label" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,8 +49,7 @@ Place the label on the left side:
     </svg>
   </span>
   <span class="checkbox-label checkbox-label-left">Subscribe to newsletter</span>
-</label>
-```
+</label>`} />
 
 ## Variants
 
@@ -62,8 +57,7 @@ Place the label on the left side:
 
 The primary variant uses the primary theme color:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Primary Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" checked />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,15 +65,13 @@ The primary variant uses the primary theme color:
     </svg>
   </span>
   <span class="checkbox-label">Primary Checkbox</span>
-</label>
-```
+</label>`} />
 
 ### Secondary
 
 Use the secondary theme color:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Secondary Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" checked />
   <span class="checkbox-box checkbox-secondary">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,15 +79,13 @@ Use the secondary theme color:
     </svg>
   </span>
   <span class="checkbox-label">Secondary Checkbox</span>
-</label>
-```
+</label>`} />
 
 ### Tertiary
 
 Use the tertiary theme color:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Tertiary Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" checked />
   <span class="checkbox-box checkbox-tertiary">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -103,8 +93,7 @@ Use the tertiary theme color:
     </svg>
   </span>
   <span class="checkbox-label">Tertiary Checkbox</span>
-</label>
-```
+</label>`} />
 
 ## Sizes
 
@@ -112,8 +101,7 @@ Three sizes are available for different contexts:
 
 ### Small
 
-```html
-<label class="checkbox checkbox-sm">
+<ComponentShowcase title="Small Checkbox" code={`<label class="checkbox checkbox-sm">
   <input type="checkbox" class="checkbox-input" checked />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,13 +109,11 @@ Three sizes are available for different contexts:
     </svg>
   </span>
   <span class="checkbox-label">Small checkbox</span>
-</label>
-```
+</label>`} />
 
 ### Medium (Default)
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Medium Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" checked />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -135,13 +121,11 @@ Three sizes are available for different contexts:
     </svg>
   </span>
   <span class="checkbox-label">Medium checkbox (default)</span>
-</label>
-```
+</label>`} />
 
 ### Large
 
-```html
-<label class="checkbox checkbox-lg">
+<ComponentShowcase title="Large Checkbox" code={`<label class="checkbox checkbox-lg">
   <input type="checkbox" class="checkbox-input" checked />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,8 +133,7 @@ Three sizes are available for different contexts:
     </svg>
   </span>
   <span class="checkbox-label">Large checkbox</span>
-</label>
-```
+</label>`} />
 
 ## States
 
@@ -158,8 +141,7 @@ Three sizes are available for different contexts:
 
 The default checked state:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Checked Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" checked />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,15 +149,13 @@ The default checked state:
     </svg>
   </span>
   <span class="checkbox-label">Checked</span>
-</label>
-```
+</label>`} />
 
 ### Unchecked
 
 The default unchecked state:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Unchecked Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -183,15 +163,13 @@ The default unchecked state:
     </svg>
   </span>
   <span class="checkbox-label">Unchecked</span>
-</label>
-```
+</label>`} />
 
 ### Indeterminate
 
 The indeterminate state is useful for parent checkboxes when some but not all children are selected:
 
-```html
-<label class="checkbox">
+<ComponentShowcase title="Indeterminate Checkbox" code={`<label class="checkbox">
   <input type="checkbox" class="checkbox-input" id="parent-checkbox" />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -204,15 +182,13 @@ The indeterminate state is useful for parent checkboxes when some but not all ch
 <script>
   // Set indeterminate state via JavaScript
   document.getElementById('parent-checkbox').indeterminate = true;
-</script>
-```
+</script>`} />
 
 ### Disabled
 
 Disabled checkboxes are non-interactive:
 
-```html
-<!-- Disabled unchecked -->
+<ComponentShowcase title="Disabled Checkboxes" code={`<!-- Disabled unchecked -->
 <label class="checkbox">
   <input type="checkbox" class="checkbox-input" disabled />
   <span class="checkbox-box">
@@ -232,15 +208,13 @@ Disabled checkboxes are non-interactive:
     </svg>
   </span>
   <span class="checkbox-label">Disabled checked</span>
-</label>
-```
+</label>`} />
 
 ### Loading
 
 Show a loading state while processing:
 
-```html
-<label class="checkbox checkbox-loading">
+<ComponentShowcase title="Loading Checkbox" code={`<label class="checkbox checkbox-loading">
   <input type="checkbox" class="checkbox-input" disabled />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -248,15 +222,13 @@ Show a loading state while processing:
     </svg>
   </span>
   <span class="checkbox-label">Loading...</span>
-</label>
-```
+</label>`} />
 
 ### Error
 
 Display error state for validation feedback:
 
-```html
-<label class="checkbox checkbox-error">
+<ComponentShowcase title="Error Checkbox" code={`<label class="checkbox checkbox-error">
   <input type="checkbox" class="checkbox-input" />
   <span class="checkbox-box">
     <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -265,15 +237,13 @@ Display error state for validation feedback:
   </span>
   <span class="checkbox-label">Accept terms and conditions</span>
 </label>
-<span class="checkbox-helper">You must accept the terms to continue</span>
-```
+<span class="checkbox-helper">You must accept the terms to continue</span>`} />
 
 ## With Helper Text
 
 Add descriptive text below the checkbox:
 
-```html
-<div>
+<ComponentShowcase title="Checkbox with Helper Text" code={`<div>
   <label class="checkbox">
     <input type="checkbox" class="checkbox-input" />
     <span class="checkbox-box">
@@ -284,15 +254,13 @@ Add descriptive text below the checkbox:
     <span class="checkbox-label">Enable notifications</span>
   </label>
   <span class="checkbox-helper">We'll send you important updates about your account</span>
-</div>
-```
+</div>`} />
 
 ## Checkbox Groups
 
 Group related checkboxes together:
 
-```html
-<fieldset>
+<ComponentShowcase title="Checkbox Group" code={`<fieldset>
   <legend class="text-lg font-semibold mb-4">Select your interests</legend>
 
   <div class="space-y-3">
@@ -326,15 +294,13 @@ Group related checkboxes together:
       <span class="checkbox-label">Marketing</span>
     </label>
   </div>
-</fieldset>
-```
+</fieldset>`} />
 
 ## Hierarchical Checkboxes
 
 Use indeterminate state for parent-child relationships:
 
-```html
-<div class="space-y-2">
+<ComponentShowcase title="Hierarchical Checkboxes" code={`<div class="space-y-2">
   <label class="checkbox">
     <input type="checkbox" class="checkbox-input" id="select-all" />
     <span class="checkbox-box">
@@ -394,8 +360,7 @@ Use indeterminate state for parent-child relationships:
       parent.indeterminate = checkedCount > 0 && checkedCount < children.length;
     });
   });
-</script>
-```
+</script>`} />
 
 ## Best Practices
 
@@ -403,8 +368,7 @@ Use indeterminate state for parent-child relationships:
 
 Use proper spacing between checkboxes in a group:
 
-```html
-<div class="space-y-4">
+<ComponentShowcase title="Checkbox Spacing" code={`<div class="space-y-4">
   <label class="checkbox">
     <input type="checkbox" class="checkbox-input" />
     <span class="checkbox-box">
@@ -424,8 +388,7 @@ Use proper spacing between checkboxes in a group:
     </span>
     <span class="checkbox-label">Option 2</span>
   </label>
-</div>
-```
+</div>`} />
 
 ### Accessibility
 
@@ -436,8 +399,7 @@ Use proper spacing between checkboxes in a group:
 - Support keyboard navigation (built-in with native checkbox)
 - Use `aria-describedby` for helper text
 
-```html
-<div>
+<ComponentShowcase title="Accessible Checkbox" code={`<div>
   <label class="checkbox">
     <input
       type="checkbox"
@@ -454,15 +416,13 @@ Use proper spacing between checkboxes in a group:
   <span class="checkbox-helper" id="newsletter-help">
     We'll send you weekly updates. You can unsubscribe anytime.
   </span>
-</div>
-```
+</div>`} />
 
 ### Touch Targets
 
 Ensure checkboxes are large enough for touch interfaces (minimum 44×44px):
 
-```html
-<!-- Use default or large size for mobile -->
+<ComponentShowcase title="Responsive Checkbox" code={`<!-- Use default or large size for mobile -->
 <label class="checkbox checkbox-lg md:checkbox">
   <input type="checkbox" class="checkbox-input" />
   <span class="checkbox-box">
@@ -471,15 +431,13 @@ Ensure checkboxes are large enough for touch interfaces (minimum 44×44px):
     </svg>
   </span>
   <span class="checkbox-label">Responsive checkbox</span>
-</label>
-```
+</label>`} />
 
 ### Validation
 
 Provide clear feedback for required checkboxes:
 
-```html
-<form>
+<ComponentShowcase title="Required Checkbox" code={`<form>
   <div>
     <label class="checkbox checkbox-error">
       <input type="checkbox" class="checkbox-input" required />
@@ -492,8 +450,7 @@ Provide clear feedback for required checkboxes:
     </label>
     <span class="checkbox-helper">This field is required</span>
   </div>
-</form>
-```
+</form>`} />
 
 ## Framework Examples
 

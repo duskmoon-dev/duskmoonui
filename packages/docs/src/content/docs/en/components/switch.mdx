@@ -6,6 +6,7 @@ order: 17
 published: true
 tags: ['switch', 'toggle', 'components', 'material-design']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Switch
 
@@ -13,35 +14,30 @@ Switches toggle the state of a single item on or off. @duskmoon-dev/core provide
 
 ## Basic Usage
 
-```html
-<label class="switch">
+<ComponentShowcase title="Basic Switch" code={`<label class="switch">
   <input type="checkbox" class="switch-input">
   <span class="switch-track">
     <span class="switch-thumb"></span>
   </span>
-</label>
-```
+</label>`} />
 
 ## With Label
 
 Add descriptive labels to provide context for the switch:
 
-```html
-<label class="switch">
+<ComponentShowcase title="Switch With Label" code={`<label class="switch">
   <input type="checkbox" class="switch-input">
   <span class="switch-track">
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Enable notifications</span>
-</label>
-```
+</label>`} />
 
 ### Label Position
 
 Place labels before or after the switch:
 
-```html
-<!-- Label on the right (default) -->
+<ComponentShowcase title="Label Positions" code={`<!-- Label on the right (default) -->
 <label class="switch">
   <input type="checkbox" class="switch-input">
   <span class="switch-track">
@@ -57,8 +53,7 @@ Place labels before or after the switch:
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label switch-label-left">Auto-save</span>
-</label>
-```
+</label>`} />
 
 ## Variants
 
@@ -66,50 +61,43 @@ Place labels before or after the switch:
 
 The primary variant uses the theme's primary color:
 
-```html
-<label class="switch">
+<ComponentShowcase title="Primary Switch" code={`<label class="switch">
   <input type="checkbox" class="switch-input" checked>
   <span class="switch-track switch-primary">
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Primary switch</span>
-</label>
-```
+</label>`} />
 
 ### Secondary
 
 Use the secondary color scheme:
 
-```html
-<label class="switch">
+<ComponentShowcase title="Secondary Switch" code={`<label class="switch">
   <input type="checkbox" class="switch-input" checked>
   <span class="switch-track switch-secondary">
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Secondary switch</span>
-</label>
-```
+</label>`} />
 
 ### Tertiary
 
 Use the tertiary color scheme:
 
-```html
-<label class="switch">
+<ComponentShowcase title="Tertiary Switch" code={`<label class="switch">
   <input type="checkbox" class="switch-input" checked>
   <span class="switch-track switch-tertiary">
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Tertiary switch</span>
-</label>
-```
+</label>`} />
 
 ## Sizes
 
 Three sizes are available to fit different contexts:
 
-```html
-<!-- Small -->
+<ComponentShowcase title="Switch Sizes" code={`<!-- Small -->
 <label class="switch switch-sm">
   <input type="checkbox" class="switch-input" checked>
   <span class="switch-track">
@@ -134,8 +122,7 @@ Three sizes are available to fit different contexts:
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Large</span>
-</label>
-```
+</label>`} />
 
 ## States
 
@@ -143,8 +130,7 @@ Three sizes are available to fit different contexts:
 
 Disabled switches are non-interactive and visually muted:
 
-```html
-<label class="switch">
+<ComponentShowcase title="Disabled States" code={`<label class="switch">
   <input type="checkbox" class="switch-input" disabled>
   <span class="switch-track">
     <span class="switch-thumb"></span>
@@ -158,43 +144,37 @@ Disabled switches are non-interactive and visually muted:
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Disabled checked</span>
-</label>
-```
+</label>`} />
 
 ### Loading State
 
 Show loading state during async operations:
 
-```html
-<label class="switch switch-loading">
+<ComponentShowcase title="Loading State" code={`<label class="switch switch-loading">
   <input type="checkbox" class="switch-input" checked disabled>
   <span class="switch-track switch-primary">
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Processing...</span>
-</label>
-```
+</label>`} />
 
 ### Checked State
 
 Switches can be checked by default:
 
-```html
-<label class="switch">
+<ComponentShowcase title="Checked State" code={`<label class="switch">
   <input type="checkbox" class="switch-input" checked>
   <span class="switch-track switch-primary">
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label">Enabled by default</span>
-</label>
-```
+</label>`} />
 
 ## With Icons
 
 Add icons to the thumb for enhanced visual feedback:
 
-```html
-<label class="switch">
+<ComponentShowcase title="Switch With Icon" code={`<label class="switch">
   <input type="checkbox" class="switch-input" checked>
   <span class="switch-track switch-primary">
     <span class="switch-thumb">
@@ -204,8 +184,7 @@ Add icons to the thumb for enhanced visual feedback:
     </span>
   </span>
   <span class="switch-label">Confirmed</span>
-</label>
-```
+</label>`} />
 
 ## Best Practices
 
@@ -217,8 +196,7 @@ Switches are best for:
 - **On/off states**: Binary choices like enable/disable features
 - **System settings**: Preferences and configurations
 
-```html
-<div class="space-y-4">
+<ComponentShowcase title="Switch Best Practices" code={`<div class="space-y-4">
   <label class="switch">
     <input type="checkbox" class="switch-input" checked>
     <span class="switch-track switch-primary">
@@ -242,8 +220,7 @@ Switches are best for:
     </span>
     <span class="switch-label">Dark mode</span>
   </label>
-</div>
-```
+</div>`} />
 
 ### When Not to Use
 
@@ -261,8 +238,7 @@ Avoid switches for:
 - Ensure sufficient color contrast in both states
 - Support keyboard navigation (built-in with native input)
 
-```html
-<!-- Good: Accessible switch with clear label -->
+<ComponentShowcase title="Accessible Switch" code={`<!-- Good: Accessible switch with clear label -->
 <label class="switch">
   <input type="checkbox" class="switch-input" aria-describedby="wifi-description">
   <span class="switch-track">
@@ -272,8 +248,7 @@ Avoid switches for:
 </label>
 <p id="wifi-description" class="text-sm text-gray-600">
   Connect to available wireless networks
-</p>
-```
+</p>`} />
 
 ### Visual Feedback
 
@@ -447,8 +422,7 @@ const handleChange = (e) => {
 
 Integrate switches with form validation libraries:
 
-```html
-<!-- Example with native form -->
+<ComponentShowcase title="Form Integration" code={`<!-- Example with native form -->
 <form>
   <fieldset>
     <legend class="text-lg font-semibold mb-4">Privacy Settings</legend>
@@ -483,8 +457,7 @@ Integrate switches with form validation libraries:
   <div class="mt-6">
     <button type="submit" class="btn btn-primary">Save Preferences</button>
   </div>
-</form>
-```
+</form>`} />
 
 ## API Reference
 
@@ -520,8 +493,7 @@ Integrate switches with form validation libraries:
 
 You can combine classes for different effects:
 
-```html
-<!-- Large secondary switch -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Large secondary switch -->
 <label class="switch switch-lg">
   <input type="checkbox" class="switch-input" checked>
   <span class="switch-track switch-secondary">
@@ -537,8 +509,7 @@ You can combine classes for different effects:
     <span class="switch-thumb"></span>
   </span>
   <span class="switch-label switch-label-left">Small tertiary</span>
-</label>
-```
+</label>`} />
 
 ## Related Components
 

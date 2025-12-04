@@ -6,6 +6,7 @@ order: 20
 published: true
 tags: ['bottom-navigation', 'navigation', 'components', 'material-design', 'mobile']
 ---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Bottom Navigation
 
@@ -13,8 +14,7 @@ Bottom navigation bars allow users to navigate between primary destinations in a
 
 ## Basic Usage
 
-```html
-<nav class="bottom-nav">
+<ComponentShowcase title="Basic Bottom Navigation" code={`<nav class="bottom-nav">
   <a href="#" class="bottom-nav-item bottom-nav-item-active">
     <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -43,8 +43,7 @@ Bottom navigation bars allow users to navigate between primary destinations in a
     </svg>
     <span class="bottom-nav-label">Settings</span>
   </a>
-</nav>
-```
+</nav>`} />
 
 ## Active States
 
@@ -52,8 +51,7 @@ Bottom navigation bars allow users to navigate between primary destinations in a
 
 The default active state uses the secondary container color:
 
-```html
-<nav class="bottom-nav">
+<ComponentShowcase title="Primary Active State" code={`<nav class="bottom-nav">
   <a href="#" class="bottom-nav-item bottom-nav-item-active">
     <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -67,34 +65,29 @@ The default active state uses the secondary container color:
     </svg>
     <span class="bottom-nav-label">Search</span>
   </a>
-</nav>
-```
+</nav>`} />
 
 ### Secondary Active
 
 Use the secondary color scheme for active items:
 
-```html
-<a href="#" class="bottom-nav-item bottom-nav-item-active-secondary">
+<ComponentShowcase title="Secondary Active State" code={`<a href="#" class="bottom-nav-item bottom-nav-item-active-secondary">
   <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
   </svg>
   <span class="bottom-nav-label">Home</span>
-</a>
-```
+</a>`} />
 
 ### Tertiary Active
 
 Use the tertiary color scheme for active items:
 
-```html
-<a href="#" class="bottom-nav-item bottom-nav-item-active-tertiary">
+<ComponentShowcase title="Tertiary Active State" code={`<a href="#" class="bottom-nav-item bottom-nav-item-active-tertiary">
   <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
   </svg>
   <span class="bottom-nav-label">Home</span>
-</a>
-```
+</a>`} />
 
 ## Navigation Items with Badges
 
@@ -102,29 +95,25 @@ Use the tertiary color scheme for active items:
 
 Show notification counts with numeric badges:
 
-```html
-<a href="#" class="bottom-nav-item">
+<ComponentShowcase title="Numeric Badge" code={`<a href="#" class="bottom-nav-item">
   <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
   </svg>
   <span class="bottom-nav-label">Notifications</span>
   <span class="bottom-nav-badge">5</span>
-</a>
-```
+</a>`} />
 
 ### Dot Badges
 
 Use dot badges for simple notification indicators:
 
-```html
-<a href="#" class="bottom-nav-item">
+<ComponentShowcase title="Dot Badge" code={`<a href="#" class="bottom-nav-item">
   <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
   </svg>
   <span class="bottom-nav-label">Messages</span>
   <span class="bottom-nav-badge bottom-nav-badge-dot"></span>
-</a>
-```
+</a>`} />
 
 ## Display Modes
 
@@ -132,8 +121,7 @@ Use dot badges for simple notification indicators:
 
 Show only labels without icons for a text-based navigation:
 
-```html
-<nav class="bottom-nav bottom-nav-labels-only">
+<ComponentShowcase title="Labels Only Mode" code={`<nav class="bottom-nav bottom-nav-labels-only">
   <a href="#" class="bottom-nav-item bottom-nav-item-active">
     <span class="bottom-nav-label">Home</span>
   </a>
@@ -149,15 +137,13 @@ Show only labels without icons for a text-based navigation:
   <a href="#" class="bottom-nav-item">
     <span class="bottom-nav-label">Settings</span>
   </a>
-</nav>
-```
+</nav>`} />
 
 ### Shift Mode
 
 In shift mode, labels only appear on the active item:
 
-```html
-<nav class="bottom-nav bottom-nav-shift">
+<ComponentShowcase title="Shift Mode" code={`<nav class="bottom-nav bottom-nav-shift">
   <a href="#" class="bottom-nav-item bottom-nav-item-active">
     <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -186,8 +172,7 @@ In shift mode, labels only appear on the active item:
     </svg>
     <span class="bottom-nav-label">Settings</span>
   </a>
-</nav>
-```
+</nav>`} />
 
 ## Surface Variants
 
@@ -195,51 +180,41 @@ In shift mode, labels only appear on the active item:
 
 The default surface uses the `surface-container` color:
 
-```html
-<nav class="bottom-nav">
+<ComponentShowcase title="Default Surface" code={`<nav class="bottom-nav">
   <!-- Navigation items -->
-</nav>
-```
+</nav>`} />
 
 ### Surface
 
 Use the base surface color:
 
-```html
-<nav class="bottom-nav bottom-nav-surface">
+<ComponentShowcase title="Surface" code={`<nav class="bottom-nav bottom-nav-surface">
   <!-- Navigation items -->
-</nav>
-```
+</nav>`} />
 
 ### Surface Container Low
 
 Use a lower elevation surface:
 
-```html
-<nav class="bottom-nav bottom-nav-surface-container-low">
+<ComponentShowcase title="Surface Container Low" code={`<nav class="bottom-nav bottom-nav-surface-container-low">
   <!-- Navigation items -->
-</nav>
-```
+</nav>`} />
 
 ### Surface Container High
 
 Use a higher elevation surface with shadow:
 
-```html
-<nav class="bottom-nav bottom-nav-surface-container-high">
+<ComponentShowcase title="Surface Container High" code={`<nav class="bottom-nav bottom-nav-surface-container-high">
   <!-- Navigation items -->
-</nav>
-```
+</nav>`} />
 
 ### Transparent
 
 Create a transparent bottom navigation:
 
-```html
-<nav class="bottom-nav bottom-nav-transparent">
+<ComponentShowcase title="Transparent" code={`<nav class="bottom-nav bottom-nav-transparent">
   <!-- Navigation items -->
-</nav>
-```
+</nav>`} />
 
 ## Size Variants
 
@@ -247,8 +222,7 @@ Create a transparent bottom navigation:
 
 A more compact navigation bar with reduced spacing:
 
-```html
-<nav class="bottom-nav bottom-nav-compact">
+<ComponentShowcase title="Compact Size" code={`<nav class="bottom-nav bottom-nav-compact">
   <a href="#" class="bottom-nav-item bottom-nav-item-active">
     <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -269,8 +243,7 @@ A more compact navigation bar with reduced spacing:
     </svg>
     <span class="bottom-nav-label">Profile</span>
   </a>
-</nav>
-```
+</nav>`} />
 
 ## Border Variants
 
@@ -278,11 +251,9 @@ A more compact navigation bar with reduced spacing:
 
 Remove the top border:
 
-```html
-<nav class="bottom-nav bottom-nav-borderless">
+<ComponentShowcase title="Borderless" code={`<nav class="bottom-nav bottom-nav-borderless">
   <!-- Navigation items -->
-</nav>
-```
+</nav>`} />
 
 ## States
 
@@ -290,14 +261,12 @@ Remove the top border:
 
 Disable specific navigation items:
 
-```html
-<a href="#" class="bottom-nav-item bottom-nav-item-disabled">
+<ComponentShowcase title="Disabled Item" code={`<a href="#" class="bottom-nav-item bottom-nav-item-disabled">
   <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
   </svg>
   <span class="bottom-nav-label">Disabled</span>
-</a>
-```
+</a>`} />
 
 ## Best Practices
 
@@ -308,8 +277,7 @@ Bottom navigation is best for:
 - Mobile and tablet interfaces
 - Destinations of equal importance
 
-```html
-<!-- Good: 3-5 items -->
+<ComponentShowcase title="Navigation Structure" code={`<!-- Good: 3-5 items -->
 <nav class="bottom-nav">
   <a href="#" class="bottom-nav-item bottom-nav-item-active">
     <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -331,15 +299,13 @@ Bottom navigation is best for:
     </svg>
     <span class="bottom-nav-label">Profile</span>
   </a>
-</nav>
-```
+</nav>`} />
 
 ### Accessibility
 
 Always ensure proper accessibility:
 
-```html
-<!-- Good: Semantic HTML with proper ARIA attributes -->
+<ComponentShowcase title="Accessibility Example" code={`<!-- Good: Semantic HTML with proper ARIA attributes -->
 <nav class="bottom-nav" role="navigation" aria-label="Primary navigation">
   <a
     href="#home"
@@ -366,8 +332,7 @@ Always ensure proper accessibility:
     <span class="bottom-nav-label">Notifications</span>
     <span class="bottom-nav-badge" aria-label="3 unread notifications">3</span>
   </a>
-</nav>
-```
+</nav>`} />
 
 ### Label Guidelines
 
@@ -375,29 +340,25 @@ Always ensure proper accessibility:
 - Use clear, unambiguous terms
 - Ensure labels are always visible or use shift mode
 
-```html
-<!-- Good: Short, clear labels -->
+<ComponentShowcase title="Label Guidelines" code={`<!-- Good: Short, clear labels -->
 <span class="bottom-nav-label">Home</span>
 <span class="bottom-nav-label">Search</span>
 <span class="bottom-nav-label">Profile</span>
 
 <!-- Avoid: Long labels -->
-<span class="bottom-nav-label">User Profile Settings</span>
-```
+<span class="bottom-nav-label">User Profile Settings</span>`} />
 
 ### Touch Targets
 
 Navigation items are automatically sized for touch interfaces (minimum 64×48px):
 
-```html
-<!-- Touch targets are automatically optimized -->
+<ComponentShowcase title="Touch Targets" code={`<!-- Touch targets are automatically optimized -->
 <a href="#" class="bottom-nav-item">
   <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
   </svg>
   <span class="bottom-nav-label">Home</span>
-</a>
-```
+</a>`} />
 
 ## Framework Examples
 
@@ -671,8 +632,7 @@ const badgeLabel = computed(() => {
 
 You can combine classes for different effects:
 
-```html
-<!-- Compact navigation with high elevation and no border -->
+<ComponentShowcase title="Class Combinations" code={`<!-- Compact navigation with high elevation and no border -->
 <nav class="bottom-nav bottom-nav-compact bottom-nav-surface-container-high bottom-nav-borderless">
   <!-- Navigation items -->
 </nav>
@@ -685,8 +645,7 @@ You can combine classes for different effects:
 <!-- Labels-only with compact sizing -->
 <nav class="bottom-nav bottom-nav-labels-only bottom-nav-compact">
   <!-- Navigation items -->
-</nav>
-```
+</nav>`} />
 
 ## Related Components
 
