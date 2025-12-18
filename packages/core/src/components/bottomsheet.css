@@ -1,0 +1,334 @@
+/**
+ * Bottom Sheet Component Styles
+ * DuskMoonUI - Material Design 3 inspired bottom sheet system
+ */
+
+@layer components {
+  /* Bottom Sheet Backdrop */
+  .bottomsheet-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background-color: rgb(0 0 0 / 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease-out, visibility 300ms ease-out;
+  }
+
+  .bottomsheet-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Base Bottom Sheet */
+  .bottomsheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    background-color: var(--color-surface);
+    border-radius: 1.75rem 1.75rem 0 0;
+    box-shadow: 0 -25px 50px -12px rgb(0 0 0 / 0.25);
+    transform: translateY(100%);
+    transition: transform 300ms ease-out;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .bottomsheet.show {
+    transform: translateY(0);
+  }
+
+  /* Drag Handle */
+  .bottomsheet-handle {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    cursor: grab;
+    touch-action: none;
+  }
+
+  .bottomsheet-handle::before {
+    content: '';
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--color-outline-variant);
+    border-radius: 9999px;
+  }
+
+  .bottomsheet-handle:active {
+    cursor: grabbing;
+  }
+
+  /* Bottom Sheet Header */
+  .bottomsheet-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.5rem 1rem;
+    flex-shrink: 0;
+  }
+
+  .bottomsheet-title {
+    flex: 1;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-on-surface);
+  }
+
+  .bottomsheet-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .bottomsheet-close:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .bottomsheet-close:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Bottom Sheet Content */
+  .bottomsheet-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 1.5rem;
+    overscroll-behavior: contain;
+  }
+
+  /* Bottom Sheet Footer */
+  .bottomsheet-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-outline-variant);
+    flex-shrink: 0;
+  }
+
+  /* List Items in Bottom Sheet */
+  .bottomsheet-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0 -1.5rem;
+  }
+
+  .bottomsheet-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .bottomsheet-item:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .bottomsheet-item:focus-visible {
+    outline: none;
+    background-color: var(--color-surface-container);
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+  }
+
+  .bottomsheet-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-on-surface-variant);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .bottomsheet-item-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .bottomsheet-item-label {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bottomsheet-item-description {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    margin-top: 0.125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Grid Items */
+  .bottomsheet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .bottomsheet-grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .bottomsheet-grid-item:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .bottomsheet-grid-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    background-color: var(--color-surface-container-high);
+    border-radius: 50%;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Size Variants */
+  .bottomsheet-sm {
+    max-height: 50vh;
+  }
+
+  .bottomsheet-lg {
+    max-height: 95vh;
+  }
+
+  .bottomsheet-full {
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  /* Persistent (non-modal) */
+  .bottomsheet-persistent {
+    position: absolute;
+    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* Expandable Heights */
+  .bottomsheet-peek {
+    max-height: 30vh;
+  }
+
+  .bottomsheet-half {
+    max-height: 50vh;
+  }
+
+  .bottomsheet-expanded {
+    max-height: 90vh;
+  }
+
+  /* Detent Indicators */
+  .bottomsheet-detents {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .bottomsheet-detent {
+    width: 0.25rem;
+    height: 1rem;
+    background-color: var(--color-outline-variant);
+    border-radius: 9999px;
+    cursor: pointer;
+  }
+
+  .bottomsheet-detent.active {
+    background-color: var(--color-primary);
+  }
+
+  /* Divider in Bottom Sheet */
+  .bottomsheet-divider {
+    height: 1px;
+    margin: 0.5rem 0;
+    background-color: var(--color-outline-variant);
+  }
+
+  /* Section Title */
+  .bottomsheet-section-title {
+    padding: 0.75rem 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Desktop Breakpoint - Convert to Side Sheet */
+  @media (min-width: 768px) {
+    .bottomsheet-responsive {
+      left: auto;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 24rem;
+      max-width: calc(100vw - 3.5rem);
+      max-height: 100vh;
+      border-radius: 1rem 0 0 1rem;
+      transform: translateX(100%);
+    }
+
+    .bottomsheet-responsive.show {
+      transform: translateX(0);
+    }
+
+    .bottomsheet-responsive .bottomsheet-handle {
+      display: none;
+    }
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .bottomsheet,
+    .bottomsheet-backdrop,
+    .bottomsheet-close,
+    .bottomsheet-item,
+    .bottomsheet-grid-item {
+      transition: none;
+    }
+  }
+}

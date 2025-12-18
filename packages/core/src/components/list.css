@@ -1,0 +1,188 @@
+/**
+ * List Component Styles
+ * DuskMoonUI - Material Design 3 inspired list system
+ */
+
+@layer components {
+  /* Base List */
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0.5rem 0;
+    list-style: none;
+  }
+
+  /* List Item */
+  .list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    color: var(--color-on-surface);
+    text-decoration: none;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  /* Interactive List Item */
+  a.list-item,
+  button.list-item,
+  .list-item-clickable {
+    cursor: pointer;
+  }
+
+  a.list-item:hover,
+  button.list-item:hover,
+  .list-item-clickable:hover,
+  .list-hoverable .list-item:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .list-item:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+    background-color: var(--color-surface-container);
+  }
+
+  /* List Item Parts */
+  .list-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.25rem;
+    color: var(--color-on-surface-variant);
+    flex-shrink: 0;
+  }
+
+  .list-item-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .list-item-title {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: var(--color-on-surface);
+  }
+
+  .list-item-subtitle {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  .list-item-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* List Variants */
+  .list-bordered {
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    padding: 0;
+  }
+
+  .list-bordered .list-item {
+    border-bottom: 1px solid var(--color-outline);
+  }
+
+  .list-bordered .list-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Compact List */
+  .list-compact .list-item {
+    padding: 0.5rem 1rem;
+  }
+
+  .list-compact .list-item-title {
+    font-size: 0.875rem;
+  }
+
+  .list-compact .list-item-subtitle {
+    font-size: 0.75rem;
+  }
+
+  /* List Divider */
+  .list-divider {
+    height: 1px;
+    margin: 0.5rem 0;
+    background-color: var(--color-outline-variant);
+  }
+
+  .list-divider-inset {
+    margin-left: 3.5rem;
+  }
+
+  /* List Subheader */
+  .list-subheader {
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Active/Selected State */
+  .list-item-active,
+  .list-item.active {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .list-item-active .list-item-icon,
+  .list-item.active .list-item-icon {
+    color: var(--color-on-primary-container);
+  }
+
+  /* Disabled State */
+  .list-item:disabled,
+  .list-item-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  /* Dense List */
+  .list-dense .list-item {
+    padding: 0.375rem 1rem;
+  }
+
+  .list-dense .list-item-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 1rem;
+  }
+
+  /* Two-Line List */
+  .list-two-line .list-item {
+    padding: 0.5rem 1rem;
+  }
+
+  /* Three-Line List */
+  .list-three-line .list-item {
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+  }
+
+  .list-three-line .list-item-content {
+    gap: 0.25rem;
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .list-item {
+      transition: none;
+    }
+  }
+}

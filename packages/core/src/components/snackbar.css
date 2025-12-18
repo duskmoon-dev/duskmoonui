@@ -1,0 +1,202 @@
+/**
+ * Snackbar Component Styles
+ * DuskMoonUI - Material Design 3 inspired snackbar system
+ */
+
+@layer components {
+  /* Snackbar Container */
+  .snackbar-container {
+    position: fixed;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    pointer-events: none;
+  }
+
+  /* Position Variants */
+  .snackbar-container-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+
+  .snackbar-container-bottom-left {
+    bottom: 0;
+    left: 0;
+    align-items: flex-start;
+  }
+
+  .snackbar-container-bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+  }
+
+  .snackbar-container-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+
+  .snackbar-container-top-left {
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+  }
+
+  .snackbar-container-top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end;
+  }
+
+  /* Base Snackbar */
+  .snackbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 20rem;
+    max-width: 40rem;
+    padding: 0.875rem 1rem;
+    background-color: var(--color-surface-container-highest);
+    color: var(--color-on-surface);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
+  }
+
+  .snackbar-container-top .snackbar,
+  .snackbar-container-top-left .snackbar,
+  .snackbar-container-top-right .snackbar {
+    transform: translateY(-100%);
+  }
+
+  /* Snackbar Open State */
+  .snackbar.snackbar-open,
+  .snackbar.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Snackbar Message */
+  .snackbar-message {
+    flex: 1;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  /* Snackbar Action */
+  .snackbar-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .snackbar-action:hover {
+    background-color: var(--color-primary-container);
+  }
+
+  .snackbar-action:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Snackbar Close */
+  .snackbar-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .snackbar-close:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  /* Color Variants */
+  .snackbar-info {
+    background-color: var(--color-info-container);
+    color: var(--color-on-info-container);
+  }
+
+  .snackbar-success {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .snackbar-warning {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .snackbar-error {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
+  /* Dark Snackbar (default MD3 style) */
+  .snackbar-dark {
+    background-color: var(--color-on-surface);
+    color: var(--color-surface);
+  }
+
+  .snackbar-dark .snackbar-action {
+    color: var(--color-primary-container);
+  }
+
+  .snackbar-dark .snackbar-close {
+    color: var(--color-surface);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .snackbar {
+      min-width: calc(100vw - 2rem);
+      max-width: calc(100vw - 2rem);
+    }
+
+    .snackbar-container {
+      left: 0;
+      right: 0;
+      transform: none;
+    }
+
+    .snackbar-container-bottom,
+    .snackbar-container-top {
+      align-items: stretch;
+    }
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .snackbar {
+      transition: opacity 0ms, transform 0ms;
+    }
+  }
+}

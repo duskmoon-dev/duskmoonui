@@ -1,0 +1,327 @@
+/**
+ * Slider Component Styles
+ * DuskMoonUI - Material Design 3 inspired slider system
+ */
+
+@layer components {
+  /* Base Slider */
+  .slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    touch-action: none;
+    user-select: none;
+  }
+
+  /* Slider Track */
+  .slider-track {
+    position: relative;
+    width: 100%;
+    height: 0.25rem;
+    background-color: var(--color-surface-container-highest);
+    border-radius: 9999px;
+  }
+
+  /* Slider Track Filled (Progress) */
+  .slider-track-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--color-primary);
+    border-radius: 9999px;
+  }
+
+  /* Slider Thumb */
+  .slider-thumb {
+    position: absolute;
+    top: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
+    transform: translate(-50%, -50%);
+    cursor: grab;
+    transition: box-shadow 150ms ease-in-out, transform 150ms ease-in-out;
+  }
+
+  .slider-thumb:hover {
+    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-thumb:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-thumb:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  /* Slider Thumb Label (Value tooltip) */
+  .slider-thumb-label {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 150ms ease-out, visibility 150ms ease-out;
+  }
+
+  .slider-thumb-label::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0.25rem solid transparent;
+    border-top-color: var(--color-primary);
+  }
+
+  .slider-thumb:hover .slider-thumb-label,
+  .slider-thumb:focus-visible .slider-thumb-label,
+  .slider-thumb:active .slider-thumb-label {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Always Show Labels Variant */
+  .slider-labels-always .slider-thumb-label {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Marks Container */
+  .slider-marks {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  /* Individual Mark */
+  .slider-mark {
+    position: relative;
+    width: 0.125rem;
+    height: 0.5rem;
+    background-color: var(--color-outline);
+    border-radius: 9999px;
+  }
+
+  .slider-mark-active {
+    background-color: var(--color-on-primary);
+  }
+
+  /* Mark Label */
+  .slider-mark-label {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    white-space: nowrap;
+  }
+
+  /* Min/Max Labels Container */
+  .slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Size Variants */
+  .slider-sm {
+    height: 2rem;
+  }
+
+  .slider-sm .slider-track {
+    height: 0.125rem;
+  }
+
+  .slider-sm .slider-thumb {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .slider-lg {
+    height: 3rem;
+  }
+
+  .slider-lg .slider-track {
+    height: 0.375rem;
+  }
+
+  .slider-lg .slider-thumb {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* Color Variants */
+  .slider-secondary .slider-track-filled,
+  .slider-secondary .slider-thumb {
+    background-color: var(--color-secondary);
+  }
+
+  .slider-secondary .slider-thumb:hover,
+  .slider-secondary .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-secondary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-secondary .slider-thumb-label {
+    background-color: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
+
+  .slider-secondary .slider-thumb-label::after {
+    border-top-color: var(--color-secondary);
+  }
+
+  .slider-tertiary .slider-track-filled,
+  .slider-tertiary .slider-thumb {
+    background-color: var(--color-tertiary);
+  }
+
+  .slider-tertiary .slider-thumb:hover,
+  .slider-tertiary .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-tertiary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-tertiary .slider-thumb-label {
+    background-color: var(--color-tertiary);
+    color: var(--color-on-tertiary);
+  }
+
+  .slider-tertiary .slider-thumb-label::after {
+    border-top-color: var(--color-tertiary);
+  }
+
+  /* Disabled State */
+  .slider-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .slider-disabled .slider-thumb {
+    cursor: not-allowed;
+  }
+
+  /* Range Slider */
+  .slider-range .slider-track-filled {
+    left: var(--slider-start, 0%);
+    width: var(--slider-range, 100%);
+  }
+
+  /* Vertical Slider */
+  .slider-vertical {
+    flex-direction: column;
+    width: 2.5rem;
+    height: 12rem;
+  }
+
+  .slider-vertical .slider-track {
+    width: 0.25rem;
+    height: 100%;
+  }
+
+  .slider-vertical .slider-track-filled {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    top: auto;
+  }
+
+  .slider-vertical .slider-thumb {
+    left: 50%;
+    top: auto;
+    transform: translate(-50%, 50%);
+  }
+
+  .slider-vertical .slider-thumb-label {
+    bottom: auto;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .slider-vertical .slider-thumb-label::after {
+    top: 50%;
+    left: auto;
+    right: 100%;
+    transform: translateY(-50%);
+    border-top-color: transparent;
+    border-right-color: var(--color-primary);
+  }
+
+  .slider-vertical .slider-marks {
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .slider-vertical .slider-mark-label {
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+  }
+
+  /* Input Integration */
+  .slider-with-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .slider-with-input .slider {
+    flex: 1;
+  }
+
+  .slider-input {
+    width: 4rem;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.375rem;
+  }
+
+  .slider-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .slider-thumb,
+    .slider-thumb-label {
+      transition: none;
+    }
+  }
+}

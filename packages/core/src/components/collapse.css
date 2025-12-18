@@ -1,0 +1,254 @@
+/**
+ * Collapse Component Styles
+ * DuskMoonUI - Material Design 3 inspired collapsible content system
+ */
+
+@layer components {
+  /* Base Collapse */
+  .collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease-in-out;
+  }
+
+  .collapse.show {
+    grid-template-rows: 1fr;
+  }
+
+  /* Collapse Content */
+  .collapse-content {
+    overflow: hidden;
+  }
+
+  /* Collapse Inner (for padding) */
+  .collapse-inner {
+    /* Add padding here as needed */
+  }
+
+  /* Collapse with Fade */
+  .collapse-fade {
+    opacity: 0;
+    transition: grid-template-rows 300ms ease-in-out, opacity 200ms ease-in-out;
+  }
+
+  .collapse-fade.show {
+    opacity: 1;
+    transition: grid-template-rows 300ms ease-in-out, opacity 300ms ease-in-out 100ms;
+  }
+
+  /* Collapse Toggle Button */
+  .collapse-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+    border-radius: 0.5rem;
+  }
+
+  .collapse-toggle:hover {
+    background-color: var(--color-primary-container);
+  }
+
+  .collapse-toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Toggle Icon */
+  .collapse-toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 200ms ease-in-out;
+  }
+
+  .collapse-toggle[aria-expanded="true"] .collapse-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Collapse Card Variant */
+  .collapse-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .collapse-card .collapse-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 0;
+    color: var(--color-on-surface);
+  }
+
+  .collapse-card .collapse-toggle:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .collapse-card .collapse-inner {
+    padding: 0 1rem 1rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Horizontal Collapse */
+  .collapse-horizontal {
+    display: grid;
+    grid-template-columns: 0fr;
+    transition: grid-template-columns 300ms ease-in-out;
+  }
+
+  .collapse-horizontal.show {
+    grid-template-columns: 1fr;
+  }
+
+  .collapse-horizontal .collapse-content {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* Fixed Width Horizontal */
+  .collapse-horizontal-fixed {
+    display: block;
+    width: 0;
+    overflow: hidden;
+    transition: width 300ms ease-in-out;
+  }
+
+  .collapse-horizontal-fixed.show {
+    width: var(--collapse-width, 20rem);
+  }
+
+  /* Nested Collapse */
+  .collapse-nested {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-outline-variant);
+  }
+
+  /* Show More/Less Pattern */
+  .collapse-showmore {
+    position: relative;
+  }
+
+  .collapse-showmore:not(.show)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background: linear-gradient(to bottom, transparent, var(--color-surface));
+    pointer-events: none;
+  }
+
+  .collapse-showmore-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .collapse-showmore-toggle:hover {
+    text-decoration: underline;
+  }
+
+  /* Collapse Group */
+  .collapse-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Transition Speed Variants */
+  .collapse-fast {
+    transition-duration: 150ms;
+  }
+
+  .collapse-slow {
+    transition-duration: 500ms;
+  }
+
+  /* Easing Variants */
+  .collapse-ease-in {
+    transition-timing-function: ease-in;
+  }
+
+  .collapse-ease-out {
+    transition-timing-function: ease-out;
+  }
+
+  .collapse-ease-in-out {
+    transition-timing-function: ease-in-out;
+  }
+
+  .collapse-spring {
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Initial States */
+  .collapse-hidden {
+    display: none;
+  }
+
+  /* Accessibility - Screen Reader Only Content */
+  .collapse-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* With Max Height (fallback for older browsers) */
+  .collapse-maxheight {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease-in-out;
+  }
+
+  .collapse-maxheight.show {
+    max-height: var(--collapse-max-height, 100rem);
+  }
+
+  /* Animated Height (JS helper class) */
+  .collapse-animating {
+    overflow: hidden;
+    transition: height 300ms ease-in-out;
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .collapse,
+    .collapse-fade,
+    .collapse-horizontal,
+    .collapse-horizontal-fixed,
+    .collapse-toggle-icon,
+    .collapse-maxheight,
+    .collapse-animating {
+      transition: none;
+    }
+  }
+}

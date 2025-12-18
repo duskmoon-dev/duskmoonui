@@ -1,0 +1,263 @@
+/**
+ * Bottom Navigation Component Styles
+ * DuskMoonUI - Material Design 3 inspired bottom navigation system
+ */
+
+@layer components {
+  /* Base Bottom Navigation */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    min-height: 5rem;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    background-color: var(--color-surface);
+    box-shadow: 0 -1px 3px 0 rgb(0 0 0 / 0.1);
+  }
+
+  /* Navigation Item */
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 4rem;
+    max-width: 10rem;
+    padding: 0.75rem 0.25rem;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 150ms ease-in-out;
+    text-decoration: none;
+    gap: 0.25rem;
+  }
+
+  .bottom-nav-item:hover {
+    color: var(--color-on-surface);
+  }
+
+  .bottom-nav-item:focus-visible {
+    outline: none;
+  }
+
+  .bottom-nav-item:focus-visible .bottom-nav-indicator {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Active State */
+  .bottom-nav-item.active {
+    color: var(--color-on-surface);
+  }
+
+  /* Icon Container with Indicator */
+  .bottom-nav-indicator {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 2rem;
+    border-radius: 1rem;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .bottom-nav-item:hover .bottom-nav-indicator {
+    background-color: var(--color-surface-container);
+  }
+
+  .bottom-nav-item.active .bottom-nav-indicator {
+    background-color: var(--color-secondary-container);
+  }
+
+  /* Icon */
+  .bottom-nav-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: font-size 150ms ease-in-out;
+  }
+
+  /* Label */
+  .bottom-nav-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1rem;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .bottom-nav-item.active .bottom-nav-label {
+    font-weight: 600;
+  }
+
+  /* Badge */
+  .bottom-nav-badge {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    min-width: 1rem;
+    height: 1rem;
+    padding: 0 0.25rem;
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1rem;
+    color: var(--color-on-error);
+    background-color: hsl(var(--color-error));
+    border-radius: 9999px;
+    text-align: center;
+  }
+
+  .bottom-nav-badge-dot {
+    min-width: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    top: 0.125rem;
+    right: 0.75rem;
+  }
+
+  /* Variants */
+  .bottom-nav-elevated {
+    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .bottom-nav-bordered {
+    box-shadow: none;
+    border-top: 1px solid var(--color-outline-variant);
+  }
+
+  .bottom-nav-filled {
+    background-color: var(--color-surface-container);
+  }
+
+  /* Color Variants */
+  .bottom-nav-primary .bottom-nav-item.active .bottom-nav-indicator {
+    background-color: var(--color-primary-container);
+  }
+
+  .bottom-nav-primary .bottom-nav-item.active {
+    color: var(--color-on-primary-container);
+  }
+
+  /* Hide Labels */
+  .bottom-nav-icons-only .bottom-nav-label {
+    display: none;
+  }
+
+  .bottom-nav-icons-only .bottom-nav-item {
+    padding: 1rem 0.25rem;
+  }
+
+  /* Show Labels Only on Active */
+  .bottom-nav-labels-active .bottom-nav-label {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 150ms ease-in-out, max-height 150ms ease-in-out;
+  }
+
+  .bottom-nav-labels-active .bottom-nav-item.active .bottom-nav-label {
+    opacity: 1;
+    max-height: 1rem;
+  }
+
+  /* Shifting Animation (like older Material Design) */
+  .bottom-nav-shifting .bottom-nav-item {
+    flex: 0 1 4rem;
+    transition: flex 200ms ease-in-out;
+  }
+
+  .bottom-nav-shifting .bottom-nav-item.active {
+    flex: 1 1 6rem;
+  }
+
+  .bottom-nav-shifting .bottom-nav-label {
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  }
+
+  .bottom-nav-shifting .bottom-nav-item.active .bottom-nav-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Rail Style (Side Navigation) */
+  .nav-rail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 5rem;
+    padding: 1rem 0;
+    background-color: var(--color-surface);
+    border-right: 1px solid var(--color-outline-variant);
+  }
+
+  .nav-rail .bottom-nav-item {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  .nav-rail .bottom-nav-indicator {
+    width: 3.5rem;
+    height: 2rem;
+  }
+
+  /* Responsive - Convert to top tabs on larger screens */
+  @media (min-width: 768px) {
+    .bottom-nav-responsive {
+      position: relative;
+      bottom: auto;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      min-height: 3rem;
+      padding: 0 1rem;
+      box-shadow: none;
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+
+    .bottom-nav-responsive .bottom-nav-item {
+      flex: 0 0 auto;
+      flex-direction: row;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+    }
+
+    .bottom-nav-responsive .bottom-nav-indicator {
+      width: auto;
+      height: auto;
+      background-color: transparent !important;
+    }
+
+    .bottom-nav-responsive .bottom-nav-item.active {
+      border-bottom: 2px solid var(--color-primary);
+    }
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .bottom-nav-item,
+    .bottom-nav-indicator,
+    .bottom-nav-icon,
+    .bottom-nav-label,
+    .bottom-nav-shifting .bottom-nav-item {
+      transition: none;
+    }
+  }
+}

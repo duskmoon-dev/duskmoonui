@@ -1,0 +1,199 @@
+/**
+ * Table Component Styles
+ * DuskMoonUI - Material Design 3 inspired table system
+ */
+
+@layer components {
+  /* Base Table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+  }
+
+  /* Table Head */
+  .table thead,
+  .table-header {
+    background-color: var(--color-surface-container);
+  }
+
+  .table th,
+  .table-header-cell {
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    text-align: left;
+    color: var(--color-on-surface);
+    border-bottom: 2px solid var(--color-outline);
+  }
+
+  /* Table Body */
+  .table tbody,
+  .table-body {
+    background-color: var(--color-surface);
+  }
+
+  .table td,
+  .table-cell {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-outline-variant);
+    vertical-align: middle;
+  }
+
+  .table tr:last-child td,
+  .table-row:last-child .table-cell {
+    border-bottom: none;
+  }
+
+  /* Table Footer */
+  .table tfoot,
+  .table-footer {
+    background-color: var(--color-surface-container);
+    font-weight: 500;
+  }
+
+  .table tfoot td {
+    border-top: 2px solid var(--color-outline);
+    border-bottom: none;
+  }
+
+  /* Zebra Striping */
+  .table-zebra tbody tr:nth-child(even),
+  .table-zebra .table-row:nth-child(even) {
+    background-color: var(--color-surface-container-low);
+  }
+
+  /* Hover Effect */
+  .table-hover tbody tr:hover,
+  .table-hover .table-row:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  /* Bordered Table */
+  .table-bordered {
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid var(--color-outline-variant);
+  }
+
+  /* Compact Table */
+  .table-compact th,
+  .table-compact td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  /* Comfortable Table */
+  .table-comfortable th,
+  .table-comfortable td {
+    padding: 1rem 1.25rem;
+  }
+
+  /* Fixed Layout */
+  .table-fixed {
+    table-layout: fixed;
+  }
+
+  /* Sortable Header */
+  .table-sortable th {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .table-sortable th:hover {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .table-sort-asc::after {
+    content: ' ↑';
+    opacity: 0.7;
+  }
+
+  .table-sort-desc::after {
+    content: ' ↓';
+    opacity: 0.7;
+  }
+
+  /* Selected Row */
+  .table-row-selected,
+  .table tr.selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  /* Clickable Row */
+  .table-row-clickable,
+  .table tbody tr[data-href] {
+    cursor: pointer;
+  }
+
+  /* Responsive Table */
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive .table {
+    min-width: 100%;
+  }
+
+  /* Table Caption */
+  .table caption,
+  .table-caption {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface-variant);
+    text-align: left;
+    caption-side: bottom;
+  }
+
+  /* Empty State */
+  .table-empty {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Loading State */
+  .table-loading {
+    position: relative;
+  }
+
+  .table-loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-surface);
+    opacity: 0.7;
+  }
+
+  /* Pinned Columns */
+  .table-pin-left {
+    position: sticky;
+    left: 0;
+    background-color: inherit;
+    z-index: 1;
+  }
+
+  .table-pin-right {
+    position: sticky;
+    right: 0;
+    background-color: inherit;
+    z-index: 1;
+  }
+
+  /* Focus State for Interactive Tables */
+  .table tr:focus-visible,
+  .table-row:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+}

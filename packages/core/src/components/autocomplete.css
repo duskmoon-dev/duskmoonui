@@ -1,0 +1,269 @@
+/**
+ * Autocomplete Component Styles
+ * DuskMoonUI - Material Design 3 inspired autocomplete system
+ */
+
+@layer components {
+  /* Autocomplete Container */
+  .autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* Autocomplete Input */
+  .autocomplete-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+  }
+
+  .autocomplete-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-container);
+  }
+
+  .autocomplete-input:disabled {
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface-variant);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Autocomplete Dropdown */
+  .autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    max-height: 15rem;
+    margin-top: 0.25rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.5rem);
+    transition: opacity 150ms ease-out, visibility 150ms ease-out, transform 150ms ease-out;
+  }
+
+  .autocomplete.autocomplete-open .autocomplete-dropdown,
+  .autocomplete-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Autocomplete Options */
+  .autocomplete-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .autocomplete-option:hover,
+  .autocomplete-option:focus,
+  .autocomplete-option.highlighted {
+    background-color: var(--color-surface-container);
+  }
+
+  .autocomplete-option.selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .autocomplete-option:disabled,
+  .autocomplete-option.disabled {
+    color: var(--color-on-surface-variant);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Option Icon */
+  .autocomplete-option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  /* Option Content */
+  .autocomplete-option-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .autocomplete-option-label {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .autocomplete-option-description {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Highlight Match */
+  .autocomplete-highlight {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    font-weight: 600;
+    border-radius: 0.125rem;
+  }
+
+  /* Group Header */
+  .autocomplete-group-header {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  /* No Results */
+  .autocomplete-no-results {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Loading State */
+  .autocomplete-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Clear Button */
+  .autocomplete-clear {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+  }
+
+  .autocomplete-clear:hover {
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface);
+  }
+
+  /* With Clear Button */
+  .autocomplete-clearable .autocomplete-input {
+    padding-right: 2.5rem;
+  }
+
+  /* Multi-select Tags */
+  .autocomplete-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0.375rem;
+    padding-right: 2.5rem;
+    min-height: 2.75rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+  }
+
+  .autocomplete-tags:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-container);
+  }
+
+  .autocomplete-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    border-radius: 0.25rem;
+  }
+
+  .autocomplete-tag-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.75rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .autocomplete-tag-remove:hover {
+    background-color: var(--color-on-primary-container);
+    color: var(--color-primary-container);
+  }
+
+  .autocomplete-tags-input {
+    flex: 1;
+    min-width: 5rem;
+    padding: 0.25rem;
+    font-size: 0.875rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+  /* Size Variants */
+  .autocomplete-sm .autocomplete-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .autocomplete-lg .autocomplete-input {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .autocomplete-dropdown {
+      transition: none;
+    }
+  }
+}

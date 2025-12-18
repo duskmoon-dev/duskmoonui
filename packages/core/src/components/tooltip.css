@@ -1,0 +1,211 @@
+/**
+ * Tooltip Component Styles
+ * DuskMoonUI - Material Design 3 inspired tooltip system
+ */
+
+@layer components {
+  /* Base Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Tooltip Content */
+  .tooltip-content {
+    position: absolute;
+    z-index: 1000;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1rem;
+    white-space: nowrap;
+    background-color: var(--color-on-surface);
+    color: var(--color-surface);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 150ms ease-out, visibility 150ms ease-out;
+    pointer-events: none;
+  }
+
+  /* Tooltip Arrow */
+  .tooltip-content::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0.375rem solid transparent;
+  }
+
+  /* Show Tooltip */
+  .tooltip:hover .tooltip-content,
+  .tooltip:focus-within .tooltip-content,
+  .tooltip-open .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Position: Top (default) */
+  .tooltip-top .tooltip-content,
+  .tooltip .tooltip-content {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0.5rem;
+  }
+
+  .tooltip-top .tooltip-content::before,
+  .tooltip .tooltip-content::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: var(--color-on-surface);
+  }
+
+  /* Position: Bottom */
+  .tooltip-bottom .tooltip-content {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.5rem;
+  }
+
+  .tooltip-bottom .tooltip-content::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: var(--color-on-surface);
+  }
+
+  /* Position: Left */
+  .tooltip-left .tooltip-content {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 0.5rem;
+  }
+
+  .tooltip-left .tooltip-content::before {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: var(--color-on-surface);
+  }
+
+  /* Position: Right */
+  .tooltip-right .tooltip-content {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0.5rem;
+  }
+
+  .tooltip-right .tooltip-content::before {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: var(--color-on-surface);
+  }
+
+  /* Light Tooltip */
+  .tooltip-light .tooltip-content {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    border: 1px solid var(--color-outline);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .tooltip-light.tooltip-top .tooltip-content::before,
+  .tooltip-light .tooltip-content::before {
+    border-top-color: var(--color-surface);
+  }
+
+  .tooltip-light.tooltip-bottom .tooltip-content::before {
+    border-bottom-color: var(--color-surface);
+  }
+
+  .tooltip-light.tooltip-left .tooltip-content::before {
+    border-left-color: var(--color-surface);
+  }
+
+  .tooltip-light.tooltip-right .tooltip-content::before {
+    border-right-color: var(--color-surface);
+  }
+
+  /* Color Variants */
+  .tooltip-primary .tooltip-content {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  .tooltip-primary .tooltip-content::before {
+    border-top-color: var(--color-primary);
+  }
+
+  .tooltip-secondary .tooltip-content {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-content);
+  }
+
+  .tooltip-secondary .tooltip-content::before {
+    border-top-color: var(--color-secondary);
+  }
+
+  .tooltip-error .tooltip-content {
+    background-color: hsl(var(--color-error));
+    color: var(--color-error-content);
+  }
+
+  .tooltip-error .tooltip-content::before {
+    border-top-color: hsl(var(--color-error));
+  }
+
+  /* Multi-line Tooltip */
+  .tooltip-multiline .tooltip-content {
+    white-space: normal;
+    max-width: 16rem;
+    text-align: center;
+  }
+
+  /* Rich Tooltip */
+  .tooltip-rich .tooltip-content {
+    padding: 0.75rem 1rem;
+    max-width: 20rem;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .tooltip-rich-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .tooltip-rich-description {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  /* Delay Variants */
+  .tooltip-delay .tooltip-content {
+    transition-delay: 300ms;
+  }
+
+  .tooltip-delay-long .tooltip-content {
+    transition-delay: 500ms;
+  }
+
+  /* Interactive Tooltip */
+  .tooltip-interactive .tooltip-content {
+    pointer-events: auto;
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .tooltip-content {
+      transition: none;
+    }
+  }
+}

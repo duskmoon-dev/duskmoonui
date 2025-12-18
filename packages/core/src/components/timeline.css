@@ -1,0 +1,353 @@
+/**
+ * Timeline Component Styles
+ * DuskMoonUI - Material Design 3 inspired timeline system
+ */
+
+@layer components {
+  /* Base Timeline */
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Timeline Line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.25rem;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-outline-variant);
+  }
+
+  /* Timeline Item */
+  .timeline-item {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  /* Timeline Marker */
+  .timeline-marker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-outline-variant);
+    border-radius: 50%;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .timeline-marker-icon {
+    font-size: 1rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  .timeline-marker-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--color-outline-variant);
+    border-radius: 50%;
+  }
+
+  /* Timeline Content */
+  .timeline-content {
+    flex: 1;
+    padding-top: 0.375rem;
+    min-width: 0;
+  }
+
+  .timeline-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-on-surface);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-time {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-description {
+    font-size: 0.875rem;
+    color: var(--color-on-surface-variant);
+    line-height: 1.5;
+  }
+
+  /* Timeline Card */
+  .timeline-card {
+    padding: 1rem;
+    background-color: var(--color-surface-container);
+    border-radius: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Color Variants */
+  .timeline-item-primary .timeline-marker {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-container);
+  }
+
+  .timeline-item-primary .timeline-marker-icon,
+  .timeline-item-primary .timeline-marker-dot {
+    color: var(--color-on-primary-container);
+    background-color: var(--color-primary);
+  }
+
+  .timeline-item-secondary .timeline-marker {
+    border-color: var(--color-secondary);
+    background-color: var(--color-secondary-container);
+  }
+
+  .timeline-item-success .timeline-marker {
+    border-color: hsl(var(--color-success));
+    background-color: var(--color-success-container);
+  }
+
+  .timeline-item-success .timeline-marker-dot {
+    background-color: hsl(var(--color-success));
+  }
+
+  .timeline-item-warning .timeline-marker {
+    border-color: hsl(var(--color-warning));
+    background-color: var(--color-warning-container);
+  }
+
+  .timeline-item-warning .timeline-marker-dot {
+    background-color: hsl(var(--color-warning));
+  }
+
+  .timeline-item-error .timeline-marker {
+    border-color: hsl(var(--color-error));
+    background-color: var(--color-error-container);
+  }
+
+  .timeline-item-error .timeline-marker-dot {
+    background-color: hsl(var(--color-error));
+  }
+
+  /* Completed State */
+  .timeline-item.completed .timeline-marker {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+  }
+
+  .timeline-item.completed .timeline-marker-icon {
+    color: var(--color-on-primary);
+  }
+
+  /* Active State */
+  .timeline-item.active .timeline-marker {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    box-shadow: 0 0 0 4px var(--color-primary-container);
+  }
+
+  .timeline-item.active .timeline-marker-icon,
+  .timeline-item.active .timeline-marker-dot {
+    color: var(--color-on-primary);
+    background-color: var(--color-on-primary);
+  }
+
+  /* Size Variants */
+  .timeline-sm::before {
+    left: 0.75rem;
+  }
+
+  .timeline-sm .timeline-marker {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .timeline-sm .timeline-marker-icon {
+    font-size: 0.75rem;
+  }
+
+  .timeline-sm .timeline-marker-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .timeline-lg::before {
+    left: 1.5rem;
+  }
+
+  .timeline-lg .timeline-marker {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .timeline-lg .timeline-marker-icon {
+    font-size: 1.25rem;
+  }
+
+  /* Alternate Layout (zigzag) */
+  .timeline-alternate {
+    padding-left: 0;
+  }
+
+  .timeline-alternate::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-alternate .timeline-item {
+    width: 50%;
+    padding-right: 2rem;
+  }
+
+  .timeline-alternate .timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding-right: 0;
+    padding-left: 2rem;
+    flex-direction: row-reverse;
+  }
+
+  .timeline-alternate .timeline-item:nth-child(even) .timeline-content {
+    text-align: right;
+  }
+
+  .timeline-alternate .timeline-marker {
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-alternate .timeline-item:nth-child(even) .timeline-marker {
+    left: 0;
+    transform: translateX(-50%);
+  }
+
+  /* Right-aligned Timeline */
+  .timeline-right {
+    align-items: flex-end;
+  }
+
+  .timeline-right::before {
+    left: auto;
+    right: 1.25rem;
+  }
+
+  .timeline-right .timeline-item {
+    flex-direction: row-reverse;
+  }
+
+  .timeline-right .timeline-content {
+    text-align: right;
+  }
+
+  /* Horizontal Timeline */
+  .timeline-horizontal {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+
+  .timeline-horizontal::before {
+    top: 1.25rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+
+  .timeline-horizontal .timeline-item {
+    flex-direction: column;
+    padding-bottom: 0;
+    padding-right: 2rem;
+    min-width: 10rem;
+  }
+
+  .timeline-horizontal .timeline-item:last-child {
+    padding-right: 0;
+  }
+
+  .timeline-horizontal .timeline-content {
+    padding-top: 1rem;
+    text-align: center;
+  }
+
+  /* Collapsible Timeline */
+  .timeline-collapsible .timeline-item {
+    cursor: pointer;
+  }
+
+  .timeline-collapsible .timeline-description {
+    display: none;
+  }
+
+  .timeline-collapsible .timeline-item.expanded .timeline-description {
+    display: block;
+  }
+
+  /* Loading State */
+  .timeline-item.loading .timeline-marker {
+    animation: timeline-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes timeline-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Connected Line Progress */
+  .timeline-progress::before {
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary) var(--timeline-progress, 0%),
+      var(--color-outline-variant) var(--timeline-progress, 0%)
+    );
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .timeline-alternate::before {
+      left: 1.25rem;
+      transform: none;
+    }
+
+    .timeline-alternate .timeline-item,
+    .timeline-alternate .timeline-item:nth-child(even) {
+      width: 100%;
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+      flex-direction: row;
+    }
+
+    .timeline-alternate .timeline-item:nth-child(even) .timeline-content {
+      text-align: left;
+    }
+
+    .timeline-alternate .timeline-marker,
+    .timeline-alternate .timeline-item:nth-child(even) .timeline-marker {
+      position: relative;
+      left: 0;
+      transform: none;
+    }
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-item.loading .timeline-marker {
+      animation: none;
+    }
+  }
+}

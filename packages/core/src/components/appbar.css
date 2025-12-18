@@ -1,0 +1,308 @@
+/**
+ * App Bar Component Styles
+ * DuskMoonUI - Material Design 3 inspired app bar system
+ */
+
+@layer components {
+  /* Base App Bar */
+  .appbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 4rem;
+    padding: 0 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  /* Fixed App Bar */
+  .appbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  /* Sticky App Bar */
+  .appbar-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* App Bar with Shadow */
+  .appbar-elevated {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* App Bar with Border */
+  .appbar-bordered {
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  /* Transparent App Bar */
+  .appbar-transparent {
+    background-color: transparent;
+  }
+
+  /* App Bar Navigation Icon */
+  .appbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .appbar-nav:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .appbar-nav:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* App Bar Title */
+  .appbar-title {
+    flex: 1;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* App Bar Subtitle */
+  .appbar-subtitle {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* App Bar Title Group */
+  .appbar-title-group {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .appbar-title-group .appbar-title {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+
+  /* App Bar Actions */
+  .appbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .appbar-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+  }
+
+  .appbar-action:hover {
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface);
+  }
+
+  .appbar-action:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* App Bar Logo/Brand */
+  .appbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .appbar-logo {
+    height: 2rem;
+    width: auto;
+  }
+
+  /* Size Variants */
+  .appbar-sm {
+    min-height: 3rem;
+    padding: 0 0.75rem;
+  }
+
+  .appbar-sm .appbar-title {
+    font-size: 1rem;
+  }
+
+  .appbar-lg {
+    min-height: 5rem;
+    padding: 0 1.5rem;
+  }
+
+  .appbar-lg .appbar-title {
+    font-size: 1.5rem;
+  }
+
+  /* Color Variants */
+  .appbar-primary {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  .appbar-primary .appbar-nav,
+  .appbar-primary .appbar-action {
+    color: var(--color-on-primary);
+  }
+
+  .appbar-primary .appbar-nav:hover,
+  .appbar-primary .appbar-action:hover {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .appbar-primary .appbar-subtitle {
+    color: var(--color-on-primary);
+    opacity: 0.8;
+  }
+
+  .appbar-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
+
+  .appbar-secondary .appbar-nav,
+  .appbar-secondary .appbar-action {
+    color: var(--color-on-secondary);
+  }
+
+  .appbar-secondary .appbar-nav:hover,
+  .appbar-secondary .appbar-action:hover {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+  }
+
+  .appbar-surface {
+    background-color: var(--color-surface-container);
+  }
+
+  /* Center Title */
+  .appbar-center {
+    justify-content: space-between;
+  }
+
+  .appbar-center .appbar-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    flex: none;
+  }
+
+  /* Dense App Bar */
+  .appbar-dense {
+    min-height: 3rem;
+    padding: 0 0.5rem;
+  }
+
+  .appbar-dense .appbar-nav,
+  .appbar-dense .appbar-action {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Prominent App Bar (Large Title) */
+  .appbar-prominent {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 8rem;
+    padding: 1rem;
+  }
+
+  .appbar-prominent .appbar-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .appbar-prominent .appbar-title {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Search in App Bar */
+  .appbar-search {
+    flex: 1;
+    max-width: 32rem;
+    margin: 0 1rem;
+  }
+
+  .appbar-search-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface-container);
+    border: none;
+    border-radius: 9999px;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .appbar-search-input:focus {
+    outline: none;
+    background-color: var(--color-surface-container-high);
+  }
+
+  .appbar-search-input::placeholder {
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .appbar {
+      padding: 0 0.5rem;
+    }
+
+    .appbar-title {
+      font-size: 1rem;
+    }
+
+    .appbar-search {
+      margin: 0 0.5rem;
+    }
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .appbar-nav,
+    .appbar-action,
+    .appbar-search-input {
+      transition: none;
+    }
+  }
+}

@@ -3,6 +3,10 @@
  * Material Design 3 inspired component library using @layer components
  */
 
+/* ============================================
+ * CORE COMPONENTS (existing)
+ * ============================================ */
+
 /* Button Component */
 @import "./button.css";
 
@@ -12,11 +16,74 @@
 /* Input Component */
 @import "./input.css";
 
-/* Form Component */
+/* Form Component - includes checkbox, radio, toggle, select, textarea, range */
 @import "./form.css";
 
-/* Navigation Component */
+/* Navigation Component - includes navbar, menu, breadcrumbs, tabs, pagination, dropdown */
 @import "./navigation.css";
 
 /* Modal Component */
 @import "./modal.css";
+
+/* ============================================
+ * DATA DISPLAY COMPONENTS
+ * ============================================ */
+
+@import "./avatar.css";
+@import "./badge.css";
+@import "./chip.css";
+@import "./list.css";
+@import "./table.css";
+
+/* ============================================
+ * DATA ENTRY COMPONENTS
+ * ============================================ */
+
+@import "./autocomplete.css";
+@import "./datepicker.css";
+@import "./file-upload.css";
+@import "./rating.css";
+@import "./slider.css";
+@import "./switch.css";
+
+/* ============================================
+ * FEEDBACK COMPONENTS
+ * ============================================ */
+
+@import "./alert.css";
+@import "./dialog.css";
+@import "./progress.css";
+@import "./skeleton.css";
+@import "./snackbar.css";
+@import "./toast.css";
+@import "./tooltip.css";
+
+/* ============================================
+ * LAYOUT COMPONENTS
+ * ============================================ */
+
+@import "./appbar.css";
+@import "./divider.css";
+
+/* ============================================
+ * NAVIGATION COMPONENTS
+ * ============================================ */
+
+@import "./bottom-navigation.css";
+@import "./drawer.css";
+@import "./stepper.css";
+
+/* ============================================
+ * SURFACE COMPONENTS
+ * ============================================ */
+
+@import "./accordion.css";
+@import "./bottomsheet.css";
+@import "./collapse.css";
+@import "./popover.css";
+
+/* ============================================
+ * MISC COMPONENTS
+ * ============================================ */
+
+@import "./timeline.css";
