@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Visual Regression - Form Components', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test.describe('Form Components - Sunshine Theme', () => {

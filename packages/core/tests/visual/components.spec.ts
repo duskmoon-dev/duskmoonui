@@ -8,7 +8,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Visual Regression - Color System', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to test fixture page
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test('sunshine theme renders correctly', async ({ page }) => {

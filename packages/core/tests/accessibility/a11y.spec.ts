@@ -8,7 +8,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Accessibility - Color Contrast', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test('sunshine theme passes axe accessibility audit', async ({ page }) => {
@@ -158,7 +158,7 @@ test.describe('Accessibility - Color Contrast', () => {
 
 test.describe('Accessibility - Semantic Colors', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test('info color combinations are accessible', async ({ page }) => {

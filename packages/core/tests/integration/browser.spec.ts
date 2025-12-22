@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Plugin Loading - Browser Integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test('CSS custom properties are defined', async ({ page }) => {

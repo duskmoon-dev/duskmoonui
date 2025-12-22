@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Theme Switching - Browser Integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test('sunshine theme applies via data-theme attribute', async ({ page }) => {
