@@ -1,21 +1,21 @@
 <!--
   Sync Impact Report:
-  Version Change: 1.2.0 → 1.2.1
+  Version Change: 1.2.1 → 1.3.0
   Modified Principles:
-    - Principle V "Zero Runtime Dependencies" → Clarified Bun as exclusive runtime (not just for development)
+    - Principle I "Design System First" → Added OKLCH color format requirement
   Added Sections:
-    - Explicit "Runtime & Package Manager" subsection in Project Overview
-    - Updated Version Policy to reference Bun instead of Node.js
+    - New "Color Format & Manipulation" subsection under Principle I
+    - Added OKLCH compliance check to Quality Gates
   Removed Sections: None
   Templates Status:
-    ✅ plan-template.md - Validated, no changes needed
-    ✅ spec-template.md - Validated, no changes needed
-    ✅ tasks-template.md - Validated, no changes needed
+    ✅ plan-template.md - Validated, no changes needed (color system agnostic)
+    ✅ spec-template.md - Validated, no changes needed (color system agnostic)
+    ✅ tasks-template.md - Validated, no changes needed (implementation agnostic)
   Follow-up TODOs:
-    ⚠️ Current @duskmoon-dev/core implementation violates Principle II (uses Tailwind v3 API)
-    ⚠️ Plugin must be refactored to use Tailwind v4 native @plugin and @theme syntax
-    ⚠️ This will require a MAJOR version bump of @duskmoon-dev/core when implemented
-    ⚠️ Documentation site build dependencies must be properly installed before deployment
+    ⚠️ Current @duskmoon-dev/core implementation uses HSL color format - MUST migrate to OKLCH
+    ⚠️ Theme files (sunshine.css, moonlight.css) need OKLCH color value conversion
+    ⚠️ All component CSS files need oklch() wrapper instead of hsl()
+    ⚠️ This migration will require a MAJOR version bump of @duskmoon-dev/core
 -->
 
 # DuskMoonUI Constitution
@@ -44,7 +44,18 @@ DuskMoonUI is a design system foundation built on Material Design 3 color tokens
 - Support both light and dark themes without breaking semantic color contracts
 - Provide TypeScript type definitions for all public APIs
 
-**Rationale**: The three-color system IS the product. Breaking color contracts or accessibility guarantees undermines the entire library's value proposition. The tertiary color provides design flexibility beyond typical two-color systems.
+**Color Format & Manipulation**:
+
+All color definitions MUST use the OKLCH color space (like DaisyUI 5):
+- CSS variables MUST store colors in `oklch()` format (e.g., `--color-primary: oklch(0.7 0.15 30);`)
+- Color manipulation MUST use CSS native functions:
+  - Relative color syntax: `oklch(from var(--primary-color) l c calc(h + 30))`
+  - Color mixing: `color-mix(in oklch, var(--primary-color) 70%, white)`
+- NO JavaScript-based color manipulation at runtime
+- NO legacy color formats (HSL, RGB, HEX) for CSS variable definitions
+- OKLCH enables perceptually uniform color operations and better gamut support
+
+**Rationale**: The three-color system IS the product. Breaking color contracts or accessibility guarantees undermines the entire library's value proposition. The tertiary color provides design flexibility beyond typical two-color systems. OKLCH provides perceptually uniform lightness, better color gamut support (P3, Rec2020), and native CSS manipulation without JavaScript.
 
 ### II. Tailwind-Native Architecture
 
@@ -147,6 +158,7 @@ Before opening pull requests:
 - All tests MUST pass (`bun test`)
 - CHANGELOG.md MUST be updated for user-facing changes
 - New color tokens MUST include contrast ratio validation
+- New color tokens MUST use OKLCH format
 - New components MUST include Astro documentation page in `packages/docs`
 - Tailwind v4 compatibility MUST be verified
 - Documentation site MUST build without errors
@@ -210,14 +222,15 @@ Constitution changes require:
 
 ### Version Policy
 
-- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump, breaking documentation site changes
-- **MINOR**: New principle addition, expanded accessibility requirements, new documentation requirements
+- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump, breaking documentation site changes, color format migration (e.g., HSL → OKLCH)
+- **MINOR**: New principle addition, expanded accessibility requirements, new documentation requirements, new color manipulation techniques
 - **PATCH**: Clarifications, typo fixes, example updates, non-breaking documentation improvements
 
 ### Compliance Review
 
 Every feature PR MUST include constitution compliance checklist:
 - [ ] Maintains three-color system integrity (Principle I)
+- [ ] Uses OKLCH color format for new color tokens (Principle I)
 - [ ] Uses Tailwind v4 native syntax (Principle II)
 - [ ] No runtime dependencies added (Principle V)
 - [ ] Type definitions exported (Principle IV)
@@ -233,4 +246,4 @@ Any feature violating these principles MUST justify complexity:
 - **Why**: Problem that requires violation
 - **Alternatives**: Simpler approaches considered and rejected with reasons
 
-**Version**: 1.2.1 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-12-01
+**Version**: 1.3.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-12-22
