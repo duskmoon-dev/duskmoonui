@@ -40,6 +40,10 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Playwright MCP artifacts
 .playwright-mcp
 
+# Playwright test artifacts
+playwright-report/
+test-results/
+
 
 # Claude Code - Keep commands, ignore runtime artifacts
 .claude/.cache/
