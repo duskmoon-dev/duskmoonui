@@ -55,5 +55,8 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Spec-kit
 .specify/.cache/
 
+.devenv/
+.devenv.*
+.direnv/
 
 

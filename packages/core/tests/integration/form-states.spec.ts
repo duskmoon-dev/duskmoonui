@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Form Validation States', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test.describe('Input Validation', () => {

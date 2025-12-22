@@ -8,7 +8,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Modal Accessibility', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test.describe('WCAG Compliance', () => {

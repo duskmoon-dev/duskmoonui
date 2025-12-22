@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Card Composition', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
   });
 
   test.describe('Card with Button Actions', () => {

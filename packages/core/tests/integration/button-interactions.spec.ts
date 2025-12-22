@@ -7,7 +7,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Button Interactions', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/test-fixture.html');
+    await page.goto('/tests/fixtures/test-fixture.html');
     await page.evaluate(() => {
       const container = document.createElement('div');
       container.id = 'test-container';
