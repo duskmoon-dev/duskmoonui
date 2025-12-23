@@ -16,7 +16,6 @@ dir = ".bun-cache"
 
 [test]
 # Test configuration
-preload = []
 
 [run]
 # Runtime configuration

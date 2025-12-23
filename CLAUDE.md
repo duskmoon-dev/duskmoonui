@@ -90,3 +90,10 @@ Apply themes:
 ```html
 <html data-theme="sunshine">
 ```
+
+## Active Technologies
+- CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core (005-component-padding)
+- N/A (CSS-only changes) (005-component-padding)
+
+## Recent Changes
+- 005-component-padding: Added CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core
