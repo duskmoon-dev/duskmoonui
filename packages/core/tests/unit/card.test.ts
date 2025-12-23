@@ -105,8 +105,8 @@ describe('Card Component', () => {
     });
 
     it('should have reduced padding in compact variant', () => {
-      // Compact should have smaller padding than regular
-      expect(cardCSS).toMatch(/\.card-compact[^}]*padding/s);
+      // Compact should set smaller padding via CSS variable
+      expect(cardCSS).toMatch(/\.card-compact[^}]*(padding|--card-p)/s);
     });
   });
 
