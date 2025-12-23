@@ -1,21 +1,19 @@
 <!--
   Sync Impact Report:
-  Version Change: 1.2.1 → 1.3.0
+  Version Change: 1.3.0 → 1.4.0
   Modified Principles:
-    - Principle I "Design System First" → Added OKLCH color format requirement
+    - Principle II "Tailwind-Native Architecture" → Added logical properties requirement
   Added Sections:
-    - New "Color Format & Manipulation" subsection under Principle I
-    - Added OKLCH compliance check to Quality Gates
+    - New "Logical Properties for Spacing" subsection under Principle II
   Removed Sections: None
   Templates Status:
-    ✅ plan-template.md - Validated, no changes needed (color system agnostic)
-    ✅ spec-template.md - Validated, no changes needed (color system agnostic)
+    ✅ plan-template.md - Validated, no changes needed (layout agnostic)
+    ✅ spec-template.md - Validated, no changes needed (implementation agnostic)
     ✅ tasks-template.md - Validated, no changes needed (implementation agnostic)
   Follow-up TODOs:
-    ⚠️ Current @duskmoon-dev/core implementation uses HSL color format - MUST migrate to OKLCH
-    ⚠️ Theme files (sunshine.css, moonlight.css) need OKLCH color value conversion
-    ⚠️ All component CSS files need oklch() wrapper instead of hsl()
-    ⚠️ This migration will require a MAJOR version bump of @duskmoon-dev/core
+    ⚠️ Audit existing component CSS files for physical properties (margin-left, padding-right, etc.)
+    ⚠️ Update any components using physical properties to logical properties
+    ⚠️ This change supports future RTL implementation without breaking changes
 -->
 
 # DuskMoonUI Constitution
@@ -69,7 +67,17 @@ All features MUST be implemented as Tailwind CSS v4 native constructs:
 - NO runtime JavaScript for theming (CSS variables handle dynamic switching)
 - Configuration via CSS `@theme` and `@plugin` blocks, NOT tailwind.config.js
 
-**Rationale**: Tailwind v4's CSS-first architecture provides better performance, simpler mental models, and native browser dev tools support. Supporting v3 would require maintaining two incompatible architectures.
+**Logical Properties for Spacing**:
+
+All spacing (margin, padding) MUST use logical properties to support text flow direction:
+- Use `margin-inline`, `margin-inline-start`, `margin-inline-end` instead of `margin-left`, `margin-right`
+- Use `margin-block`, `margin-block-start`, `margin-block-end` instead of `margin-top`, `margin-bottom`
+- Use `padding-inline`, `padding-inline-start`, `padding-inline-end` instead of `padding-left`, `padding-right`
+- Use `padding-block`, `padding-block-start`, `padding-block-end` instead of `padding-top`, `padding-bottom`
+- Use `inset-inline`, `inset-block` for positioning instead of `left`, `right`, `top`, `bottom`
+- Shorthand `margin: 1rem 2rem` is acceptable (maps to block/inline automatically)
+
+**Rationale**: Tailwind v4's CSS-first architecture provides better performance, simpler mental models, and native browser dev tools support. Supporting v3 would require maintaining two incompatible architectures. Logical properties adapt automatically to RTL languages and vertical writing modes, ensuring components work correctly regardless of text direction without additional CSS overrides.
 
 ### III. Component Independence
 
@@ -159,6 +167,7 @@ Before opening pull requests:
 - CHANGELOG.md MUST be updated for user-facing changes
 - New color tokens MUST include contrast ratio validation
 - New color tokens MUST use OKLCH format
+- New components MUST use logical properties for spacing (no physical margin-left/right, padding-top/bottom)
 - New components MUST include Astro documentation page in `packages/docs`
 - Tailwind v4 compatibility MUST be verified
 - Documentation site MUST build without errors
@@ -223,7 +232,7 @@ Constitution changes require:
 ### Version Policy
 
 - **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump, breaking documentation site changes, color format migration (e.g., HSL → OKLCH)
-- **MINOR**: New principle addition, expanded accessibility requirements, new documentation requirements, new color manipulation techniques
+- **MINOR**: New principle addition, expanded accessibility requirements, new documentation requirements, new color manipulation techniques, new CSS property conventions (e.g., logical properties)
 - **PATCH**: Clarifications, typo fixes, example updates, non-breaking documentation improvements
 
 ### Compliance Review
@@ -232,6 +241,7 @@ Every feature PR MUST include constitution compliance checklist:
 - [ ] Maintains three-color system integrity (Principle I)
 - [ ] Uses OKLCH color format for new color tokens (Principle I)
 - [ ] Uses Tailwind v4 native syntax (Principle II)
+- [ ] Uses logical properties for spacing (Principle II)
 - [ ] No runtime dependencies added (Principle V)
 - [ ] Type definitions exported (Principle IV)
 - [ ] Documentation included in packages/docs (Principle VI)
@@ -246,4 +256,4 @@ Any feature violating these principles MUST justify complexity:
 - **Why**: Problem that requires violation
 - **Alternatives**: Simpler approaches considered and rejected with reasons
 
-**Version**: 1.3.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-12-22
+**Version**: 1.4.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-12-23
