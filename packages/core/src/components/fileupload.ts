@@ -21,22 +21,22 @@ export const fileUploadStyles: Record<string, any> = {
     justifyContent: 'center',
     padding: '2rem',
     minHeight: '12rem',
-    border: '2px dashed hsl(var(--color-outline))',
+    border: '2px dashed var(--color-outline)',
     borderRadius: '0.75rem',
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     cursor: 'pointer',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      borderColor: 'hsl(var(--color-primary))',
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.1)',
+      borderColor: 'var(--color-primary)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 10%, transparent)',
     },
   },
 
   // Drag over state
   '.file-upload-dropzone-dragover': {
-    borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.2)',
+    borderColor: 'var(--color-primary)',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 20%, transparent)',
     borderStyle: 'solid',
   },
 
@@ -45,12 +45,12 @@ export const fileUploadStyles: Record<string, any> = {
     fontSize: '3rem',
     width: '3rem',
     height: '3rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     marginBottom: '1rem',
   },
 
   '.file-upload-dropzone:hover .file-upload-icon, .file-upload-dropzone-dragover .file-upload-icon': {
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
   },
 
   // Drop zone text
@@ -58,7 +58,7 @@ export const fileUploadStyles: Record<string, any> = {
     fontSize: '1rem',
     fontWeight: '500',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     textAlign: 'center',
     marginBottom: '0.5rem',
   },
@@ -66,7 +66,7 @@ export const fileUploadStyles: Record<string, any> = {
   '.file-upload-hint': {
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     textAlign: 'center',
   },
 
@@ -99,9 +99,9 @@ export const fileUploadStyles: Record<string, any> = {
     alignItems: 'center',
     gap: '0.75rem',
     padding: '0.75rem 1rem',
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     borderRadius: '0.5rem',
-    border: '1px solid hsl(var(--color-outline-variant))',
+    border: '1px solid var(--color-outline-variant)',
   },
 
   // File icon
@@ -109,7 +109,7 @@ export const fileUploadStyles: Record<string, any> = {
     fontSize: '1.5rem',
     width: '1.5rem',
     height: '1.5rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     flexShrink: '0',
   },
 
@@ -126,7 +126,7 @@ export const fileUploadStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -135,14 +135,14 @@ export const fileUploadStyles: Record<string, any> = {
   '.file-upload-item-size': {
     fontSize: '0.75rem',
     lineHeight: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Progress bar
   '.file-upload-progress': {
     width: '100%',
     height: '0.25rem',
-    backgroundColor: 'hsl(var(--color-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
     borderRadius: '0.125rem',
     overflow: 'hidden',
     marginTop: '0.5rem',
@@ -150,7 +150,7 @@ export const fileUploadStyles: Record<string, any> = {
 
   '.file-upload-progress-bar': {
     height: '100%',
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
     borderRadius: '0.125rem',
     transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   },
@@ -164,7 +164,7 @@ export const fileUploadStyles: Record<string, any> = {
     height: '2rem',
     padding: '0.375rem',
     fontSize: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '50%',
@@ -173,8 +173,8 @@ export const fileUploadStyles: Record<string, any> = {
     flexShrink: '0',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-error-rgb), 0.1)',
-      color: 'hsl(var(--color-error))',
+      backgroundColor: 'color-mix(in oklch, var(--color-error) 10%, transparent)',
+      color: 'var(--color-error)',
     },
   },
 
@@ -189,28 +189,28 @@ export const fileUploadStyles: Record<string, any> = {
 
   // Error state
   '.file-upload-item-error': {
-    borderColor: 'hsl(var(--color-error))',
-    backgroundColor: 'rgba(var(--color-error-rgb), 0.05)',
+    borderColor: 'var(--color-error)',
+    backgroundColor: 'color-mix(in oklch, var(--color-error) 5%, transparent)',
   },
 
   '.file-upload-item-error .file-upload-item-icon': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 
   '.file-upload-item-error-message': {
     fontSize: '0.75rem',
     lineHeight: '1rem',
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
     marginTop: '0.25rem',
   },
 
   // Success state
   '.file-upload-item-success': {
-    borderColor: 'hsl(var(--color-success))',
+    borderColor: 'var(--color-success)',
   },
 
   '.file-upload-item-success .file-upload-item-icon': {
-    color: 'hsl(var(--color-success))',
+    color: 'var(--color-success)',
   },
 
   // Compact variant

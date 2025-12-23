@@ -31,7 +31,7 @@
   }
 
   .rating-item.filled {
-    color: hsl(var(--color-warning));
+    color: var(--color-warning);
   }
 
   /* Rating Input (hidden) */
@@ -67,7 +67,7 @@
     top: 0;
     width: 50%;
     overflow: hidden;
-    color: hsl(var(--color-warning));
+    color: var(--color-warning);
   }
 
   /* Size Variants */
@@ -105,11 +105,11 @@
   }
 
   .rating-error .rating-item.filled {
-    color: hsl(var(--color-error));
+    color: var(--color-error);
   }
 
   .rating-success .rating-item.filled {
-    color: hsl(var(--color-success));
+    color: var(--color-success);
   }
 
   /* Read Only */
@@ -152,7 +152,7 @@
   }
 
   .rating:not(.rating-readonly):hover .rating-item {
-    color: hsl(var(--color-warning));
+    color: var(--color-warning);
   }
 
   /* Focus Visible */
@@ -178,7 +178,7 @@
   .rating-display-stars {
     display: flex;
     gap: 0.0625rem;
-    color: hsl(var(--color-warning));
+    color: var(--color-warning);
   }
 
   .rating-display-max {

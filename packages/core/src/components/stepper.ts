@@ -42,32 +42,32 @@ export const stepperStyles: Record<string, any> = {
     height: "2.5rem",
     fontSize: "0.875rem",
     fontWeight: "600",
-    color: "hsl(var(--color-on-surface-variant))",
-    backgroundColor: "hsl(var(--color-surface-variant))",
-    border: "2px solid hsl(var(--color-outline))",
+    color: "var(--color-on-surface-variant)",
+    backgroundColor: "var(--color-surface-variant)",
+    border: "2px solid var(--color-outline)",
     borderRadius: "50%",
     transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
   },
 
   // Active step
   ".stepper-step-active .stepper-step-icon": {
-    color: "hsl(var(--color-on-primary))",
-    backgroundColor: "hsl(var(--color-primary))",
-    borderColor: "hsl(var(--color-primary))",
+    color: "var(--color-on-primary)",
+    backgroundColor: "var(--color-primary)",
+    borderColor: "var(--color-primary)",
   },
 
   // Completed step
   ".stepper-step-completed .stepper-step-icon": {
-    color: "hsl(var(--color-on-primary))",
-    backgroundColor: "hsl(var(--color-primary))",
-    borderColor: "hsl(var(--color-primary))",
+    color: "var(--color-on-primary)",
+    backgroundColor: "var(--color-primary)",
+    borderColor: "var(--color-primary)",
   },
 
   // Error step
   ".stepper-step-error .stepper-step-icon": {
-    color: "hsl(var(--color-on-error))",
-    backgroundColor: "hsl(var(--color-error))",
-    borderColor: "hsl(var(--color-error))",
+    color: "var(--color-on-error)",
+    backgroundColor: "var(--color-error)",
+    borderColor: "var(--color-error)",
   },
 
   // Step label
@@ -75,20 +75,20 @@ export const stepperStyles: Record<string, any> = {
     fontSize: "0.875rem",
     fontWeight: "500",
     lineHeight: "1.25rem",
-    color: "hsl(var(--color-on-surface-variant))",
+    color: "var(--color-on-surface-variant)",
     textAlign: "center",
     maxWidth: "8rem",
   },
 
   ".stepper-step-active .stepper-step-label": {
-    color: "hsl(var(--color-on-surface))",
+    color: "var(--color-on-surface)",
   },
 
   // Step description
   ".stepper-step-description": {
     fontSize: "0.75rem",
     lineHeight: "1rem",
-    color: "hsl(var(--color-on-surface-variant))",
+    color: "var(--color-on-surface-variant)",
     textAlign: "center",
     maxWidth: "8rem",
     marginTop: "0.25rem",
@@ -101,7 +101,7 @@ export const stepperStyles: Record<string, any> = {
     left: "calc(50% + 1.25rem)",
     right: "calc(-50% + 1.25rem)",
     height: "2px",
-    backgroundColor: "hsl(var(--color-outline-variant))",
+    backgroundColor: "var(--color-outline-variant)",
     transition: "background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
   },
 
@@ -110,7 +110,7 @@ export const stepperStyles: Record<string, any> = {
   },
 
   ".stepper-step-completed .stepper-step-connector": {
-    backgroundColor: "hsl(var(--color-primary))",
+    backgroundColor: "var(--color-primary)",
   },
 
   // Vertical stepper
@@ -162,22 +162,22 @@ export const stepperStyles: Record<string, any> = {
   // Color variants
   ".stepper-secondary .stepper-step-active .stepper-step-icon, .stepper-secondary .stepper-step-completed .stepper-step-icon":
     {
-      backgroundColor: "hsl(var(--color-secondary))",
-      borderColor: "hsl(var(--color-secondary))",
+      backgroundColor: "var(--color-secondary)",
+      borderColor: "var(--color-secondary)",
     },
 
   ".stepper-secondary .stepper-step-completed .stepper-step-connector": {
-    backgroundColor: "hsl(var(--color-secondary))",
+    backgroundColor: "var(--color-secondary)",
   },
 
   ".stepper-tertiary .stepper-step-active .stepper-step-icon, .stepper-tertiary .stepper-step-completed .stepper-step-icon":
     {
-      backgroundColor: "hsl(var(--color-tertiary))",
-      borderColor: "hsl(var(--color-tertiary))",
+      backgroundColor: "var(--color-tertiary)",
+      borderColor: "var(--color-tertiary)",
     },
 
   ".stepper-tertiary .stepper-step-completed .stepper-step-connector": {
-    backgroundColor: "hsl(var(--color-tertiary))",
+    backgroundColor: "var(--color-tertiary)",
   },
 
   // Disabled step
@@ -190,7 +190,7 @@ export const stepperStyles: Record<string, any> = {
   ".stepper-step-optional::after": {
     content: '"(Optional)"',
     fontSize: "0.75rem",
-    color: "hsl(var(--color-on-surface-variant))",
+    color: "var(--color-on-surface-variant)",
     marginTop: "0.125rem",
   },
 };

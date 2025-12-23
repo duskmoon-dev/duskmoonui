@@ -9,8 +9,8 @@ export const cardStyles: Record<string, any> = {
   '.card': {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'hsl(var(--color-surface-container))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface-container)',
+    color: 'var(--color-on-surface)',
     borderRadius: '0.75rem', // 12px - Material Design 3 medium corner
     overflow: 'hidden',
     transition: 'box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -18,37 +18,37 @@ export const cardStyles: Record<string, any> = {
 
   // Elevation variants using Material Design 3 surface containers
   '.card-lowest': {
-    backgroundColor: 'hsl(var(--color-surface-container-lowest))',
+    backgroundColor: 'var(--color-surface-container-lowest)',
   },
 
   '.card-low': {
-    backgroundColor: 'hsl(var(--color-surface-container-low))',
+    backgroundColor: 'var(--color-surface-container-low)',
   },
 
   '.card-default': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
   },
 
   '.card-high': {
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    backgroundColor: 'var(--color-surface-container-high)',
+    boxShadow: '0 1px 2px 0 color-mix(in oklch, black 5%, transparent)',
   },
 
   '.card-highest': {
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    backgroundColor: 'var(--color-surface-container-highest)',
+    boxShadow: '0 4px 6px -1px color-mix(in oklch, black 10%, transparent), 0 2px 4px -1px color-mix(in oklch, black 6%, transparent)',
   },
 
   // Filled variant (tonal surface)
   '.card-filled': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    color: 'hsl(var(--color-on-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Outlined variant
   '.card-outlined': {
-    backgroundColor: 'hsl(var(--color-surface))',
-    border: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface)',
+    border: '1px solid var(--color-outline-variant)',
   },
 
   // Card body
@@ -71,7 +71,7 @@ export const cardStyles: Record<string, any> = {
     fontSize: '1.25rem',
     fontWeight: '500',
     lineHeight: '1.75rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     margin: '0',
   },
 
@@ -79,7 +79,7 @@ export const cardStyles: Record<string, any> = {
   '.card-subtitle': {
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     marginTop: '0.25rem',
   },
 
@@ -125,13 +125,13 @@ export const cardStyles: Record<string, any> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      boxShadow: '0 4px 6px -1px color-mix(in oklch, black 10%, transparent), 0 2px 4px -1px color-mix(in oklch, black 6%, transparent)',
       transform: 'translateY(-2px)',
     },
 
     '&:active': {
       transform: 'translateY(0)',
-      boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+      boxShadow: '0 1px 2px 0 color-mix(in oklch, black 5%, transparent)',
     },
   },
 

@@ -199,13 +199,13 @@
   }
 
   .file-upload-item.error .file-upload-progress-bar {
-    background-color: hsl(var(--color-error));
+    background-color: var(--color-error);
   }
 
   /* Error Message */
   .file-upload-error {
     font-size: 0.75rem;
-    color: hsl(var(--color-error));
+    color: var(--color-error);
   }
 
   /* Image Preview */

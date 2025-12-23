@@ -14,16 +14,16 @@ html {
   text-size-adjust: 100%;
 }
 
-/* Use theme color scheme */
+/* Use theme color scheme - OKLCH format */
 :root,
 [data-theme] {
-  background-color: hsl(var(--color-base-100) / 1);
-  color: hsl(var(--color-base-content) / 1);
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
 }
 
 /* Focus ring utility */
 :focus-visible {
-  outline: 2px solid hsl(var(--color-primary) / 1);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -36,8 +36,8 @@ html {
 
 /* Selection color */
 ::selection {
-  background-color: hsl(var(--color-primary) / 0.2);
-  color: hsl(var(--color-base-content) / 1);
+  background-color: color-mix(in oklch, var(--color-primary) 20%, transparent);
+  color: var(--color-base-content);
 }
 
 /* Scrollbar styling for webkit browsers */
@@ -47,22 +47,22 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--color-base-200) / 1);
+  background: var(--color-base-200);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--color-base-300) / 1);
+  background: var(--color-base-300);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--color-base-content) / 0.3);
+  background: color-mix(in oklch, var(--color-base-content) 30%, transparent);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: hsl(var(--color-base-300) / 1) hsl(var(--color-base-200) / 1);
+  scrollbar-color: var(--color-base-300) var(--color-base-200);
 }
 
 /* Reduce motion for users who prefer it */

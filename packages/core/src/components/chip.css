@@ -46,7 +46,7 @@
   }
 
   .chip-primary:hover {
-    background-color: var(--color-primary-focus);
+    background-color: color-mix(in oklch, var(--color-primary), black 10%);
   }
 
   .chip-secondary {
@@ -55,7 +55,7 @@
   }
 
   .chip-secondary:hover {
-    background-color: var(--color-secondary-focus);
+    background-color: color-mix(in oklch, var(--color-secondary), black 10%);
   }
 
   .chip-tertiary {
@@ -64,7 +64,7 @@
   }
 
   .chip-tertiary:hover {
-    background-color: var(--color-tertiary-focus);
+    background-color: color-mix(in oklch, var(--color-tertiary), black 10%);
   }
 
   /* Outlined Variant */
@@ -78,8 +78,8 @@
   }
 
   .chip-outlined.chip-primary {
-    border-color: hsl(var(--color-primary));
-    color: hsl(var(--color-primary));
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   .chip-outlined.chip-primary:hover {
@@ -87,8 +87,8 @@
   }
 
   .chip-outlined.chip-secondary {
-    border-color: hsl(var(--color-secondary));
-    color: hsl(var(--color-secondary));
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
   }
 
   .chip-outlined.chip-secondary:hover {
@@ -96,8 +96,8 @@
   }
 
   .chip-outlined.chip-tertiary {
-    border-color: hsl(var(--color-tertiary));
-    color: hsl(var(--color-tertiary));
+    border-color: var(--color-tertiary);
+    color: var(--color-tertiary);
   }
 
   .chip-outlined.chip-tertiary:hover {

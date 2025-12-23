@@ -30,7 +30,7 @@ export const radioStyles: Record<string, any> = {
     width: '1.25rem',
     height: '1.25rem',
     backgroundColor: 'transparent',
-    border: '2px solid hsl(var(--color-outline))',
+    border: '2px solid var(--color-outline)',
     borderRadius: '50%',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
@@ -39,7 +39,7 @@ export const radioStyles: Record<string, any> = {
   '.radio-dot': {
     width: '0.625rem',
     height: '0.625rem',
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
     borderRadius: '50%',
     opacity: '0',
     transform: 'scale(0)',
@@ -48,7 +48,7 @@ export const radioStyles: Record<string, any> = {
 
   // Checked state - Primary
   '.radio-input:checked + .radio-circle, .radio-input:checked + .radio-primary': {
-    borderColor: 'hsl(var(--color-primary))',
+    borderColor: 'var(--color-primary)',
   },
 
   '.radio-input:checked + .radio-circle .radio-dot, .radio-input:checked + .radio-primary .radio-dot': {
@@ -59,52 +59,52 @@ export const radioStyles: Record<string, any> = {
   // Secondary variant
   '.radio-secondary': {
     backgroundColor: 'transparent',
-    border: '2px solid hsl(var(--color-outline))',
+    border: '2px solid var(--color-outline)',
   },
 
   '.radio-input:checked + .radio-secondary': {
-    borderColor: 'hsl(var(--color-secondary))',
+    borderColor: 'var(--color-secondary)',
   },
 
   '.radio-input:checked + .radio-secondary .radio-dot': {
-    backgroundColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
   },
 
   // Tertiary variant
   '.radio-tertiary': {
     backgroundColor: 'transparent',
-    border: '2px solid hsl(var(--color-outline))',
+    border: '2px solid var(--color-outline)',
   },
 
   '.radio-input:checked + .radio-tertiary': {
-    borderColor: 'hsl(var(--color-tertiary))',
+    borderColor: 'var(--color-tertiary)',
   },
 
   '.radio-input:checked + .radio-tertiary .radio-dot': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
   },
 
   // Hover state
   '.radio:hover .radio-circle': {
-    borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
+    borderColor: 'var(--color-primary)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 50%, transparent)',
   },
 
   '.radio:hover .radio-input:checked + .radio-circle, .radio:hover .radio-input:checked + .radio-primary': {
-    borderColor: 'hsl(var(--color-primary-focus))',
+    borderColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
   },
 
   '.radio:hover .radio-input:checked + .radio-secondary': {
-    borderColor: 'hsl(var(--color-secondary-focus))',
+    borderColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
   },
 
   '.radio:hover .radio-input:checked + .radio-tertiary': {
-    borderColor: 'hsl(var(--color-tertiary-focus))',
+    borderColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
   },
 
   // Focus state
   '.radio-input:focus-visible + .radio-circle': {
-    outline: '2px solid hsl(var(--color-primary))',
+    outline: '2px solid var(--color-primary)',
     outlineOffset: '2px',
   },
 
@@ -112,8 +112,8 @@ export const radioStyles: Record<string, any> = {
   '.radio-input:disabled + .radio-circle': {
     opacity: '0.38',
     cursor: 'not-allowed',
-    borderColor: 'hsl(var(--color-outline))',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.3)',
+    borderColor: 'var(--color-outline)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 30%, transparent)',
   },
 
   '.radio:has(.radio-input:disabled)': {
@@ -122,11 +122,11 @@ export const radioStyles: Record<string, any> = {
 
   // Error state
   '.radio-error .radio-circle': {
-    borderColor: 'hsl(var(--color-error))',
+    borderColor: 'var(--color-error)',
   },
 
   '.radio-error .radio-input:checked + .radio-circle .radio-dot': {
-    backgroundColor: 'hsl(var(--color-error))',
+    backgroundColor: 'var(--color-error)',
   },
 
   // Size variants
@@ -156,7 +156,7 @@ export const radioStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     userSelect: 'none',
   },
 
@@ -184,11 +184,11 @@ export const radioStyles: Record<string, any> = {
     marginTop: '0.25rem',
     marginLeft: '2rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   '.radio-error .radio-helper': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 
   // Loading state

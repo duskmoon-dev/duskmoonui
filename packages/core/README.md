@@ -11,7 +11,7 @@
 
 - 🎨 **Three-color system** - Primary, secondary, and tertiary brand colors with automatic content colors
 - 🌓 **Built-in themes** - Sunshine (light) and Moonlight (dark) themes ready to use
-- 📦 **65+ Material Design 3 color tokens** - Full MD3 color system
+- 📦 **55+ Material Design 3 color tokens** - Full MD3 color system with OKLCH format
 - 🧩 **42 UI components** - Complete component library with consistent styling
 - 🚀 **Zero runtime JS** - Pure CSS with CSS custom properties for theme switching
 - ♿ **Accessible by default** - WCAG AA compliant contrast ratios (4.5:1 minimum)
@@ -268,10 +268,19 @@ Theme switching is instant and uses pure CSS custom properties.
 
 ## Color System
 
-### Brand Colors (15 tokens)
-- `primary`, `primary-focus`, `primary-content`, `primary-container`, `on-primary-container`
-- `secondary`, `secondary-focus`, `secondary-content`, `secondary-container`, `on-secondary-container`
-- `tertiary`, `tertiary-focus`, `tertiary-content`, `tertiary-container`, `on-tertiary-container`
+DuskMoonUI v2.0 uses the OKLCH color format for perceptually uniform color manipulation.
+
+### Brand Colors (12 tokens)
+- `primary`, `primary-content`, `primary-container`, `on-primary-container`
+- `secondary`, `secondary-content`, `secondary-container`, `on-secondary-container`
+- `tertiary`, `tertiary-content`, `tertiary-container`, `on-tertiary-container`
+
+> **Note**: `-focus` tokens are removed in v2.0. Use `color-mix()` instead:
+> ```css
+> .btn:hover {
+>   background-color: color-mix(in oklch, var(--color-primary), black 10%);
+> }
+> ```
 
 ### Surface Colors (10 tokens)
 - `surface`, `surface-dim`, `surface-bright`
@@ -293,28 +302,44 @@ Theme switching is instant and uses pure CSS custom properties.
 
 ## Custom Themes
 
-Define custom themes in your CSS:
+Define custom themes using OKLCH format:
 
 ```css
 [data-theme="custom"] {
   color-scheme: light;
 
-  --color-primary: 240 80% 60%;
-  --color-primary-content: 0 0% 100%;
-  --color-secondary: 280 70% 65%;
-  --color-secondary-content: 0 0% 100%;
-  --color-tertiary: 200 85% 55%;
-  --color-tertiary-content: 0 0% 100%;
+  /* OKLCH format: oklch(L% C H) */
+  /* L = Lightness (0-100%), C = Chroma (0-0.4), H = Hue (0-360) */
+  --color-primary: oklch(65% 0.18 255);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(60% 0.18 300);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-tertiary: oklch(70% 0.15 80);
+  --color-tertiary-content: oklch(20% 0 0);
 
   /* Base colors */
-  --color-base-100: 0 0% 100%;
-  --color-base-200: 220 20% 97%;
-  --color-base-300: 220 20% 94%;
-  --color-base-content: 220 20% 20%;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(98% 0.01 85);
+  --color-base-300: oklch(96% 0.01 85);
+  --color-base-content: oklch(27% 0.02 260);
 
   /* Add remaining tokens... */
 }
 ```
+
+### OKLCH Color Values
+
+| Hue | Color |
+|-----|-------|
+| 0/360 | Pink |
+| 30 | Red |
+| 55 | Orange |
+| 80 | Yellow |
+| 145 | Green |
+| 185 | Teal |
+| 235 | Blue |
+| 255 | Indigo |
+| 300 | Purple |
 
 ## Accessibility
 
@@ -328,7 +353,12 @@ All components include:
 ## Requirements
 
 - Tailwind CSS v4.0.0 or later
-- Modern browsers with CSS custom properties support (Chrome 49+, Firefox 31+, Safari 9.1+, Edge 15+)
+- Modern browsers with OKLCH and `color-mix()` support:
+  - Chrome 111+ (March 2023)
+  - Safari 15.4+ (March 2022)
+  - Firefox 113+ (May 2023)
+  - Edge 111+ (March 2023)
+- Global browser support: ~92%
 
 ## Development
 
@@ -352,28 +382,49 @@ bun run test:integration
 bun run test:a11y
 ```
 
-## Migration from v0.x
+## Migration from v1.x
 
-v1.0.0 introduces breaking changes for Tailwind CSS v4 support:
+v2.0.0 introduces OKLCH color format (breaking change):
 
-### Before (v0.x with Tailwind v3)
-```js
-// tailwind.config.js
-import duskmoonui from '@duskmoon-dev/core';
+### Color Format Change
 
-export default {
-  plugins: [duskmoonui()],
-};
-```
-
-### After (v1.0.0 with Tailwind v4)
+**Before (v1.x - HSL)**:
 ```css
-/* src/styles.css */
-@import "tailwindcss";
-@import "@duskmoon-dev/core";
+/* Theme values stored as HSL components */
+--color-primary: 30 90% 55%;
+background-color: hsl(var(--color-primary));
 ```
 
-See [MIGRATION.md](./MIGRATION.md) for detailed migration guide.
+**After (v2.0 - OKLCH)**:
+```css
+/* Theme values stored as full OKLCH */
+--color-primary: oklch(72% 0.18 55);
+background-color: var(--color-primary);
+```
+
+### Removed Tokens
+
+The `-focus` tokens are removed. Use `color-mix()` instead:
+
+```css
+/* Before */
+background-color: hsl(var(--color-primary-focus));
+
+/* After */
+background-color: color-mix(in oklch, var(--color-primary), black 10%);
+```
+
+### Transparency
+
+```css
+/* Before */
+background-color: rgba(var(--color-primary-rgb), 0.5);
+
+/* After */
+background-color: color-mix(in oklch, var(--color-primary) 50%, transparent);
+```
+
+See [specs/004-oklch-color-system/quickstart.md](./specs/004-oklch-color-system/quickstart.md) for detailed migration guide.
 
 ## License
 

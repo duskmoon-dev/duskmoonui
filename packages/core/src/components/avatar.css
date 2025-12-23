@@ -127,7 +127,7 @@
   }
 
   .avatar-online::after {
-    background-color: hsl(var(--color-success));
+    background-color: var(--color-success);
   }
 
   .avatar-offline::after {

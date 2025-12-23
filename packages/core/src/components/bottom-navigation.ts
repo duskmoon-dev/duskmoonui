@@ -15,8 +15,8 @@ export const bottomNavigationStyles: Record<string, any> = {
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: '0.5rem 0',
-    backgroundColor: 'hsl(var(--color-surface-container))',
-    borderTop: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface-container)',
+    borderTop: '1px solid var(--color-outline-variant)',
     zIndex: '40',
     minHeight: '4rem',
   },
@@ -31,7 +31,7 @@ export const bottomNavigationStyles: Record<string, any> = {
     padding: '0.5rem 0.75rem',
     minWidth: '4rem',
     maxWidth: '6rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '0.75rem',
@@ -41,41 +41,41 @@ export const bottomNavigationStyles: Record<string, any> = {
     position: 'relative',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
   },
 
   // Active item - Primary
   '.bottom-nav-item-active, .bottom-nav-item-active-primary': {
-    color: 'hsl(var(--color-on-secondary-container))',
-    backgroundColor: 'hsl(var(--color-secondary-container))',
+    color: 'var(--color-on-secondary-container)',
+    backgroundColor: 'var(--color-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   // Active item - Secondary
   '.bottom-nav-item-active-secondary': {
-    color: 'hsl(var(--color-on-secondary-container))',
-    backgroundColor: 'hsl(var(--color-secondary-container))',
+    color: 'var(--color-on-secondary-container)',
+    backgroundColor: 'var(--color-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   // Active item - Tertiary
   '.bottom-nav-item-active-tertiary': {
-    color: 'hsl(var(--color-on-tertiary-container))',
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
+    color: 'var(--color-on-tertiary-container)',
+    backgroundColor: 'var(--color-tertiary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 90%, transparent)',
     },
   },
 
@@ -114,8 +114,8 @@ export const bottomNavigationStyles: Record<string, any> = {
     fontWeight: '600',
     lineHeight: '0.875rem',
     borderRadius: '0.563rem',
-    backgroundColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-error-content))',
+    backgroundColor: 'var(--color-error)',
+    color: 'var(--color-error-content)',
   },
 
   '.bottom-nav-badge-dot': {
@@ -146,15 +146,15 @@ export const bottomNavigationStyles: Record<string, any> = {
 
   // Surface variants
   '.bottom-nav-surface': {
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
   },
 
   '.bottom-nav-surface-container-low': {
-    backgroundColor: 'hsl(var(--color-surface-container-low))',
+    backgroundColor: 'var(--color-surface-container-low)',
   },
 
   '.bottom-nav-surface-container-high': {
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
+    backgroundColor: 'var(--color-surface-container-high)',
     boxShadow: '0 -1px 2px 0 rgba(0, 0, 0, 0.05)',
   },
 

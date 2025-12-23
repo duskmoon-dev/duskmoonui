@@ -112,7 +112,7 @@
     font-weight: 600;
     line-height: 1rem;
     color: var(--color-on-error);
-    background-color: hsl(var(--color-error));
+    background-color: var(--color-error);
     border-radius: 9999px;
     text-align: center;
   }

@@ -18,19 +18,19 @@ export const datepickerStyles: Record<string, any> = {
     padding: '0.875rem 2.5rem 0.5rem 1rem',
     fontSize: '1rem',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface-container-highest)',
     border: 'none',
-    borderBottom: '1px solid hsl(var(--color-on-surface-variant))',
+    borderBottom: '1px solid var(--color-on-surface-variant)',
     borderRadius: '0.25rem 0.25rem 0 0',
     outline: 'none',
     cursor: 'pointer',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:focus': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
+      backgroundColor: 'var(--color-surface-container-high)',
       borderBottomWidth: '2px',
-      borderBottomColor: 'hsl(var(--color-primary))',
+      borderBottomColor: 'var(--color-primary)',
     },
   },
 
@@ -41,7 +41,7 @@ export const datepickerStyles: Record<string, any> = {
     top: '50%',
     transform: 'translateY(-50%)',
     fontSize: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     pointerEvents: 'none',
   },
 
@@ -52,7 +52,7 @@ export const datepickerStyles: Record<string, any> = {
     left: '0',
     marginTop: '0.5rem',
     padding: '1rem',
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
+    backgroundColor: 'var(--color-surface-container-high)',
     borderRadius: '1rem',
     boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     zIndex: '100',
@@ -79,7 +79,7 @@ export const datepickerStyles: Record<string, any> = {
   '.datepicker-title': {
     fontSize: '1rem',
     fontWeight: '600',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     textAlign: 'center',
     flex: '1 1 auto',
   },
@@ -91,7 +91,7 @@ export const datepickerStyles: Record<string, any> = {
     width: '2rem',
     height: '2rem',
     fontSize: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '50%',
@@ -99,7 +99,7 @@ export const datepickerStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
   },
 
@@ -118,7 +118,7 @@ export const datepickerStyles: Record<string, any> = {
     padding: '0.5rem',
     fontSize: '0.75rem',
     fontWeight: '600',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     textTransform: 'uppercase',
   },
 
@@ -130,7 +130,7 @@ export const datepickerStyles: Record<string, any> = {
     width: '2.5rem',
     height: '2.5rem',
     fontSize: '0.875rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '50%',
@@ -138,22 +138,22 @@ export const datepickerStyles: Record<string, any> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
   },
 
   // Today
   '.datepicker-day-today': {
-    border: '1px solid hsl(var(--color-primary))',
+    border: '1px solid var(--color-primary)',
   },
 
   // Selected day
   '.datepicker-day-selected': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-focus))',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
     },
   },
 
@@ -166,13 +166,13 @@ export const datepickerStyles: Record<string, any> = {
 
   // Day from other month
   '.datepicker-day-other-month': {
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     opacity: '0.5',
   },
 
   // Range selection
   '.datepicker-day-in-range': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
     borderRadius: '0',
   },
 
@@ -199,7 +199,7 @@ export const datepickerStyles: Record<string, any> = {
     justifyContent: 'center',
     padding: '0.75rem',
     fontSize: '0.875rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '0.5rem',
@@ -207,16 +207,16 @@ export const datepickerStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
   },
 
   '.datepicker-month-selected, .datepicker-year-selected': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 90%, transparent)',
     },
   },
 
@@ -228,7 +228,7 @@ export const datepickerStyles: Record<string, any> = {
     gap: '0.5rem',
     marginTop: '1rem',
     paddingTop: '1rem',
-    borderTop: '1px solid hsl(var(--color-outline-variant))',
+    borderTop: '1px solid var(--color-outline-variant)',
   },
 
   // Inline variant (always visible)
@@ -241,12 +241,12 @@ export const datepickerStyles: Record<string, any> = {
 
   // Color variants
   '.datepicker-secondary .datepicker-day-selected': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
   },
 
   '.datepicker-tertiary .datepicker-day-selected': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
   },
 };

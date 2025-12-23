@@ -31,18 +31,18 @@ export const buttonStyles: Record<string, any> = {
     },
 
     '&:focus-visible': {
-      outline: '2px solid hsl(var(--color-primary))',
+      outline: '2px solid var(--color-primary)',
       outlineOffset: '2px',
     },
   },
 
   // Filled variant (default)
   '.btn-filled, .btn-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-focus))',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
 
@@ -52,11 +52,11 @@ export const buttonStyles: Record<string, any> = {
   },
 
   '.btn-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-focus))',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
 
@@ -66,11 +66,11 @@ export const buttonStyles: Record<string, any> = {
   },
 
   '.btn-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-focus))',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
 
@@ -82,100 +82,100 @@ export const buttonStyles: Record<string, any> = {
   // Outlined variant
   '.btn-outlined': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-primary))',
-    border: '1px solid hsl(var(--color-outline))',
+    color: 'var(--color-primary)',
+    border: '1px solid var(--color-outline)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-rgb), 0.08)',
-      borderColor: 'hsl(var(--color-primary))',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary) 8%, transparent)',
+      borderColor: 'var(--color-primary)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-primary-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary) 12%, transparent)',
     },
   },
 
   '.btn-outlined-secondary': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-secondary))',
-    border: '1px solid hsl(var(--color-outline))',
+    color: 'var(--color-secondary)',
+    border: '1px solid var(--color-outline)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.08)',
-      borderColor: 'hsl(var(--color-secondary))',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary) 8%, transparent)',
+      borderColor: 'var(--color-secondary)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary) 12%, transparent)',
     },
   },
 
   '.btn-outlined-tertiary': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-tertiary))',
-    border: '1px solid hsl(var(--color-outline))',
+    color: 'var(--color-tertiary)',
+    border: '1px solid var(--color-outline)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.08)',
-      borderColor: 'hsl(var(--color-tertiary))',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary) 8%, transparent)',
+      borderColor: 'var(--color-tertiary)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary) 12%, transparent)',
     },
   },
 
   // Text variant
   '.btn-text': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-primary-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary) 12%, transparent)',
     },
   },
 
   '.btn-text-secondary': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-secondary))',
+    color: 'var(--color-secondary)',
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary) 12%, transparent)',
     },
   },
 
   '.btn-text-tertiary': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-tertiary))',
+    color: 'var(--color-tertiary)',
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary) 12%, transparent)',
     },
   },
 
   // Tonal variant (filled with container color)
   '.btn-tonal': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
 
     '&:hover': {
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container), black 5%)',
     },
 
     '&:active': {
@@ -184,12 +184,12 @@ export const buttonStyles: Record<string, any> = {
   },
 
   '.btn-tonal-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container), black 5%)',
     },
 
     '&:active': {
@@ -198,12 +198,12 @@ export const buttonStyles: Record<string, any> = {
   },
 
   '.btn-tonal-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
 
     '&:hover': {
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container), black 5%)',
     },
 
     '&:active': {
@@ -252,41 +252,41 @@ export const buttonStyles: Record<string, any> = {
 
   // Semantic colors
   '.btn-success': {
-    backgroundColor: 'hsl(var(--color-success))',
-    color: 'hsl(var(--color-success-content))',
+    backgroundColor: 'var(--color-success)',
+    color: 'var(--color-success-content)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-success-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-success), black 10%)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },
 
   '.btn-error': {
-    backgroundColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-error-content))',
+    backgroundColor: 'var(--color-error)',
+    color: 'var(--color-error-content)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-error-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-error), black 10%)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },
 
   '.btn-warning': {
-    backgroundColor: 'hsl(var(--color-warning))',
-    color: 'hsl(var(--color-warning-content))',
+    backgroundColor: 'var(--color-warning)',
+    color: 'var(--color-warning-content)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-warning-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-warning), black 10%)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },
 
   '.btn-info': {
-    backgroundColor: 'hsl(var(--color-info))',
-    color: 'hsl(var(--color-info-content))',
+    backgroundColor: 'var(--color-info)',
+    color: 'var(--color-info-content)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-info-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-info), black 10%)',
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
     },
   },

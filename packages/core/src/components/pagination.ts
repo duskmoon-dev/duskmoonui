@@ -25,7 +25,7 @@ export const paginationStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '50%',
@@ -34,46 +34,46 @@ export const paginationStyles: Record<string, any> = {
     textDecoration: 'none',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
 
     '&:focus-visible': {
-      outline: '2px solid hsl(var(--color-primary))',
+      outline: '2px solid var(--color-primary)',
       outlineOffset: '2px',
     },
   },
 
   // Active page - Primary
   '.pagination-item-active, .pagination-item-active-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-focus))',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
     },
   },
 
   // Active page - Secondary
   '.pagination-item-active-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-focus))',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
     },
   },
 
   // Active page - Tertiary
   '.pagination-item-active-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-focus))',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
     },
   },
 
@@ -92,7 +92,7 @@ export const paginationStyles: Record<string, any> = {
     padding: '0.5rem 0.75rem',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '1.25rem',
@@ -100,7 +100,7 @@ export const paginationStyles: Record<string, any> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:disabled': {
@@ -118,7 +118,7 @@ export const paginationStyles: Record<string, any> = {
     minWidth: '2.5rem',
     height: '2.5rem',
     padding: '0.5rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     pointerEvents: 'none',
 
     '&::before': {
@@ -128,52 +128,52 @@ export const paginationStyles: Record<string, any> = {
 
   // Outlined variant
   '.pagination-outlined .pagination-item': {
-    border: '1px solid hsl(var(--color-outline))',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.375rem',
 
     '&:hover': {
-      borderColor: 'hsl(var(--color-on-surface))',
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.04)',
+      borderColor: 'var(--color-on-surface)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 4%, transparent)',
     },
   },
 
   '.pagination-outlined .pagination-item-active, .pagination-outlined .pagination-item-active-primary': {
-    borderColor: 'hsl(var(--color-primary))',
+    borderColor: 'var(--color-primary)',
   },
 
   '.pagination-outlined .pagination-item-active-secondary': {
-    borderColor: 'hsl(var(--color-secondary))',
+    borderColor: 'var(--color-secondary)',
   },
 
   '.pagination-outlined .pagination-item-active-tertiary': {
-    borderColor: 'hsl(var(--color-tertiary))',
+    borderColor: 'var(--color-tertiary)',
   },
 
   // Tonal variant
   '.pagination-tonal .pagination-item-active, .pagination-tonal .pagination-item-active-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 90%, transparent)',
     },
   },
 
   '.pagination-tonal .pagination-item-active-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   '.pagination-tonal .pagination-item-active-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 90%, transparent)',
     },
   },
 
@@ -204,7 +204,7 @@ export const paginationStyles: Record<string, any> = {
 
   '.pagination-info-text': {
     fontSize: '0.875rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     whiteSpace: 'nowrap',
   },
 
@@ -221,14 +221,14 @@ export const paginationStyles: Record<string, any> = {
     padding: '0.375rem 0.5rem',
     fontSize: '0.875rem',
     textAlign: 'center',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
-    border: '1px solid hsl(var(--color-outline))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface-container-highest)',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.25rem',
     outline: 'none',
 
     '&:focus': {
-      borderColor: 'hsl(var(--color-primary))',
+      borderColor: 'var(--color-primary)',
     },
   },
 

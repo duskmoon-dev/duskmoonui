@@ -10,7 +10,7 @@ export const tabsStyles: Record<string, any> = {
     display: 'flex',
     alignItems: 'center',
     gap: '0',
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
     overflow: 'auto',
     scrollbarWidth: 'thin',
   },
@@ -24,7 +24,7 @@ export const tabsStyles: Record<string, any> = {
   '.tabs-vertical': {
     flexDirection: 'column',
     borderBottom: 'none',
-    borderRight: '1px solid hsl(var(--color-outline-variant))',
+    borderRight: '1px solid var(--color-outline-variant)',
   },
 
   // Scrollable tabs
@@ -43,7 +43,7 @@ export const tabsStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     backgroundColor: 'transparent',
     border: 'none',
     borderBottom: '2px solid transparent',
@@ -54,12 +54,12 @@ export const tabsStyles: Record<string, any> = {
     outline: 'none',
 
     '&:hover': {
-      color: 'hsl(var(--color-on-surface))',
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      color: 'var(--color-on-surface)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:focus-visible': {
-      outline: '2px solid hsl(var(--color-primary))',
+      outline: '2px solid var(--color-primary)',
       outlineOffset: '-2px',
     },
 
@@ -72,34 +72,34 @@ export const tabsStyles: Record<string, any> = {
 
   // Active tab - Primary
   '.tab-active, .tab-active-primary': {
-    color: 'hsl(var(--color-primary))',
-    borderBottomColor: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
+    borderBottomColor: 'var(--color-primary)',
 
     '&:hover': {
-      color: 'hsl(var(--color-primary))',
-      backgroundColor: 'rgba(var(--color-primary-rgb), 0.08)',
+      color: 'var(--color-primary)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary) 8%, transparent)',
     },
   },
 
   // Active tab - Secondary
   '.tab-active-secondary': {
-    color: 'hsl(var(--color-secondary))',
-    borderBottomColor: 'hsl(var(--color-secondary))',
+    color: 'var(--color-secondary)',
+    borderBottomColor: 'var(--color-secondary)',
 
     '&:hover': {
-      color: 'hsl(var(--color-secondary))',
-      backgroundColor: 'rgba(var(--color-secondary-rgb), 0.08)',
+      color: 'var(--color-secondary)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary) 8%, transparent)',
     },
   },
 
   // Active tab - Tertiary
   '.tab-active-tertiary': {
-    color: 'hsl(var(--color-tertiary))',
-    borderBottomColor: 'hsl(var(--color-tertiary))',
+    color: 'var(--color-tertiary)',
+    borderBottomColor: 'var(--color-tertiary)',
 
     '&:hover': {
-      color: 'hsl(var(--color-tertiary))',
-      backgroundColor: 'rgba(var(--color-tertiary-rgb), 0.08)',
+      color: 'var(--color-tertiary)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary) 8%, transparent)',
     },
   },
 
@@ -112,17 +112,17 @@ export const tabsStyles: Record<string, any> = {
   },
 
   '.tabs-vertical .tab-active, .tabs-vertical .tab-active-primary': {
-    borderRightColor: 'hsl(var(--color-primary))',
+    borderRightColor: 'var(--color-primary)',
     borderBottomColor: 'transparent',
   },
 
   '.tabs-vertical .tab-active-secondary': {
-    borderRightColor: 'hsl(var(--color-secondary))',
+    borderRightColor: 'var(--color-secondary)',
     borderBottomColor: 'transparent',
   },
 
   '.tabs-vertical .tab-active-tertiary': {
-    borderRightColor: 'hsl(var(--color-tertiary))',
+    borderRightColor: 'var(--color-tertiary)',
     borderBottomColor: 'transparent',
   },
 
@@ -134,66 +134,66 @@ export const tabsStyles: Record<string, any> = {
   },
 
   '.tabs-pill .tab-active, .tabs-pill .tab-active-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-primary-focus))',
-      color: 'hsl(var(--color-primary-content))',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
+      color: 'var(--color-primary-content)',
     },
   },
 
   '.tabs-pill .tab-active-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-secondary-focus))',
-      color: 'hsl(var(--color-secondary-content))',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
+      color: 'var(--color-secondary-content)',
     },
   },
 
   '.tabs-pill .tab-active-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-tertiary-focus))',
-      color: 'hsl(var(--color-tertiary-content))',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
+      color: 'var(--color-tertiary-content)',
     },
   },
 
   // Tonal variant (tonal active state)
   '.tabs-tonal .tab-active, .tabs-tonal .tab-active-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
-      color: 'hsl(var(--color-on-primary-container))',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 90%, transparent)',
+      color: 'var(--color-on-primary-container)',
     },
   },
 
   '.tabs-tonal .tab-active-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
-      color: 'hsl(var(--color-on-secondary-container))',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
+      color: 'var(--color-on-secondary-container)',
     },
   },
 
   '.tabs-tonal .tab-active-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
     border: 'none',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
-      color: 'hsl(var(--color-on-tertiary-container))',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 90%, transparent)',
+      color: 'var(--color-on-tertiary-container)',
     },
   },
 
@@ -219,8 +219,8 @@ export const tabsStyles: Record<string, any> = {
     fontWeight: '600',
     lineHeight: '1rem',
     borderRadius: '0.625rem',
-    backgroundColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-error-content))',
+    backgroundColor: 'var(--color-error)',
+    color: 'var(--color-error-content)',
   },
 
   // Size variants
@@ -251,7 +251,7 @@ export const tabsStyles: Record<string, any> = {
 
   // Boxed variant (with background)
   '.tabs-boxed': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     borderRadius: '0.5rem',
     padding: '0.25rem',
     border: 'none',
@@ -287,15 +287,15 @@ export const tabsStyles: Record<string, any> = {
     bottom: '0',
     left: '0',
     height: '2px',
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   '.tabs-indicator-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
   },
 
   '.tabs-indicator-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
   },
 };

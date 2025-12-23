@@ -12,7 +12,7 @@ export const listStyles: Record<string, any> = {
     padding: '0.5rem 0',
     margin: '0',
     listStyle: 'none',
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
   },
 
   // List item
@@ -22,7 +22,7 @@ export const listStyles: Record<string, any> = {
     gap: '1rem',
     padding: '0.75rem 1rem',
     minHeight: '3rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
@@ -31,39 +31,39 @@ export const listStyles: Record<string, any> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
   },
 
   // Active/selected state
   '.list-item-active, .list-item-active-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 90%, transparent)',
     },
   },
 
   '.list-item-active-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   '.list-item-active-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 90%, transparent)',
     },
   },
 
@@ -90,23 +90,23 @@ export const listStyles: Record<string, any> = {
   '.list-item-secondary': {
     fontSize: '0.813rem',
     lineHeight: '1.125rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
 
   '.list-item-active .list-item-secondary, .list-item-active-primary .list-item-secondary': {
-    color: 'hsl(var(--color-on-primary-container))',
+    color: 'var(--color-on-primary-container)',
     opacity: '0.8',
   },
 
   '.list-item-active-secondary .list-item-secondary': {
-    color: 'hsl(var(--color-on-secondary-container))',
+    color: 'var(--color-on-secondary-container)',
     opacity: '0.8',
   },
 
   '.list-item-active-tertiary .list-item-secondary': {
-    color: 'hsl(var(--color-on-tertiary-container))',
+    color: 'var(--color-on-tertiary-container)',
     opacity: '0.8',
   },
 
@@ -154,7 +154,7 @@ export const listStyles: Record<string, any> = {
   '.list-divider': {
     height: '1px',
     margin: '0',
-    backgroundColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-outline-variant)',
     border: 'none',
   },
 
@@ -169,7 +169,7 @@ export const listStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '600',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
   },
@@ -200,20 +200,20 @@ export const listStyles: Record<string, any> = {
 
   // Surface variants
   '.list-surface-container': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
   },
 
   '.list-surface-container-low': {
-    backgroundColor: 'hsl(var(--color-surface-container-low))',
+    backgroundColor: 'var(--color-surface-container-low)',
   },
 
   '.list-surface-container-high': {
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
+    backgroundColor: 'var(--color-surface-container-high)',
   },
 
   // Bordered list
   '.list-bordered': {
-    border: '1px solid hsl(var(--color-outline-variant))',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
   },
 

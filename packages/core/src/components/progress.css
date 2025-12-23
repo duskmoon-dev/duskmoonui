@@ -39,19 +39,19 @@
   }
 
   .progress-info .progress-bar {
-    background-color: hsl(var(--color-info));
+    background-color: var(--color-info);
   }
 
   .progress-success .progress-bar {
-    background-color: hsl(var(--color-success));
+    background-color: var(--color-success);
   }
 
   .progress-warning .progress-bar {
-    background-color: hsl(var(--color-warning));
+    background-color: var(--color-warning);
   }
 
   .progress-error .progress-bar {
-    background-color: hsl(var(--color-error));
+    background-color: var(--color-error);
   }
 
   /* Size Variants */

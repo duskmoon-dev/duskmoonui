@@ -16,14 +16,14 @@ export const ratingStyles: Record<string, any> = {
   '.rating-item': {
     cursor: 'pointer',
     fontSize: '1.5rem',
-    color: 'hsl(var(--color-outline))',
+    color: 'var(--color-outline)',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     userSelect: 'none',
   },
 
   // Filled state - Primary
   '.rating-item-filled, .rating-item-primary-filled': {
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
   },
 
   // Half filled
@@ -39,35 +39,35 @@ export const ratingStyles: Record<string, any> = {
     left: '0',
     width: '50%',
     overflow: 'hidden',
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
   },
 
   // Hover state
   '.rating-item:hover': {
     transform: 'scale(1.1)',
-    color: 'hsl(var(--color-primary-focus))',
+    color: 'color-mix(in oklch, var(--color-primary), black 10%)',
   },
 
   '.rating-item-filled:hover': {
-    color: 'hsl(var(--color-primary-focus))',
+    color: 'color-mix(in oklch, var(--color-primary), black 10%)',
   },
 
   // Secondary variant
   '.rating-secondary .rating-item-filled': {
-    color: 'hsl(var(--color-secondary))',
+    color: 'var(--color-secondary)',
   },
 
   '.rating-secondary .rating-item:hover': {
-    color: 'hsl(var(--color-secondary-focus))',
+    color: 'color-mix(in oklch, var(--color-secondary), black 10%)',
   },
 
   // Tertiary variant
   '.rating-tertiary .rating-item-filled': {
-    color: 'hsl(var(--color-tertiary))',
+    color: 'var(--color-tertiary)',
   },
 
   '.rating-tertiary .rating-item:hover': {
-    color: 'hsl(var(--color-tertiary-focus))',
+    color: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
   },
 
   // Warning/amber variant (typical for ratings)
@@ -113,7 +113,7 @@ export const ratingStyles: Record<string, any> = {
 
   // Focus state (for keyboard navigation)
   '.rating-item:focus-visible': {
-    outline: '2px solid hsl(var(--color-primary))',
+    outline: '2px solid var(--color-primary)',
     outlineOffset: '2px',
     borderRadius: '0.25rem',
   },
@@ -125,7 +125,7 @@ export const ratingStyles: Record<string, any> = {
     gap: '0.75rem',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   // Value display
@@ -133,14 +133,14 @@ export const ratingStyles: Record<string, any> = {
     marginLeft: '0.5rem',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Count display (e.g., "(123 reviews)")
   '.rating-count': {
     marginLeft: '0.25rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Precision variants
@@ -171,7 +171,7 @@ export const ratingStyles: Record<string, any> = {
   },
 
   '.rating-interactive .rating-item:hover,\n  .rating-interactive .rating-item-hover': {
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
     transform: 'scale(1.15)',
   },
 
@@ -184,7 +184,7 @@ export const ratingStyles: Record<string, any> = {
 
   '.rating-description': {
     fontSize: '0.875rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     marginTop: '0.25rem',
   },
 
@@ -204,7 +204,7 @@ export const ratingStyles: Record<string, any> = {
     marginLeft: '0.5rem',
     padding: '0.25rem',
     fontSize: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     cursor: 'pointer',
     backgroundColor: 'transparent',
     border: 'none',
@@ -213,7 +213,7 @@ export const ratingStyles: Record<string, any> = {
   },
 
   '.rating-clear-btn:hover': {
-    color: 'hsl(var(--color-error))',
-    backgroundColor: 'rgba(var(--color-error-rgb), 0.1)',
+    color: 'var(--color-error)',
+    backgroundColor: 'color-mix(in oklch, var(--color-error) 10%, transparent)',
   },
 };

@@ -12,8 +12,8 @@ export const tooltipStyles: Record<string, any> = {
     fontSize: '0.75rem',
     lineHeight: '1rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-inverse-on-surface))',
-    backgroundColor: 'hsl(var(--color-inverse-surface))',
+    color: 'var(--color-inverse-on-surface)',
+    backgroundColor: 'var(--color-inverse-surface)',
     borderRadius: '0.25rem',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
     zIndex: '100',
@@ -52,7 +52,7 @@ export const tooltipStyles: Record<string, any> = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: '0.375rem 0.375rem 0 0.375rem',
-    borderColor: 'hsl(var(--color-inverse-surface)) transparent transparent transparent',
+    borderColor: 'var(--color-inverse-surface) transparent transparent transparent',
   },
 
   // Bottom positioning
@@ -68,7 +68,7 @@ export const tooltipStyles: Record<string, any> = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: '0 0.375rem 0.375rem 0.375rem',
-    borderColor: 'transparent transparent hsl(var(--color-inverse-surface)) transparent',
+    borderColor: 'transparent transparent var(--color-inverse-surface) transparent',
   },
 
   // Left positioning
@@ -84,7 +84,7 @@ export const tooltipStyles: Record<string, any> = {
     top: '50%',
     transform: 'translateY(-50%)',
     borderWidth: '0.375rem 0 0.375rem 0.375rem',
-    borderColor: 'transparent transparent transparent hsl(var(--color-inverse-surface))',
+    borderColor: 'transparent transparent transparent var(--color-inverse-surface)',
   },
 
   // Right positioning
@@ -100,7 +100,7 @@ export const tooltipStyles: Record<string, any> = {
     top: '50%',
     transform: 'translateY(-50%)',
     borderWidth: '0.375rem 0.375rem 0.375rem 0',
-    borderColor: 'transparent hsl(var(--color-inverse-surface)) transparent transparent',
+    borderColor: 'transparent var(--color-inverse-surface) transparent transparent',
   },
 
   // No arrow variant

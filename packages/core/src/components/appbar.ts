@@ -11,8 +11,8 @@ export const appBarStyles: Record<string, any> = {
     alignItems: 'center',
     gap: '1rem',
     padding: '1rem 1.5rem',
-    backgroundColor: 'hsl(var(--color-surface))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface)',
+    color: 'var(--color-on-surface)',
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     zIndex: '30',
@@ -51,41 +51,41 @@ export const appBarStyles: Record<string, any> = {
 
   // Surface variants
   '.appbar-surface': {
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
   },
 
   '.appbar-surface-container': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
   },
 
   '.appbar-surface-container-low': {
-    backgroundColor: 'hsl(var(--color-surface-container-low))',
+    backgroundColor: 'var(--color-surface-container-low)',
   },
 
   '.appbar-surface-container-high': {
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
+    backgroundColor: 'var(--color-surface-container-high)',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.08)',
   },
 
   '.appbar-surface-container-highest': {
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    backgroundColor: 'var(--color-surface-container-highest)',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
   },
 
   // Color variants
   '.appbar-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
   },
 
   '.appbar-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
   },
 
   '.appbar-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
   },
 
   // Transparent variant
@@ -97,7 +97,7 @@ export const appBarStyles: Record<string, any> = {
   // Blur effect
   '.appbar-blur': {
     backdropFilter: 'blur(8px)',
-    backgroundColor: 'rgba(var(--color-surface-rgb), 0.8)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface) 80%, transparent)',
   },
 
   // App bar sections
@@ -139,7 +139,7 @@ export const appBarStyles: Record<string, any> = {
   '.appbar-subtitle': {
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     margin: '0',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -168,15 +168,15 @@ export const appBarStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
 
     '&:focus-visible': {
-      outline: '2px solid hsl(var(--color-primary))',
+      outline: '2px solid var(--color-primary)',
       outlineOffset: '2px',
     },
 
@@ -188,11 +188,11 @@ export const appBarStyles: Record<string, any> = {
   },
 
   '.appbar-primary .appbar-action:hover, .appbar-secondary .appbar-action:hover, .appbar-tertiary .appbar-action:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'color-mix(in oklch, white 10%, transparent)',
   },
 
   '.appbar-primary .appbar-action:active, .appbar-secondary .appbar-action:active, .appbar-tertiary .appbar-action:active': {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: 'color-mix(in oklch, white 15%, transparent)',
   },
 
   // Back button
@@ -212,11 +212,11 @@ export const appBarStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
   },
 
@@ -257,12 +257,12 @@ export const appBarStyles: Record<string, any> = {
   // With border variant
   '.appbar-bordered': {
     boxShadow: 'none',
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   '.appbar-bottom.appbar-bordered': {
     borderBottom: 'none',
-    borderTop: '1px solid hsl(var(--color-outline-variant))',
+    borderTop: '1px solid var(--color-outline-variant)',
   },
 
   // Prominent/large top app bar
@@ -294,21 +294,21 @@ export const appBarStyles: Record<string, any> = {
     flex: '1 1 auto',
     maxWidth: '32rem',
     padding: '0.5rem 1rem',
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    backgroundColor: 'var(--color-surface-container-highest)',
     borderRadius: '1.75rem',
     border: 'none',
     outline: 'none',
     fontSize: '0.875rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:focus': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
-      boxShadow: '0 0 0 2px hsl(var(--color-primary))',
+      backgroundColor: 'var(--color-surface-container-high)',
+      boxShadow: '0 0 0 2px var(--color-primary)',
     },
 
     '&::placeholder': {
-      color: 'hsl(var(--color-on-surface-variant))',
+      color: 'var(--color-on-surface-variant)',
     },
   },
 };

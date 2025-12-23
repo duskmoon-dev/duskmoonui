@@ -14,8 +14,8 @@ export const avatarStyles: Record<string, any> = {
     height: '2.5rem',
     fontSize: '1rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-tertiary-container))',
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
+    color: 'var(--color-on-tertiary-container)',
+    backgroundColor: 'var(--color-tertiary-container)',
     borderRadius: '50%',
     overflow: 'hidden',
     flexShrink: '0',
@@ -81,38 +81,38 @@ export const avatarStyles: Record<string, any> = {
 
   // Color variants
   '.avatar-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.avatar-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
   },
 
   '.avatar-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
   },
 
   '.avatar-success': {
-    backgroundColor: 'rgba(var(--color-success-rgb), 0.15)',
-    color: 'hsl(var(--color-success))',
+    backgroundColor: 'color-mix(in oklch, var(--color-success) 15%, transparent)',
+    color: 'var(--color-success)',
   },
 
   '.avatar-error': {
-    backgroundColor: 'rgba(var(--color-error-rgb), 0.15)',
-    color: 'hsl(var(--color-error))',
+    backgroundColor: 'color-mix(in oklch, var(--color-error) 15%, transparent)',
+    color: 'var(--color-error)',
   },
 
   '.avatar-warning': {
-    backgroundColor: 'rgba(var(--color-warning-rgb), 0.15)',
-    color: 'hsl(var(--color-warning))',
+    backgroundColor: 'color-mix(in oklch, var(--color-warning) 15%, transparent)',
+    color: 'var(--color-warning)',
   },
 
   '.avatar-info': {
-    backgroundColor: 'rgba(var(--color-info-rgb), 0.15)',
-    color: 'hsl(var(--color-info))',
+    backgroundColor: 'color-mix(in oklch, var(--color-info) 15%, transparent)',
+    color: 'var(--color-info)',
   },
 
   // Status indicator
@@ -128,23 +128,23 @@ export const avatarStyles: Record<string, any> = {
     width: '0.75rem',
     height: '0.75rem',
     borderRadius: '50%',
-    border: '2px solid hsl(var(--color-surface))',
+    border: '2px solid var(--color-surface)',
   },
 
   '.avatar-status-online::after': {
-    backgroundColor: 'hsl(var(--color-success))',
+    backgroundColor: 'var(--color-success)',
   },
 
   '.avatar-status-offline::after': {
-    backgroundColor: 'hsl(var(--color-on-surface-variant))',
+    backgroundColor: 'var(--color-on-surface-variant)',
   },
 
   '.avatar-status-busy::after': {
-    backgroundColor: 'hsl(var(--color-error))',
+    backgroundColor: 'var(--color-error)',
   },
 
   '.avatar-status-away::after': {
-    backgroundColor: 'hsl(var(--color-warning))',
+    backgroundColor: 'var(--color-warning)',
   },
 
   // Status size variants
@@ -167,8 +167,8 @@ export const avatarStyles: Record<string, any> = {
 
   // Avatar with border
   '.avatar-bordered': {
-    border: '2px solid hsl(var(--color-surface))',
-    boxShadow: '0 0 0 2px hsl(var(--color-outline-variant))',
+    border: '2px solid var(--color-surface)',
+    boxShadow: '0 0 0 2px var(--color-outline-variant)',
   },
 
   // Avatar group (stacked avatars)
@@ -179,7 +179,7 @@ export const avatarStyles: Record<string, any> = {
 
   '.avatar-group .avatar': {
     marginLeft: '-0.5rem',
-    border: '2px solid hsl(var(--color-surface))',
+    border: '2px solid var(--color-surface)',
   },
 
   '.avatar-group .avatar:first-child': {
@@ -221,8 +221,8 @@ export const avatarStyles: Record<string, any> = {
     justifyContent: 'center',
     fontSize: '0.813rem',
     fontWeight: '600',
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    color: 'hsl(var(--color-on-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Clickable avatar

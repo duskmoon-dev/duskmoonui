@@ -114,30 +114,30 @@
   }
 
   .timeline-item-success .timeline-marker {
-    border-color: hsl(var(--color-success));
+    border-color: var(--color-success);
     background-color: var(--color-success-container);
   }
 
   .timeline-item-success .timeline-marker-dot {
-    background-color: hsl(var(--color-success));
+    background-color: var(--color-success);
   }
 
   .timeline-item-warning .timeline-marker {
-    border-color: hsl(var(--color-warning));
+    border-color: var(--color-warning);
     background-color: var(--color-warning-container);
   }
 
   .timeline-item-warning .timeline-marker-dot {
-    background-color: hsl(var(--color-warning));
+    background-color: var(--color-warning);
   }
 
   .timeline-item-error .timeline-marker {
-    border-color: hsl(var(--color-error));
+    border-color: var(--color-error);
     background-color: var(--color-error-container);
   }
 
   .timeline-item-error .timeline-marker-dot {
-    background-color: hsl(var(--color-error));
+    background-color: var(--color-error);
   }
 
   /* Completed State */

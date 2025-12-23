@@ -153,12 +153,12 @@
   }
 
   .tooltip-error .tooltip-content {
-    background-color: hsl(var(--color-error));
+    background-color: var(--color-error);
     color: var(--color-error-content);
   }
 
   .tooltip-error .tooltip-content::before {
-    border-top-color: hsl(var(--color-error));
+    border-top-color: var(--color-error);
   }
 
   /* Multi-line Tooltip */

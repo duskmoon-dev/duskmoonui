@@ -11,50 +11,50 @@ export const navbarStyles: Record<string, any> = {
     alignItems: 'center',
     gap: '1rem',
     padding: '0.75rem 1rem',
-    backgroundColor: 'hsl(var(--color-surface))',
-    color: 'hsl(var(--color-on-surface))',
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface)',
+    color: 'var(--color-on-surface)',
+    borderBottom: '1px solid var(--color-outline-variant)',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   // Surface variants
   '.navbar-surface': {
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
   },
 
   '.navbar-surface-container': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
   },
 
   '.navbar-surface-container-high': {
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
+    backgroundColor: 'var(--color-surface-container-high)',
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
   },
 
   '.navbar-surface-container-highest': {
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    backgroundColor: 'var(--color-surface-container-highest)',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.08)',
   },
 
   // Primary variant
   '.navbar-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
-    borderBottomColor: 'hsl(var(--color-primary-focus))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
+    borderBottomColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
   },
 
   // Secondary variant
   '.navbar-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
-    borderBottomColor: 'hsl(var(--color-secondary-focus))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
+    borderBottomColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
   },
 
   // Tertiary variant
   '.navbar-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
-    borderBottomColor: 'hsl(var(--color-tertiary-focus))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
+    borderBottomColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
   },
 
   // Transparent variant
@@ -137,44 +137,44 @@ export const navbarStyles: Record<string, any> = {
     whiteSpace: 'nowrap',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
   },
 
   '.navbar-item-active': {
-    backgroundColor: 'rgba(var(--color-primary-rgb), 0.12)',
-    color: 'hsl(var(--color-primary))',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary) 12%, transparent)',
+    color: 'var(--color-primary)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-rgb), 0.16)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary) 16%, transparent)',
     },
   },
 
   // For primary/secondary/tertiary navbar variants
   '.navbar-primary .navbar-item:hover, .navbar-secondary .navbar-item:hover, .navbar-tertiary .navbar-item:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'color-mix(in oklch, white 10%, transparent)',
   },
 
   '.navbar-primary .navbar-item:active, .navbar-secondary .navbar-item:active, .navbar-tertiary .navbar-item:active': {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: 'color-mix(in oklch, white 15%, transparent)',
   },
 
   '.navbar-primary .navbar-item-active': {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'color-mix(in oklch, white 20%, transparent)',
     color: 'inherit',
   },
 
   '.navbar-secondary .navbar-item-active': {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'color-mix(in oklch, white 20%, transparent)',
     color: 'inherit',
   },
 
   '.navbar-tertiary .navbar-item-active': {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'color-mix(in oklch, white 20%, transparent)',
     color: 'inherit',
   },
 
@@ -184,7 +184,7 @@ export const navbarStyles: Record<string, any> = {
     flexDirection: 'column',
     gap: '0.25rem',
     padding: '0.5rem',
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     borderRadius: '0.5rem',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
   },
@@ -206,11 +206,11 @@ export const navbarStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
   },
 
@@ -218,7 +218,7 @@ export const navbarStyles: Record<string, any> = {
   '.navbar-divider': {
     width: '1px',
     height: '1.5rem',
-    backgroundColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-outline-variant)',
     margin: '0 0.25rem',
   },
 
@@ -257,6 +257,6 @@ export const navbarStyles: Record<string, any> = {
   // Blur effect (for transparent navbar)
   '.navbar-blur': {
     backdropFilter: 'blur(8px)',
-    backgroundColor: 'rgba(var(--color-surface-rgb), 0.8)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface) 80%, transparent)',
   },
 };

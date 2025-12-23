@@ -32,8 +32,8 @@ export const collapseStyles: Record<string, any> = {
     padding: '1rem',
     fontSize: '1rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface)',
     border: 'none',
     borderRadius: '0.5rem',
     cursor: 'pointer',
@@ -43,13 +43,13 @@ export const collapseStyles: Record<string, any> = {
 
   // Trigger hover
   '.collapse-trigger:hover': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
   },
 
   // Trigger icon
   '.collapse-icon': {
     fontSize: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
@@ -61,18 +61,18 @@ export const collapseStyles: Record<string, any> = {
   // Collapse content
   '.collapse-content': {
     padding: '1rem',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface)',
   },
 
   // Bordered variant
   '.collapse-bordered': {
-    border: '1px solid hsl(var(--color-outline-variant))',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
   },
 
   '.collapse-bordered .collapse-trigger': {
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem 0.5rem 0 0',
   },
 
@@ -83,8 +83,8 @@ export const collapseStyles: Record<string, any> = {
 
   // Card variant (with shadow)
   '.collapse-card': {
-    backgroundColor: 'hsl(var(--color-surface))',
-    border: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface)',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
     boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
   },
@@ -98,38 +98,38 @@ export const collapseStyles: Record<string, any> = {
 
   // Accordion item
   '.collapse-group .collapse': {
-    border: '1px solid hsl(var(--color-outline-variant))',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
   },
 
   // Primary variant
   '.collapse-primary .collapse-trigger': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.collapse-primary .collapse-trigger:hover': {
-    backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.8)',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 80%, transparent)',
   },
 
   // Secondary variant
   '.collapse-secondary .collapse-trigger': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
   },
 
   '.collapse-secondary .collapse-trigger:hover': {
-    backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.8)',
+    backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 80%, transparent)',
   },
 
   // Tertiary variant
   '.collapse-tertiary .collapse-trigger': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
   },
 
   '.collapse-tertiary .collapse-trigger:hover': {
-    backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.8)',
+    backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 80%, transparent)',
   },
 
   // Size variants
@@ -160,7 +160,7 @@ export const collapseStyles: Record<string, any> = {
 
   // Focus state
   '.collapse-trigger:focus-visible': {
-    outline: '2px solid hsl(var(--color-primary))',
+    outline: '2px solid var(--color-primary)',
     outlineOffset: '2px',
   },
 
@@ -191,7 +191,7 @@ export const collapseStyles: Record<string, any> = {
 
   // With divider
   '.collapse-divider .collapse-trigger': {
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   '.collapse-divider.collapse-closed .collapse-trigger': {
@@ -213,7 +213,7 @@ export const collapseStyles: Record<string, any> = {
     content: '""',
     width: '1rem',
     height: '1rem',
-    border: '2px solid hsl(var(--color-primary))',
+    border: '2px solid var(--color-primary)',
     borderTopColor: 'transparent',
     borderRadius: '50%',
     animation: 'collapse-spin 0.6s linear infinite',

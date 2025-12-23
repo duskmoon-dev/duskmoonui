@@ -12,7 +12,7 @@ export const modalStyles: Record<string, any> = {
     left: '0',
     right: '0',
     bottom: '0',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'color-mix(in oklch, black 50%, transparent)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -31,9 +31,9 @@ export const modalStyles: Record<string, any> = {
   // Modal container
   '.modal': {
     position: 'relative',
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
     borderRadius: '1rem',
-    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 10px 40px color-mix(in oklch, black 20%, transparent)',
     maxWidth: '90vw',
     maxHeight: '90vh',
     width: '32rem',
@@ -54,14 +54,14 @@ export const modalStyles: Record<string, any> = {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '1.5rem',
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   // Modal title
   '.modal-title': {
     fontSize: '1.25rem',
     fontWeight: '600',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     lineHeight: '1.5',
   },
 
@@ -74,7 +74,7 @@ export const modalStyles: Record<string, any> = {
     height: '2rem',
     padding: '0',
     fontSize: '1.5rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '50%',
@@ -83,8 +83,8 @@ export const modalStyles: Record<string, any> = {
   },
 
   '.modal-close:hover': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface-variant)',
+    color: 'var(--color-on-surface)',
   },
 
   // Modal body
@@ -92,7 +92,7 @@ export const modalStyles: Record<string, any> = {
     padding: '1.5rem',
     overflowY: 'auto',
     flex: '1',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   // Modal footer
@@ -102,7 +102,7 @@ export const modalStyles: Record<string, any> = {
     justifyContent: 'flex-end',
     gap: '0.75rem',
     padding: '1.5rem',
-    borderTop: '1px solid hsl(var(--color-outline-variant))',
+    borderTop: '1px solid var(--color-outline-variant)',
   },
 
   // Size variants
@@ -172,12 +172,12 @@ export const modalStyles: Record<string, any> = {
 
   // Backdrop variants
   '.modal-backdrop-light': {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: 'color-mix(in oklch, white 80%, transparent)',
   },
 
   '.modal-backdrop-blur': {
     backdropFilter: 'blur(8px)',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: 'color-mix(in oklch, black 30%, transparent)',
   },
 
   // No backdrop

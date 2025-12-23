@@ -10,7 +10,7 @@ export const progressStyles: Record<string, any> = {
     position: 'relative',
     width: '100%',
     height: '0.25rem',
-    backgroundColor: 'hsl(var(--color-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
     borderRadius: '0.125rem',
     overflow: 'hidden',
   },
@@ -18,7 +18,7 @@ export const progressStyles: Record<string, any> = {
   // Progress bar (determinate)
   '.progress-bar': {
     height: '100%',
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
     borderRadius: '0.125rem',
     transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   },
@@ -44,51 +44,51 @@ export const progressStyles: Record<string, any> = {
 
   // Color variants
   '.progress-secondary .progress-bar': {
-    backgroundColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
   },
 
   '.progress-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
   },
 
   '.progress-tertiary .progress-bar': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
   },
 
   '.progress-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
   },
 
   '.progress-success .progress-bar': {
-    backgroundColor: 'hsl(var(--color-success))',
+    backgroundColor: 'var(--color-success)',
   },
 
   '.progress-success': {
-    backgroundColor: 'rgba(var(--color-success-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-success) 20%, transparent)',
   },
 
   '.progress-error .progress-bar': {
-    backgroundColor: 'hsl(var(--color-error))',
+    backgroundColor: 'var(--color-error)',
   },
 
   '.progress-error': {
-    backgroundColor: 'rgba(var(--color-error-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-error) 20%, transparent)',
   },
 
   '.progress-warning .progress-bar': {
-    backgroundColor: 'hsl(var(--color-warning))',
+    backgroundColor: 'var(--color-warning)',
   },
 
   '.progress-warning': {
-    backgroundColor: 'rgba(var(--color-warning-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-warning) 20%, transparent)',
   },
 
   '.progress-info .progress-bar': {
-    backgroundColor: 'hsl(var(--color-info))',
+    backgroundColor: 'var(--color-info)',
   },
 
   '.progress-info': {
-    backgroundColor: 'rgba(var(--color-info-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-info) 20%, transparent)',
   },
 
   // Size variants
@@ -119,7 +119,7 @@ export const progressStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     minWidth: '3rem',
     textAlign: 'right',
   },
@@ -140,13 +140,13 @@ export const progressStyles: Record<string, any> = {
 
   '.progress-circular-track': {
     fill: 'none',
-    stroke: 'hsl(var(--color-primary-container))',
+    stroke: 'var(--color-primary-container)',
     strokeWidth: '4',
   },
 
   '.progress-circular-bar': {
     fill: 'none',
-    stroke: 'hsl(var(--color-primary))',
+    stroke: 'var(--color-primary)',
     strokeWidth: '4',
     strokeLinecap: 'round',
     transition: 'stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -198,7 +198,7 @@ export const progressStyles: Record<string, any> = {
     position: 'absolute',
     fontSize: '0.75rem',
     fontWeight: '600',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   '.progress-circular-lg .progress-circular-label': {
@@ -219,7 +219,7 @@ export const progressStyles: Record<string, any> = {
     top: '0',
     left: '0',
     height: '100%',
-    backgroundColor: 'rgba(var(--color-primary-rgb), 0.3)',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary) 30%, transparent)',
     borderRadius: '0.125rem',
     transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   },

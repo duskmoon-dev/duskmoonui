@@ -15,8 +15,8 @@ export const menuStyles: Record<string, any> = {
     padding: '0.5rem',
     margin: '0',
     listStyle: 'none',
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface-container-high)',
+    color: 'var(--color-on-surface)',
     borderRadius: '0.5rem',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     zIndex: '100',
@@ -40,7 +40,7 @@ export const menuStyles: Record<string, any> = {
     padding: '0.625rem 0.75rem',
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '0.375rem',
@@ -52,44 +52,44 @@ export const menuStyles: Record<string, any> = {
     width: '100%',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
 
     '&:focus-visible': {
-      outline: '2px solid hsl(var(--color-primary))',
+      outline: '2px solid var(--color-primary)',
       outlineOffset: '-2px',
     },
   },
 
   // Active menu item
   '.menu-item-active, .menu-item-active-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 90%, transparent)',
     },
   },
 
   '.menu-item-active-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   '.menu-item-active-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 90%, transparent)',
     },
   },
 
@@ -112,7 +112,7 @@ export const menuStyles: Record<string, any> = {
   '.menu-item-trailing': {
     marginLeft: 'auto',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     paddingLeft: '1rem',
   },
 
@@ -120,7 +120,7 @@ export const menuStyles: Record<string, any> = {
   '.menu-divider': {
     height: '1px',
     margin: '0.5rem 0',
-    backgroundColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-outline-variant)',
     border: 'none',
   },
 
@@ -130,7 +130,7 @@ export const menuStyles: Record<string, any> = {
     fontSize: '0.75rem',
     fontWeight: '600',
     lineHeight: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
   },
@@ -188,7 +188,7 @@ export const menuStyles: Record<string, any> = {
     left: '0.75rem',
     width: '1rem',
     height: '1rem',
-    border: '2px solid hsl(var(--color-on-surface-variant))',
+    border: '2px solid var(--color-on-surface-variant)',
     borderRadius: '0.125rem',
   },
 
@@ -202,7 +202,7 @@ export const menuStyles: Record<string, any> = {
     left: '0.875rem',
     fontSize: '0.75rem',
     fontWeight: '700',
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
   },
 
   '.menu-item-radio.checked::after': {
@@ -212,7 +212,7 @@ export const menuStyles: Record<string, any> = {
     width: '0.5rem',
     height: '0.5rem',
     borderRadius: '50%',
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
   },
 
   // Compact menu
@@ -238,7 +238,7 @@ export const menuStyles: Record<string, any> = {
 
   // Surface variant
   '.menu-surface-container-highest': {
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    backgroundColor: 'var(--color-surface-container-highest)',
   },
 
   // Dense menu (no padding between items)

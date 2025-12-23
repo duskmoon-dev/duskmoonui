@@ -20,9 +20,9 @@ export const selectStyles: Record<string, any> = {
     fontSize: '1rem',
     fontWeight: '400',
     lineHeight: '1.5',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface))',
-    border: '1px solid hsl(var(--color-outline))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface)',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.5rem',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: 'pointer',
@@ -37,7 +37,7 @@ export const selectStyles: Record<string, any> = {
     transform: 'translateY(-50%)',
     pointerEvents: 'none',
     fontSize: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
@@ -48,29 +48,29 @@ export const selectStyles: Record<string, any> = {
 
   // Hover state
   '.select:hover': {
-    borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
+    borderColor: 'var(--color-primary)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 50%, transparent)',
   },
 
   // Focus state
   '.select:focus': {
-    borderColor: 'hsl(var(--color-primary))',
+    borderColor: 'var(--color-primary)',
     borderWidth: '2px',
     padding: 'calc(0.75rem - 1px) calc(2.5rem - 1px) calc(0.75rem - 1px) calc(1rem - 1px)',
-    boxShadow: '0 0 0 3px rgba(var(--color-primary-rgb), 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent)',
   },
 
   // Filled variant
   '.select-filled': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
     border: 'none',
-    borderBottom: '2px solid hsl(var(--color-outline))',
+    borderBottom: '2px solid var(--color-outline)',
     borderRadius: '0.5rem 0.5rem 0 0',
     padding: '1.5rem 2.5rem 0.5rem 1rem',
   },
 
   '.select-filled:focus': {
-    borderBottomColor: 'hsl(var(--color-primary))',
+    borderBottomColor: 'var(--color-primary)',
     borderBottomWidth: '2px',
     padding: '1.5rem 2.5rem 0.5rem 1rem',
     boxShadow: 'none',
@@ -83,18 +83,18 @@ export const selectStyles: Record<string, any> = {
 
   // Color variants
   '.select-primary:focus': {
-    borderColor: 'hsl(var(--color-primary))',
-    boxShadow: '0 0 0 3px rgba(var(--color-primary-rgb), 0.1)',
+    borderColor: 'var(--color-primary)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent)',
   },
 
   '.select-secondary:focus': {
-    borderColor: 'hsl(var(--color-secondary))',
-    boxShadow: '0 0 0 3px rgba(var(--color-secondary-rgb), 0.1)',
+    borderColor: 'var(--color-secondary)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent)',
   },
 
   '.select-tertiary:focus': {
-    borderColor: 'hsl(var(--color-tertiary))',
-    boxShadow: '0 0 0 3px rgba(var(--color-tertiary-rgb), 0.1)',
+    borderColor: 'var(--color-tertiary)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent)',
   },
 
   // Size variants
@@ -120,17 +120,17 @@ export const selectStyles: Record<string, any> = {
   '.select:disabled': {
     opacity: '0.6',
     cursor: 'not-allowed',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 50%, transparent)',
   },
 
   // Error state
   '.select-error': {
-    borderColor: 'hsl(var(--color-error))',
+    borderColor: 'var(--color-error)',
   },
 
   '.select-error:focus': {
-    borderColor: 'hsl(var(--color-error))',
-    boxShadow: '0 0 0 3px rgba(var(--color-error-rgb), 0.1)',
+    borderColor: 'var(--color-error)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent)',
   },
 
   // Label
@@ -139,7 +139,7 @@ export const selectStyles: Record<string, any> = {
     marginBottom: '0.5rem',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   // Floating label for filled variant
@@ -152,7 +152,7 @@ export const selectStyles: Record<string, any> = {
     top: '1rem',
     left: '1rem',
     fontSize: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     pointerEvents: 'none',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     transformOrigin: 'left top',
@@ -160,7 +160,7 @@ export const selectStyles: Record<string, any> = {
 
   '.select:focus ~ .select-label-floating, .select:not(:placeholder-shown) ~ .select-label-floating': {
     transform: 'translateY(-0.5rem) scale(0.75)',
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
   },
 
   // Helper text
@@ -168,23 +168,23 @@ export const selectStyles: Record<string, any> = {
     display: 'block',
     marginTop: '0.25rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   '.select-error ~ .select-helper, .select-container-error .select-helper': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 
   // Option styles
   '.select option': {
     padding: '0.5rem',
-    backgroundColor: 'hsl(var(--color-surface))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface)',
+    color: 'var(--color-on-surface)',
   },
 
   '.select option:checked': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
   },
 
   // Multiple select
@@ -211,7 +211,7 @@ export const selectStyles: Record<string, any> = {
     width: '1rem',
     height: '1rem',
     marginTop: '-0.5rem',
-    border: '2px solid hsl(var(--color-primary))',
+    border: '2px solid var(--color-primary)',
     borderTopColor: 'transparent',
     borderRadius: '50%',
     animation: 'select-spin 0.6s linear infinite',

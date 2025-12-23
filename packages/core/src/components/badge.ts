@@ -21,80 +21,80 @@ export const badgeStyles: Record<string, any> = {
 
   // Filled variant (default)
   '.badge-filled, .badge-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
   },
 
   '.badge-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
   },
 
   '.badge-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
   },
 
   // Tonal variant (lighter, uses container colors)
   '.badge-tonal': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.badge-tonal-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
   },
 
   '.badge-tonal-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
   },
 
   // Outlined variant
   '.badge-outlined': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-primary))',
-    border: '1px solid hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
+    border: '1px solid var(--color-primary)',
   },
 
   '.badge-outlined-secondary': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-secondary))',
-    border: '1px solid hsl(var(--color-secondary))',
+    color: 'var(--color-secondary)',
+    border: '1px solid var(--color-secondary)',
   },
 
   '.badge-outlined-tertiary': {
     backgroundColor: 'transparent',
-    color: 'hsl(var(--color-tertiary))',
-    border: '1px solid hsl(var(--color-tertiary))',
+    color: 'var(--color-tertiary)',
+    border: '1px solid var(--color-tertiary)',
   },
 
   // Semantic colors
   '.badge-success': {
-    backgroundColor: 'hsl(var(--color-success))',
-    color: 'hsl(var(--color-success-content))',
+    backgroundColor: 'var(--color-success)',
+    color: 'var(--color-success-content)',
   },
 
   '.badge-error': {
-    backgroundColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-error-content))',
+    backgroundColor: 'var(--color-error)',
+    color: 'var(--color-error-content)',
   },
 
   '.badge-warning': {
-    backgroundColor: 'hsl(var(--color-warning))',
-    color: 'hsl(var(--color-warning-content))',
+    backgroundColor: 'var(--color-warning)',
+    color: 'var(--color-warning-content)',
   },
 
   '.badge-info': {
-    backgroundColor: 'hsl(var(--color-info))',
-    color: 'hsl(var(--color-info-content))',
+    backgroundColor: 'var(--color-info)',
+    color: 'var(--color-info-content)',
   },
 
   // Neutral variant
   '.badge-neutral': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    color: 'hsl(var(--color-on-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Size variants
@@ -200,7 +200,7 @@ export const badgeStyles: Record<string, any> = {
     height: '0.5rem',
     padding: '0',
     borderRadius: '50%',
-    border: '2px solid hsl(var(--color-surface))',
+    border: '2px solid var(--color-surface)',
   },
 
   // Positioned badges

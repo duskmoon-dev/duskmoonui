@@ -62,38 +62,38 @@
   }
 
   .badge-outline.badge-primary {
-    color: hsl(var(--color-primary));
-    border-color: hsl(var(--color-primary));
+    color: var(--color-primary);
+    border-color: var(--color-primary);
   }
 
   .badge-outline.badge-secondary {
-    color: hsl(var(--color-secondary));
-    border-color: hsl(var(--color-secondary));
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
   }
 
   .badge-outline.badge-tertiary {
-    color: hsl(var(--color-tertiary));
-    border-color: hsl(var(--color-tertiary));
+    color: var(--color-tertiary);
+    border-color: var(--color-tertiary);
   }
 
   .badge-outline.badge-info {
-    color: hsl(var(--color-info));
-    border-color: hsl(var(--color-info));
+    color: var(--color-info);
+    border-color: var(--color-info);
   }
 
   .badge-outline.badge-success {
-    color: hsl(var(--color-success));
-    border-color: hsl(var(--color-success));
+    color: var(--color-success);
+    border-color: var(--color-success);
   }
 
   .badge-outline.badge-warning {
-    color: hsl(var(--color-warning));
-    border-color: hsl(var(--color-warning));
+    color: var(--color-warning);
+    border-color: var(--color-warning);
   }
 
   .badge-outline.badge-error {
-    color: hsl(var(--color-error));
-    border-color: hsl(var(--color-error));
+    color: var(--color-error);
+    border-color: var(--color-error);
   }
 
   /* Soft/Tonal Variants */

@@ -8,7 +8,7 @@ export const skeletonStyles: Record<string, any> = {
   // Base skeleton
   '.skeleton': {
     display: 'block',
-    backgroundColor: 'hsl(var(--color-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
     borderRadius: '0.25rem',
     animation: 'skeleton-pulse 1.5s ease-in-out infinite',
   },
@@ -35,7 +35,7 @@ export const skeletonStyles: Record<string, any> = {
       right: '0',
       bottom: '0',
       left: '0',
-      background: 'linear-gradient(90deg, transparent, hsla(var(--color-surface-bright), 0.5), transparent)',
+      background: 'linear-gradient(90deg, transparent, color-mix(in oklch, var(--color-surface-bright) 50%, transparent), transparent)',
       animation: 'skeleton-wave 1.5s ease-in-out infinite',
       transform: 'translateX(-100%)',
     },
@@ -139,7 +139,7 @@ export const skeletonStyles: Record<string, any> = {
   // Card skeleton
   '.skeleton-card': {
     padding: '1rem',
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     borderRadius: '0.75rem',
   },
 
