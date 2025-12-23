@@ -11,25 +11,25 @@ export const tableStyles: Record<string, any> = {
     borderCollapse: 'collapse',
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   // Table header
   '.table thead': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
   },
 
   '.table th': {
     padding: '0.75rem 1rem',
     fontWeight: '600',
     textAlign: 'left',
-    color: 'hsl(var(--color-on-surface))',
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    color: 'var(--color-on-surface)',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   // Table body
   '.table tbody tr': {
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
@@ -39,25 +39,25 @@ export const tableStyles: Record<string, any> = {
 
   // Hoverable rows
   '.table-hover tbody tr:hover': {
-    backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.04)',
+    backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 4%, transparent)',
   },
 
   // Striped rows
   '.table-striped tbody tr:nth-child(even)': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
   },
 
   '.table-striped.table-hover tbody tr:nth-child(even):hover': {
-    backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+    backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
   },
 
   // Bordered variant
   '.table-bordered': {
-    border: '1px solid hsl(var(--color-outline-variant))',
+    border: '1px solid var(--color-outline-variant)',
   },
 
   '.table-bordered th, .table-bordered td': {
-    border: '1px solid hsl(var(--color-outline-variant))',
+    border: '1px solid var(--color-outline-variant)',
   },
 
   // Borderless variant
@@ -84,7 +84,7 @@ export const tableStyles: Record<string, any> = {
     position: 'sticky',
     top: '0',
     zIndex: '10',
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
   },
 
@@ -96,7 +96,7 @@ export const tableStyles: Record<string, any> = {
     paddingRight: '1.5rem',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.04)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 4%, transparent)',
     },
   },
 
@@ -119,11 +119,11 @@ export const tableStyles: Record<string, any> = {
   },
 
   '.table-selectable tbody tr:hover': {
-    backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+    backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
   },
 
   '.table-selectable tbody tr.selected': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
   },
 
   // Checkbox column
@@ -151,14 +151,14 @@ export const tableStyles: Record<string, any> = {
 
   // Surface variant
   '.table-surface': {
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
   },
 
   // Caption
   '.table-caption': {
     padding: '0.75rem 1rem',
     fontSize: '0.875rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     textAlign: 'left',
     captionSide: 'top',
   },
@@ -171,11 +171,11 @@ export const tableStyles: Record<string, any> = {
 
   // Footer
   '.table tfoot': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     fontWeight: '600',
   },
 
   '.table tfoot td': {
-    borderTop: '2px solid hsl(var(--color-outline-variant))',
+    borderTop: '2px solid var(--color-outline-variant)',
   },
 };

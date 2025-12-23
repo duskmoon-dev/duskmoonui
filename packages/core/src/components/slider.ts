@@ -21,7 +21,7 @@ export const sliderStyles: Record<string, any> = {
     position: 'relative',
     width: '100%',
     height: '0.25rem',
-    backgroundColor: 'hsl(var(--color-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
     borderRadius: '0.125rem',
   },
 
@@ -31,7 +31,7 @@ export const sliderStyles: Record<string, any> = {
     top: '0',
     left: '0',
     height: '100%',
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
     borderRadius: '0.125rem',
     transition: 'width 0.1s ease',
   },
@@ -43,8 +43,8 @@ export const sliderStyles: Record<string, any> = {
     transform: 'translate(-50%, -50%)',
     width: '1.25rem',
     height: '1.25rem',
-    backgroundColor: 'hsl(var(--color-primary))',
-    border: '2px solid hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-primary)',
+    border: '2px solid var(--color-surface)',
     borderRadius: '50%',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
     cursor: 'grab',
@@ -58,7 +58,7 @@ export const sliderStyles: Record<string, any> = {
     '&:active': {
       cursor: 'grabbing',
       transform: 'translate(-50%, -50%) scale(1.2)',
-      boxShadow: '0 0 0 8px rgba(var(--color-primary-rgb), 0.12)',
+      boxShadow: '0 0 0 8px color-mix(in oklch, var(--color-primary) 12%, transparent)',
     },
   },
 
@@ -72,8 +72,8 @@ export const sliderStyles: Record<string, any> = {
     padding: '0.25rem 0.5rem',
     fontSize: '0.75rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-inverse-on-surface))',
-    backgroundColor: 'hsl(var(--color-inverse-surface))',
+    color: 'var(--color-inverse-on-surface)',
+    backgroundColor: 'var(--color-inverse-surface)',
     borderRadius: '0.25rem',
     whiteSpace: 'nowrap',
     opacity: '0',
@@ -106,13 +106,13 @@ export const sliderStyles: Record<string, any> = {
   '.slider-mark': {
     width: '0.375rem',
     height: '0.375rem',
-    backgroundColor: 'hsl(var(--color-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
     borderRadius: '50%',
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   '.slider-mark-active': {
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
   },
 
   // Mark labels
@@ -123,7 +123,7 @@ export const sliderStyles: Record<string, any> = {
     transform: 'translateX(-50%)',
     marginTop: '0.5rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     whiteSpace: 'nowrap',
   },
 
@@ -134,7 +134,7 @@ export const sliderStyles: Record<string, any> = {
     width: '100%',
     marginTop: '0.5rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Range slider (two thumbs)
@@ -148,27 +148,27 @@ export const sliderStyles: Record<string, any> = {
 
   // Color variants
   '.slider-secondary .slider-track-filled, .slider-secondary .slider-thumb': {
-    backgroundColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
   },
 
   '.slider-secondary .slider-track': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
   },
 
   '.slider-secondary .slider-thumb:active': {
-    boxShadow: '0 0 0 8px rgba(var(--color-secondary-rgb), 0.12)',
+    boxShadow: '0 0 0 8px color-mix(in oklch, var(--color-secondary) 12%, transparent)',
   },
 
   '.slider-tertiary .slider-track-filled, .slider-tertiary .slider-thumb': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
   },
 
   '.slider-tertiary .slider-track': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
   },
 
   '.slider-tertiary .slider-thumb:active': {
-    boxShadow: '0 0 0 8px rgba(var(--color-tertiary-rgb), 0.12)',
+    boxShadow: '0 0 0 8px color-mix(in oklch, var(--color-tertiary) 12%, transparent)',
   },
 
   // Size variants
@@ -244,7 +244,7 @@ export const sliderStyles: Record<string, any> = {
 
   // Focus state
   '.slider:focus-visible .slider-thumb': {
-    outline: '2px solid hsl(var(--color-primary))',
+    outline: '2px solid var(--color-primary)',
     outlineOffset: '2px',
   },
 };

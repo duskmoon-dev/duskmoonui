@@ -14,8 +14,8 @@ export const snackbarStyles: Record<string, any> = {
     minWidth: '18rem',
     maxWidth: '36rem',
     padding: '0.875rem 1rem',
-    backgroundColor: 'hsl(var(--color-inverse-surface))',
-    color: 'hsl(var(--color-inverse-on-surface))',
+    backgroundColor: 'var(--color-inverse-surface)',
+    color: 'var(--color-inverse-on-surface)',
     borderRadius: '0.25rem',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.15)',
     zIndex: '9999',
@@ -113,7 +113,7 @@ export const snackbarStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '600',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-inverse-primary))',
+    color: 'var(--color-inverse-primary)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '0.25rem',
@@ -122,11 +122,11 @@ export const snackbarStyles: Record<string, any> = {
     whiteSpace: 'nowrap',
 
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+      backgroundColor: 'color-mix(in oklch, white 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(255, 255, 255, 0.12)',
+      backgroundColor: 'color-mix(in oklch, white 12%, transparent)',
     },
   },
 
@@ -147,49 +147,49 @@ export const snackbarStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+      backgroundColor: 'color-mix(in oklch, white 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(255, 255, 255, 0.12)',
+      backgroundColor: 'color-mix(in oklch, white 12%, transparent)',
     },
   },
 
   // Semantic color variants
   '.snackbar-success': {
-    backgroundColor: 'hsl(var(--color-success))',
-    color: 'hsl(var(--color-success-content))',
+    backgroundColor: 'var(--color-success)',
+    color: 'var(--color-success-content)',
   },
 
   '.snackbar-error': {
-    backgroundColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-error-content))',
+    backgroundColor: 'var(--color-error)',
+    color: 'var(--color-error-content)',
   },
 
   '.snackbar-warning': {
-    backgroundColor: 'hsl(var(--color-warning))',
-    color: 'hsl(var(--color-warning-content))',
+    backgroundColor: 'var(--color-warning)',
+    color: 'var(--color-warning-content)',
   },
 
   '.snackbar-info': {
-    backgroundColor: 'hsl(var(--color-info))',
-    color: 'hsl(var(--color-info-content))',
+    backgroundColor: 'var(--color-info)',
+    color: 'var(--color-info-content)',
   },
 
   // Primary/Secondary/Tertiary variants
   '.snackbar-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
   },
 
   '.snackbar-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
   },
 
   '.snackbar-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
   },
 
   // Icon

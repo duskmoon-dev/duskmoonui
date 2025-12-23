@@ -11,8 +11,8 @@ export const drawerStyles: Record<string, any> = {
     top: '0',
     bottom: '0',
     width: '16rem',
-    backgroundColor: 'hsl(var(--color-surface-container-low))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface-container-low)',
+    color: 'var(--color-on-surface)',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     zIndex: '40',
@@ -48,19 +48,19 @@ export const drawerStyles: Record<string, any> = {
 
   // Surface variants
   '.drawer-surface': {
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
   },
 
   '.drawer-surface-container': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
   },
 
   '.drawer-surface-container-low': {
-    backgroundColor: 'hsl(var(--color-surface-container-low))',
+    backgroundColor: 'var(--color-surface-container-low)',
   },
 
   '.drawer-surface-container-high': {
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
+    backgroundColor: 'var(--color-surface-container-high)',
   },
 
   // Drawer header
@@ -69,7 +69,7 @@ export const drawerStyles: Record<string, any> = {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '1rem',
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   '.drawer-title': {
@@ -92,7 +92,7 @@ export const drawerStyles: Record<string, any> = {
     alignItems: 'center',
     gap: '0.5rem',
     padding: '1rem',
-    borderTop: '1px solid hsl(var(--color-outline-variant))',
+    borderTop: '1px solid var(--color-outline-variant)',
   },
 
   // Drawer navigation items
@@ -104,7 +104,7 @@ export const drawerStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '1.75rem',
@@ -115,46 +115,46 @@ export const drawerStyles: Record<string, any> = {
     margin: '0.125rem 0',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
 
     '&:focus-visible': {
-      outline: '2px solid hsl(var(--color-primary))',
+      outline: '2px solid var(--color-primary)',
       outlineOffset: '2px',
     },
   },
 
   // Active drawer item - Primary
   '.drawer-item-active, .drawer-item-active-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 90%, transparent)',
     },
   },
 
   // Active drawer item - Secondary
   '.drawer-item-active-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   // Active drawer item - Tertiary
   '.drawer-item-active-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 90%, transparent)',
     },
   },
 
@@ -181,15 +181,15 @@ export const drawerStyles: Record<string, any> = {
     fontSize: '0.688rem',
     fontWeight: '600',
     borderRadius: '0.625rem',
-    backgroundColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-error-content))',
+    backgroundColor: 'var(--color-error)',
+    color: 'var(--color-error-content)',
   },
 
   // Drawer divider
   '.drawer-divider': {
     height: '1px',
     margin: '0.5rem 0',
-    backgroundColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-outline-variant)',
   },
 
   // Drawer section label
@@ -198,7 +198,7 @@ export const drawerStyles: Record<string, any> = {
     fontSize: '0.75rem',
     fontWeight: '600',
     lineHeight: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
   },
@@ -254,12 +254,12 @@ export const drawerStyles: Record<string, any> = {
     position: 'static',
     transform: 'none',
     boxShadow: 'none',
-    borderRight: '1px solid hsl(var(--color-outline-variant))',
+    borderRight: '1px solid var(--color-outline-variant)',
   },
 
   '.drawer-permanent.drawer-right': {
     borderRight: 'none',
-    borderLeft: '1px solid hsl(var(--color-outline-variant))',
+    borderLeft: '1px solid var(--color-outline-variant)',
   },
 
   // Modal variant with backdrop
@@ -298,11 +298,11 @@ export const drawerStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
   },
 

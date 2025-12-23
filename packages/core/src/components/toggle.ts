@@ -16,9 +16,9 @@ export const toggleStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     backgroundColor: 'transparent',
-    border: '1px solid hsl(var(--color-outline))',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.5rem',
     cursor: 'pointer',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -27,38 +27,38 @@ export const toggleStyles: Record<string, any> = {
 
   // Hover state
   '.toggle-btn:hover': {
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
-    borderColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 50%, transparent)',
+    borderColor: 'var(--color-outline-variant)',
   },
 
   // Active/Selected state
   '.toggle-btn-active, .toggle-btn.active': {
-    color: 'hsl(var(--color-on-primary-container))',
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    borderColor: 'hsl(var(--color-primary))',
+    color: 'var(--color-on-primary-container)',
+    backgroundColor: 'var(--color-primary-container)',
+    borderColor: 'var(--color-primary)',
   },
 
   '.toggle-btn-active:hover': {
-    backgroundColor: 'rgba(var(--color-primary-container-rgb), 0.9)',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary-container) 90%, transparent)',
   },
 
   // Secondary variant
   '.toggle-btn-secondary.toggle-btn-active': {
-    color: 'hsl(var(--color-on-secondary-container))',
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    borderColor: 'hsl(var(--color-secondary))',
+    color: 'var(--color-on-secondary-container)',
+    backgroundColor: 'var(--color-secondary-container)',
+    borderColor: 'var(--color-secondary)',
   },
 
   // Tertiary variant
   '.toggle-btn-tertiary.toggle-btn-active': {
-    color: 'hsl(var(--color-on-tertiary-container))',
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    borderColor: 'hsl(var(--color-tertiary))',
+    color: 'var(--color-on-tertiary-container)',
+    backgroundColor: 'var(--color-tertiary-container)',
+    borderColor: 'var(--color-tertiary)',
   },
 
   // Focus state
   '.toggle-btn:focus-visible': {
-    outline: '2px solid hsl(var(--color-primary))',
+    outline: '2px solid var(--color-primary)',
     outlineOffset: '2px',
   },
 
@@ -87,10 +87,10 @@ export const toggleStyles: Record<string, any> = {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '0',
-    border: '1px solid hsl(var(--color-outline))',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.5rem',
     padding: '0.25rem',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.3)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 30%, transparent)',
   },
 
   // Toggle buttons in group
@@ -141,8 +141,8 @@ export const toggleStyles: Record<string, any> = {
 
   // Segmented control style
   '.toggle-segmented': {
-    backgroundColor: 'hsl(var(--color-surface))',
-    border: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface)',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
     padding: '0.25rem',
   },
@@ -154,7 +154,7 @@ export const toggleStyles: Record<string, any> = {
   },
 
   '.toggle-segmented .toggle-btn.toggle-btn-active': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
     borderColor: 'transparent',
     boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
   },
@@ -166,8 +166,8 @@ export const toggleStyles: Record<string, any> = {
   },
 
   '.toggle-chip.toggle-btn-active': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    borderColor: 'hsl(var(--color-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    borderColor: 'var(--color-primary-container)',
   },
 
   // Outlined variant
@@ -176,18 +176,18 @@ export const toggleStyles: Record<string, any> = {
   },
 
   '.toggle-outlined.toggle-btn-active': {
-    backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary) 10%, transparent)',
   },
 
   // Filled variant
   '.toggle-filled': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
     border: 'none',
   },
 
   '.toggle-filled.toggle-btn-active': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-on-primary))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-on-primary)',
   },
 
   // With badge/indicator
@@ -202,9 +202,9 @@ export const toggleStyles: Record<string, any> = {
     right: '0.25rem',
     width: '0.5rem',
     height: '0.5rem',
-    backgroundColor: 'hsl(var(--color-error))',
+    backgroundColor: 'var(--color-error)',
     borderRadius: '50%',
-    border: '2px solid hsl(var(--color-surface))',
+    border: '2px solid var(--color-surface)',
   },
 
   // Full width

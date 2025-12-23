@@ -130,8 +130,9 @@ describe('Button Component', () => {
       expect(buttonCSS).toMatch(/\.btn[^{]*:disabled/);
     });
 
-    it('should use focus color for primary variant focus', () => {
-      expect(buttonCSS).toContain('var(--color-primary-focus)');
+    it('should use color-mix for primary variant hover/focus', () => {
+      // OKLCH uses color-mix() for hover/focus states instead of -focus tokens
+      expect(buttonCSS).toContain('color-mix(in oklch, var(--color-primary)');
     });
   });
 

@@ -13,8 +13,8 @@ export const popoverStyles: Record<string, any> = {
     minWidth: '10rem',
     maxWidth: '20rem',
     padding: '1rem',
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface-container-high)',
+    color: 'var(--color-on-surface)',
     borderRadius: '0.75rem',
     boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     zIndex: '100',
@@ -35,7 +35,7 @@ export const popoverStyles: Record<string, any> = {
     position: 'absolute',
     width: '0.75rem',
     height: '0.75rem',
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
+    backgroundColor: 'var(--color-surface-container-high)',
     transform: 'rotate(45deg)',
   },
 
@@ -124,7 +124,7 @@ export const popoverStyles: Record<string, any> = {
   '.popover-header': {
     marginBottom: '0.75rem',
     paddingBottom: '0.75rem',
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   '.popover-title': {
@@ -132,14 +132,14 @@ export const popoverStyles: Record<string, any> = {
     fontWeight: '600',
     lineHeight: '1.5rem',
     margin: '0',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   // Popover body
   '.popover-body': {
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Popover footer
@@ -150,7 +150,7 @@ export const popoverStyles: Record<string, any> = {
     gap: '0.5rem',
     marginTop: '0.75rem',
     paddingTop: '0.75rem',
-    borderTop: '1px solid hsl(var(--color-outline-variant))',
+    borderTop: '1px solid var(--color-outline-variant)',
   },
 
   // Close button
@@ -165,7 +165,7 @@ export const popoverStyles: Record<string, any> = {
     height: '1.5rem',
     padding: '0.25rem',
     fontSize: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '50%',
@@ -173,7 +173,7 @@ export const popoverStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
   },
 
@@ -192,39 +192,39 @@ export const popoverStyles: Record<string, any> = {
 
   // Color variants
   '.popover-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-primary-content))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-primary-content)',
   },
 
   '.popover-primary .popover-arrow': {
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
   },
 
   '.popover-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    color: 'hsl(var(--color-secondary-content))',
+    backgroundColor: 'var(--color-secondary)',
+    color: 'var(--color-secondary-content)',
   },
 
   '.popover-secondary .popover-arrow': {
-    backgroundColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
   },
 
   '.popover-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    color: 'hsl(var(--color-tertiary-content))',
+    backgroundColor: 'var(--color-tertiary)',
+    color: 'var(--color-tertiary-content)',
   },
 
   '.popover-tertiary .popover-arrow': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
   },
 
   // Surface variant
   '.popover-surface-highest': {
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    backgroundColor: 'var(--color-surface-container-highest)',
   },
 
   '.popover-surface-highest .popover-arrow': {
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    backgroundColor: 'var(--color-surface-container-highest)',
   },
 
   // Interactive popover (clickable content)

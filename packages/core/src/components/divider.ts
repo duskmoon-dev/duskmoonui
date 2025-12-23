@@ -9,7 +9,7 @@ export const dividerStyles: Record<string, any> = {
   '.divider': {
     height: '1px',
     width: '100%',
-    backgroundColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-outline-variant)',
     border: 'none',
     margin: '1rem 0',
   },
@@ -19,7 +19,7 @@ export const dividerStyles: Record<string, any> = {
     width: '1px',
     height: 'auto',
     minHeight: '1.5rem',
-    backgroundColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-outline-variant)',
     margin: '0 1rem',
     alignSelf: 'stretch',
   },
@@ -31,13 +31,13 @@ export const dividerStyles: Record<string, any> = {
 
   '.divider-dashed': {
     height: '0',
-    borderTop: '1px dashed hsl(var(--color-outline-variant))',
+    borderTop: '1px dashed var(--color-outline-variant)',
     backgroundColor: 'transparent',
   },
 
   '.divider-dotted': {
     height: '0',
-    borderTop: '1px dotted hsl(var(--color-outline-variant))',
+    borderTop: '1px dotted var(--color-outline-variant)',
     backgroundColor: 'transparent',
   },
 
@@ -45,14 +45,14 @@ export const dividerStyles: Record<string, any> = {
     width: '0',
     height: 'auto',
     borderTop: 'none',
-    borderLeft: '1px dashed hsl(var(--color-outline-variant))',
+    borderLeft: '1px dashed var(--color-outline-variant)',
   },
 
   '.divider-vertical.divider-dotted': {
     width: '0',
     height: 'auto',
     borderTop: 'none',
-    borderLeft: '1px dotted hsl(var(--color-outline-variant))',
+    borderLeft: '1px dotted var(--color-outline-variant)',
   },
 
   // Thickness variants
@@ -85,70 +85,70 @@ export const dividerStyles: Record<string, any> = {
 
   // Color variants
   '.divider-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
   },
 
   '.divider-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
   },
 
   '.divider-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
   },
 
   '.divider-primary.divider-dashed, .divider-primary.divider-dotted': {
     backgroundColor: 'transparent',
-    borderTopColor: 'hsl(var(--color-primary))',
+    borderTopColor: 'var(--color-primary)',
   },
 
   '.divider-secondary.divider-dashed, .divider-secondary.divider-dotted': {
     backgroundColor: 'transparent',
-    borderTopColor: 'hsl(var(--color-secondary))',
+    borderTopColor: 'var(--color-secondary)',
   },
 
   '.divider-tertiary.divider-dashed, .divider-tertiary.divider-dotted': {
     backgroundColor: 'transparent',
-    borderTopColor: 'hsl(var(--color-tertiary))',
+    borderTopColor: 'var(--color-tertiary)',
   },
 
   '.divider-vertical.divider-primary.divider-dashed, .divider-vertical.divider-primary.divider-dotted': {
-    borderLeftColor: 'hsl(var(--color-primary))',
+    borderLeftColor: 'var(--color-primary)',
     borderTopColor: 'transparent',
   },
 
   '.divider-vertical.divider-secondary.divider-dashed, .divider-vertical.divider-secondary.divider-dotted': {
-    borderLeftColor: 'hsl(var(--color-secondary))',
+    borderLeftColor: 'var(--color-secondary)',
     borderTopColor: 'transparent',
   },
 
   '.divider-vertical.divider-tertiary.divider-dashed, .divider-vertical.divider-tertiary.divider-dotted': {
-    borderLeftColor: 'hsl(var(--color-tertiary))',
+    borderLeftColor: 'var(--color-tertiary)',
     borderTopColor: 'transparent',
   },
 
   // Gradient dividers
   '.divider-gradient-primary': {
-    background: 'linear-gradient(to right, transparent, hsl(var(--color-primary)), transparent)',
+    background: 'linear-gradient(to right, transparent, var(--color-primary), transparent)',
   },
 
   '.divider-gradient-secondary': {
-    background: 'linear-gradient(to right, transparent, hsl(var(--color-secondary)), transparent)',
+    background: 'linear-gradient(to right, transparent, var(--color-secondary), transparent)',
   },
 
   '.divider-gradient-tertiary': {
-    background: 'linear-gradient(to right, transparent, hsl(var(--color-tertiary)), transparent)',
+    background: 'linear-gradient(to right, transparent, var(--color-tertiary), transparent)',
   },
 
   '.divider-vertical.divider-gradient-primary': {
-    background: 'linear-gradient(to bottom, transparent, hsl(var(--color-primary)), transparent)',
+    background: 'linear-gradient(to bottom, transparent, var(--color-primary), transparent)',
   },
 
   '.divider-vertical.divider-gradient-secondary': {
-    background: 'linear-gradient(to bottom, transparent, hsl(var(--color-secondary)), transparent)',
+    background: 'linear-gradient(to bottom, transparent, var(--color-secondary), transparent)',
   },
 
   '.divider-vertical.divider-gradient-tertiary': {
-    background: 'linear-gradient(to bottom, transparent, hsl(var(--color-tertiary)), transparent)',
+    background: 'linear-gradient(to bottom, transparent, var(--color-tertiary), transparent)',
   },
 
   // Spacing variants
@@ -183,7 +183,7 @@ export const dividerStyles: Record<string, any> = {
     gap: '1rem',
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     fontWeight: '500',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
@@ -192,7 +192,7 @@ export const dividerStyles: Record<string, any> = {
       content: '""',
       flex: '1 1 auto',
       height: '1px',
-      backgroundColor: 'hsl(var(--color-outline-variant))',
+      backgroundColor: 'var(--color-outline-variant)',
     },
   },
 
@@ -202,14 +202,14 @@ export const dividerStyles: Record<string, any> = {
     gap: '1rem',
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     fontWeight: '500',
 
     '&::after': {
       content: '""',
       flex: '1 1 auto',
       height: '1px',
-      backgroundColor: 'hsl(var(--color-outline-variant))',
+      backgroundColor: 'var(--color-outline-variant)',
     },
   },
 
@@ -219,14 +219,14 @@ export const dividerStyles: Record<string, any> = {
     gap: '1rem',
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     fontWeight: '500',
 
     '&::before': {
       content: '""',
       flex: '1 1 auto',
       height: '1px',
-      backgroundColor: 'hsl(var(--color-outline-variant))',
+      backgroundColor: 'var(--color-outline-variant)',
     },
   },
 

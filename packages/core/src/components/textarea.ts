@@ -14,9 +14,9 @@ export const textareaStyles: Record<string, any> = {
     fontWeight: '400',
     lineHeight: '1.5',
     fontFamily: 'inherit',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface))',
-    border: '1px solid hsl(var(--color-outline))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface)',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.5rem',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     resize: 'vertical',
@@ -25,34 +25,34 @@ export const textareaStyles: Record<string, any> = {
 
   // Placeholder
   '.textarea::placeholder': {
-    color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
+    color: 'color-mix(in oklch, var(--color-on-surface-variant) 60%, transparent)',
   },
 
   // Hover state
   '.textarea:hover': {
-    borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.3)',
+    borderColor: 'var(--color-primary)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 30%, transparent)',
   },
 
   // Focus state
   '.textarea:focus': {
-    borderColor: 'hsl(var(--color-primary))',
+    borderColor: 'var(--color-primary)',
     borderWidth: '2px',
     padding: 'calc(0.75rem - 1px) calc(1rem - 1px)',
-    boxShadow: '0 0 0 3px rgba(var(--color-primary-rgb), 0.1)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent)',
   },
 
   // Filled variant
   '.textarea-filled': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
+    backgroundColor: 'var(--color-surface-variant)',
     border: 'none',
-    borderBottom: '2px solid hsl(var(--color-outline))',
+    borderBottom: '2px solid var(--color-outline)',
     borderRadius: '0.5rem 0.5rem 0 0',
     padding: '1.5rem 1rem 0.5rem',
   },
 
   '.textarea-filled:focus': {
-    borderBottomColor: 'hsl(var(--color-primary))',
+    borderBottomColor: 'var(--color-primary)',
     borderBottomWidth: '2px',
     padding: '1.5rem 1rem 0.5rem',
     boxShadow: 'none',
@@ -65,18 +65,18 @@ export const textareaStyles: Record<string, any> = {
 
   // Color variants
   '.textarea-primary:focus': {
-    borderColor: 'hsl(var(--color-primary))',
-    boxShadow: '0 0 0 3px rgba(var(--color-primary-rgb), 0.1)',
+    borderColor: 'var(--color-primary)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent)',
   },
 
   '.textarea-secondary:focus': {
-    borderColor: 'hsl(var(--color-secondary))',
-    boxShadow: '0 0 0 3px rgba(var(--color-secondary-rgb), 0.1)',
+    borderColor: 'var(--color-secondary)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent)',
   },
 
   '.textarea-tertiary:focus': {
-    borderColor: 'hsl(var(--color-tertiary))',
-    boxShadow: '0 0 0 3px rgba(var(--color-tertiary-rgb), 0.1)',
+    borderColor: 'var(--color-tertiary)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent)',
   },
 
   // Size variants
@@ -104,34 +104,34 @@ export const textareaStyles: Record<string, any> = {
   '.textarea:disabled': {
     opacity: '0.6',
     cursor: 'not-allowed',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
-    color: 'rgba(var(--color-on-surface-rgb), 0.6)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 50%, transparent)',
+    color: 'color-mix(in oklch, var(--color-on-surface) 60%, transparent)',
   },
 
   // Readonly state
   '.textarea:read-only': {
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.3)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 30%, transparent)',
     cursor: 'default',
   },
 
   // Error state
   '.textarea-error': {
-    borderColor: 'hsl(var(--color-error))',
+    borderColor: 'var(--color-error)',
   },
 
   '.textarea-error:focus': {
-    borderColor: 'hsl(var(--color-error))',
-    boxShadow: '0 0 0 3px rgba(var(--color-error-rgb), 0.1)',
+    borderColor: 'var(--color-error)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent)',
   },
 
   // Success state
   '.textarea-success': {
-    borderColor: 'hsl(var(--color-success))',
+    borderColor: 'var(--color-success)',
   },
 
   '.textarea-success:focus': {
-    borderColor: 'hsl(var(--color-success))',
-    boxShadow: '0 0 0 3px rgba(var(--color-success-rgb), 0.1)',
+    borderColor: 'var(--color-success)',
+    boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent)',
   },
 
   // Resize variants
@@ -163,7 +163,7 @@ export const textareaStyles: Record<string, any> = {
     marginBottom: '0.5rem',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   // Floating label for filled variant
@@ -172,17 +172,17 @@ export const textareaStyles: Record<string, any> = {
     top: '1rem',
     left: '1rem',
     fontSize: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     pointerEvents: 'none',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     transformOrigin: 'left top',
-    backgroundColor: 'hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-surface)',
     padding: '0 0.25rem',
   },
 
   '.textarea:focus ~ .textarea-label-floating, .textarea:not(:placeholder-shown) ~ .textarea-label-floating': {
     transform: 'translateY(-1.5rem) scale(0.75)',
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
   },
 
   // Helper text
@@ -190,15 +190,15 @@ export const textareaStyles: Record<string, any> = {
     display: 'block',
     marginTop: '0.25rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   '.textarea-error ~ .textarea-helper, .textarea-container-error .textarea-helper': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 
   '.textarea-success ~ .textarea-helper, .textarea-container-success .textarea-helper': {
-    color: 'hsl(var(--color-success))',
+    color: 'var(--color-success)',
   },
 
   // Character counter
@@ -207,11 +207,11 @@ export const textareaStyles: Record<string, any> = {
     justifyContent: 'flex-end',
     marginTop: '0.25rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   '.textarea-counter-exceeded': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 
   // Auto-resize

@@ -29,7 +29,7 @@
 
   .input:focus-visible {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgb(var(--color-primary) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
     outline: none;
   }
 
@@ -56,7 +56,7 @@
 
   .input-primary:focus-visible {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgb(var(--color-primary) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
   .input-secondary {
@@ -65,7 +65,7 @@
 
   .input-secondary:focus-visible {
     border-color: var(--color-secondary);
-    box-shadow: 0 0 0 3px rgb(var(--color-secondary) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
   .input-tertiary {
@@ -74,7 +74,7 @@
 
   .input-tertiary:focus-visible {
     border-color: var(--color-tertiary);
-    box-shadow: 0 0 0 3px rgb(var(--color-tertiary) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
   /* Semantic Colors */
@@ -84,7 +84,7 @@
 
   .input-info:focus-visible {
     border-color: var(--color-info);
-    box-shadow: 0 0 0 3px rgb(var(--color-info) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
   .input-success {
@@ -93,7 +93,7 @@
 
   .input-success:focus-visible {
     border-color: var(--color-success);
-    box-shadow: 0 0 0 3px rgb(var(--color-success) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
 
   .input-warning {
@@ -102,7 +102,7 @@
 
   .input-warning:focus-visible {
     border-color: var(--color-warning);
-    box-shadow: 0 0 0 3px rgb(var(--color-warning) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
   .input-error {
@@ -111,7 +111,7 @@
 
   .input-error:focus-visible {
     border-color: var(--color-error);
-    box-shadow: 0 0 0 3px rgb(var(--color-error) / 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
   /* Size Variants */

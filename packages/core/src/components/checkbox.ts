@@ -30,7 +30,7 @@ export const checkboxStyles: Record<string, any> = {
     width: '1.25rem',
     height: '1.25rem',
     backgroundColor: 'transparent',
-    border: '2px solid hsl(var(--color-outline))',
+    border: '2px solid var(--color-outline)',
     borderRadius: '0.25rem',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
@@ -40,15 +40,15 @@ export const checkboxStyles: Record<string, any> = {
     opacity: '0',
     transform: 'scale(0)',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-    color: 'hsl(var(--color-on-primary))',
+    color: 'var(--color-on-primary)',
     fontSize: '1rem',
     lineHeight: '1',
   },
 
   // Checked state - Primary
   '.checkbox-input:checked + .checkbox-box, .checkbox-input:checked + .checkbox-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    borderColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
+    borderColor: 'var(--color-primary)',
   },
 
   '.checkbox-input:checked + .checkbox-box .checkbox-checkmark, .checkbox-input:checked + .checkbox-primary .checkbox-checkmark': {
@@ -59,37 +59,37 @@ export const checkboxStyles: Record<string, any> = {
   // Secondary variant
   '.checkbox-secondary': {
     backgroundColor: 'transparent',
-    border: '2px solid hsl(var(--color-outline))',
+    border: '2px solid var(--color-outline)',
   },
 
   '.checkbox-input:checked + .checkbox-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    borderColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
+    borderColor: 'var(--color-secondary)',
   },
 
   '.checkbox-input:checked + .checkbox-secondary .checkbox-checkmark': {
-    color: 'hsl(var(--color-on-secondary))',
+    color: 'var(--color-on-secondary)',
   },
 
   // Tertiary variant
   '.checkbox-tertiary': {
     backgroundColor: 'transparent',
-    border: '2px solid hsl(var(--color-outline))',
+    border: '2px solid var(--color-outline)',
   },
 
   '.checkbox-input:checked + .checkbox-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    borderColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
+    borderColor: 'var(--color-tertiary)',
   },
 
   '.checkbox-input:checked + .checkbox-tertiary .checkbox-checkmark': {
-    color: 'hsl(var(--color-on-tertiary))',
+    color: 'var(--color-on-tertiary)',
   },
 
   // Indeterminate state
   '.checkbox-input:indeterminate + .checkbox-box, .checkbox-input:indeterminate + .checkbox-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    borderColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
+    borderColor: 'var(--color-primary)',
   },
 
   '.checkbox-input:indeterminate + .checkbox-box .checkbox-checkmark': {
@@ -99,28 +99,28 @@ export const checkboxStyles: Record<string, any> = {
 
   // Hover state
   '.checkbox:hover .checkbox-box': {
-    borderColor: 'hsl(var(--color-primary))',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.5)',
+    borderColor: 'var(--color-primary)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 50%, transparent)',
   },
 
   '.checkbox:hover .checkbox-input:checked + .checkbox-box, .checkbox:hover .checkbox-input:checked + .checkbox-primary': {
-    backgroundColor: 'hsl(var(--color-primary-focus))',
-    borderColor: 'hsl(var(--color-primary-focus))',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
+    borderColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
   },
 
   '.checkbox:hover .checkbox-input:checked + .checkbox-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-focus))',
-    borderColor: 'hsl(var(--color-secondary-focus))',
+    backgroundColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
+    borderColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
   },
 
   '.checkbox:hover .checkbox-input:checked + .checkbox-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-focus))',
-    borderColor: 'hsl(var(--color-tertiary-focus))',
+    backgroundColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
+    borderColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
   },
 
   // Focus state
   '.checkbox-input:focus-visible + .checkbox-box': {
-    outline: '2px solid hsl(var(--color-primary))',
+    outline: '2px solid var(--color-primary)',
     outlineOffset: '2px',
   },
 
@@ -128,8 +128,8 @@ export const checkboxStyles: Record<string, any> = {
   '.checkbox-input:disabled + .checkbox-box': {
     opacity: '0.38',
     cursor: 'not-allowed',
-    borderColor: 'hsl(var(--color-outline))',
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.3)',
+    borderColor: 'var(--color-outline)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 30%, transparent)',
   },
 
   '.checkbox:has(.checkbox-input:disabled)': {
@@ -138,12 +138,12 @@ export const checkboxStyles: Record<string, any> = {
 
   // Error state
   '.checkbox-error .checkbox-box': {
-    borderColor: 'hsl(var(--color-error))',
+    borderColor: 'var(--color-error)',
   },
 
   '.checkbox-error .checkbox-input:checked + .checkbox-box': {
-    backgroundColor: 'hsl(var(--color-error))',
-    borderColor: 'hsl(var(--color-error))',
+    backgroundColor: 'var(--color-error)',
+    borderColor: 'var(--color-error)',
   },
 
   // Size variants
@@ -171,7 +171,7 @@ export const checkboxStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     userSelect: 'none',
   },
 
@@ -187,11 +187,11 @@ export const checkboxStyles: Record<string, any> = {
     marginTop: '0.25rem',
     marginLeft: '2rem',
     fontSize: '0.75rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   '.checkbox-error .checkbox-helper': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 
   // Loading state

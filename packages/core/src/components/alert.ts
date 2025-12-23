@@ -93,48 +93,48 @@ export const alertStyles: Record<string, any> = {
   },
 
   '.alert-filled.alert-info': {
-    backgroundColor: 'hsl(var(--color-info))',
-    color: 'hsl(var(--color-info-content))',
+    backgroundColor: 'var(--color-info)',
+    color: 'var(--color-info-content)',
   },
 
   '.alert-filled.alert-success': {
-    backgroundColor: 'hsl(var(--color-success))',
-    color: 'hsl(var(--color-success-content))',
+    backgroundColor: 'var(--color-success)',
+    color: 'var(--color-success-content)',
   },
 
   '.alert-filled.alert-warning': {
-    backgroundColor: 'hsl(var(--color-warning))',
-    color: 'hsl(var(--color-warning-content))',
+    backgroundColor: 'var(--color-warning)',
+    color: 'var(--color-warning-content)',
   },
 
   '.alert-filled.alert-error': {
-    backgroundColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-error-content))',
+    backgroundColor: 'var(--color-error)',
+    color: 'var(--color-error-content)',
   },
 
   // Tonal variant (softer, uses container colors)
   '.alert-tonal, .alert-info': {
-    backgroundColor: 'rgba(var(--color-info-rgb), 0.1)',
-    color: 'hsl(var(--color-on-surface))',
-    borderColor: 'rgba(var(--color-info-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-info) 10%, transparent)',
+    color: 'var(--color-on-surface)',
+    borderColor: 'color-mix(in oklch, var(--color-info) 20%, transparent)',
   },
 
   '.alert-success': {
-    backgroundColor: 'rgba(var(--color-success-rgb), 0.1)',
-    color: 'hsl(var(--color-on-surface))',
-    borderColor: 'rgba(var(--color-success-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-success) 10%, transparent)',
+    color: 'var(--color-on-surface)',
+    borderColor: 'color-mix(in oklch, var(--color-success) 20%, transparent)',
   },
 
   '.alert-warning': {
-    backgroundColor: 'rgba(var(--color-warning-rgb), 0.1)',
-    color: 'hsl(var(--color-on-surface))',
-    borderColor: 'rgba(var(--color-warning-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-warning) 10%, transparent)',
+    color: 'var(--color-on-surface)',
+    borderColor: 'color-mix(in oklch, var(--color-warning) 20%, transparent)',
   },
 
   '.alert-error': {
-    backgroundColor: 'rgba(var(--color-error-rgb), 0.1)',
-    color: 'hsl(var(--color-on-surface))',
-    borderColor: 'rgba(var(--color-error-rgb), 0.2)',
+    backgroundColor: 'color-mix(in oklch, var(--color-error) 10%, transparent)',
+    color: 'var(--color-on-surface)',
+    borderColor: 'color-mix(in oklch, var(--color-error) 20%, transparent)',
   },
 
   // Outlined variant
@@ -143,49 +143,49 @@ export const alertStyles: Record<string, any> = {
   },
 
   '.alert-outlined.alert-info': {
-    borderColor: 'hsl(var(--color-info))',
-    color: 'hsl(var(--color-on-surface))',
+    borderColor: 'var(--color-info)',
+    color: 'var(--color-on-surface)',
   },
 
   '.alert-outlined.alert-success': {
-    borderColor: 'hsl(var(--color-success))',
-    color: 'hsl(var(--color-on-surface))',
+    borderColor: 'var(--color-success)',
+    color: 'var(--color-on-surface)',
   },
 
   '.alert-outlined.alert-warning': {
-    borderColor: 'hsl(var(--color-warning))',
-    color: 'hsl(var(--color-on-surface))',
+    borderColor: 'var(--color-warning)',
+    color: 'var(--color-on-surface)',
   },
 
   '.alert-outlined.alert-error': {
-    borderColor: 'hsl(var(--color-error))',
-    color: 'hsl(var(--color-on-surface))',
+    borderColor: 'var(--color-error)',
+    color: 'var(--color-on-surface)',
   },
 
   // Standard variant (surface with colored border)
   '.alert-standard': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface-container)',
+    color: 'var(--color-on-surface)',
   },
 
   '.alert-standard.alert-info': {
     borderLeftWidth: '4px',
-    borderLeftColor: 'hsl(var(--color-info))',
+    borderLeftColor: 'var(--color-info)',
   },
 
   '.alert-standard.alert-success': {
     borderLeftWidth: '4px',
-    borderLeftColor: 'hsl(var(--color-success))',
+    borderLeftColor: 'var(--color-success)',
   },
 
   '.alert-standard.alert-warning': {
     borderLeftWidth: '4px',
-    borderLeftColor: 'hsl(var(--color-warning))',
+    borderLeftColor: 'var(--color-warning)',
   },
 
   '.alert-standard.alert-error': {
     borderLeftWidth: '4px',
-    borderLeftColor: 'hsl(var(--color-error))',
+    borderLeftColor: 'var(--color-error)',
   },
 
   // Size variants
@@ -221,39 +221,39 @@ export const alertStyles: Record<string, any> = {
   },
 
   '.alert-tonal.alert-info .alert-icon, .alert-outlined.alert-info .alert-icon, .alert-standard.alert-info .alert-icon': {
-    color: 'hsl(var(--color-info))',
+    color: 'var(--color-info)',
   },
 
   '.alert-tonal.alert-success .alert-icon, .alert-outlined.alert-success .alert-icon, .alert-standard.alert-success .alert-icon': {
-    color: 'hsl(var(--color-success))',
+    color: 'var(--color-success)',
   },
 
   '.alert-tonal.alert-warning .alert-icon, .alert-outlined.alert-warning .alert-icon, .alert-standard.alert-warning .alert-icon': {
-    color: 'hsl(var(--color-warning))',
+    color: 'var(--color-warning)',
   },
 
   '.alert-tonal.alert-error .alert-icon, .alert-outlined.alert-error .alert-icon, .alert-standard.alert-error .alert-icon': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 
   // Title colors for tonal/outlined/standard variants
   '.alert-tonal .alert-title, .alert-outlined .alert-title, .alert-standard .alert-title': {
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
   },
 
   '.alert-tonal.alert-info .alert-title, .alert-outlined.alert-info .alert-title, .alert-standard.alert-info .alert-title': {
-    color: 'hsl(var(--color-info))',
+    color: 'var(--color-info)',
   },
 
   '.alert-tonal.alert-success .alert-title, .alert-outlined.alert-success .alert-title, .alert-standard.alert-success .alert-title': {
-    color: 'hsl(var(--color-success))',
+    color: 'var(--color-success)',
   },
 
   '.alert-tonal.alert-warning .alert-title, .alert-outlined.alert-warning .alert-title, .alert-standard.alert-warning .alert-title': {
-    color: 'hsl(var(--color-warning))',
+    color: 'var(--color-warning)',
   },
 
   '.alert-tonal.alert-error .alert-title, .alert-outlined.alert-error .alert-title, .alert-standard.alert-error .alert-title': {
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
   },
 };

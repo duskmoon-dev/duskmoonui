@@ -12,38 +12,38 @@ export const inputStyles: Record<string, any> = {
     padding: '0.875rem 1rem 0.5rem',
     fontSize: '1rem',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface-container-highest)',
     border: 'none',
-    borderBottom: '1px solid hsl(var(--color-on-surface-variant))',
+    borderBottom: '1px solid var(--color-on-surface-variant)',
     borderRadius: '0.25rem 0.25rem 0 0',
     outline: 'none',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&::placeholder': {
-      color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
+      color: 'color-mix(in oklch, var(--color-on-surface-variant) 60%, transparent)',
     },
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
-      borderBottomColor: 'hsl(var(--color-on-surface))',
+      backgroundColor: 'var(--color-surface-container-high)',
+      borderBottomColor: 'var(--color-on-surface)',
     },
 
     '&:focus': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
+      backgroundColor: 'var(--color-surface-container-high)',
       borderBottomWidth: '2px',
-      borderBottomColor: 'hsl(var(--color-primary))',
+      borderBottomColor: 'var(--color-primary)',
       paddingBottom: 'calc(0.5rem - 1px)', // Compensate for thicker border
     },
 
     '&:disabled': {
       opacity: '0.38',
       cursor: 'not-allowed',
-      backgroundColor: 'hsl(var(--color-surface-variant))',
+      backgroundColor: 'var(--color-surface-variant)',
     },
 
     '&[readonly]': {
-      backgroundColor: 'hsl(var(--color-surface-variant))',
+      backgroundColor: 'var(--color-surface-variant)',
       cursor: 'default',
     },
   },
@@ -52,33 +52,33 @@ export const inputStyles: Record<string, any> = {
   '.input-outlined': {
     padding: '0.75rem 1rem',
     backgroundColor: 'transparent',
-    border: '1px solid hsl(var(--color-outline))',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.25rem',
 
     '&:hover': {
       backgroundColor: 'transparent',
-      borderColor: 'hsl(var(--color-on-surface))',
+      borderColor: 'var(--color-on-surface)',
     },
 
     '&:focus': {
       backgroundColor: 'transparent',
       borderWidth: '2px',
-      borderColor: 'hsl(var(--color-primary))',
+      borderColor: 'var(--color-primary)',
       padding: 'calc(0.75rem - 1px) calc(1rem - 1px)',
     },
 
     '&:disabled': {
       backgroundColor: 'transparent',
-      borderColor: 'hsl(var(--color-outline-variant))',
+      borderColor: 'var(--color-outline-variant)',
     },
   },
 
   // Filled variant (explicit)
   '.input-filled': {
     padding: '0.875rem 1rem 0.5rem',
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    backgroundColor: 'var(--color-surface-container-highest)',
     border: 'none',
-    borderBottom: '1px solid hsl(var(--color-on-surface-variant))',
+    borderBottom: '1px solid var(--color-on-surface-variant)',
     borderRadius: '0.25rem 0.25rem 0 0',
   },
 
@@ -103,34 +103,34 @@ export const inputStyles: Record<string, any> = {
 
   // State variants
   '.input-error': {
-    borderBottomColor: 'hsl(var(--color-error))',
+    borderBottomColor: 'var(--color-error)',
 
     '&:focus': {
-      borderBottomColor: 'hsl(var(--color-error))',
+      borderBottomColor: 'var(--color-error)',
     },
   },
 
   '.input-error.input-outlined': {
-    borderColor: 'hsl(var(--color-error))',
+    borderColor: 'var(--color-error)',
 
     '&:focus': {
-      borderColor: 'hsl(var(--color-error))',
+      borderColor: 'var(--color-error)',
     },
   },
 
   '.input-success': {
-    borderBottomColor: 'hsl(var(--color-success))',
+    borderBottomColor: 'var(--color-success)',
 
     '&:focus': {
-      borderBottomColor: 'hsl(var(--color-success))',
+      borderBottomColor: 'var(--color-success)',
     },
   },
 
   '.input-success.input-outlined': {
-    borderColor: 'hsl(var(--color-success))',
+    borderColor: 'var(--color-success)',
 
     '&:focus': {
-      borderColor: 'hsl(var(--color-success))',
+      borderColor: 'var(--color-success)',
     },
   },
 
@@ -145,21 +145,21 @@ export const inputStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     marginBottom: '0.25rem',
   },
 
   '.input-helper': {
     fontSize: '0.75rem',
     lineHeight: '1rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     marginTop: '0.25rem',
   },
 
   '.input-error-message': {
     fontSize: '0.75rem',
     lineHeight: '1rem',
-    color: 'hsl(var(--color-error))',
+    color: 'var(--color-error)',
     marginTop: '0.25rem',
   },
 
@@ -170,10 +170,10 @@ export const inputStyles: Record<string, any> = {
     padding: '0.75rem 1rem',
     fontSize: '1rem',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface-container-highest)',
     border: 'none',
-    borderBottom: '1px solid hsl(var(--color-on-surface-variant))',
+    borderBottom: '1px solid var(--color-on-surface-variant)',
     borderRadius: '0.25rem 0.25rem 0 0',
     outline: 'none',
     resize: 'vertical',
@@ -181,42 +181,42 @@ export const inputStyles: Record<string, any> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&::placeholder': {
-      color: 'rgba(var(--color-on-surface-variant-rgb), 0.6)',
+      color: 'color-mix(in oklch, var(--color-on-surface-variant) 60%, transparent)',
     },
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
-      borderBottomColor: 'hsl(var(--color-on-surface))',
+      backgroundColor: 'var(--color-surface-container-high)',
+      borderBottomColor: 'var(--color-on-surface)',
     },
 
     '&:focus': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
+      backgroundColor: 'var(--color-surface-container-high)',
       borderBottomWidth: '2px',
-      borderBottomColor: 'hsl(var(--color-primary))',
+      borderBottomColor: 'var(--color-primary)',
       paddingBottom: 'calc(0.75rem - 1px)',
     },
 
     '&:disabled': {
       opacity: '0.38',
       cursor: 'not-allowed',
-      backgroundColor: 'hsl(var(--color-surface-variant))',
+      backgroundColor: 'var(--color-surface-variant)',
     },
   },
 
   '.textarea-outlined': {
     backgroundColor: 'transparent',
-    border: '1px solid hsl(var(--color-outline))',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.25rem',
 
     '&:hover': {
       backgroundColor: 'transparent',
-      borderColor: 'hsl(var(--color-on-surface))',
+      borderColor: 'var(--color-on-surface)',
     },
 
     '&:focus': {
       backgroundColor: 'transparent',
       borderWidth: '2px',
-      borderColor: 'hsl(var(--color-primary))',
+      borderColor: 'var(--color-primary)',
       padding: 'calc(0.75rem - 1px) calc(1rem - 1px)',
     },
   },
@@ -228,10 +228,10 @@ export const inputStyles: Record<string, any> = {
     padding: '0.875rem 2.5rem 0.5rem 1rem',
     fontSize: '1rem',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface-container-highest))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface-container-highest)',
     border: 'none',
-    borderBottom: '1px solid hsl(var(--color-on-surface-variant))',
+    borderBottom: '1px solid var(--color-on-surface-variant)',
     borderRadius: '0.25rem 0.25rem 0 0',
     outline: 'none',
     cursor: 'pointer',
@@ -243,39 +243,39 @@ export const inputStyles: Record<string, any> = {
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
-      borderBottomColor: 'hsl(var(--color-on-surface))',
+      backgroundColor: 'var(--color-surface-container-high)',
+      borderBottomColor: 'var(--color-on-surface)',
     },
 
     '&:focus': {
-      backgroundColor: 'hsl(var(--color-surface-container-high))',
+      backgroundColor: 'var(--color-surface-container-high)',
       borderBottomWidth: '2px',
-      borderBottomColor: 'hsl(var(--color-primary))',
+      borderBottomColor: 'var(--color-primary)',
       paddingBottom: 'calc(0.5rem - 1px)',
     },
 
     '&:disabled': {
       opacity: '0.38',
       cursor: 'not-allowed',
-      backgroundColor: 'hsl(var(--color-surface-variant))',
+      backgroundColor: 'var(--color-surface-variant)',
     },
   },
 
   '.select-outlined': {
     padding: '0.75rem 2.5rem 0.75rem 1rem',
     backgroundColor: 'transparent',
-    border: '1px solid hsl(var(--color-outline))',
+    border: '1px solid var(--color-outline)',
     borderRadius: '0.25rem',
 
     '&:hover': {
       backgroundColor: 'transparent',
-      borderColor: 'hsl(var(--color-on-surface))',
+      borderColor: 'var(--color-on-surface)',
     },
 
     '&:focus': {
       backgroundColor: 'transparent',
       borderWidth: '2px',
-      borderColor: 'hsl(var(--color-primary))',
+      borderColor: 'var(--color-primary)',
       padding: 'calc(0.75rem - 1px) calc(2.5rem - 1px) calc(0.75rem - 1px) calc(1rem - 1px)',
     },
   },
@@ -284,23 +284,23 @@ export const inputStyles: Record<string, any> = {
   '.checkbox, .radio': {
     width: '1.25rem',
     height: '1.25rem',
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
     backgroundColor: 'transparent',
-    border: '2px solid hsl(var(--color-on-surface-variant))',
+    border: '2px solid var(--color-on-surface-variant)',
     cursor: 'pointer',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      borderColor: 'hsl(var(--color-on-surface))',
+      borderColor: 'var(--color-on-surface)',
     },
 
     '&:checked': {
-      backgroundColor: 'hsl(var(--color-primary))',
-      borderColor: 'hsl(var(--color-primary))',
+      backgroundColor: 'var(--color-primary)',
+      borderColor: 'var(--color-primary)',
     },
 
     '&:focus': {
-      outline: '2px solid rgba(var(--color-primary-rgb), 0.2)',
+      outline: '2px solid color-mix(in oklch, var(--color-primary) 20%, transparent)',
       outlineOffset: '2px',
     },
 

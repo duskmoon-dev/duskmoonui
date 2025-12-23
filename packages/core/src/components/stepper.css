@@ -89,8 +89,8 @@
   }
 
   .stepper-step-error .stepper-step-icon {
-    background-color: hsl(var(--color-error));
-    border-color: hsl(var(--color-error));
+    background-color: var(--color-error);
+    border-color: var(--color-error);
     color: var(--color-on-error);
   }
 
@@ -112,7 +112,7 @@
   }
 
   .stepper-step-error .stepper-step-label {
-    color: hsl(var(--color-error));
+    color: var(--color-error);
   }
 
   .stepper-step-description {

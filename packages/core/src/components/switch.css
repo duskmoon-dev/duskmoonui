@@ -178,14 +178,14 @@
 
   .switch-success .switch-input:checked + .switch-track,
   .switch-input:checked + .switch-track.switch-success {
-    background-color: hsl(var(--color-success));
-    border-color: hsl(var(--color-success));
+    background-color: var(--color-success);
+    border-color: var(--color-success);
   }
 
   .switch-error .switch-input:checked + .switch-track,
   .switch-input:checked + .switch-track.switch-error {
-    background-color: hsl(var(--color-error));
-    border-color: hsl(var(--color-error));
+    background-color: var(--color-error);
+    border-color: var(--color-error);
   }
 
   /* With Icons */

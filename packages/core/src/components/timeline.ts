@@ -29,7 +29,7 @@ export const timelineStyles: Record<string, any> = {
     top: '2rem',
     bottom: '-1.5rem',
     width: '2px',
-    backgroundColor: 'hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-outline-variant)',
   },
 
   // Last item - no connector
@@ -44,32 +44,32 @@ export const timelineStyles: Record<string, any> = {
     top: '0.25rem',
     width: '1.5rem',
     height: '1.5rem',
-    backgroundColor: 'hsl(var(--color-primary))',
-    border: '3px solid hsl(var(--color-surface))',
+    backgroundColor: 'var(--color-primary)',
+    border: '3px solid var(--color-surface)',
     borderRadius: '50%',
     zIndex: '1',
-    boxShadow: '0 0 0 2px hsl(var(--color-primary))',
+    boxShadow: '0 0 0 2px var(--color-primary)',
   },
 
   // Timeline marker variants
   '.timeline-marker-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    boxShadow: '0 0 0 2px hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
+    boxShadow: '0 0 0 2px var(--color-secondary)',
   },
 
   '.timeline-marker-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    boxShadow: '0 0 0 2px hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
+    boxShadow: '0 0 0 2px var(--color-tertiary)',
   },
 
   '.timeline-marker-success': {
-    backgroundColor: 'hsl(var(--color-success))',
-    boxShadow: '0 0 0 2px hsl(var(--color-success))',
+    backgroundColor: 'var(--color-success)',
+    boxShadow: '0 0 0 2px var(--color-success)',
   },
 
   '.timeline-marker-error': {
-    backgroundColor: 'hsl(var(--color-error))',
-    boxShadow: '0 0 0 2px hsl(var(--color-error))',
+    backgroundColor: 'var(--color-error)',
+    boxShadow: '0 0 0 2px var(--color-error)',
   },
 
   // Timeline marker with icon
@@ -77,8 +77,8 @@ export const timelineStyles: Record<string, any> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'hsl(var(--color-primary))',
-    color: 'hsl(var(--color-on-primary))',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-on-primary)',
     fontSize: '0.875rem',
   },
 
@@ -93,7 +93,7 @@ export const timelineStyles: Record<string, any> = {
     display: 'block',
     fontSize: '0.75rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     marginBottom: '0.25rem',
   },
 
@@ -101,14 +101,14 @@ export const timelineStyles: Record<string, any> = {
   '.timeline-title': {
     fontSize: '1rem',
     fontWeight: '600',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     marginBottom: '0.25rem',
   },
 
   // Timeline description
   '.timeline-description': {
     fontSize: '0.875rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
     lineHeight: '1.5',
   },
 
@@ -219,17 +219,17 @@ export const timelineStyles: Record<string, any> = {
 
   // With card content
   '.timeline-content-card': {
-    backgroundColor: 'hsl(var(--color-surface))',
-    border: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface)',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
     padding: '1rem',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: '0 1px 2px 0 color-mix(in oklch, black 5%, transparent)',
   },
 
   // Pending state (future items)
   '.timeline-item-pending .timeline-marker': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    boxShadow: '0 0 0 2px hsl(var(--color-outline))',
+    backgroundColor: 'var(--color-surface-variant)',
+    boxShadow: '0 0 0 2px var(--color-outline)',
   },
 
   '.timeline-item-pending .timeline-content': {
@@ -243,10 +243,10 @@ export const timelineStyles: Record<string, any> = {
 
   '@keyframes timeline-pulse': {
     '0%, 100%': {
-      boxShadow: '0 0 0 2px hsl(var(--color-primary)), 0 0 0 6px rgba(var(--color-primary-rgb), 0.2)',
+      boxShadow: '0 0 0 2px var(--color-primary), 0 0 0 6px color-mix(in oklch, var(--color-primary) 20%, transparent)',
     },
     '50%': {
-      boxShadow: '0 0 0 2px hsl(var(--color-primary)), 0 0 0 10px transparent',
+      boxShadow: '0 0 0 2px var(--color-primary), 0 0 0 10px transparent',
     },
   },
 };

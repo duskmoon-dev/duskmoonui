@@ -14,8 +14,8 @@ export const chipStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
-    backgroundColor: 'hsl(var(--color-surface-variant))',
+    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--color-surface-variant)',
     border: 'none',
     borderRadius: '0.5rem',
     cursor: 'default',
@@ -26,7 +26,7 @@ export const chipStyles: Record<string, any> = {
   // Outlined variant
   '.chip-outlined': {
     backgroundColor: 'transparent',
-    border: '1px solid hsl(var(--color-outline))',
+    border: '1px solid var(--color-outline)',
   },
 
   // Clickable chip (assist/suggestion chips)
@@ -34,7 +34,7 @@ export const chipStyles: Record<string, any> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
       boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
     },
 
@@ -44,7 +44,7 @@ export const chipStyles: Record<string, any> = {
   },
 
   '.chip-outlined.chip-clickable:hover': {
-    backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.04)',
+    backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 4%, transparent)',
   },
 
   // Selectable/Filter chips
@@ -52,74 +52,74 @@ export const chipStyles: Record<string, any> = {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
   },
 
   // Selected state - Primary
   '.chip-selected, .chip-selected-primary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   // Selected state - Secondary
   '.chip-selected-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-secondary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-secondary-container) 90%, transparent)',
     },
   },
 
   // Selected state - Tertiary
   '.chip-selected-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-tertiary-container-rgb), 0.9)',
+      backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container) 90%, transparent)',
     },
   },
 
   // Color variants for filled chips
   '.chip-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.chip-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
   },
 
   '.chip-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
   },
 
   '.chip-success': {
-    backgroundColor: 'rgba(var(--color-success-rgb), 0.15)',
-    color: 'hsl(var(--color-success))',
+    backgroundColor: 'color-mix(in oklch, var(--color-success) 15%, transparent)',
+    color: 'var(--color-success)',
   },
 
   '.chip-error': {
-    backgroundColor: 'rgba(var(--color-error-rgb), 0.15)',
-    color: 'hsl(var(--color-error))',
+    backgroundColor: 'color-mix(in oklch, var(--color-error) 15%, transparent)',
+    color: 'var(--color-error)',
   },
 
   '.chip-warning': {
-    backgroundColor: 'rgba(var(--color-warning-rgb), 0.15)',
-    color: 'hsl(var(--color-warning))',
+    backgroundColor: 'color-mix(in oklch, var(--color-warning) 15%, transparent)',
+    color: 'var(--color-warning)',
   },
 
   '.chip-info': {
-    backgroundColor: 'rgba(var(--color-info-rgb), 0.15)',
-    color: 'hsl(var(--color-info))',
+    backgroundColor: 'color-mix(in oklch, var(--color-info) 15%, transparent)',
+    color: 'var(--color-info)',
   },
 
   // Leading icon

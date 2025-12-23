@@ -36,8 +36,8 @@ export const dialogStyles: Record<string, any> = {
     width: '100%',
     maxWidth: '28rem',
     maxHeight: 'calc(100vh - 2rem)',
-    backgroundColor: 'hsl(var(--color-surface-container-high))',
-    color: 'hsl(var(--color-on-surface))',
+    backgroundColor: 'var(--color-surface-container-high)',
+    color: 'var(--color-on-surface)',
     borderRadius: '1.75rem',
     boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     transform: 'scale(0.9)',
@@ -74,7 +74,7 @@ export const dialogStyles: Record<string, any> = {
     overflowY: 'auto',
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Dialog footer/actions
@@ -116,11 +116,11 @@ export const dialogStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.12)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 12%, transparent)',
     },
   },
 
@@ -186,38 +186,38 @@ export const dialogStyles: Record<string, any> = {
   },
 
   '.dialog-icon-primary': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.dialog-icon-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-container))',
-    color: 'hsl(var(--color-on-secondary-container))',
+    backgroundColor: 'var(--color-secondary-container)',
+    color: 'var(--color-on-secondary-container)',
   },
 
   '.dialog-icon-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-container))',
-    color: 'hsl(var(--color-on-tertiary-container))',
+    backgroundColor: 'var(--color-tertiary-container)',
+    color: 'var(--color-on-tertiary-container)',
   },
 
   '.dialog-icon-success': {
-    backgroundColor: 'rgba(var(--color-success-rgb), 0.15)',
-    color: 'hsl(var(--color-success))',
+    backgroundColor: 'color-mix(in oklch, var(--color-success) 15%, transparent)',
+    color: 'var(--color-success)',
   },
 
   '.dialog-icon-error': {
-    backgroundColor: 'rgba(var(--color-error-rgb), 0.15)',
-    color: 'hsl(var(--color-error))',
+    backgroundColor: 'color-mix(in oklch, var(--color-error) 15%, transparent)',
+    color: 'var(--color-error)',
   },
 
   '.dialog-icon-warning': {
-    backgroundColor: 'rgba(var(--color-warning-rgb), 0.15)',
-    color: 'hsl(var(--color-warning))',
+    backgroundColor: 'color-mix(in oklch, var(--color-warning) 15%, transparent)',
+    color: 'var(--color-warning)',
   },
 
   '.dialog-icon-info': {
-    backgroundColor: 'rgba(var(--color-info-rgb), 0.15)',
-    color: 'hsl(var(--color-info))',
+    backgroundColor: 'color-mix(in oklch, var(--color-info) 15%, transparent)',
+    color: 'var(--color-info)',
   },
 
   // Scrollable body

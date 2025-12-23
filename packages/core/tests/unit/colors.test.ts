@@ -23,7 +23,7 @@ describe('Color Token Generation', () => {
   describe('Brand Colors', () => {
     it('should define primary color tokens', () => {
       expect(colorsCSS).toContain('--color-primary:');
-      expect(colorsCSS).toContain('--color-primary-focus:');
+      // Note: -focus tokens removed in OKLCH migration, use color-mix() instead
       expect(colorsCSS).toContain('--color-primary-content:');
       expect(colorsCSS).toContain('--color-primary-container:');
       expect(colorsCSS).toContain('--color-on-primary-container:');
@@ -31,7 +31,7 @@ describe('Color Token Generation', () => {
 
     it('should define secondary color tokens', () => {
       expect(colorsCSS).toContain('--color-secondary:');
-      expect(colorsCSS).toContain('--color-secondary-focus:');
+      // Note: -focus tokens removed in OKLCH migration, use color-mix() instead
       expect(colorsCSS).toContain('--color-secondary-content:');
       expect(colorsCSS).toContain('--color-secondary-container:');
       expect(colorsCSS).toContain('--color-on-secondary-container:');
@@ -39,7 +39,7 @@ describe('Color Token Generation', () => {
 
     it('should define tertiary color tokens', () => {
       expect(colorsCSS).toContain('--color-tertiary:');
-      expect(colorsCSS).toContain('--color-tertiary-focus:');
+      // Note: -focus tokens removed in OKLCH migration, use color-mix() instead
       expect(colorsCSS).toContain('--color-tertiary-content:');
       expect(colorsCSS).toContain('--color-tertiary-container:');
       expect(colorsCSS).toContain('--color-on-tertiary-container:');
@@ -115,26 +115,32 @@ describe('Color Token Generation', () => {
 
   describe('Color Format', () => {
     it('should declare tokens with initial value (values come from themes)', () => {
-      // Colors.css declares tokens, actual HSL values come from theme files
+      // Colors.css declares tokens, actual OKLCH values come from theme files
       expect(colorsCSS).toContain('--color-primary: initial');
     });
 
-    it('should use HSL via var() in utility classes', () => {
-      // Utility classes reference tokens via hsl(var(...))
-      const hslVarPattern = /hsl\(var\(--color-\w+\)/;
-      expect(colorsCSS).toMatch(hslVarPattern);
+    it('should use direct var() in utility classes (OKLCH format)', () => {
+      // OKLCH stores full color values including wrapper, so direct var() usage
+      expect(colorsCSS).toContain('background-color: var(--color-primary)');
     });
 
-    it('should not use hsl() function wrapper for token definitions', () => {
-      // Token definitions should NOT contain hsl(...) format
-      expect(colorsCSS).not.toMatch(/--color-\w+:\s*hsl\(/);
+    it('should use color-mix for focus states', () => {
+      // Focus states use color-mix() instead of separate -focus tokens
+      expect(colorsCSS).toContain('color-mix(in oklch, var(--color-primary), black 10%)');
+    });
+
+    it('should not use hsl() function wrapper', () => {
+      // OKLCH migration: no hsl() wrappers anywhere
+      expect(colorsCSS).not.toMatch(/hsl\(var\(--color-/);
     });
   });
 
   describe('Token Count', () => {
-    it('should have at least 65 color tokens', () => {
+    it('should have at least 55 color tokens', () => {
+      // Note: Count reduced from 65 in OKLCH migration (-focus tokens removed)
+      // Core tokens remain: primary, secondary, tertiary families, surfaces, semantics, base scale
       const tokenMatches = colorsCSS.match(/--color-[\w-]+:/g) || [];
-      expect(tokenMatches.length).toBeGreaterThanOrEqual(65);
+      expect(tokenMatches.length).toBeGreaterThanOrEqual(55);
     });
   });
 });

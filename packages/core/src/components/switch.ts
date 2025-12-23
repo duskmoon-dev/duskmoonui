@@ -27,8 +27,8 @@ export const switchStyles: Record<string, any> = {
     display: 'inline-block',
     width: '3.25rem',
     height: '2rem',
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    border: '2px solid hsl(var(--color-outline))',
+    backgroundColor: 'var(--color-surface-variant)',
+    border: '2px solid var(--color-outline)',
     borderRadius: '1rem',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
@@ -40,73 +40,73 @@ export const switchStyles: Record<string, any> = {
     left: '0.25rem',
     width: '1rem',
     height: '1rem',
-    backgroundColor: 'hsl(var(--color-outline))',
+    backgroundColor: 'var(--color-outline)',
     borderRadius: '50%',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.3)',
+    boxShadow: '0 1px 2px 0 color-mix(in oklch, black 30%, transparent)',
   },
 
   // Checked state - Primary
   '.switch-input:checked + .switch-track, .switch-input:checked + .switch-primary': {
-    backgroundColor: 'hsl(var(--color-primary))',
-    borderColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary)',
+    borderColor: 'var(--color-primary)',
   },
 
   '.switch-input:checked + .switch-track .switch-thumb, .switch-input:checked + .switch-primary .switch-thumb': {
     left: 'calc(100% - 1.25rem)',
-    backgroundColor: 'hsl(var(--color-on-primary))',
+    backgroundColor: 'var(--color-on-primary)',
   },
 
   // Secondary variant
   '.switch-secondary': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    border: '2px solid hsl(var(--color-outline))',
+    backgroundColor: 'var(--color-surface-variant)',
+    border: '2px solid var(--color-outline)',
   },
 
   '.switch-input:checked + .switch-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary))',
-    borderColor: 'hsl(var(--color-secondary))',
+    backgroundColor: 'var(--color-secondary)',
+    borderColor: 'var(--color-secondary)',
   },
 
   '.switch-input:checked + .switch-secondary .switch-thumb': {
-    backgroundColor: 'hsl(var(--color-on-secondary))',
+    backgroundColor: 'var(--color-on-secondary)',
   },
 
   // Tertiary variant
   '.switch-tertiary': {
-    backgroundColor: 'hsl(var(--color-surface-variant))',
-    border: '2px solid hsl(var(--color-outline))',
+    backgroundColor: 'var(--color-surface-variant)',
+    border: '2px solid var(--color-outline)',
   },
 
   '.switch-input:checked + .switch-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary))',
-    borderColor: 'hsl(var(--color-tertiary))',
+    backgroundColor: 'var(--color-tertiary)',
+    borderColor: 'var(--color-tertiary)',
   },
 
   '.switch-input:checked + .switch-tertiary .switch-thumb': {
-    backgroundColor: 'hsl(var(--color-on-tertiary))',
+    backgroundColor: 'var(--color-on-tertiary)',
   },
 
   // Hover state
   '.switch:hover .switch-track': {
-    backgroundColor: 'rgba(var(--color-surface-variant-rgb), 0.9)',
+    backgroundColor: 'color-mix(in oklch, var(--color-surface-variant) 90%, transparent)',
   },
 
   '.switch:hover .switch-input:checked + .switch-track, .switch:hover .switch-input:checked + .switch-primary': {
-    backgroundColor: 'hsl(var(--color-primary-focus))',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
   },
 
   '.switch:hover .switch-input:checked + .switch-secondary': {
-    backgroundColor: 'hsl(var(--color-secondary-focus))',
+    backgroundColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
   },
 
   '.switch:hover .switch-input:checked + .switch-tertiary': {
-    backgroundColor: 'hsl(var(--color-tertiary-focus))',
+    backgroundColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
   },
 
   // Focus state
   '.switch-input:focus-visible + .switch-track': {
-    outline: '2px solid hsl(var(--color-primary))',
+    outline: '2px solid var(--color-primary)',
     outlineOffset: '2px',
   },
 
@@ -173,7 +173,7 @@ export const switchStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     userSelect: 'none',
   },
 

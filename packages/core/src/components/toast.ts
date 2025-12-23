@@ -58,9 +58,9 @@ export const toastStyles: Record<string, any> = {
     minWidth: '20rem',
     maxWidth: '28rem',
     padding: '1rem 1.25rem',
-    backgroundColor: 'hsl(var(--color-surface))',
-    color: 'hsl(var(--color-on-surface))',
-    border: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface)',
+    color: 'var(--color-on-surface)',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
     pointerEvents: 'auto',
@@ -77,27 +77,27 @@ export const toastStyles: Record<string, any> = {
 
   // Toast variants by type
   '.toast-info': {
-    backgroundColor: 'hsl(var(--color-primary-container))',
-    color: 'hsl(var(--color-on-primary-container))',
-    borderColor: 'hsl(var(--color-primary))',
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
+    borderColor: 'var(--color-primary)',
   },
 
   '.toast-success': {
-    backgroundColor: 'hsl(var(--color-success-container))',
-    color: 'hsl(var(--color-on-success-container))',
-    borderColor: 'hsl(var(--color-success))',
+    backgroundColor: 'var(--color-success-container)',
+    color: 'var(--color-on-success-container)',
+    borderColor: 'var(--color-success)',
   },
 
   '.toast-warning': {
-    backgroundColor: 'hsl(var(--color-warning-container))',
-    color: 'hsl(var(--color-on-warning-container))',
-    borderColor: 'hsl(var(--color-warning))',
+    backgroundColor: 'var(--color-warning-container)',
+    color: 'var(--color-on-warning-container)',
+    borderColor: 'var(--color-warning)',
   },
 
   '.toast-error': {
-    backgroundColor: 'hsl(var(--color-error-container))',
-    color: 'hsl(var(--color-on-error-container))',
-    borderColor: 'hsl(var(--color-error))',
+    backgroundColor: 'var(--color-error-container)',
+    color: 'var(--color-on-error-container)',
+    borderColor: 'var(--color-error)',
   },
 
   // Toast icon
@@ -159,16 +159,16 @@ export const toastStyles: Record<string, any> = {
     padding: '0.375rem 0.75rem',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
     backgroundColor: 'transparent',
-    border: '1px solid hsl(var(--color-primary))',
+    border: '1px solid var(--color-primary)',
     borderRadius: '0.25rem',
     cursor: 'pointer',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   '.toast-action:hover': {
-    backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)',
+    backgroundColor: 'color-mix(in oklch, var(--color-primary) 10%, transparent)',
   },
 
   // Progress bar

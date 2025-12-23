@@ -14,7 +14,7 @@ export const accordionStyles: Record<string, any> = {
 
   // Accordion item
   '.accordion-item': {
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   '.accordion-item:last-child': {
@@ -31,7 +31,7 @@ export const accordionStyles: Record<string, any> = {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.25rem',
-    color: 'hsl(var(--color-on-surface))',
+    color: 'var(--color-on-surface)',
     backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
@@ -39,15 +39,15 @@ export const accordionStyles: Record<string, any> = {
     textAlign: 'left',
 
     '&:hover': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.04)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 4%, transparent)',
     },
 
     '&:active': {
-      backgroundColor: 'rgba(var(--color-on-surface-rgb), 0.08)',
+      backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
     },
 
     '&:focus-visible': {
-      outline: '2px solid hsl(var(--color-primary))',
+      outline: '2px solid var(--color-primary)',
       outlineOffset: '-2px',
     },
   },
@@ -91,12 +91,12 @@ export const accordionStyles: Record<string, any> = {
     padding: '0 1.25rem 1rem',
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
-    color: 'hsl(var(--color-on-surface-variant))',
+    color: 'var(--color-on-surface-variant)',
   },
 
   // Filled variant
   '.accordion-filled .accordion-item': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
+    backgroundColor: 'var(--color-surface-container)',
     borderBottom: 'none',
     marginBottom: '0.5rem',
     borderRadius: '0.5rem',
@@ -109,12 +109,12 @@ export const accordionStyles: Record<string, any> = {
 
   // Outlined variant
   '.accordion-outlined': {
-    border: '1px solid hsl(var(--color-outline-variant))',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
   },
 
   '.accordion-outlined .accordion-item': {
-    borderBottom: '1px solid hsl(var(--color-outline-variant))',
+    borderBottom: '1px solid var(--color-outline-variant)',
   },
 
   '.accordion-outlined .accordion-item:last-child': {
@@ -123,8 +123,8 @@ export const accordionStyles: Record<string, any> = {
 
   // Separated variant (cards)
   '.accordion-separated .accordion-item': {
-    backgroundColor: 'hsl(var(--color-surface-container))',
-    border: '1px solid hsl(var(--color-outline-variant))',
+    backgroundColor: 'var(--color-surface-container)',
+    border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
     marginBottom: '0.5rem',
     overflow: 'hidden',
@@ -154,15 +154,15 @@ export const accordionStyles: Record<string, any> = {
 
   // Color variants for open state
   '.accordion-primary .accordion-item-open .accordion-header': {
-    color: 'hsl(var(--color-primary))',
+    color: 'var(--color-primary)',
   },
 
   '.accordion-secondary .accordion-item-open .accordion-header': {
-    color: 'hsl(var(--color-secondary))',
+    color: 'var(--color-secondary)',
   },
 
   '.accordion-tertiary .accordion-item-open .accordion-header': {
-    color: 'hsl(var(--color-tertiary))',
+    color: 'var(--color-tertiary)',
   },
 
   // With icon in header
