@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import DocsLayout from '../../layouts/DocsLayout.astro';
 
 const base = import.meta.env.BASE_URL;
 
@@ -81,7 +81,7 @@ const categories = [
 ];
 ---
 
-<BaseLayout title="Components">
+<DocsLayout title="Components">
   <div class="max-w-7xl mx-auto px-4 py-8">
     <header class="text-center mb-16">
       <h1 class="text-5xl font-bold mb-4">Components</h1>
@@ -113,4 +113,4 @@ const categories = [
       ))}
     </div>
   </div>
-</BaseLayout>
+</DocsLayout>
