@@ -11,8 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **CSS Variables for component padding** - Button and card components now expose padding via CSS custom properties for easy customization:
   - `--btn-p` and `--btn-py` for button horizontal and vertical padding
-  - `--card-p` for card body padding
+  - `--card-p` for card body, header, and footer padding
 - **Logical CSS properties** - Components now use logical properties (`padding-inline`, `padding-block`, `margin-block-start`) for automatic RTL layout support
+- **Card header and footer** - New `.card-header` and `.card-footer` classes with proper padding and border separators
 
 ## [1.0.0] - 2025-01-XX
 

@@ -44,6 +44,27 @@
     flex: 1;
   }
 
+  /* Card Header */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: var(--card-p, 1.5rem);
+    padding-block: calc(var(--card-p, 1.5rem) * 0.5);
+    border-block-end: 1px solid var(--color-outline-variant);
+  }
+
+  /* Card Footer */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: var(--card-p, 1.5rem);
+    padding-block: calc(var(--card-p, 1.5rem) * 0.5);
+    border-block-start: 1px solid var(--color-outline-variant);
+    margin-block-start: auto;
+  }
+
   /* Card Title */
   .card-title {
     font-size: 1.25rem;
@@ -86,7 +107,9 @@
   }
 
   /* Card Compact */
-  .card-compact .card-body {
+  .card-compact .card-header,
+  .card-compact .card-body,
+  .card-compact .card-footer {
     --card-p: 1rem;
   }
 
