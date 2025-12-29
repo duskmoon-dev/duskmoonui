@@ -1,6 +1,6 @@
 ---
 title: Dialog
-description: Material Design 3 dialog component for modal interactions with various sizes and styles
+description: Material Design 3 dialog component using native HTML dialog element for accessible modal interactions
 category: components
 order: 13
 published: true
@@ -11,17 +11,28 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Dialog
 
-Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks. @duskmoon-dev/core provides a complete set of Material Design 3 dialog variants.
+Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks. @duskmoon-dev/core provides Material Design 3 dialog styles built on the **native HTML `<dialog>` element** for excellent accessibility and built-in functionality.
+
+## Why Native Dialog?
+
+The native `<dialog>` element provides:
+- **Built-in accessibility** - Focus trapping, Escape key handling, and ARIA attributes
+- **Native backdrop** - Via `::backdrop` pseudo-element
+- **Modal behavior** - `showModal()` method handles overlay and focus
+- **Browser-native** - No JavaScript required for basic functionality
 
 ## Basic Usage
 
-A basic dialog consists of a backdrop, dialog container, header, body, and actions.
+A basic dialog consists of a `<dialog>` element with inner structure for header, body, and footer.
 
-<ComponentShowcase title="Basic Dialog" code={`<div class="dialog-backdrop" id="myDialog">
-  <div class="dialog">
+<ComponentShowcase title="Basic Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Dialog
+</button>
+<dialog class="dialog">
+  <div class="dialog-box">
     <div class="dialog-header">
       <h2 class="dialog-title">Dialog Title</h2>
-      <button class="dialog-close" aria-label="Close dialog">
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close dialog">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -30,18 +41,12 @@ A basic dialog consists of a backdrop, dialog container, header, body, and actio
     <div class="dialog-body">
       <p>This is the dialog content. You can add any content here.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">Confirm</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Confirm</button>
     </div>
   </div>
-</div>`} />
-
-To show the dialog, add the `dialog-backdrop-show` class to the backdrop:
-
-<ComponentShowcase title="Showing Dialog" code={`<div class="dialog-backdrop dialog-backdrop-show">
-  <!-- dialog content -->
-</div>`} />
+</dialog>`} />
 
 ## Size Variants
 
@@ -49,462 +54,410 @@ To show the dialog, add the `dialog-backdrop-show` class to the backdrop:
 
 Perfect for simple confirmations and alerts.
 
-<ComponentShowcase title="Small Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-sm">
+<ComponentShowcase title="Small Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Small Dialog
+</button>
+<dialog class="dialog dialog-sm">
+  <div class="dialog-box">
     <div class="dialog-header">
       <h2 class="dialog-title">Small Dialog</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
     </div>
     <div class="dialog-body">
       <p>This is a small dialog (max-width: 20rem).</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">OK</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">OK</button>
     </div>
   </div>
-</div>`} />
-
-### Medium Dialog (Default)
-
-The default size, suitable for most use cases.
-
-<ComponentShowcase title="Medium Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-md">
-    <div class="dialog-header">
-      <h2 class="dialog-title">Medium Dialog</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
-    </div>
-    <div class="dialog-body">
-      <p>This is a medium dialog (max-width: 28rem). This is the default size.</p>
-    </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">Save</button>
-    </div>
-  </div>
-</div>`} />
+</dialog>`} />
 
 ### Large Dialog
 
 For dialogs with more content.
 
-<ComponentShowcase title="Large Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-lg">
+<ComponentShowcase title="Large Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Large Dialog
+</button>
+<dialog class="dialog dialog-lg">
+  <div class="dialog-box">
     <div class="dialog-header">
       <h2 class="dialog-title">Large Dialog</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
     </div>
     <div class="dialog-body">
-      <p>This is a large dialog (max-width: 36rem).</p>
+      <p>This is a large dialog (max-width: 40rem). It provides more space for complex content like forms, tables, or detailed information.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">Continue</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Continue</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
 
 ### Extra Large Dialog
 
 For complex forms or detailed content.
 
-<ComponentShowcase title="Extra Large Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-xl">
+<ComponentShowcase title="Extra Large Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Extra Large Dialog
+</button>
+<dialog class="dialog dialog-xl">
+  <div class="dialog-box">
     <div class="dialog-header">
       <h2 class="dialog-title">Extra Large Dialog</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
     </div>
     <div class="dialog-body">
-      <p>This is an extra large dialog (max-width: 48rem).</p>
+      <p>This is an extra large dialog (max-width: 56rem). Use it for complex workflows, data tables, or multi-step forms.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-</div>`} />
-
-### Full Dialog
-
-Uses nearly the entire viewport.
-
-<ComponentShowcase title="Full Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-full">
-    <div class="dialog-header">
-      <h2 class="dialog-title">Full Dialog</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
-    </div>
-    <div class="dialog-body">
-      <p>This dialog takes up the maximum available space (calc(100vw - 2rem)).</p>
-    </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">Apply</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Submit</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
 
 ### Fullscreen Dialog
 
-Covers the entire viewport, ideal for mobile experiences.
+Covers the entire viewport, ideal for mobile experiences or immersive content.
 
-<ComponentShowcase title="Fullscreen Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-fullscreen">
+<ComponentShowcase title="Fullscreen Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Fullscreen Dialog
+</button>
+<dialog class="dialog dialog-fullscreen">
+  <div class="dialog-box">
     <div class="dialog-header">
       <h2 class="dialog-title">Fullscreen Dialog</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
     </div>
     <div class="dialog-body">
-      <p>This dialog covers the entire screen with no border radius.</p>
+      <p>This dialog covers the entire screen with no border radius. Perfect for mobile experiences or content that needs maximum space.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">Done</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Done</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
 
 ## Dialog Variants
 
 ### Alert Dialog
 
-Simplified dialog for confirmations and alerts.
+Simplified dialog for confirmations and critical actions.
 
-<ComponentShowcase title="Alert Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-alert">
+<ComponentShowcase title="Alert Dialog" code={`<button class="btn btn-error" onclick="this.nextElementSibling.showModal()">
+  Delete Item
+</button>
+<dialog class="dialog dialog-sm">
+  <div class="dialog-box">
     <div class="dialog-header">
       <h2 class="dialog-title">Delete Item?</h2>
     </div>
     <div class="dialog-body">
       <p>Are you sure you want to delete this item? This action cannot be undone.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-error">Delete</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-error" onclick="this.closest('dialog').close()">Delete</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
 
-### Centered Dialog
+### Dialog with Dividers
 
-Centers all content including actions.
+Add visual separation between sections using the `dialog-divider` class.
 
-<ComponentShowcase title="Centered Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-center">
+<ComponentShowcase title="Dialog with Dividers" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Dialog with Dividers
+</button>
+<dialog class="dialog dialog-divider">
+  <div class="dialog-box">
     <div class="dialog-header">
-      <h2 class="dialog-title">Centered Dialog</h2>
+      <h2 class="dialog-title">Settings</h2>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
     </div>
     <div class="dialog-body">
-      <p>All content in this dialog is centered.</p>
+      <p>The header and footer have visible divider lines for clear section separation.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">OK</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Save</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
 
-### Dialog with Icon
+## Footer Alignment
 
-Add visual emphasis with icons.
+### Right-Aligned (Default)
 
-<ComponentShowcase title="Dialog with Icon" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-center">
+<ComponentShowcase title="Right-Aligned Footer" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Dialog
+</button>
+<dialog class="dialog">
+  <div class="dialog-box">
     <div class="dialog-header">
-      <h2 class="dialog-title">Success!</h2>
+      <h2 class="dialog-title">Right-Aligned Actions</h2>
     </div>
     <div class="dialog-body">
-      <div class="dialog-icon dialog-icon-success">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
-      </div>
-      <p>Your changes have been saved successfully.</p>
+      <p>Footer actions are right-aligned by default.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-primary">Continue</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Confirm</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
 
-### Icon Variants
+### Left-Aligned Footer
 
-Icons support multiple color schemes:
+<ComponentShowcase title="Left-Aligned Footer" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Dialog
+</button>
+<dialog class="dialog">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h2 class="dialog-title">Left-Aligned Actions</h2>
+    </div>
+    <div class="dialog-body">
+      <p>Use dialog-footer-start for left-aligned actions.</p>
+    </div>
+    <div class="dialog-footer dialog-footer-start">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Confirm</button>
+    </div>
+  </div>
+</dialog>`} />
 
-<ComponentShowcase title="Icon Variants" code={`<!-- Primary Icon -->
-<div class="dialog-icon dialog-icon-primary">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-</div>
+### Center-Aligned Footer
 
-<!-- Secondary Icon -->
-<div class="dialog-icon dialog-icon-secondary">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-</div>
+<ComponentShowcase title="Center-Aligned Footer" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Dialog
+</button>
+<dialog class="dialog">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h2 class="dialog-title">Center-Aligned Actions</h2>
+    </div>
+    <div class="dialog-body">
+      <p>Use dialog-footer-center for centered actions.</p>
+    </div>
+    <div class="dialog-footer dialog-footer-center">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Confirm</button>
+    </div>
+  </div>
+</dialog>`} />
 
-<!-- Tertiary Icon -->
-<div class="dialog-icon dialog-icon-tertiary">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-</div>
+### Space-Between Footer
 
-<!-- Success Icon -->
-<div class="dialog-icon dialog-icon-success">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-  </svg>
-</div>
-
-<!-- Error Icon -->
-<div class="dialog-icon dialog-icon-error">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-</div>
-
-<!-- Warning Icon -->
-<div class="dialog-icon dialog-icon-warning">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-  </svg>
-</div>
-
-<!-- Info Icon -->
-<div class="dialog-icon dialog-icon-info">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-</div>`} />
-
-## Action Alignment
-
-### Right-Aligned Actions (Default)
-
-<ComponentShowcase title="Right-Aligned Actions" code={`<div class="dialog-actions">
-  <button class="btn btn-text">Cancel</button>
-  <button class="btn btn-primary">Confirm</button>
-</div>`} />
-
-### Left-Aligned Actions
-
-<ComponentShowcase title="Left-Aligned Actions" code={`<div class="dialog-actions dialog-actions-start">
-  <button class="btn btn-text">Cancel</button>
-  <button class="btn btn-primary">Confirm</button>
-</div>`} />
-
-### Center-Aligned Actions
-
-<ComponentShowcase title="Center-Aligned Actions" code={`<div class="dialog-actions dialog-actions-center">
-  <button class="btn btn-text">Cancel</button>
-  <button class="btn btn-primary">Confirm</button>
-</div>`} />
-
-### Space-Between Actions
-
-<ComponentShowcase title="Space-Between Actions" code={`<div class="dialog-actions dialog-actions-between">
-  <button class="btn btn-text">Cancel</button>
-  <button class="btn btn-primary">Confirm</button>
-</div>`} />
+<ComponentShowcase title="Space-Between Footer" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Dialog
+</button>
+<dialog class="dialog">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h2 class="dialog-title">Space-Between Actions</h2>
+    </div>
+    <div class="dialog-body">
+      <p>Use dialog-footer-between to space actions apart.</p>
+    </div>
+    <div class="dialog-footer dialog-footer-between">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Confirm</button>
+    </div>
+  </div>
+</dialog>`} />
 
 ## Scrollable Dialog
 
 For dialogs with long content, add the `dialog-scrollable` class:
 
-<ComponentShowcase title="Scrollable Dialog" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-scrollable">
+<ComponentShowcase title="Scrollable Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Scrollable Dialog
+</button>
+<dialog class="dialog dialog-scrollable">
+  <div class="dialog-box">
     <div class="dialog-header">
       <h2 class="dialog-title">Terms and Conditions</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
     </div>
     <div class="dialog-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-      <!-- Long content here -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Decline</button>
-      <button class="btn btn-primary">Accept</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" onclick="this.closest('dialog').close()">Decline</button>
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">Accept</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
 
-## No Padding Variant
+## Position Variants
 
-Remove body padding for custom layouts:
+### Top Position
 
-<ComponentShowcase title="No Padding Variant" code={`<div class="dialog-backdrop">
-  <div class="dialog dialog-no-padding">
+<ComponentShowcase title="Top Positioned Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Top Dialog
+</button>
+<dialog class="dialog dialog-top">
+  <div class="dialog-box">
     <div class="dialog-header">
-      <h2 class="dialog-title">Image Gallery</h2>
-      <button class="dialog-close" aria-label="Close">×</button>
+      <h2 class="dialog-title">Top Dialog</h2>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
     </div>
     <div class="dialog-body">
-      <img src="image.jpg" alt="Gallery image" class="w-full" />
+      <p>This dialog appears at the top of the viewport.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Close</button>
+    <div class="dialog-footer">
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">OK</button>
     </div>
   </div>
-</div>`} />
+</dialog>`} />
+
+### Bottom Position
+
+<ComponentShowcase title="Bottom Positioned Dialog" code={`<button class="btn btn-primary" onclick="this.nextElementSibling.showModal()">
+  Open Bottom Dialog
+</button>
+<dialog class="dialog dialog-bottom">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h2 class="dialog-title">Bottom Dialog</h2>
+      <button class="dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">×</button>
+    </div>
+    <div class="dialog-body">
+      <p>This dialog appears at the bottom of the viewport.</p>
+    </div>
+    <div class="dialog-footer">
+      <button class="btn btn-primary" onclick="this.closest('dialog').close()">OK</button>
+    </div>
+  </div>
+</dialog>`} />
 
 ## JavaScript Integration
 
-Here's a simple example of showing and hiding dialogs:
+The native `<dialog>` element provides built-in methods:
 
-<ComponentShowcase title="JavaScript Integration" code={`<button class="btn btn-primary" id="openDialog">Open Dialog</button>
+```javascript
+// Get dialog reference
+const dialog = document.querySelector('dialog');
 
-<div class="dialog-backdrop" id="myDialog">
-  <div class="dialog">
+// Open as modal (with backdrop)
+dialog.showModal();
+
+// Open as non-modal (no backdrop)
+dialog.show();
+
+// Close dialog
+dialog.close();
+
+// Check if open
+if (dialog.open) {
+  console.log('Dialog is open');
+}
+
+// Listen for close event
+dialog.addEventListener('close', () => {
+  console.log('Dialog was closed');
+});
+
+// Close on backdrop click
+dialog.addEventListener('click', (e) => {
+  if (e.target === dialog) {
+    dialog.close();
+  }
+});
+```
+
+### Complete Example
+
+<ComponentShowcase title="JavaScript Integration Example" code={`<button class="btn btn-primary" id="openDialogBtn">Open Dialog</button>
+<dialog class="dialog" id="myDialog">
+  <div class="dialog-box">
     <div class="dialog-header">
-      <h2 class="dialog-title">Example Dialog</h2>
-      <button class="dialog-close" id="closeDialog" aria-label="Close">×</button>
-    </div>
-    <div class="dialog-body">
-      <p>Dialog content goes here.</p>
-    </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text" id="cancelDialog">Cancel</button>
-      <button class="btn btn-primary" id="confirmDialog">Confirm</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  const dialog = document.getElementById('myDialog');
-  const openBtn = document.getElementById('openDialog');
-  const closeBtn = document.getElementById('closeDialog');
-  const cancelBtn = document.getElementById('cancelDialog');
-
-  // Open dialog
-  openBtn.addEventListener('click', () => {
-    dialog.classList.add('dialog-backdrop-show');
-  });
-
-  // Close dialog
-  const closeDialog = () => {
-    dialog.classList.remove('dialog-backdrop-show');
-  };
-
-  closeBtn.addEventListener('click', closeDialog);
-  cancelBtn.addEventListener('click', closeDialog);
-
-  // Close on backdrop click
-  dialog.addEventListener('click', (e) => {
-    if (e.target === dialog) {
-      closeDialog();
-    }
-  });
-
-  // Close on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && dialog.classList.contains('dialog-backdrop-show')) {
-      closeDialog();
-    }
-  });
-</script>`} />
-
-## Best Practices
-
-### Accessibility
-
-- Use semantic HTML and ARIA attributes
-- Trap focus within the dialog when open
-- Return focus to trigger element when closed
-- Support keyboard navigation (Escape to close)
-- Provide clear labels for close buttons
-
-<ComponentShowcase title="Accessible Dialog" code={`<div class="dialog-backdrop" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
-  <div class="dialog">
-    <div class="dialog-header">
-      <h2 class="dialog-title" id="dialogTitle">Accessible Dialog</h2>
+      <h2 class="dialog-title">Interactive Dialog</h2>
       <button class="dialog-close" aria-label="Close dialog">×</button>
     </div>
     <div class="dialog-body">
-      <p>This dialog follows accessibility best practices.</p>
+      <p>This dialog uses JavaScript for all interactions.</p>
     </div>
-    <div class="dialog-actions">
-      <button class="btn btn-text">Cancel</button>
-      <button class="btn btn-primary">Confirm</button>
+    <div class="dialog-footer">
+      <button class="btn btn-ghost" data-action="cancel">Cancel</button>
+      <button class="btn btn-primary" data-action="confirm">Confirm</button>
     </div>
   </div>
-</div>`} />
+</dialog>
 
-### User Experience
+<script>
+  const dialog = document.getElementById('myDialog');
+  const openBtn = document.getElementById('openDialogBtn');
 
-1. **Use dialogs sparingly** - Don't interrupt the user unnecessarily
-2. **Keep content focused** - Present one task or decision at a time
-3. **Provide clear actions** - Use descriptive button labels
-4. **Enable easy dismissal** - Support Escape key and backdrop clicks
-5. **Consider mobile** - Use fullscreen or full variants on small screens
+  // Open dialog
+  openBtn.addEventListener('click', () => dialog.showModal());
 
-### Visual Hierarchy
+  // Close on backdrop click
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
 
-Use button variants to guide users:
-
-<ComponentShowcase title="Visual Hierarchy" code={`<div class="dialog-actions">
-  <button class="btn btn-text">Cancel</button>
-  <button class="btn btn-outlined">Save Draft</button>
-  <button class="btn btn-primary">Publish</button>
-</div>`} />
+  // Handle all close buttons
+  dialog.querySelectorAll('[data-action], .dialog-close').forEach(btn => {
+    btn.addEventListener('click', () => dialog.close());
+  });
+</script>`} />
 
 ## Framework Examples
 
 ### React
 
 ```tsx
-import { useState } from 'react';
+import { useRef } from 'react';
 
 interface DialogProps {
-  isOpen: boolean;
-  onClose: () => void;
   title: string;
   children: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full' | 'fullscreen';
+  onClose?: () => void;
 }
 
-export function Dialog({ isOpen, onClose, title, children, size = 'md' }: DialogProps) {
-  return (
-    <div
-      className={`dialog-backdrop ${isOpen ? 'dialog-backdrop-show' : ''}`}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-    >
-      <div className={`dialog dialog-${size}`}>
-        <div className="dialog-header">
-          <h2 className="dialog-title">{title}</h2>
-          <button className="dialog-close" onClick={onClose} aria-label="Close">
-            ×
-          </button>
-        </div>
-        <div className="dialog-body">
-          {children}
-        </div>
-      </div>
-    </div>
-  );
-}
+export function Dialog({ title, children, onClose }: DialogProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-// Usage
-function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const openDialog = () => dialogRef.current?.showModal();
+  const closeDialog = () => {
+    dialogRef.current?.close();
+    onClose?.();
+  };
 
   return (
     <>
-      <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
+      <button className="btn btn-primary" onClick={openDialog}>
         Open Dialog
       </button>
-
-      <Dialog
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title="Example Dialog"
-        size="md"
+      <dialog
+        ref={dialogRef}
+        className="dialog"
+        onClick={(e) => e.target === e.currentTarget && closeDialog()}
       >
-        <p>Dialog content goes here.</p>
-      </Dialog>
+        <div className="dialog-box">
+          <div className="dialog-header">
+            <h2 className="dialog-title">{title}</h2>
+            <button className="dialog-close" onClick={closeDialog} aria-label="Close">
+              ×
+            </button>
+          </div>
+          <div className="dialog-body">{children}</div>
+          <div className="dialog-footer">
+            <button className="btn btn-ghost" onClick={closeDialog}>Cancel</button>
+            <button className="btn btn-primary" onClick={closeDialog}>Confirm</button>
+          </div>
+        </div>
+      </dialog>
     </>
   );
 }
@@ -514,52 +467,68 @@ function App() {
 
 ```vue
 <template>
-  <div>
-    <button class="btn btn-primary" @click="isOpen = true">
-      Open Dialog
-    </button>
-
-    <div
-      :class="['dialog-backdrop', { 'dialog-backdrop-show': isOpen }]"
-      @click.self="isOpen = false"
-    >
-      <div :class="`dialog dialog-${size}`">
-        <div class="dialog-header">
-          <h2 class="dialog-title">{{ title }}</h2>
-          <button class="dialog-close" @click="isOpen = false" aria-label="Close">
-            ×
-          </button>
-        </div>
-        <div class="dialog-body">
-          <slot />
-        </div>
+  <button class="btn btn-primary" @click="openDialog">Open Dialog</button>
+  <dialog ref="dialogRef" class="dialog" @click.self="closeDialog">
+    <div class="dialog-box">
+      <div class="dialog-header">
+        <h2 class="dialog-title">{{ title }}</h2>
+        <button class="dialog-close" @click="closeDialog" aria-label="Close">×</button>
+      </div>
+      <div class="dialog-body">
+        <slot />
+      </div>
+      <div class="dialog-footer">
+        <button class="btn btn-ghost" @click="closeDialog">Cancel</button>
+        <button class="btn btn-primary" @click="closeDialog">Confirm</button>
       </div>
     </div>
-  </div>
+  </dialog>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
-defineProps({
-  title: {
-    type: String,
-    required: true
-  },
-  size: {
-    type: String,
-    default: 'md'
-  }
-});
+defineProps({ title: String });
 
-const isOpen = ref(false);
+const dialogRef = ref(null);
+const openDialog = () => dialogRef.value?.showModal();
+const closeDialog = () => dialogRef.value?.close();
 </script>
-
-<!-- Usage -->
-<Dialog title="Example Dialog" size="md">
-  <p>Dialog content goes here.</p>
-</Dialog>
 ```
+
+## Best Practices
+
+### Accessibility
+
+The native `<dialog>` element handles most accessibility concerns automatically:
+
+- **Focus trapping** - Focus is trapped within the modal when open
+- **Escape key** - Pressing Escape closes the dialog
+- **Focus restoration** - Focus returns to the trigger element when closed
+- **ARIA attributes** - The dialog has implicit `role="dialog"` and `aria-modal="true"`
+
+Add descriptive labels for additional accessibility:
+
+```html
+<dialog class="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h2 class="dialog-title" id="dialogTitle">Confirm Action</h2>
+    </div>
+    <div class="dialog-body">
+      <p id="dialogDesc">Are you sure you want to proceed?</p>
+    </div>
+  </div>
+</dialog>
+```
+
+### User Experience
+
+1. **Use dialogs sparingly** - Don't interrupt the user unnecessarily
+2. **Keep content focused** - Present one task or decision at a time
+3. **Provide clear actions** - Use descriptive button labels
+4. **Enable easy dismissal** - The native dialog supports Escape key and backdrop clicks
+5. **Consider mobile** - Use fullscreen variant on small screens
 
 ## API Reference
 
@@ -567,71 +536,48 @@ const isOpen = ref(false);
 
 | Class | Description |
 |-------|-------------|
-| `.dialog-backdrop` | Backdrop/overlay container (required) |
-| `.dialog-backdrop-show` | Shows the dialog with animation |
-| `.dialog` | Dialog container (required) |
-| `.dialog-header` | Header section |
+| `.dialog` | Base dialog styles (apply to `<dialog>` element) |
+| `.dialog-box` | Inner container for flex layout |
+| `.dialog-header` | Header section with title and close button |
 | `.dialog-title` | Dialog title text |
-| `.dialog-close` | Close button |
+| `.dialog-close` | Close button in header |
 | `.dialog-body` | Content section |
-| `.dialog-actions` | Footer with action buttons |
-| `.dialog-sm` | Small dialog (20rem max-width) |
-| `.dialog-md` | Medium dialog (28rem max-width, default) |
-| `.dialog-lg` | Large dialog (36rem max-width) |
-| `.dialog-xl` | Extra large dialog (48rem max-width) |
-| `.dialog-full` | Full viewport dialog with padding |
-| `.dialog-fullscreen` | Fullscreen dialog (no padding/radius) |
-| `.dialog-alert` | Alert/confirmation dialog variant |
-| `.dialog-center` | Center-align all content |
-| `.dialog-icon` | Icon container |
-| `.dialog-icon-primary` | Primary color icon |
-| `.dialog-icon-secondary` | Secondary color icon |
-| `.dialog-icon-tertiary` | Tertiary color icon |
-| `.dialog-icon-success` | Success semantic icon |
-| `.dialog-icon-error` | Error semantic icon |
-| `.dialog-icon-warning` | Warning semantic icon |
-| `.dialog-icon-info` | Info semantic icon |
-| `.dialog-actions-start` | Left-align actions |
-| `.dialog-actions-center` | Center-align actions |
-| `.dialog-actions-between` | Space-between actions |
-| `.dialog-scrollable` | Enable body scrolling (20rem max-height) |
-| `.dialog-no-padding` | Remove body padding |
+| `.dialog-footer` | Footer with action buttons |
+| `.dialog-sm` | Small dialog (max-width: 20rem) |
+| `.dialog-lg` | Large dialog (max-width: 40rem) |
+| `.dialog-xl` | Extra large dialog (max-width: 56rem) |
+| `.dialog-fullscreen` | Fullscreen dialog |
+| `.dialog-top` | Position at top of viewport |
+| `.dialog-bottom` | Position at bottom of viewport |
+| `.dialog-scrollable` | Enable body scrolling (max-height: 50vh) |
+| `.dialog-divider` | Add dividers to header and footer |
+| `.dialog-footer-start` | Left-align footer actions |
+| `.dialog-footer-center` | Center-align footer actions |
+| `.dialog-footer-between` | Space-between footer actions |
 
-### Combinations
+### Native Dialog Methods
 
-You can combine classes for different effects:
+| Method | Description |
+|--------|-------------|
+| `showModal()` | Open dialog as modal with backdrop |
+| `show()` | Open dialog without backdrop |
+| `close()` | Close the dialog |
 
-<ComponentShowcase title="Class Combinations" code={`<!-- Large centered alert dialog -->
-<div class="dialog dialog-lg dialog-center dialog-alert">
-  <!-- content -->
-</div>
+### Native Dialog Properties
 
-<!-- Fullscreen dialog with scrollable content -->
-<div class="dialog dialog-fullscreen dialog-scrollable">
-  <!-- content -->
-</div>
-
-<!-- Small alert with centered actions -->
-<div class="dialog dialog-sm dialog-alert">
-  <div class="dialog-header">
-    <h2 class="dialog-title">Confirm</h2>
-  </div>
-  <div class="dialog-body">
-    <p>Are you sure?</p>
-  </div>
-  <div class="dialog-actions dialog-actions-center">
-    <button class="btn btn-text">No</button>
-    <button class="btn btn-primary">Yes</button>
-  </div>
-</div>`} />
+| Property | Description |
+|----------|-------------|
+| `open` | Boolean indicating if dialog is open |
+| `returnValue` | String value passed to `close()` |
 
 ## Related Components
 
 - [Button](/duskmoonui/docs/en/components/button/) - Dialog action buttons
 - [Card](/duskmoonui/docs/en/components/card/) - Similar container component
-- [Badge](/duskmoonui/docs/en/components/badge/) - Notification indicators
+- [Alert](/duskmoonui/docs/en/components/alert/) - For inline notifications
 
 ## See Also
 
+- [MDN: dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 - [Dialog Design Guidelines (Material Design 3)](https://m3.material.io/components/dialogs/)
 - [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)

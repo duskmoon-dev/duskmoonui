@@ -15,6 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Logical CSS properties** - Components now use logical properties (`padding-inline`, `padding-block`, `margin-block-start`) for automatic RTL layout support
 - **Card header and footer** - New `.card-header` and `.card-footer` classes with proper padding and border separators
 
+### Changed
+
+- **Dialog component** - Refactored to use native HTML `<dialog>` element for better accessibility:
+  - Built-in focus trapping and Escape key handling
+  - Native `::backdrop` pseudo-element for overlay
+  - Uses `showModal()` / `close()` methods for open/close
+  - New structure: `dialog.dialog` > `.dialog-box` > `.dialog-header` / `.dialog-body` / `.dialog-footer`
+  - Size variants now applied directly to dialog element (`.dialog-sm`, `.dialog-lg`, `.dialog-xl`, `.dialog-fullscreen`)
+  - Position variants (`.dialog-top`, `.dialog-bottom`) for top/bottom alignment
+  - Footer alignment variants (`.dialog-footer-start`, `.dialog-footer-center`, `.dialog-footer-between`)
+
+### Fixed
+
+- **Switch component** - Fixed invisible thumb when checked by using correct color token (`--color-primary-content` instead of non-existent `--color-on-primary`)
+
 ## [1.0.0] - 2025-01-XX
 
 ### Breaking Changes
