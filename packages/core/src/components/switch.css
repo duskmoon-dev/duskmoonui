@@ -56,7 +56,7 @@
     left: calc(100% - 1.5rem);
     width: 1.5rem;
     height: 1.5rem;
-    background-color: var(--color-on-primary);
+    background-color: var(--color-primary-content);
   }
 
   /* Hover State */
@@ -151,7 +151,7 @@
 
   .switch-primary .switch-input:checked + .switch-track .switch-thumb,
   .switch-input:checked + .switch-track.switch-primary .switch-thumb {
-    background-color: var(--color-on-primary);
+    background-color: var(--color-primary-content);
   }
 
   .switch-secondary .switch-input:checked + .switch-track,
@@ -162,7 +162,7 @@
 
   .switch-secondary .switch-input:checked + .switch-track .switch-thumb,
   .switch-input:checked + .switch-track.switch-secondary .switch-thumb {
-    background-color: var(--color-on-secondary);
+    background-color: var(--color-secondary-content);
   }
 
   .switch-tertiary .switch-input:checked + .switch-track,
@@ -173,7 +173,7 @@
 
   .switch-tertiary .switch-input:checked + .switch-track .switch-thumb,
   .switch-input:checked + .switch-track.switch-tertiary .switch-thumb {
-    background-color: var(--color-on-tertiary);
+    background-color: var(--color-tertiary-content);
   }
 
   .switch-success .switch-input:checked + .switch-track,
@@ -227,7 +227,7 @@
 
   .switch-labeled-track .switch-input:checked + .switch-track .switch-track-on {
     opacity: 1;
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   .switch-labeled-track .switch-input:checked + .switch-track .switch-track-off {
