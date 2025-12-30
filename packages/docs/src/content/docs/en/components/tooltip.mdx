@@ -1,6 +1,6 @@
 ---
 title: Tooltip
-description: Material Design 3 tooltip component for displaying helpful text
+description: Material Design 3 tooltip component for displaying helpful text on hover
 category: components
 order: 11
 published: true
@@ -11,152 +11,367 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Tooltip
 
-Tooltips display informative text when users hover over, focus on, or tap an element.
+Tooltips display informative text when users hover over, focus on, or tap an element. They provide brief, helpful information about an element.
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Tooltip" code={`<div style="position: relative; display: inline-block;">
-  <button>Hover me</button>
-  <div class="tooltip tooltip-top">
-    Tooltip text
-    <div class="tooltip-arrow"></div>
-  </div>
+Wrap the trigger element with `.tooltip` and add `.tooltip-content` for the tooltip text. The tooltip appears automatically on hover.
+
+<ComponentShowcase title="Basic Tooltip" code={`<div class="tooltip">
+  <button class="btn btn-primary">Hover me</button>
+  <span class="tooltip-content">This is a tooltip</span>
 </div>`} />
 
 ## Positions
 
-### Top
+### Top (Default)
 
-<ComponentShowcase title="Top Position" code={`<div style="position: relative; display: inline-block;">
-  <button>Top</button>
-  <div class="tooltip tooltip-top tooltip-show">
-    Top tooltip
-    <div class="tooltip-arrow"></div>
-  </div>
+<ComponentShowcase title="Top Position" code={`<div class="tooltip tooltip-top">
+  <button class="btn btn-primary">Top</button>
+  <span class="tooltip-content">Tooltip on top</span>
 </div>`} />
 
 ### Bottom
 
-<ComponentShowcase title="Bottom Position" code={`<div style="position: relative; display: inline-block;">
-  <button>Bottom</button>
-  <div class="tooltip tooltip-bottom tooltip-show">
-    Bottom tooltip
-    <div class="tooltip-arrow"></div>
-  </div>
+<ComponentShowcase title="Bottom Position" code={`<div class="tooltip tooltip-bottom">
+  <button class="btn btn-primary">Bottom</button>
+  <span class="tooltip-content">Tooltip on bottom</span>
 </div>`} />
 
 ### Left
 
-<ComponentShowcase title="Left Position" code={`<div style="position: relative; display: inline-block;">
-  <button>Left</button>
-  <div class="tooltip tooltip-left tooltip-show">
-    Left tooltip
-    <div class="tooltip-arrow"></div>
-  </div>
+<ComponentShowcase title="Left Position" code={`<div class="tooltip tooltip-left">
+  <button class="btn btn-primary">Left</button>
+  <span class="tooltip-content">Tooltip on left</span>
 </div>`} />
 
 ### Right
 
-<ComponentShowcase title="Right Position" code={`<div style="position: relative; display: inline-block;">
-  <button>Right</button>
-  <div class="tooltip tooltip-right tooltip-show">
-    Right tooltip
-    <div class="tooltip-arrow"></div>
-  </div>
+<ComponentShowcase title="Right Position" code={`<div class="tooltip tooltip-right">
+  <button class="btn btn-primary">Right</button>
+  <span class="tooltip-content">Tooltip on right</span>
 </div>`} />
 
-## Without Arrow
+## All Positions
 
-<ComponentShowcase title="Tooltip Without Arrow" code={`<div style="position: relative; display: inline-block;">
-  <button>No arrow</button>
-  <div class="tooltip tooltip-top tooltip-no-arrow tooltip-show">
-    Tooltip without arrow
-  </div>
-</div>`} />
-
-## Sizes
-
-<ComponentShowcase title="Tooltip Sizes" code={`<!-- Small -->
-<div style="position: relative; display: inline-block;">
-  <button>Small</button>
-  <div class="tooltip tooltip-top tooltip-sm tooltip-show">
-    Small tooltip
-    <div class="tooltip-arrow"></div>
-  </div>
+<ComponentShowcase title="All Positions" code={`<div class="tooltip tooltip-top">
+  <button class="btn">Top</button>
+  <span class="tooltip-content">Top tooltip</span>
 </div>
 
-<!-- Default -->
-<div style="position: relative; display: inline-block;">
-  <button>Default</button>
-  <div class="tooltip tooltip-top tooltip-show">
-    Default tooltip
-    <div class="tooltip-arrow"></div>
-  </div>
+<div class="tooltip tooltip-bottom">
+  <button class="btn">Bottom</button>
+  <span class="tooltip-content">Bottom tooltip</span>
 </div>
 
-<!-- Large -->
-<div style="position: relative; display: inline-block;">
-  <button>Large</button>
-  <div class="tooltip tooltip-top tooltip-lg tooltip-show">
-    Large tooltip with more content
-    <div class="tooltip-arrow"></div>
+<div class="tooltip tooltip-left">
+  <button class="btn">Left</button>
+  <span class="tooltip-content">Left tooltip</span>
+</div>
+
+<div class="tooltip tooltip-right">
+  <button class="btn">Right</button>
+  <span class="tooltip-content">Right tooltip</span>
+</div>`} />
+
+## Color Variants
+
+### Primary
+
+<ComponentShowcase title="Primary Tooltip" code={`<div class="tooltip tooltip-primary">
+  <button class="btn btn-primary">Primary</button>
+  <span class="tooltip-content">Primary colored tooltip</span>
+</div>`} />
+
+### Secondary
+
+<ComponentShowcase title="Secondary Tooltip" code={`<div class="tooltip tooltip-secondary">
+  <button class="btn btn-secondary">Secondary</button>
+  <span class="tooltip-content">Secondary colored tooltip</span>
+</div>`} />
+
+### Error
+
+<ComponentShowcase title="Error Tooltip" code={`<div class="tooltip tooltip-error">
+  <button class="btn btn-error">Error</button>
+  <span class="tooltip-content">Error colored tooltip</span>
+</div>`} />
+
+### Light
+
+<ComponentShowcase title="Light Tooltip" code={`<div class="tooltip tooltip-light">
+  <button class="btn">Light</button>
+  <span class="tooltip-content">Light themed tooltip</span>
+</div>`} />
+
+## Multi-line Tooltip
+
+For longer text that needs to wrap.
+
+<ComponentShowcase title="Multi-line Tooltip" code={`<div class="tooltip tooltip-multiline">
+  <button class="btn btn-primary">Multi-line</button>
+  <span class="tooltip-content">This is a longer tooltip message that wraps to multiple lines for better readability.</span>
+</div>`} />
+
+## Rich Tooltip
+
+For tooltips with structured content like titles and descriptions.
+
+<ComponentShowcase title="Rich Tooltip" code={`<div class="tooltip tooltip-rich">
+  <button class="btn btn-primary">Rich Content</button>
+  <div class="tooltip-content">
+    <div class="tooltip-rich-title">Keyboard Shortcut</div>
+    <div class="tooltip-rich-description">Press Ctrl+S to save your work</div>
   </div>
 </div>`} />
 
-## Rich Content
+## Delay Variants
 
-<ComponentShowcase title="Rich Content Tooltip" code={`<div style="position: relative; display: inline-block;">
-  <button>Rich tooltip</button>
-  <div class="tooltip tooltip-top tooltip-rich tooltip-show">
-    <strong>Title</strong><br>
-    Description with more details
-    <div class="tooltip-arrow"></div>
+Add delay before showing the tooltip.
+
+<ComponentShowcase title="Delayed Tooltips" code={`<div class="tooltip tooltip-delay">
+  <button class="btn">Short Delay (300ms)</button>
+  <span class="tooltip-content">Appears after 300ms</span>
+</div>
+
+<div class="tooltip tooltip-delay-long">
+  <button class="btn">Long Delay (500ms)</button>
+  <span class="tooltip-content">Appears after 500ms</span>
+</div>`} />
+
+## Interactive Tooltip
+
+Allow users to interact with the tooltip content (e.g., click links).
+
+<ComponentShowcase title="Interactive Tooltip" code={`<div class="tooltip tooltip-interactive tooltip-rich">
+  <button class="btn btn-primary">Interactive</button>
+  <div class="tooltip-content">
+    <div class="tooltip-rich-title">Learn More</div>
+    <div class="tooltip-rich-description">
+      Visit our <a href="#" style="color: var(--color-primary-container); text-decoration: underline;">documentation</a> for details.
+    </div>
   </div>
 </div>`} />
 
-## JavaScript Example
+## Always Open (For Demo)
+
+Use `.tooltip-open` class to force the tooltip to always show.
+
+<ComponentShowcase title="Always Open - Top" code={`<div class="tooltip tooltip-open">
+  <button class="btn btn-primary">Top (default)</button>
+  <span class="tooltip-content">Top tooltip always visible</span>
+</div>`} />
+
+<ComponentShowcase title="Always Open - Bottom" code={`<div class="tooltip tooltip-bottom tooltip-open">
+  <button class="btn btn-primary">Bottom</button>
+  <span class="tooltip-content">Bottom tooltip always visible</span>
+</div>`} />
+
+<ComponentShowcase title="Always Open - Left" code={`<div class="tooltip tooltip-left tooltip-open">
+  <button class="btn btn-primary">Left</button>
+  <span class="tooltip-content">Left tooltip always visible</span>
+</div>`} />
+
+<ComponentShowcase title="Always Open - Right" code={`<div class="tooltip tooltip-right tooltip-open">
+  <button class="btn btn-primary">Right</button>
+  <span class="tooltip-content">Right tooltip always visible</span>
+</div>`} />
+
+## With Different Elements
+
+Tooltips work with any element, not just buttons.
+
+<ComponentShowcase title="Tooltip on Various Elements" code={`<div class="tooltip">
+  <span style="text-decoration: underline; cursor: help;">Hover this text</span>
+  <span class="tooltip-content">Helpful information</span>
+</div>
+
+<div class="tooltip tooltip-primary">
+  <span style="font-size: 1.5rem; cursor: pointer;">ℹ️</span>
+  <span class="tooltip-content">Info icon tooltip</span>
+</div>
+
+<div class="tooltip tooltip-bottom">
+  <input type="text" class="input input-bordered" placeholder="Focus me" style="width: 150px;">
+  <span class="tooltip-content">Enter your username</span>
+</div>`} />
+
+## JavaScript Integration
+
+### Data Attribute Approach
 
 ```javascript
-// Show tooltip on hover
+// Automatically create tooltips from data-tooltip attribute
 document.querySelectorAll('[data-tooltip]').forEach(element => {
-  const tooltipText = element.getAttribute('data-tooltip');
-  const tooltip = document.createElement('div');
-  tooltip.className = 'tooltip tooltip-top';
-  tooltip.innerHTML = `${tooltipText}<div class="tooltip-arrow"></div>`;
-  element.style.position = 'relative';
-  element.appendChild(tooltip);
+  const text = element.getAttribute('data-tooltip');
+  const position = element.getAttribute('data-tooltip-position') || 'top';
 
-  element.addEventListener('mouseenter', () => {
-    tooltip.classList.add('tooltip-show');
-  });
+  // Wrap element with tooltip container
+  const wrapper = document.createElement('div');
+  wrapper.className = `tooltip tooltip-${position}`;
+  element.parentNode.insertBefore(wrapper, element);
+  wrapper.appendChild(element);
 
-  element.addEventListener('mouseleave', () => {
-    tooltip.classList.remove('tooltip-show');
-  });
+  // Add tooltip content
+  const content = document.createElement('span');
+  content.className = 'tooltip-content';
+  content.textContent = text;
+  wrapper.appendChild(content);
 });
+
+// Usage in HTML:
+// <button data-tooltip="Save your changes" data-tooltip-position="bottom">Save</button>
+```
+
+### Programmatic Control
+
+```javascript
+// Show/hide tooltip programmatically
+function showTooltip(element) {
+  element.closest('.tooltip')?.classList.add('tooltip-open');
+}
+
+function hideTooltip(element) {
+  element.closest('.tooltip')?.classList.remove('tooltip-open');
+}
+
+// Toggle tooltip
+function toggleTooltip(element) {
+  element.closest('.tooltip')?.classList.toggle('tooltip-open');
+}
+```
+
+### React Example
+
+```tsx
+import { ReactNode } from 'react';
+
+interface TooltipProps {
+  children: ReactNode;
+  content: string;
+  position?: 'top' | 'bottom' | 'left' | 'right';
+  variant?: 'primary' | 'secondary' | 'error' | 'light';
+}
+
+export function Tooltip({
+  children,
+  content,
+  position = 'top',
+  variant
+}: TooltipProps) {
+  const classes = [
+    'tooltip',
+    `tooltip-${position}`,
+    variant && `tooltip-${variant}`
+  ].filter(Boolean).join(' ');
+
+  return (
+    <div className={classes}>
+      {children}
+      <span className="tooltip-content">{content}</span>
+    </div>
+  );
+}
+
+// Usage
+<Tooltip content="Save your work" position="bottom" variant="primary">
+  <button className="btn btn-primary">Save</button>
+</Tooltip>
+```
+
+### Vue Example
+
+```vue
+<template>
+  <div :class="tooltipClasses">
+    <slot />
+    <span class="tooltip-content">{{ content }}</span>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  content: { type: String, required: true },
+  position: { type: String, default: 'top' },
+  variant: { type: String, default: null }
+});
+
+const tooltipClasses = computed(() => [
+  'tooltip',
+  `tooltip-${props.position}`,
+  props.variant && `tooltip-${props.variant}`
+].filter(Boolean));
+</script>
+
+<!-- Usage -->
+<Tooltip content="Delete this item" position="left" variant="error">
+  <button class="btn btn-error">Delete</button>
+</Tooltip>
 ```
 
 ## API Reference
 
+### Class Names
+
 | Class | Description |
 |-------|-------------|
-| `.tooltip` | Base tooltip (required) |
-| `.tooltip-show` | Show tooltip |
-| `.tooltip-top` | Position above element |
+| `.tooltip` | Base tooltip wrapper (required) |
+| `.tooltip-content` | Tooltip text container (required) |
+| `.tooltip-top` | Position above element (default) |
 | `.tooltip-bottom` | Position below element |
 | `.tooltip-left` | Position to the left |
 | `.tooltip-right` | Position to the right |
-| `.tooltip-arrow` | Arrow element |
-| `.tooltip-no-arrow` | Hide arrow |
-| `.tooltip-sm` | Small size |
-| `.tooltip-lg` | Large size |
-| `.tooltip-rich` | Rich content tooltip |
+| `.tooltip-open` | Force tooltip to always show |
+| `.tooltip-primary` | Primary color variant |
+| `.tooltip-secondary` | Secondary color variant |
+| `.tooltip-error` | Error color variant |
+| `.tooltip-light` | Light themed tooltip |
+| `.tooltip-multiline` | Allow text wrapping (max-width: 16rem) |
+| `.tooltip-rich` | Rich content tooltip (max-width: 20rem) |
+| `.tooltip-delay` | 300ms delay before showing |
+| `.tooltip-delay-long` | 500ms delay before showing |
+| `.tooltip-interactive` | Allow mouse interaction with tooltip |
+
+### Rich Tooltip Classes
+
+| Class | Description |
+|-------|-------------|
+| `.tooltip-rich-title` | Title text in rich tooltip |
+| `.tooltip-rich-description` | Description text in rich tooltip |
+
+## Accessibility
+
+- Tooltips are shown on both hover and focus for keyboard users
+- Use `aria-describedby` to link the tooltip to the trigger element for screen readers
+- Keep tooltip text concise and informative
+- Don't put essential information only in tooltips
+
+```html
+<div class="tooltip">
+  <button aria-describedby="tooltip-1">Help</button>
+  <span class="tooltip-content" id="tooltip-1" role="tooltip">
+    Click for assistance
+  </span>
+</div>
+```
+
+## Best Practices
+
+1. **Keep it brief** - Tooltips should contain short, helpful text
+2. **Don't hide critical info** - Essential information should be visible without hover
+3. **Consider touch devices** - Tooltips require hover, so provide alternatives for mobile
+4. **Use appropriate delay** - Add delay for tooltips that might trigger accidentally
+5. **Position thoughtfully** - Ensure tooltips don't get cut off by viewport edges
 
 ## Related Components
 
-- [Popover](/duskmoonui/docs/en/components/popover/) - Richer popup content
-- [Snackbar](/duskmoonui/docs/en/components/snackbar/) - Brief messages
+- [Popover](/duskmoonui/docs/en/components/popover/) - For richer, interactive popup content
+- [Snackbar](/duskmoonui/docs/en/components/snackbar/) - For brief notification messages
+- [Dialog](/duskmoonui/docs/en/components/dialog/) - For modal interactions
 
 ## See Also
 
 - [Tooltip (Material Design 3)](https://m3.material.io/components/tooltips/)
+- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)

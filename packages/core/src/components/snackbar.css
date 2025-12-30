@@ -80,8 +80,77 @@
 
   /* Snackbar Open State */
   .snackbar.snackbar-open,
+  .snackbar.snackbar-show,
   .snackbar.show {
     opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Standalone Position Variants (for snackbar without container) */
+  .snackbar.snackbar-bottom {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    z-index: 1100;
+  }
+
+  .snackbar.snackbar-bottom.snackbar-show {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .snackbar.snackbar-bottom-left {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1100;
+  }
+
+  .snackbar.snackbar-bottom-right {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1100;
+  }
+
+  .snackbar.snackbar-top {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    z-index: 1100;
+  }
+
+  .snackbar.snackbar-top.snackbar-show {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .snackbar.snackbar-top-left {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    transform: translateY(-100%);
+    z-index: 1100;
+  }
+
+  .snackbar.snackbar-top-left.snackbar-show {
+    transform: translateY(0);
+  }
+
+  .snackbar.snackbar-top-right {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    transform: translateY(-100%);
+    z-index: 1100;
+  }
+
+  .snackbar.snackbar-top-right.snackbar-show {
+    transform: translateY(0);
+  }
+
+  .snackbar.snackbar-bottom-left.snackbar-show,
+  .snackbar.snackbar-bottom-right.snackbar-show {
     transform: translateY(0);
   }
 
@@ -160,6 +229,22 @@
     color: var(--color-on-error-container);
   }
 
+  /* Brand Color Variants */
+  .snackbar-primary {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .snackbar-secondary {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+  }
+
+  .snackbar-tertiary {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+  }
+
   /* Dark Snackbar (default MD3 style) */
   .snackbar-dark {
     background-color: var(--color-on-surface);
@@ -172,6 +257,30 @@
 
   .snackbar-dark .snackbar-close {
     color: var(--color-surface);
+  }
+
+  /* Icon */
+  .snackbar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+  }
+
+  /* Multiline */
+  .snackbar-multiline {
+    flex-wrap: wrap;
+    min-height: 4rem;
+  }
+
+  .snackbar-multiline .snackbar-message {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .snackbar-multiline .snackbar-action {
+    margin-left: auto;
   }
 
   /* Responsive */

@@ -11,182 +11,454 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Snackbar
 
-Snackbars provide brief messages about app processes at the bottom of the screen.
+Snackbars provide brief messages about app processes. They appear temporarily at the bottom of the screen and automatically disappear after a timeout.
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-show">
+Click the button to show a snackbar message.
+
+<ComponentShowcase title="Basic Snackbar" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Snackbar</button>
+<div class="snackbar snackbar-bottom">
   <span class="snackbar-message">Message sent</span>
 </div>`} />
 
 ## Positions
 
-### Bottom (Default)
+### Bottom Center (Default)
 
-<ComponentShowcase title="Bottom Position" code={`<div class="snackbar snackbar-bottom snackbar-show">
-  <span class="snackbar-message">Bottom center</span>
+<ComponentShowcase title="Bottom Center" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Bottom</button>
+<div class="snackbar snackbar-bottom">
+  <span class="snackbar-message">Bottom center snackbar</span>
 </div>`} />
 
 ### Bottom Left
 
-<ComponentShowcase title="Bottom Left Position" code={`<div class="snackbar snackbar-bottom-left snackbar-show">
-  <span class="snackbar-message">Bottom left</span>
+<ComponentShowcase title="Bottom Left" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Bottom Left</button>
+<div class="snackbar snackbar-bottom-left">
+  <span class="snackbar-message">Bottom left snackbar</span>
 </div>`} />
 
 ### Bottom Right
 
-<ComponentShowcase title="Bottom Right Position" code={`<div class="snackbar snackbar-bottom-right snackbar-show">
-  <span class="snackbar-message">Bottom right</span>
+<ComponentShowcase title="Bottom Right" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Bottom Right</button>
+<div class="snackbar snackbar-bottom-right">
+  <span class="snackbar-message">Bottom right snackbar</span>
 </div>`} />
 
-### Top
+### Top Center
 
-<ComponentShowcase title="Top Position" code={`<div class="snackbar snackbar-top snackbar-show">
-  <span class="snackbar-message">Top center</span>
+<ComponentShowcase title="Top Center" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Top</button>
+<div class="snackbar snackbar-top">
+  <span class="snackbar-message">Top center snackbar</span>
 </div>`} />
 
 ### Top Left
 
-<ComponentShowcase title="Top Left Position" code={`<div class="snackbar snackbar-top-left snackbar-show">
-  <span class="snackbar-message">Top left</span>
+<ComponentShowcase title="Top Left" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Top Left</button>
+<div class="snackbar snackbar-top-left">
+  <span class="snackbar-message">Top left snackbar</span>
 </div>`} />
 
 ### Top Right
 
-<ComponentShowcase title="Top Right Position" code={`<div class="snackbar snackbar-top-right snackbar-show">
-  <span class="snackbar-message">Top right</span>
+<ComponentShowcase title="Top Right" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Top Right</button>
+<div class="snackbar snackbar-top-right">
+  <span class="snackbar-message">Top right snackbar</span>
 </div>`} />
 
 ## With Action
 
-<ComponentShowcase title="Snackbar with Action" code={`<div class="snackbar snackbar-bottom snackbar-show">
-  <span class="snackbar-message">Message sent</span>
-  <button class="snackbar-action">Undo</button>
+Add an action button for user interaction.
+
+<ComponentShowcase title="Snackbar with Action" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 5000);
+">Show with Action</button>
+<div class="snackbar snackbar-bottom">
+  <span class="snackbar-message">Message archived</span>
+  <button class="snackbar-action" onclick="this.parentElement.classList.remove('snackbar-show')">Undo</button>
 </div>`} />
 
 ## With Close Button
 
-<ComponentShowcase title="Snackbar with Close Button" code={`<div class="snackbar snackbar-bottom snackbar-show">
-  <span class="snackbar-message">This is a snackbar message</span>
-  <button class="snackbar-close" aria-label="Close">×</button>
+Allow users to dismiss the snackbar manually.
+
+<ComponentShowcase title="Snackbar with Close" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 10000);
+">Show with Close</button>
+<div class="snackbar snackbar-bottom">
+  <span class="snackbar-message">This snackbar can be dismissed</span>
+  <button class="snackbar-close" aria-label="Close" onclick="this.parentElement.classList.remove('snackbar-show')">×</button>
 </div>`} />
 
 ## With Icon
 
-<ComponentShowcase title="Snackbar with Icon" code={`<div class="snackbar snackbar-bottom snackbar-show">
+Add an icon for visual emphasis.
+
+<ComponentShowcase title="Snackbar with Icon" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show with Icon</button>
+<div class="snackbar snackbar-bottom">
   <span class="snackbar-icon">✓</span>
-  <span class="snackbar-message">Action completed</span>
+  <span class="snackbar-message">Action completed successfully</span>
 </div>`} />
 
 ## Semantic Colors
 
 ### Success
 
-<ComponentShowcase title="Success Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-success snackbar-show">
+<ComponentShowcase title="Success Snackbar" code={`<button class="btn btn-success" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Success</button>
+<div class="snackbar snackbar-bottom snackbar-success">
   <span class="snackbar-icon">✓</span>
-  <span class="snackbar-message">Successfully saved</span>
+  <span class="snackbar-message">Successfully saved!</span>
 </div>`} />
 
 ### Error
 
-<ComponentShowcase title="Error Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-error snackbar-show">
+<ComponentShowcase title="Error Snackbar" code={`<button class="btn btn-error" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Error</button>
+<div class="snackbar snackbar-bottom snackbar-error">
   <span class="snackbar-icon">✕</span>
   <span class="snackbar-message">An error occurred</span>
 </div>`} />
 
 ### Warning
 
-<ComponentShowcase title="Warning Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-warning snackbar-show">
+<ComponentShowcase title="Warning Snackbar" code={`<button class="btn btn-warning" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Warning</button>
+<div class="snackbar snackbar-bottom snackbar-warning">
   <span class="snackbar-icon">⚠</span>
-  <span class="snackbar-message">Warning message</span>
+  <span class="snackbar-message">Warning: Check your input</span>
 </div>`} />
 
 ### Info
 
-<ComponentShowcase title="Info Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-info snackbar-show">
+<ComponentShowcase title="Info Snackbar" code={`<button class="btn btn-info" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Info</button>
+<div class="snackbar snackbar-bottom snackbar-info">
   <span class="snackbar-icon">ℹ</span>
-  <span class="snackbar-message">Information message</span>
+  <span class="snackbar-message">New updates available</span>
 </div>`} />
 
-## Color Variants
+## Brand Colors
 
-<ComponentShowcase title="Color Variants" code={`<div class="snackbar snackbar-bottom snackbar-primary snackbar-show">
-  <span class="snackbar-message">Primary</span>
-</div>
+<ComponentShowcase title="Primary Snackbar" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Primary</button>
+<div class="snackbar snackbar-bottom snackbar-primary">
+  <span class="snackbar-message">Primary snackbar</span>
+</div>`} />
 
-<div class="snackbar snackbar-bottom snackbar-secondary snackbar-show">
-  <span class="snackbar-message">Secondary</span>
-</div>
+<ComponentShowcase title="Secondary Snackbar" code={`<button class="btn btn-secondary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Secondary</button>
+<div class="snackbar snackbar-bottom snackbar-secondary">
+  <span class="snackbar-message">Secondary snackbar</span>
+</div>`} />
 
-<div class="snackbar snackbar-bottom snackbar-tertiary snackbar-show">
-  <span class="snackbar-message">Tertiary</span>
+<ComponentShowcase title="Tertiary Snackbar" code={`<button class="btn btn-tertiary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Tertiary</button>
+<div class="snackbar snackbar-bottom snackbar-tertiary">
+  <span class="snackbar-message">Tertiary snackbar</span>
+</div>`} />
+
+## Dark Snackbar
+
+The traditional Material Design 3 dark snackbar style.
+
+<ComponentShowcase title="Dark Snackbar" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 3000);
+">Show Dark</button>
+<div class="snackbar snackbar-bottom snackbar-dark">
+  <span class="snackbar-message">Dark snackbar message</span>
+  <button class="snackbar-action" onclick="this.parentElement.classList.remove('snackbar-show')">Action</button>
 </div>`} />
 
 ## Multiline
 
-<ComponentShowcase title="Multiline Snackbar" code={`<div class="snackbar snackbar-bottom snackbar-multiline snackbar-show">
+For longer messages that need more space.
+
+<ComponentShowcase title="Multiline Snackbar" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 5000);
+">Show Multiline</button>
+<div class="snackbar snackbar-bottom snackbar-multiline">
   <span class="snackbar-message">
-    This is a longer message that spans multiple lines.
-    It provides more detailed information.
+    This is a longer message that provides more detailed information about the action that was taken.
   </span>
-  <button class="snackbar-action">Action</button>
+  <button class="snackbar-action" onclick="this.parentElement.classList.remove('snackbar-show')">Dismiss</button>
 </div>`} />
 
-## JavaScript Example
+## Complete Example
+
+A snackbar with icon, message, action, and close button.
+
+<ComponentShowcase title="Complete Snackbar" code={`<button class="btn btn-primary" onclick="
+  const snackbar = this.nextElementSibling;
+  snackbar.classList.add('snackbar-show');
+  setTimeout(() => snackbar.classList.remove('snackbar-show'), 10000);
+">Show Complete</button>
+<div class="snackbar snackbar-bottom snackbar-success">
+  <span class="snackbar-icon">✓</span>
+  <span class="snackbar-message">Email sent successfully</span>
+  <button class="snackbar-action" onclick="this.parentElement.classList.remove('snackbar-show')">View</button>
+  <button class="snackbar-close" aria-label="Close" onclick="this.parentElement.classList.remove('snackbar-show')">×</button>
+</div>`} />
+
+## JavaScript Integration
+
+### Basic Function
 
 ```javascript
-function showSnackbar(message, duration = 3000) {
-  const snackbar = document.createElement('div');
-  snackbar.className = 'snackbar snackbar-bottom';
-  snackbar.innerHTML = `<span class="snackbar-message">${message}</span>`;
+function showSnackbar(message, options = {}) {
+  const {
+    position = 'bottom',
+    duration = 3000,
+    variant = '',
+    action = null,
+    showClose = false
+  } = options;
 
+  // Create snackbar
+  const snackbar = document.createElement('div');
+  snackbar.className = `snackbar snackbar-${position} ${variant}`;
+
+  // Build content
+  let html = `<span class="snackbar-message">${message}</span>`;
+
+  if (action) {
+    html += `<button class="snackbar-action">${action.text}</button>`;
+  }
+
+  if (showClose) {
+    html += `<button class="snackbar-close" aria-label="Close">×</button>`;
+  }
+
+  snackbar.innerHTML = html;
   document.body.appendChild(snackbar);
 
-  // Trigger animation
-  setTimeout(() => snackbar.classList.add('snackbar-show'), 10);
+  // Event listeners
+  if (action?.onClick) {
+    snackbar.querySelector('.snackbar-action').addEventListener('click', () => {
+      action.onClick();
+      hideSnackbar(snackbar);
+    });
+  }
+
+  if (showClose) {
+    snackbar.querySelector('.snackbar-close').addEventListener('click', () => {
+      hideSnackbar(snackbar);
+    });
+  }
+
+  // Show with animation
+  requestAnimationFrame(() => {
+    snackbar.classList.add('snackbar-show');
+  });
 
   // Auto hide
-  setTimeout(() => {
-    snackbar.classList.remove('snackbar-show');
-    setTimeout(() => snackbar.remove(), 300);
-  }, duration);
+  if (duration > 0) {
+    setTimeout(() => hideSnackbar(snackbar), duration);
+  }
+
+  return snackbar;
+}
+
+function hideSnackbar(snackbar) {
+  snackbar.classList.remove('snackbar-show');
+  setTimeout(() => snackbar.remove(), 300);
+}
+
+// Usage examples
+showSnackbar('Message sent');
+
+showSnackbar('File deleted', {
+  position: 'bottom-left',
+  variant: 'snackbar-warning',
+  action: { text: 'Undo', onClick: () => console.log('Undone!') }
+});
+
+showSnackbar('Connection restored', {
+  variant: 'snackbar-success',
+  showClose: true,
+  duration: 5000
+});
+```
+
+### React Example
+
+```tsx
+import { useState, useEffect } from 'react';
+
+interface SnackbarProps {
+  message: string;
+  isOpen: boolean;
+  onClose: () => void;
+  variant?: 'success' | 'error' | 'warning' | 'info';
+  action?: { text: string; onClick: () => void };
+  duration?: number;
+}
+
+export function Snackbar({
+  message,
+  isOpen,
+  onClose,
+  variant,
+  action,
+  duration = 3000
+}: SnackbarProps) {
+  useEffect(() => {
+    if (isOpen && duration > 0) {
+      const timer = setTimeout(onClose, duration);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, duration, onClose]);
+
+  return (
+    <div className={`snackbar snackbar-bottom ${variant ? `snackbar-${variant}` : ''} ${isOpen ? 'snackbar-show' : ''}`}>
+      <span className="snackbar-message">{message}</span>
+      {action && (
+        <button className="snackbar-action" onClick={() => { action.onClick(); onClose(); }}>
+          {action.text}
+        </button>
+      )}
+      <button className="snackbar-close" onClick={onClose} aria-label="Close">×</button>
+    </div>
+  );
 }
 
 // Usage
-showSnackbar('Message sent successfully');
+function App() {
+  const [snackbar, setSnackbar] = useState({ isOpen: false, message: '' });
+
+  return (
+    <>
+      <button onClick={() => setSnackbar({ isOpen: true, message: 'Hello!' })}>
+        Show Snackbar
+      </button>
+      <Snackbar
+        {...snackbar}
+        onClose={() => setSnackbar(s => ({ ...s, isOpen: false }))}
+      />
+    </>
+  );
+}
 ```
 
 ## API Reference
 
+### Class Names
+
 | Class | Description |
 |-------|-------------|
 | `.snackbar` | Base snackbar (required) |
-| `.snackbar-show` | Show snackbar |
+| `.snackbar-show` | Show the snackbar with animation |
 | `.snackbar-bottom` | Bottom center position |
 | `.snackbar-bottom-left` | Bottom left position |
 | `.snackbar-bottom-right` | Bottom right position |
 | `.snackbar-top` | Top center position |
 | `.snackbar-top-left` | Top left position |
 | `.snackbar-top-right` | Top right position |
-| `.snackbar-message` | Message text |
+| `.snackbar-message` | Message text container |
 | `.snackbar-action` | Action button |
-| `.snackbar-close` | Close button |
+| `.snackbar-close` | Close/dismiss button |
 | `.snackbar-icon` | Icon element |
-| `.snackbar-success` | Success color |
-| `.snackbar-error` | Error color |
-| `.snackbar-warning` | Warning color |
-| `.snackbar-info` | Info color |
-| `.snackbar-primary` | Primary color |
-| `.snackbar-secondary` | Secondary color |
-| `.snackbar-tertiary` | Tertiary color |
+| `.snackbar-success` | Success color variant |
+| `.snackbar-error` | Error color variant |
+| `.snackbar-warning` | Warning color variant |
+| `.snackbar-info` | Info color variant |
+| `.snackbar-primary` | Primary color variant |
+| `.snackbar-secondary` | Secondary color variant |
+| `.snackbar-tertiary` | Tertiary color variant |
+| `.snackbar-dark` | Dark (inverted) style |
 | `.snackbar-multiline` | Multiline layout |
+
+### Container Classes (Advanced)
+
+For managing multiple snackbars, use the container approach:
+
+| Class | Description |
+|-------|-------------|
+| `.snackbar-container` | Container for multiple snackbars |
+| `.snackbar-container-bottom` | Container at bottom center |
+| `.snackbar-container-bottom-left` | Container at bottom left |
+| `.snackbar-container-bottom-right` | Container at bottom right |
+| `.snackbar-container-top` | Container at top center |
+| `.snackbar-container-top-left` | Container at top left |
+| `.snackbar-container-top-right` | Container at top right |
+
+## Best Practices
+
+1. **Keep messages brief** - Snackbars should contain short, actionable messages
+2. **Use appropriate duration** - 3-5 seconds for simple messages, longer for messages with actions
+3. **One at a time** - Avoid showing multiple snackbars simultaneously
+4. **Don't block content** - Snackbars should not cover important UI elements
+5. **Provide actions when appropriate** - Allow users to undo actions or view details
+6. **Use semantic colors** - Match the snackbar color to the message type (success, error, etc.)
 
 ## Related Components
 
 - [Toast](/duskmoonui/docs/en/components/toast/) - Alternative toast implementation
-- [Alert](/duskmoonui/docs/en/components/alert/) - Prominent alerts
-- [Dialog](/duskmoonui/docs/en/components/dialog/) - Modal dialogs
+- [Alert](/duskmoonui/docs/en/components/alert/) - Prominent inline alerts
+- [Dialog](/duskmoonui/docs/en/components/dialog/) - Modal dialogs for important interactions
 
 ## See Also
 
 - [Snackbar (Material Design 3)](https://m3.material.io/components/snackbar/)
+- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)

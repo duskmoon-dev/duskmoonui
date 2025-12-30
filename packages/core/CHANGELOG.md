@@ -29,6 +29,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Switch component** - Fixed invisible thumb when checked by using correct color token (`--color-primary-content` instead of non-existent `--color-on-primary`)
+- **Snackbar component** - Added missing CSS classes and features:
+  - Added `.snackbar-show` class for showing snackbars with animation
+  - Added standalone position variants (`.snackbar-bottom`, `.snackbar-top`, `.snackbar-bottom-left`, etc.)
+  - Added brand color variants (`.snackbar-primary`, `.snackbar-secondary`, `.snackbar-tertiary`)
+  - Added `.snackbar-icon` and `.snackbar-multiline` classes
+- **Tooltip component** - Fixed position variants not working correctly:
+  - Fixed CSS specificity issues causing bottom/left/right positions to inherit top position styles
+  - Added proper reset of conflicting CSS properties for each position
+  - Fixed color variant arrows for all positions (not just top)
 
 ## [1.0.0] - 2025-01-XX
 
