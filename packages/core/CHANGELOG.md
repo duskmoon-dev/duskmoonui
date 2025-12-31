@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Individual component exports** - Each component CSS file is now exported individually, enabling:
+  - Tree-shaking for smaller bundle sizes
+  - Custom element / Web Component integration with Shadow DOM
+  - Micro-frontend architectures with isolated styles
+  - Import syntax: `@import "@duskmoon-dev/core/components/button";`
+  - All 34 components available as separate exports
 - **CSS Variables for component padding** - Button and card components now expose padding via CSS custom properties for easy customization:
   - `--btn-p` and `--btn-py` for button horizontal and vertical padding
   - `--card-p` for card body, header, and footer padding

@@ -19,6 +19,108 @@
     },
     "./components": {
       "style": "./dist/components/index.css"
+    },
+    "./components/accordion": {
+      "style": "./dist/components/accordion.css"
+    },
+    "./components/alert": {
+      "style": "./dist/components/alert.css"
+    },
+    "./components/appbar": {
+      "style": "./dist/components/appbar.css"
+    },
+    "./components/autocomplete": {
+      "style": "./dist/components/autocomplete.css"
+    },
+    "./components/avatar": {
+      "style": "./dist/components/avatar.css"
+    },
+    "./components/badge": {
+      "style": "./dist/components/badge.css"
+    },
+    "./components/bottom-navigation": {
+      "style": "./dist/components/bottom-navigation.css"
+    },
+    "./components/bottomsheet": {
+      "style": "./dist/components/bottomsheet.css"
+    },
+    "./components/button": {
+      "style": "./dist/components/button.css"
+    },
+    "./components/card": {
+      "style": "./dist/components/card.css"
+    },
+    "./components/chip": {
+      "style": "./dist/components/chip.css"
+    },
+    "./components/collapse": {
+      "style": "./dist/components/collapse.css"
+    },
+    "./components/datepicker": {
+      "style": "./dist/components/datepicker.css"
+    },
+    "./components/dialog": {
+      "style": "./dist/components/dialog.css"
+    },
+    "./components/divider": {
+      "style": "./dist/components/divider.css"
+    },
+    "./components/drawer": {
+      "style": "./dist/components/drawer.css"
+    },
+    "./components/file-upload": {
+      "style": "./dist/components/file-upload.css"
+    },
+    "./components/form": {
+      "style": "./dist/components/form.css"
+    },
+    "./components/input": {
+      "style": "./dist/components/input.css"
+    },
+    "./components/list": {
+      "style": "./dist/components/list.css"
+    },
+    "./components/modal": {
+      "style": "./dist/components/modal.css"
+    },
+    "./components/navigation": {
+      "style": "./dist/components/navigation.css"
+    },
+    "./components/popover": {
+      "style": "./dist/components/popover.css"
+    },
+    "./components/progress": {
+      "style": "./dist/components/progress.css"
+    },
+    "./components/rating": {
+      "style": "./dist/components/rating.css"
+    },
+    "./components/skeleton": {
+      "style": "./dist/components/skeleton.css"
+    },
+    "./components/slider": {
+      "style": "./dist/components/slider.css"
+    },
+    "./components/snackbar": {
+      "style": "./dist/components/snackbar.css"
+    },
+    "./components/stepper": {
+      "style": "./dist/components/stepper.css"
+    },
+    "./components/switch": {
+      "style": "./dist/components/switch.css"
+    },
+    "./components/table": {
+      "style": "./dist/components/table.css"
+    },
+    "./components/timeline": {
+      "style": "./dist/components/timeline.css"
+    },
+    "./components/toast": {
+      "style": "./dist/components/toast.css"
+    },
+    "./components/tooltip": {
+      "style": "./dist/components/tooltip.css"
     }
   },
   "files": [

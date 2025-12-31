@@ -1,0 +1,352 @@
+---
+title: Individual Component Imports
+description: Import only the CSS components you need for smaller bundle sizes and custom elements
+category: getting-started
+order: 4
+published: true
+tags: ['imports', 'components', 'bundle-size', 'custom-elements', 'web-components']
+---
+
+# Individual Component Imports
+
+@duskmoon-dev/core allows you to import individual component CSS files. This is useful for:
+
+- **Custom Elements / Web Components**: Encapsulate specific styles in Shadow DOM
+- **Micro-frontends**: Import only what each micro-frontend needs
+- **Bundle optimization**: Reduce CSS size by importing only used components
+
+## Available Exports
+
+### Full Library
+
+Import the complete library (all components, themes, and base styles):
+
+```css
+@import "@duskmoon-dev/core";
+```
+
+### Themes Only
+
+Import individual themes:
+
+```css
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/themes/moonlight";
+```
+
+### All Components
+
+Import all components without themes:
+
+```css
+@import "@duskmoon-dev/core/components";
+```
+
+### Individual Components
+
+Import specific components as needed:
+
+```css
+/* Core components */
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/card";
+@import "@duskmoon-dev/core/components/input";
+@import "@duskmoon-dev/core/components/form";
+@import "@duskmoon-dev/core/components/navigation";
+@import "@duskmoon-dev/core/components/modal";
+
+/* Data display */
+@import "@duskmoon-dev/core/components/avatar";
+@import "@duskmoon-dev/core/components/badge";
+@import "@duskmoon-dev/core/components/chip";
+@import "@duskmoon-dev/core/components/list";
+@import "@duskmoon-dev/core/components/table";
+
+/* Data entry */
+@import "@duskmoon-dev/core/components/autocomplete";
+@import "@duskmoon-dev/core/components/datepicker";
+@import "@duskmoon-dev/core/components/file-upload";
+@import "@duskmoon-dev/core/components/rating";
+@import "@duskmoon-dev/core/components/slider";
+@import "@duskmoon-dev/core/components/switch";
+
+/* Feedback */
+@import "@duskmoon-dev/core/components/alert";
+@import "@duskmoon-dev/core/components/dialog";
+@import "@duskmoon-dev/core/components/progress";
+@import "@duskmoon-dev/core/components/skeleton";
+@import "@duskmoon-dev/core/components/snackbar";
+@import "@duskmoon-dev/core/components/toast";
+@import "@duskmoon-dev/core/components/tooltip";
+
+/* Layout */
+@import "@duskmoon-dev/core/components/appbar";
+@import "@duskmoon-dev/core/components/divider";
+
+/* Navigation */
+@import "@duskmoon-dev/core/components/bottom-navigation";
+@import "@duskmoon-dev/core/components/drawer";
+@import "@duskmoon-dev/core/components/stepper";
+
+/* Surface */
+@import "@duskmoon-dev/core/components/accordion";
+@import "@duskmoon-dev/core/components/bottomsheet";
+@import "@duskmoon-dev/core/components/collapse";
+@import "@duskmoon-dev/core/components/popover";
+
+/* Misc */
+@import "@duskmoon-dev/core/components/timeline";
+```
+
+## Component Reference Table
+
+| Component | Import Path | Size |
+|-----------|-------------|------|
+| Accordion | `@duskmoon-dev/core/components/accordion` | ~5KB |
+| Alert | `@duskmoon-dev/core/components/alert` | ~4KB |
+| Appbar | `@duskmoon-dev/core/components/appbar` | ~6KB |
+| Autocomplete | `@duskmoon-dev/core/components/autocomplete` | ~6KB |
+| Avatar | `@duskmoon-dev/core/components/avatar` | ~3KB |
+| Badge | `@duskmoon-dev/core/components/badge` | ~4KB |
+| Bottom Navigation | `@duskmoon-dev/core/components/bottom-navigation` | ~6KB |
+| Bottomsheet | `@duskmoon-dev/core/components/bottomsheet` | ~7KB |
+| Button | `@duskmoon-dev/core/components/button` | ~11KB |
+| Card | `@duskmoon-dev/core/components/card` | ~5KB |
+| Chip | `@duskmoon-dev/core/components/chip` | ~4KB |
+| Collapse | `@duskmoon-dev/core/components/collapse` | ~5KB |
+| Datepicker | `@duskmoon-dev/core/components/datepicker` | ~8KB |
+| Dialog | `@duskmoon-dev/core/components/dialog` | ~4KB |
+| Divider | `@duskmoon-dev/core/components/divider` | ~5KB |
+| Drawer | `@duskmoon-dev/core/components/drawer` | ~8KB |
+| File Upload | `@duskmoon-dev/core/components/file-upload` | ~7KB |
+| Form | `@duskmoon-dev/core/components/form` | ~9KB |
+| Input | `@duskmoon-dev/core/components/input` | ~6KB |
+| List | `@duskmoon-dev/core/components/list` | ~4KB |
+| Modal | `@duskmoon-dev/core/components/modal` | ~6KB |
+| Navigation | `@duskmoon-dev/core/components/navigation` | ~8KB |
+| Popover | `@duskmoon-dev/core/components/popover` | ~7KB |
+| Progress | `@duskmoon-dev/core/components/progress` | ~5KB |
+| Rating | `@duskmoon-dev/core/components/rating` | ~4KB |
+| Skeleton | `@duskmoon-dev/core/components/skeleton` | ~3KB |
+| Slider | `@duskmoon-dev/core/components/slider` | ~7KB |
+| Snackbar | `@duskmoon-dev/core/components/snackbar` | ~7KB |
+| Stepper | `@duskmoon-dev/core/components/stepper` | ~7KB |
+| Switch | `@duskmoon-dev/core/components/switch` | ~7KB |
+| Table | `@duskmoon-dev/core/components/table` | ~4KB |
+| Timeline | `@duskmoon-dev/core/components/timeline` | ~7KB |
+| Toast | `@duskmoon-dev/core/components/toast` | ~5KB |
+| Tooltip | `@duskmoon-dev/core/components/tooltip` | ~7KB |
+
+## Usage with Custom Elements
+
+Individual imports are ideal for Web Components that use Shadow DOM:
+
+### Basic Custom Element
+
+```javascript
+class MyButton extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        @import "@duskmoon-dev/core/components/button";
+      </style>
+      <button class="btn btn-primary">
+        <slot></slot>
+      </button>
+    `;
+  }
+}
+
+customElements.define('my-button', MyButton);
+```
+
+### With Constructable Stylesheets
+
+For better performance, use Constructable Stylesheets:
+
+```javascript
+// Load CSS once
+const buttonStyles = new CSSStyleSheet();
+fetch(new URL('@duskmoon-dev/core/components/button', import.meta.url))
+  .then(res => res.text())
+  .then(css => buttonStyles.replaceSync(css));
+
+class MyButton extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: 'open' });
+    shadow.adoptedStyleSheets = [buttonStyles];
+  }
+
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+      <button class="btn btn-primary">
+        <slot></slot>
+      </button>
+    `;
+  }
+}
+
+customElements.define('my-button', MyButton);
+```
+
+### Lit Element Example
+
+```typescript
+import { LitElement, html, css, unsafeCSS } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import buttonStyles from '@duskmoon-dev/core/components/button?inline';
+import cardStyles from '@duskmoon-dev/core/components/card?inline';
+
+@customElement('my-card')
+export class MyCard extends LitElement {
+  static styles = [
+    unsafeCSS(buttonStyles),
+    unsafeCSS(cardStyles),
+  ];
+
+  @property() title = '';
+
+  render() {
+    return html`
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">${this.title}</h3>
+          <slot></slot>
+          <div class="card-actions">
+            <button class="btn btn-primary">Action</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+```
+
+### Stencil.js Example
+
+```tsx
+import { Component, h, Host } from '@stencil/core';
+
+@Component({
+  tag: 'my-alert',
+  styleUrl: '@duskmoon-dev/core/components/alert',
+  shadow: true,
+})
+export class MyAlert {
+  render() {
+    return (
+      <Host>
+        <div class="alert alert-info">
+          <slot></slot>
+        </div>
+      </Host>
+    );
+  }
+}
+```
+
+## Usage with Bundlers
+
+### Vite
+
+Vite handles CSS imports natively:
+
+```javascript
+// Import as string
+import buttonCss from '@duskmoon-dev/core/components/button?inline';
+
+// Use in component
+element.innerHTML = `<style>${buttonCss}</style>`;
+```
+
+### Webpack
+
+Configure CSS handling in `webpack.config.js`:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+};
+```
+
+Then import:
+
+```javascript
+import '@duskmoon-dev/core/components/button';
+```
+
+### esbuild
+
+```javascript
+import * as esbuild from 'esbuild';
+
+await esbuild.build({
+  entryPoints: ['app.js'],
+  bundle: true,
+  loader: { '.css': 'text' },
+  outfile: 'out.js',
+});
+```
+
+## Combining Multiple Components
+
+Create a custom bundle with only the components you need:
+
+```css
+/* my-components.css */
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/card";
+@import "@duskmoon-dev/core/components/input";
+@import "@duskmoon-dev/core/components/form";
+@import "@duskmoon-dev/core/components/alert";
+```
+
+This approach reduces your CSS bundle size compared to importing the full library.
+
+## Color Variables
+
+Individual component CSS files use CSS custom properties for colors. Ensure you have the color variables defined in your root or shadow root:
+
+```css
+:host {
+  /* Required color tokens */
+  --color-primary: oklch(0.55 0.22 250);
+  --color-primary-content: oklch(1 0 0);
+  --color-surface: oklch(0.99 0 0);
+  --color-on-surface: oklch(0.1 0 0);
+  /* ... other tokens */
+}
+```
+
+Or import a theme that defines these variables:
+
+```css
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/button";
+```
+
+## Best Practices
+
+1. **Import themes first**: If using individual components with themes, import the theme before components
+2. **Use Constructable Stylesheets**: For Web Components, this provides better performance than inline `<style>` tags
+3. **Cache stylesheets**: Load CSS files once and reuse across component instances
+4. **Consider dependencies**: Some components may depend on shared styles (e.g., form components often need input styles)
+
+## Next Steps
+
+- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
+- [Theme Customization](/duskmoonui/docs/en/theming/customization/)
+- [Component Reference](/duskmoonui/docs/en/components/)

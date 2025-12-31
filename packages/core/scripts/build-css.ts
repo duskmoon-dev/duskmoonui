@@ -118,6 +118,54 @@ async function copyComponents(): Promise<void> {
     await writeFile(join(distComponentsDir, 'index.css'), content);
     console.log('✓ Built components/index.css');
   }
+
+  // Build individual component files
+  const componentFiles = [
+    'accordion',
+    'alert',
+    'appbar',
+    'autocomplete',
+    'avatar',
+    'badge',
+    'bottom-navigation',
+    'bottomsheet',
+    'button',
+    'card',
+    'chip',
+    'collapse',
+    'datepicker',
+    'dialog',
+    'divider',
+    'drawer',
+    'file-upload',
+    'form',
+    'input',
+    'list',
+    'modal',
+    'navigation',
+    'popover',
+    'progress',
+    'rating',
+    'skeleton',
+    'slider',
+    'snackbar',
+    'stepper',
+    'switch',
+    'table',
+    'timeline',
+    'toast',
+    'tooltip',
+  ];
+
+  console.log('Building individual component files...');
+  for (const component of componentFiles) {
+    const srcPath = join(componentsDir, `${component}.css`);
+    if (existsSync(srcPath)) {
+      const content = await readFile(srcPath, 'utf-8');
+      await writeFile(join(distComponentsDir, `${component}.css`), content);
+    }
+  }
+  console.log(`✓ Built ${componentFiles.length} individual component files`);
 }
 
 async function main(): Promise<void> {
