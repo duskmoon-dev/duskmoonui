@@ -1,0 +1,299 @@
+---
+import CodeBlock from './CodeBlock.astro';
+import { marked } from 'marked';
+
+interface Props {
+  title: string;
+  description?: string;
+  markdown: string;
+}
+
+const { title, description, markdown } = Astro.props;
+
+// Pre-render markdown to HTML using marked
+const renderedHtml = await marked(markdown.trim());
+
+// Generate unique ID for ARIA linking
+const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class="component-showcase" data-showcase data-default-tab="preview">
+  <div class="showcase-header">
+    <div class="showcase-header-content">
+      <h3 class="showcase-title">{title}</h3>
+      {description && <p class="showcase-description">{description}</p>}
+    </div>
+
+    <div class="showcase-tabs" role="tablist" aria-label="Markdown example views">
+      <button
+        role="tab"
+        id={`${showcaseId}-preview-tab`}
+        aria-selected="true"
+        aria-controls={`${showcaseId}-preview-panel`}
+        tabindex="0"
+        data-tab="preview"
+        class="showcase-tab"
+      >
+        Preview
+      </button>
+      <button
+        role="tab"
+        id={`${showcaseId}-markdown-tab`}
+        aria-selected="false"
+        aria-controls={`${showcaseId}-markdown-panel`}
+        tabindex="-1"
+        data-tab="markdown"
+        class="showcase-tab"
+      >
+        Markdown
+      </button>
+      <button
+        role="tab"
+        id={`${showcaseId}-html-tab`}
+        aria-selected="false"
+        aria-controls={`${showcaseId}-html-panel`}
+        tabindex="-1"
+        data-tab="html"
+        class="showcase-tab"
+      >
+        HTML
+      </button>
+    </div>
+  </div>
+
+  <div
+    role="tabpanel"
+    id={`${showcaseId}-preview-panel`}
+    aria-labelledby={`${showcaseId}-preview-tab`}
+    data-panel="preview"
+    class="showcase-preview markdown-preview"
+  >
+    <article class="markdown-body" set:html={renderedHtml} />
+  </div>
+
+  <div
+    role="tabpanel"
+    id={`${showcaseId}-markdown-panel`}
+    aria-labelledby={`${showcaseId}-markdown-tab`}
+    data-panel="markdown"
+    class="showcase-code"
+    hidden
+  >
+    <CodeBlock code={markdown.trim()} language="markdown" />
+  </div>
+
+  <div
+    role="tabpanel"
+    id={`${showcaseId}-html-panel`}
+    aria-labelledby={`${showcaseId}-html-tab`}
+    data-panel="html"
+    class="showcase-code"
+    hidden
+  >
+    <CodeBlock code={`<article class="markdown-body">\n${renderedHtml}</article>`} language="html" />
+  </div>
+</div>
+
+<style>
+  .component-showcase {
+    margin: 2rem 0;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--surface, #ffffff);
+  }
+
+  .showcase-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    background: var(--surface-variant, #f9fafb);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .showcase-header-content {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .showcase-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground, #1f2937);
+  }
+
+  .showcase-description {
+    margin: 0.5rem 0 0;
+    color: var(--foreground-muted, #6b7280);
+    font-size: 0.9rem;
+  }
+
+  .showcase-tabs {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--surface, #ffffff);
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .showcase-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground-muted, #6b7280);
+    background: transparent;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .showcase-tab:hover {
+    color: var(--foreground, #1f2937);
+    background: var(--surface-variant, #f3f4f6);
+  }
+
+  .showcase-tab:focus-visible {
+    outline: 2px solid var(--primary, #3b82f6);
+    outline-offset: 2px;
+  }
+
+  .showcase-tab[aria-selected="true"] {
+    color: var(--primary, #3b82f6);
+    background: var(--primary-container, #dbeafe);
+  }
+
+  .showcase-preview {
+    padding: 2rem;
+    background: var(--background, #ffffff);
+    min-height: 120px;
+  }
+
+  .markdown-preview {
+    display: block;
+  }
+
+  .markdown-preview .markdown-body {
+    max-width: 100%;
+  }
+
+  .showcase-code {
+    background: var(--surface, #f9fafb);
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  @media (max-width: 640px) {
+    .showcase-header {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .showcase-tabs {
+      width: 100%;
+      justify-content: stretch;
+    }
+
+    .showcase-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.5rem 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .showcase-preview {
+      padding: 1rem;
+    }
+  }
+</style>
+
+<script>
+  function initMarkdownShowcase(showcase: HTMLElement) {
+    const tabs = showcase.querySelectorAll<HTMLButtonElement>('[data-tab]');
+    const panels = showcase.querySelectorAll<HTMLElement>('[data-panel]');
+
+    if (tabs.length === 0) return;
+
+    showcase.setAttribute('data-enhanced', 'true');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        activateTab(tab, tabs, panels);
+      });
+    });
+
+    const tablist = showcase.querySelector('[role="tablist"]');
+    if (tablist) {
+      tablist.addEventListener('keydown', (e: Event) => {
+        const event = e as KeyboardEvent;
+        const tabsArray = Array.from(tabs);
+        const currentIndex = tabsArray.findIndex(t => t.getAttribute('aria-selected') === 'true');
+        let newIndex = currentIndex;
+
+        switch (event.key) {
+          case 'ArrowLeft':
+            newIndex = currentIndex === 0 ? tabsArray.length - 1 : currentIndex - 1;
+            event.preventDefault();
+            break;
+          case 'ArrowRight':
+            newIndex = currentIndex === tabsArray.length - 1 ? 0 : currentIndex + 1;
+            event.preventDefault();
+            break;
+          case 'Home':
+            newIndex = 0;
+            event.preventDefault();
+            break;
+          case 'End':
+            newIndex = tabsArray.length - 1;
+            event.preventDefault();
+            break;
+          default:
+            return;
+        }
+
+        if (newIndex !== currentIndex) {
+          activateTab(tabsArray[newIndex], tabs, panels);
+          tabsArray[newIndex].focus();
+        }
+      });
+    }
+  }
+
+  function activateTab(
+    targetTab: HTMLButtonElement,
+    tabs: NodeListOf<HTMLButtonElement>,
+    panels: NodeListOf<HTMLElement>
+  ) {
+    const targetPanel = targetTab.dataset.tab;
+
+    tabs.forEach(tab => {
+      const isSelected = tab === targetTab;
+      tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      tab.setAttribute('tabindex', isSelected ? '0' : '-1');
+    });
+
+    panels.forEach(panel => {
+      panel.hidden = panel.dataset.panel !== targetPanel;
+    });
+  }
+
+  function initAllMarkdownShowcases() {
+    document.querySelectorAll<HTMLElement>('[data-showcase]').forEach(showcase => {
+      if (!showcase.hasAttribute('data-enhanced')) {
+        initMarkdownShowcase(showcase);
+      }
+    });
+  }
+
+  initAllMarkdownShowcases();
+  document.addEventListener('astro:page-load', initAllMarkdownShowcases);
+</script>
