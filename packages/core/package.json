@@ -21,109 +21,179 @@
       "style": "./dist/components/index.css"
     },
     "./components/accordion": {
-      "style": "./dist/components/accordion.css"
+      "style": "./dist/components/accordion.css",
+      "import": "./dist/esm/components/accordion.js",
+      "default": "./dist/esm/components/accordion.js"
     },
     "./components/alert": {
-      "style": "./dist/components/alert.css"
+      "style": "./dist/components/alert.css",
+      "import": "./dist/esm/components/alert.js",
+      "default": "./dist/esm/components/alert.js"
     },
     "./components/appbar": {
-      "style": "./dist/components/appbar.css"
+      "style": "./dist/components/appbar.css",
+      "import": "./dist/esm/components/appbar.js",
+      "default": "./dist/esm/components/appbar.js"
     },
     "./components/autocomplete": {
-      "style": "./dist/components/autocomplete.css"
+      "style": "./dist/components/autocomplete.css",
+      "import": "./dist/esm/components/autocomplete.js",
+      "default": "./dist/esm/components/autocomplete.js"
     },
     "./components/avatar": {
-      "style": "./dist/components/avatar.css"
+      "style": "./dist/components/avatar.css",
+      "import": "./dist/esm/components/avatar.js",
+      "default": "./dist/esm/components/avatar.js"
     },
     "./components/badge": {
-      "style": "./dist/components/badge.css"
+      "style": "./dist/components/badge.css",
+      "import": "./dist/esm/components/badge.js",
+      "default": "./dist/esm/components/badge.js"
     },
     "./components/bottom-navigation": {
-      "style": "./dist/components/bottom-navigation.css"
+      "style": "./dist/components/bottom-navigation.css",
+      "import": "./dist/esm/components/bottom-navigation.js",
+      "default": "./dist/esm/components/bottom-navigation.js"
     },
     "./components/bottomsheet": {
-      "style": "./dist/components/bottomsheet.css"
+      "style": "./dist/components/bottomsheet.css",
+      "import": "./dist/esm/components/bottomsheet.js",
+      "default": "./dist/esm/components/bottomsheet.js"
     },
     "./components/button": {
-      "style": "./dist/components/button.css"
+      "style": "./dist/components/button.css",
+      "import": "./dist/esm/components/button.js",
+      "default": "./dist/esm/components/button.js"
     },
     "./components/card": {
-      "style": "./dist/components/card.css"
+      "style": "./dist/components/card.css",
+      "import": "./dist/esm/components/card.js",
+      "default": "./dist/esm/components/card.js"
     },
     "./components/chip": {
-      "style": "./dist/components/chip.css"
+      "style": "./dist/components/chip.css",
+      "import": "./dist/esm/components/chip.js",
+      "default": "./dist/esm/components/chip.js"
     },
     "./components/collapse": {
-      "style": "./dist/components/collapse.css"
+      "style": "./dist/components/collapse.css",
+      "import": "./dist/esm/components/collapse.js",
+      "default": "./dist/esm/components/collapse.js"
     },
     "./components/datepicker": {
-      "style": "./dist/components/datepicker.css"
+      "style": "./dist/components/datepicker.css",
+      "import": "./dist/esm/components/datepicker.js",
+      "default": "./dist/esm/components/datepicker.js"
     },
     "./components/dialog": {
-      "style": "./dist/components/dialog.css"
+      "style": "./dist/components/dialog.css",
+      "import": "./dist/esm/components/dialog.js",
+      "default": "./dist/esm/components/dialog.js"
     },
     "./components/divider": {
-      "style": "./dist/components/divider.css"
+      "style": "./dist/components/divider.css",
+      "import": "./dist/esm/components/divider.js",
+      "default": "./dist/esm/components/divider.js"
     },
     "./components/drawer": {
-      "style": "./dist/components/drawer.css"
+      "style": "./dist/components/drawer.css",
+      "import": "./dist/esm/components/drawer.js",
+      "default": "./dist/esm/components/drawer.js"
     },
     "./components/file-upload": {
-      "style": "./dist/components/file-upload.css"
+      "style": "./dist/components/file-upload.css",
+      "import": "./dist/esm/components/file-upload.js",
+      "default": "./dist/esm/components/file-upload.js"
     },
     "./components/form": {
-      "style": "./dist/components/form.css"
+      "style": "./dist/components/form.css",
+      "import": "./dist/esm/components/form.js",
+      "default": "./dist/esm/components/form.js"
     },
     "./components/input": {
-      "style": "./dist/components/input.css"
+      "style": "./dist/components/input.css",
+      "import": "./dist/esm/components/input.js",
+      "default": "./dist/esm/components/input.js"
     },
     "./components/list": {
-      "style": "./dist/components/list.css"
-    },
-    "./components/modal": {
-      "style": "./dist/components/modal.css"
-    },
-    "./components/navigation": {
-      "style": "./dist/components/navigation.css"
-    },
-    "./components/popover": {
-      "style": "./dist/components/popover.css"
-    },
-    "./components/progress": {
-      "style": "./dist/components/progress.css"
-    },
-    "./components/rating": {
-      "style": "./dist/components/rating.css"
-    },
-    "./components/skeleton": {
-      "style": "./dist/components/skeleton.css"
-    },
-    "./components/slider": {
-      "style": "./dist/components/slider.css"
-    },
-    "./components/snackbar": {
-      "style": "./dist/components/snackbar.css"
-    },
-    "./components/stepper": {
-      "style": "./dist/components/stepper.css"
-    },
-    "./components/switch": {
-      "style": "./dist/components/switch.css"
-    },
-    "./components/table": {
-      "style": "./dist/components/table.css"
-    },
-    "./components/timeline": {
-      "style": "./dist/components/timeline.css"
-    },
-    "./components/toast": {
-      "style": "./dist/components/toast.css"
-    },
-    "./components/tooltip": {
-      "style": "./dist/components/tooltip.css"
+      "style": "./dist/components/list.css",
+      "import": "./dist/esm/components/list.js",
+      "default": "./dist/esm/components/list.js"
     },
     "./components/markdown-body": {
-      "style": "./dist/components/markdown-body.css"
+      "style": "./dist/components/markdown-body.css",
+      "import": "./dist/esm/components/markdown-body.js",
+      "default": "./dist/esm/components/markdown-body.js"
+    },
+    "./components/modal": {
+      "style": "./dist/components/modal.css",
+      "import": "./dist/esm/components/modal.js",
+      "default": "./dist/esm/components/modal.js"
+    },
+    "./components/navigation": {
+      "style": "./dist/components/navigation.css",
+      "import": "./dist/esm/components/navigation.js",
+      "default": "./dist/esm/components/navigation.js"
+    },
+    "./components/popover": {
+      "style": "./dist/components/popover.css",
+      "import": "./dist/esm/components/popover.js",
+      "default": "./dist/esm/components/popover.js"
+    },
+    "./components/progress": {
+      "style": "./dist/components/progress.css",
+      "import": "./dist/esm/components/progress.js",
+      "default": "./dist/esm/components/progress.js"
+    },
+    "./components/rating": {
+      "style": "./dist/components/rating.css",
+      "import": "./dist/esm/components/rating.js",
+      "default": "./dist/esm/components/rating.js"
+    },
+    "./components/skeleton": {
+      "style": "./dist/components/skeleton.css",
+      "import": "./dist/esm/components/skeleton.js",
+      "default": "./dist/esm/components/skeleton.js"
+    },
+    "./components/slider": {
+      "style": "./dist/components/slider.css",
+      "import": "./dist/esm/components/slider.js",
+      "default": "./dist/esm/components/slider.js"
+    },
+    "./components/snackbar": {
+      "style": "./dist/components/snackbar.css",
+      "import": "./dist/esm/components/snackbar.js",
+      "default": "./dist/esm/components/snackbar.js"
+    },
+    "./components/stepper": {
+      "style": "./dist/components/stepper.css",
+      "import": "./dist/esm/components/stepper.js",
+      "default": "./dist/esm/components/stepper.js"
+    },
+    "./components/switch": {
+      "style": "./dist/components/switch.css",
+      "import": "./dist/esm/components/switch.js",
+      "default": "./dist/esm/components/switch.js"
+    },
+    "./components/table": {
+      "style": "./dist/components/table.css",
+      "import": "./dist/esm/components/table.js",
+      "default": "./dist/esm/components/table.js"
+    },
+    "./components/timeline": {
+      "style": "./dist/components/timeline.css",
+      "import": "./dist/esm/components/timeline.js",
+      "default": "./dist/esm/components/timeline.js"
+    },
+    "./components/toast": {
+      "style": "./dist/components/toast.css",
+      "import": "./dist/esm/components/toast.js",
+      "default": "./dist/esm/components/toast.js"
+    },
+    "./components/tooltip": {
+      "style": "./dist/components/tooltip.css",
+      "import": "./dist/esm/components/tooltip.js",
+      "default": "./dist/esm/components/tooltip.js"
     }
   },
   "files": [

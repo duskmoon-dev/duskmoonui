@@ -103,13 +103,74 @@ async function copyThemes(): Promise<void> {
   }
 }
 
+// List of all component files
+const componentFiles = [
+  'accordion',
+  'alert',
+  'appbar',
+  'autocomplete',
+  'avatar',
+  'badge',
+  'bottom-navigation',
+  'bottomsheet',
+  'button',
+  'card',
+  'chip',
+  'collapse',
+  'datepicker',
+  'dialog',
+  'divider',
+  'drawer',
+  'file-upload',
+  'form',
+  'input',
+  'list',
+  'markdown-body',
+  'modal',
+  'navigation',
+  'popover',
+  'progress',
+  'rating',
+  'skeleton',
+  'slider',
+  'snackbar',
+  'stepper',
+  'switch',
+  'table',
+  'timeline',
+  'toast',
+  'tooltip',
+];
+
+/**
+ * Generate ESM JavaScript module from CSS content
+ */
+function generateEsmModule(componentName: string, cssContent: string): string {
+  // Escape backticks and backslashes for template literal
+  const escapedCss = cssContent
+    .replace(/\\/g, '\\\\')
+    .replace(/`/g, '\\`')
+    .replace(/\$/g, '\\$');
+
+  return `// Auto-generated from ${componentName}.css
+export const css = \`${escapedCss}\`;
+
+const sheet = new CSSStyleSheet();
+sheet.replaceSync(css);
+export const styles = sheet;
+export default sheet;
+`;
+}
+
 async function copyComponents(): Promise<void> {
   console.log('Copying component files...');
 
   const componentsDir = join(SRC_DIR, 'components');
   const distComponentsDir = join(DIST_DIR, 'components');
+  const distEsmComponentsDir = join(DIST_DIR, 'esm', 'components');
 
   await ensureDir(distComponentsDir);
+  await ensureDir(distEsmComponentsDir);
 
   // Build components index with inlined imports
   const indexPath = join(componentsDir, 'index.css');
@@ -119,54 +180,20 @@ async function copyComponents(): Promise<void> {
     console.log('✓ Built components/index.css');
   }
 
-  // Build individual component files
-  const componentFiles = [
-    'accordion',
-    'alert',
-    'appbar',
-    'autocomplete',
-    'avatar',
-    'badge',
-    'bottom-navigation',
-    'bottomsheet',
-    'button',
-    'card',
-    'chip',
-    'collapse',
-    'datepicker',
-    'dialog',
-    'divider',
-    'drawer',
-    'file-upload',
-    'form',
-    'input',
-    'list',
-    'markdown-body',
-    'modal',
-    'navigation',
-    'popover',
-    'progress',
-    'rating',
-    'skeleton',
-    'slider',
-    'snackbar',
-    'stepper',
-    'switch',
-    'table',
-    'timeline',
-    'toast',
-    'tooltip',
-  ];
-
   console.log('Building individual component files...');
   for (const component of componentFiles) {
     const srcPath = join(componentsDir, `${component}.css`);
     if (existsSync(srcPath)) {
       const content = await readFile(srcPath, 'utf-8');
+      // Write CSS file
       await writeFile(join(distComponentsDir, `${component}.css`), content);
+      // Generate and write ESM module
+      const esmContent = generateEsmModule(component, content);
+      await writeFile(join(distEsmComponentsDir, `${component}.js`), esmContent);
     }
   }
   console.log(`✓ Built ${componentFiles.length} individual component files`);
+  console.log(`✓ Built ${componentFiles.length} ESM component modules`);
 }
 
 async function main(): Promise<void> {
