@@ -121,6 +121,9 @@
     },
     "./components/tooltip": {
       "style": "./dist/components/tooltip.css"
+    },
+    "./components/markdown-body": {
+      "style": "./dist/components/markdown-body.css"
     }
   },
   "files": [

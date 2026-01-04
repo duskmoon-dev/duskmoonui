@@ -1,0 +1,388 @@
+---
+title: Markdown Body
+description: GitHub-style typography for rendered markdown content with automatic theme support
+category: components
+order: 50
+published: true
+tags: ['markdown', 'typography', 'content', 'prose']
+---
+
+import MarkdownShowcase from '../../../../components/showcase/MarkdownShowcase.astro';
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Markdown Body
+
+The `.markdown-body` class provides GitHub-style typography for rendered markdown content. It uses [marked.js](https://marked.js.org/) to parse markdown and automatically adapts to DuskMoonUI themes.
+
+## Live Demo
+
+See how markdown is rendered with the `.markdown-body` class. Toggle between **Preview**, **Markdown**, and **HTML** tabs:
+
+<MarkdownShowcase
+  title="Complete Markdown Example"
+  description="A full markdown document demonstrating all supported elements"
+  markdown={`
+# Project Documentation
+
+Welcome to the project! This document demonstrates **all supported markdown elements**.
+
+## Getting Started
+
+Install the package using your preferred package manager:
+
+\`\`\`bash
+npm install @duskmoon-dev/core
+\`\`\`
+
+Then import the CSS in your stylesheet:
+
+\`\`\`css
+@import "@duskmoon-dev/core";
+\`\`\`
+
+## Features
+
+Here's what this component supports:
+
+- **Typography**: Headings, paragraphs, bold, italic, strikethrough
+- **Lists**: Ordered, unordered, and nested lists
+- **Code**: Inline \`code\` and code blocks
+- **Tables**: With header styling and zebra striping
+- **Blockquotes**: For callouts and citations
+
+### Code Example
+
+Use the \`useState\` hook for state management:
+
+\`\`\`javascript
+function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+\`\`\`
+
+### API Reference
+
+| Method | Description | Returns |
+|--------|-------------|---------|
+| \`init()\` | Initialize the library | void |
+| \`configure(options)\` | Set configuration | Config |
+| \`destroy()\` | Clean up resources | void |
+
+> **Note:** Remember to call \`destroy()\` when unmounting to prevent memory leaks.
+
+---
+
+*Last updated: January 2026*
+`}
+/>
+
+## Typography
+
+### Headings
+
+<MarkdownShowcase
+  title="Headings"
+  markdown={`
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+`}
+/>
+
+### Text Formatting
+
+<MarkdownShowcase
+  title="Text Formatting"
+  markdown={`
+Regular paragraph text with **bold**, *italic*, and ***bold italic*** formatting.
+
+You can also use ~~strikethrough~~ for deleted text.
+
+This has a [link](https://example.com) and some \`inline code\`.
+`}
+/>
+
+## Lists
+
+### Unordered Lists
+
+<MarkdownShowcase
+  title="Unordered Lists"
+  markdown={`
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+    - Deep nested item
+- Third item
+`}
+/>
+
+### Ordered Lists
+
+<MarkdownShowcase
+  title="Ordered Lists"
+  markdown={`
+1. First step
+2. Second step
+   1. Sub-step a
+   2. Sub-step b
+3. Third step
+`}
+/>
+
+## Code
+
+### Inline Code
+
+<MarkdownShowcase
+  title="Inline Code"
+  markdown={`
+Use the \`npm install\` command to install dependencies.
+
+The \`useState\` hook returns a \`[state, setState]\` pair.
+`}
+/>
+
+### Code Blocks
+
+<MarkdownShowcase
+  title="Code Blocks"
+  markdown={`
+\`\`\`javascript
+function greet(name) {
+  console.log(\`Hello, \${name}!\`);
+}
+
+greet('World');
+\`\`\`
+`}
+/>
+
+## Tables
+
+<MarkdownShowcase
+  title="Tables"
+  markdown={`
+| Method | Description | Returns |
+|--------|-------------|---------|
+| \`init()\` | Initialize the library | void |
+| \`configure()\` | Set configuration options | Config |
+| \`destroy()\` | Clean up resources | void |
+`}
+/>
+
+## Blockquotes
+
+<MarkdownShowcase
+  title="Blockquotes"
+  markdown={`
+> This is a blockquote. It can contain multiple paragraphs.
+>
+> Here's the second paragraph with **bold** text.
+`}
+/>
+
+### Nested Blockquotes
+
+<MarkdownShowcase
+  title="Nested Blockquotes"
+  markdown={`
+> Outer blockquote.
+>
+> > Nested blockquote with more context.
+`}
+/>
+
+## Horizontal Rules
+
+<MarkdownShowcase
+  title="Horizontal Rules"
+  markdown={`
+Content above the rule.
+
+---
+
+Content below the rule.
+`}
+/>
+
+## Images
+
+<ComponentShowcase
+  title="Images"
+  code={`<article class="markdown-body">
+  <figure>
+    <img src="https://picsum.photos/600/300" alt="Sample image">
+    <figcaption>An example image with caption</figcaption>
+  </figure>
+</article>`}
+/>
+
+## Additional HTML Elements
+
+These elements require HTML in your markdown or a markdown processor that supports them:
+
+### Keyboard Input
+
+<ComponentShowcase
+  title="Keyboard Input"
+  code={`<article class="markdown-body">
+  <p>Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.</p>
+  <p>Use <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> to open the command palette.</p>
+</article>`}
+/>
+
+### Abbreviations
+
+<ComponentShowcase
+  title="Abbreviations"
+  code={`<article class="markdown-body">
+  <p>The <abbr title="HyperText Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+</article>`}
+/>
+
+### Highlights
+
+<ComponentShowcase
+  title="Highlights"
+  code={`<article class="markdown-body">
+  <p>This is <mark>highlighted text</mark> for emphasis.</p>
+</article>`}
+/>
+
+### Details/Summary
+
+<ComponentShowcase
+  title="Details/Summary"
+  code={`<article class="markdown-body">
+  <details>
+    <summary>Click to expand</summary>
+    <p>This is the hidden content that appears when expanded.</p>
+  </details>
+</article>`}
+/>
+
+## Usage
+
+### Import Options
+
+**Full Library:**
+```css
+@import "@duskmoon-dev/core";
+```
+
+**Individual Component:**
+```css
+@import "@duskmoon-dev/core/components/markdown-body";
+```
+
+### With marked.js
+
+```javascript
+import { marked } from 'marked';
+
+const markdown = `
+# Hello World
+Some **bold** text and \`inline code\`.
+`;
+
+// Render markdown to HTML
+const html = marked(markdown);
+
+// Apply to element with .markdown-body class
+document.querySelector('.markdown-body').innerHTML = html;
+```
+
+### With React
+
+```jsx
+import { marked } from 'marked';
+
+function MarkdownContent({ content }) {
+  const html = marked(content);
+
+  return (
+    <article
+      className="markdown-body"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
+```
+
+### With Astro
+
+```astro
+---
+import { marked } from 'marked';
+
+const markdown = `# Hello World`;
+const html = await marked(markdown);
+---
+
+<article class="markdown-body" set:html={html} />
+```
+
+### Container Sizing
+
+For optimal readability, constrain the container width:
+
+```css
+.markdown-body {
+  max-width: 980px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+```
+
+## Theme Support
+
+The component automatically adapts to DuskMoonUI themes:
+
+```html
+<!-- Light theme -->
+<html data-theme="sunshine">
+  <article class="markdown-body">...</article>
+</html>
+
+<!-- Dark theme -->
+<html data-theme="moonlight">
+  <article class="markdown-body">...</article>
+</html>
+```
+
+## Styled Elements Reference
+
+| Element | Markdown Syntax | CSS Selector |
+|---------|----------------|--------------|
+| Headings | `# H1` to `###### H6` | `h1` - `h6` |
+| Bold | `**text**` | `strong` |
+| Italic | `*text*` | `em` |
+| Strikethrough | `~~text~~` | `del` |
+| Link | `[text](url)` | `a` |
+| Inline Code | `` `code` `` | `code` |
+| Code Block | ` ``` ` | `pre > code` |
+| Unordered List | `- item` | `ul > li` |
+| Ordered List | `1. item` | `ol > li` |
+| Blockquote | `> quote` | `blockquote` |
+| Table | `\| a \| b \|` | `table` |
+| Horizontal Rule | `---` | `hr` |
+| Image | `![alt](url)` | `img` |
+
+## Accessibility
+
+- All colors use DuskMoonUI tokens that meet WCAG AA contrast requirements
+- Focus states are clearly visible for keyboard navigation
+- Reduced motion is respected via `prefers-reduced-motion` media query
+- Semantic HTML elements are styled appropriately
+
+## Related Components
+
+- [Table](/duskmoonui/docs/en/components/table/) - Standalone table component
+- [Card](/duskmoonui/docs/en/components/card/) - Content container
+- [Divider](/duskmoonui/docs/en/components/divider/) - Section separator
