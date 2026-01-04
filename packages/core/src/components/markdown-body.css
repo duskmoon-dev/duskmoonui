@@ -1,0 +1,405 @@
+/**
+ * Markdown Body Component
+ * GitHub-style typography for rendered markdown content
+ * Uses DuskMoonUI color tokens for automatic theme switching
+ */
+
+@layer components {
+  /* ============================================
+   * BASE CONTAINER (Phase 2: T005-T007)
+   * ============================================ */
+
+  .markdown-body {
+    /* Base typography */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    color: var(--color-on-surface);
+  }
+
+  /* ============================================
+   * USER STORY 1: TYPOGRAPHY (Phase 3: T009-T016)
+   * ============================================ */
+
+  /* Headings */
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    margin-block-start: 1.5rem;
+    margin-block-end: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .markdown-body h1 {
+    font-size: 2em;
+    padding-block-end: 0.3em;
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .markdown-body h2 {
+    font-size: 1.5em;
+    padding-block-end: 0.3em;
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .markdown-body h3 {
+    font-size: 1.25em;
+  }
+
+  .markdown-body h4 {
+    font-size: 1em;
+  }
+
+  .markdown-body h5 {
+    font-size: 0.875em;
+  }
+
+  .markdown-body h6 {
+    font-size: 0.85em;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Paragraphs */
+  .markdown-body p {
+    margin-block-end: 1rem;
+  }
+
+  /* Links */
+  .markdown-body a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .markdown-body a:hover {
+    text-decoration: underline;
+  }
+
+  .markdown-body a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Emphasis */
+  .markdown-body strong,
+  .markdown-body b {
+    font-weight: 600;
+  }
+
+  .markdown-body em,
+  .markdown-body i {
+    font-style: italic;
+  }
+
+  /* Lists */
+  .markdown-body ul,
+  .markdown-body ol {
+    margin-block-end: 1rem;
+    padding-inline-start: 2em;
+  }
+
+  .markdown-body ul {
+    list-style-type: disc;
+  }
+
+  .markdown-body ol {
+    list-style-type: decimal;
+  }
+
+  .markdown-body li {
+    margin-block-end: 0.25rem;
+  }
+
+  .markdown-body li > ul,
+  .markdown-body li > ol {
+    margin-block-start: 0.25rem;
+    margin-block-end: 0;
+  }
+
+  /* Nested list style progression */
+  .markdown-body ul ul {
+    list-style-type: circle;
+  }
+
+  .markdown-body ul ul ul {
+    list-style-type: square;
+  }
+
+  .markdown-body ol ol {
+    list-style-type: lower-alpha;
+  }
+
+  .markdown-body ol ol ol {
+    list-style-type: lower-roman;
+  }
+
+  /* Small, subscript, superscript, strikethrough */
+  .markdown-body small {
+    font-size: 0.875em;
+  }
+
+  .markdown-body sub,
+  .markdown-body sup {
+    font-size: 0.75em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .markdown-body sub {
+    bottom: -0.25em;
+  }
+
+  .markdown-body sup {
+    top: -0.5em;
+  }
+
+  .markdown-body del,
+  .markdown-body s {
+    text-decoration: line-through;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* ============================================
+   * USER STORY 2: CODE (Phase 4: T017-T021)
+   * ============================================ */
+
+  /* Inline code */
+  .markdown-body code {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 0.85em;
+    padding-block: 0.2em;
+    padding-inline: 0.4em;
+    background-color: var(--color-surface-container-high);
+    border-radius: 6px;
+  }
+
+  /* Code blocks */
+  .markdown-body pre {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 0.85em;
+    line-height: 1.45;
+    padding: 1rem;
+    margin-block-end: 1rem;
+    overflow-x: auto;
+    background-color: var(--color-surface-container);
+    border-radius: 6px;
+  }
+
+  /* Reset code inside pre */
+  .markdown-body pre > code {
+    font-size: inherit;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  /* Keyboard input */
+  .markdown-body kbd {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 0.85em;
+    padding-block: 0.2em;
+    padding-inline: 0.4em;
+    background-color: var(--color-surface-container);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 6px;
+    box-shadow: inset 0 -1px 0 var(--color-outline-variant);
+  }
+
+  /* Sample output */
+  .markdown-body samp {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 0.85em;
+  }
+
+  /* ============================================
+   * USER STORY 3: TABLES (Phase 6: T026-T029)
+   * ============================================ */
+
+  .markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block-end: 1rem;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .markdown-body th {
+    font-weight: 600;
+    background-color: var(--color-surface-container);
+  }
+
+  .markdown-body th,
+  .markdown-body td {
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+    border: 1px solid var(--color-outline-variant);
+    text-align: start;
+  }
+
+  .markdown-body tr:nth-child(2n) {
+    background-color: var(--color-surface-container);
+  }
+
+  /* ============================================
+   * USER STORY 4: BLOCKQUOTES (Phase 7: T030-T031)
+   * ============================================ */
+
+  .markdown-body blockquote {
+    margin-block-end: 1rem;
+    margin-inline: 0;
+    padding-inline-start: 1em;
+    border-inline-start: 0.25em solid var(--color-outline-variant);
+    color: var(--color-on-surface-variant);
+  }
+
+  .markdown-body blockquote > :first-child {
+    margin-block-start: 0;
+  }
+
+  .markdown-body blockquote > :last-child {
+    margin-block-end: 0;
+  }
+
+  /* Nested blockquotes */
+  .markdown-body blockquote blockquote {
+    margin-block-start: 1rem;
+  }
+
+  /* ============================================
+   * USER STORY 6: IMAGES (Phase 8: T032-T034)
+   * ============================================ */
+
+  .markdown-body img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .markdown-body figure {
+    margin-block-end: 1rem;
+    margin-inline: 0;
+  }
+
+  .markdown-body figcaption {
+    font-size: 0.875em;
+    color: var(--color-on-surface-variant);
+    margin-block-start: 0.5rem;
+    text-align: center;
+  }
+
+  /* Image alignment helpers */
+  .markdown-body img[align="left"] {
+    margin-inline-end: 1rem;
+    margin-block-end: 0.5rem;
+  }
+
+  .markdown-body img[align="right"] {
+    margin-inline-start: 1rem;
+    margin-block-end: 0.5rem;
+  }
+
+  /* ============================================
+   * USER STORY 7: TASK LISTS (Phase 9: T035-T036)
+   * ============================================ */
+
+  .markdown-body .task-list-item {
+    list-style-type: none;
+  }
+
+  .markdown-body .task-list-item input[type="checkbox"] {
+    margin-inline-start: -1.5em;
+    margin-inline-end: 0.5em;
+    vertical-align: middle;
+  }
+
+  /* ============================================
+   * PHASE 10: POLISH - ADDITIONAL ELEMENTS
+   * ============================================ */
+
+  /* Horizontal rule */
+  .markdown-body hr {
+    height: 0.25em;
+    margin-block: 1.5rem;
+    padding: 0;
+    background-color: var(--color-outline-variant);
+    border: 0;
+  }
+
+  /* Definition lists */
+  .markdown-body dl {
+    margin-block-end: 1rem;
+  }
+
+  .markdown-body dt {
+    font-weight: 600;
+    margin-block-start: 1rem;
+  }
+
+  .markdown-body dt:first-child {
+    margin-block-start: 0;
+  }
+
+  .markdown-body dd {
+    margin-block-start: 0.25rem;
+    margin-inline-start: 0;
+    padding-inline-start: 1rem;
+  }
+
+  /* Abbreviations */
+  .markdown-body abbr[title] {
+    text-decoration: underline dotted;
+    cursor: help;
+    border-bottom: none;
+  }
+
+  /* Highlights */
+  .markdown-body mark {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+    padding-block: 0.1em;
+    padding-inline: 0.2em;
+    border-radius: 2px;
+  }
+
+  /* Details/Summary */
+  .markdown-body details {
+    margin-block-end: 1rem;
+  }
+
+  .markdown-body summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .markdown-body details[open] > summary {
+    margin-block-end: 0.5rem;
+  }
+
+  /* ============================================
+   * EDGE CASES (T042-T043)
+   * ============================================ */
+
+  /* First/last child margin resets */
+  .markdown-body > :first-child {
+    margin-block-start: 0;
+  }
+
+  .markdown-body > :last-child {
+    margin-block-end: 0;
+  }
+
+  /* ============================================
+   * USER STORY 5: REDUCED MOTION (T025)
+   * ============================================ */
+
+  @media (prefers-reduced-motion: reduce) {
+    .markdown-body * {
+      transition: none;
+    }
+  }
+}

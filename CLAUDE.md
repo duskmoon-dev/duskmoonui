@@ -94,6 +94,8 @@ Apply themes:
 ## Active Technologies
 - CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core (005-component-padding)
 - N/A (CSS-only changes) (005-component-padding)
+- CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core (color tokens) (001-markdown-body)
+- N/A (CSS-only component) (001-markdown-body)
 
 ## Recent Changes
 - 005-component-padding: Added CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core

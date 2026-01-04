@@ -141,6 +141,7 @@ async function copyComponents(): Promise<void> {
     'form',
     'input',
     'list',
+    'markdown-body',
     'modal',
     'navigation',
     'popover',
