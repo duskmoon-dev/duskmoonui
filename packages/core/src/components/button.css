@@ -8,6 +8,7 @@
   .btn {
     --btn-p: 1.25rem;
     --btn-py: 0.625rem;
+    --btn-text-color: var(--color-on-surface);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +28,7 @@
     border-radius: 0.5rem;
     transition: all 150ms ease-in-out;
     background-color: var(--color-surface-container);
-    color: var(--color-on-surface);
+    color: var(--btn-text-color);
   }
 
   .btn:hover {
@@ -55,8 +56,8 @@
 
   /* Primary Button */
   .btn-primary {
+    --btn-text-color: var(--color-primary-content);
     background-color: var(--color-primary);
-    color: var(--color-primary-content);
     border-color: var(--color-primary);
   }
 
@@ -72,8 +73,8 @@
 
   /* Secondary Button */
   .btn-secondary {
+    --btn-text-color: var(--color-secondary-content);
     background-color: var(--color-secondary);
-    color: var(--color-secondary-content);
     border-color: var(--color-secondary);
   }
 
@@ -89,8 +90,8 @@
 
   /* Tertiary Button */
   .btn-tertiary {
+    --btn-text-color: var(--color-tertiary-content);
     background-color: var(--color-tertiary);
-    color: var(--color-tertiary-content);
     border-color: var(--color-tertiary);
   }
 
@@ -106,9 +107,9 @@
 
   /* Outline Variant */
   .btn-outline {
+    --btn-text-color: var(--color-on-surface);
     background-color: transparent;
     border: 1px solid var(--color-outline);
-    color: var(--color-on-surface);
   }
 
   .btn-outline:hover {
@@ -117,40 +118,40 @@
   }
 
   .btn-outline.btn-primary {
+    --btn-text-color: var(--color-primary);
     border-color: var(--color-primary);
-    color: var(--color-primary);
   }
 
   .btn-outline.btn-primary:hover {
+    --btn-text-color: var(--color-primary-content);
     background-color: var(--color-primary);
-    color: var(--color-primary-content);
   }
 
   .btn-outline.btn-secondary {
+    --btn-text-color: var(--color-secondary);
     border-color: var(--color-secondary);
-    color: var(--color-secondary);
   }
 
   .btn-outline.btn-secondary:hover {
+    --btn-text-color: var(--color-secondary-content);
     background-color: var(--color-secondary);
-    color: var(--color-secondary-content);
   }
 
   .btn-outline.btn-tertiary {
+    --btn-text-color: var(--color-tertiary);
     border-color: var(--color-tertiary);
-    color: var(--color-tertiary);
   }
 
   .btn-outline.btn-tertiary:hover {
+    --btn-text-color: var(--color-tertiary-content);
     background-color: var(--color-tertiary);
-    color: var(--color-tertiary-content);
   }
 
   /* Outlined Variant (alias for .btn-outline - documentation aligned) */
   .btn-outlined {
+    --btn-text-color: var(--color-on-surface);
     background-color: transparent;
     border: 1px solid var(--color-outline);
-    color: var(--color-on-surface);
   }
 
   .btn-outlined:hover {
@@ -159,40 +160,40 @@
   }
 
   .btn-outlined.btn-primary {
+    --btn-text-color: var(--color-primary);
     border-color: var(--color-primary);
-    color: var(--color-primary);
   }
 
   .btn-outlined.btn-primary:hover {
+    --btn-text-color: var(--color-primary-content);
     background-color: var(--color-primary);
-    color: var(--color-primary-content);
   }
 
   .btn-outlined.btn-secondary {
+    --btn-text-color: var(--color-secondary);
     border-color: var(--color-secondary);
-    color: var(--color-secondary);
   }
 
   .btn-outlined.btn-secondary:hover {
+    --btn-text-color: var(--color-secondary-content);
     background-color: var(--color-secondary);
-    color: var(--color-secondary-content);
   }
 
   .btn-outlined.btn-tertiary {
+    --btn-text-color: var(--color-tertiary);
     border-color: var(--color-tertiary);
-    color: var(--color-tertiary);
   }
 
   .btn-outlined.btn-tertiary:hover {
+    --btn-text-color: var(--color-tertiary-content);
     background-color: var(--color-tertiary);
-    color: var(--color-tertiary-content);
   }
 
   /* Ghost Variant */
   .btn-ghost {
+    --btn-text-color: var(--color-on-surface);
     background-color: transparent;
     border-color: transparent;
-    color: var(--color-on-surface);
   }
 
   .btn-ghost:hover {
@@ -201,37 +202,37 @@
   }
 
   .btn-ghost.btn-primary {
-    color: var(--color-primary);
+    --btn-text-color: var(--color-primary);
   }
 
   .btn-ghost.btn-primary:hover {
+    --btn-text-color: var(--color-on-primary-container);
     background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
   }
 
   .btn-ghost.btn-secondary {
-    color: var(--color-secondary);
+    --btn-text-color: var(--color-secondary);
   }
 
   .btn-ghost.btn-secondary:hover {
+    --btn-text-color: var(--color-on-secondary-container);
     background-color: var(--color-secondary-container);
-    color: var(--color-on-secondary-container);
   }
 
   .btn-ghost.btn-tertiary {
-    color: var(--color-tertiary);
+    --btn-text-color: var(--color-tertiary);
   }
 
   .btn-ghost.btn-tertiary:hover {
+    --btn-text-color: var(--color-on-tertiary-container);
     background-color: var(--color-tertiary-container);
-    color: var(--color-on-tertiary-container);
   }
 
   /* Text Variant (alias for .btn-ghost - documentation aligned) */
   .btn-text {
+    --btn-text-color: var(--color-on-surface);
     background-color: transparent;
     border-color: transparent;
-    color: var(--color-on-surface);
   }
 
   .btn-text:hover {
@@ -240,36 +241,36 @@
   }
 
   .btn-text.btn-primary {
-    color: var(--color-primary);
+    --btn-text-color: var(--color-primary);
   }
 
   .btn-text.btn-primary:hover {
+    --btn-text-color: var(--color-on-primary-container);
     background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
   }
 
   .btn-text.btn-secondary {
-    color: var(--color-secondary);
+    --btn-text-color: var(--color-secondary);
   }
 
   .btn-text.btn-secondary:hover {
+    --btn-text-color: var(--color-on-secondary-container);
     background-color: var(--color-secondary-container);
-    color: var(--color-on-secondary-container);
   }
 
   .btn-text.btn-tertiary {
-    color: var(--color-tertiary);
+    --btn-text-color: var(--color-tertiary);
   }
 
   .btn-text.btn-tertiary:hover {
+    --btn-text-color: var(--color-on-tertiary-container);
     background-color: var(--color-tertiary-container);
-    color: var(--color-on-tertiary-container);
   }
 
   /* Tonal Variant - uses container colors for subtle appearance */
   .btn-tonal {
+    --btn-text-color: var(--color-on-primary-container);
     background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
     border-color: transparent;
   }
 
@@ -278,44 +279,44 @@
   }
 
   .btn-tonal.btn-primary {
+    --btn-text-color: var(--color-on-primary-container);
     background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
   }
 
   .btn-tonal.btn-secondary {
+    --btn-text-color: var(--color-on-secondary-container);
     background-color: var(--color-secondary-container);
-    color: var(--color-on-secondary-container);
   }
 
   .btn-tonal.btn-tertiary {
+    --btn-text-color: var(--color-on-tertiary-container);
     background-color: var(--color-tertiary-container);
-    color: var(--color-on-tertiary-container);
   }
 
   .btn-tonal.btn-info {
+    --btn-text-color: var(--color-on-info-container);
     background-color: var(--color-info-container);
-    color: var(--color-on-info-container);
   }
 
   .btn-tonal.btn-success {
+    --btn-text-color: var(--color-on-success-container);
     background-color: var(--color-success-container);
-    color: var(--color-on-success-container);
   }
 
   .btn-tonal.btn-warning {
+    --btn-text-color: var(--color-on-warning-container);
     background-color: var(--color-warning-container);
-    color: var(--color-on-warning-container);
   }
 
   .btn-tonal.btn-error {
+    --btn-text-color: var(--color-on-error-container);
     background-color: var(--color-error-container);
-    color: var(--color-on-error-container);
   }
 
   /* Semantic Colors */
   .btn-info {
+    --btn-text-color: var(--color-info-content);
     background-color: var(--color-info);
-    color: var(--color-info-content);
     border-color: var(--color-info);
   }
 
@@ -326,8 +327,8 @@
   }
 
   .btn-success {
+    --btn-text-color: var(--color-success-content);
     background-color: var(--color-success);
-    color: var(--color-success-content);
     border-color: var(--color-success);
   }
 
@@ -338,8 +339,8 @@
   }
 
   .btn-warning {
+    --btn-text-color: var(--color-warning-content);
     background-color: var(--color-warning);
-    color: var(--color-warning-content);
     border-color: var(--color-warning);
   }
 
@@ -350,8 +351,8 @@
   }
 
   .btn-error {
+    --btn-text-color: var(--color-error-content);
     background-color: var(--color-error);
-    color: var(--color-error-content);
     border-color: var(--color-error);
   }
 
@@ -427,7 +428,7 @@
   .btn-loading {
     pointer-events: none;
     position: relative;
-    color: transparent;
+    color: transparent !important;
   }
 
   .btn-loading::after {
@@ -435,7 +436,7 @@
     position: absolute;
     width: 1rem;
     height: 1rem;
-    border: 2px solid currentColor;
+    border: 2px solid var(--btn-text-color);
     border-right-color: transparent;
     border-radius: 50%;
     animation: btn-spin 0.6s linear infinite;
