@@ -59,7 +59,9 @@ jobs:
       - name: Get published version
         id: version
         working-directory: packages/core
-        run: echo "version=$(node -p \"require('./package.json').version\")" >> $GITHUB_OUTPUT
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create Git tag (if manual dispatch with version)
         if: inputs.version
