@@ -160,17 +160,23 @@ Disabled buttons are non-interactive:
 
 ### Loading State
 
-Add loading indicators (requires custom implementation):
+Use the `btn-loading` class to show a loading spinner. The text is hidden and a spinner appears in its place:
 
 <ComponentShowcase
-  title="Loading Button"
-  code={`<button class="btn btn-primary" disabled>
-  <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-  </svg>
-  Loading...
-</button>`}
+  title="Loading Buttons"
+  code={`<button class="btn btn-primary btn-loading">Loading</button>
+<button class="btn btn-secondary btn-loading">Loading</button>
+<button class="btn btn-outlined btn-loading">Loading</button>
+<button class="btn btn-tonal btn-loading">Loading</button>`}
+/>
+
+The loading state can be combined with any button variant and size:
+
+<ComponentShowcase
+  title="Loading Button Sizes"
+  code={`<button class="btn btn-primary btn-sm btn-loading">Small</button>
+<button class="btn btn-primary btn-md btn-loading">Medium</button>
+<button class="btn btn-primary btn-lg btn-loading">Large</button>`}
 />
 
 ## Block Buttons
@@ -319,6 +325,9 @@ defineProps({
 | `.btn-icon-sm` | Small icon button |
 | `.btn-icon-lg` | Large icon button |
 | `.btn-block` | Full-width button |
+| `.btn-loading` | Loading state with spinner |
+| `.btn-circle` | Circular button (1:1 aspect ratio) |
+| `.btn-square` | Square button (1:1 aspect ratio) |
 
 ### Combinations
 
