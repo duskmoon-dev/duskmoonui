@@ -41,7 +41,14 @@ jobs:
       - name: Update version (if specified)
         if: inputs.version
         working-directory: packages/core
-        run: npm version ${{ inputs.version }} --no-git-tag-version --ignore-scripts
+        run: |
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            pkg.version = '${{ inputs.version }}';
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+            console.log('Updated version to', pkg.version);
+          "
 
       - name: Publish to npm
         working-directory: packages/core
