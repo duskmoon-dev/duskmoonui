@@ -1,0 +1,201 @@
+---
+title: OTP Input
+description: Material Design 3 OTP/verification code input component
+category: components
+order: 45
+published: true
+tags: ['otp-input', 'components', 'material-design', 'verification', 'code', 'forms']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# OTP Input
+
+OTP (One-Time Password) Input is designed for entering verification codes sent via SMS, email, or authenticator apps. Each digit has its own field for easy entry.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic OTP Input" code={`<div class="otp-input">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+## Lengths
+
+### 4 Digits
+
+<ComponentShowcase title="4-Digit OTP" code={`<div class="otp-input otp-input-4">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+### 6 Digits
+
+<ComponentShowcase title="6-Digit OTP" code={`<div class="otp-input otp-input-6">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+## Variants
+
+### Outlined (Default)
+
+<ComponentShowcase title="Outlined OTP Input" code={`<div class="otp-input otp-input-outlined">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+### Filled
+
+<ComponentShowcase title="Filled OTP Input" code={`<div class="otp-input otp-input-filled">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+### Underlined
+
+<ComponentShowcase title="Underlined OTP Input" code={`<div class="otp-input otp-input-underlined">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+## Sizes
+
+### Small
+
+<ComponentShowcase title="Small OTP Input" code={`<div class="otp-input otp-input-sm">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+### Large
+
+<ComponentShowcase title="Large OTP Input" code={`<div class="otp-input otp-input-lg">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+## With Separator
+
+<ComponentShowcase title="OTP with Separator" code={`<div class="otp-input">
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <span class="otp-input-separator">-</span>
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+## States
+
+### Focused
+
+<ComponentShowcase title="Focused State" code={`<div class="otp-input">
+  <input type="text" class="otp-input-field" maxlength="1" value="1" />
+  <input type="text" class="otp-input-field otp-input-field-focused" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+  <input type="text" class="otp-input-field" maxlength="1" />
+</div>`} />
+
+### Filled Fields
+
+<ComponentShowcase title="Filled Fields" code={`<div class="otp-input">
+  <input type="text" class="otp-input-field otp-input-field-filled" maxlength="1" value="1" />
+  <input type="text" class="otp-input-field otp-input-field-filled" maxlength="1" value="2" />
+  <input type="text" class="otp-input-field otp-input-field-filled" maxlength="1" value="3" />
+  <input type="text" class="otp-input-field otp-input-field-filled" maxlength="1" value="4" />
+</div>`} />
+
+### Error State
+
+<ComponentShowcase title="Error State" code={`<div class="otp-input otp-input-error">
+  <input type="text" class="otp-input-field" maxlength="1" value="1" />
+  <input type="text" class="otp-input-field" maxlength="1" value="2" />
+  <input type="text" class="otp-input-field" maxlength="1" value="3" />
+  <input type="text" class="otp-input-field" maxlength="1" value="4" />
+</div>
+<span class="otp-input-helper otp-input-helper-error">Invalid verification code</span>`} />
+
+### Success State
+
+<ComponentShowcase title="Success State" code={`<div class="otp-input otp-input-success">
+  <input type="text" class="otp-input-field" maxlength="1" value="1" />
+  <input type="text" class="otp-input-field" maxlength="1" value="2" />
+  <input type="text" class="otp-input-field" maxlength="1" value="3" />
+  <input type="text" class="otp-input-field" maxlength="1" value="4" />
+</div>
+<span class="otp-input-helper otp-input-helper-success">Code verified successfully</span>`} />
+
+### Disabled
+
+<ComponentShowcase title="Disabled OTP Input" code={`<div class="otp-input otp-input-disabled">
+  <input type="text" class="otp-input-field" maxlength="1" disabled />
+  <input type="text" class="otp-input-field" maxlength="1" disabled />
+  <input type="text" class="otp-input-field" maxlength="1" disabled />
+  <input type="text" class="otp-input-field" maxlength="1" disabled />
+</div>`} />
+
+## With Label and Helper
+
+<ComponentShowcase title="Complete OTP Form" code={`<div class="form-group">
+  <label class="form-label">Enter verification code</label>
+  <p class="text-sm text-on-surface-variant mb-3">We sent a 6-digit code to your email</p>
+  <div class="otp-input otp-input-6">
+    <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" />
+    <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" />
+    <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" />
+    <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" />
+    <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" />
+    <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" />
+  </div>
+  <span class="otp-input-helper">Didn't receive the code? <a href="#" class="text-primary">Resend</a></span>
+</div>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.otp-input` | Base container (required) |
+| `.otp-input-field` | Individual digit field (required) |
+| `.otp-input-4` | 4-digit layout |
+| `.otp-input-6` | 6-digit layout |
+| `.otp-input-outlined` | Outlined variant |
+| `.otp-input-filled` | Filled variant |
+| `.otp-input-underlined` | Underlined variant |
+| `.otp-input-sm` | Small size |
+| `.otp-input-lg` | Large size |
+| `.otp-input-separator` | Separator element |
+| `.otp-input-field-focused` | Focused field state |
+| `.otp-input-field-filled` | Filled field state |
+| `.otp-input-error` | Error state |
+| `.otp-input-success` | Success state |
+| `.otp-input-disabled` | Disabled state |
+| `.otp-input-helper` | Helper text |
+| `.otp-input-helper-error` | Error helper text |
+| `.otp-input-helper-success` | Success helper text |
+
+## Related Components
+
+- [PIN Input](/duskmoonui/docs/en/components/pin-input/) - Secure PIN entry
+- [Input](/duskmoonui/docs/en/components/input/) - Text input fields
+- [Form Group](/duskmoonui/docs/en/components/form-group/) - Form layouts

@@ -1,0 +1,180 @@
+---
+title: PIN Input
+description: Material Design 3 secure PIN entry component with masked input
+category: components
+order: 46
+published: true
+tags: ['pin-input', 'components', 'material-design', 'security', 'password', 'forms']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# PIN Input
+
+PIN Input is designed for secure numeric code entry like passwords, ATM PINs, or access codes. It features masked input to hide the entered digits.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic PIN Input" code={`<div class="pin-input">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+## Lengths
+
+### 4 Digits
+
+<ComponentShowcase title="4-Digit PIN" code={`<div class="pin-input pin-input-4">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+### 6 Digits
+
+<ComponentShowcase title="6-Digit PIN" code={`<div class="pin-input pin-input-6">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+## Variants
+
+### Outlined (Default)
+
+<ComponentShowcase title="Outlined PIN Input" code={`<div class="pin-input pin-input-outlined">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+### Filled
+
+<ComponentShowcase title="Filled PIN Input" code={`<div class="pin-input pin-input-filled">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+### Dot Display
+
+Shows dots instead of the actual input field value:
+
+<ComponentShowcase title="Dot Display PIN" code={`<div class="pin-input pin-input-dots">
+  <div class="pin-input-dot pin-input-dot-filled"></div>
+  <div class="pin-input-dot pin-input-dot-filled"></div>
+  <div class="pin-input-dot"></div>
+  <div class="pin-input-dot"></div>
+</div>`} />
+
+## Sizes
+
+### Small
+
+<ComponentShowcase title="Small PIN Input" code={`<div class="pin-input pin-input-sm">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+### Large
+
+<ComponentShowcase title="Large PIN Input" code={`<div class="pin-input pin-input-lg">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+## Masked Display
+
+<ComponentShowcase title="Masked PIN Input" code={`<div class="pin-input pin-input-masked">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="1" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="2" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+</div>`} />
+
+## States
+
+### Error State
+
+<ComponentShowcase title="Error State" code={`<div class="pin-input pin-input-error">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+</div>
+<span class="pin-input-helper pin-input-helper-error">Incorrect PIN. Please try again.</span>`} />
+
+### Success State
+
+<ComponentShowcase title="Success State" code={`<div class="pin-input pin-input-success">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" value="*" />
+</div>
+<span class="pin-input-helper pin-input-helper-success">PIN accepted</span>`} />
+
+### Disabled
+
+<ComponentShowcase title="Disabled PIN Input" code={`<div class="pin-input pin-input-disabled">
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" disabled />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" disabled />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" disabled />
+  <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" disabled />
+</div>`} />
+
+## Complete Form Example
+
+<ComponentShowcase title="PIN Form Example" code={`<div class="form-group text-center">
+  <label class="form-label">Enter your PIN</label>
+  <p class="text-sm text-on-surface-variant mb-4">Please enter your 4-digit security PIN</p>
+  <div class="pin-input pin-input-lg justify-center">
+    <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+    <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+    <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+    <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" />
+  </div>
+  <span class="pin-input-helper">3 attempts remaining</span>
+</div>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.pin-input` | Base container (required) |
+| `.pin-input-field` | Individual PIN field (required) |
+| `.pin-input-4` | 4-digit layout |
+| `.pin-input-6` | 6-digit layout |
+| `.pin-input-outlined` | Outlined variant |
+| `.pin-input-filled` | Filled variant |
+| `.pin-input-dots` | Dot display variant |
+| `.pin-input-dot` | Individual dot element |
+| `.pin-input-dot-filled` | Filled dot state |
+| `.pin-input-sm` | Small size |
+| `.pin-input-lg` | Large size |
+| `.pin-input-masked` | Masked input display |
+| `.pin-input-error` | Error state |
+| `.pin-input-success` | Success state |
+| `.pin-input-disabled` | Disabled state |
+| `.pin-input-helper` | Helper text |
+| `.pin-input-helper-error` | Error helper text |
+| `.pin-input-helper-success` | Success helper text |
+
+## Related Components
+
+- [OTP Input](/duskmoonui/docs/en/components/otp-input/) - Verification codes
+- [Input](/duskmoonui/docs/en/components/input/) - Text input fields
+- [Form Group](/duskmoonui/docs/en/components/form-group/) - Form layouts

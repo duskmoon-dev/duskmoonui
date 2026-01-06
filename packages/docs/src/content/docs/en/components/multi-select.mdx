@@ -1,0 +1,371 @@
+---
+title: Multi-Select
+description: Material Design 3 multiple selection dropdown component with tags
+category: components
+order: 50
+published: true
+tags: ['multi-select', 'components', 'material-design', 'dropdown', 'tags', 'forms']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Multi-Select
+
+Multi-Select allows users to select multiple options from a dropdown list. Selected items are displayed as removable tags.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic Multi-Select" code={`<div class="multi-select">
+  <div class="multi-select-trigger">
+    <span class="multi-select-placeholder">Select options</span>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+## With Selections
+
+<ComponentShowcase title="Multi-Select with Tags" code={`<div class="multi-select">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">
+        React
+        <button class="multi-select-tag-remove" aria-label="Remove React">
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </span>
+      <span class="multi-select-tag">
+        Vue
+        <button class="multi-select-tag-remove" aria-label="Remove Vue">
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </span>
+      <span class="multi-select-tag">
+        Angular
+        <button class="multi-select-tag-remove" aria-label="Remove Angular">
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </span>
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+## With Dropdown Open
+
+<ComponentShowcase title="Multi-Select Dropdown" code={`<div class="multi-select multi-select-open">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">
+        React
+        <button class="multi-select-tag-remove">
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </span>
+      <input type="text" class="multi-select-input" placeholder="Search..." />
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+
+  <div class="multi-select-dropdown">
+    <div class="multi-select-options">
+      <div class="multi-select-option multi-select-option-selected">
+        <span class="multi-select-option-checkbox">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        React
+      </div>
+      <div class="multi-select-option">
+        <span class="multi-select-option-checkbox"></span>
+        Vue
+      </div>
+      <div class="multi-select-option">
+        <span class="multi-select-option-checkbox"></span>
+        Angular
+      </div>
+      <div class="multi-select-option">
+        <span class="multi-select-option-checkbox"></span>
+        Svelte
+      </div>
+      <div class="multi-select-option multi-select-option-disabled">
+        <span class="multi-select-option-checkbox"></span>
+        jQuery (deprecated)
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## Variants
+
+### Outlined (Default)
+
+<ComponentShowcase title="Outlined Multi-Select" code={`<div class="multi-select multi-select-outlined">
+  <div class="multi-select-trigger">
+    <span class="multi-select-placeholder">Select frameworks</span>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+### Filled
+
+<ComponentShowcase title="Filled Multi-Select" code={`<div class="multi-select multi-select-filled">
+  <div class="multi-select-trigger">
+    <span class="multi-select-placeholder">Select frameworks</span>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+## Sizes
+
+### Small
+
+<ComponentShowcase title="Small Multi-Select" code={`<div class="multi-select multi-select-sm">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">Tag 1</span>
+      <span class="multi-select-tag">Tag 2</span>
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+### Large
+
+<ComponentShowcase title="Large Multi-Select" code={`<div class="multi-select multi-select-lg">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">Tag 1</span>
+      <span class="multi-select-tag">Tag 2</span>
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+## Tag Variants
+
+### Primary Tags
+
+<ComponentShowcase title="Primary Tags" code={`<div class="multi-select">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag multi-select-tag-primary">
+        Option 1
+        <button class="multi-select-tag-remove">×</button>
+      </span>
+      <span class="multi-select-tag multi-select-tag-primary">
+        Option 2
+        <button class="multi-select-tag-remove">×</button>
+      </span>
+    </div>
+  </div>
+</div>`} />
+
+### Outlined Tags
+
+<ComponentShowcase title="Outlined Tags" code={`<div class="multi-select">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag multi-select-tag-outlined">
+        Option 1
+        <button class="multi-select-tag-remove">×</button>
+      </span>
+      <span class="multi-select-tag multi-select-tag-outlined">
+        Option 2
+        <button class="multi-select-tag-remove">×</button>
+      </span>
+    </div>
+  </div>
+</div>`} />
+
+## With Max Selections Display
+
+<ComponentShowcase title="Max Selections Display" code={`<div class="multi-select">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">React</span>
+      <span class="multi-select-tag">Vue</span>
+      <span class="multi-select-tag-overflow">+3 more</span>
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+## With Clear All Button
+
+<ComponentShowcase title="With Clear All" code={`<div class="multi-select">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">React</span>
+      <span class="multi-select-tag">Vue</span>
+      <span class="multi-select-tag">Angular</span>
+    </div>
+    <button class="multi-select-clear-all" aria-label="Clear all">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+## With Groups
+
+<ComponentShowcase title="Grouped Options" code={`<div class="multi-select multi-select-open">
+  <div class="multi-select-trigger">
+    <span class="multi-select-placeholder">Select skills</span>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+
+  <div class="multi-select-dropdown">
+    <div class="multi-select-options">
+      <div class="multi-select-group">
+        <div class="multi-select-group-header">Frontend</div>
+        <div class="multi-select-option">React</div>
+        <div class="multi-select-option">Vue</div>
+        <div class="multi-select-option">Angular</div>
+      </div>
+      <div class="multi-select-group">
+        <div class="multi-select-group-header">Backend</div>
+        <div class="multi-select-option">Node.js</div>
+        <div class="multi-select-option">Python</div>
+        <div class="multi-select-option">Go</div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## States
+
+### Error State
+
+<ComponentShowcase title="Error State" code={`<div class="form-group">
+  <label class="form-label form-label-required">Skills</label>
+  <div class="multi-select multi-select-error">
+    <div class="multi-select-trigger">
+      <span class="multi-select-placeholder">Select at least 2 skills</span>
+      <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <span class="helper-text helper-text-error">Please select at least 2 skills</span>
+</div>`} />
+
+### Disabled
+
+<ComponentShowcase title="Disabled State" code={`<div class="multi-select multi-select-disabled">
+  <div class="multi-select-trigger">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">React</span>
+      <span class="multi-select-tag">Vue</span>
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>`} />
+
+### Loading
+
+<ComponentShowcase title="Loading State" code={`<div class="multi-select multi-select-loading">
+  <div class="multi-select-trigger">
+    <span class="multi-select-placeholder">Loading options...</span>
+    <span class="multi-select-spinner"></span>
+  </div>
+</div>`} />
+
+## Complete Form Example
+
+<ComponentShowcase title="Multi-Select in Form" code={`<div class="form-group">
+  <label class="form-label form-label-required">Technologies</label>
+  <div class="multi-select">
+    <div class="multi-select-trigger">
+      <div class="multi-select-tags">
+        <span class="multi-select-tag">
+          JavaScript
+          <button class="multi-select-tag-remove">×</button>
+        </span>
+        <span class="multi-select-tag">
+          TypeScript
+          <button class="multi-select-tag-remove">×</button>
+        </span>
+        <input type="text" class="multi-select-input" placeholder="Add more..." />
+      </div>
+      <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <span class="helper-text">Select the technologies you're proficient in</span>
+</div>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.multi-select` | Base container (required) |
+| `.multi-select-trigger` | Trigger/input area |
+| `.multi-select-placeholder` | Placeholder text |
+| `.multi-select-tags` | Tags container |
+| `.multi-select-tag` | Individual tag |
+| `.multi-select-tag-remove` | Tag remove button |
+| `.multi-select-tag-primary` | Primary colored tag |
+| `.multi-select-tag-outlined` | Outlined tag variant |
+| `.multi-select-tag-overflow` | Overflow count tag |
+| `.multi-select-input` | Search input within tags |
+| `.multi-select-arrow` | Dropdown arrow |
+| `.multi-select-clear-all` | Clear all button |
+| `.multi-select-dropdown` | Dropdown container |
+| `.multi-select-options` | Options list |
+| `.multi-select-option` | Individual option |
+| `.multi-select-option-selected` | Selected option |
+| `.multi-select-option-disabled` | Disabled option |
+| `.multi-select-option-checkbox` | Option checkbox |
+| `.multi-select-group` | Option group |
+| `.multi-select-group-header` | Group header |
+| `.multi-select-open` | Open dropdown state |
+| `.multi-select-outlined` | Outlined variant |
+| `.multi-select-filled` | Filled variant |
+| `.multi-select-sm` | Small size |
+| `.multi-select-lg` | Large size |
+| `.multi-select-error` | Error state |
+| `.multi-select-disabled` | Disabled state |
+| `.multi-select-loading` | Loading state |
+| `.multi-select-spinner` | Loading spinner |
+
+## Related Components
+
+- [Select](/duskmoonui/docs/en/components/select/) - Single selection dropdown
+- [Tree Select](/duskmoonui/docs/en/components/tree-select/) - Hierarchical selection
+- [Chip](/duskmoonui/docs/en/components/chip/) - Tag/chip component
+- [Autocomplete](/duskmoonui/docs/en/components/autocomplete/) - Search with suggestions

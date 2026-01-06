@@ -1,0 +1,342 @@
+---
+title: Form Group
+description: Material Design 3 form layout utilities including labels, helper text, and fieldsets
+category: components
+order: 47
+published: true
+tags: ['form-group', 'components', 'material-design', 'forms', 'layout', 'label']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Form Group
+
+Form Group provides layout utilities for organizing form elements with labels, helper text, and fieldsets. It creates consistent spacing and alignment across your forms.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic Form Group" code={`<div class="form-group">
+  <label class="form-label">Email Address</label>
+  <input type="email" class="input" placeholder="you@example.com" />
+</div>`} />
+
+## Labels
+
+### Basic Label
+
+<ComponentShowcase title="Form Label" code={`<div class="form-group">
+  <label class="form-label">Username</label>
+  <input type="text" class="input" />
+</div>`} />
+
+### Required Label
+
+<ComponentShowcase title="Required Label" code={`<div class="form-group">
+  <label class="form-label form-label-required">Email Address</label>
+  <input type="email" class="input" required />
+</div>`} />
+
+### Optional Label
+
+<ComponentShowcase title="Optional Label" code={`<div class="form-group">
+  <label class="form-label">
+    Phone Number
+    <span class="form-label-optional">(optional)</span>
+  </label>
+  <input type="tel" class="input" />
+</div>`} />
+
+### Label Sizes
+
+<ComponentShowcase title="Label Sizes" code={`<div class="space-y-4">
+  <div class="form-group">
+    <label class="form-label form-label-sm">Small Label</label>
+    <input type="text" class="input input-sm" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Medium Label (Default)</label>
+    <input type="text" class="input" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label form-label-lg">Large Label</label>
+    <input type="text" class="input input-lg" />
+  </div>
+</div>`} />
+
+## Helper Text
+
+### Basic Helper Text
+
+<ComponentShowcase title="Helper Text" code={`<div class="form-group">
+  <label class="form-label">Password</label>
+  <input type="password" class="input" />
+  <span class="helper-text">Must be at least 8 characters</span>
+</div>`} />
+
+### Error Helper Text
+
+<ComponentShowcase title="Error Helper Text" code={`<div class="form-group form-group-error">
+  <label class="form-label">Password</label>
+  <input type="password" class="input input-error" />
+  <span class="helper-text helper-text-error">Password is too short</span>
+</div>`} />
+
+### Success Helper Text
+
+<ComponentShowcase title="Success Helper Text" code={`<div class="form-group form-group-success">
+  <label class="form-label">Username</label>
+  <input type="text" class="input input-success" value="johndoe" />
+  <span class="helper-text helper-text-success">Username is available</span>
+</div>`} />
+
+### Warning Helper Text
+
+<ComponentShowcase title="Warning Helper Text" code={`<div class="form-group form-group-warning">
+  <label class="form-label">Display Name</label>
+  <input type="text" class="input input-warning" value="admin" />
+  <span class="helper-text helper-text-warning">This name might be mistaken for a system account</span>
+</div>`} />
+
+### Helper Text with Icon
+
+<ComponentShowcase title="Helper Text with Icon" code={`<div class="form-group">
+  <label class="form-label">Email</label>
+  <input type="email" class="input" />
+  <span class="helper-text helper-text-icon">
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    We'll never share your email with anyone
+  </span>
+</div>`} />
+
+## Character Counter
+
+<ComponentShowcase title="Character Counter" code={`<div class="form-group">
+  <label class="form-label">Bio</label>
+  <textarea class="textarea" maxlength="150" placeholder="Tell us about yourself..."></textarea>
+  <div class="helper-text-row">
+    <span class="helper-text">Brief description for your profile</span>
+    <span class="character-counter">0/150</span>
+  </div>
+</div>`} />
+
+## Fieldset
+
+### Basic Fieldset
+
+<ComponentShowcase title="Basic Fieldset" code={`<fieldset class="fieldset">
+  <legend class="fieldset-legend">Personal Information</legend>
+
+  <div class="form-group">
+    <label class="form-label">First Name</label>
+    <input type="text" class="input" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Last Name</label>
+    <input type="text" class="input" />
+  </div>
+</fieldset>`} />
+
+### Fieldset with Description
+
+<ComponentShowcase title="Fieldset with Description" code={`<fieldset class="fieldset">
+  <legend class="fieldset-legend">Account Settings</legend>
+  <p class="fieldset-description">Configure your account preferences</p>
+
+  <div class="form-group">
+    <label class="form-label">Username</label>
+    <input type="text" class="input" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input type="email" class="input" />
+  </div>
+</fieldset>`} />
+
+### Bordered Fieldset
+
+<ComponentShowcase title="Bordered Fieldset" code={`<fieldset class="fieldset fieldset-bordered">
+  <legend class="fieldset-legend">Shipping Address</legend>
+
+  <div class="form-group">
+    <label class="form-label">Street Address</label>
+    <input type="text" class="input" />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group form-group-half">
+      <label class="form-label">City</label>
+      <input type="text" class="input" />
+    </div>
+    <div class="form-group form-group-half">
+      <label class="form-label">ZIP Code</label>
+      <input type="text" class="input" />
+    </div>
+  </div>
+</fieldset>`} />
+
+## Form Layouts
+
+### Vertical Layout (Default)
+
+<ComponentShowcase title="Vertical Layout" code={`<form class="form form-vertical">
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input type="email" class="input" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Password</label>
+    <input type="password" class="input" />
+  </div>
+</form>`} />
+
+### Horizontal Layout
+
+<ComponentShowcase title="Horizontal Layout" code={`<form class="form form-horizontal">
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input type="email" class="input" />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Password</label>
+    <input type="password" class="input" />
+  </div>
+</form>`} />
+
+### Inline Layout
+
+<ComponentShowcase title="Inline Layout" code={`<form class="form form-inline">
+  <div class="form-group">
+    <label class="form-label">Search</label>
+    <input type="text" class="input" placeholder="Search..." />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>`} />
+
+## Form Row
+
+<ComponentShowcase title="Form Row" code={`<div class="form-row">
+  <div class="form-group form-group-half">
+    <label class="form-label">First Name</label>
+    <input type="text" class="input" />
+  </div>
+  <div class="form-group form-group-half">
+    <label class="form-label">Last Name</label>
+    <input type="text" class="input" />
+  </div>
+</div>`} />
+
+### Three Column Row
+
+<ComponentShowcase title="Three Column Row" code={`<div class="form-row">
+  <div class="form-group form-group-third">
+    <label class="form-label">City</label>
+    <input type="text" class="input" />
+  </div>
+  <div class="form-group form-group-third">
+    <label class="form-label">State</label>
+    <input type="text" class="input" />
+  </div>
+  <div class="form-group form-group-third">
+    <label class="form-label">ZIP</label>
+    <input type="text" class="input" />
+  </div>
+</div>`} />
+
+## Complete Form Example
+
+<ComponentShowcase title="Complete Form" code={`<form class="form">
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">Create Account</legend>
+    <p class="fieldset-description">Fill in your details to create a new account</p>
+
+    <div class="form-row">
+      <div class="form-group form-group-half">
+        <label class="form-label form-label-required">First Name</label>
+        <input type="text" class="input" required />
+      </div>
+      <div class="form-group form-group-half">
+        <label class="form-label form-label-required">Last Name</label>
+        <input type="text" class="input" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label form-label-required">Email</label>
+      <input type="email" class="input" required />
+      <span class="helper-text">We'll send a verification link to this email</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label form-label-required">Password</label>
+      <input type="password" class="input" required />
+      <span class="helper-text">Must be at least 8 characters with a number</span>
+    </div>
+
+    <div class="form-group">
+      <label class="checkbox">
+        <input type="checkbox" class="checkbox-input" required />
+        <span class="checkbox-box">
+          <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span class="checkbox-label">I agree to the terms and conditions</span>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Create Account</button>
+      <button type="button" class="btn btn-text">Cancel</button>
+    </div>
+  </fieldset>
+</form>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.form-group` | Form field container (required) |
+| `.form-label` | Label element |
+| `.form-label-required` | Required field indicator |
+| `.form-label-optional` | Optional field text |
+| `.form-label-sm` | Small label |
+| `.form-label-lg` | Large label |
+| `.helper-text` | Helper text below field |
+| `.helper-text-error` | Error helper text |
+| `.helper-text-success` | Success helper text |
+| `.helper-text-warning` | Warning helper text |
+| `.helper-text-icon` | Helper text with icon |
+| `.helper-text-row` | Row for helper + counter |
+| `.character-counter` | Character count display |
+| `.fieldset` | Fieldset container |
+| `.fieldset-legend` | Fieldset legend/title |
+| `.fieldset-description` | Fieldset description |
+| `.fieldset-bordered` | Bordered fieldset variant |
+| `.form` | Form container |
+| `.form-vertical` | Vertical form layout |
+| `.form-horizontal` | Horizontal form layout |
+| `.form-inline` | Inline form layout |
+| `.form-row` | Row for multiple fields |
+| `.form-group-half` | Half-width field |
+| `.form-group-third` | Third-width field |
+| `.form-group-error` | Error state group |
+| `.form-group-success` | Success state group |
+| `.form-group-warning` | Warning state group |
+| `.form-actions` | Form action buttons container |
+
+## Related Components
+
+- [Input](/duskmoonui/docs/en/components/input/) - Text inputs
+- [Checkbox](/duskmoonui/docs/en/components/checkbox/) - Checkboxes
+- [Radio](/duskmoonui/docs/en/components/radio/) - Radio buttons
+- [Select](/duskmoonui/docs/en/components/select/) - Dropdown selection

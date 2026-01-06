@@ -1,0 +1,229 @@
+---
+title: Time Input
+description: Material Design 3 time selection component with segmented input and picker
+category: components
+order: 48
+published: true
+tags: ['time-input', 'components', 'material-design', 'time', 'picker', 'forms']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Time Input
+
+Time Input provides an intuitive way to select time values with separate hour, minute, and optional second fields, along with AM/PM selection.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic Time Input" code={`<div class="time-input">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+</div>`} />
+
+## With Seconds
+
+<ComponentShowcase title="Time Input with Seconds" code={`<div class="time-input time-input-seconds">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="SS" maxlength="2" />
+</div>`} />
+
+## 12-Hour Format with AM/PM
+
+<ComponentShowcase title="12-Hour Format" code={`<div class="time-input time-input-12h">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="09" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="30" />
+  <div class="time-input-period">
+    <button class="time-input-period-btn time-input-period-btn-active">AM</button>
+    <button class="time-input-period-btn">PM</button>
+  </div>
+</div>`} />
+
+## Variants
+
+### Outlined (Default)
+
+<ComponentShowcase title="Outlined Time Input" code={`<div class="time-input time-input-outlined">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+</div>`} />
+
+### Filled
+
+<ComponentShowcase title="Filled Time Input" code={`<div class="time-input time-input-filled">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+</div>`} />
+
+## Sizes
+
+### Small
+
+<ComponentShowcase title="Small Time Input" code={`<div class="time-input time-input-sm">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+</div>`} />
+
+### Large
+
+<ComponentShowcase title="Large Time Input" code={`<div class="time-input time-input-lg">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+</div>`} />
+
+## With Time Picker Dropdown
+
+<ComponentShowcase title="Time Input with Picker" code={`<div class="time-input-wrapper">
+  <div class="time-input time-input-with-picker">
+    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="14" />
+    <span class="time-input-separator">:</span>
+    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="30" />
+    <button class="time-input-picker-trigger" aria-label="Open time picker">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Time Picker Dropdown (shown when open) -->
+  <div class="time-input-picker time-input-picker-open">
+    <div class="time-input-picker-column">
+      <div class="time-input-picker-label">Hour</div>
+      <div class="time-input-picker-options">
+        <button class="time-input-picker-option">12</button>
+        <button class="time-input-picker-option">13</button>
+        <button class="time-input-picker-option time-input-picker-option-selected">14</button>
+        <button class="time-input-picker-option">15</button>
+        <button class="time-input-picker-option">16</button>
+      </div>
+    </div>
+    <div class="time-input-picker-column">
+      <div class="time-input-picker-label">Minute</div>
+      <div class="time-input-picker-options">
+        <button class="time-input-picker-option">00</button>
+        <button class="time-input-picker-option">15</button>
+        <button class="time-input-picker-option time-input-picker-option-selected">30</button>
+        <button class="time-input-picker-option">45</button>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## States
+
+### Focused
+
+<ComponentShowcase title="Focused State" code={`<div class="time-input time-input-focused">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="10" />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment time-input-segment-focused" placeholder="MM" maxlength="2" />
+</div>`} />
+
+### Error State
+
+<ComponentShowcase title="Error State" code={`<div class="form-group">
+  <label class="form-label">Start Time</label>
+  <div class="time-input time-input-error">
+    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="25" />
+    <span class="time-input-separator">:</span>
+    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
+  </div>
+  <span class="helper-text helper-text-error">Invalid hour value</span>
+</div>`} />
+
+### Disabled
+
+<ComponentShowcase title="Disabled State" code={`<div class="time-input time-input-disabled">
+  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" disabled />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" disabled />
+</div>`} />
+
+### Read Only
+
+<ComponentShowcase title="Read Only State" code={`<div class="time-input time-input-readonly">
+  <input type="text" class="time-input-segment" value="09" maxlength="2" readonly />
+  <span class="time-input-separator">:</span>
+  <input type="text" class="time-input-segment" value="30" maxlength="2" readonly />
+</div>`} />
+
+## Time Range
+
+<ComponentShowcase title="Time Range Selection" code={`<div class="time-input-range">
+  <div class="time-input">
+    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="09" />
+    <span class="time-input-separator">:</span>
+    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
+  </div>
+  <span class="time-input-range-separator">to</span>
+  <div class="time-input">
+    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="17" />
+    <span class="time-input-separator">:</span>
+    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
+  </div>
+</div>`} />
+
+## With Label and Helper
+
+<ComponentShowcase title="Complete Time Input Form" code={`<div class="form-group">
+  <label class="form-label form-label-required">Meeting Time</label>
+  <div class="time-input time-input-12h">
+    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+    <span class="time-input-separator">:</span>
+    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+    <div class="time-input-period">
+      <button class="time-input-period-btn time-input-period-btn-active">AM</button>
+      <button class="time-input-period-btn">PM</button>
+    </div>
+  </div>
+  <span class="helper-text">Select the time for your meeting</span>
+</div>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.time-input` | Base container (required) |
+| `.time-input-segment` | Individual time segment input |
+| `.time-input-separator` | Colon separator |
+| `.time-input-seconds` | Include seconds field |
+| `.time-input-12h` | 12-hour format with AM/PM |
+| `.time-input-period` | AM/PM toggle container |
+| `.time-input-period-btn` | AM/PM button |
+| `.time-input-period-btn-active` | Active period button |
+| `.time-input-outlined` | Outlined variant |
+| `.time-input-filled` | Filled variant |
+| `.time-input-sm` | Small size |
+| `.time-input-lg` | Large size |
+| `.time-input-wrapper` | Wrapper for picker dropdown |
+| `.time-input-with-picker` | Input with picker trigger |
+| `.time-input-picker-trigger` | Picker open button |
+| `.time-input-picker` | Picker dropdown container |
+| `.time-input-picker-open` | Open picker state |
+| `.time-input-picker-column` | Picker column |
+| `.time-input-picker-label` | Column label |
+| `.time-input-picker-options` | Options container |
+| `.time-input-picker-option` | Individual time option |
+| `.time-input-picker-option-selected` | Selected option |
+| `.time-input-focused` | Focused state |
+| `.time-input-segment-focused` | Focused segment |
+| `.time-input-error` | Error state |
+| `.time-input-disabled` | Disabled state |
+| `.time-input-readonly` | Read-only state |
+| `.time-input-range` | Time range container |
+| `.time-input-range-separator` | Range separator text |
+
+## Related Components
+
+- [Datepicker](/duskmoonui/docs/en/components/datepicker/) - Date selection
+- [Input](/duskmoonui/docs/en/components/input/) - Text inputs
+- [Form Group](/duskmoonui/docs/en/components/form-group/) - Form layouts

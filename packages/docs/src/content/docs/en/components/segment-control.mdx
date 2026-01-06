@@ -1,0 +1,180 @@
+---
+title: Segment Control
+description: Material Design 3 segmented button component for toggling between options
+category: components
+order: 44
+published: true
+tags: ['segment-control', 'components', 'material-design', 'toggle', 'buttons']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Segment Control
+
+Segment controls allow users to choose between two or more exclusive options. They're ideal for toggling views, filtering content, or selecting a single option from a small set.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic Segment Control" code={`<div class="segment-control">
+  <button class="segment-control-item segment-control-item-active">Day</button>
+  <button class="segment-control-item">Week</button>
+  <button class="segment-control-item">Month</button>
+</div>`} />
+
+## Variants
+
+### Outlined (Default)
+
+<ComponentShowcase title="Outlined Segment Control" code={`<div class="segment-control segment-control-outlined">
+  <button class="segment-control-item segment-control-item-active">Option 1</button>
+  <button class="segment-control-item">Option 2</button>
+  <button class="segment-control-item">Option 3</button>
+</div>`} />
+
+### Filled
+
+<ComponentShowcase title="Filled Segment Control" code={`<div class="segment-control segment-control-filled">
+  <button class="segment-control-item segment-control-item-active">Option 1</button>
+  <button class="segment-control-item">Option 2</button>
+  <button class="segment-control-item">Option 3</button>
+</div>`} />
+
+## Colors
+
+### Primary
+
+<ComponentShowcase title="Primary Segment Control" code={`<div class="segment-control segment-control-primary">
+  <button class="segment-control-item segment-control-item-active">Tab 1</button>
+  <button class="segment-control-item">Tab 2</button>
+  <button class="segment-control-item">Tab 3</button>
+</div>`} />
+
+### Secondary
+
+<ComponentShowcase title="Secondary Segment Control" code={`<div class="segment-control segment-control-secondary">
+  <button class="segment-control-item segment-control-item-active">Tab 1</button>
+  <button class="segment-control-item">Tab 2</button>
+  <button class="segment-control-item">Tab 3</button>
+</div>`} />
+
+### Tertiary
+
+<ComponentShowcase title="Tertiary Segment Control" code={`<div class="segment-control segment-control-tertiary">
+  <button class="segment-control-item segment-control-item-active">Tab 1</button>
+  <button class="segment-control-item">Tab 2</button>
+  <button class="segment-control-item">Tab 3</button>
+</div>`} />
+
+## Sizes
+
+### Small
+
+<ComponentShowcase title="Small Segment Control" code={`<div class="segment-control segment-control-sm">
+  <button class="segment-control-item segment-control-item-active">S</button>
+  <button class="segment-control-item">M</button>
+  <button class="segment-control-item">L</button>
+</div>`} />
+
+### Medium (Default)
+
+<ComponentShowcase title="Medium Segment Control" code={`<div class="segment-control">
+  <button class="segment-control-item segment-control-item-active">Small</button>
+  <button class="segment-control-item">Medium</button>
+  <button class="segment-control-item">Large</button>
+</div>`} />
+
+### Large
+
+<ComponentShowcase title="Large Segment Control" code={`<div class="segment-control segment-control-lg">
+  <button class="segment-control-item segment-control-item-active">Small</button>
+  <button class="segment-control-item">Medium</button>
+  <button class="segment-control-item">Large</button>
+</div>`} />
+
+## With Icons
+
+<ComponentShowcase title="Segment Control with Icons" code={`<div class="segment-control">
+  <button class="segment-control-item segment-control-item-active">
+    <svg class="segment-control-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+    </svg>
+    List
+  </button>
+  <button class="segment-control-item">
+    <svg class="segment-control-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+    </svg>
+    Grid
+  </button>
+</div>`} />
+
+### Icon Only
+
+<ComponentShowcase title="Icon Only Segment Control" code={`<div class="segment-control segment-control-icon-only">
+  <button class="segment-control-item segment-control-item-active" aria-label="List view">
+    <svg class="segment-control-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+    </svg>
+  </button>
+  <button class="segment-control-item" aria-label="Grid view">
+    <svg class="segment-control-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
+    </svg>
+  </button>
+  <button class="segment-control-item" aria-label="Card view">
+    <svg class="segment-control-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+    </svg>
+  </button>
+</div>`} />
+
+## Full Width
+
+<ComponentShowcase title="Full Width Segment Control" code={`<div class="segment-control segment-control-full">
+  <button class="segment-control-item segment-control-item-active">Today</button>
+  <button class="segment-control-item">This Week</button>
+  <button class="segment-control-item">This Month</button>
+</div>`} />
+
+## Disabled State
+
+<ComponentShowcase title="Disabled Segment Control" code={`<div class="segment-control segment-control-disabled">
+  <button class="segment-control-item segment-control-item-active" disabled>Option 1</button>
+  <button class="segment-control-item" disabled>Option 2</button>
+  <button class="segment-control-item" disabled>Option 3</button>
+</div>`} />
+
+### Individual Disabled Items
+
+<ComponentShowcase title="Individual Disabled Items" code={`<div class="segment-control">
+  <button class="segment-control-item segment-control-item-active">Active</button>
+  <button class="segment-control-item">Available</button>
+  <button class="segment-control-item segment-control-item-disabled" disabled>Unavailable</button>
+</div>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.segment-control` | Base container (required) |
+| `.segment-control-item` | Individual segment button (required) |
+| `.segment-control-item-active` | Active/selected state |
+| `.segment-control-outlined` | Outlined variant (default) |
+| `.segment-control-filled` | Filled variant |
+| `.segment-control-primary` | Primary color |
+| `.segment-control-secondary` | Secondary color |
+| `.segment-control-tertiary` | Tertiary color |
+| `.segment-control-sm` | Small size |
+| `.segment-control-lg` | Large size |
+| `.segment-control-full` | Full width layout |
+| `.segment-control-icon-only` | Icon-only buttons |
+| `.segment-control-icon` | Icon element |
+| `.segment-control-disabled` | Disabled state for all |
+| `.segment-control-item-disabled` | Individual disabled item |
+
+## Related Components
+
+- [Tabs](/duskmoonui/docs/en/components/tabs/) - Content navigation
+- [Radio](/duskmoonui/docs/en/components/radio/) - Radio button group
+- [Button](/duskmoonui/docs/en/components/button/) - Action buttons

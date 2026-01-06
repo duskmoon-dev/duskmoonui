@@ -1,0 +1,305 @@
+---
+title: Tree Select
+description: Material Design 3 hierarchical dropdown selection component
+category: components
+order: 49
+published: true
+tags: ['tree-select', 'components', 'material-design', 'dropdown', 'hierarchy', 'forms']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Tree Select
+
+Tree Select is a hierarchical dropdown component that allows users to select from nested options. It's ideal for categories, organizational structures, file systems, or any parent-child data relationships.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic Tree Select" code={`<div class="tree-select">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select a category</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+## With Dropdown Open
+
+<ComponentShowcase title="Tree Select Dropdown" code={`<div class="tree-select tree-select-open">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select a category</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div class="tree-select-dropdown">
+    <div class="tree-select-search">
+      <input type="text" class="tree-select-search-input" placeholder="Search..." />
+    </div>
+    <div class="tree-select-options">
+      <div class="tree-select-node tree-select-node-expanded">
+        <button class="tree-select-node-toggle">
+          <svg class="tree-select-node-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        <span class="tree-select-node-label">Electronics</span>
+      </div>
+      <div class="tree-select-children">
+        <div class="tree-select-node tree-select-node-leaf">
+          <span class="tree-select-node-label">Smartphones</span>
+        </div>
+        <div class="tree-select-node tree-select-node-leaf">
+          <span class="tree-select-node-label">Laptops</span>
+        </div>
+        <div class="tree-select-node tree-select-node-leaf">
+          <span class="tree-select-node-label">Tablets</span>
+        </div>
+      </div>
+      <div class="tree-select-node">
+        <button class="tree-select-node-toggle">
+          <svg class="tree-select-node-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        <span class="tree-select-node-label">Clothing</span>
+      </div>
+      <div class="tree-select-node tree-select-node-leaf">
+        <span class="tree-select-node-label">Books</span>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## With Selection
+
+<ComponentShowcase title="Tree Select with Selection" code={`<div class="tree-select">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value tree-select-value-selected">
+      <span class="tree-select-path">Electronics / Smartphones</span>
+    </span>
+    <button class="tree-select-clear" aria-label="Clear selection">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+## Variants
+
+### Outlined (Default)
+
+<ComponentShowcase title="Outlined Tree Select" code={`<div class="tree-select tree-select-outlined">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select category</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+### Filled
+
+<ComponentShowcase title="Filled Tree Select" code={`<div class="tree-select tree-select-filled">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select category</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+## Sizes
+
+### Small
+
+<ComponentShowcase title="Small Tree Select" code={`<div class="tree-select tree-select-sm">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+### Large
+
+<ComponentShowcase title="Large Tree Select" code={`<div class="tree-select tree-select-lg">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select category</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+## With Checkboxes (Multiple Selection)
+
+<ComponentShowcase title="Tree Select with Checkboxes" code={`<div class="tree-select tree-select-multiple tree-select-open">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select categories</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div class="tree-select-dropdown">
+    <div class="tree-select-options">
+      <div class="tree-select-node tree-select-node-expanded">
+        <label class="tree-select-checkbox">
+          <input type="checkbox" class="tree-select-checkbox-input" />
+          <span class="tree-select-checkbox-box"></span>
+        </label>
+        <button class="tree-select-node-toggle">
+          <svg class="tree-select-node-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        <span class="tree-select-node-label">Electronics</span>
+      </div>
+      <div class="tree-select-children">
+        <div class="tree-select-node tree-select-node-leaf tree-select-node-selected">
+          <label class="tree-select-checkbox">
+            <input type="checkbox" class="tree-select-checkbox-input" checked />
+            <span class="tree-select-checkbox-box"></span>
+          </label>
+          <span class="tree-select-node-label">Smartphones</span>
+        </div>
+        <div class="tree-select-node tree-select-node-leaf">
+          <label class="tree-select-checkbox">
+            <input type="checkbox" class="tree-select-checkbox-input" />
+            <span class="tree-select-checkbox-box"></span>
+          </label>
+          <span class="tree-select-node-label">Laptops</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## States
+
+### Error State
+
+<ComponentShowcase title="Error State" code={`<div class="form-group">
+  <label class="form-label form-label-required">Category</label>
+  <div class="tree-select tree-select-error">
+    <button class="tree-select-trigger">
+      <span class="tree-select-value">Select a category</span>
+      <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+  </div>
+  <span class="helper-text helper-text-error">Please select a category</span>
+</div>`} />
+
+### Disabled
+
+<ComponentShowcase title="Disabled State" code={`<div class="tree-select tree-select-disabled">
+  <button class="tree-select-trigger" disabled>
+    <span class="tree-select-value">Select a category</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+### Loading
+
+<ComponentShowcase title="Loading State" code={`<div class="tree-select tree-select-loading">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Loading categories...</span>
+    <span class="tree-select-spinner"></span>
+  </button>
+</div>`} />
+
+## With Icons
+
+<ComponentShowcase title="Tree Select with Icons" code={`<div class="tree-select tree-select-open">
+  <button class="tree-select-trigger">
+    <span class="tree-select-value">Select location</span>
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div class="tree-select-dropdown">
+    <div class="tree-select-options">
+      <div class="tree-select-node tree-select-node-expanded">
+        <button class="tree-select-node-toggle">
+          <svg class="tree-select-node-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        <svg class="tree-select-node-custom-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span class="tree-select-node-label">North America</span>
+      </div>
+      <div class="tree-select-children">
+        <div class="tree-select-node tree-select-node-leaf">
+          <svg class="tree-select-node-custom-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          </svg>
+          <span class="tree-select-node-label">United States</span>
+        </div>
+        <div class="tree-select-node tree-select-node-leaf">
+          <svg class="tree-select-node-custom-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          </svg>
+          <span class="tree-select-node-label">Canada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.tree-select` | Base container (required) |
+| `.tree-select-trigger` | Trigger button |
+| `.tree-select-value` | Selected value display |
+| `.tree-select-value-selected` | Has selection state |
+| `.tree-select-path` | Path breadcrumb display |
+| `.tree-select-arrow` | Dropdown arrow icon |
+| `.tree-select-clear` | Clear selection button |
+| `.tree-select-dropdown` | Dropdown container |
+| `.tree-select-search` | Search input container |
+| `.tree-select-search-input` | Search input field |
+| `.tree-select-options` | Options container |
+| `.tree-select-node` | Tree node |
+| `.tree-select-node-expanded` | Expanded node |
+| `.tree-select-node-leaf` | Leaf node (no children) |
+| `.tree-select-node-selected` | Selected node |
+| `.tree-select-node-toggle` | Expand/collapse toggle |
+| `.tree-select-node-icon` | Toggle icon |
+| `.tree-select-node-label` | Node label text |
+| `.tree-select-node-custom-icon` | Custom node icon |
+| `.tree-select-children` | Child nodes container |
+| `.tree-select-checkbox` | Checkbox for multi-select |
+| `.tree-select-open` | Open dropdown state |
+| `.tree-select-outlined` | Outlined variant |
+| `.tree-select-filled` | Filled variant |
+| `.tree-select-sm` | Small size |
+| `.tree-select-lg` | Large size |
+| `.tree-select-multiple` | Multiple selection mode |
+| `.tree-select-error` | Error state |
+| `.tree-select-disabled` | Disabled state |
+| `.tree-select-loading` | Loading state |
+| `.tree-select-spinner` | Loading spinner |
+
+## Related Components
+
+- [Select](/duskmoonui/docs/en/components/select/) - Single dropdown
+- [Multi-Select](/duskmoonui/docs/en/components/multi-select/) - Multiple selection
+- [Autocomplete](/duskmoonui/docs/en/components/autocomplete/) - Search with suggestions
