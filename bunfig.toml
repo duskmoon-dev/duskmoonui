@@ -7,8 +7,11 @@ exact = true
 
 # Registry configuration - force use of public npm registry
 registry = "https://registry.npmjs.org/"
-"@types:registry" = "https://registry.npmjs.org/"
-"@astrojs:registry" = "https://registry.npmjs.org/"
+
+[install.scopes]
+# Scoped package registries
+"@types" = "https://registry.npmjs.org/"
+"@astrojs" = "https://registry.npmjs.org/"
 
 [install.cache]
 # Cache directory

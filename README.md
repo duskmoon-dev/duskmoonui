@@ -207,6 +207,10 @@ duskmoonui/
     └── nextjs-starter/       # Next.js example
 ```
 
+## Who Uses This
+
+- **[duskmoon-elements](https://github.com/duskmoon-dev/duskmoon-elements)** - Web Components library that uses `@duskmoon-dev/core` CSS for its custom elements
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

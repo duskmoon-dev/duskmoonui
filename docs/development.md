@@ -1,0 +1,418 @@
+# DuskMoonUI Development Guide
+
+> Material Design 3-inspired CSS-only component library for Tailwind CSS v4
+
+## Related Projects
+
+This package (`@duskmoon-dev/core`) provides the CSS foundation for [duskmoon-elements](https://github.com/duskmoon-dev/duskmoon-elements), a Web Components library.
+
+Each component in this package exports its CSS styles which are consumed by the custom elements in duskmoon-elements:
+
+```
+@duskmoon-dev/core (CSS styles)
+        ↓
+duskmoon-elements (Web Components)
+```
+
+### Component CSS Exports
+
+Individual component styles can be imported for use in custom elements:
+
+```javascript
+// Import specific component CSS
+import '@duskmoon-dev/core/components/button';
+import '@duskmoon-dev/core/components/card';
+import '@duskmoon-dev/core/components/input';
+```
+
+This modular approach allows duskmoon-elements to bundle only the CSS needed for each web component.
+
+---
+
+## Component Overview
+
+DuskMoonUI includes **35 components** organized by category.
+
+### Included Components
+
+| Category | Components |
+|----------|------------|
+| **Actions** | Button, File Upload |
+| **Data Display** | Avatar, Badge, Card, Chip, Collapse, List, Table, Timeline |
+| **Data Entry** | Autocomplete, Datepicker, Input, Rating, Slider, Switch |
+| **Feedback** | Alert, Dialog, Modal, Progress, Skeleton, Snackbar, Toast, Tooltip |
+| **Layout** | App Bar, Divider, Form, Markdown Body |
+| **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Pagination, Stepper |
+| **Surfaces** | Accordion, Bottom Sheet, Popover |
+
+### Component Files
+
+```
+packages/core/src/components/
+├── accordion.css       # Expandable content panels
+├── alert.css           # Important messages (success, error, warning, info)
+├── appbar.css          # Top/bottom action bars
+├── autocomplete.css    # Search with suggestions
+├── avatar.css          # User profile pictures with status
+├── badge.css           # Small status indicators
+├── bottom-navigation.css # Mobile bottom nav bar
+├── bottomsheet.css     # Mobile bottom panels
+├── button.css          # Clickable buttons (filled, outlined, text, tonal)
+├── card.css            # Content container with elevation
+├── chip.css            # Compact elements for tags/filters
+├── collapse.css        # Expandable/collapsible content
+├── datepicker.css      # Calendar date selection
+├── dialog.css          # Modal dialogs
+├── divider.css         # Visual separators
+├── drawer.css          # Side navigation panel
+├── file-upload.css     # Drag-and-drop file uploader
+├── form.css            # Form layout utilities
+├── input.css           # Text input fields
+├── list.css            # Vertical list of items
+├── markdown-body.css   # Markdown content styling
+├── modal.css           # Full-featured modal overlays
+├── navigation.css      # Navbar, tabs, menu components
+├── popover.css         # Contextual overlays
+├── progress.css        # Linear and circular indicators
+├── rating.css          # Star/heart rating input
+├── skeleton.css        # Loading placeholders
+├── slider.css          # Range value selector
+├── snackbar.css        # Toast notifications
+├── stepper.css         # Multi-step process guide
+├── switch.css          # Toggle on/off control
+├── table.css           # Data tables
+├── timeline.css        # Chronological event display
+├── toast.css           # Toast notification system
+└── tooltip.css         # Contextual information on hover
+```
+
+---
+
+## Missing Components
+
+The following Material Design 3 components are not yet implemented:
+
+| Component | Description | Priority |
+|-----------|-------------|----------|
+| **Checkbox** | Multi-selection checkboxes | High |
+| **Radio** | Single selection radio buttons | High |
+| **Select** | Dropdown selection menus | High |
+| **Textarea** | Multi-line text input | High |
+| **Breadcrumbs** | Hierarchical navigation | Medium |
+| **FAB** | Floating Action Button | Medium |
+| **Segmented Button** | Toggle button group | Medium |
+| **Search Bar** | Dedicated search input | Low |
+| **Navigation Rail** | Compact side navigation | Low |
+| **Time Picker** | Time selection component | Low |
+
+### TypeScript-only Components
+
+These components have TypeScript exports but no dedicated CSS file:
+
+- `checkbox.ts` - Needs `checkbox.css`
+- `radio.ts` - Needs `radio.css`
+- `select.ts` - Needs `select.css`
+- `textarea.ts` - Needs `textarea.css`
+- `breadcrumbs.ts` - Needs `breadcrumbs.css`
+- `menu.ts` - Partially in `navigation.css`
+- `navbar.ts` - In `navigation.css`
+- `pagination.ts` - Needs `pagination.css`
+- `tabs.ts` - In `navigation.css`
+- `toggle.ts` - Needs `toggle.css`
+
+---
+
+## Installation
+
+### Package Manager
+
+```bash
+# Bun (recommended)
+bun add @duskmoon-dev/core tailwindcss@^4.0.0
+
+# npm
+npm install @duskmoon-dev/core tailwindcss@^4.0.0
+
+# pnpm
+pnpm add @duskmoon-dev/core tailwindcss@^4.0.0
+```
+
+### CSS Import
+
+```css
+/* Import Tailwind and DuskMoonUI */
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+### Theme Setup
+
+```html
+<!-- Apply theme via data attribute -->
+<html data-theme="sunshine">
+  <!-- Light theme -->
+</html>
+
+<html data-theme="moonlight">
+  <!-- Dark theme -->
+</html>
+```
+
+---
+
+## Usage
+
+### Basic Components
+
+```html
+<!-- Buttons -->
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary btn-outline">Outlined</button>
+<button class="btn btn-tertiary btn-ghost">Ghost</button>
+<button class="btn btn-primary btn-loading">Loading...</button>
+
+<!-- Cards -->
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Card Title</h2>
+    <p>Card content</p>
+  </div>
+</div>
+
+<!-- Inputs -->
+<input type="text" class="input" placeholder="Default input" />
+<input type="text" class="input input-primary" placeholder="Primary" />
+<input type="text" class="input input-error" placeholder="Error state" />
+
+<!-- Badges -->
+<span class="badge badge-primary">New</span>
+<span class="badge badge-error badge-dot"></span>
+
+<!-- Alerts -->
+<div class="alert alert-success">Success message</div>
+<div class="alert alert-error">Error message</div>
+```
+
+### Navigation
+
+```html
+<!-- Navbar -->
+<nav class="navbar navbar-surface-container-high">
+  <div class="navbar-start">
+    <a class="navbar-brand">Logo</a>
+  </div>
+  <div class="navbar-center">
+    <a class="navbar-item navbar-item-active">Home</a>
+    <a class="navbar-item">About</a>
+  </div>
+</nav>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab tab-active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>
+
+<!-- Bottom Navigation (mobile) -->
+<nav class="bottom-nav">
+  <button class="bottom-nav-item bottom-nav-item-active">
+    <span class="bottom-nav-icon">🏠</span>
+    <span class="bottom-nav-label">Home</span>
+  </button>
+</nav>
+```
+
+### Feedback Components
+
+```html
+<!-- Dialog -->
+<div class="dialog-backdrop dialog-backdrop-show">
+  <div class="dialog dialog-md">
+    <div class="dialog-header">
+      <h2 class="dialog-title">Confirm</h2>
+    </div>
+    <div class="dialog-body">Are you sure?</div>
+    <div class="dialog-actions">
+      <button class="btn btn-text">Cancel</button>
+      <button class="btn btn-filled">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast toast-success toast-show">
+  <span class="toast-message">Saved successfully</span>
+</div>
+
+<!-- Progress -->
+<div class="progress progress-primary">
+  <div class="progress-bar" style="width: 60%"></div>
+</div>
+
+<!-- Skeleton -->
+<div class="skeleton skeleton-text"></div>
+<div class="skeleton skeleton-circle"></div>
+```
+
+### Data Display
+
+```html
+<!-- Table -->
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- List -->
+<ul class="list">
+  <li class="list-item list-item-interactive">
+    <div class="list-item-leading">📄</div>
+    <div class="list-item-content">
+      <span class="list-item-text">Item Title</span>
+      <span class="list-item-secondary">Description</span>
+    </div>
+  </li>
+</ul>
+
+<!-- Avatar -->
+<div class="avatar avatar-lg avatar-status avatar-status-online">
+  <img src="user.jpg" class="avatar-image" />
+</div>
+
+<!-- Chip -->
+<div class="chip chip-primary">Tag</div>
+<div class="chip chip-removable">
+  Remove
+  <button class="chip-remove">×</button>
+</div>
+```
+
+---
+
+## Color System
+
+### Using Color Utilities
+
+```html
+<!-- Background colors -->
+<div class="bg-primary">Primary</div>
+<div class="bg-secondary">Secondary</div>
+<div class="bg-tertiary">Tertiary</div>
+<div class="bg-surface-container">Surface</div>
+
+<!-- Text colors -->
+<p class="text-primary">Primary text</p>
+<p class="text-on-surface">On surface text</p>
+<p class="text-on-surface-variant">Muted text</p>
+
+<!-- Semantic colors -->
+<div class="bg-success text-success-content">Success</div>
+<div class="bg-error text-error-content">Error</div>
+<div class="bg-warning text-warning-content">Warning</div>
+<div class="bg-info text-info-content">Info</div>
+```
+
+### CSS Variables
+
+```css
+/* Access color tokens directly */
+.custom-element {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  border-color: var(--color-outline);
+}
+
+/* Dynamic states with color-mix */
+.custom-element:hover {
+  background-color: color-mix(in oklch, var(--color-primary), black 10%);
+}
+```
+
+---
+
+## Development Commands
+
+```bash
+# Build core package
+bun run build:core
+
+# Watch mode
+bun run dev:core
+
+# Type checking
+bun run typecheck
+
+# Unit tests
+cd packages/core && bun test tests/unit
+
+# Visual regression tests
+cd packages/core && bun run test:visual
+
+# Integration tests
+cd packages/core && bun run test:integration
+
+# Accessibility tests
+cd packages/core && bun run test:a11y
+
+# All tests
+cd packages/core && bun run test:all
+```
+
+---
+
+## Project Structure
+
+```
+duskmoonui/
+├── packages/
+│   └── core/                   # @duskmoon-dev/core
+│       ├── src/
+│       │   ├── base/           # Root styles, color tokens
+│       │   │   └── colors.css  # 65+ color token definitions
+│       │   ├── themes/         # Theme definitions
+│       │   │   ├── sunshine.ts # Light theme
+│       │   │   └── moonlight.ts# Dark theme
+│       │   ├── components/     # Component CSS files
+│       │   ├── generators/     # CSS variable generation
+│       │   └── types/          # TypeScript definitions
+│       ├── scripts/
+│       │   └── build-css.ts    # CSS build script
+│       ├── tests/
+│       │   ├── unit/           # Bun unit tests
+│       │   ├── visual/         # Playwright visual tests
+│       │   ├── integration/    # Integration tests
+│       │   └── accessibility/  # axe-core a11y tests
+│       └── dist/               # Built output
+├── examples/
+│   ├── demo/                   # Interactive demo app
+│   ├── astro-starter/          # Astro example
+│   └── nextjs-starter/         # Next.js example
+└── docs/                       # Documentation
+```
+
+---
+
+## Browser Support
+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- iOS Safari 14+
+- Android Chrome 90+
+
+---
+
+## License
+
+MIT License - see LICENSE file for details
