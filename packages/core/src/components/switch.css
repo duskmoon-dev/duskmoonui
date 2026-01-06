@@ -11,7 +11,7 @@
   .switch {
     --switch-width: 3.25rem;
     --switch-height: 2rem;
-    --switch-thumb-size: 1.5rem;
+    --switch-thumb-size: 1rem;
     --switch-color: var(--color-primary);
     --switch-track-color: var(--color-surface-container-highest);
     --switch-border-color: var(--color-outline);
@@ -58,7 +58,7 @@
   }
 
   .switch:checked::before {
-    background-color: var(--color-on-primary);
+    background-color: var(--color-primary-content);
   }
 
   /* Hover State (unchecked) */
@@ -121,36 +121,37 @@
 
   /* ========================================
    * Size Variants
+   * Thumb size = height - 4px (border) - 8px (padding/gap)
    * ======================================== */
 
   .switch-xs {
     --switch-width: 2rem;
     --switch-height: 1.25rem;
-    --switch-thumb-size: 0.875rem;
+    --switch-thumb-size: 0.5rem;
   }
 
   .switch-sm {
     --switch-width: 2.5rem;
     --switch-height: 1.5rem;
-    --switch-thumb-size: 1.125rem;
+    --switch-thumb-size: 0.75rem;
   }
 
   .switch-md {
     --switch-width: 3.25rem;
     --switch-height: 2rem;
-    --switch-thumb-size: 1.5rem;
+    --switch-thumb-size: 1rem;
   }
 
   .switch-lg {
     --switch-width: 4rem;
     --switch-height: 2.5rem;
-    --switch-thumb-size: 1.875rem;
+    --switch-thumb-size: 1.25rem;
   }
 
   .switch-xl {
     --switch-width: 4.75rem;
     --switch-height: 3rem;
-    --switch-thumb-size: 2.25rem;
+    --switch-thumb-size: 1.5rem;
   }
 
   /* ========================================
