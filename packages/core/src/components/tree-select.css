@@ -45,11 +45,7 @@
     background-color: var(--color-surface-container);
   }
 
-  .tree-select-placeholder {
-    color: var(--color-on-surface-variant);
-    opacity: 0.7;
-  }
-
+  /* Value Display */
   .tree-select-value {
     flex: 1;
     display: flex;
@@ -58,20 +54,55 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: var(--color-on-surface-variant);
   }
 
-  .tree-select-icon {
+  .tree-select-value-selected {
+    color: var(--color-on-surface);
+  }
+
+  /* Path Breadcrumb Display */
+  .tree-select-path {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Dropdown Arrow */
+  .tree-select-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 1.25rem;
     height: 1.25rem;
     color: var(--color-on-surface-variant);
+    flex-shrink: 0;
     transition: transform 150ms ease-in-out;
   }
 
-  .tree-select-open .tree-select-icon {
+  .tree-select-open .tree-select-arrow {
     transform: rotate(180deg);
+  }
+
+  /* Clear Button */
+  .tree-select-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .tree-select-clear:hover {
+    background-color: var(--color-surface-container-high);
   }
 
   /* Tree Select Dropdown */
@@ -94,104 +125,6 @@
 
   .tree-select-open .tree-select-dropdown {
     display: block;
-  }
-
-  /* Tree Node */
-  .tree-node {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tree-node-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    color: var(--color-on-surface);
-    background-color: transparent;
-    border: none;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    transition: background-color 150ms ease-in-out;
-  }
-
-  .tree-node-content:hover {
-    background-color: var(--color-surface-container);
-  }
-
-  .tree-node-content-selected {
-    background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
-  }
-
-  .tree-node-content:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  /* Tree Node Expand/Collapse */
-  .tree-node-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.25rem;
-    height: 1.25rem;
-    padding: 0;
-    color: var(--color-on-surface-variant);
-    background-color: transparent;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: transform 150ms ease-in-out;
-  }
-
-  .tree-node-toggle:hover {
-    background-color: var(--color-surface-container-high);
-  }
-
-  .tree-node-expanded .tree-node-toggle {
-    transform: rotate(90deg);
-  }
-
-  .tree-node-toggle-placeholder {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-
-  /* Tree Node Children */
-  .tree-node-children {
-    display: none;
-    padding-left: 1.5rem;
-  }
-
-  .tree-node-expanded > .tree-node-children {
-    display: block;
-  }
-
-  /* Tree Node Icon */
-  .tree-node-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.25rem;
-    height: 1.25rem;
-    color: var(--color-on-surface-variant);
-  }
-
-  /* Tree Node Checkbox (for multi-select) */
-  .tree-node-checkbox {
-    width: 1rem;
-    height: 1rem;
-    accent-color: var(--color-primary);
-  }
-
-  /* Tree Node Label */
-  .tree-node-label {
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   /* Search Input in Dropdown */
@@ -217,6 +150,146 @@
     background-color: var(--color-surface-container-high);
   }
 
+  /* Options Container */
+  .tree-select-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Tree Node */
+  .tree-select-node {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .tree-select-node:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .tree-select-node-selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .tree-select-node-selected:hover {
+    background-color: color-mix(in oklch, var(--color-primary-container), black 5%);
+  }
+
+  /* Leaf Node (no children) */
+  .tree-select-node-leaf {
+    padding-left: 2rem;
+  }
+
+  /* Expand/Collapse Toggle */
+  .tree-select-node-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 150ms ease-in-out;
+  }
+
+  .tree-select-node-toggle:hover {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .tree-select-node-expanded .tree-select-node-toggle,
+  .tree-select-node-expanded > .tree-select-node-toggle {
+    transform: rotate(90deg);
+  }
+
+  /* Toggle Icon */
+  .tree-select-node-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Node Label */
+  .tree-select-node-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Custom Node Icon */
+  .tree-select-node-custom-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-on-surface-variant);
+    flex-shrink: 0;
+  }
+
+  /* Children Container */
+  .tree-select-children {
+    display: none;
+    padding-left: 1.5rem;
+  }
+
+  .tree-select-node-expanded + .tree-select-children {
+    display: block;
+  }
+
+  /* Checkbox for Multi-Select */
+  .tree-select-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .tree-select-checkbox-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .tree-select-checkbox-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    background-color: transparent;
+    border: 2px solid var(--color-on-surface-variant);
+    border-radius: 0.125rem;
+    transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+  }
+
+  .tree-select-checkbox-input:checked + .tree-select-checkbox-box {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .tree-select-checkbox-input:checked + .tree-select-checkbox-box::after {
+    content: '';
+    display: block;
+    width: 0.375rem;
+    height: 0.625rem;
+    border: 2px solid var(--color-on-primary);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translateY(-1px);
+  }
+
   /* Empty State */
   .tree-select-empty {
     padding: 1rem;
@@ -238,6 +311,12 @@
     border-radius: 0.625rem;
   }
 
+  /* Outlined Variant (Default) */
+  .tree-select-outlined .tree-select-trigger {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+  }
+
   /* Filled Variant */
   .tree-select-filled .tree-select-trigger {
     background-color: var(--color-surface-container);
@@ -251,6 +330,12 @@
     box-shadow: none;
   }
 
+  /* Multiple Selection Mode */
+  .tree-select-multiple .tree-select-value {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
   /* Error State */
   .tree-select-error .tree-select-trigger {
     border-color: var(--color-error);
@@ -259,6 +344,32 @@
   .tree-select-error .tree-select-trigger:focus {
     border-color: var(--color-error);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Disabled State */
+  .tree-select-disabled .tree-select-trigger {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--color-surface-container);
+  }
+
+  /* Loading State */
+  .tree-select-loading .tree-select-trigger {
+    cursor: wait;
+  }
+
+  .tree-select-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--color-outline);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: tree-select-spin 0.8s linear infinite;
+  }
+
+  @keyframes tree-select-spin {
+    to { transform: rotate(360deg); }
   }
 
   /* Multi-select Tags */
@@ -303,10 +414,14 @@
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
     .tree-select-trigger,
-    .tree-select-icon,
-    .tree-node-toggle,
-    .tree-node-content {
+    .tree-select-arrow,
+    .tree-select-node-toggle,
+    .tree-select-node,
+    .tree-select-checkbox-box {
       transition: none;
+    }
+    .tree-select-spinner {
+      animation: none;
     }
   }
 }

@@ -19,7 +19,7 @@
     gap: 0.5rem;
     min-height: 2.75rem;
     width: 100%;
-    padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+    padding: 0.5rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5rem;
     color: var(--color-on-surface);
@@ -40,12 +40,6 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
-  .multi-select-trigger:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-    background-color: var(--color-surface-container);
-  }
-
   /* Placeholder */
   .multi-select-placeholder {
     color: var(--color-on-surface-variant);
@@ -56,6 +50,7 @@
   .multi-select-tags {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.25rem;
     flex: 1;
     min-width: 0;
@@ -70,8 +65,8 @@
     padding: 0.125rem 0.375rem 0.125rem 0.5rem;
     font-size: 0.75rem;
     line-height: 1.25rem;
-    background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
+    background-color: var(--color-surface-container-high);
+    color: var(--color-on-surface);
     border-radius: 1rem;
   }
 
@@ -103,32 +98,65 @@
     background-color: color-mix(in oklch, currentColor 15%, transparent);
   }
 
-  /* Chevron Icon */
-  .multi-select-icon {
-    position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
+  /* Tag Variants */
+  .multi-select-tag-primary {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .multi-select-tag-outlined {
+    background-color: transparent;
+    border: 1px solid var(--color-outline);
+    color: var(--color-on-surface);
+  }
+
+  /* Overflow Tag */
+  .multi-select-tag-overflow {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface-variant);
+    border-radius: 1rem;
+  }
+
+  /* Inline Search Input */
+  .multi-select-input {
+    flex: 1;
+    min-width: 4rem;
+    padding: 0.125rem 0;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .multi-select-input::placeholder {
+    color: var(--color-on-surface-variant);
+    opacity: 0.7;
+  }
+
+  /* Dropdown Arrow */
+  .multi-select-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 1.25rem;
     height: 1.25rem;
     color: var(--color-on-surface-variant);
-    pointer-events: none;
+    flex-shrink: 0;
     transition: transform 150ms ease-in-out;
   }
 
-  .multi-select-open .multi-select-icon {
-    transform: translateY(-50%) rotate(180deg);
+  .multi-select-open .multi-select-arrow {
+    transform: rotate(180deg);
   }
 
   /* Clear All Button */
-  .multi-select-clear {
-    position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+  .multi-select-clear-all {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,16 +168,11 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    opacity: 0;
-    transition: opacity 150ms ease-in-out;
+    flex-shrink: 0;
+    transition: background-color 150ms ease-in-out;
   }
 
-  .multi-select-trigger:hover .multi-select-clear,
-  .multi-select-clear:focus {
-    opacity: 1;
-  }
-
-  .multi-select-clear:hover {
+  .multi-select-clear-all:hover {
     background-color: var(--color-surface-container-high);
   }
 
@@ -238,9 +261,13 @@
     background-color: color-mix(in oklch, var(--color-primary-container), black 5%);
   }
 
-  .multi-select-option:disabled {
+  .multi-select-option-disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  .multi-select-option-disabled:hover {
+    background-color: transparent;
   }
 
   .multi-select-option-focused {
@@ -248,11 +275,25 @@
   }
 
   /* Option Checkbox */
-  .multi-select-checkbox {
+  .multi-select-option-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 1rem;
     height: 1rem;
-    accent-color: var(--color-primary);
-    pointer-events: none;
+    background-color: transparent;
+    border: 2px solid var(--color-on-surface-variant);
+    border-radius: 0.125rem;
+    flex-shrink: 0;
+  }
+
+  .multi-select-option-selected .multi-select-option-checkbox {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .multi-select-option-selected .multi-select-option-checkbox svg {
+    color: var(--color-on-primary);
   }
 
   /* Option Icon */
@@ -283,7 +324,7 @@
     padding: 0.25rem 0;
   }
 
-  .multi-select-group-label {
+  .multi-select-group-header {
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 600;
@@ -342,7 +383,7 @@
   /* Size Variants */
   .multi-select-sm .multi-select-trigger {
     min-height: 2.25rem;
-    padding: 0.375rem 2rem 0.375rem 0.5rem;
+    padding: 0.375rem 0.5rem;
     font-size: 0.875rem;
     border-radius: 0.375rem;
   }
@@ -354,9 +395,15 @@
 
   .multi-select-lg .multi-select-trigger {
     min-height: 3.25rem;
-    padding: 0.625rem 3rem 0.625rem 1rem;
+    padding: 0.625rem 1rem;
     font-size: 1.125rem;
     border-radius: 0.625rem;
+  }
+
+  /* Outlined Variant (Default) */
+  .multi-select-outlined .multi-select-trigger {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
   }
 
   /* Filled Variant */
@@ -382,14 +429,47 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  /* Disabled State */
+  .multi-select-disabled .multi-select-trigger {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--color-surface-container);
+  }
+
+  .multi-select-disabled .multi-select-tag-remove {
+    pointer-events: none;
+  }
+
+  /* Loading State */
+  .multi-select-loading .multi-select-trigger {
+    cursor: wait;
+  }
+
+  .multi-select-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--color-outline);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: multi-select-spin 0.8s linear infinite;
+  }
+
+  @keyframes multi-select-spin {
+    to { transform: rotate(360deg); }
+  }
+
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
     .multi-select-trigger,
-    .multi-select-icon,
+    .multi-select-arrow,
     .multi-select-tag-remove,
-    .multi-select-clear,
+    .multi-select-clear-all,
     .multi-select-option {
       transition: none;
+    }
+    .multi-select-spinner {
+      animation: none;
     }
   }
 }
