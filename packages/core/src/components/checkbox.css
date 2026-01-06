@@ -36,16 +36,14 @@
     transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out;
   }
 
-  /* Checkmark */
-  .checkbox-box::after {
-    content: '';
-    position: absolute;
-    width: 0.375rem;
-    height: 0.625rem;
-    border: solid transparent;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg) scale(0);
-    transition: transform 150ms ease-in-out;
+  /* Checkmark SVG */
+  .checkbox-checkmark {
+    width: 0.875rem;
+    height: 0.875rem;
+    color: var(--color-primary-content);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   }
 
   /* Checked State */
@@ -54,9 +52,9 @@
     border-color: var(--color-primary);
   }
 
-  .checkbox-input:checked + .checkbox-box::after {
-    border-color: var(--color-primary-content);
-    transform: rotate(45deg) scale(1);
+  .checkbox-input:checked + .checkbox-box .checkbox-checkmark {
+    opacity: 1;
+    transform: scale(1);
   }
 
   /* Indeterminate State */
@@ -65,12 +63,9 @@
     border-color: var(--color-primary);
   }
 
-  .checkbox-input:indeterminate + .checkbox-box::after {
-    width: 0.625rem;
-    height: 0;
-    border-width: 0 0 2px 0;
-    border-color: var(--color-primary-content);
-    transform: rotate(0) scale(1);
+  .checkbox-input:indeterminate + .checkbox-box .checkbox-checkmark {
+    opacity: 1;
+    transform: scale(1);
   }
 
   /* Hover State */
@@ -116,9 +111,9 @@
     height: 1rem;
   }
 
-  .checkbox-sm .checkbox-box::after {
-    width: 0.25rem;
-    height: 0.5rem;
+  .checkbox-sm .checkbox-checkmark {
+    width: 0.625rem;
+    height: 0.625rem;
   }
 
   .checkbox-sm .checkbox-label {
@@ -131,10 +126,9 @@
     border-radius: 0.1875rem;
   }
 
-  .checkbox-lg .checkbox-box::after {
-    width: 0.5rem;
-    height: 0.75rem;
-    border-width: 0 3px 3px 0;
+  .checkbox-lg .checkbox-checkmark {
+    width: 1rem;
+    height: 1rem;
   }
 
   .checkbox-lg .checkbox-label {
@@ -152,8 +146,8 @@
     border-color: var(--color-secondary);
   }
 
-  .checkbox-secondary .checkbox-input:checked + .checkbox-box::after {
-    border-color: var(--color-secondary-content);
+  .checkbox-secondary .checkbox-input:checked + .checkbox-box .checkbox-checkmark {
+    color: var(--color-secondary-content);
   }
 
   .checkbox-tertiary .checkbox-input:checked + .checkbox-box {
@@ -161,8 +155,8 @@
     border-color: var(--color-tertiary);
   }
 
-  .checkbox-tertiary .checkbox-input:checked + .checkbox-box::after {
-    border-color: var(--color-tertiary-content);
+  .checkbox-tertiary .checkbox-input:checked + .checkbox-box .checkbox-checkmark {
+    color: var(--color-tertiary-content);
   }
 
   .checkbox-success .checkbox-input:checked + .checkbox-box {
@@ -170,9 +164,17 @@
     border-color: var(--color-success);
   }
 
+  .checkbox-success .checkbox-input:checked + .checkbox-box .checkbox-checkmark {
+    color: var(--color-success-content);
+  }
+
   .checkbox-error .checkbox-input:checked + .checkbox-box {
     background-color: var(--color-error);
     border-color: var(--color-error);
+  }
+
+  .checkbox-error .checkbox-input:checked + .checkbox-box .checkbox-checkmark {
+    color: var(--color-error-content);
   }
 
   /* Checkbox Group */
@@ -195,11 +197,38 @@
     margin-bottom: 0.5rem;
   }
 
+  /* Helper Text */
+  .checkbox-helper {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    margin-top: 0.25rem;
+    margin-left: 2rem;
+  }
+
+  /* Error State Helper */
+  .checkbox-error .checkbox-box {
+    border-color: var(--color-error);
+  }
+
+  /* Loading State */
+  .checkbox-loading .checkbox-box {
+    animation: checkbox-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes checkbox-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
     .checkbox-box,
-    .checkbox-box::after {
+    .checkbox-checkmark {
       transition: none;
+    }
+    .checkbox-loading .checkbox-box {
+      animation: none;
     }
   }
 }
