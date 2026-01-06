@@ -1,277 +1,233 @@
 /**
  * Switch Component Styles
- * DuskMoonUI - Material Design 3 inspired switch/toggle system
+ * DuskMoonUI - Material Design 3 inspired switch/toggle
+ *
+ * Usage: <input type="checkbox" class="switch" />
+ * With label: <label class="switch-label"><input type="checkbox" class="switch" /><span>Label</span></label>
  */
 
 @layer components {
-  /* Base Switch */
+  /* Base Switch - applied directly to input[type="checkbox"] */
   .switch {
+    --switch-width: 3.25rem;
+    --switch-height: 2rem;
+    --switch-thumb-size: 1.5rem;
+    --switch-color: var(--color-primary);
+    --switch-track-color: var(--color-surface-container-highest);
+    --switch-border-color: var(--color-outline);
+    --switch-thumb-color: var(--color-outline);
+
     position: relative;
+    display: inline-grid;
+    grid-template-columns: 0fr 1fr 1fr;
+    align-items: center;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    margin: 0;
+    padding: 0.25rem;
+    cursor: pointer;
+    appearance: none;
+    background-color: var(--switch-track-color);
+    border: 2px solid var(--switch-border-color);
+    border-radius: var(--switch-height);
+    /* Use !important to override global * { transition } rules from layers */
+    transition: background-color 200ms ease-in-out !important,
+      border-color 200ms ease-in-out !important,
+      grid-template-columns 200ms ease-in-out !important;
+  }
+
+  /* Thumb using ::before pseudo-element */
+  .switch::before {
+    content: "";
+    grid-column: 2;
+    width: var(--switch-thumb-size);
+    height: var(--switch-thumb-size);
+    background-color: var(--switch-thumb-color);
+    border-radius: 50%;
+    /* Use !important to override global * { transition } rules */
+    transition: background-color 200ms ease-in-out !important,
+      width 200ms ease-in-out !important,
+      margin 200ms ease-in-out !important;
+  }
+
+  /* Checked State */
+  .switch:checked {
+    grid-template-columns: 1fr 1fr 0fr;
+    background-color: var(--switch-color);
+    border-color: var(--switch-color);
+  }
+
+  .switch:checked::before {
+    background-color: var(--color-on-primary);
+  }
+
+  /* Hover State (unchecked) */
+  .switch:hover:not(:disabled):not(:checked) {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .switch:hover:not(:disabled):not(:checked)::before {
+    background-color: var(--color-on-surface-variant);
+  }
+
+  /* Hover State (checked) */
+  .switch:checked:hover:not(:disabled) {
+    background-color: color-mix(in oklch, var(--switch-color), black 10%);
+    border-color: color-mix(in oklch, var(--switch-color), black 10%);
+  }
+
+  .switch:checked:hover:not(:disabled)::before {
+    background-color: var(--color-primary-container);
+  }
+
+  /* Focus State */
+  .switch:focus-visible {
+    outline: 2px solid var(--switch-color);
+    outline-offset: 2px;
+  }
+
+  /* Pressed/Active State - expand thumb slightly */
+  .switch:active:not(:disabled)::before {
+    width: calc(var(--switch-thumb-size) + 0.25rem);
+  }
+
+  .switch:checked:active:not(:disabled)::before {
+    margin-left: -0.25rem;
+  }
+
+  /* Disabled State */
+  .switch:disabled {
+    cursor: not-allowed;
+    opacity: 0.38;
+  }
+
+  .switch:disabled:not(:checked) {
+    background-color: color-mix(in oklch, var(--color-surface-container-highest) 12%, transparent);
+    border-color: color-mix(in oklch, var(--color-on-surface) 12%, transparent);
+  }
+
+  .switch:disabled:not(:checked)::before {
+    background-color: color-mix(in oklch, var(--color-on-surface) 38%, transparent);
+  }
+
+  .switch:disabled:checked {
+    background-color: color-mix(in oklch, var(--color-on-surface) 12%, transparent);
+    border-color: transparent;
+  }
+
+  .switch:disabled:checked::before {
+    background-color: var(--color-surface);
+  }
+
+  /* ========================================
+   * Size Variants
+   * ======================================== */
+
+  .switch-xs {
+    --switch-width: 2rem;
+    --switch-height: 1.25rem;
+    --switch-thumb-size: 0.875rem;
+  }
+
+  .switch-sm {
+    --switch-width: 2.5rem;
+    --switch-height: 1.5rem;
+    --switch-thumb-size: 1.125rem;
+  }
+
+  .switch-md {
+    --switch-width: 3.25rem;
+    --switch-height: 2rem;
+    --switch-thumb-size: 1.5rem;
+  }
+
+  .switch-lg {
+    --switch-width: 4rem;
+    --switch-height: 2.5rem;
+    --switch-thumb-size: 1.875rem;
+  }
+
+  .switch-xl {
+    --switch-width: 4.75rem;
+    --switch-height: 3rem;
+    --switch-thumb-size: 2.25rem;
+  }
+
+  /* ========================================
+   * Color Variants
+   * ======================================== */
+
+  .switch-primary {
+    --switch-color: var(--color-primary);
+  }
+
+  .switch-secondary {
+    --switch-color: var(--color-secondary);
+  }
+
+  .switch-tertiary {
+    --switch-color: var(--color-tertiary);
+  }
+
+  .switch-success {
+    --switch-color: var(--color-success);
+  }
+
+  .switch-warning {
+    --switch-color: var(--color-warning);
+  }
+
+  .switch-error {
+    --switch-color: var(--color-error);
+  }
+
+  .switch-info {
+    --switch-color: var(--color-info);
+  }
+
+  /* ========================================
+   * Switch with Label
+   * ======================================== */
+
+  .switch-label {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     cursor: pointer;
     user-select: none;
-  }
-
-  /* Hidden Input */
-  .switch-input {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
-
-  /* Switch Track */
-  .switch-track {
-    position: relative;
-    width: 3.25rem;
-    height: 2rem;
-    background-color: var(--color-surface-container-highest);
-    border: 2px solid var(--color-outline);
-    border-radius: 9999px;
-    transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out;
-  }
-
-  /* Switch Thumb */
-  .switch-thumb {
-    position: absolute;
-    top: 50%;
-    left: 0.25rem;
-    width: 1rem;
-    height: 1rem;
-    background-color: var(--color-outline);
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: left 200ms ease-in-out, width 200ms ease-in-out, height 200ms ease-in-out, background-color 200ms ease-in-out;
-  }
-
-  /* Checked State */
-  .switch-input:checked + .switch-track {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  .switch-input:checked + .switch-track .switch-thumb {
-    left: calc(100% - 1.5rem);
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: var(--color-primary-content);
-  }
-
-  /* Hover State */
-  .switch:hover .switch-track::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0.125rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--color-on-surface);
-    border-radius: 50%;
-    transform: translate(-0.75rem, -50%);
-    opacity: 0.08;
-    transition: opacity 150ms ease-in-out;
-  }
-
-  .switch:hover .switch-input:checked + .switch-track::before {
-    left: auto;
-    right: 0.125rem;
-    transform: translate(0.75rem, -50%);
-    background-color: var(--color-primary);
-  }
-
-  /* Focus State */
-  .switch-input:focus-visible + .switch-track {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  /* Disabled State */
-  .switch-input:disabled + .switch-track {
-    opacity: 0.38;
-    cursor: not-allowed;
-  }
-
-  .switch:has(.switch-input:disabled) {
-    cursor: not-allowed;
-  }
-
-  /* Switch Label */
-  .switch-label {
     font-size: 0.875rem;
     color: var(--color-on-surface);
   }
 
-  .switch-label-left {
-    order: -1;
+  .switch-label:has(.switch:disabled) {
+    cursor: not-allowed;
+    opacity: 0.38;
   }
 
-  /* Size Variants */
-  .switch-sm .switch-track {
-    width: 2.5rem;
-    height: 1.5rem;
-  }
+  /* ========================================
+   * Switch Group
+   * ======================================== */
 
-  .switch-sm .switch-thumb {
-    width: 0.75rem;
-    height: 0.75rem;
-  }
-
-  .switch-sm .switch-input:checked + .switch-track .switch-thumb {
-    left: calc(100% - 1.125rem);
-    width: 1.125rem;
-    height: 1.125rem;
-  }
-
-  .switch-lg .switch-track {
-    width: 4rem;
-    height: 2.5rem;
-  }
-
-  .switch-lg .switch-thumb {
-    width: 1.25rem;
-    height: 1.25rem;
-    left: 0.375rem;
-  }
-
-  .switch-lg .switch-input:checked + .switch-track .switch-thumb {
-    left: calc(100% - 1.875rem);
-    width: 1.875rem;
-    height: 1.875rem;
-  }
-
-  /* Color Variants - on parent .switch or on .switch-track */
-  /* Primary is default, but explicit class for consistency */
-  .switch-primary .switch-input:checked + .switch-track,
-  .switch-input:checked + .switch-track.switch-primary {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  .switch-primary .switch-input:checked + .switch-track .switch-thumb,
-  .switch-input:checked + .switch-track.switch-primary .switch-thumb {
-    background-color: var(--color-primary-content);
-  }
-
-  .switch-secondary .switch-input:checked + .switch-track,
-  .switch-input:checked + .switch-track.switch-secondary {
-    background-color: var(--color-secondary);
-    border-color: var(--color-secondary);
-  }
-
-  .switch-secondary .switch-input:checked + .switch-track .switch-thumb,
-  .switch-input:checked + .switch-track.switch-secondary .switch-thumb {
-    background-color: var(--color-secondary-content);
-  }
-
-  .switch-tertiary .switch-input:checked + .switch-track,
-  .switch-input:checked + .switch-track.switch-tertiary {
-    background-color: var(--color-tertiary);
-    border-color: var(--color-tertiary);
-  }
-
-  .switch-tertiary .switch-input:checked + .switch-track .switch-thumb,
-  .switch-input:checked + .switch-track.switch-tertiary .switch-thumb {
-    background-color: var(--color-tertiary-content);
-  }
-
-  .switch-success .switch-input:checked + .switch-track,
-  .switch-input:checked + .switch-track.switch-success {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
-  }
-
-  .switch-error .switch-input:checked + .switch-track,
-  .switch-input:checked + .switch-track.switch-error {
-    background-color: var(--color-error);
-    border-color: var(--color-error);
-  }
-
-  /* With Icons */
-  .switch-icon .switch-thumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.625rem;
-  }
-
-  .switch-icon .switch-input:checked + .switch-track .switch-thumb {
-    font-size: 0.875rem;
-  }
-
-  /* Labeled Track */
-  .switch-labeled-track .switch-track {
-    width: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 0.5rem;
-  }
-
-  .switch-labeled-track .switch-track-label {
-    font-size: 0.625rem;
-    font-weight: 600;
-    color: var(--color-on-surface-variant);
-    text-transform: uppercase;
-    transition: opacity 150ms ease-in-out;
-  }
-
-  .switch-labeled-track .switch-track-on {
-    opacity: 0;
-  }
-
-  .switch-labeled-track .switch-track-off {
-    opacity: 1;
-  }
-
-  .switch-labeled-track .switch-input:checked + .switch-track .switch-track-on {
-    opacity: 1;
-    color: var(--color-primary-content);
-  }
-
-  .switch-labeled-track .switch-input:checked + .switch-track .switch-track-off {
-    opacity: 0;
-  }
-
-  /* Loading State */
-  .switch-loading .switch-thumb::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0.75rem;
-    height: 0.75rem;
-    border: 2px solid transparent;
-    border-top-color: var(--color-on-surface);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: switch-spin 600ms linear infinite;
-  }
-
-  @keyframes switch-spin {
-    to {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
-
-  /* Group */
   .switch-group {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
 
-  /* Reduce Motion */
-  @media (prefers-reduced-motion: reduce) {
-    .switch-track,
-    .switch-thumb,
-    .switch-track::before {
-      transition: none;
-    }
+  .switch-group-horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
 
-    .switch-loading .switch-thumb::after {
-      animation: none;
+  /* ========================================
+   * Reduce Motion
+   * ======================================== */
+
+  @media (prefers-reduced-motion: reduce) {
+    .switch,
+    .switch::before {
+      transition: none !important;
     }
   }
 }
