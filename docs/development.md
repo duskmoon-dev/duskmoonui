@@ -31,7 +31,7 @@ This modular approach allows duskmoon-elements to bundle only the CSS needed for
 
 ## Component Overview
 
-DuskMoonUI includes **35 components** organized by category.
+DuskMoonUI includes **46 components** organized by category.
 
 ### Included Components
 
@@ -39,7 +39,7 @@ DuskMoonUI includes **35 components** organized by category.
 |----------|------------|
 | **Actions** | Button, File Upload |
 | **Data Display** | Avatar, Badge, Card, Chip, Collapse, List, Table, Timeline |
-| **Data Entry** | Autocomplete, Datepicker, Input, Rating, Slider, Switch |
+| **Data Entry** | Autocomplete, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Time Input, Tree Select |
 | **Feedback** | Alert, Dialog, Modal, Progress, Skeleton, Snackbar, Toast, Tooltip |
 | **Layout** | App Bar, Divider, Form, Markdown Body |
 | **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Pagination, Stepper |

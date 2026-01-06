@@ -1,0 +1,195 @@
+/**
+ * OTP Input Component Styles
+ * DuskMoonUI - One-Time Password input for verification codes
+ */
+
+@layer components {
+  /* Base OTP Container */
+  .otp-input {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* OTP Input Field */
+  .otp-input-field {
+    width: 3rem;
+    height: 3.5rem;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-outline);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+    caret-color: var(--color-primary);
+  }
+
+  .otp-input-field::placeholder {
+    color: var(--color-on-surface-variant);
+    opacity: 0.5;
+  }
+
+  .otp-input-field:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-on-surface-variant);
+  }
+
+  .otp-input-field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  .otp-input-field:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+    background-color: var(--color-surface-container);
+  }
+
+  /* Filled State */
+  .otp-input-field-filled {
+    background-color: var(--color-surface-container);
+    border-color: var(--color-primary);
+  }
+
+  /* Separator */
+  .otp-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 0.25rem;
+    background-color: var(--color-outline);
+    border-radius: 0.125rem;
+  }
+
+  /* Size Variants */
+  .otp-input-sm .otp-input-field {
+    width: 2.5rem;
+    height: 3rem;
+    font-size: 1.25rem;
+    border-radius: 0.375rem;
+  }
+
+  .otp-input-lg .otp-input-field {
+    width: 3.5rem;
+    height: 4rem;
+    font-size: 1.75rem;
+    border-radius: 0.625rem;
+  }
+
+  /* Compact Gap */
+  .otp-input-compact {
+    gap: 0.25rem;
+  }
+
+  /* Wide Gap */
+  .otp-input-wide {
+    gap: 1rem;
+  }
+
+  /* Filled Variant */
+  .otp-input-filled .otp-input-field {
+    background-color: var(--color-surface-container);
+    border: none;
+    border-bottom: 2px solid var(--color-outline);
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .otp-input-filled .otp-input-field:focus {
+    border-bottom-color: var(--color-primary);
+    box-shadow: none;
+  }
+
+  /* Outlined Variant (default) */
+  .otp-input-outlined .otp-input-field {
+    background-color: transparent;
+  }
+
+  /* Underline Variant */
+  .otp-input-underline .otp-input-field {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--color-outline);
+    border-radius: 0;
+  }
+
+  .otp-input-underline .otp-input-field:focus {
+    border-bottom-color: var(--color-primary);
+    box-shadow: none;
+  }
+
+  /* Color Variants */
+  .otp-input-primary .otp-input-field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  .otp-input-secondary .otp-input-field:focus {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
+  }
+
+  .otp-input-tertiary .otp-input-field:focus {
+    border-color: var(--color-tertiary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
+  }
+
+  /* Error State */
+  .otp-input-error .otp-input-field {
+    border-color: var(--color-error);
+  }
+
+  .otp-input-error .otp-input-field:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Success State */
+  .otp-input-success .otp-input-field {
+    border-color: var(--color-success);
+  }
+
+  .otp-input-success .otp-input-field:focus {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  /* Masked Input (dots) */
+  .otp-input-masked .otp-input-field {
+    -webkit-text-security: disc;
+    font-family: text-security-disc;
+  }
+
+  /* OTP Group with Label */
+  .otp-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .otp-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-on-surface);
+  }
+
+  .otp-helper {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  .otp-error-message {
+    font-size: 0.75rem;
+    color: var(--color-error);
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .otp-input-field {
+      transition: none;
+    }
+  }
+}

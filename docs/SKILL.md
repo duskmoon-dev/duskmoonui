@@ -47,12 +47,23 @@ Apply theme via `data-theme` attribute on HTML element:
 
 ### Data Entry
 - `input` - Text inputs: `input-primary`, `input-secondary`, `input-error`
+- `textarea` - Multi-line text: `textarea-primary`, `textarea-resize-none`, `textarea-resize-vertical`
+- `select` - Dropdown selection: `select-primary`, `select-filled`, `select-outlined`
+- `checkbox` - Checkboxes: `checkbox-primary`, `checkbox-indeterminate`, `checkbox-group`
+- `radio` - Radio buttons: `radio-primary`, `radio-group`, `radio-group-horizontal`
 - `switch` - Toggle switches: `switch-primary`, `switch-secondary`
 - `slider` - Range sliders
+- `segment-control` - Segmented buttons: `segment-control`, `segment-control-item`
 - `autocomplete` - Search with suggestions
-- `datepicker` - Calendar date selection
+- `datepicker` - Calendar: date, datetime, date range, datetime range pickers
+- `time-input` - Time selection: `time-input`, `time-input-picker`
 - `file-upload` - Drag-and-drop file uploader
 - `rating` - Star/heart ratings
+- `otp-input` - OTP verification: `otp-input`, `otp-input-field`
+- `pin-input` - PIN entry: `pin-input`, `pin-input-masked`
+- `multi-select` - Multiple selection: `multi-select`, `multi-select-tag`
+- `tree-select` - Hierarchical dropdown: `tree-select`, `tree-select-node`
+- `form-group` - Form layout: `form-group`, `form-label`, `helper-text`, `fieldset`
 
 ### Data Display
 - `card` - Content containers: `card-body`, `card-title`
@@ -267,6 +278,7 @@ All components available for individual import:
 | `@duskmoon-dev/core/components/bottomsheet` | Bottom Sheet |
 | `@duskmoon-dev/core/components/button` | Button |
 | `@duskmoon-dev/core/components/card` | Card |
+| `@duskmoon-dev/core/components/checkbox` | Checkbox |
 | `@duskmoon-dev/core/components/chip` | Chip |
 | `@duskmoon-dev/core/components/collapse` | Collapse |
 | `@duskmoon-dev/core/components/datepicker` | Date Picker |
@@ -275,23 +287,33 @@ All components available for individual import:
 | `@duskmoon-dev/core/components/drawer` | Drawer |
 | `@duskmoon-dev/core/components/file-upload` | File Upload |
 | `@duskmoon-dev/core/components/form` | Form |
+| `@duskmoon-dev/core/components/form-group` | Form Group |
 | `@duskmoon-dev/core/components/input` | Input |
 | `@duskmoon-dev/core/components/list` | List |
 | `@duskmoon-dev/core/components/markdown-body` | Markdown Body |
 | `@duskmoon-dev/core/components/modal` | Modal |
+| `@duskmoon-dev/core/components/multi-select` | Multi-Select |
 | `@duskmoon-dev/core/components/navigation` | Navigation (Navbar/Tabs/Menu) |
+| `@duskmoon-dev/core/components/otp-input` | OTP Input |
+| `@duskmoon-dev/core/components/pin-input` | PIN Input |
 | `@duskmoon-dev/core/components/popover` | Popover |
 | `@duskmoon-dev/core/components/progress` | Progress |
+| `@duskmoon-dev/core/components/radio` | Radio |
 | `@duskmoon-dev/core/components/rating` | Rating |
+| `@duskmoon-dev/core/components/segment-control` | Segment Control |
+| `@duskmoon-dev/core/components/select` | Select |
 | `@duskmoon-dev/core/components/skeleton` | Skeleton |
 | `@duskmoon-dev/core/components/slider` | Slider |
 | `@duskmoon-dev/core/components/snackbar` | Snackbar |
 | `@duskmoon-dev/core/components/stepper` | Stepper |
 | `@duskmoon-dev/core/components/switch` | Switch |
 | `@duskmoon-dev/core/components/table` | Table |
+| `@duskmoon-dev/core/components/textarea` | Textarea |
+| `@duskmoon-dev/core/components/time-input` | Time Input |
 | `@duskmoon-dev/core/components/timeline` | Timeline |
 | `@duskmoon-dev/core/components/toast` | Toast |
 | `@duskmoon-dev/core/components/tooltip` | Tooltip |
+| `@duskmoon-dev/core/components/tree-select` | Tree Select |
 
 ### Usage in Web Components / Custom Elements
 

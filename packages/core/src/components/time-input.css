@@ -1,0 +1,252 @@
+/**
+ * Time Input Component Styles
+ * DuskMoonUI - Time selection input component
+ */
+
+@layer components {
+  /* Base Time Input */
+  .time-input {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .time-input-field {
+    display: flex;
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+  }
+
+  .time-input-field:hover:not(:disabled) {
+    border-color: var(--color-on-surface-variant);
+  }
+
+  .time-input-field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  .time-input-field:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--color-surface-container);
+  }
+
+  /* Time Icon */
+  .time-input-icon {
+    position: absolute;
+    right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-on-surface-variant);
+    pointer-events: none;
+  }
+
+  /* Time Input Segments (hour:minute:second) */
+  .time-input-segments {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+  }
+
+  .time-input-segment {
+    width: 2rem;
+    padding: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    outline: none;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .time-input-segment:focus {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .time-input-separator {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* AM/PM Toggle */
+  .time-input-period {
+    display: inline-flex;
+    margin-left: 0.5rem;
+    background-color: var(--color-surface-container);
+    border-radius: 0.375rem;
+    padding: 0.125rem;
+  }
+
+  .time-input-period-btn {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+  }
+
+  .time-input-period-btn:hover {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .time-input-period-btn-active {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  /* Size Variants */
+  .time-input-sm .time-input-field {
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+  }
+
+  .time-input-sm .time-input-segment {
+    width: 1.75rem;
+    font-size: 0.875rem;
+  }
+
+  .time-input-lg .time-input-field {
+    padding: 1rem 3rem 1rem 1.25rem;
+    font-size: 1.125rem;
+    border-radius: 0.625rem;
+  }
+
+  .time-input-lg .time-input-segment {
+    width: 2.5rem;
+    font-size: 1.125rem;
+  }
+
+  /* Filled Variant */
+  .time-input-filled .time-input-field,
+  .time-input-filled .time-input-segments {
+    background-color: var(--color-surface-container);
+    border: none;
+    border-bottom: 2px solid var(--color-outline);
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .time-input-filled .time-input-field:focus,
+  .time-input-filled .time-input-segments:focus-within {
+    border-bottom-color: var(--color-primary);
+    box-shadow: none;
+  }
+
+  /* Color Variants */
+  .time-input-primary .time-input-field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  .time-input-secondary .time-input-field:focus {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
+  }
+
+  .time-input-tertiary .time-input-field:focus {
+    border-color: var(--color-tertiary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
+  }
+
+  /* Error State */
+  .time-input-error .time-input-field,
+  .time-input-error .time-input-segments {
+    border-color: var(--color-error);
+  }
+
+  .time-input-error .time-input-field:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Time Picker Dropdown */
+  .time-picker-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 50;
+    display: none;
+    min-width: 12rem;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .time-picker-dropdown-open {
+    display: block;
+  }
+
+  .time-picker-columns {
+    display: flex;
+    gap: 0.5rem;
+    max-height: 12rem;
+  }
+
+  .time-picker-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    overflow-y: auto;
+  }
+
+  .time-picker-option {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .time-picker-option:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .time-picker-option-selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .time-input-field,
+    .time-input-segment,
+    .time-input-period-btn,
+    .time-picker-option {
+      transition: none;
+    }
+  }
+}

@@ -338,9 +338,321 @@
     font-size: 1rem;
   }
 
+  /* ========================================
+   * Date Range Picker Variants
+   * ======================================== */
+
+  /* Range Input Container */
+  .datepicker-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .datepicker-range-separator {
+    color: var(--color-on-surface-variant);
+    font-size: 0.875rem;
+  }
+
+  .datepicker-range-input {
+    flex: 1;
+  }
+
+  /* Dual Calendar View */
+  .datepicker-dual-calendar {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .datepicker-dual-calendar .datepicker-calendar {
+    flex: 1;
+  }
+
+  /* Range Presets */
+  .datepicker-presets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    border-right: 1px solid var(--color-outline-variant);
+    min-width: 8rem;
+  }
+
+  .datepicker-preset {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .datepicker-preset:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .datepicker-preset-active {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  /* Range Display */
+  .datepicker-range-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: var(--color-surface-container-lowest);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .datepicker-range-date {
+    flex: 1;
+    text-align: center;
+  }
+
+  .datepicker-range-date-label {
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--color-on-surface-variant);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .datepicker-range-date-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-on-surface);
+  }
+
+  .datepicker-range-arrow {
+    color: var(--color-on-surface-variant);
+  }
+
+  /* ========================================
+   * DateTime Picker Variants
+   * ======================================== */
+
+  /* DateTime Container */
+  .datetime-picker {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .datetime-picker-input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+  }
+
+  .datetime-picker-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  /* DateTime Dropdown Layout */
+  .datetime-picker-dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .datetime-picker-body {
+    display: flex;
+  }
+
+  .datetime-picker-calendar {
+    flex: 1;
+  }
+
+  .datetime-picker-time-panel {
+    display: flex;
+    flex-direction: column;
+    min-width: 5rem;
+    border-left: 1px solid var(--color-outline-variant);
+  }
+
+  .datetime-picker-time-header {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-on-surface-variant);
+    text-align: center;
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .datetime-picker-time-columns {
+    display: flex;
+    flex: 1;
+    max-height: 16rem;
+  }
+
+  .datetime-picker-time-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-right: 1px solid var(--color-outline-variant);
+  }
+
+  .datetime-picker-time-column:last-child {
+    border-right: none;
+  }
+
+  .datetime-picker-time-option {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .datetime-picker-time-option:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .datetime-picker-time-option-selected {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  .datetime-picker-time-option:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ========================================
+   * DateTime Range Picker
+   * ======================================== */
+
+  .datetime-range-picker {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .datetime-range-picker-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .datetime-range-picker-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    transition: border-color 150ms ease-in-out;
+  }
+
+  .datetime-range-picker-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  .datetime-range-picker-dropdown {
+    min-width: 40rem;
+  }
+
+  .datetime-range-picker-body {
+    display: flex;
+  }
+
+  .datetime-range-picker-panel {
+    flex: 1;
+    border-right: 1px solid var(--color-outline-variant);
+  }
+
+  .datetime-range-picker-panel:last-child {
+    border-right: none;
+  }
+
+  .datetime-range-picker-panel-header {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-on-surface-variant);
+    text-align: center;
+    background-color: var(--color-surface-container-lowest);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  /* Inline Datepicker (always visible) */
+  .datepicker-inline {
+    position: static;
+  }
+
+  .datepicker-inline .datepicker-dropdown {
+    position: static;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    margin-top: 0;
+    box-shadow: none;
+  }
+
+  /* Color Variants */
+  .datepicker-primary .datepicker-day-selected,
+  .datepicker-primary .datepicker-day-range-start,
+  .datepicker-primary .datepicker-day-range-end {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  .datepicker-secondary .datepicker-day-selected,
+  .datepicker-secondary .datepicker-day-range-start,
+  .datepicker-secondary .datepicker-day-range-end {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-content);
+  }
+
+  .datepicker-tertiary .datepicker-day-selected,
+  .datepicker-tertiary .datepicker-day-range-start,
+  .datepicker-tertiary .datepicker-day-range-end {
+    background-color: var(--color-tertiary);
+    color: var(--color-tertiary-content);
+  }
+
+  /* Error State */
+  .datepicker-error .datepicker-input,
+  .datetime-picker-error .datetime-picker-input {
+    border-color: var(--color-error);
+  }
+
+  .datepicker-error .datepicker-input:focus,
+  .datetime-picker-error .datetime-picker-input:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
-    .datepicker-dropdown {
+    .datepicker-dropdown,
+    .datepicker-nav-btn,
+    .datepicker-day,
+    .datepicker-month,
+    .datepicker-year,
+    .datepicker-preset,
+    .datetime-picker-time-option {
       transition: none;
     }
   }

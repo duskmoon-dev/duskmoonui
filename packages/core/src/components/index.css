@@ -40,11 +40,22 @@
  * ============================================ */
 
 @import "./autocomplete.css";
+@import "./checkbox.css";
 @import "./datepicker.css";
 @import "./file-upload.css";
+@import "./form-group.css";
+@import "./multi-select.css";
+@import "./otp-input.css";
+@import "./pin-input.css";
+@import "./radio.css";
 @import "./rating.css";
+@import "./segment-control.css";
+@import "./select.css";
 @import "./slider.css";
 @import "./switch.css";
+@import "./textarea.css";
+@import "./time-input.css";
+@import "./tree-select.css";
 
 /* ============================================
  * FEEDBACK COMPONENTS

@@ -70,6 +70,11 @@
       "import": "./dist/esm/components/card.js",
       "default": "./dist/esm/components/card.js"
     },
+    "./components/checkbox": {
+      "style": "./dist/components/checkbox.css",
+      "import": "./dist/esm/components/checkbox.js",
+      "default": "./dist/esm/components/checkbox.js"
+    },
     "./components/chip": {
       "style": "./dist/components/chip.css",
       "import": "./dist/esm/components/chip.js",
@@ -110,6 +115,11 @@
       "import": "./dist/esm/components/form.js",
       "default": "./dist/esm/components/form.js"
     },
+    "./components/form-group": {
+      "style": "./dist/components/form-group.css",
+      "import": "./dist/esm/components/form-group.js",
+      "default": "./dist/esm/components/form-group.js"
+    },
     "./components/input": {
       "style": "./dist/components/input.css",
       "import": "./dist/esm/components/input.js",
@@ -130,10 +140,25 @@
       "import": "./dist/esm/components/modal.js",
       "default": "./dist/esm/components/modal.js"
     },
+    "./components/multi-select": {
+      "style": "./dist/components/multi-select.css",
+      "import": "./dist/esm/components/multi-select.js",
+      "default": "./dist/esm/components/multi-select.js"
+    },
     "./components/navigation": {
       "style": "./dist/components/navigation.css",
       "import": "./dist/esm/components/navigation.js",
       "default": "./dist/esm/components/navigation.js"
+    },
+    "./components/otp-input": {
+      "style": "./dist/components/otp-input.css",
+      "import": "./dist/esm/components/otp-input.js",
+      "default": "./dist/esm/components/otp-input.js"
+    },
+    "./components/pin-input": {
+      "style": "./dist/components/pin-input.css",
+      "import": "./dist/esm/components/pin-input.js",
+      "default": "./dist/esm/components/pin-input.js"
     },
     "./components/popover": {
       "style": "./dist/components/popover.css",
@@ -145,10 +170,25 @@
       "import": "./dist/esm/components/progress.js",
       "default": "./dist/esm/components/progress.js"
     },
+    "./components/radio": {
+      "style": "./dist/components/radio.css",
+      "import": "./dist/esm/components/radio.js",
+      "default": "./dist/esm/components/radio.js"
+    },
     "./components/rating": {
       "style": "./dist/components/rating.css",
       "import": "./dist/esm/components/rating.js",
       "default": "./dist/esm/components/rating.js"
+    },
+    "./components/segment-control": {
+      "style": "./dist/components/segment-control.css",
+      "import": "./dist/esm/components/segment-control.js",
+      "default": "./dist/esm/components/segment-control.js"
+    },
+    "./components/select": {
+      "style": "./dist/components/select.css",
+      "import": "./dist/esm/components/select.js",
+      "default": "./dist/esm/components/select.js"
     },
     "./components/skeleton": {
       "style": "./dist/components/skeleton.css",
@@ -180,6 +220,16 @@
       "import": "./dist/esm/components/table.js",
       "default": "./dist/esm/components/table.js"
     },
+    "./components/textarea": {
+      "style": "./dist/components/textarea.css",
+      "import": "./dist/esm/components/textarea.js",
+      "default": "./dist/esm/components/textarea.js"
+    },
+    "./components/time-input": {
+      "style": "./dist/components/time-input.css",
+      "import": "./dist/esm/components/time-input.js",
+      "default": "./dist/esm/components/time-input.js"
+    },
     "./components/timeline": {
       "style": "./dist/components/timeline.css",
       "import": "./dist/esm/components/timeline.js",
@@ -194,6 +244,11 @@
       "style": "./dist/components/tooltip.css",
       "import": "./dist/esm/components/tooltip.js",
       "default": "./dist/esm/components/tooltip.js"
+    },
+    "./components/tree-select": {
+      "style": "./dist/components/tree-select.css",
+      "import": "./dist/esm/components/tree-select.js",
+      "default": "./dist/esm/components/tree-select.js"
     }
   },
   "files": [
