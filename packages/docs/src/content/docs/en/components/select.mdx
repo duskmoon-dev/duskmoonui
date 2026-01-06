@@ -24,7 +24,6 @@ The basic select component uses the outlined variant by default:
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## With Label
@@ -40,7 +39,6 @@ Add a label to provide context for the select:
     <option value="ca">Canada</option>
     <option value="au">Australia</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## Variants
@@ -56,7 +54,6 @@ The outlined variant has a transparent background with a visible border:
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ### Filled Select
@@ -70,7 +67,6 @@ The filled variant has a filled background with a bottom border, perfect for for
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ### Filled Select with Floating Label
@@ -85,7 +81,6 @@ Create a modern filled select with a floating label:
     <option value="3">Option 3</option>
   </select>
   <label class="select-label-floating">Select an option</label>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## Color Variants
@@ -100,7 +95,6 @@ Use primary color for the focus state:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ### Secondary Select
@@ -113,7 +107,6 @@ Use secondary color for the focus state:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ### Tertiary Select
@@ -126,7 +119,6 @@ Use tertiary color for the focus state:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## Sizes
@@ -141,7 +133,6 @@ Three sizes are available to fit different design needs:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ### Medium (Default)
@@ -152,7 +143,6 @@ Three sizes are available to fit different design needs:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ### Large
@@ -163,7 +153,6 @@ Three sizes are available to fit different design needs:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## Multiple Selection
@@ -206,7 +195,6 @@ Organize options using optgroups:
       <option value="papaya">Papaya</option>
     </optgroup>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## States
@@ -222,7 +210,6 @@ Disabled selects are non-interactive:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ### Error State
@@ -236,7 +223,6 @@ Show validation errors:
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-  <span class="select-icon">▼</span>
   <span class="select-helper">This field is required</span>
 </div>`} />
 
@@ -249,7 +235,6 @@ Show a loading indicator:
   <select class="select select-loading" disabled>
     <option value="">Loading...</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## Helper Text
@@ -265,7 +250,6 @@ Provide additional context or instructions:
     <option value="fr">French</option>
     <option value="de">German</option>
   </select>
-  <span class="select-icon">▼</span>
   <span class="select-helper">This will be used for all communications</span>
 </div>`} />
 
@@ -281,7 +265,6 @@ Make the select take the full width of its container:
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
   </select>
-  <span class="select-icon">▼</span>
 </div>`} />
 
 ## Best Practices
@@ -300,8 +283,7 @@ Combine selects with other form elements for a cohesive design:
       <option value="ms">Ms.</option>
       <option value="dr">Dr.</option>
     </select>
-    <span class="select-icon">▼</span>
-  </div>
+    </div>
 
   <div class="select-container">
     <label class="select-label" for="department">Department</label>
@@ -312,8 +294,7 @@ Combine selects with other form elements for a cohesive design:
       <option value="marketing">Marketing</option>
       <option value="sales">Sales</option>
     </select>
-    <span class="select-icon">▼</span>
-    <span class="select-helper">Choose your primary department</span>
+      <span class="select-helper">Choose your primary department</span>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -337,7 +318,6 @@ Combine selects with other form elements for a cohesive design:
     <option value="uk">United Kingdom</option>
     <option value="ca">Canada</option>
   </select>
-  <span class="select-icon">▼</span>
   <span class="select-helper" id="country-helper">
     This helps us provide relevant content
   </span>
@@ -355,7 +335,6 @@ Always provide clear error messages:
     <option value="debit">Debit Card</option>
     <option value="paypal">PayPal</option>
   </select>
-  <span class="select-icon">▼</span>
   <span class="select-helper" id="payment-error">Please select a payment method</span>
 </div>`} />
 
@@ -465,8 +444,7 @@ function App() {
     >
       <slot />
     </select>
-    <span class="select-icon">▼</span>
-    <span v-if="helperText" class="select-helper">{{ helperText }}</span>
+      <span v-if="helperText" class="select-helper">{{ helperText }}</span>
   </div>
 </template>
 
@@ -592,7 +570,6 @@ const selectedCountry = ref('');
   >
     <slot />
   </select>
-  <span class="select-icon">▼</span>
   {#if helperText}
     <span class="select-helper">{helperText}</span>
   {/if}
@@ -676,7 +653,6 @@ const selectedCountry = ref('');
     <option value="1">Engineering</option>
     <option value="2">Design</option>
   </select>
-  <span class="select-icon">▼</span>
   <span class="select-helper">Please select a department</span>
 </div>`} />
 

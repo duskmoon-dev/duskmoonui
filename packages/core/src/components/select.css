@@ -130,6 +130,30 @@
     background-position: right 1rem center;
   }
 
+  /* Select Container */
+  .select-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  .select-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-on-surface);
+  }
+
+  .select-helper {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  .select-container-error .select-helper {
+    color: var(--color-error);
+  }
+
   /* Select Group */
   .select-group {
     display: flex;

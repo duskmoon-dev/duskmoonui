@@ -122,6 +122,9 @@
 
   /* Calendar Body */
   .datepicker-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.125rem;
     padding: 0.5rem;
   }
 
