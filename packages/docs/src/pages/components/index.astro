@@ -20,9 +20,11 @@ const categories = [
       { name: 'Badge', slug: 'badge', description: 'Status indicators' },
       { name: 'Card', slug: 'card', description: 'Content containers' },
       { name: 'Chip', slug: 'chip', description: 'Compact tags' },
+      { name: 'Collapse', slug: 'collapse', description: 'Collapsible content' },
       { name: 'List', slug: 'list', description: 'Vertical item lists' },
       { name: 'Markdown Body', slug: 'markdown-body', description: 'GitHub-style markdown typography' },
       { name: 'Table', slug: 'table', description: 'Data tables' },
+      { name: 'Timeline', slug: 'timeline', description: 'Chronological events' },
     ]
   },
   {
@@ -30,10 +32,22 @@ const categories = [
     emoji: '📝',
     components: [
       { name: 'Autocomplete', slug: 'autocomplete', description: 'Search with suggestions' },
+      { name: 'Checkbox', slug: 'checkbox', description: 'Multiple selection checkboxes' },
       { name: 'Date Picker', slug: 'datepicker', description: 'Calendar selection' },
+      { name: 'Form Group', slug: 'form-group', description: 'Form layout utilities' },
       { name: 'Input', slug: 'input', description: 'Text input fields' },
+      { name: 'Multi-Select', slug: 'multi-select', description: 'Multiple selection dropdown' },
+      { name: 'OTP Input', slug: 'otp-input', description: 'Verification code input' },
+      { name: 'PIN Input', slug: 'pin-input', description: 'Secure PIN entry' },
+      { name: 'Radio', slug: 'radio', description: 'Single selection radio buttons' },
+      { name: 'Rating', slug: 'rating', description: 'Star/heart ratings' },
+      { name: 'Segment Control', slug: 'segment-control', description: 'Segmented button toggle' },
+      { name: 'Select', slug: 'select', description: 'Dropdown selection' },
       { name: 'Slider', slug: 'slider', description: 'Range selector' },
       { name: 'Switch', slug: 'switch', description: 'Toggle controls' },
+      { name: 'Textarea', slug: 'textarea', description: 'Multi-line text input' },
+      { name: 'Time Input', slug: 'time-input', description: 'Time selection' },
+      { name: 'Tree Select', slug: 'tree-select', description: 'Hierarchical dropdown' },
     ]
   },
   {
@@ -42,9 +56,11 @@ const categories = [
     components: [
       { name: 'Alert', slug: 'alert', description: 'Important messages' },
       { name: 'Dialog', slug: 'dialog', description: 'Modal dialogs' },
+      { name: 'Modal', slug: 'modal', description: 'Full-featured overlays' },
       { name: 'Progress', slug: 'progress', description: 'Loading indicators' },
       { name: 'Skeleton', slug: 'skeleton', description: 'Loading placeholders' },
-      { name: 'Snackbar', slug: 'snackbar', description: 'Toast notifications' },
+      { name: 'Snackbar', slug: 'snackbar', description: 'Brief messages' },
+      { name: 'Toast', slug: 'toast', description: 'Toast notifications' },
       { name: 'Tooltip', slug: 'tooltip', description: 'Contextual information' },
     ]
   },
@@ -87,7 +103,7 @@ const categories = [
     <header class="text-center mb-16">
       <h1 class="text-5xl font-bold mb-4">Components</h1>
       <p class="text-xl text-on-surface-variant">
-        32 Material Design 3-inspired components organized by category
+        46 Material Design 3-inspired components organized by category
       </p>
     </header>
 
