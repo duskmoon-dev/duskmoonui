@@ -14,615 +14,233 @@ Checkboxes allow users to select one or more items from a set or toggle a single
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-</label>`} />
+Simply add the `.checkbox` class to an `<input type="checkbox">`:
+
+<ComponentShowcase title="Basic Checkbox" code={`<input type="checkbox" class="checkbox" />`} />
 
 ## With Label
 
-Add a label next to the checkbox for better user experience:
+Wrap the checkbox in a label for better UX:
 
-<ComponentShowcase title="Checkbox with Label" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Accept terms and conditions</span>
+<ComponentShowcase title="Checkbox with Label" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox" />
+  <span>Accept terms and conditions</span>
 </label>`} />
 
-### Label Position
+## Checked State
 
-Place the label on the left side:
-
-<ComponentShowcase title="Checkbox with Left Label" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label checkbox-label-left">Subscribe to newsletter</span>
-</label>`} />
-
-## Variants
-
-### Primary (Default)
-
-The primary variant uses the primary theme color:
-
-<ComponentShowcase title="Primary Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" checked />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Primary Checkbox</span>
-</label>`} />
-
-### Secondary
-
-Use the secondary theme color:
-
-<ComponentShowcase title="Secondary Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" checked />
-  <span class="checkbox-box checkbox-secondary">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Secondary Checkbox</span>
-</label>`} />
-
-### Tertiary
-
-Use the tertiary theme color:
-
-<ComponentShowcase title="Tertiary Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" checked />
-  <span class="checkbox-box checkbox-tertiary">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Tertiary Checkbox</span>
+<ComponentShowcase title="Checked Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox" checked />
+  <span>I agree</span>
 </label>`} />
 
 ## Sizes
 
-Three sizes are available for different contexts:
+Five sizes are available:
 
-### Small
+<ComponentShowcase title="Checkbox Sizes" code={`<div class="flex items-center gap-4">
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox checkbox-xs" checked />
+    <span>Extra Small</span>
+  </label>
 
-<ComponentShowcase title="Small Checkbox" code={`<label class="checkbox checkbox-sm">
-  <input type="checkbox" class="checkbox-input" checked />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Small checkbox</span>
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox checkbox-sm" checked />
+    <span>Small</span>
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox checkbox-md" checked />
+    <span>Medium</span>
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox checkbox-lg" checked />
+    <span>Large</span>
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox checkbox-xl" checked />
+    <span>Extra Large</span>
+  </label>
+</div>`} />
+
+## Color Variants
+
+### Primary (Default)
+
+<ComponentShowcase title="Primary Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-primary" checked />
+  <span>Primary</span>
 </label>`} />
 
-### Medium (Default)
+### Secondary
 
-<ComponentShowcase title="Medium Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" checked />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Medium checkbox (default)</span>
+<ComponentShowcase title="Secondary Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-secondary" checked />
+  <span>Secondary</span>
 </label>`} />
 
-### Large
+### Tertiary
 
-<ComponentShowcase title="Large Checkbox" code={`<label class="checkbox checkbox-lg">
-  <input type="checkbox" class="checkbox-input" checked />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Large checkbox</span>
+<ComponentShowcase title="Tertiary Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-tertiary" checked />
+  <span>Tertiary</span>
 </label>`} />
 
-## States
+### Success
 
-### Checked
-
-The default checked state:
-
-<ComponentShowcase title="Checked Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" checked />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Checked</span>
+<ComponentShowcase title="Success Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-success" checked />
+  <span>Success</span>
 </label>`} />
 
-### Unchecked
+### Warning
 
-The default unchecked state:
-
-<ComponentShowcase title="Unchecked Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Unchecked</span>
-</label>`} />
-
-### Indeterminate
-
-The indeterminate state is useful for parent checkboxes when some but not all children are selected:
-
-<ComponentShowcase title="Indeterminate Checkbox" code={`<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" id="parent-checkbox" />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Indeterminate</span>
-</label>
-
-<script>
-  // Set indeterminate state via JavaScript
-  document.getElementById('parent-checkbox').indeterminate = true;
-</script>`} />
-
-### Disabled
-
-Disabled checkboxes are non-interactive:
-
-<ComponentShowcase title="Disabled Checkboxes" code={`<!-- Disabled unchecked -->
-<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" disabled />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Disabled unchecked</span>
-</label>
-
-<!-- Disabled checked -->
-<label class="checkbox">
-  <input type="checkbox" class="checkbox-input" checked disabled />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Disabled checked</span>
-</label>`} />
-
-### Loading
-
-Show a loading state while processing:
-
-<ComponentShowcase title="Loading Checkbox" code={`<label class="checkbox checkbox-loading">
-  <input type="checkbox" class="checkbox-input" disabled />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Loading...</span>
+<ComponentShowcase title="Warning Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-warning" checked />
+  <span>Warning</span>
 </label>`} />
 
 ### Error
 
-Display error state for validation feedback:
+<ComponentShowcase title="Error Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-error" checked />
+  <span>Error</span>
+</label>`} />
 
-<ComponentShowcase title="Error Checkbox" code={`<label class="checkbox checkbox-error">
-  <input type="checkbox" class="checkbox-input" />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Accept terms and conditions</span>
-</label>
-<span class="checkbox-helper">You must accept the terms to continue</span>`} />
+### Info
 
-## With Helper Text
+<ComponentShowcase title="Info Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-info" checked />
+  <span>Info</span>
+</label>`} />
 
-Add descriptive text below the checkbox:
+## All Colors Comparison
 
-<ComponentShowcase title="Checkbox with Helper Text" code={`<div>
-  <label class="checkbox">
-    <input type="checkbox" class="checkbox-input" />
-    <span class="checkbox-box">
-      <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-      </svg>
-    </span>
-    <span class="checkbox-label">Enable notifications</span>
+<ComponentShowcase title="All Color Variants" code={`<div class="flex flex-wrap gap-4">
+  <input type="checkbox" class="checkbox checkbox-primary" checked />
+  <input type="checkbox" class="checkbox checkbox-secondary" checked />
+  <input type="checkbox" class="checkbox checkbox-tertiary" checked />
+  <input type="checkbox" class="checkbox checkbox-success" checked />
+  <input type="checkbox" class="checkbox checkbox-warning" checked />
+  <input type="checkbox" class="checkbox checkbox-error" checked />
+  <input type="checkbox" class="checkbox checkbox-info" checked />
+</div>`} />
+
+## States
+
+### Indeterminate
+
+The indeterminate state is set via JavaScript:
+
+<ComponentShowcase title="Indeterminate Checkbox" code={`<input type="checkbox" class="checkbox" id="indeterminate-demo" />
+
+<script>
+  document.getElementById('indeterminate-demo').indeterminate = true;
+</script>`} />
+
+### Disabled
+
+<ComponentShowcase title="Disabled Checkboxes" code={`<div class="flex gap-4">
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" disabled />
+    <span>Disabled unchecked</span>
   </label>
-  <span class="checkbox-helper">We'll send you important updates about your account</span>
+
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" checked disabled />
+    <span>Disabled checked</span>
+  </label>
 </div>`} />
 
 ## Checkbox Groups
 
-Group related checkboxes together:
+### Vertical Group
 
-<ComponentShowcase title="Checkbox Group" code={`<fieldset>
-  <legend class="text-lg font-semibold mb-4">Select your interests</legend>
+<ComponentShowcase title="Vertical Checkbox Group" code={`<div class="checkbox-group">
+  <span class="checkbox-group-label">Select your interests</span>
 
-  <div class="space-y-3">
-    <label class="checkbox">
-      <input type="checkbox" class="checkbox-input" name="interests" value="design" />
-      <span class="checkbox-box">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-        </svg>
-      </span>
-      <span class="checkbox-label">Design</span>
-    </label>
-
-    <label class="checkbox">
-      <input type="checkbox" class="checkbox-input" name="interests" value="development" />
-      <span class="checkbox-box">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-        </svg>
-      </span>
-      <span class="checkbox-label">Development</span>
-    </label>
-
-    <label class="checkbox">
-      <input type="checkbox" class="checkbox-input" name="interests" value="marketing" />
-      <span class="checkbox-box">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-        </svg>
-      </span>
-      <span class="checkbox-label">Marketing</span>
-    </label>
-  </div>
-</fieldset>`} />
-
-## Hierarchical Checkboxes
-
-Use indeterminate state for parent-child relationships:
-
-<ComponentShowcase title="Hierarchical Checkboxes" code={`<div class="space-y-2">
-  <label class="checkbox">
-    <input type="checkbox" class="checkbox-input" id="select-all" />
-    <span class="checkbox-box">
-      <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14" />
-      </svg>
-    </span>
-    <span class="checkbox-label">Select All</span>
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" name="interests" value="design" />
+    <span>Design</span>
   </label>
 
-  <div class="ml-6 space-y-2">
-    <label class="checkbox">
-      <input type="checkbox" class="checkbox-input" class="child-checkbox" />
-      <span class="checkbox-box">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-        </svg>
-      </span>
-      <span class="checkbox-label">Option 1</span>
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" name="interests" value="development" checked />
+    <span>Development</span>
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" name="interests" value="marketing" />
+    <span>Marketing</span>
+  </label>
+</div>`} />
+
+### Horizontal Group
+
+<ComponentShowcase title="Horizontal Checkbox Group" code={`<div class="checkbox-group checkbox-group-horizontal">
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" name="options" value="a" checked />
+    <span>Option A</span>
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" name="options" value="b" />
+    <span>Option B</span>
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox" name="options" value="c" />
+    <span>Option C</span>
+  </label>
+</div>`} />
+
+## Form Integration
+
+<ComponentShowcase title="Checkbox in Form" code={`<form class="space-y-4 max-w-md">
+  <div class="checkbox-group">
+    <span class="checkbox-group-label">Notification Preferences</span>
+
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox" name="email" checked />
+      <span>Email notifications</span>
     </label>
 
-    <label class="checkbox">
-      <input type="checkbox" class="checkbox-input" class="child-checkbox" />
-      <span class="checkbox-box">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-        </svg>
-      </span>
-      <span class="checkbox-label">Option 2</span>
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox" name="sms" />
+      <span>SMS notifications</span>
     </label>
 
-    <label class="checkbox">
-      <input type="checkbox" class="checkbox-input" class="child-checkbox" />
-      <span class="checkbox-box">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-        </svg>
-      </span>
-      <span class="checkbox-label">Option 3</span>
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox" name="push" checked />
+      <span>Push notifications</span>
     </label>
   </div>
-</div>
 
-<script>
-  const parent = document.getElementById('select-all');
-  const children = document.querySelectorAll('.child-checkbox');
-
-  parent.addEventListener('change', function() {
-    children.forEach(child => child.checked = this.checked);
-    this.indeterminate = false;
-  });
-
-  children.forEach(child => {
-    child.addEventListener('change', function() {
-      const checkedCount = Array.from(children).filter(c => c.checked).length;
-      parent.checked = checkedCount === children.length;
-      parent.indeterminate = checkedCount > 0 && checkedCount < children.length;
-    });
-  });
-</script>`} />
+  <label class="checkbox-label">
+    <input type="checkbox" class="checkbox checkbox-primary" required />
+    <span>I agree to the terms and conditions *</span>
+  </label>
+</form>`} />
 
 ## Best Practices
 
-### Layout and Spacing
-
-Use proper spacing between checkboxes in a group:
-
-<ComponentShowcase title="Checkbox Spacing" code={`<div class="space-y-4">
-  <label class="checkbox">
-    <input type="checkbox" class="checkbox-input" />
-    <span class="checkbox-box">
-      <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-      </svg>
-    </span>
-    <span class="checkbox-label">Option 1</span>
-  </label>
-
-  <label class="checkbox">
-    <input type="checkbox" class="checkbox-input" />
-    <span class="checkbox-box">
-      <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-      </svg>
-    </span>
-    <span class="checkbox-label">Option 2</span>
-  </label>
-</div>`} />
-
 ### Accessibility
 
-- Always use semantic `<label>` elements to associate labels with checkboxes
+- Use semantic `<label>` elements to associate labels with checkboxes
 - Provide clear, descriptive labels
 - Use `fieldset` and `legend` for checkbox groups
 - Ensure sufficient color contrast
-- Support keyboard navigation (built-in with native checkbox)
-- Use `aria-describedby` for helper text
-
-<ComponentShowcase title="Accessible Checkbox" code={`<div>
-  <label class="checkbox">
-    <input
-      type="checkbox"
-      class="checkbox-input"
-      aria-describedby="newsletter-help"
-    />
-    <span class="checkbox-box">
-      <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-      </svg>
-    </span>
-    <span class="checkbox-label">Subscribe to newsletter</span>
-  </label>
-  <span class="checkbox-helper" id="newsletter-help">
-    We'll send you weekly updates. You can unsubscribe anytime.
-  </span>
-</div>`} />
 
 ### Touch Targets
 
-Ensure checkboxes are large enough for touch interfaces (minimum 44×44px):
+The checkbox provides adequate touch targets. For mobile-first designs, use larger sizes:
 
-<ComponentShowcase title="Responsive Checkbox" code={`<!-- Use default or large size for mobile -->
-<label class="checkbox checkbox-lg md:checkbox">
-  <input type="checkbox" class="checkbox-input" />
-  <span class="checkbox-box">
-    <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-    </svg>
-  </span>
-  <span class="checkbox-label">Responsive checkbox</span>
+<ComponentShowcase title="Mobile-Friendly Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-lg" />
+  <span>Mobile-friendly option</span>
 </label>`} />
-
-### Validation
-
-Provide clear feedback for required checkboxes:
-
-<ComponentShowcase title="Required Checkbox" code={`<form>
-  <div>
-    <label class="checkbox checkbox-error">
-      <input type="checkbox" class="checkbox-input" required />
-      <span class="checkbox-box">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-        </svg>
-      </span>
-      <span class="checkbox-label">I agree to the terms and conditions *</span>
-    </label>
-    <span class="checkbox-helper">This field is required</span>
-  </div>
-</form>`} />
-
-## Framework Examples
-
-### React
-
-```tsx
-interface CheckboxProps {
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  size?: 'sm' | 'md' | 'lg';
-  label?: string;
-  helperText?: string;
-  error?: boolean;
-  disabled?: boolean;
-  checked?: boolean;
-  indeterminate?: boolean;
-  onChange?: (checked: boolean) => void;
-}
-
-export function Checkbox({
-  variant = 'primary',
-  size = 'md',
-  label,
-  helperText,
-  error,
-  disabled,
-  checked,
-  indeterminate,
-  onChange,
-}: CheckboxProps) {
-  const ref = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.indeterminate = indeterminate ?? false;
-    }
-  }, [indeterminate]);
-
-  const boxClasses = [
-    'checkbox-box',
-    variant !== 'primary' && `checkbox-${variant}`,
-  ].filter(Boolean).join(' ');
-
-  const containerClasses = [
-    'checkbox',
-    size !== 'md' && `checkbox-${size}`,
-    error && 'checkbox-error',
-  ].filter(Boolean).join(' ');
-
-  return (
-    <div>
-      <label className={containerClasses}>
-        <input
-          ref={ref}
-          type="checkbox"
-          className="checkbox-input"
-          checked={checked}
-          disabled={disabled}
-          onChange={(e) => onChange?.(e.target.checked)}
-        />
-        <span className={boxClasses}>
-          <svg className="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="3"
-              d={indeterminate ? "M5 12h14" : "M5 13l4 4L19 7"}
-            />
-          </svg>
-        </span>
-        {label && <span className="checkbox-label">{label}</span>}
-      </label>
-      {helperText && <span className="checkbox-helper">{helperText}</span>}
-    </div>
-  );
-}
-
-// Usage
-<Checkbox
-  label="Accept terms and conditions"
-  helperText="You must accept to continue"
-  error={!accepted}
-  checked={accepted}
-  onChange={setAccepted}
-/>
-```
-
-### Vue
-
-```vue
-<template>
-  <div>
-    <label :class="containerClasses">
-      <input
-        ref="input"
-        type="checkbox"
-        class="checkbox-input"
-        :checked="checked"
-        :disabled="disabled"
-        @change="$emit('update:checked', $event.target.checked)"
-      />
-      <span :class="boxClasses">
-        <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="3"
-            :d="indeterminate ? 'M5 12h14' : 'M5 13l4 4L19 7'"
-          />
-        </svg>
-      </span>
-      <span v-if="label" class="checkbox-label">{{ label }}</span>
-    </label>
-    <span v-if="helperText" class="checkbox-helper">{{ helperText }}</span>
-  </div>
-</template>
-
-<script setup>
-import { ref, computed, watch, onMounted } from 'vue'
-
-const props = defineProps({
-  variant: {
-    type: String,
-    default: 'primary'
-  },
-  size: {
-    type: String,
-    default: 'md'
-  },
-  label: String,
-  helperText: String,
-  error: Boolean,
-  disabled: Boolean,
-  checked: Boolean,
-  indeterminate: Boolean
-})
-
-defineEmits(['update:checked'])
-
-const input = ref(null)
-
-const containerClasses = computed(() => [
-  'checkbox',
-  props.size !== 'md' && `checkbox-${props.size}`,
-  props.error && 'checkbox-error'
-].filter(Boolean).join(' '))
-
-const boxClasses = computed(() => [
-  'checkbox-box',
-  props.variant !== 'primary' && `checkbox-${props.variant}`
-].filter(Boolean).join(' '))
-
-watch(() => props.indeterminate, (value) => {
-  if (input.value) {
-    input.value.indeterminate = value ?? false
-  }
-})
-
-onMounted(() => {
-  if (input.value && props.indeterminate) {
-    input.value.indeterminate = true
-  }
-})
-</script>
-
-<!-- Usage -->
-<Checkbox
-  v-model:checked="accepted"
-  label="Accept terms and conditions"
-  helper-text="You must accept to continue"
-  :error="!accepted"
-/>
-```
 
 ## API Reference
 
@@ -630,52 +248,50 @@ onMounted(() => {
 
 | Class | Description |
 |-------|-------------|
-| `.checkbox` | Base checkbox container (required) |
-| `.checkbox-input` | Hidden native checkbox input (required) |
-| `.checkbox-box` | Visual checkbox box (required) |
-| `.checkbox-checkmark` | Checkmark icon (required) |
-| `.checkbox-primary` | Primary color variant (default) |
-| `.checkbox-secondary` | Secondary color variant |
-| `.checkbox-tertiary` | Tertiary color variant |
+| `.checkbox` | Base checkbox styling (required, on input element) |
+| `.checkbox-xs` | Extra small size (14px) |
 | `.checkbox-sm` | Small size (16px) |
 | `.checkbox-md` | Medium size (20px, default) |
 | `.checkbox-lg` | Large size (24px) |
-| `.checkbox-label` | Label text |
-| `.checkbox-label-left` | Position label on the left |
-| `.checkbox-helper` | Helper/error text below checkbox |
-| `.checkbox-error` | Error state styling |
-| `.checkbox-loading` | Loading animation state |
+| `.checkbox-xl` | Extra large size (28px) |
+| `.checkbox-primary` | Primary color variant (default) |
+| `.checkbox-secondary` | Secondary color variant |
+| `.checkbox-tertiary` | Tertiary color variant |
+| `.checkbox-success` | Success color variant |
+| `.checkbox-warning` | Warning color variant |
+| `.checkbox-error` | Error color variant |
+| `.checkbox-info` | Info color variant |
+| `.checkbox-label` | Label wrapper for checkbox + text |
+| `.checkbox-group` | Container for vertical checkbox group |
+| `.checkbox-group-horizontal` | Horizontal layout modifier |
+| `.checkbox-group-label` | Group label text |
 
-### HTML Attributes
+### HTML Structure
 
-| Attribute | Description |
-|-----------|-------------|
-| `checked` | Sets the checkbox to checked state |
-| `disabled` | Disables the checkbox interaction |
-| `indeterminate` | Sets indeterminate state (via JavaScript) |
-| `required` | Marks the checkbox as required for form validation |
-| `aria-describedby` | Associates helper text with the checkbox |
+Simple checkbox:
+```html
+<input type="checkbox" class="checkbox" />
+```
+
+With label:
+```html
+<label class="checkbox-label">
+  <input type="checkbox" class="checkbox" />
+  <span>Label text</span>
+</label>
+```
 
 ### States
 
-- **Default**: Unchecked state with outline border
-- **Hover**: Slightly darkened background on hover
-- **Focus**: Visible focus ring when navigating with keyboard
-- **Checked**: Filled background with checkmark visible
-- **Indeterminate**: Filled background with dash/minus icon
-- **Disabled**: Reduced opacity and cursor-not-allowed
-- **Error**: Red border and error text color
-- **Loading**: Pulsing animation effect
+| State | How to Apply |
+|-------|--------------|
+| Checked | `checked` attribute |
+| Disabled | `disabled` attribute |
+| Indeterminate | `element.indeterminate = true` (JavaScript) |
+| Focus | Automatic via `:focus-visible` |
 
 ## Related Components
 
 - [Radio](/duskmoonui/docs/en/components/radio/) - Single selection input
 - [Switch](/duskmoonui/docs/en/components/switch/) - Toggle control
 - [Input](/duskmoonui/docs/en/components/input/) - Text input fields
-- [Form](/duskmoonui/docs/en/components/form/) - Form layouts
-
-## See Also
-
-- [Checkbox Design Guidelines (Material Design 3)](https://m3.material.io/components/checkbox/)
-- [Forms Best Practices](/duskmoonui/docs/en/guides/forms/)
-- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
