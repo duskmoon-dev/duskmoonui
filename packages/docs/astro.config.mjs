@@ -66,8 +66,8 @@ export default defineConfig({
     },
     server: {
       fs: {
-        // Allow serving files from core source directory
-        allow: [coreSourceDir, "."],
+        // Allow serving files from core source directory and monorepo root
+        allow: [coreSourceDir, ".", "../.."],
       },
       watch: {
         // Use polling for better cross-platform compatibility in monorepos

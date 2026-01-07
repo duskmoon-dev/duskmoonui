@@ -24,6 +24,18 @@
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   }
 
+  /* Hide native date picker controls when using custom trigger */
+  .datepicker-input-container .datepicker-input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  .datepicker-input-container .datepicker-input[type="date"]::-webkit-inner-spin-button,
+  .datepicker-input-container .datepicker-input[type="date"]::-webkit-clear-button {
+    display: none;
+    -webkit-appearance: none;
+  }
+
   .datepicker-input:focus {
     outline: none;
     border-color: var(--color-primary);
@@ -52,8 +64,50 @@
     pointer-events: none;
   }
 
-  /* Datepicker Dropdown */
-  .datepicker-dropdown {
+  /* Datepicker Input Container */
+  .datepicker-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .datepicker-input-container .datepicker-input {
+    padding-right: 2.5rem;
+  }
+
+  /* Datepicker Trigger (icon button for Popover API) */
+  .datepicker-trigger {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-on-surface-variant);
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .datepicker-trigger:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .datepicker-trigger .datepicker-icon {
+    position: static;
+    transform: none;
+  }
+
+  /* Datepicker Dropdown - Non-popover (JS-controlled) */
+  .datepicker-dropdown:not([popover]) {
     position: absolute;
     top: 100%;
     left: 0;
@@ -69,11 +123,26 @@
     transition: opacity 150ms ease-out, visibility 150ms ease-out, transform 150ms ease-out;
   }
 
-  .datepicker.datepicker-open .datepicker-dropdown,
-  .datepicker-dropdown.show {
+  .datepicker.datepicker-open .datepicker-dropdown:not([popover]),
+  .datepicker-dropdown:not([popover]).show,
+  .datepicker-dropdown-open:not([popover]) {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  /* Popover API Support - Browser handles visibility, JS handles positioning */
+  .datepicker-dropdown[popover] {
+    /* Reset browser defaults - positioning handled by JavaScript */
+    inset: unset;
+    margin: 0;
+    padding: 0;
+    /* Styling */
+    min-width: 18rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
   /* Calendar Header */
@@ -140,7 +209,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 2rem;
+    aspect-ratio: 1;
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--color-on-surface-variant);
@@ -157,8 +226,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    aspect-ratio: 1;
     font-size: 0.875rem;
     color: var(--color-on-surface);
     background-color: transparent;
@@ -228,6 +296,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
     padding: 0.5rem;
+    min-width: 16rem;
   }
 
   .datepicker-month,
@@ -235,7 +304,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 3rem;
+    padding: 0.75rem 1rem;
     font-size: 0.875rem;
     color: var(--color-on-surface);
     background-color: transparent;
@@ -251,9 +320,18 @@
   }
 
   .datepicker-month.selected,
-  .datepicker-year.selected {
+  .datepicker-month-selected,
+  .datepicker-year.selected,
+  .datepicker-year-selected {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
+  }
+
+  .datepicker-day-disabled {
+    color: var(--color-on-surface-variant);
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   /* Footer Actions */
@@ -603,7 +681,8 @@
     position: static;
   }
 
-  .datepicker-inline .datepicker-dropdown {
+  .datepicker-inline .datepicker-dropdown,
+  .datepicker-dropdown.datepicker-inline {
     position: static;
     display: block;
     opacity: 1;

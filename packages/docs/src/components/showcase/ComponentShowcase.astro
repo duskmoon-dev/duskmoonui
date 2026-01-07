@@ -305,9 +305,69 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
     });
   }
 
+  // Position popovers relative to their triggers
+  function initPopoverPositioning() {
+    function positionPopover(popover: HTMLElement, trigger: HTMLElement) {
+      // Wait for popover to be visible and have dimensions
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const triggerRect = trigger.getBoundingClientRect();
+          const popoverRect = popover.getBoundingClientRect();
+
+          // Position below the trigger
+          let top = triggerRect.bottom + 4;
+          let left = triggerRect.left;
+
+          // Adjust if popover would go off-screen right
+          if (left + popoverRect.width > window.innerWidth - 16) {
+            left = window.innerWidth - popoverRect.width - 16;
+          }
+
+          // Adjust if popover would go off-screen bottom
+          if (top + popoverRect.height > window.innerHeight - 16) {
+            top = triggerRect.top - popoverRect.height - 4;
+          }
+
+          // Ensure minimum left position
+          left = Math.max(16, left);
+
+          popover.style.position = 'fixed';
+          popover.style.inset = 'unset';
+          popover.style.transform = 'none';
+          popover.style.top = `${top}px`;
+          popover.style.left = `${left}px`;
+        });
+      });
+    }
+
+    // Listen for clicks on trigger buttons
+    document.addEventListener('click', (event: Event) => {
+      const target = event.target as HTMLElement;
+      const trigger = target.closest('[popovertarget]') as HTMLElement;
+
+      if (trigger) {
+        const popoverId = trigger.getAttribute('popovertarget');
+        const popover = document.getElementById(popoverId || '');
+
+        if (popover && popover.hasAttribute('popover')) {
+          // Position after a short delay to let popover open
+          setTimeout(() => {
+            if (popover.matches(':popover-open')) {
+              positionPopover(popover, trigger);
+            }
+          }, 10);
+        }
+      }
+    });
+  }
+
   // Run on initial load
   initAllShowcases();
+  initPopoverPositioning();
 
   // Re-run after Astro page transitions (if using View Transitions)
-  document.addEventListener('astro:page-load', initAllShowcases);
+  document.addEventListener('astro:page-load', () => {
+    initAllShowcases();
+    initPopoverPositioning();
+  });
 </script>

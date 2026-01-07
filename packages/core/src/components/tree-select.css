@@ -127,6 +127,46 @@
     display: block;
   }
 
+  /* Popover API Support */
+  .tree-select-dropdown[popover] {
+    position: absolute;
+    inset: unset;
+    margin: 0;
+    border: 1px solid var(--color-outline-variant);
+    width: 100%;
+  }
+
+  .tree-select-dropdown[popover]:popover-open {
+    display: block;
+  }
+
+  /* Position the popover relative to the trigger */
+  .tree-select:has(.tree-select-dropdown[popover]:popover-open) {
+    anchor-name: --tree-select-anchor;
+  }
+
+  .tree-select-dropdown[popover] {
+    position-anchor: --tree-select-anchor;
+    top: anchor(bottom);
+    left: anchor(left);
+    right: anchor(right);
+  }
+
+  /* Fallback positioning for browsers without anchor positioning */
+  @supports not (anchor-name: --tree-select-anchor) {
+    .tree-select {
+      position: relative;
+    }
+
+    .tree-select-dropdown[popover] {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin-top: 0.25rem;
+    }
+  }
+
   /* Search Input in Dropdown */
   .tree-select-search {
     display: flex;

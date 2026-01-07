@@ -11,14 +11,18 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Datepicker
 
-The Datepicker component allows users to select dates through an intuitive calendar interface. @duskmoon-dev/core provides a complete Material Design 3-inspired datepicker with support for single dates, date ranges, and inline calendars.
+The Datepicker component allows users to select dates through an intuitive calendar interface. @duskmoon-dev/core provides a complete Material Design 3-inspired datepicker with support for single dates, date ranges, and inline calendars. Uses the native HTML Popover API for dropdown behavior.
 
 ## Basic Usage
 
 <ComponentShowcase title="Basic Datepicker" code={`<div class="datepicker">
-  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown">
+  <div class="datepicker-input-container">
+    <input type="date" id="date-basic" name="date-basic" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-1">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-1" popover="auto">
     <div class="datepicker-header">
       <button class="datepicker-nav">‹</button>
       <div class="datepicker-title">January 2024</div>
@@ -38,8 +42,23 @@ The Datepicker component allows users to select dates through an intuitive calen
       <button class="datepicker-day">1</button>
       <button class="datepicker-day">2</button>
       <button class="datepicker-day datepicker-day-today">3</button>
+      <button class="datepicker-day">4</button>
+      <button class="datepicker-day">5</button>
+      <button class="datepicker-day">6</button>
+      <button class="datepicker-day">7</button>
+      <button class="datepicker-day">8</button>
+      <button class="datepicker-day">9</button>
+      <button class="datepicker-day">10</button>
+      <button class="datepicker-day">11</button>
+      <button class="datepicker-day">12</button>
+      <button class="datepicker-day">13</button>
+      <button class="datepicker-day">14</button>
       <button class="datepicker-day datepicker-day-selected">15</button>
-      <!-- More days... -->
+      <button class="datepicker-day">16</button>
+      <button class="datepicker-day">17</button>
+      <button class="datepicker-day">18</button>
+      <button class="datepicker-day">19</button>
+      <button class="datepicker-day">20</button>
     </div>
   </div>
 </div>`} />
@@ -51,9 +70,13 @@ The Datepicker component allows users to select dates through an intuitive calen
 The default behavior allows users to select a single date:
 
 <ComponentShowcase title="Single Date Selection" code={`<div class="datepicker">
-  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown">
+  <div class="datepicker-input-container">
+    <input type="date" id="date-single" name="date-single" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-single">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-single" popover="auto">
     <div class="datepicker-header">
       <button class="datepicker-nav">‹</button>
       <div class="datepicker-title">January 2024</div>
@@ -69,8 +92,19 @@ The default behavior allows users to select a single date:
       <div class="datepicker-weekday">Sa</div>
       <button class="datepicker-day">1</button>
       <button class="datepicker-day">2</button>
+      <button class="datepicker-day">3</button>
+      <button class="datepicker-day">4</button>
+      <button class="datepicker-day">5</button>
+      <button class="datepicker-day">6</button>
+      <button class="datepicker-day">7</button>
+      <button class="datepicker-day">8</button>
+      <button class="datepicker-day">9</button>
+      <button class="datepicker-day">10</button>
+      <button class="datepicker-day">11</button>
+      <button class="datepicker-day">12</button>
+      <button class="datepicker-day">13</button>
+      <button class="datepicker-day">14</button>
       <button class="datepicker-day datepicker-day-selected">15</button>
-      <!-- More days... -->
     </div>
   </div>
 </div>`} />
@@ -80,9 +114,13 @@ The default behavior allows users to select a single date:
 For selecting a date range, use the range-specific classes:
 
 <ComponentShowcase title="Date Range Selection" code={`<div class="datepicker">
-  <input type="text" class="datepicker-input" placeholder="Select date range" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown">
+  <div class="datepicker-input-container">
+    <input type="date" id="date-range" name="date-range" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-range">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-range" popover="auto">
     <div class="datepicker-header">
       <button class="datepicker-nav">‹</button>
       <div class="datepicker-title">January 2024</div>
@@ -96,13 +134,21 @@ For selecting a date range, use the range-specific classes:
       <div class="datepicker-weekday">Th</div>
       <div class="datepicker-weekday">Fr</div>
       <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day">2</button>
+      <button class="datepicker-day">3</button>
+      <button class="datepicker-day">4</button>
+      <button class="datepicker-day">5</button>
+      <button class="datepicker-day">6</button>
+      <button class="datepicker-day">7</button>
+      <button class="datepicker-day">8</button>
+      <button class="datepicker-day">9</button>
       <button class="datepicker-day datepicker-day-selected datepicker-day-range-start">10</button>
       <button class="datepicker-day datepicker-day-in-range">11</button>
       <button class="datepicker-day datepicker-day-in-range">12</button>
       <button class="datepicker-day datepicker-day-in-range">13</button>
       <button class="datepicker-day datepicker-day-in-range">14</button>
       <button class="datepicker-day datepicker-day-selected datepicker-day-range-end">15</button>
-      <!-- More days... -->
     </div>
   </div>
 </div>`} />
@@ -128,8 +174,19 @@ Display the calendar inline without a dropdown:
       <div class="datepicker-weekday">Sa</div>
       <button class="datepicker-day">1</button>
       <button class="datepicker-day">2</button>
+      <button class="datepicker-day">3</button>
+      <button class="datepicker-day">4</button>
+      <button class="datepicker-day">5</button>
+      <button class="datepicker-day">6</button>
+      <button class="datepicker-day">7</button>
+      <button class="datepicker-day">8</button>
+      <button class="datepicker-day">9</button>
+      <button class="datepicker-day">10</button>
+      <button class="datepicker-day">11</button>
+      <button class="datepicker-day">12</button>
+      <button class="datepicker-day">13</button>
+      <button class="datepicker-day">14</button>
       <button class="datepicker-day datepicker-day-selected">15</button>
-      <!-- More days... -->
     </div>
   </div>
 </div>`} />
@@ -141,16 +198,29 @@ Display the calendar inline without a dropdown:
 Use the secondary theme color:
 
 <ComponentShowcase title="Secondary Color" code={`<div class="datepicker datepicker-secondary">
-  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown">
+  <div class="datepicker-input-container">
+    <input type="date" id="date-secondary" name="date-secondary" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-secondary">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-secondary" popover="auto">
     <div class="datepicker-header">
       <button class="datepicker-nav">‹</button>
       <div class="datepicker-title">January 2024</div>
       <button class="datepicker-nav">›</button>
     </div>
     <div class="datepicker-calendar">
-      <!-- Calendar content -->
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day">2</button>
+      <button class="datepicker-day datepicker-day-selected">15</button>
     </div>
   </div>
 </div>`} />
@@ -160,16 +230,29 @@ Use the secondary theme color:
 Use the tertiary theme color:
 
 <ComponentShowcase title="Tertiary Color" code={`<div class="datepicker datepicker-tertiary">
-  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown">
+  <div class="datepicker-input-container">
+    <input type="date" id="date-tertiary" name="date-tertiary" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-tertiary">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-tertiary" popover="auto">
     <div class="datepicker-header">
       <button class="datepicker-nav">‹</button>
       <div class="datepicker-title">January 2024</div>
       <button class="datepicker-nav">›</button>
     </div>
     <div class="datepicker-calendar">
-      <!-- Calendar content -->
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day">2</button>
+      <button class="datepicker-day datepicker-day-selected">15</button>
     </div>
   </div>
 </div>`} />
@@ -206,7 +289,7 @@ Switch between month and year selection views:
 
 ### Month Picker
 
-<ComponentShowcase title="Month Picker" code={`<div class="datepicker-dropdown">
+<ComponentShowcase title="Month Picker" code={`<div class="datepicker-dropdown datepicker-inline">
   <div class="datepicker-header">
     <button class="datepicker-nav">‹</button>
     <div class="datepicker-title">2024</div>
@@ -230,7 +313,7 @@ Switch between month and year selection views:
 
 ### Year Picker
 
-<ComponentShowcase title="Year Picker" code={`<div class="datepicker-dropdown">
+<ComponentShowcase title="Year Picker" code={`<div class="datepicker-dropdown datepicker-inline">
   <div class="datepicker-header">
     <button class="datepicker-nav">‹</button>
     <div class="datepicker-title">2020-2029</div>
@@ -254,32 +337,27 @@ Switch between month and year selection views:
 
 Add action buttons to the datepicker footer:
 
-<ComponentShowcase title="Footer Actions" code={`<div class="datepicker-dropdown">
+<ComponentShowcase title="Footer Actions" code={`<div class="datepicker-dropdown datepicker-inline">
   <div class="datepicker-header">
     <button class="datepicker-nav">‹</button>
     <div class="datepicker-title">January 2024</div>
     <button class="datepicker-nav">›</button>
   </div>
   <div class="datepicker-calendar">
-    <!-- Calendar content -->
+    <div class="datepicker-weekday">Su</div>
+    <div class="datepicker-weekday">Mo</div>
+    <div class="datepicker-weekday">Tu</div>
+    <div class="datepicker-weekday">We</div>
+    <div class="datepicker-weekday">Th</div>
+    <div class="datepicker-weekday">Fr</div>
+    <div class="datepicker-weekday">Sa</div>
+    <button class="datepicker-day">1</button>
+    <button class="datepicker-day">2</button>
+    <button class="datepicker-day datepicker-day-selected">15</button>
   </div>
   <div class="datepicker-footer">
     <button class="btn btn-text">Clear</button>
     <button class="btn btn-text btn-primary">Today</button>
-  </div>
-</div>`} />
-
-## Dropdown State
-
-### Opening the Dropdown
-
-Add the `datepicker-dropdown-open` class to show the calendar:
-
-<ComponentShowcase title="Opening the Dropdown" code={`<div class="datepicker">
-  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown datepicker-dropdown-open">
-    <!-- Calendar content -->
   </div>
 </div>`} />
 
@@ -294,15 +372,29 @@ Add the `datepicker-dropdown-open` class to show the calendar:
 
 <ComponentShowcase title="Accessibility Example" code={`<div class="datepicker">
   <label for="date-input" class="sr-only">Select a date</label>
-  <input id="date-input" type="text" class="datepicker-input" placeholder="Select date" readonly>
-  <span class="datepicker-icon" aria-hidden="true">📅</span>
-  <div class="datepicker-dropdown">
+  <div class="datepicker-input-container">
+    <input id="date-input" type="date" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-a11y" aria-label="Open calendar">
+      <span class="datepicker-icon" aria-hidden="true">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-a11y" popover="auto">
     <div class="datepicker-header">
       <button class="datepicker-nav" aria-label="Previous month">‹</button>
       <div class="datepicker-title" aria-live="polite">January 2024</div>
       <button class="datepicker-nav" aria-label="Next month">›</button>
     </div>
-    <!-- Calendar content -->
+    <div class="datepicker-calendar">
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day datepicker-day-selected">15</button>
+    </div>
   </div>
 </div>`} />
 
@@ -310,21 +402,32 @@ Add the `datepicker-dropdown-open` class to show the calendar:
 
 Display dates in a user-friendly format:
 
-<ComponentShowcase title="Date Formatting" code={`<!-- Good: Clear date format -->
-<input type="text" class="datepicker-input" value="January 15, 2024" readonly>
+<ComponentShowcase title="Date Formatting" code={`<!-- Date inputs use ISO format (YYYY-MM-DD) -->
+<input type="date" id="date-format-1" name="date-format-1" class="datepicker-input" value="2024-01-15">
 
-<!-- Also good: ISO format for international users -->
-<input type="text" class="datepicker-input" value="2024-01-15" readonly>`} />
+<!-- With a default value -->
+<input type="date" id="date-format-2" name="date-format-2" class="datepicker-input" value="2024-06-20">`} />
 
 ### Range Selection UX
 
 When implementing range selection, provide clear visual feedback:
 
 <ComponentShowcase title="Range Selection UX" code={`<div class="datepicker">
-  <input type="text" class="datepicker-input" placeholder="Start date - End date" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown">
+  <div class="datepicker-input-container">
+    <input type="date" id="date-range-ux" name="date-range-ux" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-range-ux">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-range-ux" popover="auto">
     <div class="datepicker-calendar">
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
       <!-- Start date -->
       <button class="datepicker-day datepicker-day-selected datepicker-day-range-start">10</button>
       <!-- Dates in range -->
@@ -342,10 +445,29 @@ Ensure the datepicker works well on mobile devices:
 
 <ComponentShowcase title="Responsive Design" code={`<!-- Use appropriate viewport for mobile -->
 <div class="datepicker w-full max-w-sm">
-  <input type="text" class="datepicker-input" placeholder="Select date" readonly>
-  <span class="datepicker-icon">📅</span>
-  <div class="datepicker-dropdown">
-    <!-- Calendar content -->
+  <div class="datepicker-input-container">
+    <input type="date" id="date-responsive" name="date-responsive" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="datepicker-responsive">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="datepicker-responsive" popover="auto">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day">1</button>
+      <button class="datepicker-day datepicker-day-selected">15</button>
+    </div>
   </div>
 </div>`} />
 
@@ -369,8 +491,8 @@ export function Datepicker({
   variant = 'primary',
   inline = false
 }: DatepickerProps) {
-  const [isOpen, setIsOpen] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const popoverId = `datepicker-${Math.random().toString(36).slice(2)}`;
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString('en-US', {
@@ -383,19 +505,24 @@ export function Datepicker({
   return (
     <div className={`datepicker ${variant ? `datepicker-${variant}` : ''}`}>
       {!inline && (
-        <>
+        <div className="datepicker-input-container">
           <input
             type="text"
             className="datepicker-input"
             value={value ? formatDate(value) : ''}
             placeholder="Select date"
             readOnly
-            onClick={() => setIsOpen(!isOpen)}
           />
-          <span className="datepicker-icon">📅</span>
-        </>
+          <button className="datepicker-trigger" popoverTarget={popoverId}>
+            <span className="datepicker-icon">📅</span>
+          </button>
+        </div>
       )}
-      <div className={`datepicker-dropdown ${isOpen || inline ? 'datepicker-dropdown-open' : ''} ${inline ? 'datepicker-inline' : ''}`}>
+      <div
+        id={popoverId}
+        className={`datepicker-dropdown ${inline ? 'datepicker-inline' : ''}`}
+        popover={inline ? undefined : ''}
+      >
         {/* Calendar implementation */}
       </div>
     </div>
@@ -415,22 +542,28 @@ export function Datepicker({
 ```vue
 <template>
   <div :class="['datepicker', variant && `datepicker-${variant}`]">
-    <input
-      v-if="!inline"
-      type="text"
-      class="datepicker-input"
-      :value="formattedDate"
-      placeholder="Select date"
-      readonly
-      @click="toggleDropdown"
-    />
-    <span v-if="!inline" class="datepicker-icon">📅</span>
+    <div v-if="!inline" class="datepicker-input-container">
+      <input
+        type="text"
+        class="datepicker-input"
+        :value="formattedDate"
+        placeholder="Select date"
+        readonly
+      />
+      <button
+        class="datepicker-trigger"
+        :popovertarget="popoverId"
+      >
+        <span class="datepicker-icon">📅</span>
+      </button>
+    </div>
     <div
+      :id="popoverId"
       :class="[
         'datepicker-dropdown',
-        { 'datepicker-dropdown-open': isOpen || inline },
         { 'datepicker-inline': inline }
       ]"
+      :popover="inline ? undefined : ''"
     >
       <!-- Calendar implementation -->
     </div>
@@ -453,7 +586,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:modelValue']);
-const isOpen = ref(false);
+const popoverId = `datepicker-${Math.random().toString(36).slice(2)}`;
 
 const formattedDate = computed(() => {
   if (!props.modelValue) return '';
@@ -463,10 +596,6 @@ const formattedDate = computed(() => {
     day: 'numeric'
   });
 });
-
-const toggleDropdown = () => {
-  isOpen.value = !isOpen.value;
-};
 </script>
 
 <!-- Usage -->
@@ -483,10 +612,11 @@ const toggleDropdown = () => {
 | Class | Description |
 |-------|-------------|
 | `.datepicker` | Base datepicker container (required) |
+| `.datepicker-input-container` | Container for input and trigger button |
+| `.datepicker-trigger` | Icon button trigger (use with `popovertarget`) |
 | `.datepicker-input` | Input field for displaying selected date |
 | `.datepicker-icon` | Calendar icon positioned over input |
-| `.datepicker-dropdown` | Calendar dropdown container |
-| `.datepicker-dropdown-open` | Show the dropdown calendar |
+| `.datepicker-dropdown` | Calendar dropdown container (use with `popover` attribute) |
 | `.datepicker-inline` | Display calendar inline (always visible) |
 | `.datepicker-header` | Calendar header with navigation |
 | `.datepicker-title` | Month/Year title in header |
@@ -511,6 +641,29 @@ const toggleDropdown = () => {
 | `.datepicker-secondary` | Use secondary theme color |
 | `.datepicker-tertiary` | Use tertiary theme color |
 
+### HTML Structure with Popover API
+
+```html
+<div class="datepicker">
+  <div class="datepicker-input-container">
+    <input type="date" id="my-date" name="my-date" class="datepicker-input">
+    <button class="datepicker-trigger" popovertarget="dropdown-id">
+      <span class="datepicker-icon">📅</span>
+    </button>
+  </div>
+  <div class="datepicker-dropdown" id="dropdown-id" popover="auto">
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <!-- Weekday headers and day cells -->
+    </div>
+  </div>
+</div>
+```
+
 ### Combinations
 
 You can combine classes for different effects:
@@ -518,16 +671,21 @@ You can combine classes for different effects:
 <ComponentShowcase title="Class Combinations" code={`<!-- Secondary color with inline display -->
 <div class="datepicker datepicker-secondary">
   <div class="datepicker-dropdown datepicker-inline">
-    <!-- Calendar content -->
-  </div>
-</div>
-
-<!-- Tertiary color with range selection -->
-<div class="datepicker datepicker-tertiary">
-  <div class="datepicker-calendar">
-    <button class="datepicker-day datepicker-day-selected datepicker-day-range-start">10</button>
-    <button class="datepicker-day datepicker-day-in-range">11</button>
-    <button class="datepicker-day datepicker-day-selected datepicker-day-range-end">15</button>
+    <div class="datepicker-header">
+      <button class="datepicker-nav">‹</button>
+      <div class="datepicker-title">January 2024</div>
+      <button class="datepicker-nav">›</button>
+    </div>
+    <div class="datepicker-calendar">
+      <div class="datepicker-weekday">Su</div>
+      <div class="datepicker-weekday">Mo</div>
+      <div class="datepicker-weekday">Tu</div>
+      <div class="datepicker-weekday">We</div>
+      <div class="datepicker-weekday">Th</div>
+      <div class="datepicker-weekday">Fr</div>
+      <div class="datepicker-weekday">Sa</div>
+      <button class="datepicker-day datepicker-day-selected">15</button>
+    </div>
   </div>
 </div>`} />
 

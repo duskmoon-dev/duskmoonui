@@ -10,100 +10,98 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Multi-Select
 
-Multi-Select allows users to select multiple options from a dropdown list. Selected items are displayed as removable tags.
+Multi-Select allows users to select multiple options from a dropdown list. Selected items are displayed as removable tags. Uses the native HTML Popover API for dropdown behavior.
 
 ## Basic Usage
 
 <ComponentShowcase title="Basic Multi-Select" code={`<div class="multi-select">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-1">
     <span class="multi-select-placeholder">Select options</span>
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-1" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">Option 1</div>
+      <div class="multi-select-option">Option 2</div>
+      <div class="multi-select-option">Option 3</div>
+    </div>
   </div>
 </div>`} />
 
 ## With Selections
 
 <ComponentShowcase title="Multi-Select with Tags" code={`<div class="multi-select">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-tags">
     <div class="multi-select-tags">
       <span class="multi-select-tag">
         React
-        <button class="multi-select-tag-remove" aria-label="Remove React">
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <button class="multi-select-tag-remove" aria-label="Remove React">×</button>
       </span>
       <span class="multi-select-tag">
         Vue
-        <button class="multi-select-tag-remove" aria-label="Remove Vue">
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <button class="multi-select-tag-remove" aria-label="Remove Vue">×</button>
       </span>
       <span class="multi-select-tag">
         Angular
-        <button class="multi-select-tag-remove" aria-label="Remove Angular">
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <button class="multi-select-tag-remove" aria-label="Remove Angular">×</button>
       </span>
     </div>
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
-  </div>
-</div>`} />
-
-## With Dropdown Open
-
-<ComponentShowcase title="Multi-Select Dropdown" code={`<div class="multi-select multi-select-open">
-  <div class="multi-select-trigger">
-    <div class="multi-select-tags">
-      <span class="multi-select-tag">
-        React
-        <button class="multi-select-tag-remove">
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </span>
-      <input type="text" class="multi-select-input" placeholder="Search..." />
-    </div>
-    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>
-  </div>
-
-  <div class="multi-select-dropdown">
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-tags" popover="auto">
     <div class="multi-select-options">
       <div class="multi-select-option multi-select-option-selected">
-        <span class="multi-select-option-checkbox">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-          </svg>
-        </span>
+        <span class="multi-select-option-checkbox">✓</span>
         React
       </div>
-      <div class="multi-select-option">
-        <span class="multi-select-option-checkbox"></span>
+      <div class="multi-select-option multi-select-option-selected">
+        <span class="multi-select-option-checkbox">✓</span>
         Vue
       </div>
-      <div class="multi-select-option">
-        <span class="multi-select-option-checkbox"></span>
+      <div class="multi-select-option multi-select-option-selected">
+        <span class="multi-select-option-checkbox">✓</span>
         Angular
       </div>
       <div class="multi-select-option">
         <span class="multi-select-option-checkbox"></span>
         Svelte
       </div>
-      <div class="multi-select-option multi-select-option-disabled">
+    </div>
+  </div>
+</div>`} />
+
+## With Search
+
+<ComponentShowcase title="Multi-Select with Search" code={`<div class="multi-select">
+  <button class="multi-select-trigger" popovertarget="multi-select-search">
+    <div class="multi-select-tags">
+      <span class="multi-select-tag">React</span>
+      <input type="text" class="multi-select-input" placeholder="Search..." />
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-search" popover="auto">
+    <div class="multi-select-search">
+      <input type="text" class="multi-select-search-input" placeholder="Search options..." />
+    </div>
+    <div class="multi-select-options">
+      <div class="multi-select-option multi-select-option-selected">
+        <span class="multi-select-option-checkbox">✓</span>
+        React
+      </div>
+      <div class="multi-select-option">
         <span class="multi-select-option-checkbox"></span>
-        jQuery (deprecated)
+        Vue
+      </div>
+      <div class="multi-select-option">
+        <span class="multi-select-option-checkbox"></span>
+        Angular
       </div>
     </div>
   </div>
@@ -114,22 +112,36 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 ### Outlined (Default)
 
 <ComponentShowcase title="Outlined Multi-Select" code={`<div class="multi-select multi-select-outlined">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-outlined">
     <span class="multi-select-placeholder">Select frameworks</span>
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-outlined" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">React</div>
+      <div class="multi-select-option">Vue</div>
+      <div class="multi-select-option">Angular</div>
+    </div>
   </div>
 </div>`} />
 
 ### Filled
 
 <ComponentShowcase title="Filled Multi-Select" code={`<div class="multi-select multi-select-filled">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-filled">
     <span class="multi-select-placeholder">Select frameworks</span>
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-filled" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">React</div>
+      <div class="multi-select-option">Vue</div>
+      <div class="multi-select-option">Angular</div>
+    </div>
   </div>
 </div>`} />
 
@@ -138,7 +150,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 ### Small
 
 <ComponentShowcase title="Small Multi-Select" code={`<div class="multi-select multi-select-sm">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-sm">
     <div class="multi-select-tags">
       <span class="multi-select-tag">Tag 1</span>
       <span class="multi-select-tag">Tag 2</span>
@@ -146,13 +158,19 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-sm" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">Option 1</div>
+      <div class="multi-select-option">Option 2</div>
+    </div>
   </div>
 </div>`} />
 
 ### Large
 
 <ComponentShowcase title="Large Multi-Select" code={`<div class="multi-select multi-select-lg">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-lg">
     <div class="multi-select-tags">
       <span class="multi-select-tag">Tag 1</span>
       <span class="multi-select-tag">Tag 2</span>
@@ -160,6 +178,12 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-lg" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">Option 1</div>
+      <div class="multi-select-option">Option 2</div>
+    </div>
   </div>
 </div>`} />
 
@@ -168,7 +192,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 ### Primary Tags
 
 <ComponentShowcase title="Primary Tags" code={`<div class="multi-select">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-primary-tags">
     <div class="multi-select-tags">
       <span class="multi-select-tag multi-select-tag-primary">
         Option 1
@@ -178,6 +202,15 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
         Option 2
         <button class="multi-select-tag-remove">×</button>
       </span>
+    </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-primary-tags" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">Option 1</div>
+      <div class="multi-select-option">Option 2</div>
     </div>
   </div>
 </div>`} />
@@ -185,7 +218,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 ### Outlined Tags
 
 <ComponentShowcase title="Outlined Tags" code={`<div class="multi-select">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-outlined-tags">
     <div class="multi-select-tags">
       <span class="multi-select-tag multi-select-tag-outlined">
         Option 1
@@ -196,13 +229,22 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
         <button class="multi-select-tag-remove">×</button>
       </span>
     </div>
+    <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-outlined-tags" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">Option 1</div>
+      <div class="multi-select-option">Option 2</div>
+    </div>
   </div>
 </div>`} />
 
 ## With Max Selections Display
 
 <ComponentShowcase title="Max Selections Display" code={`<div class="multi-select">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-max">
     <div class="multi-select-tags">
       <span class="multi-select-tag">React</span>
       <span class="multi-select-tag">Vue</span>
@@ -211,40 +253,55 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-max" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option multi-select-option-selected">React</div>
+      <div class="multi-select-option multi-select-option-selected">Vue</div>
+      <div class="multi-select-option multi-select-option-selected">Angular</div>
+      <div class="multi-select-option multi-select-option-selected">Svelte</div>
+      <div class="multi-select-option multi-select-option-selected">Solid</div>
+    </div>
   </div>
 </div>`} />
 
 ## With Clear All Button
 
 <ComponentShowcase title="With Clear All" code={`<div class="multi-select">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" popovertarget="multi-select-clear">
     <div class="multi-select-tags">
       <span class="multi-select-tag">React</span>
       <span class="multi-select-tag">Vue</span>
       <span class="multi-select-tag">Angular</span>
     </div>
-    <button class="multi-select-clear-all" aria-label="Clear all">
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+    <button class="multi-select-clear-all" aria-label="Clear all">×</button>
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-clear" popover="auto">
+    <div class="multi-select-actions">
+      <button class="multi-select-action">Select All</button>
+      <button class="multi-select-action">Deselect All</button>
+    </div>
+    <div class="multi-select-options">
+      <div class="multi-select-option multi-select-option-selected">React</div>
+      <div class="multi-select-option multi-select-option-selected">Vue</div>
+      <div class="multi-select-option multi-select-option-selected">Angular</div>
+    </div>
   </div>
 </div>`} />
 
 ## With Groups
 
-<ComponentShowcase title="Grouped Options" code={`<div class="multi-select multi-select-open">
-  <div class="multi-select-trigger">
+<ComponentShowcase title="Grouped Options" code={`<div class="multi-select">
+  <button class="multi-select-trigger" popovertarget="multi-select-groups">
     <span class="multi-select-placeholder">Select skills</span>
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
-  </div>
-
-  <div class="multi-select-dropdown">
+  </button>
+  <div class="multi-select-dropdown" id="multi-select-groups" popover="auto">
     <div class="multi-select-options">
       <div class="multi-select-group">
         <div class="multi-select-group-header">Frontend</div>
@@ -269,11 +326,18 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 <ComponentShowcase title="Error State" code={`<div class="form-group">
   <label class="form-label form-label-required">Skills</label>
   <div class="multi-select multi-select-error">
-    <div class="multi-select-trigger">
+    <button class="multi-select-trigger" popovertarget="multi-select-error">
       <span class="multi-select-placeholder">Select at least 2 skills</span>
       <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
+    </button>
+    <div class="multi-select-dropdown" id="multi-select-error" popover="auto">
+      <div class="multi-select-options">
+        <div class="multi-select-option">JavaScript</div>
+        <div class="multi-select-option">TypeScript</div>
+        <div class="multi-select-option">Python</div>
+      </div>
     </div>
   </div>
   <span class="helper-text helper-text-error">Please select at least 2 skills</span>
@@ -282,7 +346,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 ### Disabled
 
 <ComponentShowcase title="Disabled State" code={`<div class="multi-select multi-select-disabled">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" disabled>
     <div class="multi-select-tags">
       <span class="multi-select-tag">React</span>
       <span class="multi-select-tag">Vue</span>
@@ -290,41 +354,16 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
-  </div>
+  </button>
 </div>`} />
 
 ### Loading
 
 <ComponentShowcase title="Loading State" code={`<div class="multi-select multi-select-loading">
-  <div class="multi-select-trigger">
+  <button class="multi-select-trigger" disabled>
     <span class="multi-select-placeholder">Loading options...</span>
     <span class="multi-select-spinner"></span>
-  </div>
-</div>`} />
-
-## Complete Form Example
-
-<ComponentShowcase title="Multi-Select in Form" code={`<div class="form-group">
-  <label class="form-label form-label-required">Technologies</label>
-  <div class="multi-select">
-    <div class="multi-select-trigger">
-      <div class="multi-select-tags">
-        <span class="multi-select-tag">
-          JavaScript
-          <button class="multi-select-tag-remove">×</button>
-        </span>
-        <span class="multi-select-tag">
-          TypeScript
-          <button class="multi-select-tag-remove">×</button>
-        </span>
-        <input type="text" class="multi-select-input" placeholder="Add more..." />
-      </div>
-      <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
-  </div>
-  <span class="helper-text">Select the technologies you're proficient in</span>
+  </button>
 </div>`} />
 
 ## API Reference
@@ -334,7 +373,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 | Class | Description |
 |-------|-------------|
 | `.multi-select` | Base container (required) |
-| `.multi-select-trigger` | Trigger/input area |
+| `.multi-select-trigger` | Trigger button (use with `popovertarget`) |
 | `.multi-select-placeholder` | Placeholder text |
 | `.multi-select-tags` | Tags container |
 | `.multi-select-tag` | Individual tag |
@@ -345,7 +384,9 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 | `.multi-select-input` | Search input within tags |
 | `.multi-select-arrow` | Dropdown arrow |
 | `.multi-select-clear-all` | Clear all button |
-| `.multi-select-dropdown` | Dropdown container |
+| `.multi-select-dropdown` | Dropdown container (use with `popover` attribute) |
+| `.multi-select-search` | Search container in dropdown |
+| `.multi-select-search-input` | Search input in dropdown |
 | `.multi-select-options` | Options list |
 | `.multi-select-option` | Individual option |
 | `.multi-select-option-selected` | Selected option |
@@ -353,7 +394,8 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 | `.multi-select-option-checkbox` | Option checkbox |
 | `.multi-select-group` | Option group |
 | `.multi-select-group-header` | Group header |
-| `.multi-select-open` | Open dropdown state |
+| `.multi-select-actions` | Actions container (select all/deselect all) |
+| `.multi-select-action` | Action button |
 | `.multi-select-outlined` | Outlined variant |
 | `.multi-select-filled` | Filled variant |
 | `.multi-select-sm` | Small size |
@@ -362,6 +404,23 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 | `.multi-select-disabled` | Disabled state |
 | `.multi-select-loading` | Loading state |
 | `.multi-select-spinner` | Loading spinner |
+
+### HTML Structure with Popover API
+
+```html
+<div class="multi-select">
+  <button class="multi-select-trigger" popovertarget="dropdown-id">
+    <span class="multi-select-placeholder">Select options</span>
+    <svg class="multi-select-arrow">...</svg>
+  </button>
+  <div class="multi-select-dropdown" id="dropdown-id" popover="auto">
+    <div class="multi-select-options">
+      <div class="multi-select-option">Option 1</div>
+      <div class="multi-select-option">Option 2</div>
+    </div>
+  </div>
+</div>
+```
 
 ## Related Components
 
