@@ -200,46 +200,18 @@
     flex-direction: column;
   }
 
-  /* Popover API Support */
+  /* Popover API Support - Browser handles visibility, JS handles positioning */
   .multi-select-dropdown[popover] {
-    position: absolute;
+    /* Reset browser defaults - positioning handled by JavaScript */
     inset: unset;
     margin: 0;
     padding: 0;
     border: 1px solid var(--color-outline-variant);
-    width: 100%;
   }
 
   .multi-select-dropdown[popover]:popover-open {
     display: flex;
     flex-direction: column;
-  }
-
-  /* Position the popover relative to the trigger */
-  .multi-select:has(.multi-select-dropdown[popover]:popover-open) {
-    anchor-name: --multi-select-anchor;
-  }
-
-  .multi-select-dropdown[popover] {
-    position-anchor: --multi-select-anchor;
-    top: anchor(bottom);
-    left: anchor(left);
-    right: anchor(right);
-  }
-
-  /* Fallback positioning for browsers without anchor positioning */
-  @supports not (anchor-name: --multi-select-anchor) {
-    .multi-select {
-      position: relative;
-    }
-
-    .multi-select-dropdown[popover] {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      margin-top: 0.25rem;
-    }
   }
 
   /* Search Input */
