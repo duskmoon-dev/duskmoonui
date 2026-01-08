@@ -6,18 +6,93 @@
 @layer components {
   /* Base Collapse */
   .collapse {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    background-color: var(--color-surface);
+    /* Override Tailwind's visibility: collapse utility */
+    visibility: visible !important;
+  }
+
+  /* Collapse Trigger */
+  .collapse-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+    text-align: left;
+  }
+
+  .collapse-trigger:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .collapse-trigger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+
+  /* Collapse Icon */
+  .collapse-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform 300ms ease-in-out;
+    flex-shrink: 0;
+  }
+
+  /* Collapse Content - hidden by default */
+  .collapse-content {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 300ms ease-in-out;
+    overflow: hidden;
   }
 
-  .collapse.show {
+  .collapse-content > * {
+    overflow: hidden;
+    padding: 0 1rem;
+  }
+
+  /* Open State */
+  .collapse-open .collapse-content {
     grid-template-rows: 1fr;
   }
 
-  /* Collapse Content */
-  .collapse-content {
-    overflow: hidden;
+  .collapse-open .collapse-content > * {
+    padding: 0 1rem 1rem;
+  }
+
+  .collapse-open .collapse-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Closed State (explicit) */
+  .collapse-closed .collapse-content {
+    grid-template-rows: 0fr;
+  }
+
+  /* Legacy show class for backwards compatibility */
+  .collapse.show .collapse-content {
+    grid-template-rows: 1fr;
+  }
+
+  .collapse.show .collapse-content > * {
+    padding: 0 1rem 1rem;
+  }
+
+  .collapse.show .collapse-icon {
+    transform: rotate(180deg);
   }
 
   /* Collapse Inner (for padding) */
@@ -81,9 +156,11 @@
     border: 1px solid var(--color-outline-variant);
     border-radius: 0.75rem;
     overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
   }
 
-  .collapse-card .collapse-toggle {
+  .collapse-card .collapse-toggle,
+  .collapse-card .collapse-trigger {
     width: 100%;
     justify-content: space-between;
     padding: 1rem;
@@ -91,13 +168,130 @@
     color: var(--color-on-surface);
   }
 
-  .collapse-card .collapse-toggle:hover {
+  .collapse-card .collapse-toggle:hover,
+  .collapse-card .collapse-trigger:hover {
     background-color: var(--color-surface-container);
   }
 
-  .collapse-card .collapse-inner {
+  .collapse-card .collapse-inner,
+  .collapse-card .collapse-content > * {
     padding: 0 1rem 1rem;
     color: var(--color-on-surface-variant);
+  }
+
+  /* Bordered Variant */
+  .collapse-bordered {
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 0.5rem;
+  }
+
+  /* Ghost Variant */
+  .collapse-ghost {
+    background-color: transparent;
+  }
+
+  .collapse-ghost .collapse-trigger:hover {
+    background-color: color-mix(in oklch, var(--color-on-surface) 5%, transparent);
+  }
+
+  /* Color Variants */
+  .collapse-primary .collapse-trigger {
+    color: var(--color-primary);
+  }
+
+  .collapse-primary .collapse-trigger:hover {
+    background-color: var(--color-primary-container);
+  }
+
+  .collapse-secondary .collapse-trigger {
+    color: var(--color-secondary);
+  }
+
+  .collapse-secondary .collapse-trigger:hover {
+    background-color: var(--color-secondary-container);
+  }
+
+  .collapse-tertiary .collapse-trigger {
+    color: var(--color-tertiary);
+  }
+
+  .collapse-tertiary .collapse-trigger:hover {
+    background-color: var(--color-tertiary-container);
+  }
+
+  /* Size Variants */
+  .collapse-sm .collapse-trigger {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .collapse-sm .collapse-content > * {
+    padding: 0 0.75rem;
+  }
+
+  .collapse-sm.collapse-open .collapse-content > * {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .collapse-lg .collapse-trigger {
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem;
+  }
+
+  .collapse-lg .collapse-content > * {
+    padding: 0 1.25rem;
+  }
+
+  .collapse-lg.collapse-open .collapse-content > * {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  /* Divider Variant */
+  .collapse-divider .collapse-trigger {
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .collapse-divider.collapse-open .collapse-trigger {
+    border-bottom-color: var(--color-outline-variant);
+  }
+
+  /* Disabled State */
+  .collapse-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .collapse-disabled .collapse-trigger {
+    cursor: not-allowed;
+  }
+
+  /* Loading State */
+  .collapse-loading .collapse-trigger::after {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    border: 2px solid var(--color-outline);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: collapse-spin 0.8s linear infinite;
+  }
+
+  @keyframes collapse-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Slide Animation */
+  .collapse-slide .collapse-content > * {
+    transform: translateY(-0.5rem);
+    opacity: 0;
+    transition: transform 300ms ease-in-out, opacity 200ms ease-in-out;
+  }
+
+  .collapse-slide.collapse-open .collapse-content > * {
+    transform: translateY(0);
+    opacity: 1;
   }
 
   /* Horizontal Collapse */
@@ -242,13 +436,19 @@
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
     .collapse,
+    .collapse-content,
+    .collapse-icon,
     .collapse-fade,
     .collapse-horizontal,
     .collapse-horizontal-fixed,
     .collapse-toggle-icon,
     .collapse-maxheight,
-    .collapse-animating {
+    .collapse-animating,
+    .collapse-slide .collapse-content > * {
       transition: none;
+    }
+    .collapse-loading .collapse-trigger::after {
+      animation: none;
     }
   }
 }
