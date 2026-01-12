@@ -70,6 +70,7 @@ const categories = [
     components: [
       { name: 'App Bar', slug: 'appbar', description: 'Action bars' },
       { name: 'Divider', slug: 'divider', description: 'Visual separators' },
+      { name: 'Grid', slug: 'grid', description: 'Auto-fill/auto-fit responsive grids', isLayout: true },
     ]
   },
   {
@@ -103,7 +104,7 @@ const categories = [
     <header class="text-center mb-16">
       <h1 class="text-5xl font-bold mb-4">Components</h1>
       <p class="text-xl text-on-surface-variant">
-        46 Material Design 3-inspired components organized by category
+        47 Material Design 3-inspired components organized by category
       </p>
     </header>
 
@@ -120,7 +121,7 @@ const categories = [
               <div class="p-6 bg-surface-container rounded-xl border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all hover:-translate-y-1">
                 <h3 class="text-xl font-semibold mb-2">{component.name}</h3>
                 <p class="text-sm text-on-surface-variant mb-4 leading-relaxed">{component.description}</p>
-                <a href={`${base}docs/en/components/${component.slug}/`} class="inline-block text-sm font-medium text-primary hover:text-tertiary hover:underline transition-colors">
+                <a href={`${base}docs/en/${component.isLayout ? 'layout' : 'components'}/${component.slug}/`} class="inline-block text-sm font-medium text-primary hover:text-tertiary hover:underline transition-colors">
                   View Docs
                 </a>
               </div>

@@ -12,6 +12,7 @@ const docsCollection = defineCollection({
       'theming',
       'guides',
       'api',
+      'layout',
     ]),
     order: z.number().optional(),
     published: z.boolean().default(true),
