@@ -8,3 +8,6 @@
 
 /* Color token definitions */
 @import "./colors.css";
+
+/* Custom utilities */
+@import "./utilities.css";

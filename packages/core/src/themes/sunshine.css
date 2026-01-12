@@ -93,6 +93,42 @@
 
   --color-outline: oklch(75% 0.01 260);
   --color-outline-variant: oklch(85% 0.01 260);
+
+  /* ============================================
+   * ACCENT COLORS
+   * ============================================ */
+
+  --color-accent: oklch(65% 0.20 145);
+  --color-accent-content: oklch(100% 0 0);
+
+  /* ============================================
+   * NEUTRAL COLORS
+   * ============================================ */
+
+  --color-neutral: oklch(35% 0.02 260);
+  --color-neutral-content: oklch(95% 0.01 260);
+  --color-neutral-variant: oklch(50% 0.02 260);
+
+  /* ============================================
+   * SURFACE VARIANT
+   * ============================================ */
+
+  --color-surface-variant: oklch(94% 0.02 85);
+
+  /* ============================================
+   * INVERSE COLORS
+   * ============================================ */
+
+  --color-inverse-surface: oklch(25% 0.02 260);
+  --color-inverse-on-surface: oklch(95% 0.01 260);
+  --color-inverse-primary: oklch(80% 0.14 55);
+
+  /* ============================================
+   * SHADOW & SCRIM
+   * ============================================ */
+
+  --color-shadow: oklch(0% 0 0);
+  --color-scrim: oklch(0% 0 0 / 50%);
 }
 
 /* Default theme - applies sunshine when no data-theme is set */
@@ -163,4 +199,25 @@
   /* Outline Colors */
   --color-outline: oklch(75% 0.01 260);
   --color-outline-variant: oklch(85% 0.01 260);
+
+  /* Accent Colors */
+  --color-accent: oklch(65% 0.20 145);
+  --color-accent-content: oklch(100% 0 0);
+
+  /* Neutral Colors */
+  --color-neutral: oklch(35% 0.02 260);
+  --color-neutral-content: oklch(95% 0.01 260);
+  --color-neutral-variant: oklch(50% 0.02 260);
+
+  /* Surface Variant */
+  --color-surface-variant: oklch(94% 0.02 85);
+
+  /* Inverse Colors */
+  --color-inverse-surface: oklch(25% 0.02 260);
+  --color-inverse-on-surface: oklch(95% 0.01 260);
+  --color-inverse-primary: oklch(80% 0.14 55);
+
+  /* Shadow & Scrim */
+  --color-shadow: oklch(0% 0 0);
+  --color-scrim: oklch(0% 0 0 / 50%);
 }

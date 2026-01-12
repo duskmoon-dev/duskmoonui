@@ -1,0 +1,486 @@
+---
+title: Cascader
+description: Material Design 3 multi-level dropdown selection with horizontal panels
+category: components
+order: 47
+published: true
+tags: ['cascader', 'components', 'material-design', 'dropdown', 'hierarchy', 'forms']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Cascader
+
+Cascader is a multi-level dropdown component that displays options in horizontal adjacent panels. Each selection reveals the next level of options, making it ideal for hierarchical data like location (Country → State → City), categories, or organizational structures. Uses the native HTML Popover API for dropdown behavior.
+
+## Basic Usage
+
+<ComponentShowcase title="Basic Cascader" code={`<div class="cascader">
+  <button class="cascader-trigger" popovertarget="cascader-1">
+    <span class="cascader-placeholder">Select location</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-1" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option cascader-option-active">
+            <span class="cascader-option-label">United States</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Canada</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Mexico</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">California</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Texas</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">New York</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## With Selection
+
+Display the selected path in the trigger:
+
+<ComponentShowcase title="Cascader with Selection" code={`<div class="cascader">
+  <button class="cascader-trigger" popovertarget="cascader-selected">
+    <span class="cascader-value">
+      <span class="cascader-path">
+        United States
+        <span class="cascader-path-separator">/</span>
+        California
+        <span class="cascader-path-separator">/</span>
+        Los Angeles
+      </span>
+    </span>
+    <button class="cascader-clear" aria-label="Clear selection">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-selected" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option cascader-option-selected">
+            <span class="cascader-option-label">United States</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Canada</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option cascader-option-selected">
+            <span class="cascader-option-label">California</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Texas</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option cascader-option-selected">
+            <span class="cascader-option-label">Los Angeles</span>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">San Francisco</span>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">San Diego</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## With Panel Headers
+
+Add headers to identify each level:
+
+<ComponentShowcase title="Cascader with Headers" code={`<div class="cascader">
+  <button class="cascader-trigger" popovertarget="cascader-headers">
+    <span class="cascader-placeholder">Select category</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-headers" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-panel-header">Category</div>
+        <div class="cascader-options">
+          <button class="cascader-option cascader-option-active">
+            <span class="cascader-option-label">Electronics</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Clothing</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cascader-panel">
+        <div class="cascader-panel-header">Subcategory</div>
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Smartphones</span>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Laptops</span>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Tablets</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## Variants
+
+### Outlined (Default)
+
+<ComponentShowcase title="Outlined Cascader" code={`<div class="cascader cascader-outlined">
+  <button class="cascader-trigger" popovertarget="cascader-outlined">
+    <span class="cascader-placeholder">Select option</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-outlined" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Option 1</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+### Filled
+
+<ComponentShowcase title="Filled Cascader" code={`<div class="cascader cascader-filled">
+  <button class="cascader-trigger" popovertarget="cascader-filled">
+    <span class="cascader-placeholder">Select option</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-filled" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Option 1</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## Sizes
+
+### Small
+
+<ComponentShowcase title="Small Cascader" code={`<div class="cascader cascader-sm">
+  <button class="cascader-trigger" popovertarget="cascader-sm">
+    <span class="cascader-placeholder">Select</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-sm" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Small Option</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+### Large
+
+<ComponentShowcase title="Large Cascader" code={`<div class="cascader cascader-lg">
+  <button class="cascader-trigger" popovertarget="cascader-lg">
+    <span class="cascader-placeholder">Select option</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-lg" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Large Option</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## With Search
+
+<ComponentShowcase title="Cascader with Search" code={`<div class="cascader">
+  <button class="cascader-trigger" popovertarget="cascader-search">
+    <span class="cascader-placeholder">Search and select</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-search" popover="auto">
+    <div class="cascader-search">
+      <input type="text" class="cascader-search-input" placeholder="Search..." />
+    </div>
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">United States</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">Canada</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## States
+
+### Error State
+
+<ComponentShowcase title="Error State" code={`<div class="form-group">
+  <label class="form-label form-label-required">Location</label>
+  <div class="cascader cascader-error">
+    <button class="cascader-trigger" popovertarget="cascader-error">
+      <span class="cascader-placeholder">Select location</span>
+      <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+    <div class="cascader-dropdown" id="cascader-error" popover="auto">
+      <div class="cascader-panels">
+        <div class="cascader-panel">
+          <div class="cascader-options">
+            <button class="cascader-option">
+              <span class="cascader-option-label">Option 1</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="helper-text helper-text-error">Please select a location</span>
+</div>`} />
+
+### Disabled
+
+<ComponentShowcase title="Disabled State" code={`<div class="cascader cascader-disabled">
+  <button class="cascader-trigger" disabled>
+    <span class="cascader-placeholder">Select option</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>`} />
+
+### Loading
+
+<ComponentShowcase title="Loading State" code={`<div class="cascader cascader-loading">
+  <button class="cascader-trigger" disabled>
+    <span class="cascader-placeholder">Loading options...</span>
+    <span class="cascader-spinner"></span>
+  </button>
+</div>`} />
+
+## Leaf-Only Selection
+
+Options without arrows are leaf nodes (final selection):
+
+<ComponentShowcase title="Leaf Selection" code={`<div class="cascader">
+  <button class="cascader-trigger" popovertarget="cascader-leaf">
+    <span class="cascader-placeholder">Select city</span>
+    <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="cascader-dropdown" id="cascader-leaf" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option cascader-option-active">
+            <span class="cascader-option-label">California</span>
+            <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Los Angeles</span>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">San Francisco</span>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">San Diego</span>
+          </button>
+          <button class="cascader-option">
+            <span class="cascader-option-label">San Jose</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## API Reference
+
+### Class Names
+
+| Class | Description |
+|-------|-------------|
+| `.cascader` | Base container (required) |
+| `.cascader-trigger` | Trigger button (use with `popovertarget`) |
+| `.cascader-value` | Selected value display |
+| `.cascader-placeholder` | Placeholder text when empty |
+| `.cascader-path` | Path breadcrumb display |
+| `.cascader-path-separator` | Separator between path items |
+| `.cascader-arrow` | Dropdown arrow icon |
+| `.cascader-clear` | Clear selection button |
+| `.cascader-dropdown` | Dropdown container (use with `popover` attribute) |
+| `.cascader-search` | Search input container |
+| `.cascader-search-input` | Search input field |
+| `.cascader-panels` | Horizontal panels container |
+| `.cascader-panel` | Individual level panel |
+| `.cascader-panel-header` | Panel header/title |
+| `.cascader-options` | Options list in panel |
+| `.cascader-option` | Individual option |
+| `.cascader-option-label` | Option label text |
+| `.cascader-option-arrow` | Arrow indicating children |
+| `.cascader-option-active` | Currently highlighted option |
+| `.cascader-option-selected` | Selected option |
+| `.cascader-option-disabled` | Disabled option |
+| `.cascader-empty` | Empty state message |
+| `.cascader-outlined` | Outlined variant |
+| `.cascader-filled` | Filled variant |
+| `.cascader-sm` | Small size |
+| `.cascader-lg` | Large size |
+| `.cascader-error` | Error state |
+| `.cascader-disabled` | Disabled state |
+| `.cascader-loading` | Loading state |
+| `.cascader-spinner` | Loading spinner |
+
+### HTML Structure with Popover API
+
+```html
+<div class="cascader">
+  <button class="cascader-trigger" popovertarget="dropdown-id">
+    <span class="cascader-placeholder">Select option</span>
+    <svg class="cascader-arrow">...</svg>
+  </button>
+  <div class="cascader-dropdown" id="dropdown-id" popover="auto">
+    <div class="cascader-panels">
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Option 1</span>
+            <svg class="cascader-option-arrow">...</svg>
+          </button>
+        </div>
+      </div>
+      <div class="cascader-panel">
+        <div class="cascader-options">
+          <button class="cascader-option">
+            <span class="cascader-option-label">Sub-option</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Related Components
+
+- [Select](/duskmoonui/docs/en/components/select/) - Single dropdown selection
+- [Tree Select](/duskmoonui/docs/en/components/tree-select/) - Hierarchical tree selection
+- [Multi-Select](/duskmoonui/docs/en/components/multi-select/) - Multiple selection dropdown
+- [Autocomplete](/duskmoonui/docs/en/components/autocomplete/) - Search with suggestions

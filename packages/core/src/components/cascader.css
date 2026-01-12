@@ -1,0 +1,418 @@
+/**
+ * Cascader Component Styles
+ * DuskMoonUI - Multi-level dropdown selection with horizontal panels
+ */
+
+@layer components {
+  /* Base Cascader */
+  .cascader {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Cascader Trigger */
+  .cascader-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+  }
+
+  .cascader-trigger:hover:not(:disabled) {
+    border-color: var(--color-on-surface-variant);
+  }
+
+  .cascader-trigger:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  .cascader-trigger:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--color-surface-container);
+  }
+
+  /* Value Display */
+  .cascader-value {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-on-surface);
+  }
+
+  /* Placeholder */
+  .cascader-placeholder {
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Path Display (breadcrumb-style) */
+  .cascader-path {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cascader-path-separator {
+    color: var(--color-on-surface-variant);
+    font-size: 0.875rem;
+  }
+
+  /* Dropdown Arrow */
+  .cascader-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-on-surface-variant);
+    flex-shrink: 0;
+    transition: transform 150ms ease-in-out;
+  }
+
+  .cascader-open .cascader-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Clear Button */
+  .cascader-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .cascader-clear:hover {
+    background-color: var(--color-surface-container-high);
+  }
+
+  /* Cascader Dropdown */
+  .cascader-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 50;
+    display: none;
+    margin-top: 0.25rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .cascader-open .cascader-dropdown {
+    display: flex;
+  }
+
+  /* Popover API Support */
+  .cascader-dropdown[popover] {
+    inset: unset;
+    margin: 0;
+    border: 1px solid var(--color-outline-variant);
+  }
+
+  .cascader-dropdown[popover]:popover-open {
+    display: flex;
+  }
+
+  /* CSS Anchor Positioning for modern browsers */
+  @supports (anchor-name: --anchor) {
+    .cascader-trigger {
+      anchor-name: --cascader-anchor;
+    }
+
+    .cascader-dropdown[popover] {
+      position-anchor: --cascader-anchor;
+      top: anchor(bottom);
+      left: anchor(left);
+      margin-top: 0.25rem;
+      position-try-fallbacks: flip-block;
+    }
+  }
+
+  /* Fallback for browsers without anchor positioning */
+  @supports not (anchor-name: --anchor) {
+    .cascader {
+      position: relative;
+    }
+
+    .cascader-dropdown[popover]:popover-open {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.25rem;
+    }
+  }
+
+  /* Panels Container (horizontal layout) */
+  .cascader-panels {
+    display: flex;
+    max-height: 16rem;
+  }
+
+  /* Individual Panel */
+  .cascader-panel {
+    display: flex;
+    flex-direction: column;
+    min-width: 10rem;
+    max-width: 14rem;
+    overflow-y: auto;
+    border-right: 1px solid var(--color-outline-variant);
+  }
+
+  .cascader-panel:last-child {
+    border-right: none;
+  }
+
+  /* Panel Header (optional) */
+  .cascader-panel-header {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: var(--color-surface-container);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  /* Panel Options */
+  .cascader-options {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  /* Cascader Option */
+  .cascader-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .cascader-option:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .cascader-option-active {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .cascader-option-selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .cascader-option-selected:hover {
+    background-color: color-mix(in oklch, var(--color-primary-container), black 5%);
+  }
+
+  .cascader-option-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .cascader-option-disabled:hover {
+    background-color: transparent;
+  }
+
+  /* Option Label */
+  .cascader-option-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Option Arrow (indicates has children) */
+  .cascader-option-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-on-surface-variant);
+    flex-shrink: 0;
+  }
+
+  .cascader-option-selected .cascader-option-arrow {
+    color: var(--color-on-primary-container);
+  }
+
+  /* Search Input */
+  .cascader-search {
+    display: flex;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .cascader-search-input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface-container);
+    border: none;
+    border-radius: 0.375rem;
+    outline: none;
+  }
+
+  .cascader-search-input:focus {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .cascader-search-input::placeholder {
+    color: var(--color-on-surface-variant);
+  }
+
+  /* Empty State */
+  .cascader-empty {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--color-on-surface-variant);
+    font-size: 0.875rem;
+  }
+
+  /* Size Variants */
+  .cascader-sm .cascader-trigger {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+  }
+
+  .cascader-sm .cascader-panel {
+    min-width: 8rem;
+    max-width: 12rem;
+  }
+
+  .cascader-sm .cascader-option {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .cascader-lg .cascader-trigger {
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem;
+    border-radius: 0.625rem;
+  }
+
+  .cascader-lg .cascader-panel {
+    min-width: 12rem;
+    max-width: 16rem;
+  }
+
+  .cascader-lg .cascader-option {
+    padding: 0.625rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* Outlined Variant (Default) */
+  .cascader-outlined .cascader-trigger {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+  }
+
+  /* Filled Variant */
+  .cascader-filled .cascader-trigger {
+    background-color: var(--color-surface-container);
+    border: none;
+    border-bottom: 2px solid var(--color-outline);
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .cascader-filled .cascader-trigger:focus {
+    border-bottom-color: var(--color-primary);
+    box-shadow: none;
+  }
+
+  /* Error State */
+  .cascader-error .cascader-trigger {
+    border-color: var(--color-error);
+  }
+
+  .cascader-error .cascader-trigger:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Disabled State */
+  .cascader-disabled .cascader-trigger {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--color-surface-container);
+  }
+
+  /* Loading State */
+  .cascader-loading .cascader-trigger {
+    cursor: wait;
+  }
+
+  .cascader-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--color-outline);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: cascader-spin 0.8s linear infinite;
+  }
+
+  @keyframes cascader-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .cascader-trigger,
+    .cascader-arrow,
+    .cascader-option,
+    .cascader-clear {
+      transition: none;
+    }
+    .cascader-spinner {
+      animation: none;
+    }
+  }
+}

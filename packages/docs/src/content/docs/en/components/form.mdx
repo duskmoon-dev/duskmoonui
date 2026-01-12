@@ -1,0 +1,668 @@
+---
+title: Form
+description: Complete form example showcasing all Data Entry components with proper layout and accessibility
+category: components
+order: 48
+published: true
+tags: ['form', 'form-group', 'data-entry', 'components', 'material-design', 'accessibility']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Form
+
+Build complete, accessible forms using DuskMoonUI's Data Entry components. This page demonstrates all 17 form components working together in a realistic "User Profile" form context.
+
+## Quick Start
+
+A minimal form example to get started:
+
+<ComponentShowcase title="Minimal Form" code={`<form class="space-y-4">
+  <div class="form-group">
+    <label class="form-label form-label-required">Email</label>
+    <input type="email" class="input" placeholder="you@example.com" required />
+  </div>
+  <div class="form-group">
+    <label class="form-label form-label-required">Password</label>
+    <input type="password" class="input" placeholder="••••••••" required />
+  </div>
+  <button type="submit" class="btn btn-primary">Sign In</button>
+</form>`} />
+
+---
+
+## Complete Form Demo
+
+The following sections demonstrate all Data Entry components organized into a comprehensive User Profile form.
+
+### Section 1: Personal Information
+
+<ComponentShowcase title="Personal Information" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Personal Information</legend>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div class="form-group">
+      <label class="form-label form-label-required" for="fullname">Full Name</label>
+      <input type="text" id="fullname" class="input" placeholder="John Doe" required aria-required="true" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label form-label-required" for="country">Country</label>
+      <div class="autocomplete">
+        <input type="text" id="country" class="input autocomplete-input" placeholder="Start typing..." required aria-required="true" aria-autocomplete="list" />
+        <ul class="autocomplete-dropdown hidden">
+          <li class="autocomplete-item">United States</li>
+          <li class="autocomplete-item">United Kingdom</li>
+          <li class="autocomplete-item">Canada</li>
+          <li class="autocomplete-item">Australia</li>
+        </ul>
+      </div>
+      <span class="helper-text">Type to search countries</span>
+    </div>
+  </div>
+
+  <div class="form-group mt-4">
+    <label class="form-label" for="dob">
+      Date of Birth
+      <span class="form-label-optional">(optional)</span>
+    </label>
+    <div class="datepicker">
+      <div class="datepicker-input-container">
+        <input type="date" id="dob" name="dob" class="datepicker-input" />
+        <button type="button" class="datepicker-trigger" popovertarget="datepicker-dob">
+          <span class="datepicker-icon">📅</span>
+        </button>
+      </div>
+      <div class="datepicker-dropdown" id="datepicker-dob" popover="auto">
+        <div class="datepicker-header">
+          <button type="button" class="datepicker-nav" aria-label="Previous month">‹</button>
+          <div class="datepicker-title">January 2024</div>
+          <button type="button" class="datepicker-nav" aria-label="Next month">›</button>
+        </div>
+        <div class="datepicker-calendar">
+          <div class="datepicker-weekday">Su</div>
+          <div class="datepicker-weekday">Mo</div>
+          <div class="datepicker-weekday">Tu</div>
+          <div class="datepicker-weekday">We</div>
+          <div class="datepicker-weekday">Th</div>
+          <div class="datepicker-weekday">Fr</div>
+          <div class="datepicker-weekday">Sa</div>
+          <button class="datepicker-day datepicker-day-other-month">31</button>
+          <button class="datepicker-day">1</button>
+          <button class="datepicker-day">2</button>
+          <button class="datepicker-day">3</button>
+          <button class="datepicker-day">4</button>
+          <button class="datepicker-day">5</button>
+          <button class="datepicker-day">6</button>
+          <button class="datepicker-day">7</button>
+          <button class="datepicker-day">8</button>
+          <button class="datepicker-day">9</button>
+          <button class="datepicker-day">10</button>
+          <button class="datepicker-day">11</button>
+          <button class="datepicker-day">12</button>
+          <button class="datepicker-day">13</button>
+          <button class="datepicker-day datepicker-day-today">14</button>
+          <button class="datepicker-day datepicker-day-selected">15</button>
+          <button class="datepicker-day">16</button>
+          <button class="datepicker-day">17</button>
+          <button class="datepicker-day">18</button>
+          <button class="datepicker-day">19</button>
+          <button class="datepicker-day">20</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>`} />
+
+### Section 2: Contact Details
+
+<ComponentShowcase title="Contact Details" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Contact Details</legend>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div class="form-group">
+      <label class="form-label form-label-required" for="email">Email Address</label>
+      <input type="email" id="email" class="input" placeholder="you@example.com" required aria-required="true" />
+      <span class="helper-text">We'll never share your email</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="phone">
+        Phone Number
+        <span class="form-label-optional">(optional)</span>
+      </label>
+      <input type="tel" id="phone" class="input" placeholder="+1 (555) 000-0000" />
+    </div>
+  </div>
+
+  <div class="form-group mt-4">
+    <label class="form-label" for="bio">
+      Bio
+      <span class="form-label-optional">(optional)</span>
+    </label>
+    <textarea id="bio" class="textarea" rows="3" placeholder="Tell us about yourself..." aria-describedby="bio-helper"></textarea>
+    <span id="bio-helper" class="helper-text">Max 500 characters</span>
+  </div>
+</fieldset>`} />
+
+### Section 3: Preferences
+
+<ComponentShowcase title="Preferences" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Preferences</legend>
+
+  <div class="space-y-4 mt-4">
+    <div class="form-group">
+      <label class="form-label form-label-required" for="language">Language</label>
+      <select id="language" class="select" required aria-required="true">
+        <option value="">Select a language</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="zh">Chinese</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="interests">
+        Interests
+        <span class="form-label-optional">(optional)</span>
+      </label>
+      <div class="multi-select" id="interests" aria-describedby="interests-helper">
+        <button type="button" class="multi-select-trigger" popovertarget="multi-select-interests">
+          <div class="multi-select-tags">
+            <span class="multi-select-tag">
+              Technology
+              <button type="button" class="multi-select-tag-remove" aria-label="Remove Technology">×</button>
+            </span>
+            <span class="multi-select-tag">
+              Design
+              <button type="button" class="multi-select-tag-remove" aria-label="Remove Design">×</button>
+            </span>
+          </div>
+          <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="multi-select-dropdown" id="multi-select-interests" popover="auto">
+          <div class="multi-select-options">
+            <div class="multi-select-option multi-select-option-selected">
+              <span class="multi-select-option-checkbox">✓</span>
+              Technology
+            </div>
+            <div class="multi-select-option multi-select-option-selected">
+              <span class="multi-select-option-checkbox">✓</span>
+              Design
+            </div>
+            <div class="multi-select-option">
+              <span class="multi-select-option-checkbox"></span>
+              Music
+            </div>
+            <div class="multi-select-option">
+              <span class="multi-select-option-checkbox"></span>
+              Sports
+            </div>
+            <div class="multi-select-option">
+              <span class="multi-select-option-checkbox"></span>
+              Travel
+            </div>
+          </div>
+        </div>
+      </div>
+      <span id="interests-helper" class="helper-text">Select multiple interests</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="department">
+        Department
+        <span class="form-label-optional">(optional)</span>
+      </label>
+      <div class="tree-select" id="department">
+        <button type="button" class="tree-select-trigger" popovertarget="tree-select-dept">
+          <span class="tree-select-value">Select department...</span>
+          <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="tree-select-dropdown" id="tree-select-dept" popover="auto">
+          <div class="tree-select-options">
+            <div class="tree-select-node tree-select-node-expanded">
+              <button type="button" class="tree-select-node-toggle">
+                <svg class="tree-select-node-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <span class="tree-select-node-label">Engineering</span>
+            </div>
+            <div class="tree-select-children">
+              <div class="tree-select-node tree-select-node-leaf">
+                <span class="tree-select-node-label">Frontend</span>
+              </div>
+              <div class="tree-select-node tree-select-node-leaf">
+                <span class="tree-select-node-label">Backend</span>
+              </div>
+              <div class="tree-select-node tree-select-node-leaf">
+                <span class="tree-select-node-label">DevOps</span>
+              </div>
+            </div>
+            <div class="tree-select-node tree-select-node-leaf">
+              <span class="tree-select-node-label">Design</span>
+            </div>
+            <div class="tree-select-node tree-select-node-leaf">
+              <span class="tree-select-node-label">Marketing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">
+        Location
+        <span class="form-label-optional">(optional)</span>
+      </label>
+      <div class="cascader">
+        <button type="button" class="cascader-trigger" popovertarget="cascader-location">
+          <span class="cascader-value">
+            <span class="cascader-path">
+              USA
+              <span class="cascader-path-separator">/</span>
+              California
+              <span class="cascader-path-separator">/</span>
+              Los Angeles
+            </span>
+          </span>
+          <svg class="cascader-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="cascader-dropdown" id="cascader-location" popover="auto">
+          <div class="cascader-panels">
+            <div class="cascader-panel">
+              <div class="cascader-options">
+                <button class="cascader-option cascader-option-selected">
+                  <span class="cascader-option-label">USA</span>
+                  <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button class="cascader-option">
+                  <span class="cascader-option-label">Canada</span>
+                  <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="cascader-panel">
+              <div class="cascader-options">
+                <button class="cascader-option cascader-option-selected">
+                  <span class="cascader-option-label">California</span>
+                  <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button class="cascader-option">
+                  <span class="cascader-option-label">Texas</span>
+                  <svg class="cascader-option-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="cascader-panel">
+              <div class="cascader-options">
+                <button class="cascader-option cascader-option-selected">
+                  <span class="cascader-option-label">Los Angeles</span>
+                </button>
+                <button class="cascader-option">
+                  <span class="cascader-option-label">San Francisco</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="helper-text">Select your location</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Theme Preference</label>
+      <div class="segment" role="radiogroup" aria-label="Theme preference">
+        <button type="button" class="segment-item segment-item-active" role="radio" aria-checked="true">Light</button>
+        <button type="button" class="segment-item" role="radio" aria-checked="false">Dark</button>
+        <button type="button" class="segment-item" role="radio" aria-checked="false">System</button>
+      </div>
+    </div>
+  </div>
+</fieldset>`} />
+
+### Section 4: Settings
+
+<ComponentShowcase title="Settings" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Settings</legend>
+
+  <div class="space-y-6 mt-4">
+    <!-- Checkbox Group -->
+    <fieldset>
+      <legend class="form-label mb-2">Email Notifications</legend>
+      <div class="space-y-2">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" class="checkbox checkbox-primary" checked />
+          <span>Product updates</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" class="checkbox checkbox-primary" checked />
+          <span>Security alerts</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" class="checkbox checkbox-primary" />
+          <span>Marketing emails</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Radio Group -->
+    <fieldset>
+      <legend class="form-label form-label-required mb-2">Contact Preference</legend>
+      <div class="space-y-2" role="radiogroup" aria-required="true">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="radio" name="contact" class="radio radio-primary" value="email" checked />
+          <span>Email</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="radio" name="contact" class="radio radio-primary" value="phone" />
+          <span>Phone</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="radio" name="contact" class="radio radio-primary" value="sms" />
+          <span>SMS</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Switch -->
+      <div class="form-group">
+        <div class="flex items-center justify-between">
+          <span class="form-label">Dark Mode</span>
+          <label class="switch-label">
+            <input type="checkbox" id="darkmode" class="switch" />
+            <span class="sr-only">Dark Mode</span>
+          </label>
+        </div>
+        <span class="helper-text">Enable dark theme across the app</span>
+      </div>
+
+      <!-- Slider -->
+      <div class="form-group">
+        <label class="form-label" for="volume">Volume Level</label>
+        <input type="range" id="volume" class="slider slider-primary" min="0" max="100" value="75" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" />
+        <div class="flex justify-between text-xs text-on-surface-variant">
+          <span>0%</span>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>`} />
+
+### Section 5: Feedback
+
+<ComponentShowcase title="Feedback" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Feedback</legend>
+
+  <div class="form-group mt-4">
+    <label class="form-label" id="rating-label">How would you rate your experience?</label>
+    <div class="rating" role="radiogroup" aria-labelledby="rating-label">
+      <input type="radio" name="rating" class="rating-input" value="1" id="star1" />
+      <label for="star1" class="rating-star">★</label>
+      <input type="radio" name="rating" class="rating-input" value="2" id="star2" />
+      <label for="star2" class="rating-star">★</label>
+      <input type="radio" name="rating" class="rating-input" value="3" id="star3" />
+      <label for="star3" class="rating-star">★</label>
+      <input type="radio" name="rating" class="rating-input" value="4" id="star4" checked />
+      <label for="star4" class="rating-star">★</label>
+      <input type="radio" name="rating" class="rating-input" value="5" id="star5" />
+      <label for="star5" class="rating-star">★</label>
+    </div>
+    <span class="helper-text">Select 1-5 stars</span>
+  </div>
+</fieldset>`} />
+
+### Section 6: Scheduling
+
+<ComponentShowcase title="Scheduling" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Scheduling</legend>
+
+  <div class="form-group mt-4">
+    <label class="form-label" for="reminder">
+      Daily Reminder Time
+      <span class="form-label-optional">(optional)</span>
+    </label>
+    <div class="time-input">
+      <input type="time" id="reminder" class="input time-input-field" value="09:00" />
+    </div>
+    <span class="helper-text">When should we send daily digests?</span>
+  </div>
+</fieldset>`} />
+
+### Section 7: Security
+
+<ComponentShowcase title="Security" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Security</legend>
+
+  <div class="space-y-6 mt-4">
+    <div class="form-group">
+      <label class="form-label">
+        Two-Factor Authentication Code
+        <span class="form-label-optional">(optional)</span>
+      </label>
+      <div class="otp-input otp-input-6" aria-label="Enter 6-digit verification code">
+        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 1" />
+        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 2" />
+        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 3" />
+        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 4" />
+        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 5" />
+        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 6" />
+      </div>
+      <span class="otp-input-helper">Enter the code from your authenticator app</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">
+        Security PIN
+        <span class="form-label-optional">(optional)</span>
+      </label>
+      <div class="pin-input pin-input-4" aria-label="Enter 4-digit PIN">
+        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 1" />
+        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 2" />
+        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 3" />
+        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 4" />
+      </div>
+      <span class="pin-input-helper">Set a 4-digit PIN for quick access</span>
+    </div>
+  </div>
+</fieldset>`} />
+
+### Section 8: Attachments
+
+<ComponentShowcase title="Attachments" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium">Attachments</legend>
+
+  <div class="form-group mt-4">
+    <label class="form-label" for="avatar">
+      Profile Photo
+      <span class="form-label-optional">(optional)</span>
+    </label>
+    <div class="file-upload" aria-describedby="avatar-helper">
+      <div class="file-upload-dropzone" role="button" tabindex="0" aria-label="Upload profile photo">
+        <svg class="file-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+        </svg>
+        <p class="file-upload-text">
+          <span class="file-upload-link">Click to upload</span> or drag and drop
+        </p>
+        <p class="file-upload-hint">PNG, JPG up to 5MB</p>
+        <input type="file" id="avatar" class="file-upload-input" accept="image/png,image/jpeg" />
+      </div>
+    </div>
+    <span id="avatar-helper" class="helper-text">Upload a profile picture</span>
+  </div>
+</fieldset>`} />
+
+### Form Actions
+
+<ComponentShowcase title="Form Actions" code={`<div class="flex flex-wrap gap-4 justify-end pt-6 border-t border-outline-variant">
+  <button type="reset" class="btn btn-outlined">Reset</button>
+  <button type="submit" class="btn btn-primary">Save Profile</button>
+</div>`} />
+
+---
+
+## Form Layout Patterns
+
+### Responsive Grid Layout
+
+Use CSS Grid or Flexbox utilities for responsive form layouts:
+
+<ComponentShowcase title="Responsive Grid" code={`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="form-group">
+    <label class="form-label">First Name</label>
+    <input type="text" class="input input-bordered" placeholder="John" />
+  </div>
+  <div class="form-group">
+    <label class="form-label">Last Name</label>
+    <input type="text" class="input input-bordered" placeholder="Doe" />
+  </div>
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input type="email" class="input input-bordered" placeholder="john@example.com" />
+  </div>
+</div>`} />
+
+### Fieldset Grouping
+
+Use `<fieldset>` and `<legend>` for semantic section grouping:
+
+<ComponentShowcase title="Fieldset Pattern" code={`<fieldset class="p-4 border border-outline-variant rounded-lg">
+  <legend class="px-2 text-lg font-medium text-on-surface">Account Settings</legend>
+  <div class="space-y-4 mt-4">
+    <div class="form-group">
+      <label class="form-label">Username</label>
+      <input type="text" class="input input-bordered" placeholder="Enter username" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input type="email" class="input input-bordered" placeholder="you@example.com" />
+    </div>
+  </div>
+</fieldset>`} />
+
+### Required vs Optional Fields
+
+<ComponentShowcase title="Field Indicators" code={`<div class="space-y-4">
+  <!-- Required field with asterisk -->
+  <div class="form-group">
+    <label class="form-label form-label-required">Email Address</label>
+    <input type="email" class="input input-bordered" placeholder="you@example.com" required aria-required="true" />
+  </div>
+
+  <!-- Optional field with label -->
+  <div class="form-group">
+    <label class="form-label">
+      Phone Number
+      <span class="form-label-optional">(optional)</span>
+    </label>
+    <input type="tel" class="input input-bordered" placeholder="+1 (555) 000-0000" />
+  </div>
+</div>`} />
+
+---
+
+## Form States
+
+### Error State
+
+<ComponentShowcase title="Error State" code={`<div class="form-group form-group-error">
+  <label class="form-label form-label-required">Email</label>
+  <input type="email" class="input input-bordered input-error" value="invalid-email" aria-invalid="true" aria-describedby="email-error" />
+  <span id="email-error" class="helper-text helper-text-error">Please enter a valid email address</span>
+</div>`} />
+
+### Success State
+
+<ComponentShowcase title="Success State" code={`<div class="form-group form-group-success">
+  <label class="form-label">Username</label>
+  <input type="text" class="input input-bordered input-success" value="johndoe" aria-describedby="username-success" />
+  <span id="username-success" class="helper-text helper-text-success">Username is available!</span>
+</div>`} />
+
+### Disabled State
+
+<ComponentShowcase title="Disabled State" code={`<div class="form-group">
+  <label class="form-label">Read-only Field</label>
+  <input type="text" class="input input-bordered" value="Cannot edit this" disabled />
+  <span class="helper-text">This field is locked</span>
+</div>`} />
+
+---
+
+## API Reference
+
+### Form Group Classes
+
+| Class | Description |
+|-------|-------------|
+| `.form-group` | Container for label, input, and helper text |
+| `.form-group-error` | Error state styling for the group |
+| `.form-group-success` | Success state styling for the group |
+| `.form-group-warning` | Warning state styling for the group |
+
+### Label Classes
+
+| Class | Description |
+|-------|-------------|
+| `.form-label` | Base label styling |
+| `.form-label-required` | Adds asterisk indicator |
+| `.form-label-optional` | Muted "(optional)" text |
+| `.form-label-sm` | Small label size |
+| `.form-label-lg` | Large label size |
+
+### Helper Text Classes
+
+| Class | Description |
+|-------|-------------|
+| `.helper-text` | Base helper text styling |
+| `.helper-text-error` | Error message styling |
+| `.helper-text-success` | Success message styling |
+| `.helper-text-warning` | Warning message styling |
+
+### Input State Classes
+
+| Class | Description |
+|-------|-------------|
+| `.input-error` | Red border for errors |
+| `.input-success` | Green border for valid |
+| `.input-warning` | Orange border for warnings |
+
+---
+
+## Accessibility Guidelines
+
+- Always use `<label>` elements with `for` attribute linking to input `id`
+- Mark required fields with `aria-required="true"` and visual indicator
+- Use `aria-describedby` to link inputs to helper text
+- Use `aria-invalid="true"` for fields with validation errors
+- Group related checkboxes/radios in `<fieldset>` with `<legend>`
+- Ensure sufficient color contrast for all form states
+
+---
+
+## Related Components
+
+- [Input](/docs/en/components/input/) - Text input fields
+- [Form Group](/docs/en/components/form-group/) - Form layout utilities
+- [Checkbox](/docs/en/components/checkbox/) - Checkbox controls
+- [Radio](/docs/en/components/radio/) - Radio button controls
+- [Select](/docs/en/components/select/) - Dropdown selection
+- [File Upload](/docs/en/components/file-upload/) - File upload component

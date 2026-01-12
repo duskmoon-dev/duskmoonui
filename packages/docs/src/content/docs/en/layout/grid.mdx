@@ -1,0 +1,296 @@
+---
+title: Grid
+description: Responsive grid utilities with auto-fill and auto-fit for flexible layouts
+category: layout
+order: 1
+published: true
+tags: ['grid', 'layout', 'responsive', 'utilities']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Grid Utilities
+
+@duskmoon-dev/core extends Tailwind CSS v4 with responsive grid utilities that automatically adapt to container width.
+
+## Auto-Fill vs Auto-Fit
+
+Both utilities create responsive grids without media queries, but they behave differently when there's extra space:
+
+| Utility | Behavior | Use Case |
+|---------|----------|----------|
+| `grid-cols-auto-fill-*` | Creates empty columns to fill space | Fixed-width cards, consistent spacing |
+| `grid-cols-auto-fit-*` | Stretches items to fill space | Flexible cards, full-width coverage |
+
+## Basic Usage
+
+The number after the utility name represents the minimum column width in Tailwind's spacing scale (× 0.25rem).
+
+<ComponentShowcase
+  title="Auto-Fill Grid"
+  code={`<div class="w-full">
+  <div class="grid grid-cols-auto-fill-48 gap-4">
+    <div class="card p-4 bg-surface-container">Item 1</div>
+    <div class="card p-4 bg-surface-container">Item 2</div>
+    <div class="card p-4 bg-surface-container">Item 3</div>
+    <div class="card p-4 bg-surface-container">Item 4</div>
+  </div>
+</div>`}
+/>
+
+<ComponentShowcase
+  title="Auto-Fit Grid"
+  code={`<div class="w-full">
+  <div class="grid grid-cols-auto-fit-48 gap-4">
+    <div class="card p-4 bg-surface-container">Item 1</div>
+    <div class="card p-4 bg-surface-container">Item 2</div>
+    <div class="card p-4 bg-surface-container">Item 3</div>
+    <div class="card p-4 bg-surface-container">Item 4</div>
+  </div>
+</div>`}
+/>
+
+## How It Works
+
+The utilities use CSS `repeat()` with `minmax()` to create flexible grids:
+
+```css
+/* grid-cols-auto-fill-48 generates: */
+grid-template-columns: repeat(
+  auto-fill,
+  minmax(min(12rem, 100%), 1fr)
+);
+
+/* grid-cols-auto-fit-48 generates: */
+grid-template-columns: repeat(
+  auto-fit,
+  minmax(min(12rem, 100%), 1fr)
+);
+```
+
+The `min(value, 100%)` ensures items never overflow their container on small screens.
+
+## Common Sizes
+
+| Class | Min Width | Good For |
+|-------|-----------|----------|
+| `grid-cols-auto-fill-32` | 8rem (128px) | Small cards, thumbnails |
+| `grid-cols-auto-fill-48` | 12rem (192px) | Medium cards, product tiles |
+| `grid-cols-auto-fill-64` | 16rem (256px) | Large cards, feature sections |
+| `grid-cols-auto-fill-80` | 20rem (320px) | Wide cards, dashboards |
+
+## Practical Examples
+
+### Product Grid
+
+<ComponentShowcase
+  title="E-commerce Product Grid"
+  code={`<div class="w-full">
+  <div class="grid grid-cols-auto-fill-64 gap-6">
+    <div class="card">
+      <div class="bg-base-200 h-40 rounded-t-lg"></div>
+      <div class="card-body p-4">
+        <h3 class="font-semibold">Product Name</h3>
+        <p class="text-on-surface-variant text-sm">$29.99</p>
+        <button class="btn btn-primary btn-sm mt-2">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="bg-base-200 h-40 rounded-t-lg"></div>
+      <div class="card-body p-4">
+        <h3 class="font-semibold">Product Name</h3>
+        <p class="text-on-surface-variant text-sm">$49.99</p>
+        <button class="btn btn-primary btn-sm mt-2">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="bg-base-200 h-40 rounded-t-lg"></div>
+      <div class="card-body p-4">
+        <h3 class="font-semibold">Product Name</h3>
+        <p class="text-on-surface-variant text-sm">$19.99</p>
+        <button class="btn btn-primary btn-sm mt-2">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>`}
+/>
+
+### Photo Gallery
+
+<ComponentShowcase
+  title="Responsive Photo Gallery"
+  code={`<div class="w-full">
+  <div class="grid grid-cols-auto-fit-48 gap-2">
+    <div class="aspect-square bg-primary/20 rounded-lg"></div>
+    <div class="aspect-square bg-secondary/20 rounded-lg"></div>
+    <div class="aspect-square bg-tertiary/20 rounded-lg"></div>
+    <div class="aspect-square bg-info/20 rounded-lg"></div>
+    <div class="aspect-square bg-success/20 rounded-lg"></div>
+    <div class="aspect-square bg-warning/20 rounded-lg"></div>
+  </div>
+</div>`}
+/>
+
+### Dashboard Stats
+
+<ComponentShowcase
+  title="Stats Dashboard"
+  code={`<div class="w-full">
+  <div class="grid grid-cols-auto-fill-56 gap-4">
+    <div class="card p-4 bg-primary-container">
+      <p class="text-on-primary-container/70 text-sm">Total Users</p>
+      <p class="text-2xl font-bold text-on-primary-container">12,543</p>
+    </div>
+    <div class="card p-4 bg-success-container">
+      <p class="text-on-success-container/70 text-sm">Revenue</p>
+      <p class="text-2xl font-bold text-on-success-container">$84,232</p>
+    </div>
+    <div class="card p-4 bg-warning-container">
+      <p class="text-on-warning-container/70 text-sm">Pending</p>
+      <p class="text-2xl font-bold text-on-warning-container">23</p>
+    </div>
+    <div class="card p-4 bg-info-container">
+      <p class="text-on-info-container/70 text-sm">Active Now</p>
+      <p class="text-2xl font-bold text-on-info-container">573</p>
+    </div>
+  </div>
+</div>`}
+/>
+
+## Difference Visualization
+
+The key difference between `auto-fill` and `auto-fit` becomes apparent with few items:
+
+<ComponentShowcase
+  title="Auto-Fill with 2 Items"
+  code={`<div class="w-full">
+  <!-- auto-fill: Creates empty column tracks -->
+  <div class="grid grid-cols-auto-fill-48 gap-4 border border-outline-variant p-4 rounded-lg">
+    <div class="card p-4 bg-primary text-primary-content">Item 1</div>
+    <div class="card p-4 bg-primary text-primary-content">Item 2</div>
+  </div>
+</div>`}
+/>
+
+<ComponentShowcase
+  title="Auto-Fit with 2 Items"
+  code={`<div class="w-full">
+  <!-- auto-fit: Items stretch to fill space -->
+  <div class="grid grid-cols-auto-fit-48 gap-4 border border-outline-variant p-4 rounded-lg">
+    <div class="card p-4 bg-secondary text-secondary-content">Item 1</div>
+    <div class="card p-4 bg-secondary text-secondary-content">Item 2</div>
+  </div>
+</div>`}
+/>
+
+## Combining with Gap
+
+Use Tailwind's gap utilities for spacing:
+
+<ComponentShowcase
+  title="Grid with Different Gaps"
+  code={`<div class="w-full space-y-4">
+  <!-- Tight gap -->
+  <div class="grid grid-cols-auto-fill-32 gap-2">
+    <div class="bg-base-300 p-2 rounded text-center text-sm">1</div>
+    <div class="bg-base-300 p-2 rounded text-center text-sm">2</div>
+    <div class="bg-base-300 p-2 rounded text-center text-sm">3</div>
+    <div class="bg-base-300 p-2 rounded text-center text-sm">4</div>
+  </div>
+
+  <!-- Wide gap -->
+  <div class="grid grid-cols-auto-fill-32 gap-6">
+    <div class="bg-base-300 p-2 rounded text-center text-sm">1</div>
+    <div class="bg-base-300 p-2 rounded text-center text-sm">2</div>
+    <div class="bg-base-300 p-2 rounded text-center text-sm">3</div>
+    <div class="bg-base-300 p-2 rounded text-center text-sm">4</div>
+  </div>
+</div>`}
+/>
+
+## Best Practices
+
+### Choose the Right Utility
+
+- **Use `auto-fill`** when you want consistent card sizes and don't mind empty space
+- **Use `auto-fit`** when you want items to grow and fill available space
+
+### Size Selection
+
+Choose minimum widths based on content:
+
+```html
+<!-- For text-heavy cards, use larger minimums -->
+<div class="grid grid-cols-auto-fill-64 gap-4">...</div>
+
+<!-- For thumbnails or icons, use smaller minimums -->
+<div class="grid grid-cols-auto-fill-32 gap-2">...</div>
+```
+
+### Combine with Max-Width
+
+For centered layouts, combine with container utilities:
+
+<ComponentShowcase
+  title="Centered Grid Layout"
+  code={`<div class="w-full">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-auto-fit-64 gap-6">
+      <div class="card p-4 bg-surface-container">Centered Item 1</div>
+      <div class="card p-4 bg-surface-container">Centered Item 2</div>
+      <div class="card p-4 bg-surface-container">Centered Item 3</div>
+    </div>
+  </div>
+</div>`}
+/>
+
+## API Reference
+
+### Available Classes
+
+| Pattern | Min Width | Rem Value |
+|---------|-----------|-----------|
+| `grid-cols-auto-fill-{n}` | n × 0.25rem | Dynamic |
+| `grid-cols-auto-fit-{n}` | n × 0.25rem | Dynamic |
+
+Where `{n}` is any integer. Common values:
+
+- `16` = 4rem (64px)
+- `32` = 8rem (128px)
+- `48` = 12rem (192px)
+- `64` = 16rem (256px)
+- `80` = 20rem (320px)
+- `96` = 24rem (384px)
+
+### CSS Output
+
+```css
+.grid-cols-auto-fill-48 {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(calc(48 * 0.25rem), 100%), 1fr)
+  );
+}
+
+.grid-cols-auto-fit-48 {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(calc(48 * 0.25rem), 100%), 1fr)
+  );
+}
+```
+
+## Browser Support
+
+These utilities use standard CSS Grid features supported in all modern browsers:
+
+- Chrome 57+
+- Firefox 52+
+- Safari 10.1+
+- Edge 16+
+
+## Related
+
+- [Card](/duskmoonui/docs/en/components/card/) - Card component for grid items
+- [Divider](/duskmoonui/docs/en/components/divider/) - Visual separators
+- [Container](https://tailwindcss.com/docs/container) - Tailwind's container utility
