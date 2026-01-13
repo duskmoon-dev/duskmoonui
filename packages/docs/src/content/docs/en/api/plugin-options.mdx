@@ -15,7 +15,7 @@ Complete reference for all available configuration options in the @duskmoon-dev/
 
 ```typescript
 interface DuskMoonUIOptions {
-  themes?: (string | ThemeConfig)[];
+  themes?: string[];
   defaultTheme?: string;
   styled?: boolean;
   components?: 'all' | string[];
@@ -25,10 +25,10 @@ interface DuskMoonUIOptions {
 
 ## `themes`
 
-**Type:** `(string | ThemeConfig)[]`
+**Type:** `string[]`
 **Default:** `['sunshine', 'moonlight']`
 
-Array of themes to include in your project. Can be built-in theme names or custom theme objects.
+Array of built-in themes to include in your project.
 
 ### Usage
 
@@ -39,43 +39,10 @@ Array of themes to include in your project. Can be built-in theme names or custo
 }
 ```
 
-### With Custom Themes
-
-```javascript
-{
-  themes: [
-    'sunshine',           // Built-in theme
-    'moonlight',          // Built-in theme
-    {
-      name: 'brand',      // Custom theme
-      primary: '220 90% 50%',
-      // ... other tokens
-    }
-  ]
-}
-```
-
 ### Built-in Themes
 
 - **`sunshine`**: Warm light theme with amber primary color
 - **`moonlight`**: Cool dark theme with blue primary color
-
-### Type Definition
-
-```typescript
-type ThemeConfig = {
-  name: string;
-  // Primary colors
-  primary: string;
-  'primary-focus': string;
-  'primary-content': string;
-  'primary-container': string;
-  'on-primary-container': string;
-  // ... (65+ tokens total)
-};
-```
-
-See [Theme Tokens](/duskmoonui/docs/en/api/theme-tokens/) for the complete list of required tokens.
 
 ## `defaultTheme`
 
@@ -112,13 +79,13 @@ The `defaultTheme` value must match a theme name in the `themes` array:
 
 ```javascript
 {
-  themes: ['sunshine', 'moonlight', { name: 'brand', /* ... */ }],
-  defaultTheme: 'brand',  // ✅ Valid - 'brand' is in themes array
+  themes: ['sunshine', 'moonlight'],
+  defaultTheme: 'moonlight',  // ✅ Valid - built-in theme
 }
 
 {
   themes: ['sunshine', 'moonlight'],
-  defaultTheme: 'custom',  // ❌ Invalid - 'custom' not in themes array
+  defaultTheme: 'custom',  // ❌ Invalid - not a built-in theme
 }
 ```
 
@@ -354,11 +321,11 @@ module.exports = {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   plugins: [
     duskmoonui({
-      // Include all themes in dev, only brand theme in prod
-      themes: isDev ? ['sunshine', 'moonlight', brandTheme] : [brandTheme],
+      // Include built-in themes
+      themes: ['sunshine', 'moonlight'],
 
-      // Use system preference in dev, brand theme in prod
-      defaultTheme: isProd ? 'brand' : 'sunshine',
+      // Use sunshine by default in prod
+      defaultTheme: isProd ? 'sunshine' : 'moonlight',
 
       // Always include component styles
       styled: true,
@@ -377,17 +344,11 @@ module.exports = {
 
 ```typescript
 // tailwind.config.ts
-import { duskmoonui, type DuskMoonUIOptions, type ThemeConfig } from '@duskmoon-dev/core';
+import { duskmoonui, type DuskMoonUIOptions } from '@duskmoon-dev/core';
 import type { Config } from 'tailwindcss';
 
-const brandTheme: ThemeConfig = {
-  name: 'brand',
-  primary: '220 90% 50%',
-  // ... other tokens
-};
-
 const options: Partial<DuskMoonUIOptions> = {
-  themes: ['sunshine', 'moonlight', brandTheme],
+  themes: ['sunshine', 'moonlight'],
   defaultTheme: 'sunshine',
   styled: true,
   components: 'all',
@@ -431,7 +392,7 @@ Some options may have different syntax or limitations in Tailwind CSS 4.0. Refer
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `themes` | `(string \| ThemeConfig)[]` | `['sunshine', 'moonlight']` | Themes to include |
+| `themes` | `string[]` | `['sunshine', 'moonlight']` | Themes to include |
 | `defaultTheme` | `string` | `'sunshine'` | Default theme name |
 | `styled` | `boolean` | `true` | Include component styles |
 | `components` | `'all' \| string[]` | `'all'` | Components to include |
@@ -441,32 +402,13 @@ Some options may have different syntax or limitations in Tailwind CSS 4.0. Refer
 
 - [Configuration Guide](/duskmoonui/docs/en/getting-started/configuration/) - Setup and configuration
 - [Theme Tokens](/duskmoonui/docs/en/api/theme-tokens/) - Complete token reference
-- [Theme Customization](/duskmoonui/docs/en/theming/customization/) - Creating custom themes
+- [Theme Customization](/duskmoonui/docs/en/theming/customization/) - Adjust sunshine and moonlight
 
 ## Migration Guide
 
 ### From v0.1.x to v0.2.x
 
 No breaking changes expected. All options are backward compatible.
-
-### Adding New Themes
-
-```javascript
-// Before (v0.1.x)
-{
-  themes: ['sunshine', 'moonlight']
-}
-
-// After (v0.2.x) - Still works
-{
-  themes: ['sunshine', 'moonlight']
-}
-
-// New: Custom themes
-{
-  themes: ['sunshine', 'moonlight', customTheme]
-}
-```
 
 ## Troubleshooting
 

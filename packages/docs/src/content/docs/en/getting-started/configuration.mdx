@@ -56,24 +56,7 @@ Array of theme names to include. Built-in themes are `sunshine` (light) and `moo
 }
 ```
 
-You can also provide custom theme objects:
-
-```javascript
-import { duskmoonui } from '@duskmoon-dev/core';
-
-{
-  themes: [
-    'sunshine',
-    {
-      name: 'custom',
-      primary: '280 80% 55%',      // Purple
-      secondary: '200 80% 55%',    // Blue
-      tertiary: '160 75% 45%',     // Teal
-      // ... other tokens
-    }
-  ]
-}
-```
+Only the built-in `sunshine` and `moonlight` themes are supported in the docs. If you need to tune colors, override their CSS variables in your own stylesheet.
 
 ### `defaultTheme`
 
@@ -142,101 +125,23 @@ Example usage with prefix:
 
 ## Theme Customization
 
-### Custom Theme Colors
+Override the built-in theme tokens in your own stylesheet when you need tweaks beyond the defaults:
 
-Create custom themes by extending or overriding the color palette:
+```css
+/* After importing @duskmoon-dev/core */
+[data-theme="sunshine"] {
+  --color-primary: oklch(95.86% 0.0693 95.91);
+  --color-primary-container: oklch(95% 0.035 95.91);
+}
 
-```javascript
-import { duskmoonui, type ThemeConfig } from '@duskmoon-dev/core';
-
-const customTheme: ThemeConfig = {
-  name: 'ocean',
-
-  // Primary colors (main brand color)
-  primary: '200 90% 50%',           // Ocean blue
-  'primary-focus': '200 90% 40%',
-  'primary-content': '0 0% 100%',
-  'primary-container': '200 90% 90%',
-  'on-primary-container': '200 90% 10%',
-
-  // Secondary colors (accent color)
-  secondary: '280 70% 55%',         // Purple
-  'secondary-focus': '280 70% 45%',
-  'secondary-content': '0 0% 100%',
-  'secondary-container': '280 70% 90%',
-  'on-secondary-container': '280 70% 10%',
-
-  // Tertiary colors (third brand color)
-  tertiary: '160 70% 45%',          // Teal
-  'tertiary-focus': '160 70% 35%',
-  'tertiary-content': '0 0% 100%',
-  'tertiary-container': '160 70% 90%',
-  'on-tertiary-container': '160 70% 10%',
-
-  // Surface colors
-  surface: '0 0% 100%',
-  'surface-dim': '0 0% 87%',
-  'surface-bright': '0 0% 100%',
-  'surface-container-lowest': '0 0% 100%',
-  'surface-container-low': '0 0% 96%',
-  'surface-container': '0 0% 94%',
-  'surface-container-high': '0 0% 92%',
-  'surface-container-highest': '0 0% 90%',
-  'on-surface': '0 0% 10%',
-  'on-surface-variant': '0 0% 30%',
-  'surface-variant': '200 20% 90%',
-
-  // Outline colors
-  outline: '0 0% 50%',
-  'outline-variant': '0 0% 80%',
-
-  // Semantic colors
-  info: '200 90% 50%',
-  'on-info': '0 0% 100%',
-  'info-container': '200 90% 90%',
-  'on-info-container': '200 90% 10%',
-
-  success: '140 70% 45%',
-  'on-success': '0 0% 100%',
-  'success-container': '140 70% 90%',
-  'on-success-container': '140 70% 10%',
-
-  warning: '40 95% 50%',
-  'on-warning': '0 0% 10%',
-  'warning-container': '40 95% 90%',
-  'on-warning-container': '40 95% 10%',
-
-  error: '0 80% 50%',
-  'on-error': '0 0% 100%',
-  'error-container': '0 80% 90%',
-  'on-error-container': '0 80% 10%',
-};
-
-module.exports = {
-  plugins: [
-    duskmoonui({
-      themes: ['sunshine', 'moonlight', customTheme],
-      defaultTheme: 'ocean',
-    }),
-  ],
+[data-theme="moonlight"] {
+  --color-primary: oklch(85.45% 0 0);
+  --color-primary-container: oklch(25% 0.01 0);
 }
 ```
 
-### HSL Color Format
+See the theme reference page for the full token list.
 
-All colors use the HSL format without the `hsl()` wrapper:
-
-```javascript
-{
-  primary: '200 90% 50%'  // hue saturation% lightness%
-}
-```
-
-This format allows Tailwind to apply opacity utilities:
-
-```html
-<div class="bg-primary bg-opacity-50">  <!-- 50% opacity -->
-```
 
 ## Component Customization
 
@@ -283,18 +188,8 @@ module.exports = {
   ],
   plugins: [
     duskmoonui({
-      // Use built-in and custom themes
-      themes: [
-        'sunshine',
-        'moonlight',
-        {
-          name: 'brand',
-          primary: '220 90% 50%',
-          secondary: '280 70% 55%',
-          tertiary: '160 70% 45%',
-          // ... other tokens
-        }
-      ],
+      // Use built-in themes
+      themes: ['sunshine', 'moonlight'],
 
       // Default theme
       defaultTheme: 'sunshine',
@@ -317,7 +212,7 @@ module.exports = {
 @duskmoon-dev/core includes full TypeScript definitions:
 
 ```typescript
-import { duskmoonui, type ThemeConfig, type DuskMoonUIOptions } from '@duskmoon-dev/core';
+import { duskmoonui, type DuskMoonUIOptions } from '@duskmoon-dev/core';
 
 const options: Partial<DuskMoonUIOptions> = {
   themes: ['sunshine', 'moonlight'],
