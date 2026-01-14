@@ -49,6 +49,7 @@ Apply theme via `data-theme` attribute on HTML element:
 - `input` - Text inputs: `input-primary`, `input-secondary`, `input-error`
 - `textarea` - Multi-line text: `textarea-primary`, `textarea-resize-none`, `textarea-resize-vertical`
 - `select` - Dropdown selection: `select-primary`, `select-filled`, `select-outlined`
+- `cascader` - Hierarchical selection: `cascader`, `cascader-panel`, `cascader-menu`
 - `checkbox` - Checkboxes: `checkbox-primary`, `checkbox-indeterminate`, `checkbox-group`
 - `radio` - Radio buttons: `radio-primary`, `radio-group`, `radio-group-horizontal`
 - `switch` - Toggle switches: `switch-primary`, `switch-secondary`
@@ -94,6 +95,12 @@ Apply theme via `data-theme` attribute on HTML element:
 ### Layout
 - `divider` - Separators: `divider-dashed`, `divider-vertical`
 - `appbar` - Action bars: `appbar-top`, `appbar-bottom`
+- `grid-cols-auto-fill-*` - Responsive grid with auto-fill: `grid-cols-auto-fill-48`, `grid-cols-auto-fill-64`
+- `grid-cols-auto-fit-*` - Responsive grid with auto-fit: `grid-cols-auto-fit-48`, `grid-cols-auto-fit-64`
+
+### Utilities
+- `sr-only` - Screen reader only (visually hidden but accessible)
+- `not-sr-only` - Undo sr-only for focus states
 
 ### Surfaces
 - `accordion` - Expandable panels: `accordion-item-open`
@@ -177,6 +184,23 @@ Apply theme via `data-theme` attribute on HTML element:
       <button class="btn btn-filled">Confirm</button>
     </div>
   </div>
+</div>
+```
+
+### Responsive Grid
+
+```html
+<!-- Auto-fill: Fixed column size, empty space on right -->
+<div class="grid grid-cols-auto-fill-48 gap-4">
+  <div class="card">Item 1</div>
+  <div class="card">Item 2</div>
+  <div class="card">Item 3</div>
+</div>
+
+<!-- Auto-fit: Columns stretch to fill container -->
+<div class="grid grid-cols-auto-fit-64 gap-4">
+  <div class="card">Item 1</div>
+  <div class="card">Item 2</div>
 </div>
 ```
 
@@ -278,6 +302,7 @@ All components available for individual import:
 | `@duskmoon-dev/core/components/bottomsheet` | Bottom Sheet |
 | `@duskmoon-dev/core/components/button` | Button |
 | `@duskmoon-dev/core/components/card` | Card |
+| `@duskmoon-dev/core/components/cascader` | Cascader |
 | `@duskmoon-dev/core/components/checkbox` | Checkbox |
 | `@duskmoon-dev/core/components/chip` | Chip |
 | `@duskmoon-dev/core/components/collapse` | Collapse |

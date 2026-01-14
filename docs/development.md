@@ -31,19 +31,43 @@ This modular approach allows duskmoon-elements to bundle only the CSS needed for
 
 ## Component Overview
 
-DuskMoonUI includes **46 components** organized by category.
+DuskMoonUI includes **47 components** and **layout utilities** organized by category.
 
 ### Included Components
 
 | Category | Components |
 |----------|------------|
 | **Actions** | Button, File Upload |
-| **Data Display** | Avatar, Badge, Card, Chip, Collapse, List, Table, Timeline |
-| **Data Entry** | Autocomplete, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Time Input, Tree Select |
-| **Feedback** | Alert, Dialog, Modal, Progress, Skeleton, Snackbar, Toast, Tooltip |
-| **Layout** | App Bar, Divider, Form, Markdown Body |
+| **Data Display** | Avatar, Badge, Card, Chip, Collapse, List, Table, Timeline, Skeleton |
+| **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Time Input, Tree Select |
+| **Feedback** | Alert, Dialog, Modal, Progress, Snackbar, Toast, Tooltip |
+| **Layout** | App Bar, Divider, Form, Grid Utilities, Markdown Body |
 | **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Pagination, Stepper |
 | **Surfaces** | Accordion, Bottom Sheet, Popover |
+
+### Layout Utilities
+
+Grid utilities for responsive layouts:
+
+```html
+<!-- Auto-fill: Creates as many columns as fit, empty space remains -->
+<div class="grid grid-cols-auto-fill-48 gap-4">...</div>
+
+<!-- Auto-fit: Creates columns that stretch to fill space -->
+<div class="grid grid-cols-auto-fit-64 gap-4">...</div>
+```
+
+Available sizes: `48` (12rem), `64` (16rem), `80` (20rem), `96` (24rem)
+
+### Accessibility Utilities
+
+```html
+<!-- Screen reader only (visually hidden) -->
+<span class="sr-only">Hidden label</span>
+
+<!-- Undo sr-only for focus states -->
+<a class="sr-only focus:not-sr-only">Skip to content</a>
+```
 
 ### Component Files
 
@@ -59,6 +83,8 @@ packages/core/src/components/
 ├── bottomsheet.css     # Mobile bottom panels
 ├── button.css          # Clickable buttons (filled, outlined, text, tonal)
 ├── card.css            # Content container with elevation
+├── cascader.css        # Hierarchical cascading selection
+├── checkbox.css        # Multi-selection checkboxes
 ├── chip.css            # Compact elements for tags/filters
 ├── collapse.css        # Expandable/collapsible content
 ├── datepicker.css      # Calendar date selection
@@ -67,58 +93,47 @@ packages/core/src/components/
 ├── drawer.css          # Side navigation panel
 ├── file-upload.css     # Drag-and-drop file uploader
 ├── form.css            # Form layout utilities
+├── form-group.css      # Form field grouping with labels
 ├── input.css           # Text input fields
 ├── list.css            # Vertical list of items
 ├── markdown-body.css   # Markdown content styling
 ├── modal.css           # Full-featured modal overlays
+├── multi-select.css    # Multiple selection dropdown
 ├── navigation.css      # Navbar, tabs, menu components
+├── otp-input.css       # One-time password input fields
+├── pin-input.css       # PIN entry input fields
 ├── popover.css         # Contextual overlays
 ├── progress.css        # Linear and circular indicators
+├── radio.css           # Single selection radio buttons
 ├── rating.css          # Star/heart rating input
+├── segment-control.css # Segmented button group
+├── select.css          # Dropdown selection menus
 ├── skeleton.css        # Loading placeholders
 ├── slider.css          # Range value selector
 ├── snackbar.css        # Toast notifications
 ├── stepper.css         # Multi-step process guide
 ├── switch.css          # Toggle on/off control
 ├── table.css           # Data tables
+├── textarea.css        # Multi-line text input
+├── time-input.css      # Time selection input
 ├── timeline.css        # Chronological event display
 ├── toast.css           # Toast notification system
-└── tooltip.css         # Contextual information on hover
+├── tooltip.css         # Contextual information on hover
+└── tree-select.css     # Hierarchical tree selection
 ```
 
 ---
 
-## Missing Components
+## Potential Future Components
 
-The following Material Design 3 components are not yet implemented:
+The following Material Design 3 components could be added:
 
 | Component | Description | Priority |
 |-----------|-------------|----------|
-| **Checkbox** | Multi-selection checkboxes | High |
-| **Radio** | Single selection radio buttons | High |
-| **Select** | Dropdown selection menus | High |
-| **Textarea** | Multi-line text input | High |
-| **Breadcrumbs** | Hierarchical navigation | Medium |
 | **FAB** | Floating Action Button | Medium |
-| **Segmented Button** | Toggle button group | Medium |
 | **Search Bar** | Dedicated search input | Low |
 | **Navigation Rail** | Compact side navigation | Low |
-| **Time Picker** | Time selection component | Low |
-
-### TypeScript-only Components
-
-These components have TypeScript exports but no dedicated CSS file:
-
-- `checkbox.ts` - Needs `checkbox.css`
-- `radio.ts` - Needs `radio.css`
-- `select.ts` - Needs `select.css`
-- `textarea.ts` - Needs `textarea.css`
-- `breadcrumbs.ts` - Needs `breadcrumbs.css`
-- `menu.ts` - Partially in `navigation.css`
-- `navbar.ts` - In `navigation.css`
-- `pagination.ts` - Needs `pagination.css`
-- `tabs.ts` - In `navigation.css`
-- `toggle.ts` - Needs `toggle.css`
+| **Speed Dial** | Expandable FAB with actions | Low |
 
 ---
 
@@ -379,11 +394,12 @@ duskmoonui/
 │   └── core/                   # @duskmoon-dev/core
 │       ├── src/
 │       │   ├── base/           # Root styles, color tokens
-│       │   │   └── colors.css  # 65+ color token definitions
+│       │   │   ├── colors.css  # 65+ color token definitions
+│       │   │   └── utilities.css # Grid and accessibility utilities
 │       │   ├── themes/         # Theme definitions
-│       │   │   ├── sunshine.ts # Light theme
-│       │   │   └── moonlight.ts# Dark theme
-│       │   ├── components/     # Component CSS files
+│       │   │   ├── sunshine.css # Light theme
+│       │   │   └── moonlight.css# Dark theme
+│       │   ├── components/     # 47 component CSS files
 │       │   ├── generators/     # CSS variable generation
 │       │   └── types/          # TypeScript definitions
 │       ├── scripts/

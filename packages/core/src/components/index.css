@@ -40,6 +40,7 @@
  * ============================================ */
 
 @import "./autocomplete.css";
+@import "./cascader.css";
 @import "./checkbox.css";
 @import "./datepicker.css";
 @import "./file-upload.css";

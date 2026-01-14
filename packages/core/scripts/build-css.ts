@@ -115,6 +115,7 @@ const componentFiles = [
   'bottomsheet',
   'button',
   'card',
+  'cascader',
   'checkbox',
   'chip',
   'collapse',
