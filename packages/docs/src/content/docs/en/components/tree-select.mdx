@@ -88,19 +88,19 @@ Tree Select is a hierarchical dropdown component that allows users to select fro
 ## With Selection
 
 <ComponentShowcase title="Tree Select with Selection" code={`<div class="tree-select">
-  <button class="tree-select-trigger" popovertarget="tree-select-3">
+  <div class="tree-select-trigger" role="combobox" aria-expanded="false" tabindex="0">
     <span class="tree-select-value tree-select-value-selected">
       <span class="tree-select-path">Electronics / Smartphones</span>
     </span>
-    <button class="tree-select-clear" aria-label="Clear selection">
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button type="button" class="tree-select-clear" aria-label="Clear selection">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
     <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
-  </button>
+  </div>
   <div class="tree-select-dropdown" id="tree-select-3" popover="auto">
     <div class="tree-select-options">
       <div class="tree-select-node tree-select-node-expanded">
@@ -380,6 +380,27 @@ Tree Select is a hierarchical dropdown component that allows users to select fro
       </div>
     </div>
   </div>
+</div>
+```
+
+### With Clear Button (Clearable)
+
+When using a clear button, use a `div` with `role="combobox"` instead of a nested button:
+
+```html
+<div class="tree-select">
+  <div class="tree-select-trigger" role="combobox" aria-expanded="false" tabindex="0">
+    <span class="tree-select-value tree-select-value-selected">
+      <span class="tree-select-path">Selected Item</span>
+    </span>
+    <button type="button" class="tree-select-clear" aria-label="Clear selection">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <svg class="tree-select-arrow">...</svg>
+  </div>
+  <div class="tree-select-dropdown" id="dropdown-id" popover="auto">...</div>
 </div>
 ```
 

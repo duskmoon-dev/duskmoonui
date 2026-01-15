@@ -39,10 +39,22 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
-  .tree-select-trigger:disabled {
+  .tree-select-trigger:disabled,
+  .tree-select-trigger[aria-disabled="true"] {
     cursor: not-allowed;
     opacity: 0.5;
     background-color: var(--color-surface-container);
+  }
+
+  /* Support for div-based trigger (when using clear button) */
+  div.tree-select-trigger {
+    user-select: none;
+  }
+
+  div.tree-select-trigger:focus-visible {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
   /* Value Display */
@@ -105,6 +117,11 @@
     background-color: var(--color-surface-container-high);
   }
 
+  .tree-select-clear svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
   /* Tree Select Dropdown */
   .tree-select-dropdown {
     position: absolute;
@@ -127,9 +144,10 @@
     display: block;
   }
 
-  /* Popover API Support - Browser handles visibility, JS handles positioning */
+  /* Popover API Support */
   .tree-select-dropdown[popover] {
-    /* Reset browser defaults - positioning handled by JavaScript */
+    /* Reset browser defaults for proper positioning */
+    position: absolute;
     inset: unset;
     margin: 0;
     border: 1px solid var(--color-outline-variant);
@@ -137,6 +155,21 @@
 
   .tree-select-dropdown[popover]:popover-open {
     display: block;
+  }
+
+  /* CSS Anchor Positioning for modern browsers */
+  @supports (anchor-name: --tree-select) {
+    .tree-select {
+      anchor-name: --tree-select;
+    }
+
+    .tree-select-dropdown[popover] {
+      position-anchor: --tree-select;
+      top: anchor(bottom);
+      left: anchor(left);
+      right: anchor(right);
+      position-try-fallbacks: flip-block;
+    }
   }
 
   /* Search Input in Dropdown */
