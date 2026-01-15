@@ -14,6 +14,12 @@
     padding: 0 1rem;
     background-color: var(--color-surface);
     color: var(--color-on-surface);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* Static App Bar (default) */
+  .appbar-static {
+    position: static;
   }
 
   /* Fixed App Bar */
@@ -32,19 +38,47 @@
     z-index: 1000;
   }
 
-  /* App Bar with Shadow */
+  /* Top App Bar (default) */
+  .appbar-top {
+    top: 0;
+  }
+
+  /* Bottom App Bar */
+  .appbar-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    z-index: 1000;
+  }
+
+  /* App Bar with Shadow (elevated) */
   .appbar-elevated {
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* Flat App Bar (no shadow) */
+  .appbar-flat {
+    box-shadow: none;
   }
 
   /* App Bar with Border */
   .appbar-bordered {
     border-bottom: 1px solid var(--color-outline-variant);
+    box-shadow: none;
   }
 
   /* Transparent App Bar */
   .appbar-transparent {
     background-color: transparent;
+    box-shadow: none;
+  }
+
+  /* Backdrop Blur */
+  .appbar-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   /* App Bar Navigation Icon */
@@ -167,6 +201,114 @@
     font-size: 1.5rem;
   }
 
+  /* Compact Size */
+  .appbar-compact {
+    min-height: 3rem;
+    padding: 0 0.75rem;
+  }
+
+  .appbar-compact .appbar-title,
+  .appbar-compact .appbar-heading {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .appbar-compact .appbar-nav,
+  .appbar-compact .appbar-action,
+  .appbar-compact .appbar-back {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Comfortable Size */
+  .appbar-comfortable {
+    min-height: 5rem;
+    padding: 0 1.5rem;
+  }
+
+  .appbar-comfortable .appbar-title,
+  .appbar-comfortable .appbar-heading {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  /* Section Classes */
+  .appbar-leading {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .appbar-trailing {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  /* Heading Text */
+  .appbar-heading {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.75rem;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Back Button */
+  .appbar-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-on-surface);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .appbar-back:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .appbar-back:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Search Input (direct on element) */
+  .appbar .appbar-search,
+  input.appbar-search {
+    flex: 1;
+    max-width: 32rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface-container);
+    border: none;
+    border-radius: 9999px;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .appbar .appbar-search:focus,
+  input.appbar-search:focus {
+    outline: none;
+    background-color: var(--color-surface-container-high);
+  }
+
+  .appbar .appbar-search::placeholder,
+  input.appbar-search::placeholder {
+    color: var(--color-on-surface-variant);
+  }
+
   /* Color Variants */
   .appbar-primary {
     background-color: var(--color-primary);
@@ -205,8 +347,51 @@
     color: var(--color-on-secondary-container);
   }
 
+  .appbar-secondary .appbar-subtitle {
+    color: var(--color-on-secondary);
+    opacity: 0.8;
+  }
+
+  .appbar-tertiary {
+    background-color: var(--color-tertiary);
+    color: var(--color-on-tertiary);
+  }
+
+  .appbar-tertiary .appbar-nav,
+  .appbar-tertiary .appbar-action {
+    color: var(--color-on-tertiary);
+  }
+
+  .appbar-tertiary .appbar-nav:hover,
+  .appbar-tertiary .appbar-action:hover {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+  }
+
+  .appbar-tertiary .appbar-subtitle {
+    color: var(--color-on-tertiary);
+    opacity: 0.8;
+  }
+
+  /* Surface Variants */
   .appbar-surface {
+    background-color: var(--color-surface);
+  }
+
+  .appbar-surface-container {
     background-color: var(--color-surface-container);
+  }
+
+  .appbar-surface-container-low {
+    background-color: var(--color-surface-container-low);
+  }
+
+  .appbar-surface-container-high {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .appbar-surface-container-highest {
+    background-color: var(--color-surface-container-highest);
   }
 
   /* Center Title */

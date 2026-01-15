@@ -47,19 +47,43 @@ App bars display information and actions related to the current screen. @duskmoo
 
 ### Fixed
 
-<ComponentShowcase title="Fixed App Bar" code={`<header class="appbar appbar-fixed">
+Add `appbar-fixed` to create a fixed app bar that stays at the top of the viewport.
+
+<ComponentShowcase title="Fixed App Bar (demo without positioning)" code={`<!-- In production: add appbar-fixed class -->
+<header class="appbar">
   <div class="appbar-title">
     <h1 class="appbar-heading">Fixed App Bar</h1>
   </div>
 </header>`} />
 
+```html
+<!-- Usage in production -->
+<header class="appbar appbar-fixed">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Fixed App Bar</h1>
+  </div>
+</header>
+```
+
 ### Sticky
 
-<ComponentShowcase title="Sticky App Bar" code={`<header class="appbar appbar-sticky">
+Add `appbar-sticky` to create a sticky app bar that becomes fixed when scrolling.
+
+<ComponentShowcase title="Sticky App Bar (demo without positioning)" code={`<!-- In production: add appbar-sticky class -->
+<header class="appbar">
   <div class="appbar-title">
     <h1 class="appbar-heading">Sticky App Bar</h1>
   </div>
 </header>`} />
+
+```html
+<!-- Usage in production -->
+<header class="appbar appbar-sticky">
+  <div class="appbar-title">
+    <h1 class="appbar-heading">Sticky App Bar</h1>
+  </div>
+</header>
+```
 
 ## Surface Variants
 
@@ -197,7 +221,10 @@ App bars display information and actions related to the current screen. @duskmoo
 
 ## Bottom App Bar
 
-<ComponentShowcase title="Bottom App Bar" code={`<footer class="appbar appbar-bottom">
+Bottom app bars display navigation and key actions at the bottom of the screen. In production, `appbar-bottom` uses fixed positioning.
+
+<ComponentShowcase title="Bottom App Bar (demo without positioning)" code={`<!-- In production: appbar-bottom uses position: fixed -->
+<footer class="appbar">
   <div class="appbar-leading">
     <button class="appbar-action" aria-label="Menu">☰</button>
   </div>
@@ -207,6 +234,20 @@ App bars display information and actions related to the current screen. @duskmoo
     <button class="appbar-action" aria-label="More">⋮</button>
   </div>
 </footer>`} />
+
+```html
+<!-- Usage in production -->
+<footer class="appbar appbar-bottom">
+  <div class="appbar-leading">
+    <button class="appbar-action" aria-label="Menu">☰</button>
+  </div>
+  <div class="appbar-trailing">
+    <button class="appbar-action" aria-label="Search">🔍</button>
+    <button class="appbar-action" aria-label="Favorite">❤️</button>
+    <button class="appbar-action" aria-label="More">⋮</button>
+  </div>
+</footer>
+```
 
 ## Styles
 
