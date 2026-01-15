@@ -119,25 +119,23 @@ Add helpful information below the textarea:
 
 Display character count with optional maximum limit:
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Character Counter" code={`<div class="textarea-container">
   <label class="textarea-label" for="bio">Bio</label>
   <textarea id="bio" class="textarea" maxlength="200" placeholder="Tell us about yourself..."></textarea>
-  <div class="textarea-counter">
-    <span id="char-count">0</span> / 200
-  </div>
-</div>
+  <div class="textarea-counter">0 / 200</div>
+</div>`} />
 
-<script>
-  const bioTextarea = document.getElementById('bio');
-  const charCount = document.getElementById('char-count');
+**JavaScript for live counting:**
 
-  bioTextarea.addEventListener('input', () => {
-    const count = bioTextarea.value.length;
-    charCount.textContent = count;
-    charCount.parentElement.classList.toggle('textarea-counter-exceeded', count > 200);
-  });
-</script>
+```js
+const bioTextarea = document.getElementById('bio');
+const charCount = document.querySelector('.textarea-counter');
+
+bioTextarea.addEventListener('input', () => {
+  const count = bioTextarea.value.length;
+  charCount.textContent = `${count} / 200`;
+  charCount.classList.toggle('textarea-counter-exceeded', count > 200);
+});
 ```
 
 ## Validation States
@@ -202,8 +200,7 @@ Ensure textarea spans the full container width:
 
 ### Feedback Form with Character Limit
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Feedback Form" code={`<div class="textarea-container">
   <label class="textarea-label" for="feedback">Feedback</label>
   <textarea
     id="feedback"
@@ -213,48 +210,47 @@ Ensure textarea spans the full container width:
   ></textarea>
   <div class="flex justify-between items-center mt-1">
     <span class="textarea-helper">Your opinion matters to us</span>
-    <div class="textarea-counter">
-      <span id="feedback-count">0</span> / 500
-    </div>
+    <div class="textarea-counter">0 / 500</div>
   </div>
-</div>
+</div>`} />
 
-<script>
-  const feedbackTextarea = document.getElementById('feedback');
-  const feedbackCount = document.getElementById('feedback-count');
+**JavaScript for live counting:**
 
-  feedbackTextarea.addEventListener('input', () => {
-    const count = feedbackTextarea.value.length;
-    feedbackCount.textContent = count;
-    feedbackCount.parentElement.classList.toggle('textarea-counter-exceeded', count > 500);
-  });
-</script>
+```js
+const feedbackTextarea = document.getElementById('feedback');
+const feedbackCount = document.querySelector('.textarea-counter');
+
+feedbackTextarea.addEventListener('input', () => {
+  const count = feedbackTextarea.value.length;
+  feedbackCount.textContent = `${count} / 500`;
+  feedbackCount.classList.toggle('textarea-counter-exceeded', count > 500);
+});
 ```
 
 ### Auto-Resize Comment Box
 
-```html
-<div class="textarea-container">
+<ComponentShowcase title="Auto-Resize Comment Box" code={`<div class="textarea-container">
   <label class="textarea-label" for="comment">Add a comment</label>
   <textarea
     id="comment"
-    class="textarea textarea-auto-resize textarea-resize-none"
+    class="textarea textarea-auto-resize"
     placeholder="Write a comment..."
-    rows="3"
+    rows="2"
   ></textarea>
-</div>
+</div>`} />
 
-<script>
-  const commentBox = document.getElementById('comment');
+**Note:** Modern browsers support `field-sizing: content` for native auto-grow. For older browsers, use JavaScript:
 
-  function autoResize() {
-    commentBox.style.height = 'auto';
-    commentBox.style.height = commentBox.scrollHeight + 'px';
-  }
+```js
+const commentBox = document.getElementById('comment');
 
-  commentBox.addEventListener('input', autoResize);
-  autoResize();
-</script>
+function autoResize() {
+  commentBox.style.height = 'auto';
+  commentBox.style.height = commentBox.scrollHeight + 'px';
+}
+
+commentBox.addEventListener('input', autoResize);
+autoResize();
 ```
 
 ## Best Practices
