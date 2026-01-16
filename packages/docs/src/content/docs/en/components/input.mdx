@@ -394,8 +394,8 @@ Dropdown selection:
 Always provide labels for inputs:
 
 <ComponentShowcase title="Input Labels" code={`<!-- Good -->
-<label class="input-label" for="email">Email</label>
-<input type="email" id="email" class="input" />
+<label class="input-label" for="email-label-example">Email</label>
+<input type="email" id="email-label-example" class="input" />
 
 <!-- Also good: Using aria-label for icon inputs -->
 <input type="search" class="input" aria-label="Search" placeholder="Search..." />`} />
@@ -405,8 +405,8 @@ Always provide labels for inputs:
 Use helper text for additional guidance:
 
 <ComponentShowcase title="Helper Text" code={`<div class="input-group">
-  <label class="input-label" for="username">Username</label>
-  <input type="text" id="username" class="input input-outlined" />
+  <label class="input-label" for="username-helper-example">Username</label>
+  <input type="text" id="username-helper-example" class="input input-outlined" />
   <span class="input-helper">Must be 3-20 characters, letters and numbers only</span>
 </div>`} />
 
@@ -415,15 +415,15 @@ Use helper text for additional guidance:
 Provide clear error messages:
 
 <ComponentShowcase title="Error Handling" code={`<div class="input-group">
-  <label class="input-label" for="password">Password</label>
+  <label class="input-label" for="password-error-example">Password</label>
   <input
     type="password"
-    id="password"
+    id="password-error-example"
     class="input input-outlined input-error"
     aria-invalid="true"
-    aria-describedby="password-error"
+    aria-describedby="password-error-msg"
   />
-  <span id="password-error" class="input-error-message" role="alert">
+  <span id="password-error-msg" class="input-error-message" role="alert">
     Password must be at least 8 characters
   </span>
 </div>`} />
