@@ -1,0 +1,322 @@
+---
+title: Grid
+description: Layout utilities and patterns for building responsive grid layouts with Tailwind CSS
+category: components
+order: 33
+published: true
+tags: ['grid', 'layout', 'components', 'responsive']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Grid
+
+DuskMoonUI works seamlessly with Tailwind CSS v4's grid utilities to create responsive layouts. This page demonstrates common grid patterns for use with DuskMoonUI components.
+
+## Basic Grid
+
+Use `grid` with `grid-cols-*` utilities to create basic grid layouts:
+
+<ComponentShowcase title="Basic Grid" code={`<div class="grid grid-cols-3 gap-4">
+  <div class="bg-surface-container p-4 rounded-lg">Column 1</div>
+  <div class="bg-surface-container p-4 rounded-lg">Column 2</div>
+  <div class="bg-surface-container p-4 rounded-lg">Column 3</div>
+</div>`} />
+
+## Responsive Grid
+
+Use responsive prefixes to create layouts that adapt to screen size:
+
+<ComponentShowcase title="Responsive Grid" code={`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="bg-surface-container p-4 rounded-lg">Item 1</div>
+  <div class="bg-surface-container p-4 rounded-lg">Item 2</div>
+  <div class="bg-surface-container p-4 rounded-lg">Item 3</div>
+  <div class="bg-surface-container p-4 rounded-lg">Item 4</div>
+</div>`} />
+
+## Grid Gap
+
+Control spacing between grid items:
+
+<ComponentShowcase title="Grid Gap" code={`<div class="grid grid-cols-3 gap-2">
+  <div class="bg-surface-container p-4 rounded-lg">Gap 2</div>
+  <div class="bg-surface-container p-4 rounded-lg">Gap 2</div>
+  <div class="bg-surface-container p-4 rounded-lg">Gap 2</div>
+</div>
+
+<div class="grid grid-cols-3 gap-4 mt-4">
+  <div class="bg-surface-container p-4 rounded-lg">Gap 4</div>
+  <div class="bg-surface-container p-4 rounded-lg">Gap 4</div>
+  <div class="bg-surface-container p-4 rounded-lg">Gap 4</div>
+</div>
+
+<div class="grid grid-cols-3 gap-6 mt-4">
+  <div class="bg-surface-container p-4 rounded-lg">Gap 6</div>
+  <div class="bg-surface-container p-4 rounded-lg">Gap 6</div>
+  <div class="bg-surface-container p-4 rounded-lg">Gap 6</div>
+</div>`} />
+
+## Column Span
+
+Use `col-span-*` to make items span multiple columns:
+
+<ComponentShowcase title="Column Span" code={`<div class="grid grid-cols-4 gap-4">
+  <div class="col-span-2 bg-surface-container p-4 rounded-lg">Span 2</div>
+  <div class="bg-surface-container p-4 rounded-lg">1</div>
+  <div class="bg-surface-container p-4 rounded-lg">1</div>
+  <div class="bg-surface-container p-4 rounded-lg">1</div>
+  <div class="col-span-3 bg-surface-container p-4 rounded-lg">Span 3</div>
+</div>`} />
+
+## Row Span
+
+Use `row-span-*` to make items span multiple rows:
+
+<ComponentShowcase title="Row Span" code={`<div class="grid grid-cols-3 grid-rows-3 gap-4">
+  <div class="row-span-2 bg-surface-container p-4 rounded-lg">Span 2 rows</div>
+  <div class="bg-surface-container p-4 rounded-lg">1</div>
+  <div class="bg-surface-container p-4 rounded-lg">1</div>
+  <div class="bg-surface-container p-4 rounded-lg">1</div>
+  <div class="row-span-2 bg-surface-container p-4 rounded-lg">Span 2 rows</div>
+  <div class="bg-surface-container p-4 rounded-lg">1</div>
+</div>`} />
+
+## Auto-fit Grid
+
+Use `auto-fit` for flexible grids that automatically adjust columns:
+
+<ComponentShowcase title="Auto-fit Grid" code={`<div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+  <div class="bg-surface-container p-4 rounded-lg">Auto Item</div>
+  <div class="bg-surface-container p-4 rounded-lg">Auto Item</div>
+  <div class="bg-surface-container p-4 rounded-lg">Auto Item</div>
+  <div class="bg-surface-container p-4 rounded-lg">Auto Item</div>
+  <div class="bg-surface-container p-4 rounded-lg">Auto Item</div>
+</div>`} />
+
+## Grid with Cards
+
+Common pattern for card layouts:
+
+<ComponentShowcase title="Card Grid" code={`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Card 1</h3>
+      <p>Card content goes here.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Card 2</h3>
+      <p>Card content goes here.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Card 3</h3>
+      <p>Card content goes here.</p>
+    </div>
+  </div>
+</div>`} />
+
+## Dashboard Layout
+
+Complex grid layout for dashboards:
+
+<ComponentShowcase title="Dashboard Layout" code={`<div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+  <!-- Main content spanning 3 columns -->
+  <div class="lg:col-span-3 card">
+    <div class="card-header">
+      <h3 class="card-title">Main Content</h3>
+    </div>
+    <div class="card-body">
+      <p>Primary dashboard content area.</p>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Sidebar</h3>
+    </div>
+    <div class="card-body">
+      <p>Sidebar content.</p>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="text-3xl font-bold text-primary">128</p>
+        <p class="text-sm text-on-surface-variant">Users</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="text-3xl font-bold text-success">95%</p>
+        <p class="text-sm text-on-surface-variant">Uptime</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="text-3xl font-bold text-warning">42</p>
+        <p class="text-sm text-on-surface-variant">Pending</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="text-3xl font-bold text-error">3</p>
+        <p class="text-sm text-on-surface-variant">Issues</p>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+## Masonry-like Layout
+
+Create a masonry-like effect with varying heights:
+
+<ComponentShowcase title="Masonry Layout" code={`<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+  <div class="card">
+    <div class="card-body">Short content</div>
+  </div>
+  <div class="card row-span-2">
+    <div class="card-body">
+      <p>Taller content that spans two rows.</p>
+      <p class="mt-4">Additional content here.</p>
+      <p class="mt-4">Even more content.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">Short content</div>
+  </div>
+  <div class="card">
+    <div class="card-body">Short content</div>
+  </div>
+  <div class="card">
+    <div class="card-body">Short content</div>
+  </div>
+</div>`} />
+
+## Form Grid
+
+Use grid for form layouts:
+
+<ComponentShowcase title="Form Grid" code={`<form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="input-group">
+    <label class="input-label" for="grid-first-name">First Name</label>
+    <input type="text" id="grid-first-name" class="input input-outlined" placeholder="John" />
+  </div>
+
+  <div class="input-group">
+    <label class="input-label" for="grid-last-name">Last Name</label>
+    <input type="text" id="grid-last-name" class="input input-outlined" placeholder="Doe" />
+  </div>
+
+  <div class="input-group md:col-span-2">
+    <label class="input-label" for="grid-email">Email</label>
+    <input type="email" id="grid-email" class="input input-outlined" placeholder="john@example.com" />
+  </div>
+
+  <div class="input-group md:col-span-2">
+    <label class="input-label" for="grid-address">Address</label>
+    <input type="text" id="grid-address" class="input input-outlined" placeholder="123 Main St" />
+  </div>
+
+  <div class="input-group">
+    <label class="input-label" for="grid-city">City</label>
+    <input type="text" id="grid-city" class="input input-outlined" placeholder="New York" />
+  </div>
+
+  <div class="input-group">
+    <label class="input-label" for="grid-zip">ZIP Code</label>
+    <input type="text" id="grid-zip" class="input input-outlined" placeholder="10001" />
+  </div>
+
+  <div class="md:col-span-2">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>`} />
+
+## Best Practices
+
+### Responsive Design
+
+Always consider mobile-first design:
+
+```html
+<!-- Start with single column, expand on larger screens -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <!-- items -->
+</div>
+```
+
+### Consistent Spacing
+
+Use the same gap values throughout your layout for visual consistency:
+
+- `gap-2` for compact layouts
+- `gap-4` for standard spacing
+- `gap-6` or `gap-8` for more spacious layouts
+
+### Alignment
+
+Use alignment utilities for content positioning:
+
+<ComponentShowcase title="Grid Alignment" code={`<div class="grid grid-cols-3 gap-4 h-48">
+  <div class="bg-surface-container p-4 rounded-lg self-start">Start</div>
+  <div class="bg-surface-container p-4 rounded-lg self-center">Center</div>
+  <div class="bg-surface-container p-4 rounded-lg self-end">End</div>
+</div>`} />
+
+### Accessibility
+
+- Use semantic HTML within grid items
+- Maintain logical reading order
+- Ensure proper heading hierarchy
+- Test with screen readers
+
+## API Reference
+
+### Grid Container
+
+| Class | Description |
+|-------|-------------|
+| `grid` | Enable CSS Grid layout |
+| `grid-cols-{n}` | Set number of columns (1-12) |
+| `grid-rows-{n}` | Set number of rows (1-6) |
+| `gap-{size}` | Set gap between items |
+| `gap-x-{size}` | Set horizontal gap |
+| `gap-y-{size}` | Set vertical gap |
+
+### Grid Items
+
+| Class | Description |
+|-------|-------------|
+| `col-span-{n}` | Span multiple columns |
+| `col-start-{n}` | Start at column n |
+| `col-end-{n}` | End at column n |
+| `row-span-{n}` | Span multiple rows |
+| `row-start-{n}` | Start at row n |
+| `row-end-{n}` | End at row n |
+
+### Alignment
+
+| Class | Description |
+|-------|-------------|
+| `justify-items-{value}` | Align items horizontally |
+| `items-{value}` | Align items vertically |
+| `place-items-{value}` | Shorthand for both |
+| `self-{value}` | Individual item alignment |
+
+## Related Components
+
+- [Card](/duskmoonui/docs/en/components/card/) - Container component for grid items
+- [Container](/duskmoonui/docs/en/components/container/) - Page-level container
+- [Divider](/duskmoonui/docs/en/components/divider/) - Visual separator
+
+## See Also
+
+- [CSS Grid Layout (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+- [Tailwind CSS Grid](https://tailwindcss.com/docs/grid-template-columns)
+- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
