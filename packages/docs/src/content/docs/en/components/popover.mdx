@@ -316,6 +316,105 @@ Here's a simple example of toggling popover visibility with JavaScript:
   });
 </script>`} />
 
+## Native HTML Popover API
+
+DuskMoonUI fully supports the modern [HTML Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API), which provides native browser support for showing and hiding popovers without custom JavaScript.
+
+### Basic Native Popover
+
+Use the `popover` attribute on the popover element and `popovertarget` on the trigger button:
+
+<ComponentShowcase title="Native Popover" code={`<button class="btn btn-primary" popovertarget="native-popover">
+  Open Native Popover
+</button>
+<div class="popover" id="native-popover" popover>
+  <div class="popover-body">
+    This popover uses the native HTML Popover API. Click outside or press Escape to close.
+  </div>
+</div>`} />
+
+### Native Popover with Rich Content
+
+<ComponentShowcase title="Native Popover with Header and Footer" code={`<button class="btn btn-primary" popovertarget="rich-native-popover">
+  Rich Content Popover
+</button>
+<div class="popover popover-lg" id="rich-native-popover" popover>
+  <div class="popover-header">
+    <h3 class="popover-title">Native Popover</h3>
+  </div>
+  <div class="popover-body">
+    This uses the browser's built-in popover functionality with smooth animations and automatic light-dismiss behavior.
+  </div>
+  <div class="popover-footer">
+    <button class="btn btn-text btn-sm" popovertarget="rich-native-popover" popovertargetaction="hide">Cancel</button>
+    <button class="btn btn-primary btn-sm">Confirm</button>
+  </div>
+</div>`} />
+
+### Native Popover Color Variants
+
+<ComponentShowcase title="Native Popover Colors" code={`<div class="flex gap-2 flex-wrap">
+  <button class="btn btn-primary" popovertarget="native-primary">Primary</button>
+  <div class="popover popover-primary" id="native-primary" popover>
+    <div class="popover-body">Primary themed native popover.</div>
+  </div>
+
+  <button class="btn btn-secondary" popovertarget="native-secondary">Secondary</button>
+  <div class="popover popover-secondary" id="native-secondary" popover>
+    <div class="popover-body">Secondary themed native popover.</div>
+  </div>
+
+  <button class="btn btn-tertiary" popovertarget="native-tertiary">Tertiary</button>
+  <div class="popover popover-tertiary" id="native-tertiary" popover>
+    <div class="popover-body">Tertiary themed native popover.</div>
+  </div>
+</div>`} />
+
+### Manual Mode Native Popover
+
+Use `popover="manual"` to prevent automatic light-dismiss (click outside to close):
+
+<ComponentShowcase title="Manual Native Popover" code={`<button class="btn btn-primary" popovertarget="manual-popover">
+  Open Manual Popover
+</button>
+<div class="popover" id="manual-popover" popover="manual">
+  <div class="popover-header">
+    <h3 class="popover-title">Manual Popover</h3>
+  </div>
+  <div class="popover-body">
+    This popover won't close when clicking outside. You must use the button to close it.
+  </div>
+  <div class="popover-footer">
+    <button class="btn btn-primary btn-sm" popovertarget="manual-popover" popovertargetaction="hide">
+      Close
+    </button>
+  </div>
+</div>`} />
+
+### Native Popover with Modal Backdrop
+
+Add `popover-modal` class for a more prominent backdrop:
+
+<ComponentShowcase title="Modal-style Native Popover" code={`<button class="btn btn-primary" popovertarget="modal-popover">
+  Open Modal Popover
+</button>
+<div class="popover popover-modal popover-lg" id="modal-popover" popover>
+  <div class="popover-header">
+    <h3 class="popover-title">Confirm Action</h3>
+  </div>
+  <div class="popover-body">
+    Are you sure you want to proceed? This action requires confirmation.
+  </div>
+  <div class="popover-footer">
+    <button class="btn btn-text btn-sm" popovertarget="modal-popover" popovertargetaction="hide">Cancel</button>
+    <button class="btn btn-primary btn-sm">Confirm</button>
+  </div>
+</div>`} />
+
+### Browser Support
+
+The HTML Popover API is supported in all modern browsers (Chrome 114+, Firefox 125+, Safari 17+). For older browsers, use the class-based approach with JavaScript shown above.
+
 ## Best Practices
 
 ### Positioning
@@ -527,19 +626,32 @@ onUnmounted(() => {
 | Class | Description |
 |-------|-------------|
 | `.popover` | Base popover styles (required) |
-| `.popover-show` | Makes the popover visible |
+| `.popover-show` | Makes the popover visible (class-based approach) |
 | `.popover-top` | Position popover above trigger |
 | `.popover-bottom` | Position popover below trigger |
 | `.popover-left` | Position popover to the left of trigger |
 | `.popover-right` | Position popover to the right of trigger |
 | `.popover-sm` | Small size variant |
 | `.popover-lg` | Large size variant |
+| `.popover-dark` | Dark color theme |
 | `.popover-primary` | Primary color theme |
 | `.popover-secondary` | Secondary color theme |
 | `.popover-tertiary` | Tertiary color theme |
 | `.popover-surface-highest` | Highest surface elevation |
 | `.popover-no-arrow` | Hide the arrow indicator |
 | `.popover-interactive` | For popovers with interactive content |
+| `.popover-modal` | Adds a prominent backdrop (native API only) |
+
+### Native Popover API Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `popover` | Makes element a popover with auto light-dismiss |
+| `popover="manual"` | Popover without light-dismiss (requires explicit close) |
+| `popovertarget="id"` | Links trigger button to popover by ID |
+| `popovertargetaction="show"` | Button shows the popover |
+| `popovertargetaction="hide"` | Button hides the popover |
+| `popovertargetaction="toggle"` | Button toggles popover (default) |
 
 ### Structure Classes
 

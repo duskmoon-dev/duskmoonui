@@ -132,12 +132,78 @@ Five sizes are available:
 
 ### Indeterminate
 
-The indeterminate state is set via JavaScript:
+The indeterminate (mixed) state represents a partially selected state, commonly used in "select all" scenarios. Set it via JavaScript:
 
-<ComponentShowcase title="Indeterminate Checkbox" code={`<input type="checkbox" class="checkbox" id="indeterminate-demo" />
+<ComponentShowcase title="Indeterminate Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox" id="indeterminate-demo" />
+  <span>Indeterminate state</span>
+</label>
 
 <script>
   document.getElementById('indeterminate-demo').indeterminate = true;
+</script>`} />
+
+### Indeterminate Color Variants
+
+All color variants support the indeterminate state:
+
+<ComponentShowcase title="Indeterminate Colors" code={`<div class="flex flex-wrap gap-4">
+  <input type="checkbox" class="checkbox checkbox-primary" id="ind-primary" />
+  <input type="checkbox" class="checkbox checkbox-secondary" id="ind-secondary" />
+  <input type="checkbox" class="checkbox checkbox-tertiary" id="ind-tertiary" />
+  <input type="checkbox" class="checkbox checkbox-success" id="ind-success" />
+  <input type="checkbox" class="checkbox checkbox-warning" id="ind-warning" />
+  <input type="checkbox" class="checkbox checkbox-error" id="ind-error" />
+  <input type="checkbox" class="checkbox checkbox-info" id="ind-info" />
+</div>
+
+<script>
+  ['ind-primary', 'ind-secondary', 'ind-tertiary', 'ind-success', 'ind-warning', 'ind-error', 'ind-info']
+    .forEach(id => document.getElementById(id).indeterminate = true);
+</script>`} />
+
+### Select All Pattern
+
+A common use case for the indeterminate state is "select all" checkboxes:
+
+<ComponentShowcase title="Select All Example" code={`<div class="checkbox-group">
+  <label class="checkbox-label font-medium">
+    <input type="checkbox" class="checkbox" id="select-all" />
+    <span>Select All</span>
+  </label>
+
+  <div class="ml-6 checkbox-group">
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox item-checkbox" checked />
+      <span>Item 1</span>
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox item-checkbox" checked />
+      <span>Item 2</span>
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox item-checkbox" />
+      <span>Item 3</span>
+    </label>
+  </div>
+</div>
+
+<script>
+  const selectAll = document.getElementById('select-all');
+  const items = document.querySelectorAll('.item-checkbox');
+
+  function updateSelectAll() {
+    const checkedCount = document.querySelectorAll('.item-checkbox:checked').length;
+    selectAll.checked = checkedCount === items.length;
+    selectAll.indeterminate = checkedCount > 0 && checkedCount < items.length;
+  }
+
+  selectAll.addEventListener('change', () => {
+    items.forEach(item => item.checked = selectAll.checked);
+  });
+
+  items.forEach(item => item.addEventListener('change', updateSelectAll));
+  updateSelectAll();
 </script>`} />
 
 ### Disabled

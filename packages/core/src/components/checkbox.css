@@ -68,7 +68,8 @@
     border-color: var(--color-on-surface);
   }
 
-  .checkbox:checked:hover:not(:disabled) {
+  .checkbox:checked:hover:not(:disabled),
+  .checkbox:indeterminate:hover:not(:disabled) {
     background-color: color-mix(in oklch, var(--checkbox-color), black 10%);
     border-color: color-mix(in oklch, var(--checkbox-color), black 10%);
   }
