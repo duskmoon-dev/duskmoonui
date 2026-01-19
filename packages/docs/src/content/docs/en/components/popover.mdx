@@ -12,67 +12,61 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 Popovers display rich contextual content in an overlay positioned relative to a trigger element. They're useful for displaying additional information, actions, or interactive content without navigating away from the current context.
 
+> **Recommended**: Use the [Native HTML Popover API](#native-html-popover-api) for modern browsers. It provides built-in accessibility, light-dismiss behavior, and requires no JavaScript.
+
 ## Basic Usage
 
-<ComponentShowcase title="Basic Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary" id="trigger">Show Popover</button>
-  <div class="popover popover-bottom popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      This is a basic popover with some informational content.
-    </div>
+<ComponentShowcase title="Basic Popover" code={`<button class="btn btn-primary" popovertarget="basic-popover">Show Popover</button>
+<div class="popover" id="basic-popover" popover>
+  <div class="popover-body">
+    This is a basic popover with some informational content.
   </div>
 </div>`} />
 
 ## Positions
 
-Popovers can be positioned in four directions relative to the trigger element.
+Native HTML popovers render in the top layer and are centered by default. For custom positioning relative to the trigger, use CSS anchor positioning or a positioning library like [Floating UI](https://floating-ui.com/).
 
-### Top Position
+The position classes below work with the class-based approach for legacy browser support:
 
-<ComponentShowcase title="Top Position" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Top Popover</button>
+### Position Classes (Class-based approach)
+
+<ComponentShowcase title="Position Classes" code={`<!-- These classes work with the class-based approach -->
+<!-- For native popovers, use CSS anchor positioning or JavaScript -->
+
+<!-- Top position -->
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-outlined btn-sm">Top</button>
   <div class="popover popover-top popover-show">
     <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Popover positioned above the trigger element.
-    </div>
+    <div class="popover-body">Top position</div>
   </div>
-</div>`} />
+</div>
 
-### Bottom Position
-
-<ComponentShowcase title="Bottom Position" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Bottom Popover</button>
+<!-- Bottom position -->
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-outlined btn-sm">Bottom</button>
   <div class="popover popover-bottom popover-show">
     <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Popover positioned below the trigger element.
-    </div>
+    <div class="popover-body">Bottom position</div>
   </div>
-</div>`} />
+</div>
 
-### Left Position
-
-<ComponentShowcase title="Left Position" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Left Popover</button>
+<!-- Left position -->
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-outlined btn-sm">Left</button>
   <div class="popover popover-left popover-show">
     <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Popover positioned to the left of the trigger element.
-    </div>
+    <div class="popover-body">Left position</div>
   </div>
-</div>`} />
+</div>
 
-### Right Position
-
-<ComponentShowcase title="Right Position" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Right Popover</button>
+<!-- Right position -->
+<div style="position: relative; display: inline-block;">
+  <button class="btn btn-outlined btn-sm">Right</button>
   <div class="popover popover-right popover-show">
     <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Popover positioned to the right of the trigger element.
-    </div>
+    <div class="popover-body">Right position</div>
   </div>
 </div>`} />
 
@@ -82,89 +76,80 @@ Control the size of popovers with size modifier classes.
 
 ### Small Popover
 
-<ComponentShowcase title="Small Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Small Popover</button>
-  <div class="popover popover-bottom popover-sm popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Compact popover for brief messages.
-    </div>
+<ComponentShowcase title="Small Popover" code={`<button class="btn btn-primary" popovertarget="small-popover">Small Popover</button>
+<div class="popover popover-sm" id="small-popover" popover>
+  <div class="popover-body">
+    Compact popover for brief messages.
   </div>
 </div>`} />
 
 ### Default Popover
 
-<ComponentShowcase title="Default Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Default Popover</button>
-  <div class="popover popover-bottom popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Standard popover with balanced size for most use cases.
-    </div>
+<ComponentShowcase title="Default Popover" code={`<button class="btn btn-primary" popovertarget="default-popover">Default Popover</button>
+<div class="popover" id="default-popover" popover>
+  <div class="popover-body">
+    Standard popover with balanced size for most use cases.
   </div>
 </div>`} />
 
 ### Large Popover
 
-<ComponentShowcase title="Large Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Large Popover</button>
-  <div class="popover popover-bottom popover-lg popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Spacious popover for more detailed content or multiple elements.
-    </div>
+<ComponentShowcase title="Large Popover" code={`<button class="btn btn-primary" popovertarget="large-popover">Large Popover</button>
+<div class="popover popover-lg" id="large-popover" popover>
+  <div class="popover-body">
+    Spacious popover for more detailed content or multiple elements.
   </div>
 </div>`} />
 
 ## Color Variants
 
-Apply theme colors to popovers for different contexts.
+Apply theme colors to popovers for different contexts. The color intensity can be customized using the `--popover-color-intensity` CSS variable:
+
+```css
+/* Adjust globally */
+:root {
+  --popover-color-intensity: 40%; /* bolder colors (default: 30%) */
+}
+
+/* Or per-theme for dark mode */
+[data-theme="moonlight"] {
+  --popover-color-intensity: 35%;
+}
+```
 
 ### Primary Popover
 
-<ComponentShowcase title="Primary Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Primary Popover</button>
-  <div class="popover popover-bottom popover-primary popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Primary themed popover for emphasis.
-    </div>
+<ComponentShowcase title="Primary Popover" code={`<button class="btn btn-primary" popovertarget="demo-primary">Primary Popover</button>
+<div class="popover popover-primary" id="demo-primary" popover>
+  <div class="popover-body">
+    Primary themed popover for emphasis.
   </div>
 </div>`} />
 
 ### Secondary Popover
 
-<ComponentShowcase title="Secondary Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-secondary">Secondary Popover</button>
-  <div class="popover popover-bottom popover-secondary popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Secondary themed popover.
-    </div>
+<ComponentShowcase title="Secondary Popover" code={`<button class="btn btn-secondary" popovertarget="demo-secondary">Secondary Popover</button>
+<div class="popover popover-secondary" id="demo-secondary" popover>
+  <div class="popover-body">
+    Secondary themed popover.
   </div>
 </div>`} />
 
 ### Tertiary Popover
 
-<ComponentShowcase title="Tertiary Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-tertiary">Tertiary Popover</button>
-  <div class="popover popover-bottom popover-tertiary popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Tertiary themed popover.
-    </div>
+<ComponentShowcase title="Tertiary Popover" code={`<button class="btn btn-tertiary" popovertarget="demo-tertiary">Tertiary Popover</button>
+<div class="popover popover-tertiary" id="demo-tertiary" popover>
+  <div class="popover-body">
+    Tertiary themed popover.
   </div>
 </div>`} />
 
 ### Surface Variant
 
-<ComponentShowcase title="Surface Variant" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-outlined">Surface Popover</button>
-  <div class="popover popover-bottom popover-surface-highest popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Popover with highest surface elevation.
-    </div>
+<ComponentShowcase title="Surface Variant" code={`<button class="btn btn-outlined" popovertarget="demo-surface">Surface Popover</button>
+<div class="popover popover-surface-highest" id="demo-surface" popover>
+  <div class="popover-body">
+    Popover with highest surface elevation.
   </div>
 </div>`} />
 
@@ -174,56 +159,47 @@ Popovers can contain headers, body content, and footers for complex layouts.
 
 ### With Header
 
-<ComponentShowcase title="Popover with Header" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Popover with Header</button>
-  <div class="popover popover-bottom popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-header">
-      <h3 class="popover-title">Popover Title</h3>
-    </div>
-    <div class="popover-body">
-      This popover includes a header section with a title.
-    </div>
+<ComponentShowcase title="Popover with Header" code={`<button class="btn btn-primary" popovertarget="header-popover">Popover with Header</button>
+<div class="popover" id="header-popover" popover>
+  <div class="popover-header">
+    <h3 class="popover-title">Popover Title</h3>
+  </div>
+  <div class="popover-body">
+    This popover includes a header section with a title.
   </div>
 </div>`} />
 
 ### With Footer
 
-<ComponentShowcase title="Popover with Footer" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Popover with Footer</button>
-  <div class="popover popover-bottom popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-body">
-      Content with action buttons in the footer.
-    </div>
-    <div class="popover-footer">
-      <button class="btn btn-text btn-sm">Cancel</button>
-      <button class="btn btn-primary btn-sm">Confirm</button>
-    </div>
+<ComponentShowcase title="Popover with Footer" code={`<button class="btn btn-primary" popovertarget="footer-popover">Popover with Footer</button>
+<div class="popover" id="footer-popover" popover>
+  <div class="popover-body">
+    Content with action buttons in the footer.
+  </div>
+  <div class="popover-footer">
+    <button class="btn btn-text btn-sm" popovertarget="footer-popover" popovertargetaction="hide">Cancel</button>
+    <button class="btn btn-primary btn-sm">Confirm</button>
   </div>
 </div>`} />
 
 ### Complete Example
 
-<ComponentShowcase title="Complete Popover Example" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Complete Popover</button>
-  <div class="popover popover-bottom popover-lg popover-show">
-    <div class="popover-arrow"></div>
-    <button class="popover-close" aria-label="Close popover">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-    <div class="popover-header">
-      <h3 class="popover-title">Notification Settings</h3>
-    </div>
-    <div class="popover-body">
-      <p>Choose how you want to receive notifications about activity in your workspace.</p>
-    </div>
-    <div class="popover-footer">
-      <button class="btn btn-text btn-sm">Cancel</button>
-      <button class="btn btn-primary btn-sm">Save Changes</button>
-    </div>
+<ComponentShowcase title="Complete Popover Example" code={`<button class="btn btn-primary" popovertarget="complete-popover">Complete Popover</button>
+<div class="popover popover-lg" id="complete-popover" popover>
+  <button class="popover-close" popovertarget="complete-popover" popovertargetaction="hide" aria-label="Close popover">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <div class="popover-header">
+    <h3 class="popover-title">Notification Settings</h3>
+  </div>
+  <div class="popover-body">
+    <p>Choose how you want to receive notifications about activity in your workspace.</p>
+  </div>
+  <div class="popover-footer">
+    <button class="btn btn-text btn-sm" popovertarget="complete-popover" popovertargetaction="hide">Cancel</button>
+    <button class="btn btn-primary btn-sm">Save Changes</button>
   </div>
 </div>`} />
 
@@ -233,46 +209,45 @@ Popovers can contain headers, body content, and footers for complex layouts.
 
 Remove the arrow indicator for a cleaner appearance:
 
-<ComponentShowcase title="No Arrow" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">No Arrow</button>
-  <div class="popover popover-bottom popover-no-arrow popover-show">
-    <div class="popover-body">
-      This popover has no arrow indicator.
-    </div>
+<ComponentShowcase title="No Arrow" code={`<button class="btn btn-primary" popovertarget="no-arrow-popover">No Arrow</button>
+<div class="popover popover-no-arrow" id="no-arrow-popover" popover>
+  <div class="popover-body">
+    This popover has no arrow indicator.
   </div>
 </div>`} />
 
 ## Interactive Content
 
-For popovers with interactive elements like forms or buttons:
+For popovers with interactive elements like forms or buttons, use `popover="manual"` to prevent auto-dismiss while interacting:
 
-<ComponentShowcase title="Interactive Popover" code={`<div style="position: relative; display: inline-block;">
-  <button class="btn btn-primary">Interactive Popover</button>
-  <div class="popover popover-bottom popover-interactive popover-show">
-    <div class="popover-arrow"></div>
-    <div class="popover-header">
-      <h3 class="popover-title">Quick Feedback</h3>
+<ComponentShowcase title="Interactive Popover" code={`<button class="btn btn-primary" popovertarget="interactive-popover">Interactive Popover</button>
+<div class="popover popover-interactive" id="interactive-popover" popover="manual">
+  <div class="popover-header">
+    <h3 class="popover-title">Quick Feedback</h3>
+  </div>
+  <div class="popover-body">
+    <label class="block text-sm mb-2">Your rating:</label>
+    <div class="flex gap-1 mb-3">
+      <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+      <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+      <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+      <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
+      <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
     </div>
-    <div class="popover-body">
-      <label class="block text-sm mb-2">Your rating:</label>
-      <div class="flex gap-1 mb-3">
-        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
-        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
-        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
-        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
-        <button class="btn btn-icon btn-icon-sm btn-text">⭐</button>
-      </div>
-    </div>
-    <div class="popover-footer">
-      <button class="btn btn-text btn-sm">Skip</button>
-      <button class="btn btn-primary btn-sm">Submit</button>
-    </div>
+  </div>
+  <div class="popover-footer">
+    <button class="btn btn-text btn-sm" popovertarget="interactive-popover" popovertargetaction="hide">Skip</button>
+    <button class="btn btn-primary btn-sm" popovertarget="interactive-popover" popovertargetaction="hide">Submit</button>
   </div>
 </div>`} />
 
-## Visibility Control
+## Class-based Approach (Legacy)
 
-Popovers are hidden by default. Add the `popover-show` class to display them:
+For older browsers that don't support the native Popover API, use the class-based approach:
+
+### Visibility Control
+
+Toggle the `popover-show` class to control visibility:
 
 <ComponentShowcase title="Visibility Control" code={`<!-- Hidden popover (default) -->
 <div class="popover popover-bottom">
@@ -286,9 +261,7 @@ Popovers are hidden by default. Add the `popover-show` class to display them:
   <div class="popover-body">This popover is visible</div>
 </div>`} />
 
-## JavaScript Integration
-
-Here's a simple example of toggling popover visibility with JavaScript:
+### JavaScript Toggle
 
 <ComponentShowcase title="JavaScript Integration" code={`<div style="position: relative; display: inline-block;">
   <button class="btn btn-primary" id="popover-trigger">Toggle Popover</button>
@@ -301,6 +274,7 @@ Here's a simple example of toggling popover visibility with JavaScript:
 </div>
 
 <script>
+(function() {
   const trigger = document.getElementById('popover-trigger');
   const popover = document.getElementById('my-popover');
 
@@ -314,6 +288,7 @@ Here's a simple example of toggling popover visibility with JavaScript:
       popover.classList.remove('popover-show');
     }
   });
+})();
 </script>`} />
 
 ## Native HTML Popover API
@@ -620,6 +595,12 @@ onUnmounted(() => {
 ```
 
 ## API Reference
+
+### CSS Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--popover-color-intensity` | `30%` | Controls how strongly theme colors appear in color variants (20% = subtle, 40% = bold) |
 
 ### Class Names
 
