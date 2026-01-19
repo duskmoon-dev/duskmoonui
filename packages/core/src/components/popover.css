@@ -277,6 +277,17 @@
   }
 
   /* Color Variants */
+  /*
+   * Color intensity for themed popovers.
+   * Override this variable to adjust how strongly colors appear:
+   * - 20% = subtle tint
+   * - 30% = moderate (default)
+   * - 40% = bold/prominent
+   */
+  .popover {
+    --popover-color-intensity: 30%;
+  }
+
   /* Dark variant */
   .popover-dark .popover-content {
     background-color: var(--color-on-surface);
@@ -309,7 +320,7 @@
 
   /* Primary variant */
   .popover-primary .popover-content {
-    background-color: var(--color-primary-container);
+    background-color: color-mix(in oklch, var(--color-primary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-primary);
   }
 
@@ -317,26 +328,26 @@
   .popover-primary[class*="popover-bottom"],
   .popover-primary[class*="popover-left"],
   .popover-primary[class*="popover-right"] {
-    background-color: var(--color-primary-container);
+    background-color: color-mix(in oklch, var(--color-primary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-primary);
   }
 
   .popover-primary .popover-arrow {
-    background-color: var(--color-primary-container);
+    background-color: color-mix(in oklch, var(--color-primary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-primary);
   }
 
   .popover-primary .popover-body {
-    color: var(--color-on-primary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-primary .popover-title {
-    color: var(--color-on-primary-container);
+    color: var(--color-on-surface);
   }
 
   /* Secondary variant */
   .popover-secondary .popover-content {
-    background-color: var(--color-secondary-container);
+    background-color: color-mix(in oklch, var(--color-secondary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-secondary);
   }
 
@@ -344,26 +355,26 @@
   .popover-secondary[class*="popover-bottom"],
   .popover-secondary[class*="popover-left"],
   .popover-secondary[class*="popover-right"] {
-    background-color: var(--color-secondary-container);
+    background-color: color-mix(in oklch, var(--color-secondary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-secondary);
   }
 
   .popover-secondary .popover-arrow {
-    background-color: var(--color-secondary-container);
+    background-color: color-mix(in oklch, var(--color-secondary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-secondary);
   }
 
   .popover-secondary .popover-body {
-    color: var(--color-on-secondary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-secondary .popover-title {
-    color: var(--color-on-secondary-container);
+    color: var(--color-on-surface);
   }
 
   /* Tertiary variant */
   .popover-tertiary .popover-content {
-    background-color: var(--color-tertiary-container);
+    background-color: color-mix(in oklch, var(--color-tertiary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-tertiary);
   }
 
@@ -371,21 +382,21 @@
   .popover-tertiary[class*="popover-bottom"],
   .popover-tertiary[class*="popover-left"],
   .popover-tertiary[class*="popover-right"] {
-    background-color: var(--color-tertiary-container);
+    background-color: color-mix(in oklch, var(--color-tertiary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-tertiary);
   }
 
   .popover-tertiary .popover-arrow {
-    background-color: var(--color-tertiary-container);
+    background-color: color-mix(in oklch, var(--color-tertiary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-tertiary);
   }
 
   .popover-tertiary .popover-body {
-    color: var(--color-on-tertiary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-tertiary .popover-title {
-    color: var(--color-on-tertiary-container);
+    color: var(--color-on-surface);
   }
 
   /* Surface highest variant */
@@ -552,42 +563,42 @@
 
   /* Native popover color variants */
   .popover-primary[popover] {
-    background-color: var(--color-primary-container);
+    background-color: color-mix(in oklch, var(--color-primary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-primary);
   }
 
   .popover-primary[popover] .popover-body {
-    color: var(--color-on-primary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-primary[popover] .popover-title {
-    color: var(--color-on-primary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-secondary[popover] {
-    background-color: var(--color-secondary-container);
+    background-color: color-mix(in oklch, var(--color-secondary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-secondary);
   }
 
   .popover-secondary[popover] .popover-body {
-    color: var(--color-on-secondary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-secondary[popover] .popover-title {
-    color: var(--color-on-secondary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-tertiary[popover] {
-    background-color: var(--color-tertiary-container);
+    background-color: color-mix(in oklch, var(--color-tertiary) var(--popover-color-intensity), var(--color-surface));
     border-color: var(--color-tertiary);
   }
 
   .popover-tertiary[popover] .popover-body {
-    color: var(--color-on-tertiary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-tertiary[popover] .popover-title {
-    color: var(--color-on-tertiary-container);
+    color: var(--color-on-surface);
   }
 
   .popover-dark[popover] {
