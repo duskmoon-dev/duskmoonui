@@ -639,6 +639,67 @@
     width: max-content;
   }
 
+  /* ========================================
+   * CSS Anchor Positioning
+   * Enables popovers to track their trigger element on scroll
+   * Usage: Add anchor-name CSS property to trigger, position-anchor to popover
+   * ======================================== */
+
+  /* Popover trigger anchor - use inline style or custom class to set anchor-name */
+  [popovertarget] {
+    /* Each trigger needs unique anchor-name, set via inline style:
+       style="anchor-name: --my-popover" */
+  }
+
+  /* Anchored popover positioning */
+  .popover[popover][style*="position-anchor"] {
+    position: absolute;
+    position-area: bottom;
+    margin-top: 0.5rem;
+  }
+
+  /* Position variants for anchored popovers */
+  .popover-top[popover][style*="position-anchor"] {
+    position-area: top;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .popover-bottom[popover][style*="position-anchor"] {
+    position-area: bottom;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .popover-left[popover][style*="position-anchor"] {
+    position-area: left;
+    margin-top: 0;
+    margin-right: 0.5rem;
+  }
+
+  .popover-right[popover][style*="position-anchor"] {
+    position-area: right;
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+
+  /* Anchored popover alignment variants */
+  .popover-start[popover][style*="position-anchor"] {
+    position-area: bottom start;
+  }
+
+  .popover-end[popover][style*="position-anchor"] {
+    position-area: bottom end;
+  }
+
+  .popover-top.popover-start[popover][style*="position-anchor"] {
+    position-area: top start;
+  }
+
+  .popover-top.popover-end[popover][style*="position-anchor"] {
+    position-area: top end;
+  }
+
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
     .popover-content,

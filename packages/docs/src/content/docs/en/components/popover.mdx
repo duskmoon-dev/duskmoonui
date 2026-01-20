@@ -16,16 +16,66 @@ Popovers display rich contextual content in an overlay positioned relative to a 
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Popover" code={`<button class="btn btn-primary" popovertarget="basic-popover">Show Popover</button>
-<div class="popover" id="basic-popover" popover>
+<ComponentShowcase title="Basic Popover" code={`<button class="btn btn-primary" style="anchor-name: --basic-anchor" popovertarget="basic-popover">Show Popover</button>
+<div class="popover" id="basic-popover" popover style="position-anchor: --basic-anchor">
   <div class="popover-body">
-    This is a basic popover with some informational content.
+    This is a basic popover with some informational content. It tracks the button on scroll!
   </div>
 </div>`} />
 
-## Positions
+## CSS Anchor Positioning
 
-Native HTML popovers render in the top layer and are centered by default. For custom positioning relative to the trigger, use CSS anchor positioning or a positioning library like [Floating UI](https://floating-ui.com/).
+Native HTML popovers render in the top layer and don't move with their trigger element by default. **CSS Anchor Positioning** solves this by linking the popover to its trigger:
+
+```html
+<!-- 1. Add anchor-name to the trigger -->
+<button style="anchor-name: --my-anchor" popovertarget="my-popover">Open</button>
+
+<!-- 2. Add position-anchor to the popover -->
+<div class="popover" id="my-popover" popover style="position-anchor: --my-anchor">
+  Content that tracks the button on scroll!
+</div>
+```
+
+### Anchored Positions
+
+Use position classes with anchor positioning for different placements:
+
+<ComponentShowcase title="Anchored Positions" code={`<div class="flex gap-4 flex-wrap">
+  <div>
+    <button class="btn btn-outlined btn-sm" style="anchor-name: --anchor-bottom" popovertarget="anchored-bottom">Bottom</button>
+    <div class="popover popover-bottom" id="anchored-bottom" popover style="position-anchor: --anchor-bottom">
+      <div class="popover-body">Anchored below</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="btn btn-outlined btn-sm" style="anchor-name: --anchor-top" popovertarget="anchored-top">Top</button>
+    <div class="popover popover-top" id="anchored-top" popover style="position-anchor: --anchor-top">
+      <div class="popover-body">Anchored above</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="btn btn-outlined btn-sm" style="anchor-name: --anchor-left" popovertarget="anchored-left">Left</button>
+    <div class="popover popover-left" id="anchored-left" popover style="position-anchor: --anchor-left">
+      <div class="popover-body">Anchored left</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="btn btn-outlined btn-sm" style="anchor-name: --anchor-right" popovertarget="anchored-right">Right</button>
+    <div class="popover popover-right" id="anchored-right" popover style="position-anchor: --anchor-right">
+      <div class="popover-body">Anchored right</div>
+    </div>
+  </div>
+</div>`} />
+
+### Browser Support
+
+CSS Anchor Positioning is supported in Chrome 125+, Edge 125+. For older browsers, popovers will still work but will be centered on screen instead of anchored to the trigger.
+
+## Legacy Positions (Class-based)
 
 The position classes below work with the class-based approach for legacy browser support:
 
@@ -76,8 +126,8 @@ Control the size of popovers with size modifier classes.
 
 ### Small Popover
 
-<ComponentShowcase title="Small Popover" code={`<button class="btn btn-primary" popovertarget="small-popover">Small Popover</button>
-<div class="popover popover-sm" id="small-popover" popover>
+<ComponentShowcase title="Small Popover" code={`<button class="btn btn-primary" style="anchor-name: --small-anchor" popovertarget="small-popover">Small Popover</button>
+<div class="popover popover-sm" id="small-popover" popover style="position-anchor: --small-anchor">
   <div class="popover-body">
     Compact popover for brief messages.
   </div>
@@ -85,8 +135,8 @@ Control the size of popovers with size modifier classes.
 
 ### Default Popover
 
-<ComponentShowcase title="Default Popover" code={`<button class="btn btn-primary" popovertarget="default-popover">Default Popover</button>
-<div class="popover" id="default-popover" popover>
+<ComponentShowcase title="Default Popover" code={`<button class="btn btn-primary" style="anchor-name: --default-anchor" popovertarget="default-popover">Default Popover</button>
+<div class="popover" id="default-popover" popover style="position-anchor: --default-anchor">
   <div class="popover-body">
     Standard popover with balanced size for most use cases.
   </div>
@@ -94,8 +144,8 @@ Control the size of popovers with size modifier classes.
 
 ### Large Popover
 
-<ComponentShowcase title="Large Popover" code={`<button class="btn btn-primary" popovertarget="large-popover">Large Popover</button>
-<div class="popover popover-lg" id="large-popover" popover>
+<ComponentShowcase title="Large Popover" code={`<button class="btn btn-primary" style="anchor-name: --large-anchor" popovertarget="large-popover">Large Popover</button>
+<div class="popover popover-lg" id="large-popover" popover style="position-anchor: --large-anchor">
   <div class="popover-body">
     Spacious popover for more detailed content or multiple elements.
   </div>
@@ -119,8 +169,8 @@ Apply theme colors to popovers for different contexts. The color intensity can b
 
 ### Primary Popover
 
-<ComponentShowcase title="Primary Popover" code={`<button class="btn btn-primary" popovertarget="demo-primary">Primary Popover</button>
-<div class="popover popover-primary" id="demo-primary" popover>
+<ComponentShowcase title="Primary Popover" code={`<button class="btn btn-primary" style="anchor-name: --primary-anchor" popovertarget="demo-primary">Primary Popover</button>
+<div class="popover popover-primary" id="demo-primary" popover style="position-anchor: --primary-anchor">
   <div class="popover-body">
     Primary themed popover for emphasis.
   </div>
@@ -128,8 +178,8 @@ Apply theme colors to popovers for different contexts. The color intensity can b
 
 ### Secondary Popover
 
-<ComponentShowcase title="Secondary Popover" code={`<button class="btn btn-secondary" popovertarget="demo-secondary">Secondary Popover</button>
-<div class="popover popover-secondary" id="demo-secondary" popover>
+<ComponentShowcase title="Secondary Popover" code={`<button class="btn btn-secondary" style="anchor-name: --secondary-anchor" popovertarget="demo-secondary">Secondary Popover</button>
+<div class="popover popover-secondary" id="demo-secondary" popover style="position-anchor: --secondary-anchor">
   <div class="popover-body">
     Secondary themed popover.
   </div>
@@ -137,8 +187,8 @@ Apply theme colors to popovers for different contexts. The color intensity can b
 
 ### Tertiary Popover
 
-<ComponentShowcase title="Tertiary Popover" code={`<button class="btn btn-tertiary" popovertarget="demo-tertiary">Tertiary Popover</button>
-<div class="popover popover-tertiary" id="demo-tertiary" popover>
+<ComponentShowcase title="Tertiary Popover" code={`<button class="btn btn-tertiary" style="anchor-name: --tertiary-anchor" popovertarget="demo-tertiary">Tertiary Popover</button>
+<div class="popover popover-tertiary" id="demo-tertiary" popover style="position-anchor: --tertiary-anchor">
   <div class="popover-body">
     Tertiary themed popover.
   </div>
@@ -146,8 +196,8 @@ Apply theme colors to popovers for different contexts. The color intensity can b
 
 ### Surface Variant
 
-<ComponentShowcase title="Surface Variant" code={`<button class="btn btn-outlined" popovertarget="demo-surface">Surface Popover</button>
-<div class="popover popover-surface-highest" id="demo-surface" popover>
+<ComponentShowcase title="Surface Variant" code={`<button class="btn btn-outlined" style="anchor-name: --surface-anchor" popovertarget="demo-surface">Surface Popover</button>
+<div class="popover popover-surface-highest" id="demo-surface" popover style="position-anchor: --surface-anchor">
   <div class="popover-body">
     Popover with highest surface elevation.
   </div>
@@ -159,8 +209,8 @@ Popovers can contain headers, body content, and footers for complex layouts.
 
 ### With Header
 
-<ComponentShowcase title="Popover with Header" code={`<button class="btn btn-primary" popovertarget="header-popover">Popover with Header</button>
-<div class="popover" id="header-popover" popover>
+<ComponentShowcase title="Popover with Header" code={`<button class="btn btn-primary" style="anchor-name: --header-anchor" popovertarget="header-popover">Popover with Header</button>
+<div class="popover" id="header-popover" popover style="position-anchor: --header-anchor">
   <div class="popover-header">
     <h3 class="popover-title">Popover Title</h3>
   </div>
@@ -171,8 +221,8 @@ Popovers can contain headers, body content, and footers for complex layouts.
 
 ### With Footer
 
-<ComponentShowcase title="Popover with Footer" code={`<button class="btn btn-primary" popovertarget="footer-popover">Popover with Footer</button>
-<div class="popover" id="footer-popover" popover>
+<ComponentShowcase title="Popover with Footer" code={`<button class="btn btn-primary" style="anchor-name: --footer-anchor" popovertarget="footer-popover">Popover with Footer</button>
+<div class="popover" id="footer-popover" popover style="position-anchor: --footer-anchor">
   <div class="popover-body">
     Content with action buttons in the footer.
   </div>
@@ -184,8 +234,8 @@ Popovers can contain headers, body content, and footers for complex layouts.
 
 ### Complete Example
 
-<ComponentShowcase title="Complete Popover Example" code={`<button class="btn btn-primary" popovertarget="complete-popover">Complete Popover</button>
-<div class="popover popover-lg" id="complete-popover" popover>
+<ComponentShowcase title="Complete Popover Example" code={`<button class="btn btn-primary" style="anchor-name: --complete-anchor" popovertarget="complete-popover">Complete Popover</button>
+<div class="popover popover-lg" id="complete-popover" popover style="position-anchor: --complete-anchor">
   <button class="popover-close" popovertarget="complete-popover" popovertargetaction="hide" aria-label="Close popover">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -209,8 +259,8 @@ Popovers can contain headers, body content, and footers for complex layouts.
 
 Remove the arrow indicator for a cleaner appearance:
 
-<ComponentShowcase title="No Arrow" code={`<button class="btn btn-primary" popovertarget="no-arrow-popover">No Arrow</button>
-<div class="popover popover-no-arrow" id="no-arrow-popover" popover>
+<ComponentShowcase title="No Arrow" code={`<button class="btn btn-primary" style="anchor-name: --no-arrow-anchor" popovertarget="no-arrow-popover">No Arrow</button>
+<div class="popover popover-no-arrow" id="no-arrow-popover" popover style="position-anchor: --no-arrow-anchor">
   <div class="popover-body">
     This popover has no arrow indicator.
   </div>
@@ -220,8 +270,8 @@ Remove the arrow indicator for a cleaner appearance:
 
 For popovers with interactive elements like forms or buttons, use `popover="manual"` to prevent auto-dismiss while interacting:
 
-<ComponentShowcase title="Interactive Popover" code={`<button class="btn btn-primary" popovertarget="interactive-popover">Interactive Popover</button>
-<div class="popover popover-interactive" id="interactive-popover" popover="manual">
+<ComponentShowcase title="Interactive Popover" code={`<button class="btn btn-primary" style="anchor-name: --interactive-anchor" popovertarget="interactive-popover">Interactive Popover</button>
+<div class="popover popover-interactive" id="interactive-popover" popover="manual" style="position-anchor: --interactive-anchor">
   <div class="popover-header">
     <h3 class="popover-title">Quick Feedback</h3>
   </div>
@@ -297,12 +347,12 @@ DuskMoonUI fully supports the modern [HTML Popover API](https://developer.mozill
 
 ### Basic Native Popover
 
-Use the `popover` attribute on the popover element and `popovertarget` on the trigger button:
+Use the `popover` attribute on the popover element and `popovertarget` on the trigger button. Add `anchor-name` and `position-anchor` for scroll tracking:
 
-<ComponentShowcase title="Native Popover" code={`<button class="btn btn-primary" popovertarget="native-popover">
+<ComponentShowcase title="Native Popover" code={`<button class="btn btn-primary" style="anchor-name: --native-anchor" popovertarget="native-popover">
   Open Native Popover
 </button>
-<div class="popover" id="native-popover" popover>
+<div class="popover" id="native-popover" popover style="position-anchor: --native-anchor">
   <div class="popover-body">
     This popover uses the native HTML Popover API. Click outside or press Escape to close.
   </div>
@@ -310,10 +360,10 @@ Use the `popover` attribute on the popover element and `popovertarget` on the tr
 
 ### Native Popover with Rich Content
 
-<ComponentShowcase title="Native Popover with Header and Footer" code={`<button class="btn btn-primary" popovertarget="rich-native-popover">
+<ComponentShowcase title="Native Popover with Header and Footer" code={`<button class="btn btn-primary" style="anchor-name: --rich-anchor" popovertarget="rich-native-popover">
   Rich Content Popover
 </button>
-<div class="popover popover-lg" id="rich-native-popover" popover>
+<div class="popover popover-lg" id="rich-native-popover" popover style="position-anchor: --rich-anchor">
   <div class="popover-header">
     <h3 class="popover-title">Native Popover</h3>
   </div>
@@ -329,18 +379,18 @@ Use the `popover` attribute on the popover element and `popovertarget` on the tr
 ### Native Popover Color Variants
 
 <ComponentShowcase title="Native Popover Colors" code={`<div class="flex gap-2 flex-wrap">
-  <button class="btn btn-primary" popovertarget="native-primary">Primary</button>
-  <div class="popover popover-primary" id="native-primary" popover>
+  <button class="btn btn-primary" style="anchor-name: --native-primary-anchor" popovertarget="native-primary">Primary</button>
+  <div class="popover popover-primary" id="native-primary" popover style="position-anchor: --native-primary-anchor">
     <div class="popover-body">Primary themed native popover.</div>
   </div>
 
-  <button class="btn btn-secondary" popovertarget="native-secondary">Secondary</button>
-  <div class="popover popover-secondary" id="native-secondary" popover>
+  <button class="btn btn-secondary" style="anchor-name: --native-secondary-anchor" popovertarget="native-secondary">Secondary</button>
+  <div class="popover popover-secondary" id="native-secondary" popover style="position-anchor: --native-secondary-anchor">
     <div class="popover-body">Secondary themed native popover.</div>
   </div>
 
-  <button class="btn btn-tertiary" popovertarget="native-tertiary">Tertiary</button>
-  <div class="popover popover-tertiary" id="native-tertiary" popover>
+  <button class="btn btn-tertiary" style="anchor-name: --native-tertiary-anchor" popovertarget="native-tertiary">Tertiary</button>
+  <div class="popover popover-tertiary" id="native-tertiary" popover style="position-anchor: --native-tertiary-anchor">
     <div class="popover-body">Tertiary themed native popover.</div>
   </div>
 </div>`} />
@@ -349,10 +399,10 @@ Use the `popover` attribute on the popover element and `popovertarget` on the tr
 
 Use `popover="manual"` to prevent automatic light-dismiss (click outside to close):
 
-<ComponentShowcase title="Manual Native Popover" code={`<button class="btn btn-primary" popovertarget="manual-popover">
+<ComponentShowcase title="Manual Native Popover" code={`<button class="btn btn-primary" style="anchor-name: --manual-anchor" popovertarget="manual-popover">
   Open Manual Popover
 </button>
-<div class="popover" id="manual-popover" popover="manual">
+<div class="popover" id="manual-popover" popover="manual" style="position-anchor: --manual-anchor">
   <div class="popover-header">
     <h3 class="popover-title">Manual Popover</h3>
   </div>
@@ -370,10 +420,10 @@ Use `popover="manual"` to prevent automatic light-dismiss (click outside to clos
 
 Add `popover-modal` class for a more prominent backdrop:
 
-<ComponentShowcase title="Modal-style Native Popover" code={`<button class="btn btn-primary" popovertarget="modal-popover">
+<ComponentShowcase title="Modal-style Native Popover" code={`<button class="btn btn-primary" style="anchor-name: --modal-anchor" popovertarget="modal-popover">
   Open Modal Popover
 </button>
-<div class="popover popover-modal popover-lg" id="modal-popover" popover>
+<div class="popover popover-modal popover-lg" id="modal-popover" popover style="position-anchor: --modal-anchor">
   <div class="popover-header">
     <h3 class="popover-title">Confirm Action</h3>
   </div>
@@ -633,6 +683,15 @@ onUnmounted(() => {
 | `popovertargetaction="show"` | Button shows the popover |
 | `popovertargetaction="hide"` | Button hides the popover |
 | `popovertargetaction="toggle"` | Button toggles popover (default) |
+
+### CSS Anchor Positioning (Inline Styles)
+
+| Property | Example | Description |
+|----------|---------|-------------|
+| `anchor-name` | `style="anchor-name: --my-anchor"` | Names the trigger as an anchor point |
+| `position-anchor` | `style="position-anchor: --my-anchor"` | Links popover to its anchor for scroll tracking |
+
+**Note:** CSS Anchor Positioning requires Chrome 125+ or Edge 125+. In unsupported browsers, popovers will fall back to centered positioning.
 
 ### Structure Classes
 
