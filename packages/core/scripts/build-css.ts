@@ -208,6 +208,47 @@ async function copyComponents(): Promise<void> {
   console.log(`✓ Built ${componentFiles.length} ESM component modules`);
 }
 
+async function buildPlugin(): Promise<void> {
+  console.log('Building Tailwind plugin...');
+
+  const distEsmDir = join(DIST_DIR, 'esm');
+  const distCjsDir = join(DIST_DIR, 'cjs');
+
+  await ensureDir(distEsmDir);
+  await ensureDir(distCjsDir);
+
+  // Build ESM version using Bun
+  const esmResult = await Bun.build({
+    entrypoints: [join(SRC_DIR, 'tailwind-plugin.ts')],
+    outdir: distEsmDir,
+    format: 'esm',
+    target: 'node',
+    external: ['tailwindcss', 'tailwindcss/plugin'],
+  });
+
+  if (!esmResult.success) {
+    console.error('ESM build failed:', esmResult.logs);
+    throw new Error('ESM plugin build failed');
+  }
+  console.log('✓ Built esm/tailwind-plugin.js');
+
+  // Build CJS version
+  const cjsResult = await Bun.build({
+    entrypoints: [join(SRC_DIR, 'tailwind-plugin.ts')],
+    outdir: distCjsDir,
+    format: 'cjs',
+    target: 'node',
+    external: ['tailwindcss', 'tailwindcss/plugin'],
+    naming: '[name].cjs',
+  });
+
+  if (!cjsResult.success) {
+    console.error('CJS build failed:', cjsResult.logs);
+    throw new Error('CJS plugin build failed');
+  }
+  console.log('✓ Built cjs/tailwind-plugin.cjs');
+}
+
 async function main(): Promise<void> {
   console.log('Building @duskmoon-dev/core CSS...\n');
 
@@ -215,6 +256,7 @@ async function main(): Promise<void> {
     await buildMainCss();
     await copyThemes();
     await copyComponents();
+    await buildPlugin();
 
     // Calculate bundle size
     const indexCss = await readFile(join(DIST_DIR, 'index.css'), 'utf-8');

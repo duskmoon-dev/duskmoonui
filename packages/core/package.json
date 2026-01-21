@@ -4,12 +4,17 @@
   "description": "DuskMoonUI - Tailwind CSS v4 plugin with Material Design 3 color system and component styles",
   "type": "module",
   "main": "./dist/index.css",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/types/types/index.d.ts",
   "exports": {
     ".": {
       "default": "./dist/index.css",
       "style": "./dist/index.css",
-      "types": "./dist/types/index.d.ts"
+      "types": "./dist/types/types/index.d.ts"
+    },
+    "./plugin": {
+      "import": "./dist/esm/tailwind-plugin.js",
+      "require": "./dist/cjs/tailwind-plugin.cjs",
+      "types": "./dist/types/tailwind-plugin.d.ts"
     },
     "./themes/sunshine": {
       "style": "./dist/themes/sunshine.css"
