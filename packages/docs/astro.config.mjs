@@ -30,6 +30,7 @@ export default defineConfig({
         light: "github-light",
         dark: "github-dark",
       },
+      defaultColor: false, // Use CSS variables for theme switching
       wrap: true,
     },
   },

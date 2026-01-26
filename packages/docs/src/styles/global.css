@@ -73,6 +73,61 @@
     background: none;
     padding: 0;
   }
+
+  /* Shiki dual themes - switch based on data-theme attribute */
+  /* Light theme (sunshine) - use light syntax highlighting */
+  :root, [data-theme="sunshine"] {
+    --shiki-color-text: #24292e;
+    --shiki-color-background: transparent;
+    --shiki-token-constant: #005cc5;
+    --shiki-token-string: #032f62;
+    --shiki-token-comment: #6a737d;
+    --shiki-token-keyword: #d73a49;
+    --shiki-token-parameter: #24292e;
+    --shiki-token-function: #6f42c1;
+    --shiki-token-string-expression: #032f62;
+    --shiki-token-punctuation: #24292e;
+    --shiki-token-link: #032f62;
+  }
+
+  /* Dark theme (moonlight) - use dark syntax highlighting */
+  [data-theme="moonlight"] {
+    --shiki-color-text: #e1e4e8;
+    --shiki-color-background: transparent;
+    --shiki-token-constant: #79b8ff;
+    --shiki-token-string: #9ecbff;
+    --shiki-token-comment: #6a737d;
+    --shiki-token-keyword: #f97583;
+    --shiki-token-parameter: #e1e4e8;
+    --shiki-token-function: #b392f0;
+    --shiki-token-string-expression: #9ecbff;
+    --shiki-token-punctuation: #e1e4e8;
+    --shiki-token-link: #9ecbff;
+  }
+
+  /* Apply Shiki theme colors to code blocks */
+  .shiki,
+  .shiki span {
+    color: var(--shiki-light, inherit) !important;
+    background-color: var(--shiki-light-bg, transparent) !important;
+  }
+
+  [data-theme="moonlight"] .shiki,
+  [data-theme="moonlight"] .shiki span {
+    color: var(--shiki-dark, inherit) !important;
+    background-color: var(--shiki-dark-bg, transparent) !important;
+  }
+
+  /* Code block background colors */
+  [data-theme="sunshine"] pre.shiki,
+  [data-theme="sunshine"] pre:has(.shiki) {
+    background-color: #f6f8fa !important;
+  }
+
+  [data-theme="moonlight"] pre.shiki,
+  [data-theme="moonlight"] pre:has(.shiki) {
+    background-color: #161b22 !important;
+  }
 }
 
 /* Utility classes */
