@@ -41,7 +41,7 @@ Native HTML popovers render in the top layer and don't move with their trigger e
 
 Use position classes with anchor positioning for different placements:
 
-<ComponentShowcase title="Anchored Positions" code={`<div class="flex gap-4 flex-wrap">
+<ComponentShowcase title="Anchored Positions" code={`<div class="flex gap-4 flex-wrap" style="overflow: hidden; position: relative;">
   <div>
     <button class="btn btn-outlined btn-sm" style="anchor-name: --anchor-bottom" popovertarget="anchored-bottom">Bottom</button>
     <div class="popover popover-bottom" id="anchored-bottom" popover style="position-anchor: --anchor-bottom">
@@ -83,6 +83,7 @@ The position classes below work with the class-based approach for legacy browser
 
 <ComponentShowcase title="Position Classes" code={`<!-- These classes work with the class-based approach -->
 <!-- For native popovers, use CSS anchor positioning or JavaScript -->
+<div style="overflow: hidden; position: relative; padding: 4rem 1rem;">
 
 <!-- Top position -->
 <div style="position: relative; display: inline-block;">
@@ -118,6 +119,8 @@ The position classes below work with the class-based approach for legacy browser
     <div class="popover-arrow"></div>
     <div class="popover-body">Right position</div>
   </div>
+</div>
+
 </div>`} />
 
 ## Size Variants
@@ -706,7 +709,9 @@ onUnmounted(() => {
 
 ### Combinations
 
-<ComponentShowcase title="Class Combinations" code={`<!-- Large primary popover on top with no arrow -->
+<ComponentShowcase title="Class Combinations" code={`<div style="overflow: hidden; position: relative; padding: 4rem 1rem;">
+
+<!-- Large primary popover on top with no arrow -->
 <div class="popover popover-top popover-lg popover-primary popover-no-arrow popover-show">
   <div class="popover-body">Combined modifiers</div>
 </div>
@@ -715,6 +720,8 @@ onUnmounted(() => {
 <div class="popover popover-right popover-sm popover-interactive popover-show">
   <div class="popover-arrow"></div>
   <div class="popover-body">Interactive content</div>
+</div>
+
 </div>`} />
 
 ## Related Components
