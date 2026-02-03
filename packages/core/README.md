@@ -33,13 +33,25 @@ pnpm add @duskmoon-dev/core tailwindcss@^4.0.0
 
 ## Quick Start
 
-### 1. Import the plugin in your CSS
+### 1. Add DuskMoonUI to your CSS
+
+#### Option A: CSS `@import` (recommended)
 
 ```css
 /* src/styles.css */
 @import "tailwindcss";
 @import "@duskmoon-dev/core";
 ```
+
+#### Option B: Tailwind `@plugin` directive
+
+```css
+/* src/styles.css */
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
+```
+
+The `@plugin` approach registers Material Design 3 color tokens directly into Tailwind's theme, enabling utility classes like `bg-primary`, `text-on-surface`, etc. Use this when you need Tailwind-aware color utilities alongside the component styles.
 
 ### 2. Add the theme attribute to your HTML
 

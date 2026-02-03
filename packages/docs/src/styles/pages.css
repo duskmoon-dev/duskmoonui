@@ -294,6 +294,49 @@
   color: var(--foreground-muted);
 }
 
+/* Search widget in header */
+.header-search {
+  position: relative;
+}
+
+.header-search .pagefind-ui {
+  --pagefind-ui-scale: 0.7;
+  --pagefind-ui-primary: var(--color-primary, #6750a4);
+  --pagefind-ui-text: var(--color-on-surface, #1c1b1f);
+  --pagefind-ui-background: var(--color-surface-container, #f3edf7);
+  --pagefind-ui-border: var(--color-outline-variant, #cac4d0);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 0.5rem;
+}
+
+.header-search .pagefind-ui__search-input {
+  width: 200px;
+  height: 2rem;
+}
+
+.header-search .pagefind-ui__drawer {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 400px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--color-surface-container, #f3edf7);
+  border: 1px solid var(--color-outline-variant, #cac4d0);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 200;
+}
+
+@media (max-width: 768px) {
+  .header-search .pagefind-ui__search-input {
+    width: 140px;
+  }
+  .header-search .pagefind-ui__drawer {
+    width: 90vw;
+  }
+}
+
 @media (max-width: 1024px) {
   .docs-main {
     flex-direction: column;

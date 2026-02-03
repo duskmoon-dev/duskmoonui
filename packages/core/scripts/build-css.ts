@@ -91,7 +91,7 @@ async function copyThemes(): Promise<void> {
   await ensureDir(distThemesDir);
 
   // Copy individual theme files
-  const themeFiles = ['sunshine.css', 'moonlight.css'];
+  const themeFiles = ['sunshine.css', 'moonlight.css', 'ocean.css', 'forest.css', 'sunset.css'];
 
   for (const file of themeFiles) {
     const srcPath = join(themesDir, file);

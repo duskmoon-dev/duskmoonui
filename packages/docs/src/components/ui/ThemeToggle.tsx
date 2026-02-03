@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react';
 
-type Theme = 'sunshine' | 'moonlight';
+const THEMES = ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'] as const;
+type Theme = (typeof THEMES)[number];
+
+const THEME_META: Record<Theme, { icon: string; label: string }> = {
+  sunshine: { icon: '☀️', label: 'light' },
+  moonlight: { icon: '🌙', label: 'dark' },
+  ocean: { icon: '🌊', label: 'ocean dark' },
+  forest: { icon: '🌲', label: 'forest' },
+  sunset: { icon: '🌅', label: 'sunset' },
+};
 
 export const ThemeToggle = () => {
   const [theme, setTheme] = useState<Theme>('sunshine');
@@ -9,13 +18,15 @@ export const ThemeToggle = () => {
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
+    if (savedTheme && THEMES.includes(savedTheme)) {
       setTheme(savedTheme);
     }
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme: Theme = theme === 'sunshine' ? 'moonlight' : 'sunshine';
+  const cycleTheme = () => {
+    const currentIndex = THEMES.indexOf(theme);
+    const nextIndex = (currentIndex + 1) % THEMES.length;
+    const newTheme = THEMES[nextIndex];
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
@@ -30,15 +41,19 @@ export const ThemeToggle = () => {
     );
   }
 
+  const meta = THEME_META[theme];
+  const nextTheme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+  const nextMeta = THEME_META[nextTheme];
+
   return (
     <button
-      onClick={toggleTheme}
+      onClick={cycleTheme}
       className="theme-toggle"
-      aria-label={`Switch to ${theme === 'sunshine' ? 'moonlight' : 'sunshine'} theme`}
-      title={`Switch to ${theme === 'sunshine' ? 'dark' : 'light'} mode`}
+      aria-label={`Switch to ${nextMeta.label} theme`}
+      title={`Switch to ${nextMeta.label} mode (${nextTheme})`}
     >
       <span className="theme-icon">
-        {theme === 'sunshine' ? '🌙' : '☀️'}
+        {meta.icon}
       </span>
       <span className="sr-only">
         Current theme: {theme}

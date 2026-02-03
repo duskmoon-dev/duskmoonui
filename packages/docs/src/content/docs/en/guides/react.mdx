@@ -1,0 +1,155 @@
+---
+title: React Integration
+description: How to use @duskmoon-dev/core with React (Vite)
+category: guides
+order: 3
+published: true
+tags: ['guide', 'react', 'framework']
+---
+
+# React Integration
+
+Set up @duskmoon-dev/core in a React project using Vite and Tailwind CSS v4.
+
+## Installation
+
+```bash
+# Create a new React project (if needed)
+bun create vite my-app --template react-ts
+
+# Install dependencies
+bun add @duskmoon-dev/core tailwindcss@^4.0.0 @tailwindcss/vite
+```
+
+## Configuration
+
+### 1. Add Tailwind CSS Vite Plugin
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});
+```
+
+### 2. Import DuskMoonUI
+
+```css
+/* src/index.css */
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+### 3. Set the Theme
+
+```tsx
+// src/main.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+
+document.documentElement.setAttribute('data-theme', 'sunshine');
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+```
+
+## Theme Switching
+
+```tsx
+// src/hooks/useTheme.ts
+import { useState, useEffect } from 'react';
+
+const themes = ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'] as const;
+type Theme = (typeof themes)[number];
+
+export function useTheme() {
+  const [theme, setTheme] = useState<Theme>('sunshine');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme') as Theme;
+    if (saved && themes.includes(saved)) {
+      setTheme(saved);
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  }, []);
+
+  const cycleTheme = () => {
+    const i = themes.indexOf(theme);
+    const next = themes[(i + 1) % themes.length];
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
+
+  return { theme, cycleTheme };
+}
+```
+
+## Using Components
+
+```tsx
+// src/App.tsx
+import { useTheme } from './hooks/useTheme';
+
+function App() {
+  const { theme, cycleTheme } = useTheme();
+
+  return (
+    <div className="container mx-auto p-8">
+      <nav className="navbar mb-8">
+        <div className="navbar-start">
+          <h1 className="text-xl font-bold">My App</h1>
+        </div>
+        <div className="navbar-end">
+          <button onClick={cycleTheme} className="btn btn-ghost btn-sm">
+            {theme}
+          </button>
+        </div>
+      </nav>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="card">
+          <div className="card-body">
+            <h2 className="card-title">Card One</h2>
+            <p>DuskMoonUI with React — zero JavaScript overhead for styling.</p>
+            <div className="card-actions">
+              <button className="btn btn-primary btn-sm">Learn More</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h2 className="card-title">Card Two</h2>
+            <p>All 49+ components work with plain className props.</p>
+            <div className="card-actions">
+              <button className="btn btn-secondary btn-sm">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Using the @plugin Approach
+
+```css
+/* src/index.css */
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
+```
+
+This registers MD3 color tokens into Tailwind's theme, enabling `bg-primary`, `text-on-surface`, etc.

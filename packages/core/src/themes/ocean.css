@@ -1,0 +1,145 @@
+/**
+ * Ocean Theme - Dark Mode
+ * A deep, calming dark theme inspired by ocean depths
+ * Uses OKLCH format: "oklch(L% C H)"
+ */
+
+[data-theme="ocean"] {
+  color-scheme: dark;
+
+  /* ============================================
+   * BRAND COLORS
+   * ============================================ */
+
+  /* Primary Color Family - Deep Cyan */
+  --color-primary: oklch(72% 0.12 210);
+  --color-primary-content: oklch(15% 0.02 210);
+  --color-primary-container: oklch(30% 0.08 210);
+  --color-on-primary-container: oklch(90% 0.04 210);
+
+  /* Secondary Color Family - Aquamarine */
+  --color-secondary: oklch(75% 0.10 175);
+  --color-secondary-content: oklch(15% 0.02 175);
+  --color-secondary-container: oklch(28% 0.06 175);
+  --color-on-secondary-container: oklch(90% 0.04 175);
+
+  /* Tertiary Color Family - Lavender */
+  --color-tertiary: oklch(72% 0.10 280);
+  --color-tertiary-content: oklch(15% 0.02 280);
+  --color-tertiary-container: oklch(28% 0.06 280);
+  --color-on-tertiary-container: oklch(90% 0.04 280);
+
+  /* ============================================
+   * SURFACE COLORS
+   * ============================================ */
+
+  --color-surface: oklch(16% 0.02 220);
+  --color-surface-dim: oklch(10% 0.015 220);
+  --color-surface-bright: oklch(24% 0.025 220);
+  --color-surface-container-lowest: oklch(8% 0.01 220);
+  --color-surface-container-low: oklch(12% 0.015 220);
+  --color-surface-container: oklch(16% 0.02 220);
+  --color-surface-container-high: oklch(20% 0.022 220);
+  --color-surface-container-highest: oklch(24% 0.025 220);
+  --color-on-surface: oklch(90% 0.01 210);
+  --color-on-surface-variant: oklch(70% 0.015 210);
+
+  /* ============================================
+   * SEMANTIC COLORS
+   * ============================================ */
+
+  /* Info - Light Blue */
+  --color-info: oklch(70% 0.12 230);
+  --color-info-content: oklch(15% 0.03 230);
+  --color-info-container: oklch(28% 0.06 230);
+  --color-on-info-container: oklch(88% 0.04 230);
+
+  /* Success - Sea Green */
+  --color-success: oklch(72% 0.15 155);
+  --color-success-content: oklch(15% 0.03 155);
+  --color-success-container: oklch(28% 0.06 155);
+  --color-on-success-container: oklch(88% 0.04 155);
+
+  /* Warning - Sandy Gold */
+  --color-warning: oklch(75% 0.14 75);
+  --color-warning-content: oklch(18% 0.04 75);
+  --color-warning-container: oklch(30% 0.06 75);
+  --color-on-warning-container: oklch(88% 0.05 75);
+
+  /* Error - Coral Red */
+  --color-error: oklch(70% 0.16 20);
+  --color-error-content: oklch(15% 0.03 20);
+  --color-error-container: oklch(28% 0.06 20);
+  --color-on-error-container: oklch(88% 0.05 20);
+
+  /* ============================================
+   * NEUTRAL COLORS (Base Scale)
+   * ============================================ */
+
+  --color-base-100: oklch(16% 0.02 220);
+  --color-base-200: oklch(14% 0.015 220);
+  --color-base-300: oklch(10% 0.01 220);
+  --color-base-400: oklch(30% 0.02 220);
+  --color-base-500: oklch(40% 0.02 220);
+  --color-base-600: oklch(55% 0.015 220);
+  --color-base-700: oklch(70% 0.01 220);
+  --color-base-800: oklch(82% 0.01 220);
+  --color-base-900: oklch(92% 0.005 220);
+  --color-base-content: oklch(90% 0.01 210);
+
+  /* ============================================
+   * OUTLINE COLORS
+   * ============================================ */
+
+  --color-outline: oklch(45% 0.02 220);
+  --color-outline-variant: oklch(32% 0.015 220);
+
+  /* ============================================
+   * ACCENT COLORS
+   * ============================================ */
+
+  --color-accent: oklch(70% 0.12 190);
+  --color-accent-content: oklch(15% 0.03 190);
+
+  /* ============================================
+   * NEUTRAL COLORS
+   * ============================================ */
+
+  --color-neutral: oklch(90% 0.01 210);
+  --color-neutral-content: oklch(16% 0.02 220);
+  --color-neutral-variant: oklch(50% 0.02 220);
+
+  /* ============================================
+   * SHAPE & DEPTH
+   * ============================================ */
+
+  --radius-selector: 0rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1.5rem;
+  --size-selector: 0.1875rem;
+  --size-field: 0.1875rem;
+  --border: 0.5px;
+  --depth: 1;
+  --noise: 0.5;
+
+  /* ============================================
+   * SURFACE VARIANT
+   * ============================================ */
+
+  --color-surface-variant: oklch(22% 0.025 220);
+
+  /* ============================================
+   * INVERSE COLORS
+   * ============================================ */
+
+  --color-inverse-surface: oklch(90% 0.01 210);
+  --color-inverse-on-surface: oklch(16% 0.02 220);
+  --color-inverse-primary: oklch(45% 0.12 210);
+
+  /* ============================================
+   * SHADOW & SCRIM
+   * ============================================ */
+
+  --color-shadow: oklch(0% 0 0);
+  --color-scrim: oklch(0% 0 0 / 60%);
+}

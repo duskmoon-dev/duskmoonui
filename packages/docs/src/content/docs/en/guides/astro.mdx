@@ -1,0 +1,155 @@
+---
+title: Astro Integration
+description: How to use @duskmoon-dev/core with Astro
+category: guides
+order: 1
+published: true
+tags: ['guide', 'astro', 'framework']
+---
+
+# Astro Integration
+
+Set up @duskmoon-dev/core in your Astro project with Tailwind CSS v4.
+
+## Installation
+
+```bash
+# Create a new Astro project (if needed)
+bun create astro@latest my-app
+
+# Install dependencies
+bun add @duskmoon-dev/core tailwindcss@^4.0.0 @tailwindcss/vite
+```
+
+## Configuration
+
+### 1. Configure Tailwind CSS v4
+
+Add the Tailwind CSS Vite plugin to your `astro.config.mjs`:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
+```
+
+### 2. Import DuskMoonUI
+
+Create or update your main CSS file:
+
+```css
+/* src/styles/global.css */
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+Import it in your layout:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html data-theme="sunshine">
+  <head>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+```
+
+### 3. Using the @plugin Approach (Alternative)
+
+```css
+/* src/styles/global.css */
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
+```
+
+This registers MD3 color tokens into Tailwind's theme system, enabling utility classes like `bg-primary` and `text-on-surface`.
+
+## Theme Switching
+
+Add a simple theme switcher with a `<script>` tag:
+
+```astro
+---
+// src/components/ThemeToggle.astro
+---
+<button id="theme-toggle" class="btn btn-ghost btn-sm">
+  Toggle Theme
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'sunshine' ? 'moonlight' : 'sunshine';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // Restore saved theme
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+```
+
+## Using Components
+
+```astro
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+  <div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-on-surface mb-4">My Astro App</h1>
+
+    <button class="btn btn-primary">Primary Button</button>
+    <button class="btn btn-secondary">Secondary</button>
+
+    <div class="card mt-6">
+      <div class="card-body">
+        <h2 class="card-title">Hello from Astro</h2>
+        <p>DuskMoonUI components work seamlessly in Astro.</p>
+      </div>
+    </div>
+  </div>
+</Layout>
+```
+
+## Individual Component Imports
+
+For smaller bundles, import only the components you need:
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/card";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/themes/moonlight";
+```
+
+## Available Themes
+
+DuskMoonUI ships with 5 built-in themes:
+
+| Theme | Mode | Description |
+|-------|------|-------------|
+| `sunshine` | Light | Warm, energetic palette |
+| `moonlight` | Dark | Serene, elegant palette |
+| `ocean` | Dark | Deep, calming ocean tones |
+| `forest` | Light | Natural, earthy woodland |
+| `sunset` | Light | Warm golden hour vibes |
+
+```html
+<html data-theme="ocean">
+```

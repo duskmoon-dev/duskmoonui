@@ -1,0 +1,173 @@
+---
+title: Vue Integration
+description: How to use @duskmoon-dev/core with Vue 3
+category: guides
+order: 4
+published: true
+tags: ['guide', 'vue', 'framework']
+---
+
+# Vue Integration
+
+Set up @duskmoon-dev/core in a Vue 3 project using Vite and Tailwind CSS v4.
+
+## Installation
+
+```bash
+# Create a new Vue project (if needed)
+bun create vue@latest my-app
+
+# Install dependencies
+bun add @duskmoon-dev/core tailwindcss@^4.0.0 @tailwindcss/vite
+```
+
+## Configuration
+
+### 1. Add Tailwind CSS Vite Plugin
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  plugins: [vue(), tailwindcss()],
+});
+```
+
+### 2. Import DuskMoonUI
+
+```css
+/* src/style.css */
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+### 3. Set the Theme
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en" data-theme="sunshine">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Vue App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+```
+
+## Theme Switching
+
+Create a composable for theme management:
+
+```ts
+// src/composables/useTheme.ts
+import { ref, onMounted } from 'vue';
+
+const themes = ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'] as const;
+type Theme = (typeof themes)[number];
+
+const theme = ref<Theme>('sunshine');
+
+export function useTheme() {
+  onMounted(() => {
+    const saved = localStorage.getItem('theme') as Theme;
+    if (saved && themes.includes(saved)) {
+      theme.value = saved;
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  });
+
+  const cycleTheme = () => {
+    const i = themes.indexOf(theme.value);
+    const next = themes[(i + 1) % themes.length];
+    theme.value = next;
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
+
+  return { theme, cycleTheme };
+}
+```
+
+## Using Components
+
+```vue
+<!-- src/App.vue -->
+<script setup lang="ts">
+import { useTheme } from './composables/useTheme';
+
+const { theme, cycleTheme } = useTheme();
+</script>
+
+<template>
+  <div class="container mx-auto p-8">
+    <nav class="navbar mb-8">
+      <div class="navbar-start">
+        <h1 class="text-xl font-bold">My Vue App</h1>
+      </div>
+      <div class="navbar-end">
+        <button @click="cycleTheme" class="btn btn-ghost btn-sm">
+          {{ theme }}
+        </button>
+      </div>
+    </nav>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Card One</h2>
+          <p>DuskMoonUI with Vue — pure CSS, no component imports needed.</p>
+          <div class="card-actions">
+            <button class="btn btn-primary btn-sm">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Card Two</h2>
+          <p>Just use CSS classes in your templates. That's it.</p>
+          <div class="card-actions">
+            <button class="btn btn-secondary btn-sm">Explore</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-4">
+      <span class="alert-message">Works in both Options API and Composition API!</span>
+    </div>
+  </div>
+</template>
+```
+
+## Single File Component Styles
+
+You can also use DuskMoonUI classes alongside scoped styles:
+
+```vue
+<template>
+  <button class="btn btn-primary custom-btn">Custom Button</button>
+</template>
+
+<style scoped>
+.custom-btn {
+  letter-spacing: 0.05em;
+}
+</style>
+```
+
+## Using the @plugin Approach
+
+```css
+/* src/style.css */
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
+```

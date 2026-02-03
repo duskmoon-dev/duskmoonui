@@ -22,6 +22,15 @@
     "./themes/moonlight": {
       "style": "./dist/themes/moonlight.css"
     },
+    "./themes/ocean": {
+      "style": "./dist/themes/ocean.css"
+    },
+    "./themes/forest": {
+      "style": "./dist/themes/forest.css"
+    },
+    "./themes/sunset": {
+      "style": "./dist/themes/sunset.css"
+    },
     "./components": {
       "style": "./dist/components/index.css"
     },

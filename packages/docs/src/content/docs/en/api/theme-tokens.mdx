@@ -1,0 +1,188 @@
+---
+title: Theme Tokens
+description: Complete reference for all DuskMoonUI color tokens and design tokens
+category: api
+order: 2
+published: true
+tags: ['api', 'tokens', 'colors', 'reference']
+---
+
+# Theme Tokens
+
+Complete reference for all CSS custom properties (design tokens) available in @duskmoon-dev/core themes.
+
+## Overview
+
+Each theme defines **65+ color tokens** plus shape and depth tokens. All color tokens use the OKLCH format for perceptually uniform color manipulation.
+
+```css
+/* Tokens are CSS custom properties on [data-theme] selectors */
+[data-theme="sunshine"] {
+  --color-primary: oklch(95.86% 0.0693 95.91);
+  /* ... */
+}
+```
+
+## Brand Colors (12 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Primary | `--color-primary` | Main brand color |
+| Primary Content | `--color-primary-content` | Text on primary |
+| Primary Container | `--color-primary-container` | Lighter primary for backgrounds |
+| On Primary Container | `--color-on-primary-container` | Text on primary container |
+| Secondary | `--color-secondary` | Secondary brand color |
+| Secondary Content | `--color-secondary-content` | Text on secondary |
+| Secondary Container | `--color-secondary-container` | Lighter secondary for backgrounds |
+| On Secondary Container | `--color-on-secondary-container` | Text on secondary container |
+| Tertiary | `--color-tertiary` | Tertiary accent color |
+| Tertiary Content | `--color-tertiary-content` | Text on tertiary |
+| Tertiary Container | `--color-tertiary-container` | Lighter tertiary for backgrounds |
+| On Tertiary Container | `--color-on-tertiary-container` | Text on tertiary container |
+
+### Usage
+
+```html
+<div class="bg-primary text-primary-content">Primary surface</div>
+<div class="bg-primary-container text-on-primary-container">Container</div>
+```
+
+## Surface Colors (10 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Surface | `--color-surface` | Default background |
+| Surface Dim | `--color-surface-dim` | Dimmed background |
+| Surface Bright | `--color-surface-bright` | Brighter background |
+| Surface Container Lowest | `--color-surface-container-lowest` | Lowest elevation |
+| Surface Container Low | `--color-surface-container-low` | Low elevation |
+| Surface Container | `--color-surface-container` | Default elevation |
+| Surface Container High | `--color-surface-container-high` | High elevation |
+| Surface Container Highest | `--color-surface-container-highest` | Highest elevation |
+| On Surface | `--color-on-surface` | Text on surface |
+| On Surface Variant | `--color-on-surface-variant` | Secondary text on surface |
+
+### MD3 Elevation Mapping
+
+```
+Lowest → Low → Default → High → Highest
+  (0)    (1)    (2)      (3)     (4)
+```
+
+## Semantic Colors (16 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Info | `--color-info` | Informational state |
+| Info Content | `--color-info-content` | Text on info |
+| Info Container | `--color-info-container` | Info background |
+| On Info Container | `--color-on-info-container` | Text on info container |
+| Success | `--color-success` | Success state |
+| Success Content | `--color-success-content` | Text on success |
+| Success Container | `--color-success-container` | Success background |
+| On Success Container | `--color-on-success-container` | Text on success container |
+| Warning | `--color-warning` | Warning state |
+| Warning Content | `--color-warning-content` | Text on warning |
+| Warning Container | `--color-warning-container` | Warning background |
+| On Warning Container | `--color-on-warning-container` | Text on warning container |
+| Error | `--color-error` | Error state |
+| Error Content | `--color-error-content` | Text on error |
+| Error Container | `--color-error-container` | Error background |
+| On Error Container | `--color-on-error-container` | Text on error container |
+
+## Neutral Colors (10 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Base 100 | `--color-base-100` | Lightest neutral |
+| Base 200 | `--color-base-200` | Light neutral |
+| Base 300-900 | `--color-base-{N}` | Neutral scale |
+| Base Content | `--color-base-content` | Default text color |
+
+## Outline Colors (2 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Outline | `--color-outline` | Default border color |
+| Outline Variant | `--color-outline-variant` | Subtle border color |
+
+## Accent & Neutral (5 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Accent | `--color-accent` | Accent highlight |
+| Accent Content | `--color-accent-content` | Text on accent |
+| Neutral | `--color-neutral` | Neutral base |
+| Neutral Content | `--color-neutral-content` | Text on neutral |
+| Neutral Variant | `--color-neutral-variant` | Muted neutral |
+
+## Inverse Colors (3 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Inverse Surface | `--color-inverse-surface` | Reversed surface |
+| Inverse On Surface | `--color-inverse-on-surface` | Text on inverse surface |
+| Inverse Primary | `--color-inverse-primary` | Primary for inverse contexts |
+
+## Shadow & Scrim (2 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| Shadow | `--color-shadow` | Shadow color |
+| Scrim | `--color-scrim` | Overlay backdrop |
+
+## Shape & Depth Tokens
+
+| Token | CSS Variable | Default | Description |
+|-------|-------------|---------|-------------|
+| Radius Selector | `--radius-selector` | `0rem` | Toggle/selector radius |
+| Radius Field | `--radius-field` | `0.5rem` | Input/field radius |
+| Radius Box | `--radius-box` | `2rem` | Card/container radius |
+| Size Selector | `--size-selector` | `0.1875rem` | Selector border width |
+| Size Field | `--size-field` | `0.1875rem` | Field border width |
+| Border | `--border` | `0.5px` | Default border width |
+| Depth | `--depth` | `1` | Shadow intensity multiplier |
+| Noise | `--noise` | `1` | Texture noise level |
+
+## Focus States
+
+Focus tokens were removed in v2.0. Use `color-mix()` instead:
+
+```css
+.custom-focus:focus {
+  background-color: color-mix(in oklch, var(--color-primary), black 10%);
+}
+```
+
+## Transparency
+
+```css
+.custom-transparent {
+  background-color: color-mix(in oklch, var(--color-primary) 50%, transparent);
+}
+```
+
+## Available Themes
+
+| Theme | Mode | Primary Hue | Character |
+|-------|------|------------|-----------|
+| `sunshine` | Light | Warm orange | Energetic, warm |
+| `moonlight` | Dark | Soft blue | Serene, elegant |
+| `ocean` | Dark | Deep cyan | Calming, deep |
+| `forest` | Light | Forest green | Natural, earthy |
+| `sunset` | Light | Burnt orange | Warm, vibrant |
+
+## Custom Themes
+
+Override any token with a `[data-theme]` selector:
+
+```css
+[data-theme="my-theme"] {
+  color-scheme: light;
+  --color-primary: oklch(55% 0.20 260);
+  --color-primary-content: oklch(100% 0 0);
+  /* ... define all tokens */
+}
+```
+
+See [Customization](/duskmoonui/docs/en/theming/customization/) for full details.

@@ -1,0 +1,140 @@
+---
+title: Next.js Integration
+description: How to use @duskmoon-dev/core with Next.js
+category: guides
+order: 2
+published: true
+tags: ['guide', 'nextjs', 'framework']
+---
+
+# Next.js Integration
+
+Set up @duskmoon-dev/core in your Next.js project with Tailwind CSS v4.
+
+## Installation
+
+```bash
+# Create a new Next.js project (if needed)
+npx create-next-app@latest my-app
+
+# Install dependencies
+npm install @duskmoon-dev/core tailwindcss@^4.0.0
+```
+
+## Configuration
+
+### 1. Import DuskMoonUI in Your CSS
+
+```css
+/* app/globals.css */
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+### 2. Set the Theme Attribute
+
+In your root layout:
+
+```tsx
+// app/layout.tsx
+import './globals.css';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" data-theme="sunshine">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+### 3. Using the @plugin Approach (Alternative)
+
+```css
+/* app/globals.css */
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
+```
+
+## Theme Switching
+
+Create a client-side theme toggle component:
+
+```tsx
+// components/ThemeToggle.tsx
+'use client';
+
+import { useEffect, useState } from 'react';
+
+const themes = ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'] as const;
+
+export function ThemeToggle() {
+  const [theme, setTheme] = useState('sunshine');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      setTheme(saved);
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  }, []);
+
+  const cycleTheme = () => {
+    const i = themes.indexOf(theme as any);
+    const next = themes[(i + 1) % themes.length];
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
+
+  return (
+    <button onClick={cycleTheme} className="btn btn-ghost btn-sm">
+      Theme: {theme}
+    </button>
+  );
+}
+```
+
+## Using Components
+
+```tsx
+// app/page.tsx
+export default function Home() {
+  return (
+    <main className="container mx-auto p-8">
+      <h1 className="text-3xl font-bold text-on-surface mb-4">My Next.js App</h1>
+
+      <button className="btn btn-primary">Primary Button</button>
+      <button className="btn btn-secondary">Secondary</button>
+
+      <div className="card mt-6">
+        <div className="card-body">
+          <h2 className="card-title">Hello from Next.js</h2>
+          <p>DuskMoonUI components work seamlessly with Next.js.</p>
+        </div>
+      </div>
+
+      <div className="alert alert-info mt-4">
+        <span className="alert-message">CSS-only — no hydration overhead!</span>
+      </div>
+    </main>
+  );
+}
+```
+
+## Server Components
+
+Since DuskMoonUI is CSS-only, all components work natively in React Server Components without `'use client'`. Only the theme toggle needs client-side JavaScript.
+
+## Individual Component Imports
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/card";
+@import "@duskmoon-dev/core/themes/sunshine";
+```
