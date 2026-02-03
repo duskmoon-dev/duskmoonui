@@ -1,6 +1,6 @@
 {
   "name": "@duskmoon-dev/core",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "DuskMoonUI - Tailwind CSS v4 plugin with Material Design 3 color system and component styles",
   "type": "module",
   "main": "./dist/index.css",
