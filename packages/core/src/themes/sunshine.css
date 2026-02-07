@@ -11,15 +11,15 @@
    * BRAND COLORS
    * ============================================ */
 
-  /* Primary Color Family - Warm Orange */
-  --color-primary: oklch(95.86% 0.0693 95.91);
-  --color-primary-content: oklch(20% 0 0);
+  /* Primary Color Family - Warm Amber */
+  --color-primary: oklch(72% 0.17 75);
+  --color-primary-content: oklch(100% 0 0);
   --color-primary-container: oklch(95% 0.035 95.91);
   --color-on-primary-container: oklch(25% 0.03 95.91);
 
-  /* Secondary Color Family - Coral Pink */
-  --color-secondary: oklch(87.42% 0.143 87.01);
-  --color-secondary-content: oklch(27.42% 0.143 87.01);
+  /* Secondary Color Family - Coral Rose */
+  --color-secondary: oklch(62% 0.19 20);
+  --color-secondary-content: oklch(100% 0 0);
   --color-secondary-container: oklch(94% 0.05 87.01);
   --color-on-secondary-container: oklch(25% 0.05 87.01);
 
@@ -76,9 +76,9 @@
    * NEUTRAL COLORS (Base Scale)
    * ============================================ */
 
-  --color-base-100: oklch(100% 0.1 255);
-  --color-base-200: oklch(85% 0.1 255);
-  --color-base-300: oklch(70% 0.1 255);
+  --color-base-100: oklch(100% 0.005 255);
+  --color-base-200: oklch(95% 0.008 255);
+  --color-base-300: oklch(90% 0.01 255);
   --color-base-400: oklch(55% 0.06 255);
   --color-base-500: oklch(45% 0.05 255);
   --color-base-600: oklch(35% 0.04 255);
@@ -106,7 +106,7 @@
    * ============================================ */
 
   --color-neutral: oklch(0% 0 0);
-  --color-neutral-content: oklch(80% 0.1 50);
+  --color-neutral-content: oklch(80% 0.015 50);
   --color-neutral-variant: oklch(50% 0.02 260);
 
   /* ============================================
@@ -149,13 +149,13 @@
   color-scheme: light;
 
   /* Brand Colors */
-  --color-primary: oklch(95.86% 0.0693 95.91);
-  --color-primary-content: oklch(20% 0 0);
+  --color-primary: oklch(72% 0.17 75);
+  --color-primary-content: oklch(100% 0 0);
   --color-primary-container: oklch(95% 0.035 95.91);
   --color-on-primary-container: oklch(25% 0.03 95.91);
 
-  --color-secondary: oklch(87.42% 0.143 87.01);
-  --color-secondary-content: oklch(27.42% 0.143 87.01);
+  --color-secondary: oklch(62% 0.19 20);
+  --color-secondary-content: oklch(100% 0 0);
   --color-secondary-container: oklch(94% 0.05 87.01);
   --color-on-secondary-container: oklch(25% 0.05 87.01);
 
@@ -198,9 +198,9 @@
   --color-on-error-container: oklch(32% 0.10 25);
 
   /* Neutral Colors */
-  --color-base-100: oklch(100% 0.1 255);
-  --color-base-200: oklch(85% 0.1 255);
-  --color-base-300: oklch(70% 0.1 255);
+  --color-base-100: oklch(100% 0.005 255);
+  --color-base-200: oklch(95% 0.008 255);
+  --color-base-300: oklch(90% 0.01 255);
   --color-base-400: oklch(55% 0.06 255);
   --color-base-500: oklch(45% 0.05 255);
   --color-base-600: oklch(35% 0.04 255);
@@ -219,7 +219,7 @@
 
   /* Neutral Colors */
   --color-neutral: oklch(0% 0 0);
-  --color-neutral-content: oklch(80% 0.1 50);
+  --color-neutral-content: oklch(80% 0.015 50);
   --color-neutral-variant: oklch(50% 0.02 260);
 
   /* ============================================
