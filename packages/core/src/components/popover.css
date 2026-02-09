@@ -651,53 +651,65 @@
        style="anchor-name: --my-popover" */
   }
 
-  /* Anchored popover positioning */
+  /* Anchored popover positioning
+   * Uses anchor() functions instead of position-area to avoid
+   * a Chrome rendering bug at HiDPI (DPR>=2) where position-area
+   * computes correct CSS-pixel offsets but renders at physical-pixel
+   * coordinates, doubling the distance from the anchor. */
   .popover[popover][style*="position-anchor"] {
-    position: absolute;
-    position-area: bottom;
+    inset: unset;
+    top: anchor(bottom);
+    justify-self: anchor-center;
     margin-top: 0.5rem;
   }
 
   /* Position variants for anchored popovers */
   .popover-top[popover][style*="position-anchor"] {
-    position-area: top;
+    top: unset;
+    bottom: anchor(top);
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
 
   .popover-bottom[popover][style*="position-anchor"] {
-    position-area: bottom;
+    top: anchor(bottom);
     margin-top: 0.5rem;
     margin-bottom: 0;
   }
 
   .popover-left[popover][style*="position-anchor"] {
-    position-area: left;
+    top: anchor(center);
+    right: anchor(left);
+    justify-self: unset;
+    translate: 0 -50%;
     margin-top: 0;
     margin-right: 0.5rem;
   }
 
   .popover-right[popover][style*="position-anchor"] {
-    position-area: right;
+    top: anchor(center);
+    left: anchor(right);
+    justify-self: unset;
+    translate: 0 -50%;
     margin-top: 0;
     margin-left: 0.5rem;
   }
 
   /* Anchored popover alignment variants */
   .popover-start[popover][style*="position-anchor"] {
-    position-area: bottom start;
+    justify-self: start;
   }
 
   .popover-end[popover][style*="position-anchor"] {
-    position-area: bottom end;
+    justify-self: end;
   }
 
   .popover-top.popover-start[popover][style*="position-anchor"] {
-    position-area: top start;
+    justify-self: start;
   }
 
   .popover-top.popover-end[popover][style*="position-anchor"] {
-    position-area: top end;
+    justify-self: end;
   }
 
   /* Reduce Motion */

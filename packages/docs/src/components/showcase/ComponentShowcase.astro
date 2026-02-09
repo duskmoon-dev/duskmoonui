@@ -305,30 +305,30 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
     });
   }
 
-  // Position popovers relative to their triggers
+  // Position popovers relative to their triggers (fallback for browsers
+  // without CSS Anchor Positioning support)
   function initPopoverPositioning() {
+    // Skip if browser supports CSS Anchor Positioning natively —
+    // the component CSS handles positioning via anchor() functions.
+    if (CSS.supports('top', 'anchor(bottom)')) return;
+
     function positionPopover(popover: HTMLElement, trigger: HTMLElement) {
-      // Wait for popover to be visible and have dimensions
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           const triggerRect = trigger.getBoundingClientRect();
           const popoverRect = popover.getBoundingClientRect();
 
-          // Position below the trigger
           let top = triggerRect.bottom + 4;
           let left = triggerRect.left;
 
-          // Adjust if popover would go off-screen right
           if (left + popoverRect.width > window.innerWidth - 16) {
             left = window.innerWidth - popoverRect.width - 16;
           }
 
-          // Adjust if popover would go off-screen bottom
           if (top + popoverRect.height > window.innerHeight - 16) {
             top = triggerRect.top - popoverRect.height - 4;
           }
 
-          // Ensure minimum left position
           left = Math.max(16, left);
 
           popover.style.position = 'fixed';
@@ -341,7 +341,6 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
       });
     }
 
-    // Listen for clicks on trigger buttons
     document.addEventListener('click', (event: Event) => {
       const target = event.target as HTMLElement;
       const trigger = target.closest('[popovertarget]') as HTMLElement;
@@ -351,7 +350,6 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
         const popover = document.getElementById(popoverId || '');
 
         if (popover && popover.hasAttribute('popover')) {
-          // Position after a short delay to let popover open
           setTimeout(() => {
             if (popover.matches(':popover-open')) {
               positionPopover(popover, trigger);
