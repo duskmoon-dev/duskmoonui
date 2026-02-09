@@ -4,98 +4,95 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DuskMoonUI is a CSS-only component library built as a Tailwind CSS v4 plugin. It implements Material Design 3's extended color system with 65+ color tokens and provides 40+ pre-styled components.
-
-**Key characteristics:**
-- CSS-only library (no JavaScript runtime)
-- Uses OKLCH color format with `color-mix()` for dynamic states
-- Themes are applied via `data-theme` attribute on HTML elements
-- Two built-in themes: `sunshine` (light) and `moonlight` (dark)
+DuskMoonUI is a CSS-only component library built as a Tailwind CSS v4 plugin. It implements Material Design 3's extended color system with 65+ color tokens in OKLCH format and provides 47 pre-styled components across 5 themes.
 
 ## Commands
 
 ```bash
-# Build core package (CSS + TypeScript declarations)
+# Build core package (CSS bundle + TypeScript declarations + ESM/CJS plugin)
 bun run build:core
 
-# Watch mode for development
+# Watch mode for development (rebuilds on file change)
 bun run dev:core
 
-# Run unit tests (in packages/core)
+# Run unit tests (~240 tests)
 cd packages/core && bun test tests/unit
 
-# Run specific test file
+# Run a single test file
 cd packages/core && bun test tests/unit/button.test.ts
 
-# Visual regression tests (requires Playwright)
+# Visual regression tests (Playwright)
 cd packages/core && bun run test:visual
 
-# Integration tests
+# Integration tests (Playwright)
 cd packages/core && bun run test:integration
 
-# Accessibility tests
+# Accessibility tests (axe-core + Playwright)
 cd packages/core && bun run test:a11y
 
-# Type checking
+# Type checking (core + docs)
 bun run typecheck
+
+# Run docs site locally (hot-reloads core CSS changes)
+bun run dev
+
+# Build docs site (includes astro check + pagefind indexing)
+bun run build:docs
 ```
 
 ## Architecture
 
-### Monorepo Structure
-```
-packages/core/          # @duskmoon-dev/core - main library
-  src/
-    base/               # Root styles and color token definitions
-      colors.css        # 65+ color token declarations using @theme
-    themes/             # Theme definitions (sunshine.ts, moonlight.ts)
-    components/         # 40+ component CSS files
-    generators/         # CSS variable generation utilities
-    types/              # TypeScript type definitions
-  scripts/
-    build-css.ts        # Custom CSS build script (inlines imports)
-  tests/
-    unit/               # Bun test unit tests
-    visual/             # Playwright visual regression tests
-    integration/        # Playwright integration tests
-    accessibility/      # axe-core accessibility tests
-examples/               # Demo apps (Astro, Next.js starters)
-```
+### Monorepo Layout
+
+- `packages/core/` — `@duskmoon-dev/core`, the published library
+- `packages/docs/` — `@duskmoon-dev/docs`, Astro-based docs site (MDX content, i18n: en/fr/es)
+- `examples/` — Starter apps (Astro, Next.js)
 
 ### Build Pipeline
-The build process (`packages/core/scripts/build-css.ts`) reads `src/index.css`, recursively inlines all `@import` statements, and outputs a single bundled CSS file to `dist/index.css`. No PostCSS or LightningCSS processing at build time.
+
+`packages/core/scripts/build-css.ts` is a custom build script (no PostCSS/LightningCSS) that:
+1. Reads `src/index.css` and recursively inlines all `@import` statements into a single `dist/index.css` (~370 KB)
+2. Copies individual theme CSS files to `dist/themes/`
+3. Copies individual component CSS files to `dist/components/` and generates ESM modules (wrapping CSS in `CSSStyleSheet` for web component adoption)
+4. Bundles `src/tailwind-plugin.ts` into ESM + CJS via Bun.build
+
+### CSS Layering
+
+All component styles are wrapped in `@layer components { }`. Color tokens are registered via Tailwind CSS v4's `@theme` directive in `base/colors.css` (declarations set to `initial`, actual values provided by theme CSS files).
 
 ### Color System
-Colors are defined in OKLCH format and registered via Tailwind CSS v4's `@theme` directive in `base/colors.css`. Focus states use `color-mix()` rather than separate tokens:
-```css
-.bg-primary-focus { background-color: color-mix(in oklch, var(--color-primary), black 10%); }
-```
+
+Colors use **OKLCH format** (`oklch(L% C H)`). Key conventions:
+- Brand colors (primary/secondary/tertiary) each have 4 tokens: `{color}`, `{color}-content`, `{color}-container`, `on-{color}-container`
+- Surface elevation uses 5 container levels: `surface-container-{lowest,low,default,high,highest}`
+- Focus/hover states use `color-mix()` rather than separate tokens: `color-mix(in oklch, var(--color-primary), black 10%)`
+- **OKLCH chroma (C) pitfall**: C controls saturation. Neutral backgrounds need C ≤ 0.01. A C of 0.1+ produces vivid saturated colors — use only for accent colors, never for base/surface tokens.
+
+### Theme System
+
+5 themes: `sunshine` (light), `moonlight` (dark), `ocean`, `forest`, `sunset`. Applied via `data-theme` attribute.
+
+Each theme has two source files:
+- **`.css` file** (e.g., `sunshine.css`) — OKLCH values, the browser's source of truth. Contains two blocks that **must be kept in sync**: `[data-theme="sunshine"] { ... }` and `:root { ... }` (default fallback)
+- **`.ts` file** (e.g., `sunshine.ts`) — HSL values for the Tailwind plugin API. These are a legacy interface; the CSS files are authoritative.
 
 ### Component Pattern
+
 Each component has:
-- A CSS file in `src/components/` (e.g., `button.css`)
-- A TypeScript file exporting styles object (e.g., `button.ts`)
-- Optional unit tests in `tests/unit/`
+- A CSS file in `src/components/` using `@layer components` — defines base class + variant modifiers (e.g., `.btn`, `.btn-primary`, `.btn-outline`, `.btn-sm`)
+- An ESM module auto-generated at build time (wraps CSS in `CSSStyleSheet` for web component use via `duskmoon-elements`)
+- Unit tests in `tests/unit/` that read source CSS and assert on class names and property patterns
 
-Components use CSS custom properties for theming and support variants via modifier classes (e.g., `.btn-primary`, `.btn-outline`).
+### Docs Site
 
-## Usage
+Astro 5 with MDX content collections. Key patterns:
+- In dev mode, Vite aliases `@duskmoon-dev/core` to the core source directory for hot reload
+- `ComponentShowcase.astro` renders live previews with code tabs
+- Component docs live in `packages/docs/src/content/docs/en/components/*.mdx`
+- **ID collision risk**: Markdown headings auto-generate IDs that can shadow element IDs used by `popovertarget` — prefix demo element IDs with `demo-` to avoid collisions
 
-Import the library in CSS:
-```css
-@import "@duskmoon-dev/core";
-```
+### CSS Anchor Positioning
 
-Apply themes:
-```html
-<html data-theme="sunshine">
-```
-
-## Active Technologies
-- CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core (005-component-padding)
-- N/A (CSS-only changes) (005-component-padding)
-- CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core (color tokens) (001-markdown-body)
-- N/A (CSS-only component) (001-markdown-body)
-
-## Recent Changes
-- 005-component-padding: Added CSS3 with Tailwind CSS v4.0.0+ + Tailwind CSS v4, @duskmoon-dev/core
+The popover component uses CSS Anchor Positioning (`anchor()` functions). Known issues:
+- `position-area` has a rendering bug on Chrome at HiDPI (DPR ≥ 2) — use explicit `anchor()` functions instead
+- `ComponentShowcase.astro` has a JS positioning fallback guarded by `CSS.supports('top', 'anchor(bottom)')` — it only runs on browsers without native support
