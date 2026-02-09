@@ -4,8 +4,8 @@
  */
 
 @layer components {
-  /* Popover Container */
-  .popover {
+  /* Popover Container (class-based approach only, not native [popover]) */
+  .popover:not([popover]) {
     position: relative;
     display: inline-block;
   }
