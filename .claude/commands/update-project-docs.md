@@ -1,5 +1,7 @@
 # Update Project Documentation
 
+
+
 Scan the current codebase and update all files in `./docs/` to reflect the actual state of the project. Do NOT add or remove doc files — only update existing ones in-place.
 
 ## Execution Flow
@@ -41,9 +43,9 @@ Read the existing `docs/development.md`, then update these sections in-place whi
 
 Do NOT rewrite sections that are already accurate. Only change what is out of date.
 
-### 3. Update `docs/SKILL.md`
+### 3. Update `docs/duskmoon-dev-core/SKILL.md`
 
-Read the existing `docs/SKILL.md`, then update these sections in-place:
+Use the `skill-creator` skill to update `docs/duskmoon-dev-core/SKILL.md`. This skill file is designed for AI agents to learn how to install, configure, and use the `@duskmoon-dev/core` package. Invoke the skill-creator with the current codebase state so it can update the following sections:
 
 | Section | What to update |
 |---------|---------------|
@@ -58,7 +60,7 @@ For each component, list its primary class and key variant classes by reading th
 ### 4. Validation
 
 After updating, verify:
-- Every `.css` file in `src/components/` is mentioned in both docs
+- Every `.css` file in `src/components/` is mentioned in both `docs/development.md` and `docs/duskmoon-dev-core/SKILL.md`
 - No component is listed that doesn't exist in the source
 - Component count number matches the actual file count
 - All import paths listed actually exist in `package.json` exports
@@ -75,7 +77,7 @@ Updated docs/development.md:
   - Added: tree-select, multi-select
   - Removed: (none)
 
-Updated docs/SKILL.md:
+Updated docs/duskmoon-dev-core/SKILL.md (via skill-creator):
   - Added component entries: tree-select, multi-select
   - Updated import paths table
   - No example changes needed
