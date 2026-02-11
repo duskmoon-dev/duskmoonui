@@ -113,8 +113,9 @@
    * SHAPE & DEPTH
    * ============================================ */
 
-  --radius-selector: 0rem;
-  --radius-field: 0.5rem;
+  /* Sunshine: rounded, bubbly, soft feel */
+  --radius-selector: 0.25rem;
+  --radius-field: 0.625rem;
   --radius-box: 2rem;
   --size-selector: 0.1875rem;
   --size-field: 0.1875rem;
@@ -226,8 +227,9 @@
    * SHAPE & DEPTH
    * ============================================ */
 
-  --radius-selector: 0rem;
-  --radius-field: 0.5rem;
+  /* Sunshine: rounded, bubbly, soft feel */
+  --radius-selector: 0.25rem;
+  --radius-field: 0.625rem;
   --radius-box: 2rem;
   --size-selector: 0.1875rem;
   --size-field: 0.1875rem;

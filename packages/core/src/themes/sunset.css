@@ -113,13 +113,14 @@
    * SHAPE & DEPTH
    * ============================================ */
 
-  --radius-selector: 0rem;
+  /* Sunset: warm, soft, organic feel */
+  --radius-selector: 0.1875rem;
   --radius-field: 0.5rem;
-  --radius-box: 1.5rem;
+  --radius-box: 1.25rem;
   --size-selector: 0.1875rem;
   --size-field: 0.1875rem;
-  --border: 0.5px;
-  --depth: 1;
+  --border: 0.75px;
+  --depth: 0.9;
   --noise: 0.7;
 
   /* ============================================
