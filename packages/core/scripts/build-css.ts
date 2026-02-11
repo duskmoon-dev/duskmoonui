@@ -6,6 +6,7 @@
 import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import { join, dirname, resolve } from 'node:path';
 import { existsSync } from 'node:fs';
+import { transform } from 'lightningcss';
 
 const SRC_DIR = join(import.meta.dir, '../src');
 const DIST_DIR = join(import.meta.dir, '../dist');
@@ -258,10 +259,26 @@ async function main(): Promise<void> {
     await copyComponents();
     await buildPlugin();
 
-    // Calculate bundle size
+    // Minify with LightningCSS
+    console.log('\nMinifying CSS...');
     const indexCss = await readFile(join(DIST_DIR, 'index.css'), 'utf-8');
+    const { code: minified } = transform({
+      filename: 'index.css',
+      code: Buffer.from(indexCss),
+      minify: true,
+      errorRecovery: true,
+      customAtRules: {
+        theme: { body: 'declaration-list' },
+      },
+    });
+    await writeFile(join(DIST_DIR, 'index.min.css'), minified);
+    console.log('✓ Built dist/index.min.css');
+
+    // Calculate bundle sizes
     const sizeKB = (indexCss.length / 1024).toFixed(2);
+    const minSizeKB = (minified.length / 1024).toFixed(2);
     console.log(`\n📦 Bundle size: ${sizeKB} KB`);
+    console.log(`📦 Minified:    ${minSizeKB} KB`);
 
     console.log('\n✓ Build complete!');
   } catch (error) {
