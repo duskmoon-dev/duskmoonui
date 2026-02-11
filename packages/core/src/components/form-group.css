@@ -147,7 +147,7 @@
   .fieldset-card {
     background-color: var(--color-surface);
     border-color: transparent;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-xs);
     padding: 1.5rem;
   }
 
@@ -289,6 +289,13 @@
     border-color: var(--color-error);
   }
 
+  .form-group-error .input:focus-visible,
+  .form-group-error .select:focus-visible,
+  .form-group-error .textarea:focus-visible {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
   /* Success State on Form Group */
   .form-group-success .form-label {
     color: var(--color-success);
@@ -298,6 +305,31 @@
   .form-group-success .select,
   .form-group-success .textarea {
     border-color: var(--color-success);
+  }
+
+  .form-group-success .input:focus-visible,
+  .form-group-success .select:focus-visible,
+  .form-group-success .textarea:focus-visible {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  /* Warning State on Form Group */
+  .form-group-warning .form-label {
+    color: var(--color-warning);
+  }
+
+  .form-group-warning .input,
+  .form-group-warning .select,
+  .form-group-warning .textarea {
+    border-color: var(--color-warning);
+  }
+
+  .form-group-warning .input:focus-visible,
+  .form-group-warning .select:focus-visible,
+  .form-group-warning .textarea:focus-visible {
+    border-color: var(--color-warning);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
   /* Disabled Form Group */
