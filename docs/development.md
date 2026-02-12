@@ -31,18 +31,18 @@ This modular approach allows duskmoon-elements to bundle only the CSS needed for
 
 ## Component Overview
 
-DuskMoonUI includes **47 components** and **layout utilities** organized by category.
+DuskMoonUI includes **50 components** and **layout utilities** organized by category.
 
 ### Included Components
 
 | Category | Components |
 |----------|------------|
-| **Actions** | Button, File Upload |
+| **Actions** | Button, File Upload, Toggle |
 | **Data Display** | Avatar, Badge, Card, Chip, Collapse, List, Table, Timeline, Skeleton |
-| **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Time Input, Tree Select |
+| **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Theme Controller, Time Input, Tree Select |
 | **Feedback** | Alert, Dialog, Modal, Progress, Snackbar, Toast, Tooltip |
 | **Layout** | App Bar, Divider, Form, Grid Utilities, Markdown Body |
-| **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Pagination, Stepper |
+| **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Nested Menu, Pagination, Stepper |
 | **Surfaces** | Accordion, Bottom Sheet, Popover |
 
 ### Layout Utilities
@@ -100,6 +100,7 @@ packages/core/src/components/
 ├── modal.css           # Full-featured modal overlays
 ├── multi-select.css    # Multiple selection dropdown
 ├── navigation.css      # Navbar, tabs, menu components
+├── nested-menu.css     # Collapsible sidebar navigation
 ├── otp-input.css       # One-time password input fields
 ├── pin-input.css       # PIN entry input fields
 ├── popover.css         # Contextual overlays
@@ -115,9 +116,11 @@ packages/core/src/components/
 ├── switch.css          # Toggle on/off control
 ├── table.css           # Data tables
 ├── textarea.css        # Multi-line text input
+├── theme-controller.css # Theme switching controls (switch & dropdown)
 ├── time-input.css      # Time selection input
 ├── timeline.css        # Chronological event display
 ├── toast.css           # Toast notification system
+├── toggle.css          # Toggle buttons and button groups
 ├── tooltip.css         # Contextual information on hover
 └── tree-select.css     # Hierarchical tree selection
 ```
@@ -152,13 +155,21 @@ npm install @duskmoon-dev/core tailwindcss@^4.0.0
 pnpm add @duskmoon-dev/core tailwindcss@^4.0.0
 ```
 
-### CSS Import
+### CSS Import (Option A — Recommended)
 
 ```css
-/* Import Tailwind and DuskMoonUI */
 @import "tailwindcss";
 @import "@duskmoon-dev/core";
 ```
+
+### Tailwind Plugin (Option B)
+
+```css
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
+```
+
+The `@plugin` approach registers Material Design 3 color tokens into Tailwind's theme, enabling utility classes like `bg-primary`, `text-on-surface`, etc.
 
 ### Theme Setup
 
@@ -396,10 +407,13 @@ duskmoonui/
 │       │   ├── base/           # Root styles, color tokens
 │       │   │   ├── colors.css  # 65+ color token definitions
 │       │   │   └── utilities.css # Grid and accessibility utilities
-│       │   ├── themes/         # Theme definitions
+│       │   ├── themes/         # Theme definitions (5 themes)
 │       │   │   ├── sunshine.css # Light theme
-│       │   │   └── moonlight.css# Dark theme
-│       │   ├── components/     # 47 component CSS files
+│       │   │   ├── moonlight.css# Dark theme
+│       │   │   ├── ocean.css   # Ocean theme
+│       │   │   ├── forest.css  # Forest theme
+│       │   │   └── sunset.css  # Sunset theme
+│       │   ├── components/     # 50 component CSS files
 │       │   ├── generators/     # CSS variable generation
 │       │   └── types/          # TypeScript definitions
 │       ├── scripts/

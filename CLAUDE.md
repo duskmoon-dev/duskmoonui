@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DuskMoonUI is a CSS-only component library built as a Tailwind CSS v4 plugin. It implements Material Design 3's extended color system with 65+ color tokens in OKLCH format and provides 47 pre-styled components across 5 themes.
+DuskMoonUI is a CSS-only component library built as a Tailwind CSS v4 plugin. It implements Material Design 3's extended color system with 65+ color tokens in OKLCH format and provides 50 pre-styled components across 5 themes.
 
 ## Commands
 
