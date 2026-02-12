@@ -1,63 +1,93 @@
 import { useEffect, useState } from 'react';
 
-const THEMES = ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'] as const;
-type Theme = (typeof THEMES)[number];
+type Mode = 'auto' | 'sunshine' | 'moonlight';
 
-const THEME_META: Record<Theme, { icon: string; label: string }> = {
-  sunshine: { icon: '☀️', label: 'light' },
-  moonlight: { icon: '🌙', label: 'dark' },
-  ocean: { icon: '🌊', label: 'ocean dark' },
-  forest: { icon: '🌲', label: 'forest' },
-  sunset: { icon: '🌅', label: 'sunset' },
-};
+const MODES: { value: Mode; icon: string; label: string }[] = [
+  { value: 'auto', icon: '💻', label: 'Auto (system)' },
+  { value: 'sunshine', icon: '☀️', label: 'Light' },
+  { value: 'moonlight', icon: '🌙', label: 'Dark' },
+];
+
+function resolveTheme(mode: Mode): string {
+  if (mode === 'auto') {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'moonlight'
+      : 'sunshine';
+  }
+  return mode;
+}
+
+function applyTheme(mode: Mode) {
+  document.documentElement.setAttribute('data-theme', resolveTheme(mode));
+}
+
+function readMode(): Mode {
+  const stored = localStorage.getItem('theme-mode');
+  if (stored === 'auto' || stored === 'sunshine' || stored === 'moonlight') {
+    return stored;
+  }
+  return 'auto';
+}
 
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState<Theme>('sunshine');
+  const [mode, setMode] = useState<Mode>('auto');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme && THEMES.includes(savedTheme)) {
-      setTheme(savedTheme);
-    }
+    const saved = readMode();
+    setMode(saved);
+    applyTheme(saved);
   }, []);
 
-  const cycleTheme = () => {
-    const currentIndex = THEMES.indexOf(theme);
-    const nextIndex = (currentIndex + 1) % THEMES.length;
-    const newTheme = THEMES[nextIndex];
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+  // Listen for OS color scheme changes when in auto mode
+  useEffect(() => {
+    if (!mounted) return;
+
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = () => {
+      if (readMode() === 'auto') {
+        applyTheme('auto');
+      }
+    };
+
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, [mounted]);
+
+  const handleChange = (newMode: Mode) => {
+    setMode(newMode);
+    localStorage.setItem('theme-mode', newMode);
+    applyTheme(newMode);
   };
 
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <button className="theme-toggle" aria-label="Toggle theme">
-        <span className="theme-icon">🌙</span>
-      </button>
-    );
-  }
-
-  const meta = THEME_META[theme];
-  const nextTheme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
-  const nextMeta = THEME_META[nextTheme];
-
   return (
-    <button
-      onClick={cycleTheme}
-      className="theme-toggle"
-      aria-label={`Switch to ${nextMeta.label} theme`}
-      title={`Switch to ${nextMeta.label} mode (${nextTheme})`}
+    <div
+      className="theme-controller theme-controller-icon theme-controller-sm"
+      role="radiogroup"
+      aria-label="Theme preference"
+      data-theme-toggle=""
     >
-      <span className="theme-icon">
-        {meta.icon}
-      </span>
-      <span className="sr-only">
-        Current theme: {theme}
-      </span>
-    </button>
+      {MODES.map(({ value, icon, label }) => {
+        const id = `theme-${value}`;
+        return (
+          <span key={value}>
+            <input
+              type="radio"
+              name="theme-mode"
+              value={value}
+              id={id}
+              className="theme-controller-item"
+              checked={mounted ? mode === value : value === 'auto'}
+              onChange={() => handleChange(value)}
+            />
+            <label htmlFor={id} className="theme-controller-label" title={label}>
+              <span aria-hidden="true">{icon}</span>
+              <span className="sr-only">{label}</span>
+            </label>
+          </span>
+        );
+      })}
+    </div>
   );
 };

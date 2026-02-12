@@ -1,149 +1,120 @@
 /**
  * T065: Integration test for theme switcher functionality
- * Tests that the theme switcher toggles between sunshine and moonlight themes
+ * Tests the theme-controller with three modes: auto, light (sunshine), dark (moonlight)
  */
 
 import { test, expect } from '@playwright/test';
 
 test.describe('Theme Switcher Functionality', () => {
   test.beforeEach(async ({ page }) => {
+    // Clear stored mode before each test
     await page.goto('/');
+    await page.evaluate(() => localStorage.removeItem('theme-mode'));
   });
 
-  test.describe('Theme Toggle Button', () => {
-    test('theme toggle button is visible', async ({ page }) => {
-      const themeToggle = page.locator('.theme-toggle, [data-theme-toggle]');
-      await expect(themeToggle).toBeVisible();
+  test.describe('Theme Controller Visibility', () => {
+    test('theme controller is visible', async ({ page }) => {
+      const controller = page.locator('[data-theme-toggle]');
+      await expect(controller).toBeVisible();
     });
 
-    test('theme toggle has accessible label', async ({ page }) => {
-      const themeToggle = page.locator('.theme-toggle, [data-theme-toggle]');
-      const ariaLabel = await themeToggle.getAttribute('aria-label');
-      expect(ariaLabel).toBeTruthy();
-      expect(ariaLabel?.toLowerCase()).toMatch(/theme|mode|switch/);
+    test('theme controller has accessible radiogroup role', async ({ page }) => {
+      const controller = page.locator('[data-theme-toggle]');
+      await expect(controller).toHaveAttribute('role', 'radiogroup');
     });
 
-    test('theme toggle can be activated with keyboard', async ({ page }) => {
-      const themeToggle = page.locator('.theme-toggle, [data-theme-toggle]');
+    test('theme controller has accessible label', async ({ page }) => {
+      const controller = page.locator('[data-theme-toggle]');
+      const ariaLabel = await controller.getAttribute('aria-label');
+      expect(ariaLabel?.toLowerCase()).toMatch(/theme/);
+    });
 
-      await themeToggle.focus();
-      const initialTheme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-
-      await page.keyboard.press('Enter');
-      await page.waitForTimeout(100);
-
-      const newTheme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-
-      // Theme should have changed
-      expect(newTheme).not.toBe(initialTheme);
+    test('has exactly three mode options (auto, light, dark)', async ({ page }) => {
+      const radios = page.locator('.theme-controller-item');
+      await expect(radios).toHaveCount(3);
     });
   });
 
   test.describe('Theme Application', () => {
-    test('default theme is sunshine (light)', async ({ page }) => {
-      // Wait for hydration
-      await page.waitForTimeout(100);
+    test('defaults to auto mode', async ({ page }) => {
+      await page.reload();
+      await page.waitForTimeout(200);
 
-      const theme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-
-      // Could be null initially or sunshine
-      expect(theme === null || theme === 'sunshine').toBe(true);
+      const autoRadio = page.locator('#theme-auto');
+      await expect(autoRadio).toBeChecked();
     });
 
-    test('clicking toggle switches to moonlight theme', async ({ page }) => {
-      const themeToggle = page.locator('.theme-toggle, [data-theme-toggle]');
-
-      // Set initial theme to sunshine
-      await page.evaluate(
-        () => document.documentElement.setAttribute('data-theme', 'sunshine')
-      );
-
-      await themeToggle.click();
+    test('clicking light selects sunshine theme', async ({ page }) => {
+      const lightLabel = page.locator('label[for="theme-sunshine"]');
+      await lightLabel.click();
       await page.waitForTimeout(100);
 
       const theme = await page.evaluate(
         () => document.documentElement.getAttribute('data-theme')
       );
-
-      expect(theme).toBe('moonlight');
-    });
-
-    test('clicking toggle again switches back to sunshine', async ({ page }) => {
-      const themeToggle = page.locator('.theme-toggle, [data-theme-toggle]');
-
-      // Set to moonlight first
-      await page.evaluate(
-        () => document.documentElement.setAttribute('data-theme', 'moonlight')
-      );
-
-      await themeToggle.click();
-      await page.waitForTimeout(100);
-
-      const theme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-
       expect(theme).toBe('sunshine');
     });
 
-    test('theme colors update when switched', async ({ page }) => {
-      // Get initial background color
-      await page.evaluate(
-        () => document.documentElement.setAttribute('data-theme', 'sunshine')
-      );
+    test('clicking dark selects moonlight theme', async ({ page }) => {
+      const darkLabel = page.locator('label[for="theme-moonlight"]');
+      await darkLabel.click();
       await page.waitForTimeout(100);
 
-      const lightBg = await page.evaluate(() => {
-        const styles = window.getComputedStyle(document.body);
-        return styles.backgroundColor;
-      });
-
-      // Switch to dark theme
-      await page.evaluate(
-        () => document.documentElement.setAttribute('data-theme', 'moonlight')
+      const theme = await page.evaluate(
+        () => document.documentElement.getAttribute('data-theme')
       );
+      expect(theme).toBe('moonlight');
+    });
+
+    test('auto mode resolves to a valid theme', async ({ page }) => {
+      const autoLabel = page.locator('label[for="theme-auto"]');
+      await autoLabel.click();
       await page.waitForTimeout(100);
 
-      const darkBg = await page.evaluate(() => {
-        const styles = window.getComputedStyle(document.body);
-        return styles.backgroundColor;
-      });
+      const theme = await page.evaluate(
+        () => document.documentElement.getAttribute('data-theme')
+      );
+      expect(['sunshine', 'moonlight']).toContain(theme);
+    });
 
-      // Colors should be different
+    test('theme colors differ between light and dark', async ({ page }) => {
+      // Set light
+      const lightLabel = page.locator('label[for="theme-sunshine"]');
+      await lightLabel.click();
+      await page.waitForTimeout(100);
+
+      const lightBg = await page.evaluate(() =>
+        window.getComputedStyle(document.body).backgroundColor
+      );
+
+      // Set dark
+      const darkLabel = page.locator('label[for="theme-moonlight"]');
+      await darkLabel.click();
+      await page.waitForTimeout(100);
+
+      const darkBg = await page.evaluate(() =>
+        window.getComputedStyle(document.body).backgroundColor
+      );
+
       expect(lightBg).not.toBe(darkBg);
     });
   });
 
   test.describe('Theme Persistence', () => {
-    test('theme preference is saved to localStorage', async ({ page }) => {
-      const themeToggle = page.locator('.theme-toggle, [data-theme-toggle]');
-
-      // Ensure we start with sunshine
-      await page.evaluate(() => {
-        localStorage.removeItem('theme');
-        document.documentElement.setAttribute('data-theme', 'sunshine');
-      });
-
-      await themeToggle.click();
+    test('mode preference is saved to localStorage', async ({ page }) => {
+      const darkLabel = page.locator('label[for="theme-moonlight"]');
+      await darkLabel.click();
       await page.waitForTimeout(100);
 
-      const savedTheme = await page.evaluate(
-        () => localStorage.getItem('theme')
+      const savedMode = await page.evaluate(
+        () => localStorage.getItem('theme-mode')
       );
-
-      expect(savedTheme).toBe('moonlight');
+      expect(savedMode).toBe('moonlight');
     });
 
-    test('theme is restored from localStorage on page load', async ({ page }) => {
-      // Set theme preference in localStorage before navigation
+    test('mode is restored from localStorage on page load', async ({ page }) => {
       await page.evaluate(() => {
-        localStorage.setItem('theme', 'moonlight');
+        localStorage.setItem('theme-mode', 'moonlight');
       });
 
       await page.reload();
@@ -152,33 +123,43 @@ test.describe('Theme Switcher Functionality', () => {
       const theme = await page.evaluate(
         () => document.documentElement.getAttribute('data-theme')
       );
-
       expect(theme).toBe('moonlight');
+    });
+
+    test('auto mode is restored from localStorage on page load', async ({ page }) => {
+      await page.evaluate(() => {
+        localStorage.setItem('theme-mode', 'auto');
+      });
+
+      await page.reload();
+      await page.waitForTimeout(300);
+
+      const theme = await page.evaluate(
+        () => document.documentElement.getAttribute('data-theme')
+      );
+      // Auto resolves based on system preference
+      expect(['sunshine', 'moonlight']).toContain(theme);
     });
   });
 
-  test.describe('Visual Feedback', () => {
-    test('toggle icon changes based on theme', async ({ page }) => {
-      const themeToggle = page.locator('.theme-toggle, [data-theme-toggle]');
-
-      // Set to light theme
-      await page.evaluate(
-        () => document.documentElement.setAttribute('data-theme', 'sunshine')
-      );
+  test.describe('Radio State', () => {
+    test('radio state updates when mode changes', async ({ page }) => {
+      const darkLabel = page.locator('label[for="theme-moonlight"]');
+      await darkLabel.click();
       await page.waitForTimeout(100);
 
-      const lightIcon = await themeToggle.textContent();
+      await expect(page.locator('#theme-moonlight')).toBeChecked();
+      await expect(page.locator('#theme-auto')).not.toBeChecked();
+      await expect(page.locator('#theme-sunshine')).not.toBeChecked();
+    });
 
-      // Switch to dark theme
-      await page.evaluate(
-        () => document.documentElement.setAttribute('data-theme', 'moonlight')
-      );
-      await page.waitForTimeout(100);
-
-      const darkIcon = await themeToggle.textContent();
-
-      // Icons should be different
-      expect(lightIcon).not.toBe(darkIcon);
+    test('switching between all three modes works', async ({ page }) => {
+      for (const mode of ['sunshine', 'moonlight', 'auto'] as const) {
+        const label = page.locator(`label[for="theme-${mode}"]`);
+        await label.click();
+        await page.waitForTimeout(100);
+        await expect(page.locator(`#theme-${mode}`)).toBeChecked();
+      }
     });
   });
 });

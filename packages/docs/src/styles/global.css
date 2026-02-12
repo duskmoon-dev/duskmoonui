@@ -149,25 +149,3 @@
   border-width: 0;
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.theme-toggle:hover {
-  background: var(--hover-color);
-  transform: scale(1.05);
-}
-
-.theme-icon {
-  font-size: 1.25rem;
-  line-height: 1;
-}
