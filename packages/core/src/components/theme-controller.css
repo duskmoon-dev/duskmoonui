@@ -1,0 +1,281 @@
+/**
+ * Theme Controller Component Styles
+ * DuskMoonUI - Two display modes for theme switching:
+ *
+ * 1. Switch (.theme-controller) — inline pill-shaped radio group, all options visible
+ * 2. Dropdown (.theme-controller-dropdown) — <details>/<summary> with floating menu
+ *
+ * Both modes reuse .theme-controller-item (hidden radio) and .theme-controller-label
+ * for CSS-only active state via :checked + label.
+ */
+
+@layer components {
+  /* ========================================
+   * SHARED — Radio input & label (used in both modes)
+   * ======================================== */
+
+  /* Hidden Radio Input — visually hidden but accessible */
+  .theme-controller-item {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Visible Label — the clickable option */
+  .theme-controller-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: var(--color-on-surface-variant);
+    background-color: transparent;
+    border-radius: calc(var(--radius-box, 1.5rem) - 0.25rem);
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out, color 150ms ease-in-out,
+      box-shadow 150ms ease-in-out;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  /* Hover state */
+  .theme-controller-label:hover {
+    background-color: var(--color-surface-container-high);
+  }
+
+  /* Focus-visible ring on the label when its radio is focused */
+  .theme-controller-item:focus-visible + .theme-controller-label {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Active/checked state */
+  .theme-controller-item:checked + .theme-controller-label {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .theme-controller-item:checked + .theme-controller-label:hover {
+    background-color: color-mix(in oklch, var(--color-primary-container), black 5%);
+  }
+
+  /* ========================================
+   * SWITCH MODE — inline pill radio group
+   * ======================================== */
+
+  .theme-controller {
+    display: inline-flex;
+    align-items: stretch;
+    background-color: var(--color-surface-container);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-box, 1.5rem);
+    padding: 0.25rem;
+    gap: 0.125rem;
+  }
+
+  /* ── Switch Size Variants ── */
+
+  .theme-controller-sm {
+    padding: 0.125rem;
+    border-radius: calc(var(--radius-box, 1.5rem) * 0.75);
+  }
+
+  .theme-controller-sm .theme-controller-label {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    border-radius: calc(var(--radius-box, 1.5rem) * 0.75 - 0.125rem);
+  }
+
+  .theme-controller-lg {
+    padding: 0.375rem;
+    gap: 0.25rem;
+    border-radius: calc(var(--radius-box, 1.5rem) * 1.25);
+  }
+
+  .theme-controller-lg .theme-controller-label {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: calc(var(--radius-box, 1.5rem) * 1.25 - 0.375rem);
+  }
+
+  /* ── Switch Icon-only Variant ── */
+
+  .theme-controller-icon .theme-controller-label {
+    padding: 0.5rem;
+  }
+
+  .theme-controller-icon.theme-controller-sm .theme-controller-label {
+    padding: 0.375rem;
+  }
+
+  .theme-controller-icon.theme-controller-lg .theme-controller-label {
+    padding: 0.75rem;
+  }
+
+  /* ========================================
+   * DROPDOWN MODE — <details>/<summary> with floating menu
+   * ======================================== */
+
+  .theme-controller-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Trigger button (<summary>) */
+  .theme-controller-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface-container);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-field, 0.5rem);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 150ms ease-in-out;
+    list-style: none;
+  }
+
+  .theme-controller-trigger::-webkit-details-marker {
+    display: none;
+  }
+
+  .theme-controller-trigger:hover {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .theme-controller-trigger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Chevron indicator */
+  .theme-controller-trigger::after {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: -0.125rem;
+    transition: transform 150ms ease-in-out;
+  }
+
+  .theme-controller-dropdown[open] .theme-controller-trigger::after {
+    transform: rotate(-135deg);
+    margin-top: 0.125rem;
+  }
+
+  /* Floating menu */
+  .theme-controller-menu {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    z-index: 50;
+    min-width: 100%;
+    background-color: var(--color-surface-container);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-field, 0.5rem);
+    padding: 0.25rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  /* Menu labels are full-width and left-aligned */
+  .theme-controller-menu .theme-controller-label {
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: calc(var(--radius-field, 0.5rem) - 0.25rem);
+  }
+
+  /* ── Dropdown Size Variants ── */
+
+  .theme-controller-dropdown-sm .theme-controller-trigger {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .theme-controller-dropdown-sm .theme-controller-menu {
+    padding: 0.125rem;
+  }
+
+  .theme-controller-dropdown-sm .theme-controller-menu .theme-controller-label {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .theme-controller-dropdown-lg .theme-controller-trigger {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .theme-controller-dropdown-lg .theme-controller-menu {
+    padding: 0.375rem;
+  }
+
+  .theme-controller-dropdown-lg .theme-controller-menu .theme-controller-label {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  /* ── Dropdown Icon-only Trigger ── */
+
+  .theme-controller-dropdown-icon .theme-controller-trigger {
+    padding: 0.5rem;
+  }
+
+  /* Hide chevron for icon-only trigger */
+  .theme-controller-dropdown-icon .theme-controller-trigger::after {
+    display: none;
+  }
+
+  .theme-controller-dropdown-icon.theme-controller-dropdown-sm .theme-controller-trigger {
+    padding: 0.375rem;
+  }
+
+  .theme-controller-dropdown-icon.theme-controller-dropdown-lg .theme-controller-trigger {
+    padding: 0.75rem;
+  }
+
+  /* ── Dropdown Alignment ── */
+
+  .theme-controller-dropdown-end .theme-controller-menu {
+    left: auto;
+    right: 0;
+  }
+
+  /* ========================================
+   * REDUCED MOTION
+   * ======================================== */
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-controller-label,
+    .theme-controller-trigger,
+    .theme-controller-trigger::after {
+      transition: none;
+    }
+  }
+}
