@@ -93,6 +93,10 @@ Astro 5 with MDX content collections. Key patterns:
 - Component docs live in `packages/docs/src/content/docs/en/components/*.mdx`
 - **ID collision risk**: Markdown headings auto-generate IDs that can shadow element IDs used by `popovertarget` — prefix demo element IDs with `demo-` to avoid collisions
 
+### Skills
+
+When developing components or pages for this project, use the `frontend-design` skill to produce high-quality, production-grade UI.
+
 ### CSS Anchor Positioning
 
 The popover component uses CSS Anchor Positioning (`anchor()` functions). Known issues:
