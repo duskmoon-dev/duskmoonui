@@ -55,6 +55,7 @@
 @import "./slider.css";
 @import "./switch.css";
 @import "./textarea.css";
+@import "./theme-controller.css";
 @import "./toggle.css";
 @import "./time-input.css";
 @import "./tree-select.css";
@@ -84,6 +85,7 @@
 
 @import "./bottom-navigation.css";
 @import "./drawer.css";
+@import "./nested-menu.css";
 @import "./stepper.css";
 
 /* ============================================

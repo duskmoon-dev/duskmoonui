@@ -85,6 +85,8 @@ Each component has:
 
 ### Docs Site
 
+**Constitution**: The docs site is strictly a consumer of `@duskmoon-dev/core`. All visual styling and components must come from core. If a component is missing, request it as a feature in core — never create custom component styles in docs. See `packages/docs/CLAUDE.md` for full rules.
+
 Astro 5 with MDX content collections. Key patterns:
 - In dev mode, Vite aliases `@duskmoon-dev/core` to the core source directory for hot reload
 - `ComponentShowcase.astro` renders live previews with code tabs

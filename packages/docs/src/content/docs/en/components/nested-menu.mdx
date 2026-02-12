@@ -1,0 +1,466 @@
+---
+title: Nested Menu
+description: Sidebar navigation component with collapsible cascading levels using native details/summary elements
+category: components
+order: 19
+published: true
+tags: ['nested-menu', 'sidebar', 'navigation', 'collapsible', 'components', 'material-design']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Nested Menu
+
+Nested menus provide sidebar navigation with collapsible cascading levels. Built on native `<details>/<summary>` elements, they offer accessible expand/collapse behavior with zero JavaScript.
+
+Unlike the flat [Menu](/duskmoonui/docs/en/components/menu/) component (designed for dropdowns), nested menus are purpose-built for persistent sidebar navigation with section headers, active states, and unlimited nesting depth.
+
+## Basic Usage
+
+A simple nested menu with links and a section title:
+
+<ComponentShowcase title="Basic Nested Menu" code={`<ul class="nested-menu">
+  <li class="nested-menu-title">Getting Started</li>
+  <li><a href="#demo-install">Installation</a></li>
+  <li><a href="#demo-config">Configuration</a></li>
+  <li><a href="#demo-usage">Usage Guide</a></li>
+</ul>`} />
+
+## Collapsible Sections
+
+Use `<details>` and `<summary>` for collapsible groups. Add the `open` attribute to expand a section by default:
+
+<ComponentShowcase title="Collapsible Sections" code={`<ul class="nested-menu">
+  <li class="nested-menu-title">Documentation</li>
+  <li>
+    <details open>
+      <summary>Components</summary>
+      <ul>
+        <li><a href="#demo-button">Button</a></li>
+        <li><a href="#demo-card">Card</a></li>
+        <li><a href="#demo-input">Input</a></li>
+      </ul>
+    </details>
+  </li>
+  <li>
+    <details>
+      <summary>Theming</summary>
+      <ul>
+        <li><a href="#demo-colors">Colors</a></li>
+        <li><a href="#demo-tokens">Tokens</a></li>
+      </ul>
+    </details>
+  </li>
+</ul>`} />
+
+## Deep Nesting
+
+Nested menus support unlimited depth. Each level adds indentation automatically:
+
+<ComponentShowcase title="Deep Nesting" code={`<ul class="nested-menu">
+  <li class="nested-menu-title">Components</li>
+  <li>
+    <details open>
+      <summary>Forms</summary>
+      <ul>
+        <li><a href="#demo-input">Input</a></li>
+        <li><a href="#demo-select">Select</a></li>
+        <li>
+          <details open>
+            <summary>Pickers</summary>
+            <ul>
+              <li><a href="#demo-date">Datepicker</a></li>
+              <li><a href="#demo-time">Time Input</a></li>
+              <li>
+                <details>
+                  <summary>Advanced</summary>
+                  <ul>
+                    <li><a href="#demo-range">Date Range</a></li>
+                    <li><a href="#demo-cron">Cron Picker</a></li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </details>
+  </li>
+  <li><a href="#demo-button">Button</a></li>
+</ul>`} />
+
+## Active State
+
+Mark the current page with the `active` class or `aria-current="page"`:
+
+<ComponentShowcase title="Active State" code={`<ul class="nested-menu">
+  <li class="nested-menu-title">Navigation</li>
+  <li><a href="#demo-home">Home</a></li>
+  <li><a href="#demo-about" class="active">About</a></li>
+  <li><a href="#demo-contact">Contact</a></li>
+</ul>`} />
+
+### aria-current Support
+
+For better accessibility, use `aria-current="page"` instead of or alongside `active`:
+
+<ComponentShowcase title="aria-current Active" code={`<ul class="nested-menu">
+  <li class="nested-menu-title">Pages</li>
+  <li><a href="#demo-dash">Dashboard</a></li>
+  <li><a href="#demo-settings" aria-current="page">Settings</a></li>
+  <li><a href="#demo-profile">Profile</a></li>
+</ul>`} />
+
+## Disabled Items
+
+Use the `disabled` class on `<li>` elements to disable navigation items:
+
+<ComponentShowcase title="Disabled Items" code={`<ul class="nested-menu">
+  <li class="nested-menu-title">Account</li>
+  <li><a href="#demo-profile">Profile</a></li>
+  <li><a href="#demo-settings">Settings</a></li>
+  <li class="disabled"><a href="#demo-billing">Billing (coming soon)</a></li>
+  <li class="disabled"><a href="#demo-api">API Keys (coming soon)</a></li>
+</ul>`} />
+
+## Size Variants
+
+### Extra Small
+
+<ComponentShowcase title="Extra Small" code={`<ul class="nested-menu nested-menu-xs">
+  <li class="nested-menu-title">Section</li>
+  <li><a href="#demo-1">Item One</a></li>
+  <li><a href="#demo-2">Item Two</a></li>
+  <li>
+    <details open>
+      <summary>Submenu</summary>
+      <ul>
+        <li><a href="#demo-3">Sub Item</a></li>
+      </ul>
+    </details>
+  </li>
+</ul>`} />
+
+### Small
+
+<ComponentShowcase title="Small" code={`<ul class="nested-menu nested-menu-sm">
+  <li class="nested-menu-title">Section</li>
+  <li><a href="#demo-1">Item One</a></li>
+  <li><a href="#demo-2">Item Two</a></li>
+  <li>
+    <details open>
+      <summary>Submenu</summary>
+      <ul>
+        <li><a href="#demo-3">Sub Item</a></li>
+      </ul>
+    </details>
+  </li>
+</ul>`} />
+
+### Large
+
+<ComponentShowcase title="Large" code={`<ul class="nested-menu nested-menu-lg">
+  <li class="nested-menu-title">Section</li>
+  <li><a href="#demo-1">Item One</a></li>
+  <li><a href="#demo-2">Item Two</a></li>
+  <li>
+    <details open>
+      <summary>Submenu</summary>
+      <ul>
+        <li><a href="#demo-3">Sub Item</a></li>
+      </ul>
+    </details>
+  </li>
+</ul>`} />
+
+## Bordered Variant
+
+Add a panel-like appearance with border, surface background, and shadow:
+
+<ComponentShowcase title="Bordered Variant" code={`<ul class="nested-menu nested-menu-bordered">
+  <li class="nested-menu-title">Sidebar</li>
+  <li><a href="#demo-dash" class="active">Dashboard</a></li>
+  <li>
+    <details open>
+      <summary>Analytics</summary>
+      <ul>
+        <li><a href="#demo-overview">Overview</a></li>
+        <li><a href="#demo-reports">Reports</a></li>
+        <li><a href="#demo-export">Export</a></li>
+      </ul>
+    </details>
+  </li>
+  <li><a href="#demo-settings">Settings</a></li>
+</ul>`} />
+
+## Compact Variant
+
+Tighter padding for dense interfaces:
+
+<ComponentShowcase title="Compact Variant" code={`<ul class="nested-menu nested-menu-compact">
+  <li class="nested-menu-title">Quick Nav</li>
+  <li><a href="#demo-1">Overview</a></li>
+  <li><a href="#demo-2">Installation</a></li>
+  <li>
+    <details open>
+      <summary>API</summary>
+      <ul>
+        <li><a href="#demo-3">Methods</a></li>
+        <li><a href="#demo-4">Events</a></li>
+        <li><a href="#demo-5">Types</a></li>
+      </ul>
+    </details>
+  </li>
+  <li><a href="#demo-6">Examples</a></li>
+</ul>`} />
+
+## Combining Variants
+
+Variants can be combined for tailored results:
+
+<ComponentShowcase title="Bordered + Compact + Small" code={`<ul class="nested-menu nested-menu-bordered nested-menu-compact nested-menu-sm">
+  <li class="nested-menu-title">API Reference</li>
+  <li><a href="#demo-overview" class="active">Overview</a></li>
+  <li>
+    <details open>
+      <summary>Endpoints</summary>
+      <ul>
+        <li><a href="#demo-users">Users</a></li>
+        <li><a href="#demo-posts">Posts</a></li>
+        <li><a href="#demo-comments">Comments</a></li>
+      </ul>
+    </details>
+  </li>
+  <li>
+    <details>
+      <summary>Authentication</summary>
+      <ul>
+        <li><a href="#demo-oauth">OAuth</a></li>
+        <li><a href="#demo-jwt">JWT</a></li>
+      </ul>
+    </details>
+  </li>
+  <li class="nested-menu-title">Resources</li>
+  <li><a href="#demo-sdk">SDK</a></li>
+  <li class="disabled"><a href="#demo-cli">CLI (beta)</a></li>
+</ul>`} />
+
+## Full Sidebar Example
+
+A realistic documentation sidebar combining all features:
+
+<ComponentShowcase title="Documentation Sidebar" code={`<ul class="nested-menu nested-menu-bordered">
+  <li class="nested-menu-title">Getting Started</li>
+  <li><a href="#demo-install">Installation</a></li>
+  <li><a href="#demo-config" class="active">Configuration</a></li>
+
+  <li class="nested-menu-title">Components</li>
+  <li>
+    <details open>
+      <summary>Forms</summary>
+      <ul>
+        <li><a href="#demo-input">Input</a></li>
+        <li><a href="#demo-select">Select</a></li>
+        <li>
+          <details>
+            <summary>Pickers</summary>
+            <ul>
+              <li><a href="#demo-date">Datepicker</a></li>
+              <li><a href="#demo-time">Time Input</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </details>
+  </li>
+  <li>
+    <details>
+      <summary>Feedback</summary>
+      <ul>
+        <li><a href="#demo-alert">Alert</a></li>
+        <li><a href="#demo-toast">Toast</a></li>
+        <li><a href="#demo-dialog">Dialog</a></li>
+      </ul>
+    </details>
+  </li>
+  <li><a href="#demo-button">Button</a></li>
+  <li><a href="#demo-card">Card</a></li>
+
+  <li class="nested-menu-title">Guides</li>
+  <li><a href="#demo-react">React</a></li>
+  <li><a href="#demo-vue">Vue</a></li>
+  <li class="disabled"><a href="#demo-angular">Angular (coming soon)</a></li>
+</ul>`} />
+
+## Button Items
+
+Menu items can also be `<button>` elements for non-navigation actions:
+
+<ComponentShowcase title="Button Items" code={`<ul class="nested-menu nested-menu-bordered">
+  <li class="nested-menu-title">Actions</li>
+  <li><button>Create New Project</button></li>
+  <li><button>Import from GitHub</button></li>
+  <li><button class="active">Current Workspace</button></li>
+</ul>`} />
+
+## Best Practices
+
+### Accessibility
+
+- Use `aria-current="page"` to indicate the current page for screen readers
+- The `<details>/<summary>` pattern is natively keyboard accessible (Enter/Space to toggle)
+- Add `aria-label="Navigation"` to the wrapping `<nav>` element
+- Disabled items still appear in the DOM — use `aria-disabled="true"` alongside the `.disabled` class
+
+<ComponentShowcase title="Accessible Navigation" code={`<nav aria-label="Documentation sidebar">
+  <ul class="nested-menu">
+    <li class="nested-menu-title">Docs</li>
+    <li><a href="#demo-intro" aria-current="page">Introduction</a></li>
+    <li><a href="#demo-start">Quick Start</a></li>
+    <li class="disabled"><a href="#demo-adv" aria-disabled="true">Advanced (coming soon)</a></li>
+  </ul>
+</nav>`} />
+
+### Content Guidelines
+
+- Keep section titles short (1-2 words)
+- Use descriptive link text — avoid "Click here"
+- Group related items under collapsible sections
+- Don't nest deeper than 3 levels
+- Place the most important items at the top
+
+## Framework Examples
+
+### React
+
+```tsx
+interface NavItem {
+  label: string;
+  href?: string;
+  active?: boolean;
+  disabled?: boolean;
+  children?: NavItem[];
+}
+
+interface NestedMenuProps {
+  title?: string;
+  items: NavItem[];
+  variant?: 'default' | 'bordered' | 'compact';
+}
+
+function NavItemComponent({ item }: { item: NavItem }) {
+  if (item.children) {
+    return (
+      <li>
+        <details open>
+          <summary>{item.label}</summary>
+          <ul>
+            {item.children.map((child, i) => (
+              <NavItemComponent key={i} item={child} />
+            ))}
+          </ul>
+        </details>
+      </li>
+    );
+  }
+
+  return (
+    <li className={item.disabled ? 'disabled' : ''}>
+      <a
+        href={item.href}
+        className={item.active ? 'active' : ''}
+        aria-current={item.active ? 'page' : undefined}
+      >
+        {item.label}
+      </a>
+    </li>
+  );
+}
+
+export function NestedMenu({ title, items, variant = 'default' }: NestedMenuProps) {
+  const classes = [
+    'nested-menu',
+    variant === 'bordered' && 'nested-menu-bordered',
+    variant === 'compact' && 'nested-menu-compact',
+  ].filter(Boolean).join(' ');
+
+  return (
+    <ul className={classes}>
+      {title && <li className="nested-menu-title">{title}</li>}
+      {items.map((item, i) => (
+        <NavItemComponent key={i} item={item} />
+      ))}
+    </ul>
+  );
+}
+```
+
+### Vue
+
+```vue
+<template>
+  <ul :class="menuClasses">
+    <li v-if="title" class="nested-menu-title">{{ title }}</li>
+    <NavItem v-for="(item, i) in items" :key="i" :item="item" />
+  </ul>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+import NavItem from './NavItem.vue';
+
+const props = defineProps({
+  title: String,
+  items: { type: Array, required: true },
+  bordered: Boolean,
+  compact: Boolean,
+});
+
+const menuClasses = computed(() => [
+  'nested-menu',
+  props.bordered && 'nested-menu-bordered',
+  props.compact && 'nested-menu-compact',
+]);
+</script>
+```
+
+## API Reference
+
+### Class Names
+
+| Class | Element | Description |
+|-------|---------|-------------|
+| `.nested-menu` | `<ul>` | Root container (required) |
+| `.nested-menu-title` | `<li>` | Section header (uppercase, muted) |
+| `.active` | `<a>` / `<button>` | Active item highlight |
+| `.disabled` | `<li>` | Disabled item (opacity, no pointer) |
+| `.nested-menu-xs` | root | Extra small size variant |
+| `.nested-menu-sm` | root | Small size variant |
+| `.nested-menu-lg` | root | Large size variant |
+| `.nested-menu-bordered` | root | Panel look with border, bg, shadow |
+| `.nested-menu-compact` | root | Tighter padding throughout |
+
+### HTML Structure
+
+No classes are needed on `<details>`, `<summary>`, or nested `<ul>` elements — they are all styled via descendant selectors from `.nested-menu`.
+
+```html
+<ul class="nested-menu">
+  <li class="nested-menu-title">Section</li>
+  <li><a href="/page">Leaf item</a></li>
+  <li>
+    <details open>
+      <summary>Collapsible group</summary>
+      <ul>
+        <li><a href="/child">Nested item</a></li>
+      </ul>
+    </details>
+  </li>
+</ul>
+```
+
+## Related Components
+
+- [Menu](/duskmoonui/docs/en/components/menu/) - Flat dropdown menu for temporary surfaces
+- [Drawer](/duskmoonui/docs/en/components/drawer/) - Slide-out panel for sidebar navigation
+- [Accordion](/duskmoonui/docs/en/components/accordion/) - Expandable content panels
+- [Tabs](/duskmoonui/docs/en/components/tabs/) - Tabbed navigation
