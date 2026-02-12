@@ -17,7 +17,7 @@ The simplest configuration uses default settings with Tailwind CSS 4:
 
 ```css
 @import "tailwindcss";
-@plugin "@duskmoon-dev/core";
+@plugin "@duskmoon-dev/core/plugin";
 ```
 
 **Note:** @duskmoon-dev/core requires Tailwind CSS 4.0 or later. Tailwind CSS 3.x is not supported.
@@ -28,7 +28,7 @@ Customize @duskmoon-dev/core by passing options in Tailwind CSS 4:
 
 ```css
 @import "tailwindcss";
-@plugin "@duskmoon-dev/core" {
+@plugin "@duskmoon-dev/core/plugin" {
   @theme {
     --theme: "sunshine";
     --dark-theme: "moonlight";

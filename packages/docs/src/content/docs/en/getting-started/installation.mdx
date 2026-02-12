@@ -40,26 +40,25 @@ pnpm add @duskmoon-dev/core
 
 Add @duskmoon-dev/core to your Tailwind configuration:
 
-### Using Tailwind CSS 4.0+
+### Option A: CSS `@import` (Recommended)
 
 In your `globals.css` or main CSS file:
 
 ```css
 @import "tailwindcss";
-@plugin "@duskmoon-dev/core";
+@import "@duskmoon-dev/core";
 ```
 
-### Using Tailwind CSS 3.x
+This imports all components, themes, and color tokens as pure CSS.
 
-In your `tailwind.config.js`:
+### Option B: Tailwind `@plugin` Directive
 
-```javascript
-module.exports = {
-  plugins: [
-    require('@duskmoon-dev/core'),
-  ],
-}
+```css
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
 ```
+
+The `@plugin` approach registers Material Design 3 color tokens into Tailwind's theme system, enabling utility classes like `bg-primary`, `text-on-surface`, etc.
 
 ## What's Next?
 

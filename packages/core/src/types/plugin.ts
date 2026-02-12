@@ -10,7 +10,7 @@ export type BuiltInTheme = 'sunshine' | 'moonlight';
 
 /**
  * Plugin configuration options
- * Used with @plugin "@duskmoon-dev/core" { ... } syntax
+ * Used with @plugin "@duskmoon-dev/core/plugin" { ... } syntax
  */
 export interface PluginConfig {
   /**
