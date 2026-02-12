@@ -1,6 +1,6 @@
 # @duskmoon-dev/core
 
-> DuskMoonUI - A Tailwind CSS v4 plugin with Material Design 3 color system and 42 component styles
+> DuskMoonUI - A Tailwind CSS v4 plugin with Material Design 3 color system and 49 component styles
 
 [![npm version](https://img.shields.io/npm/v/@duskmoon-dev/core.svg)](https://www.npmjs.com/package/@duskmoon-dev/core)
 [![npm downloads](https://img.shields.io/npm/dm/@duskmoon-dev/core.svg)](https://www.npmjs.com/package/@duskmoon-dev/core)
@@ -12,7 +12,7 @@
 - 🎨 **Three-color system** - Primary, secondary, and tertiary brand colors with automatic content colors
 - 🌓 **Built-in themes** - Sunshine (light) and Moonlight (dark) themes ready to use
 - 📦 **55+ Material Design 3 color tokens** - Full MD3 color system with OKLCH format
-- 🧩 **42 UI components** - Complete component library with consistent styling
+- 🧩 **49 UI components** - Complete component library with consistent styling
 - 🚀 **Zero runtime JS** - Pure CSS with CSS custom properties for theme switching
 - ♿ **Accessible by default** - WCAG AA compliant contrast ratios (4.5:1 minimum)
 - 🎯 **Tailwind v4 native** - Pure CSS using `@import`, no JavaScript configuration
@@ -96,7 +96,7 @@ Theme switching is instant and uses pure CSS custom properties.
 
 ## Components
 
-@duskmoon-dev/core includes **42 components** organized into 7 categories:
+@duskmoon-dev/core includes **49 components** organized into 7 categories:
 
 ### Core Components (6)
 

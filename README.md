@@ -7,7 +7,7 @@
 ## Features
 
 - **Extended Color System** - 65+ Material Design 3 color tokens in OKLCH format
-- **40+ Components** - Buttons, cards, forms, modals, navigation, and more
+- **49 Components** - Buttons, cards, forms, modals, navigation, and more
 - **Beautiful Themes** - Sunshine (light) and Moonlight (dark) built-in themes
 - **CSS-Only** - No JavaScript runtime, works with any framework
 - **Tailwind CSS v4** - Native CSS imports, modern color functions
@@ -28,10 +28,21 @@ npm install @duskmoon-dev/core tailwindcss@^4.0.0
 
 Import the library in your CSS file:
 
+#### Option A: CSS `@import` (Recommended)
+
 ```css
 @import "tailwindcss";
 @import "@duskmoon-dev/core";
 ```
+
+#### Option B: Tailwind `@plugin` Directive
+
+```css
+@import "tailwindcss";
+@plugin "@duskmoon-dev/core/plugin";
+```
+
+The `@plugin` approach registers Material Design 3 color tokens into Tailwind's theme, enabling utility classes like `bg-primary`, `text-on-surface`, etc.
 
 Set the theme in your HTML:
 
@@ -73,7 +84,7 @@ Or use the color utilities directly:
 
 ## Components
 
-DuskMoonUI includes 40+ components organized by category:
+DuskMoonUI includes 49 components organized by category:
 
 **Forms:** Button, Input, Checkbox, Radio, Select, Textarea, Switch, Slider, Autocomplete, Datepicker, File Upload, Rating
 
@@ -193,7 +204,7 @@ duskmoonui/
 │       ├── src/
 │       │   ├── base/         # Color token definitions
 │       │   ├── themes/       # Built-in themes (sunshine, moonlight)
-│       │   ├── components/   # 40+ component CSS files
+│       │   ├── components/   # 49 component CSS files
 │       │   ├── generators/   # CSS variable generators
 │       │   └── types/        # TypeScript definitions
 │       ├── tests/
