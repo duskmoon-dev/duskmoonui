@@ -1,6 +1,6 @@
 {
   "name": "@duskmoon-dev/core",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "DuskMoonUI - Tailwind CSS v4 plugin with Material Design 3 color system and component styles",
   "type": "module",
   "main": "./dist/index.css",
@@ -84,6 +84,11 @@
       "import": "./dist/esm/components/card.js",
       "default": "./dist/esm/components/card.js"
     },
+    "./components/cascader": {
+      "style": "./dist/components/cascader.css",
+      "import": "./dist/esm/components/cascader.js",
+      "default": "./dist/esm/components/cascader.js"
+    },
     "./components/checkbox": {
       "style": "./dist/components/checkbox.css",
       "import": "./dist/esm/components/checkbox.js",
@@ -164,6 +169,11 @@
       "import": "./dist/esm/components/navigation.js",
       "default": "./dist/esm/components/navigation.js"
     },
+    "./components/nested-menu": {
+      "style": "./dist/components/nested-menu.css",
+      "import": "./dist/esm/components/nested-menu.js",
+      "default": "./dist/esm/components/nested-menu.js"
+    },
     "./components/otp-input": {
       "style": "./dist/components/otp-input.css",
       "import": "./dist/esm/components/otp-input.js",
@@ -239,6 +249,11 @@
       "import": "./dist/esm/components/textarea.js",
       "default": "./dist/esm/components/textarea.js"
     },
+    "./components/theme-controller": {
+      "style": "./dist/components/theme-controller.css",
+      "import": "./dist/esm/components/theme-controller.js",
+      "default": "./dist/esm/components/theme-controller.js"
+    },
     "./components/time-input": {
       "style": "./dist/components/time-input.css",
       "import": "./dist/esm/components/time-input.js",
@@ -253,6 +268,11 @@
       "style": "./dist/components/toast.css",
       "import": "./dist/esm/components/toast.js",
       "default": "./dist/esm/components/toast.js"
+    },
+    "./components/toggle": {
+      "style": "./dist/components/toggle.css",
+      "import": "./dist/esm/components/toggle.js",
+      "default": "./dist/esm/components/toggle.js"
     },
     "./components/tooltip": {
       "style": "./dist/components/tooltip.css",

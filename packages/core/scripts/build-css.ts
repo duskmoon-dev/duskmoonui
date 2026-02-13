@@ -153,6 +153,7 @@ const componentFiles = [
   'time-input',
   'timeline',
   'toast',
+  'toggle',
   'tooltip',
   'tree-select',
 ];
