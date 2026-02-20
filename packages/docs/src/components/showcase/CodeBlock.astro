@@ -1,4 +1,6 @@
 ---
+import { codeToHtml } from 'shiki';
+
 interface Props {
   code: string;
   language?: string;
@@ -6,21 +8,27 @@ interface Props {
 }
 
 const { code, language = 'html', title } = Astro.props;
+
+const highlighted = await codeToHtml(code.trim(), {
+  lang: language,
+  themes: { light: 'github-light', dark: 'github-dark' },
+  defaultColor: false,
+});
 ---
 
 <div class="code-block">
-  {title && <div class="code-title">{title}</div>}
   <div class="code-header">
+    {title && <span class="code-title">{title}</span>}
     <span class="code-language">{language}</span>
-    <button class="copy-button" data-code={code}>
-      <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <button class="copy-button" data-code={code.trim()}>
+      <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
       </svg>
       <span class="copy-text">Copy</span>
     </button>
   </div>
-  <pre><code class={`language-${language}`}>{code.trim()}</code></pre>
+  <div class="code-content" set:html={highlighted} />
 </div>
 
 <script>
@@ -46,3 +54,83 @@ const { code, language = 'html', title } = Astro.props;
   });
 </script>
 
+<style>
+  .code-block {
+    border: 1px solid var(--code-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--code-header-bg);
+    border-bottom: 1px solid var(--code-border);
+    font-size: 0.75rem;
+  }
+
+  .code-title {
+    color: var(--foreground);
+    font-weight: 600;
+    margin-right: auto;
+  }
+
+  .code-language {
+    color: var(--foreground-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  /* Push copy button to the right when there's no title */
+  .code-language:not(.code-title ~ .code-language) {
+    margin-right: auto;
+  }
+
+  .copy-button {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: transparent;
+    color: var(--foreground-muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .copy-button:hover {
+    background: var(--code-border);
+    color: var(--foreground);
+  }
+
+  .copy-icon {
+    flex-shrink: 0;
+  }
+
+  .code-content {
+    background: var(--code-bg);
+    overflow-x: auto;
+  }
+
+  /* Shiki output is injected via set:html, so we need :global() for inner elements */
+  .code-content :global(pre) {
+    margin: 0 !important;
+    padding: 1rem !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    overflow-x: auto;
+  }
+
+  .code-content :global(code) {
+    background: transparent !important;
+    padding: 0 !important;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+</style>

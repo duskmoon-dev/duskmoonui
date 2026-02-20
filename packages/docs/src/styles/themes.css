@@ -45,6 +45,11 @@
   --hover-color: var(--color-surface-container-high);
   --active-color: var(--color-surface-container-highest);
   --preview-bg: var(--color-surface-container);
+
+  /* Code blocks */
+  --code-bg: var(--color-surface-container);
+  --code-header-bg: var(--color-surface-container-high);
+  --code-border: var(--color-outline-variant);
 }
 
 /* Moonlight Theme (Dark) - bridges to @duskmoon-dev/core OKLCH tokens */
@@ -94,6 +99,11 @@
   --hover-color: var(--color-surface-container-high);
   --active-color: var(--color-surface-container-highest);
   --preview-bg: var(--color-surface-container);
+
+  /* Code blocks */
+  --code-bg: var(--color-surface-container);
+  --code-header-bg: var(--color-surface-container-high);
+  --code-border: var(--color-outline-variant);
 }
 
 /* Smooth transitions for theme changes */
