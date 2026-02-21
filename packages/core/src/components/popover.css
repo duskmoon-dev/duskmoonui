@@ -43,10 +43,10 @@
   }
 
   /* Popover as direct overlay (simpler structure) */
-  .popover[class*="popover-top"],
-  .popover[class*="popover-bottom"],
-  .popover[class*="popover-left"],
-  .popover[class*="popover-right"] {
+  .popover:not([popover])[class*="popover-top"],
+  .popover:not([popover])[class*="popover-bottom"],
+  .popover:not([popover])[class*="popover-left"],
+  .popover:not([popover])[class*="popover-right"] {
     position: absolute;
     z-index: 1050;
     min-width: 12rem;
@@ -518,6 +518,7 @@
   /* Popover open state */
   .popover[popover]:popover-open {
     opacity: 1;
+    visibility: visible;
     transform: scale(1);
   }
 
