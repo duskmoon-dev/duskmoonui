@@ -2,6 +2,8 @@
 
 > A CSS-only component library for Tailwind CSS v4 with Material Design 3's extended color system
 
+[![CI](https://github.com/duskmoon-dev/duskmoonui/actions/workflows/ci.yml/badge.svg)](https://github.com/duskmoon-dev/duskmoonui/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@duskmoon-dev/core)](https://www.npmjs.com/package/@duskmoon-dev/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
