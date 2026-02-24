@@ -62,7 +62,7 @@
   }
 
   pre {
-    background: var(--code-bg, var(--surface));
+    background: var(--surface);
     padding: 1rem;
     border-radius: 0.5rem;
     overflow-x: auto;
@@ -90,7 +90,7 @@
   /* Code block background colors */
   pre.shiki,
   pre:has(.shiki) {
-    background-color: var(--code-bg) !important;
+    background-color: var(--surface) !important;
   }
 }
 
