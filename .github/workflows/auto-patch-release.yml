@@ -3,10 +3,13 @@ name: Auto Patch Release
 on:
   pull_request:
     types: [closed]
+  workflow_dispatch:
 
 jobs:
   patch-release:
-    if: github.event.pull_request.merged == true && contains(toJSON(github.event.pull_request.labels.*.name), 'internal request fixed')
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.merged == true && contains(toJSON(github.event.pull_request.labels.*.name), 'internal request fixed'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -72,13 +75,21 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION="v${{ steps.bump.outputs.version }}"
-          PREV_TAG=$(git describe --tags --abbrev=0 HEAD~2 2>/dev/null || echo "")
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
 
-          NOTES="## Bug Fixes\n\n"
-          NOTES+="Merged PR: #${{ github.event.pull_request.number }} — ${{ github.event.pull_request.title }}\n\n"
-
-          if [ -n "$PREV_TAG" ]; then
-            NOTES+="**Full Changelog**: https://github.com/duskmoon-dev/duskmoonui/compare/${PREV_TAG}...${VERSION}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            NOTES="## Patch Release\n\n"
+            NOTES+="Changes since ${PREV_TAG}:\n"
+            if [ -n "$PREV_TAG" ]; then
+              NOTES+="$(git log ${PREV_TAG}..HEAD~1 --pretty=format:'- %s' --no-merges)\n\n"
+              NOTES+="**Full Changelog**: https://github.com/duskmoon-dev/duskmoonui/compare/${PREV_TAG}...${VERSION}"
+            fi
+          else
+            NOTES="## Bug Fixes\n\n"
+            NOTES+="Merged PR: #${{ github.event.pull_request.number }} — ${{ github.event.pull_request.title }}\n\n"
+            if [ -n "$PREV_TAG" ]; then
+              NOTES+="**Full Changelog**: https://github.com/duskmoon-dev/duskmoonui/compare/${PREV_TAG}...${VERSION}"
+            fi
           fi
 
           git tag -a "$VERSION" -m "Release $VERSION"
