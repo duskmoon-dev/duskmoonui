@@ -99,6 +99,11 @@
       "import": "./dist/esm/components/chip.js",
       "default": "./dist/esm/components/chip.js"
     },
+    "./components/code-block": {
+      "style": "./dist/components/code-block.css",
+      "import": "./dist/esm/components/code-block.js",
+      "default": "./dist/esm/components/code-block.js"
+    },
     "./components/collapse": {
       "style": "./dist/components/collapse.css",
       "import": "./dist/esm/components/collapse.js",
