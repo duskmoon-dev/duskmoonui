@@ -54,6 +54,16 @@ All art styles are wrapped in `@layer css-art { }`, so they won't conflict with 
   - Sizes: `art-sun-sm` (4rem), default (8rem), `art-sun-lg` (12rem), `art-sun-xl` (16rem)
   - Custom properties: `--art-sun-size`, `--art-sun-color`, `--art-sun-corona`, `--art-sun-glow`
 
+- `art-atom` — Animated atom with three orbiting electrons and pulsing nucleus
+  - Sizes: `art-atom-sm` (180px), default (360px), `art-atom-lg` (480px)
+  - Children: `.electron`, `.electron-alpha`, `.electron-omega` — three electron orbits
+  - Custom properties: `--art-atom-size`, `--art-atom-color`, `--art-atom-electron-color`, `--art-atom-speed`
+
+- `art-eclipse` — Solar eclipse with six animated corona layers
+  - Sizes: `art-eclipse-sm` (300px), default (600px), `art-eclipse-lg` (800px)
+  - Children: `.layer.layer-1` through `.layer.layer-6` — six corona layers
+  - Custom properties: `--art-eclipse-size`, `--art-eclipse-bg`
+
 ### Landscape
 
 - `art-mountain` — Mountain peak with snow cap, range variant with multiple peaks
@@ -61,6 +71,20 @@ All art styles are wrapped in `@layer css-art { }`, so they won't conflict with 
   - Sizes: `art-mountain-sm` (10rem×6rem), default (16rem×10rem), `art-mountain-lg` (24rem×15rem)
   - Children (range): `.art-peak` — individual peaks within a range
   - Custom properties: `--art-mountain-width`, `--art-mountain-height`, `--art-mountain-color`, `--art-mountain-shadow`, `--art-mountain-snow`
+
+### Weather
+
+- `art-snowflake` — Snowflake dot with optional Unicode character variant
+  - Variants: `art-snowflake-unicode` (❆ character), `art-snowflake-fall` (falling animation)
+  - Custom properties: `--art-snowflake-size`, `--art-snowflake-color`, `--art-snowflake-duration`
+
+### Interactive
+
+- `art-plasma-ball` — Interactive plasma ball with glass sphere, electrode, electric rays, and toggle switch
+  - Sizes: `art-plasma-ball-sm` (200px), default (350px), `art-plasma-ball-lg` (500px)
+  - Uses `input:checked` CSS selectors for toggle behavior (no JS required)
+  - Children: `input.switcher`, `.glassball`, `.electrode`, `.rays`, `.ray`, `.base`, `.switch`
+  - Custom properties: `--art-plasma-ball-size`, `--art-plasma-ball-base-color`
 
 ## Usage Examples
 
@@ -104,6 +128,60 @@ All art styles are wrapped in `@layer css-art { }`, so they won't conflict with 
 </div>
 ```
 
+### Atom
+
+```html
+<div class="art-atom">
+  <div class="electron"></div>
+  <div class="electron-alpha"></div>
+  <div class="electron-omega"></div>
+</div>
+```
+
+### Eclipse
+
+```html
+<div class="art-eclipse">
+  <div class="layer layer-1"></div>
+  <div class="layer layer-2"></div>
+  <div class="layer layer-3"></div>
+  <div class="layer layer-4"></div>
+  <div class="layer layer-5"></div>
+  <div class="layer layer-6"></div>
+</div>
+```
+
+### Snowflakes
+
+```html
+<!-- Simple dot snowflake -->
+<div class="art-snowflake art-snowflake-fall"></div>
+
+<!-- Unicode snowflake character -->
+<div class="art-snowflake art-snowflake-unicode art-snowflake-fall"></div>
+```
+
+### Plasma Ball (Interactive)
+
+```html
+<div class="art-plasma-ball">
+  <input class="switcher" type="checkbox" />
+  <div class="glassball">
+    <div class="electrode"></div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <!-- repeat .rays block 5 more times for full coverage -->
+  </div>
+  <div class="base"><div></div><div></div><span></span></div>
+  <div class="switch"></div>
+</div>
+```
+
 ### Custom Colors
 
 Override CSS custom properties to customize any art piece:
@@ -114,13 +192,23 @@ Override CSS custom properties to customize any art piece:
 
 <!-- Custom-sized sun -->
 <div class="art-sun" style="--art-sun-size: 6rem;"></div>
+
+<!-- Green atom -->
+<div class="art-atom" style="--art-atom-color: #00ff88;">
+  <div class="electron"></div>
+  <div class="electron-alpha"></div>
+  <div class="electron-omega"></div>
+</div>
 ```
 
 ### Composing a Night Scene
 
 ```html
-<div style="background: oklch(15% 0.02 260); padding: 3rem; position: relative;">
+<div style="background: oklch(15% 0.02 260); padding: 3rem; position: relative; overflow: hidden;">
   <div class="art-moon art-moon-crescent art-moon-glow" style="position: absolute; top: 1rem; right: 2rem;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 20%; --art-snowflake-duration: 6s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 50%; --art-snowflake-duration: 4s; animation-delay: 1s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 80%; --art-snowflake-duration: 5s; animation-delay: 2s;"></div>
   <div class="art-mountain-range" style="position: absolute; bottom: 0;">
     <div class="art-peak"></div>
     <div class="art-peak"></div>
@@ -159,5 +247,5 @@ cd packages/css-art && bun test tests/unit
 
 ## Bundle Size
 
-- Unminified: ~8 KB
-- Minified: ~6 KB
+- Unminified: ~40 KB
+- Minified: ~29 KB

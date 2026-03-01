@@ -1,0 +1,81 @@
+---
+title: Snow
+description: Pure CSS snowflakes with falling animation and Unicode variant
+category: css-art
+order: 7
+published: true
+tags: ['css-art', 'snow', 'animation', 'weather']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Snow
+
+Pure CSS snowflake elements with a falling animation. Supports both a simple dot style and a Unicode snowflake character variant. Compose multiple snowflakes with staggered delays to create snow scenes. No images, no SVGs — just CSS.
+
+## Basic Snowflake
+
+A single snowflake dot:
+
+<ComponentShowcase
+  title="Basic Snowflake"
+  code={`<div style="background: oklch(20% 0.02 260); padding: 2rem; border-radius: 1rem; position: relative; height: 100px; display: flex; align-items: center; justify-content: center;">
+  <div class="art-snowflake" style="position: relative;"></div>
+</div>`}
+/>
+
+## Unicode Snowflake
+
+Add `.art-snowflake-unicode` for a snowflake character instead of a dot:
+
+<ComponentShowcase
+  title="Unicode Snowflake"
+  code={`<div style="background: oklch(20% 0.02 260); padding: 2rem; border-radius: 1rem; position: relative; height: 100px; display: flex; align-items: center; justify-content: center;">
+  <div class="art-snowflake art-snowflake-unicode" style="position: relative; --art-snowflake-size: 2rem;"></div>
+</div>`}
+/>
+
+## Falling Animation
+
+Add `.art-snowflake-fall` for a falling animation. Combine multiple snowflakes with different delays and positions:
+
+<ComponentShowcase
+  title="Falling Snow"
+  code={`<div style="background: oklch(20% 0.02 260); padding: 2rem; border-radius: 1rem; position: relative; height: 200px; overflow: hidden;">
+  <div class="art-snowflake art-snowflake-fall" style="left: 10%; --art-snowflake-duration: 4s; animation-delay: 0s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 25%; --art-snowflake-size: 6px; --art-snowflake-duration: 6s; animation-delay: 1s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 40%; --art-snowflake-size: 14px; --art-snowflake-duration: 5s; animation-delay: 0.5s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 55%; --art-snowflake-duration: 7s; animation-delay: 2s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 70%; --art-snowflake-size: 8px; --art-snowflake-duration: 4.5s; animation-delay: 1.5s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 85%; --art-snowflake-size: 12px; --art-snowflake-duration: 5.5s; animation-delay: 0.8s;"></div>
+  <div class="art-snowflake art-snowflake-unicode art-snowflake-fall" style="left: 50%; --art-snowflake-size: 1.2rem; --art-snowflake-duration: 6s; animation-delay: 3s;"></div>
+</div>`}
+/>
+
+## Custom Colors
+
+Override `--art-snowflake-color` for different snowflake colors:
+
+<ComponentShowcase
+  title="Custom Snow Colors"
+  code={`<div style="background: oklch(15% 0.02 260); padding: 2rem; border-radius: 1rem; position: relative; height: 150px; overflow: hidden;">
+  <div class="art-snowflake art-snowflake-fall" style="left: 20%; --art-snowflake-color: #88ddff; --art-snowflake-duration: 4s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 50%; --art-snowflake-color: #ffccdd; --art-snowflake-size: 12px; --art-snowflake-duration: 5s; animation-delay: 1s;"></div>
+  <div class="art-snowflake art-snowflake-fall" style="left: 80%; --art-snowflake-color: #aaffaa; --art-snowflake-duration: 6s; animation-delay: 2s;"></div>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-snowflake-size` | `10px` | Snowflake diameter (or font-size for unicode) |
+| `--art-snowflake-color` | `#FFFFFF` | Snowflake color and glow |
+| `--art-snowflake-duration` | `5s` | Falling animation duration |
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-snowflake` | Base snowflake dot |
+| `.art-snowflake-unicode` | Unicode snowflake character variant |
+| `.art-snowflake-fall` | Falling animation |

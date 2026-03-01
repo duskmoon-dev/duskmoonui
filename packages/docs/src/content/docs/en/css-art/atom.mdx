@@ -1,0 +1,109 @@
+---
+title: Atom
+description: Pure CSS animated atom with orbiting electrons and pulsing nucleus
+category: css-art
+order: 4
+published: true
+tags: ['css-art', 'atom', 'animation', 'science']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Atom
+
+A pure CSS animated atom with three orbiting electrons, a pulsing nucleus, and depth-simulating transparency effects. No images, no SVGs — just CSS.
+
+## Basic Atom
+
+The atom requires inner elements for each electron orbit:
+
+<ComponentShowcase
+  title="Basic Atom"
+  code={`<div class="art-atom">
+  <div class="electron"></div>
+  <div class="electron-alpha"></div>
+  <div class="electron-omega"></div>
+</div>`}
+/>
+
+## Sizes
+
+Three sizes are available:
+
+<ComponentShowcase
+  title="Atom Sizes"
+  code={`<div style="display: flex; align-items: center; gap: 2rem; padding: 2rem;">
+  <div class="art-atom art-atom-sm">
+    <div class="electron"></div>
+    <div class="electron-alpha"></div>
+    <div class="electron-omega"></div>
+  </div>
+  <div class="art-atom">
+    <div class="electron"></div>
+    <div class="electron-alpha"></div>
+    <div class="electron-omega"></div>
+  </div>
+  <div class="art-atom art-atom-lg">
+    <div class="electron"></div>
+    <div class="electron-alpha"></div>
+    <div class="electron-omega"></div>
+  </div>
+</div>`}
+/>
+
+| Class | Size |
+|-------|------|
+| `.art-atom-sm` | 180px |
+| (default) | 360px |
+| `.art-atom-lg` | 480px |
+
+## Custom Colors
+
+Override CSS custom properties to change the atom's color:
+
+<ComponentShowcase
+  title="Custom Atom Colors"
+  code={`<div style="display: flex; gap: 2rem; padding: 2rem;">
+  <!-- Green atom -->
+  <div class="art-atom art-atom-sm" style="--art-atom-color: #00ff88; --art-atom-electron-color: #88ffcc;">
+    <div class="electron"></div>
+    <div class="electron-alpha"></div>
+    <div class="electron-omega"></div>
+  </div>
+  <!-- Red atom -->
+  <div class="art-atom art-atom-sm" style="--art-atom-color: #ff4444; --art-atom-electron-color: #ff8888;">
+    <div class="electron"></div>
+    <div class="electron-alpha"></div>
+    <div class="electron-omega"></div>
+  </div>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-atom-size` | `360px` | Overall container size |
+| `--art-atom-color` | `#00d8ff` | Primary orbit and nucleus color |
+| `--art-atom-nucleus-size` | `size / 5` | Nucleus diameter |
+| `--art-atom-electron-color` | `#99f8ff` | Electron dot color |
+| `--art-atom-electron-size` | `size / 25` | Electron dot diameter |
+| `--art-atom-orbit-size` | `size / 2.5` | Orbit ellipse height |
+| `--art-atom-speed` | `1.2s` | Base orbit speed |
+
+## HTML Structure
+
+```html
+<div class="art-atom">
+  <div class="electron"></div>
+  <div class="electron-alpha"></div>
+  <div class="electron-omega"></div>
+</div>
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-atom` | Base animated atom |
+| `.art-atom-sm` | Small size (180px) |
+| `.art-atom-lg` | Large size (480px) |

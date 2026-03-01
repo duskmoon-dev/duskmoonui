@@ -1,0 +1,105 @@
+---
+title: Eclipse
+description: Pure CSS solar eclipse with animated corona layers
+category: css-art
+order: 5
+published: true
+tags: ['css-art', 'eclipse', 'animation', 'space']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Eclipse
+
+A pure CSS solar eclipse with six animated corona layers using `repeating-conic-gradient` and `radial-gradient`. The layers rotate at different speeds to create a mesmerizing effect. No images, no SVGs — just CSS.
+
+## Basic Eclipse
+
+The eclipse requires six inner layer elements:
+
+<ComponentShowcase
+  title="Basic Eclipse"
+  code={`<div class="art-eclipse">
+  <div class="layer layer-1"></div>
+  <div class="layer layer-2"></div>
+  <div class="layer layer-3"></div>
+  <div class="layer layer-4"></div>
+  <div class="layer layer-5"></div>
+  <div class="layer layer-6"></div>
+</div>`}
+/>
+
+## Sizes
+
+Three sizes are available:
+
+<ComponentShowcase
+  title="Eclipse Sizes"
+  code={`<div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+  <div class="art-eclipse art-eclipse-sm">
+    <div class="layer layer-1"></div>
+    <div class="layer layer-2"></div>
+    <div class="layer layer-3"></div>
+    <div class="layer layer-4"></div>
+    <div class="layer layer-5"></div>
+    <div class="layer layer-6"></div>
+  </div>
+  <div class="art-eclipse" style="--art-eclipse-size: 400px;">
+    <div class="layer layer-1"></div>
+    <div class="layer layer-2"></div>
+    <div class="layer layer-3"></div>
+    <div class="layer layer-4"></div>
+    <div class="layer layer-5"></div>
+    <div class="layer layer-6"></div>
+  </div>
+</div>`}
+/>
+
+| Class | Size |
+|-------|------|
+| `.art-eclipse-sm` | 300px |
+| (default) | 600px |
+| `.art-eclipse-lg` | 800px |
+
+## Custom Background
+
+The eclipse background color can be customized to blend into different scenes:
+
+<ComponentShowcase
+  title="Custom Background"
+  code={`<div class="art-eclipse art-eclipse-sm" style="--art-eclipse-bg: #1a0a2e;">
+  <div class="layer layer-1"></div>
+  <div class="layer layer-2"></div>
+  <div class="layer layer-3"></div>
+  <div class="layer layer-4"></div>
+  <div class="layer layer-5"></div>
+  <div class="layer layer-6"></div>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-eclipse-bg` | `#09090b` | Background color (should match page background) |
+| `--art-eclipse-size` | `600px` | Overall container size |
+
+## HTML Structure
+
+```html
+<div class="art-eclipse">
+  <div class="layer layer-1"></div>
+  <div class="layer layer-2"></div>
+  <div class="layer layer-3"></div>
+  <div class="layer layer-4"></div>
+  <div class="layer layer-5"></div>
+  <div class="layer layer-6"></div>
+</div>
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-eclipse` | Base solar eclipse with animated corona |
+| `.art-eclipse-sm` | Small size (300px) |
+| `.art-eclipse-lg` | Large size (800px) |

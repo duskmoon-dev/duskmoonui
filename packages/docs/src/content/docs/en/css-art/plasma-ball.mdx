@@ -1,0 +1,166 @@
+---
+title: Plasma Ball
+description: Pure CSS interactive plasma ball with electric rays and toggle switch
+category: css-art
+order: 6
+published: true
+tags: ['css-art', 'plasma-ball', 'animation', 'interactive']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Plasma Ball
+
+A pure CSS interactive plasma ball with a glass sphere, central electrode, electric rays, and a toggle switch. Click the switch button at the base to activate the plasma effect, then hover the glass ball to attract lightning. No images, no SVGs, no JavaScript — just CSS with `input:checked` selectors.
+
+## Basic Plasma Ball
+
+The plasma ball has a complex HTML structure with a hidden checkbox for the toggle:
+
+<ComponentShowcase
+  title="Interactive Plasma Ball"
+  code={`<div class="art-plasma-ball">
+  <input class="switcher" type="checkbox" checked />
+  <div class="glassball">
+    <div class="electrode"></div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <div class="base"><div></div><div></div><span></span></div>
+  <div class="switch"></div>
+</div>`}
+/>
+
+## Sizes
+
+<ComponentShowcase
+  title="Small Plasma Ball"
+  code={`<div class="art-plasma-ball art-plasma-ball-sm">
+  <input class="switcher" type="checkbox" checked />
+  <div class="glassball">
+    <div class="electrode"></div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <div class="base"><div></div><div></div><span></span></div>
+  <div class="switch"></div>
+</div>`}
+/>
+
+| Class | Size |
+|-------|------|
+| `.art-plasma-ball-sm` | 200px |
+| (default) | 350px |
+| `.art-plasma-ball-lg` | 500px |
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-plasma-ball-size` | `350px` | Overall container size |
+| `--art-plasma-ball-base-color` | `#222222` | Base/stand color |
+
+## Interactivity
+
+The plasma ball uses pure CSS interactivity:
+- **Toggle switch**: A hidden `<input type="checkbox">` controls the on/off state via `input:checked` selectors
+- **Hover effect**: Hovering the glass ball attracts additional ray groups toward the cursor
+
+## HTML Structure
+
+```html
+<div class="art-plasma-ball">
+  <input class="switcher" type="checkbox" />
+  <div class="glassball">
+    <div class="electrode"></div>
+    <!-- 6 ray groups, each with 3-5 rays -->
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <!-- more rays... -->
+    </div>
+    <!-- more ray groups... -->
+  </div>
+  <div class="base"><div></div><div></div><span></span></div>
+  <div class="switch"></div>
+</div>
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-plasma-ball` | Base plasma ball with interactive toggle |
+| `.art-plasma-ball-sm` | Small size (200px) |
+| `.art-plasma-ball-lg` | Large size (500px) |
