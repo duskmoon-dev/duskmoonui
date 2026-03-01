@@ -103,12 +103,162 @@ describe('CSS Art', () => {
     });
   });
 
+  describe('atom', () => {
+    it('should define .art-atom base class', async () => {
+      const css = await readArtCss('atom');
+      expect(css).toContain('.art-atom');
+    });
+
+    it('should use @layer css-art', async () => {
+      const css = await readArtCss('atom');
+      expect(css).toContain('@layer css-art');
+    });
+
+    it('should have size variants', async () => {
+      const css = await readArtCss('atom');
+      expect(css).toContain('.art-atom-sm');
+      expect(css).toContain('.art-atom-lg');
+    });
+
+    it('should use CSS custom properties', async () => {
+      const css = await readArtCss('atom');
+      expect(css).toContain('--art-atom-size');
+      expect(css).toContain('--art-atom-color');
+      expect(css).toContain('--art-atom-speed');
+    });
+
+    it('should define electron orbit keyframes', async () => {
+      const css = await readArtCss('atom');
+      expect(css).toContain('@keyframes art-atom-electron-orbit');
+      expect(css).toContain('@keyframes art-atom-rotate');
+      expect(css).toContain('@keyframes art-atom-nucleus');
+      expect(css).toContain('@keyframes art-atom-electron');
+    });
+
+    it('should have electron orbit selectors', async () => {
+      const css = await readArtCss('atom');
+      expect(css).toContain('.electron-alpha');
+      expect(css).toContain('.electron-omega');
+    });
+  });
+
+  describe('eclipse', () => {
+    it('should define .art-eclipse base class', async () => {
+      const css = await readArtCss('eclipse');
+      expect(css).toContain('.art-eclipse');
+    });
+
+    it('should use @layer css-art', async () => {
+      const css = await readArtCss('eclipse');
+      expect(css).toContain('@layer css-art');
+    });
+
+    it('should have size variants', async () => {
+      const css = await readArtCss('eclipse');
+      expect(css).toContain('.art-eclipse-sm');
+      expect(css).toContain('.art-eclipse-lg');
+    });
+
+    it('should use CSS custom properties', async () => {
+      const css = await readArtCss('eclipse');
+      expect(css).toContain('--art-eclipse-bg');
+      expect(css).toContain('--art-eclipse-size');
+    });
+
+    it('should define rotation keyframe', async () => {
+      const css = await readArtCss('eclipse');
+      expect(css).toContain('@keyframes art-eclipse-rotate');
+    });
+
+    it('should have 6 corona layers', async () => {
+      const css = await readArtCss('eclipse');
+      expect(css).toContain('.layer-1');
+      expect(css).toContain('.layer-6');
+    });
+  });
+
+  describe('plasma-ball', () => {
+    it('should define .art-plasma-ball base class', async () => {
+      const css = await readArtCss('plasma-ball');
+      expect(css).toContain('.art-plasma-ball');
+    });
+
+    it('should use @layer css-art', async () => {
+      const css = await readArtCss('plasma-ball');
+      expect(css).toContain('@layer css-art');
+    });
+
+    it('should have size variants', async () => {
+      const css = await readArtCss('plasma-ball');
+      expect(css).toContain('.art-plasma-ball-sm');
+      expect(css).toContain('.art-plasma-ball-lg');
+    });
+
+    it('should use CSS custom properties', async () => {
+      const css = await readArtCss('plasma-ball');
+      expect(css).toContain('--art-plasma-ball-size');
+      expect(css).toContain('--art-plasma-ball-base-color');
+    });
+
+    it('should have interactive toggle via input:checked', async () => {
+      const css = await readArtCss('plasma-ball');
+      expect(css).toContain('input.switcher:checked');
+    });
+
+    it('should define ray animation keyframes', async () => {
+      const css = await readArtCss('plasma-ball');
+      expect(css).toContain('@keyframes art-plasma-ball-ray1');
+      expect(css).toContain('@keyframes art-plasma-ball-spark');
+      expect(css).toContain('@keyframes art-plasma-ball-innerlight');
+    });
+
+    it('should have glassball and electrode elements', async () => {
+      const css = await readArtCss('plasma-ball');
+      expect(css).toContain('.glassball');
+      expect(css).toContain('.electrode');
+    });
+  });
+
+  describe('snow', () => {
+    it('should define .art-snowflake base class', async () => {
+      const css = await readArtCss('snow');
+      expect(css).toContain('.art-snowflake');
+    });
+
+    it('should use @layer css-art', async () => {
+      const css = await readArtCss('snow');
+      expect(css).toContain('@layer css-art');
+    });
+
+    it('should have unicode variant', async () => {
+      const css = await readArtCss('snow');
+      expect(css).toContain('.art-snowflake-unicode');
+    });
+
+    it('should have falling animation', async () => {
+      const css = await readArtCss('snow');
+      expect(css).toContain('.art-snowflake-fall');
+      expect(css).toContain('@keyframes art-snowflake-fall');
+    });
+
+    it('should use CSS custom properties', async () => {
+      const css = await readArtCss('snow');
+      expect(css).toContain('--art-snowflake-size');
+      expect(css).toContain('--art-snowflake-color');
+      expect(css).toContain('--art-snowflake-duration');
+    });
+  });
+
   describe('index', () => {
     it('should import all art files', async () => {
       const index = await readFile(join(ART_DIR, 'index.css'), 'utf-8');
       expect(index).toContain('./moon.css');
       expect(index).toContain('./sun.css');
       expect(index).toContain('./mountain.css');
+      expect(index).toContain('./atom.css');
+      expect(index).toContain('./eclipse.css');
+      expect(index).toContain('./plasma-ball.css');
+      expect(index).toContain('./snow.css');
     });
   });
 });
