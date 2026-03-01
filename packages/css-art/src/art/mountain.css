@@ -1,0 +1,112 @@
+@layer css-art {
+  .art-mountain {
+    --art-mountain-width: 16rem;
+    --art-mountain-height: 10rem;
+    --art-mountain-color: oklch(45% 0.05 150);
+    --art-mountain-shadow: oklch(35% 0.04 150);
+    --art-mountain-snow: oklch(97% 0.005 90);
+
+    position: relative;
+    width: var(--art-mountain-width);
+    height: var(--art-mountain-height);
+  }
+
+  /* Main peak */
+  .art-mountain::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: calc(var(--art-mountain-width) * 0.45) solid transparent;
+    border-right: calc(var(--art-mountain-width) * 0.45) solid transparent;
+    border-bottom: var(--art-mountain-height) solid var(--art-mountain-color);
+  }
+
+  /* Snow cap */
+  .art-mountain::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: calc(var(--art-mountain-width) * 0.1) solid transparent;
+    border-right: calc(var(--art-mountain-width) * 0.1) solid transparent;
+    border-bottom: calc(var(--art-mountain-height) * 0.25) solid var(--art-mountain-snow);
+    z-index: 1;
+  }
+
+  /* Range — multiple peaks */
+  .art-mountain-range {
+    --art-mountain-width: 24rem;
+    --art-mountain-height: 10rem;
+
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    width: var(--art-mountain-width);
+    height: var(--art-mountain-height);
+  }
+
+  .art-mountain-range::before,
+  .art-mountain-range::after {
+    content: none;
+  }
+
+  .art-mountain-range .art-peak {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .art-mountain-range .art-peak:nth-child(1) {
+    left: 10%;
+    border-left: calc(var(--art-mountain-width) * 0.25) solid transparent;
+    border-right: calc(var(--art-mountain-width) * 0.25) solid transparent;
+    border-bottom: calc(var(--art-mountain-height) * 0.7) solid var(--art-mountain-shadow);
+  }
+
+  .art-mountain-range .art-peak:nth-child(2) {
+    left: 30%;
+    border-left: calc(var(--art-mountain-width) * 0.3) solid transparent;
+    border-right: calc(var(--art-mountain-width) * 0.3) solid transparent;
+    border-bottom: var(--art-mountain-height) solid var(--art-mountain-color);
+    z-index: 1;
+  }
+
+  .art-mountain-range .art-peak:nth-child(3) {
+    right: 5%;
+    border-left: calc(var(--art-mountain-width) * 0.22) solid transparent;
+    border-right: calc(var(--art-mountain-width) * 0.22) solid transparent;
+    border-bottom: calc(var(--art-mountain-height) * 0.6) solid oklch(40% 0.04 150);
+  }
+
+  /* Sunset color variant */
+  .art-mountain-sunset {
+    --art-mountain-color: oklch(30% 0.06 280);
+    --art-mountain-shadow: oklch(22% 0.05 280);
+    --art-mountain-snow: oklch(85% 0.08 50);
+  }
+
+  /* Forest color variant */
+  .art-mountain-forest {
+    --art-mountain-color: oklch(40% 0.08 145);
+    --art-mountain-shadow: oklch(30% 0.06 145);
+  }
+
+  /* Size variants */
+  .art-mountain-sm {
+    --art-mountain-width: 10rem;
+    --art-mountain-height: 6rem;
+  }
+
+  .art-mountain-lg {
+    --art-mountain-width: 24rem;
+    --art-mountain-height: 15rem;
+  }
+}

@@ -1,0 +1,96 @@
+---
+title: Moon
+description: Pure CSS moon illustration with crescent variant, craters, and animated glow
+category: css-art
+order: 1
+published: true
+tags: ['css-art', 'moon', 'illustration', 'animation']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Moon
+
+A pure CSS moon illustration with craters, crescent variant, and animated glow effect. No images, no SVGs — just CSS.
+
+## Basic Moon
+
+<ComponentShowcase
+  title="Basic Moon"
+  code={`<div class="art-moon"></div>`}
+/>
+
+## Crescent Moon
+
+Add `.art-moon-crescent` for a crescent shape. The crescent is created by overlaying a shadow circle:
+
+<ComponentShowcase
+  title="Crescent Moon"
+  code={`<div class="art-moon art-moon-crescent"></div>`}
+/>
+
+## Animated Glow
+
+Add `.art-moon-glow` for a pulsing glow animation:
+
+<ComponentShowcase
+  title="Moon with Glow"
+  code={`<div style="background: oklch(15% 0.02 260); padding: 3rem; border-radius: 1rem; display: flex; justify-content: center;">
+  <div class="art-moon art-moon-glow"></div>
+</div>`}
+/>
+
+## Sizes
+
+Four sizes are available:
+
+<ComponentShowcase
+  title="Moon Sizes"
+  code={`<div style="display: flex; align-items: center; gap: 2rem; background: oklch(15% 0.02 260); padding: 2rem; border-radius: 1rem;">
+  <div class="art-moon art-moon-sm"></div>
+  <div class="art-moon"></div>
+  <div class="art-moon art-moon-lg"></div>
+  <div class="art-moon art-moon-xl"></div>
+</div>`}
+/>
+
+| Class | Size |
+|-------|------|
+| `.art-moon-sm` | 4rem (64px) |
+| (default) | 8rem (128px) |
+| `.art-moon-lg` | 12rem (192px) |
+| `.art-moon-xl` | 16rem (256px) |
+
+## Custom Colors
+
+Override CSS custom properties to change colors:
+
+<ComponentShowcase
+  title="Custom Moon Colors"
+  code={`<div style="display: flex; gap: 2rem; background: oklch(15% 0.02 260); padding: 2rem; border-radius: 1rem;">
+  <!-- Blue moon -->
+  <div class="art-moon" style="--art-moon-color: oklch(80% 0.08 240); --art-moon-shadow: oklch(70% 0.06 240); --art-moon-glow: oklch(85% 0.06 240 / 0.4);"></div>
+
+  <!-- Blood moon -->
+  <div class="art-moon" style="--art-moon-color: oklch(60% 0.15 25); --art-moon-shadow: oklch(45% 0.12 25); --art-moon-glow: oklch(65% 0.12 25 / 0.4);"></div>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-moon-size` | `8rem` | Overall diameter |
+| `--art-moon-color` | `oklch(92% 0.06 90)` | Main surface color |
+| `--art-moon-shadow` | `oklch(85% 0.04 90)` | Gradient shadow color |
+| `--art-moon-glow` | `oklch(95% 0.03 90 / 0.4)` | Outer glow color |
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-moon` | Base moon with craters |
+| `.art-moon-crescent` | Crescent moon variant |
+| `.art-moon-glow` | Pulsing glow animation |
+| `.art-moon-sm` | Small size (4rem) |
+| `.art-moon-lg` | Large size (12rem) |
+| `.art-moon-xl` | Extra large size (16rem) |

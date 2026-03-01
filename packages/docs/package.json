@@ -19,6 +19,7 @@
     "@astrojs/sitemap": "latest",
     "@astrojs/tailwind": "latest",
     "@duskmoon-dev/core": "workspace:*",
+    "@duskmoon-dev/css-art": "workspace:*",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.0.0",

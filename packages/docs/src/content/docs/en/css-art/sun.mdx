@@ -1,0 +1,92 @@
+---
+title: Sun
+description: Pure CSS sun illustration with animated rays, sunset variant, and pulsing glow
+category: css-art
+order: 2
+published: true
+tags: ['css-art', 'sun', 'illustration', 'animation']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Sun
+
+A pure CSS sun with radial gradient, animated spinning rays, and color variants. Built entirely with gradients and `conic-gradient` for the ray effect.
+
+## Basic Sun
+
+<ComponentShowcase
+  title="Basic Sun"
+  code={`<div class="art-sun"></div>`}
+/>
+
+## Sun with Rays
+
+Add `.art-sun-rays` for animated spinning rays using `conic-gradient`:
+
+<ComponentShowcase
+  title="Sun with Rays"
+  code={`<div style="padding: 3rem; display: flex; justify-content: center;">
+  <div class="art-sun art-sun-rays"></div>
+</div>`}
+/>
+
+## Sunset Variant
+
+Warmer, redder tones for sunset scenes:
+
+<ComponentShowcase
+  title="Sunset Sun"
+  code={`<div style="background: linear-gradient(to bottom, oklch(70% 0.12 50), oklch(40% 0.08 280)); padding: 3rem; border-radius: 1rem; display: flex; justify-content: center;">
+  <div class="art-sun art-sun-sunset art-sun-rays"></div>
+</div>`}
+/>
+
+## Animated Pulse
+
+Add `.art-sun-pulse` for a breathing glow effect:
+
+<ComponentShowcase
+  title="Sun with Pulse"
+  code={`<div style="padding: 3rem; display: flex; justify-content: center; background: oklch(95% 0.01 90); border-radius: 1rem;">
+  <div class="art-sun art-sun-pulse"></div>
+</div>`}
+/>
+
+## Sizes
+
+<ComponentShowcase
+  title="Sun Sizes"
+  code={`<div style="display: flex; align-items: center; gap: 2rem; padding: 2rem;">
+  <div class="art-sun art-sun-sm"></div>
+  <div class="art-sun"></div>
+  <div class="art-sun art-sun-lg"></div>
+</div>`}
+/>
+
+| Class | Size |
+|-------|------|
+| `.art-sun-sm` | 4rem (64px) |
+| (default) | 8rem (128px) |
+| `.art-sun-lg` | 12rem (192px) |
+| `.art-sun-xl` | 16rem (256px) |
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-sun-size` | `8rem` | Overall diameter |
+| `--art-sun-color` | `oklch(85% 0.18 85)` | Main body color |
+| `--art-sun-corona` | `oklch(90% 0.15 75)` | Outer corona color |
+| `--art-sun-glow` | `oklch(90% 0.12 80 / 0.4)` | Glow/shadow color |
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-sun` | Base sun with radial gradient |
+| `.art-sun-rays` | Animated spinning rays (conic-gradient) |
+| `.art-sun-sunset` | Warm sunset color variant |
+| `.art-sun-pulse` | Breathing glow animation |
+| `.art-sun-sm` | Small size (4rem) |
+| `.art-sun-lg` | Large size (12rem) |
+| `.art-sun-xl` | Extra large size (16rem) |

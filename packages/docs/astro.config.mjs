@@ -8,6 +8,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 const isProduction = process.env.NODE_ENV === "production";
 const coreSourceDir = resolve(import.meta.dirname, "../core/src");
+const cssArtSourceDir = resolve(import.meta.dirname, "../css-art/src");
 
 export default defineConfig({
   site: "https://duskmoon-dev.github.io",
@@ -59,16 +60,17 @@ export default defineConfig({
         : {
             // In dev mode, use source files for hot reload
             "@duskmoon-dev/core": resolve(coreSourceDir, "index.css"),
+            "@duskmoon-dev/css-art": resolve(cssArtSourceDir, "index.css"),
           },
     },
     optimizeDeps: {
       // Exclude core package from pre-bundling to enable hot reload
-      exclude: ["@duskmoon-dev/core"],
+      exclude: ["@duskmoon-dev/core", "@duskmoon-dev/css-art"],
     },
     server: {
       fs: {
         // Allow serving files from core source directory and monorepo root
-        allow: [coreSourceDir, ".", "../.."],
+        allow: [coreSourceDir, cssArtSourceDir, ".", "../.."],
       },
       watch: {
         // Use polling for better cross-platform compatibility in monorepos

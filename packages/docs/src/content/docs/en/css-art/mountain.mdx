@@ -1,0 +1,98 @@
+---
+title: Mountain
+description: Pure CSS mountain illustration with snow caps, range variant, and color themes
+category: css-art
+order: 3
+published: true
+tags: ['css-art', 'mountain', 'illustration', 'landscape']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Mountain
+
+A pure CSS mountain built with CSS borders (the triangle trick). Includes snow caps, a mountain range variant with multiple peaks, and color themes.
+
+## Basic Mountain
+
+A single peak with a snow cap:
+
+<ComponentShowcase
+  title="Basic Mountain"
+  code={`<div style="background: oklch(85% 0.02 220); padding: 2rem 2rem 0; border-radius: 1rem; display: flex; justify-content: center;">
+  <div class="art-mountain"></div>
+</div>`}
+/>
+
+## Mountain Range
+
+Use `.art-mountain-range` with `.art-peak` children for multiple peaks at different heights:
+
+<ComponentShowcase
+  title="Mountain Range"
+  code={`<div style="background: oklch(85% 0.02 220); padding: 2rem 2rem 0; border-radius: 1rem; display: flex; justify-content: center;">
+  <div class="art-mountain-range">
+    <div class="art-peak"></div>
+    <div class="art-peak"></div>
+    <div class="art-peak"></div>
+  </div>
+</div>`}
+/>
+
+## Color Variants
+
+### Sunset Mountains
+
+<ComponentShowcase
+  title="Sunset Mountains"
+  code={`<div style="background: linear-gradient(to bottom, oklch(70% 0.15 40), oklch(50% 0.1 300)); padding: 2rem 2rem 0; border-radius: 1rem; display: flex; justify-content: center;">
+  <div class="art-mountain art-mountain-sunset"></div>
+</div>`}
+/>
+
+### Forest Mountains
+
+<ComponentShowcase
+  title="Forest Mountains"
+  code={`<div style="background: oklch(80% 0.04 150); padding: 2rem 2rem 0; border-radius: 1rem; display: flex; justify-content: center;">
+  <div class="art-mountain art-mountain-forest"></div>
+</div>`}
+/>
+
+## Sizes
+
+<ComponentShowcase
+  title="Mountain Sizes"
+  code={`<div style="display: flex; align-items: flex-end; gap: 2rem; background: oklch(85% 0.02 220); padding: 2rem 2rem 0; border-radius: 1rem;">
+  <div class="art-mountain art-mountain-sm"></div>
+  <div class="art-mountain"></div>
+  <div class="art-mountain art-mountain-lg"></div>
+</div>`}
+/>
+
+| Class | Width | Height |
+|-------|-------|--------|
+| `.art-mountain-sm` | 10rem | 6rem |
+| (default) | 16rem | 10rem |
+| `.art-mountain-lg` | 24rem | 15rem |
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-mountain-width` | `16rem` | Base width |
+| `--art-mountain-height` | `10rem` | Peak height |
+| `--art-mountain-color` | `oklch(45% 0.05 150)` | Main mountain color |
+| `--art-mountain-shadow` | `oklch(35% 0.04 150)` | Shadowed side color |
+| `--art-mountain-snow` | `oklch(97% 0.005 90)` | Snow cap color |
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-mountain` | Single peak with snow cap |
+| `.art-mountain-range` | Container for multiple peaks |
+| `.art-peak` | Individual peak within a range |
+| `.art-mountain-sunset` | Purple/warm sunset colors |
+| `.art-mountain-forest` | Green forest colors |
+| `.art-mountain-sm` | Small size |
+| `.art-mountain-lg` | Large size |

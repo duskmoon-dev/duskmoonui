@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@duskmoon-dev/core";
+@import "@duskmoon-dev/css-art";
 
 @source "../components/**/*.astro";
 @source "../components/**/*.tsx";

@@ -1,0 +1,99 @@
+@layer css-art {
+  .art-sun {
+    --art-sun-size: 8rem;
+    --art-sun-color: oklch(85% 0.18 85);
+    --art-sun-corona: oklch(90% 0.15 75);
+    --art-sun-glow: oklch(90% 0.12 80 / 0.4);
+
+    position: relative;
+    width: var(--art-sun-size);
+    height: var(--art-sun-size);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 40% 40%,
+      oklch(95% 0.12 90) 0%,
+      var(--art-sun-color) 50%,
+      var(--art-sun-corona) 100%
+    );
+    box-shadow:
+      0 0 calc(var(--art-sun-size) * 0.2) var(--art-sun-glow),
+      0 0 calc(var(--art-sun-size) * 0.5) var(--art-sun-glow),
+      0 0 calc(var(--art-sun-size) * 0.8) oklch(90% 0.1 80 / 0.15);
+  }
+
+  /* Rays using pseudo-elements */
+  .art-sun-rays::before,
+  .art-sun-rays::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140%;
+    height: 140%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+
+  .art-sun-rays::before {
+    background: repeating-conic-gradient(
+      from 0deg,
+      oklch(90% 0.14 85 / 0.3) 0deg 5deg,
+      transparent 5deg 30deg
+    );
+    animation: art-sun-rotate 30s linear infinite;
+  }
+
+  .art-sun-rays::after {
+    background: repeating-conic-gradient(
+      from 15deg,
+      oklch(90% 0.14 85 / 0.15) 0deg 3deg,
+      transparent 3deg 30deg
+    );
+    animation: art-sun-rotate 45s linear infinite reverse;
+  }
+
+  @keyframes art-sun-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* Sunset variant — warmer, redder tones */
+  .art-sun-sunset {
+    --art-sun-color: oklch(75% 0.2 40);
+    --art-sun-corona: oklch(70% 0.22 30);
+    --art-sun-glow: oklch(80% 0.18 40 / 0.4);
+  }
+
+  /* Size variants */
+  .art-sun-sm {
+    --art-sun-size: 4rem;
+  }
+
+  .art-sun-lg {
+    --art-sun-size: 12rem;
+  }
+
+  .art-sun-xl {
+    --art-sun-size: 16rem;
+  }
+
+  /* Animated pulse */
+  .art-sun-pulse {
+    animation: art-sun-breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes art-sun-breathe {
+    0%, 100% {
+      box-shadow:
+        0 0 calc(var(--art-sun-size) * 0.2) var(--art-sun-glow),
+        0 0 calc(var(--art-sun-size) * 0.5) var(--art-sun-glow),
+        0 0 calc(var(--art-sun-size) * 0.8) oklch(90% 0.1 80 / 0.15);
+    }
+    50% {
+      box-shadow:
+        0 0 calc(var(--art-sun-size) * 0.3) var(--art-sun-glow),
+        0 0 calc(var(--art-sun-size) * 0.6) var(--art-sun-glow),
+        0 0 calc(var(--art-sun-size) * 1) oklch(90% 0.1 80 / 0.2);
+    }
+  }
+}
