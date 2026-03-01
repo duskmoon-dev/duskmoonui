@@ -373,14 +373,26 @@ The `@plugin` approach registers Material Design 3 color tokens into Tailwind's 
 # Build core package
 bun run build:core
 
-# Watch mode
+# Build css-art package
+bun run build:css-art
+
+# Build all packages + docs
+bun run build
+
+# Watch mode (core)
 bun run dev:core
+
+# Watch mode (css-art)
+bun run dev:css-art
 
 # Type checking
 bun run typecheck
 
-# Unit tests
+# Unit tests (core)
 cd packages/core && bun test tests/unit
+
+# Unit tests (css-art)
+cd packages/css-art && bun test tests/unit
 
 # Visual regression tests
 cd packages/core && bun run test:visual
@@ -391,7 +403,7 @@ cd packages/core && bun run test:integration
 # Accessibility tests
 cd packages/core && bun run test:a11y
 
-# All tests
+# All core tests
 cd packages/core && bun run test:all
 ```
 
@@ -402,33 +414,50 @@ cd packages/core && bun run test:all
 ```
 duskmoonui/
 ├── packages/
-│   └── core/                   # @duskmoon-dev/core
-│       ├── src/
-│       │   ├── base/           # Root styles, color tokens
-│       │   │   ├── colors.css  # 65+ color token definitions
-│       │   │   └── utilities.css # Grid and accessibility utilities
-│       │   ├── themes/         # Theme definitions (5 themes)
-│       │   │   ├── sunshine.css # Light theme
-│       │   │   ├── moonlight.css# Dark theme
-│       │   │   ├── ocean.css   # Ocean theme
-│       │   │   ├── forest.css  # Forest theme
-│       │   │   └── sunset.css  # Sunset theme
-│       │   ├── components/     # 50 component CSS files
-│       │   ├── generators/     # CSS variable generation
-│       │   └── types/          # TypeScript definitions
-│       ├── scripts/
-│       │   └── build-css.ts    # CSS build script
-│       ├── tests/
-│       │   ├── unit/           # Bun unit tests
-│       │   ├── visual/         # Playwright visual tests
-│       │   ├── integration/    # Integration tests
-│       │   └── accessibility/  # axe-core a11y tests
-│       └── dist/               # Built output
+│   ├── core/                   # @duskmoon-dev/core
+│   │   ├── src/
+│   │   │   ├── base/           # Root styles, color tokens
+│   │   │   │   ├── colors.css  # 65+ color token definitions
+│   │   │   │   └── utilities.css # Grid and accessibility utilities
+│   │   │   ├── themes/         # Theme definitions (5 themes)
+│   │   │   │   ├── sunshine.css # Light theme
+│   │   │   │   ├── moonlight.css# Dark theme
+│   │   │   │   ├── ocean.css   # Ocean theme
+│   │   │   │   ├── forest.css  # Forest theme
+│   │   │   │   └── sunset.css  # Sunset theme
+│   │   │   ├── components/     # 50 component CSS files
+│   │   │   ├── generators/     # CSS variable generation
+│   │   │   └── types/          # TypeScript definitions
+│   │   ├── scripts/
+│   │   │   └── build-css.ts    # CSS build script
+│   │   ├── tests/
+│   │   │   ├── unit/           # Bun unit tests
+│   │   │   ├── visual/         # Playwright visual tests
+│   │   │   ├── integration/    # Integration tests
+│   │   │   └── accessibility/  # axe-core a11y tests
+│   │   └── dist/               # Built output
+│   ├── css-art/                # @duskmoon-dev/css-art
+│   │   ├── src/
+│   │   │   └── art/            # Pure CSS art components
+│   │   │       ├── moon.css    # Moon with crescent, craters, glow
+│   │   │       ├── sun.css     # Sun with rays, sunset variant
+│   │   │       └── mountain.css # Mountain with snow cap, range
+│   │   ├── scripts/
+│   │   │   └── build-css.ts    # CSS build script
+│   │   ├── tests/
+│   │   │   └── unit/           # Bun unit tests
+│   │   └── dist/               # Built output
+│   └── docs/                   # @duskmoon-dev/docs (Astro site)
+├── skills/                     # AI agent skill files
+│   ├── duskmoon-dev-core/
+│   │   └── SKILL.md            # Agent skill for @duskmoon-dev/core
+│   └── duskmoon-dev-css-art/
+│       └── SKILL.md            # Agent skill for @duskmoon-dev/css-art
 ├── examples/
 │   ├── demo/                   # Interactive demo app
 │   ├── astro-starter/          # Astro example
 │   └── nextjs-starter/         # Next.js example
-└── docs/                       # Documentation
+└── docs/                       # Development documentation
 ```
 
 ---

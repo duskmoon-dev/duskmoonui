@@ -2,7 +2,7 @@
 
 
 
-Scan the current codebase and update all files in `./docs/` to reflect the actual state of the project. Do NOT add or remove doc files — only update existing ones in-place.
+Scan the current codebase and update all files in `./docs/` and `./skills/` to reflect the actual state of the project. Do NOT add or remove doc files — only update existing ones in-place.
 
 ## Execution Flow
 
@@ -11,20 +11,27 @@ Scan the current codebase and update all files in `./docs/` to reflect the actua
 Scan these source directories to build a picture of the current codebase:
 
 ```
+# @duskmoon-dev/core
 packages/core/src/components/    → list all *.css files (component inventory)
 packages/core/src/themes/        → list all *.css and *.ts files (available themes)
 packages/core/src/base/          → read colors.css and utilities.css (color tokens, utilities)
 packages/core/src/types/         → read type definitions (ThemeColors, etc.)
 packages/core/package.json       → read version, exports, dependencies
+
+# @duskmoon-dev/css-art
+packages/css-art/src/art/        → list all *.css files (art piece inventory)
+packages/css-art/package.json    → read version, exports, dependencies
 ```
 
 Collect:
-- **Component list**: all `.css` files in `components/`, grouped by category
+- **Component list**: all `.css` files in `core/src/components/`, grouped by category
 - **Component count**: total number of components
+- **Art piece list**: all `.css` files in `css-art/src/art/`
+- **Art piece count**: total number of art pieces
 - **Theme list**: all themes with their color token summaries
 - **Color token list**: all `--color-*` tokens from `base/colors.css`
 - **Utility classes**: grid utilities, accessibility utilities from `base/utilities.css`
-- **Package exports**: what paths are exported in `package.json`
+- **Package exports**: what paths are exported in each `package.json`
 - **Available commands**: build, test, dev commands from root and package `package.json`
 
 ### 2. Update `docs/development.md`
@@ -43,9 +50,9 @@ Read the existing `docs/development.md`, then update these sections in-place whi
 
 Do NOT rewrite sections that are already accurate. Only change what is out of date.
 
-### 3. Update `docs/duskmoon-dev-core/SKILL.md`
+### 3. Update `skills/duskmoon-dev-core/SKILL.md`
 
-Use the `skill-creator` skill to update `docs/duskmoon-dev-core/SKILL.md`. This skill file is designed for AI agents to learn how to install, configure, and use the `@duskmoon-dev/core` package. Invoke the skill-creator with the current codebase state so it can update the following sections:
+Use the `skill-creator` skill to update `skills/duskmoon-dev-core/SKILL.md`. This skill file is designed for AI agents to learn how to install, configure, and use the `@duskmoon-dev/core` package. Invoke the skill-creator with the current codebase state so it can update the following sections:
 
 | Section | What to update |
 |---------|---------------|
@@ -57,13 +64,26 @@ Use the `skill-creator` skill to update `docs/duskmoon-dev-core/SKILL.md`. This 
 
 For each component, list its primary class and key variant classes by reading the actual CSS file to find class selectors.
 
+### 3b. Update `skills/duskmoon-dev-css-art/SKILL.md`
+
+Use the `skill-creator` skill to update `skills/duskmoon-dev-css-art/SKILL.md`. This skill file is designed for AI agents to learn how to install, configure, and use the `@duskmoon-dev/css-art` package. Invoke the skill-creator with the current codebase state so it can update the following sections:
+
+| Section | What to update |
+|---------|---------------|
+| **Available Art Components** | Update the full art piece listing — ensure every `.css` file in `css-art/src/art/` is listed with its CSS classes and custom properties |
+| **Usage Examples** | Keep existing examples but add examples for any new art pieces not yet covered |
+| **Bundle Size** | Update if significantly changed |
+
+For each art piece, list its base class, variant classes, and CSS custom properties by reading the actual CSS file.
+
 ### 4. Validation
 
 After updating, verify:
-- Every `.css` file in `src/components/` is mentioned in both `docs/development.md` and `docs/duskmoon-dev-core/SKILL.md`
-- No component is listed that doesn't exist in the source
-- Component count number matches the actual file count
-- All import paths listed actually exist in `package.json` exports
+- Every `.css` file in `core/src/components/` is mentioned in both `docs/development.md` and `skills/duskmoon-dev-core/SKILL.md`
+- Every `.css` file in `css-art/src/art/` is mentioned in `skills/duskmoon-dev-css-art/SKILL.md`
+- No component or art piece is listed that doesn't exist in the source
+- Component and art piece counts match the actual file counts
+- All import paths listed actually exist in the respective `package.json` exports
 - All commands listed actually exist in `package.json` scripts
 
 Report any discrepancies found.
@@ -77,7 +97,7 @@ Updated docs/development.md:
   - Added: tree-select, multi-select
   - Removed: (none)
 
-Updated docs/duskmoon-dev-core/SKILL.md (via skill-creator):
+Updated skills/duskmoon-dev-core/SKILL.md (via skill-creator):
   - Added component entries: tree-select, multi-select
   - Updated import paths table
   - No example changes needed
