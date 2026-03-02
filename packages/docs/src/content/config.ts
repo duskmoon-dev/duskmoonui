@@ -8,6 +8,7 @@ const docsCollection = defineCollection({
     category: z.enum([
       'getting-started',
       'components',
+      'css-art',
       'design-system',
       'theming',
       'guides',
