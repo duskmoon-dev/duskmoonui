@@ -1,0 +1,70 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const artPieces = [
+  {
+    name: 'Celestial',
+    items: [
+      { name: 'Moon', slug: 'moon', description: 'Pure CSS moon with craters, crescent variant, and animated glow' },
+      { name: 'Sun', slug: 'sun', description: 'Pure CSS sun with radial gradient, spinning rays, and pulse animation' },
+      { name: 'Atom', slug: 'atom', description: 'Animated atom with three orbiting electrons and pulsing nucleus' },
+      { name: 'Eclipse', slug: 'eclipse', description: 'Solar eclipse with six animated corona layers' },
+    ],
+  },
+  {
+    name: 'Landscape',
+    items: [
+      { name: 'Mountain', slug: 'mountain', description: 'Mountain peak with snow cap and range variant' },
+    ],
+  },
+  {
+    name: 'Weather',
+    items: [
+      { name: 'Snow', slug: 'snow', description: 'Snowflakes with falling animation and Unicode variant' },
+    ],
+  },
+  {
+    name: 'Interactive',
+    items: [
+      { name: 'Plasma Ball', slug: 'plasma-ball', description: 'Interactive plasma ball with glass sphere, electrode, and electric rays' },
+    ],
+  },
+];
+
+const totalCount = artPieces.reduce((sum, cat) => sum + cat.items.length, 0);
+---
+
+<DocsLayout title="CSS Art">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-bold mb-4">CSS Art</h1>
+      <p class="text-xl text-on-surface-variant mb-2">
+        {totalCount} pure CSS illustrations — no images, no SVGs, no JavaScript
+      </p>
+      <p class="text-base text-on-surface-variant">
+        Powered by <code class="text-sm bg-surface-container-high px-2 py-0.5 rounded">@duskmoon-dev/css-art</code>
+      </p>
+    </header>
+
+    <div class="flex flex-col gap-16">
+      {artPieces.map((category, idx) => (
+        <section class={idx < artPieces.length - 1 ? "border-b border-outline-variant pb-12" : ""}>
+          <h2 class="text-3xl font-semibold mb-8">{category.name}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {category.items.map(item => (
+              <div class="p-6 bg-surface-container rounded-xl border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all hover:-translate-y-1">
+                <h3 class="text-xl font-semibold mb-2">{item.name}</h3>
+                <p class="text-sm text-on-surface-variant mb-4 leading-relaxed">{item.description}</p>
+                <a href={`${base}docs/en/css-art/${item.slug}/`} class="inline-block text-sm font-medium text-primary hover:text-tertiary hover:underline transition-colors">
+                  View Docs
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</DocsLayout>
