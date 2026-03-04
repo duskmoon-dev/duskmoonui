@@ -6,7 +6,7 @@ Find all open GitHub issues labeled `internal request`, then fix each one in an 
 
 ### 1. List Issues
 
-Use the GitHub MCP tool to list open issues with the label `internal request`:
+Use the GitHub MCP tool to list open issues with the label `internal request` but **without** the label `unable to resolve`:
 
 ```
 owner: duskmoon-dev
@@ -14,6 +14,8 @@ repo: duskmoonui
 labels: ["internal request"]
 state: open
 ```
+
+After fetching, filter out any issues that already have the `unable to resolve` label.
 
 If no issues are found, report "No open internal request issues" and stop.
 
@@ -99,7 +101,14 @@ Skipped: 0
 Failed: 0
 ```
 
-If any issue could not be fixed automatically (too complex, unclear requirements), report it as skipped with a reason.
+If any issue could not be fixed automatically (too complex, unclear requirements, ambiguous scope, or missing information):
+1. Add the label `unable to resolve` to the issue
+2. Post a comment on the issue explaining **why** it could not be resolved (e.g., "Automated fix could not be applied: the issue requires manual design decisions about X" or "Blocked by missing dependency Y")
+3. Report it as skipped in the summary
+Ensure the label `unable to resolve` exists. If it doesn't, create it first:
+```bash
+gh label create "unable to resolve" --color "e4e669" --description "Cannot be resolved automatically"
+```
 
 ## Important Notes
 
