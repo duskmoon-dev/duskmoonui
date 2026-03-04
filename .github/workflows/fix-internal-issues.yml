@@ -3,10 +3,15 @@ name: Fix Internal Issues
 on:
   issues:
     types: [labeled]
+  workflow_dispatch:
 
 jobs:
   fix-issues:
-    if: github.event.label.name == 'internal request'
+    # Only run when "internal request" label is added (skip "unable to resolve")
+    if: >
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event.label.name == 'internal request' &&
+       !contains(toJSON(github.event.issue.labels.*.name), 'unable to resolve'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
