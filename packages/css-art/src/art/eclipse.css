@@ -11,6 +11,7 @@
     .layer {
       position: absolute;
       inset: 0;
+      border-radius: 50%;
     }
 
     .layer-1 {
