@@ -1,0 +1,353 @@
+---
+title: Flower Animation
+description: Animated garden scene with blooming flowers, swaying grass, and floating heart bubbles on a dark night sky — pure CSS
+category: css-art
+order: 12
+published: true
+tags: ['css-art', 'flower-animation', 'flowers', 'animation', 'garden', 'hearts']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Flower Animation
+
+An animated garden scene rendered entirely in CSS. Four flowers bloom and sway on their stems, surrounded by multiple layers of swaying grass. Glowing light particles rise from the flower centers, and heart-shaped bubbles float upward across the dark starlit sky. All motion — blooming, growing, swaying, and floating — is driven by CSS `@keyframes` and `animation-delay` staggering alone, with no JavaScript.
+
+Original art: "Flores y corazones" — ported from SCSS to plain CSS and adapted to the css-art component format.
+
+## Basic Usage
+
+The component requires a rich HTML structure mirroring the garden layers:
+
+<ComponentShowcase
+  title="Flower Animation"
+  code={`<div class="art-flower-animation">
+  <div class="night"></div>
+  <div class="flowers">
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+        <div class="flower__line__leaf flower__line__leaf--5"></div>
+        <div class="flower__line__leaf flower__line__leaf--6"></div>
+      </div>
+    </div>
+    <div class="flower flower--2">
+      <div class="flower__leafs flower__leafs--2">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+    <div class="flower flower--3">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+    <div class="flower flower--4">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+    <div class="grow-ans" style="--d:1.2s">
+      <div class="flower__g-long">
+        <div class="flower__g-long__top"></div>
+        <div class="flower__g-long__bottom"></div>
+      </div>
+    </div>
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--1">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--2">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+    <div class="grow-ans" style="--d:2.4s">
+      <div class="flower__g-right flower__g-right--1"><div class="leaf"></div></div>
+    </div>
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-right flower__g-right--2"><div class="leaf"></div></div>
+    </div>
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-front">
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8"><div class="flower__g-front__leaf"></div></div>
+        <div class="flower__g-front__line"></div>
+      </div>
+    </div>
+    <div class="grow-ans" style="--d:3.2s">
+      <div class="flower__g-fr">
+        <div class="leaf"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+      </div>
+    </div>
+    <div class="long-g long-g--0">
+      <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:2.2s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:3.4s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+    </div>
+    <div class="long-g long-g--1">
+      <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:3.8s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:4s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--3"></div></div>
+    </div>
+    <div class="long-g long-g--2">
+      <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--3"></div></div>
+    </div>
+    <div class="long-g long-g--3">
+      <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+    </div>
+    <div class="long-g long-g--4">
+      <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+    </div>
+    <div class="long-g long-g--5">
+      <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+    </div>
+    <div class="long-g long-g--6">
+      <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:4.8s"><div class="leaf leaf--3"></div></div>
+    </div>
+    <div class="long-g long-g--7">
+      <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+      <div class="grow-ans" style="--d:3.2s"><div class="leaf leaf--1"></div></div>
+      <div class="grow-ans" style="--d:3.5s"><div class="leaf leaf--2"></div></div>
+      <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+    </div>
+  </div>
+  <div class="bubbles">
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+  </div>
+</div>`}
+/>
+
+## Sizes
+
+Three sizes are available via modifier classes or the `--art-flower-animation-size` custom property:
+
+<ComponentShowcase
+  title="Flower Animation Sizes"
+  code={`<div style="display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap;">
+  <div class="art-flower-animation art-flower-animation-sm">
+    <div class="night"></div>
+    <div class="flowers">
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bubbles">
+      <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+      <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+      <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+      <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+      <div class="bubble"><svg class="heart" viewBox="0 0 32 32"><path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path></svg></div>
+    </div>
+  </div>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-flower-animation-size` | `600px` | Overall container width; height scales at 1.1× |
+| `--art-flower-animation-bg` | `#010113` | Dark background color used for the night sky and masking |
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `art-flower-animation` | Root container — sets size, background, overflow, and perspective |
+| `art-flower-animation-sm` | Sets `--art-flower-animation-size` to `300px` |
+| `art-flower-animation-lg` | Sets `--art-flower-animation-size` to `900px` |
+| `.night` | Full-bleed radial/linear gradient backdrop simulating a night sky |
+| `.flowers` | Relative-positioned wrapper for all flower and plant elements |
+| `.flower` | Individual flower root; applies swaying animation |
+| `.flower--1` – `.flower--4` | Positional variants for each of the four flowers |
+| `.flower__leafs` | Petal cluster; applies `blooming-flower` entrance animation |
+| `.flower__leafs--1` – `--3` | Staggered bloom delays for each flower |
+| `.flower__leaf` | Single petal with 3D transform |
+| `.flower__leaf--1` – `--4` | Per-petal rotation offsets |
+| `.flower__white-circle` | Flower center (stamens) |
+| `.flower__light` | Glowing particle that rises from the flower center |
+| `.flower__light--1` – `--8` | Per-particle horizontal offsets and delays |
+| `.flower__line` | Flower stem; applies `grow-flower-tree` entrance animation |
+| `.flower__line__leaf` | Side leaf on the stem |
+| `.flower__line__leaf--1` – `--6` | Per-leaf rotation and bloom direction |
+| `.flower__grass` | Decorative grass cluster |
+| `.flower__grass--1` / `--2` | Two grass variants with different sway animations |
+| `.flower__grass--top` | Curved grass tip |
+| `.flower__grass--bottom` | Straight grass stem |
+| `.flower__grass__leaf` | Rounded grass side blade |
+| `.flower__grass__leaf--1` – `--8` | Staggered grow-in animations |
+| `.flower__grass__overlay` | Dark blurred overlay creating depth on the grass |
+| `.flower__g-long` | Tall background plant |
+| `.flower__g-right` | Wide sweeping leaf on the right |
+| `.flower__g-right--1` / `--2` | Two right-leaf variants |
+| `.flower__g-front` | Small front-facing fern frond |
+| `.flower__g-front__leaf-wrapper` | Wrapper for individual frond leaflets |
+| `.flower__g-front__leaf` | Triangular masked frond leaflet |
+| `.flower__g-fr` | Large foreground plant |
+| `.flower__g-fr__leaf` | Side leaflet on the foreground plant |
+| `.flower__g-fr__leaf--1` – `--8` | Per-leaflet staggered grow-in |
+| `.long-g` | Group of tall background grass blades |
+| `.long-g--0` – `--7` | Positional variants scattered across the scene |
+| `.grow-ans` | Utility class: grows element from `scaleY(0)` using `--d` delay |
+| `.growing-grass` | Absolute wrapper anchoring grass groups to the bottom |
+| `.bubbles` | Container for the floating heart elements |
+| `.bubble` | Individual heart; animates upward with fade |
+| `.heart` | SVG heart icon inside each bubble |
