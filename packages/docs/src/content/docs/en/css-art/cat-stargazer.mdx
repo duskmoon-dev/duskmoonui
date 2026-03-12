@@ -1,0 +1,191 @@
+---
+title: Cat Stargazer
+description: Pure CSS kawaii cat sitting on the moon, gazing at the stars — with a blinking animation
+category: css-art
+order: 8
+published: true
+tags: ['css-art', 'cat', 'moon', 'stars', 'animation', 'kawaii']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Cat Stargazer
+
+A pure CSS kawaii black cat in a space suit, sitting on the moon and gazing at the stars. The scene features a starry night background, a glowing crescent moon, a glass bubble helmet, and a blinking eye animation — all in CSS.
+
+Original art by [Alvaro Montoro](https://codepen.io/alvaromontoro/pen/GRPEzyQ).
+
+## Basic Usage
+
+The component requires a specific HTML structure with named child elements:
+
+<ComponentShowcase
+  title="Cat Stargazer"
+  code={`<div class="art-cat-stargazer">
+  <div class="moon"></div>
+  <div class="cat">
+    <div class="tail"></div>
+    <div class="backpack"></div>
+    <div class="body">
+      <div class="leg"></div>
+      <div class="leg"></div>
+      <div class="paw"></div>
+      <div class="paw"></div>
+    </div>
+    <div class="ear"></div>
+    <div class="ear"></div>
+    <div class="head">
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="eye"></div>
+      <div class="eye"></div>
+      <div class="nose"></div>
+    </div>
+    <div class="bubble"></div>
+  </div>
+</div>`}
+/>
+
+## Sizes
+
+Three sizes are available via modifier classes or the `--art-cat-stargazer-size` custom property:
+
+<ComponentShowcase
+  title="Cat Stargazer Sizes"
+  code={`<div style="display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap;">
+  <div class="art-cat-stargazer art-cat-stargazer-sm">
+    <div class="moon"></div>
+    <div class="cat">
+      <div class="tail"></div>
+      <div class="backpack"></div>
+      <div class="body">
+        <div class="leg"></div>
+        <div class="leg"></div>
+        <div class="paw"></div>
+        <div class="paw"></div>
+      </div>
+      <div class="ear"></div>
+      <div class="ear"></div>
+      <div class="head">
+        <div class="whisker"></div>
+        <div class="whisker"></div>
+        <div class="whisker"></div>
+        <div class="whisker"></div>
+        <div class="eye"></div>
+        <div class="eye"></div>
+        <div class="nose"></div>
+      </div>
+      <div class="bubble"></div>
+    </div>
+  </div>
+  <div class="art-cat-stargazer">
+    <div class="moon"></div>
+    <div class="cat">
+      <div class="tail"></div>
+      <div class="backpack"></div>
+      <div class="body">
+        <div class="leg"></div>
+        <div class="leg"></div>
+        <div class="paw"></div>
+        <div class="paw"></div>
+      </div>
+      <div class="ear"></div>
+      <div class="ear"></div>
+      <div class="head">
+        <div class="whisker"></div>
+        <div class="whisker"></div>
+        <div class="whisker"></div>
+        <div class="whisker"></div>
+        <div class="eye"></div>
+        <div class="eye"></div>
+        <div class="nose"></div>
+      </div>
+      <div class="bubble"></div>
+    </div>
+  </div>
+</div>`}
+/>
+
+| Class | Size |
+|-------|------|
+| `.art-cat-stargazer-sm` | 300px |
+| (default) | 500px |
+| `.art-cat-stargazer-lg` | 700px |
+
+## Custom Size
+
+Use `--art-cat-stargazer-size` to set an arbitrary size:
+
+<ComponentShowcase
+  title="Custom Size"
+  code={`<div class="art-cat-stargazer" style="--art-cat-stargazer-size: 400px;">
+  <div class="moon"></div>
+  <div class="cat">
+    <div class="tail"></div>
+    <div class="backpack"></div>
+    <div class="body">
+      <div class="leg"></div>
+      <div class="leg"></div>
+      <div class="paw"></div>
+      <div class="paw"></div>
+    </div>
+    <div class="ear"></div>
+    <div class="ear"></div>
+    <div class="head">
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="eye"></div>
+      <div class="eye"></div>
+      <div class="nose"></div>
+    </div>
+    <div class="bubble"></div>
+  </div>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-cat-stargazer-size` | `500px` | Overall container size (scales everything proportionally) |
+
+## HTML Structure
+
+```html
+<div class="art-cat-stargazer">
+  <div class="moon"></div>
+  <div class="cat">
+    <div class="tail"></div>
+    <div class="backpack"></div>
+    <div class="body">
+      <div class="leg"></div>
+      <div class="leg"></div>
+      <div class="paw"></div>
+      <div class="paw"></div>
+    </div>
+    <div class="ear"></div>
+    <div class="ear"></div>
+    <div class="head">
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="whisker"></div>
+      <div class="eye"></div>
+      <div class="eye"></div>
+      <div class="nose"></div>
+    </div>
+    <div class="bubble"></div>
+  </div>
+</div>
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-cat-stargazer` | Base component — starry night scene with cat on the moon |
+| `.art-cat-stargazer-sm` | Small size (300px) |
+| `.art-cat-stargazer-lg` | Large size (700px) |

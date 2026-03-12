@@ -1,0 +1,101 @@
+---
+title: Synthwave & Starfield
+description: Retro synthwave scene with animated 3D grid walls, hue-cycling neon lines, and a hyperspace starfield — pure CSS, no JavaScript.
+category: css-art
+order: 10
+published: true
+tags: ['css-art', 'synthwave-starfield', 'animation', '3d', 'perspective', 'interactive']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Synthwave & Starfield
+
+A dark synthwave tunnel built entirely in CSS. Four 3D grid planes (left wall, right wall, floor, ceiling) are constructed using `rotateX`/`rotateY` transforms on pseudo-elements and animated with `repeating-linear-gradient` backgrounds. The hue continuously cycles via a `hue-rotate` filter. Two overlapping `repeating-conic-gradient` layers form the starfield, animating along the Z axis to simulate hyperspace travel. The entire scene runs by default; add `.art-synthwave-starfield-paused` to freeze it.
+
+## Basic Usage
+
+<ComponentShowcase
+  title="Synthwave & Starfield"
+  code={`<div class="art-synthwave-starfield">
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-topbot"></div>
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-lefrig"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+</div>`}
+/>
+
+## Paused
+
+Add `.art-synthwave-starfield-paused` to freeze all animations:
+
+<ComponentShowcase
+  title="Paused"
+  code={`<div class="art-synthwave-starfield art-synthwave-starfield-paused">
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-topbot"></div>
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-lefrig"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+</div>`}
+/>
+
+## Sizes
+
+<ComponentShowcase
+  title="Small"
+  code={`<div class="art-synthwave-starfield art-synthwave-starfield-sm">
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-topbot"></div>
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-lefrig"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+</div>`}
+/>
+
+<ComponentShowcase
+  title="Large"
+  code={`<div class="art-synthwave-starfield art-synthwave-starfield-lg">
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-topbot"></div>
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-lefrig"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+  <div class="art-synthwave-starfield-stars"></div>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|---|---|---|
+| `--art-synthwave-starfield-size` | `600px` | Width and height of the square canvas; all proportions scale from this |
+| `--art-synthwave-starfield-line-color` | `#6bd600` | Neon green grid line color (hue-rotated over time) |
+
+## HTML Structure
+
+```html
+<div class="art-synthwave-starfield">
+  <!-- Floor + ceiling planes -->
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-topbot"></div>
+  <!-- Left + right wall planes -->
+  <div class="art-synthwave-starfield-sides art-synthwave-starfield-lefrig"></div>
+  <!-- Starfield layer 1 -->
+  <div class="art-synthwave-starfield-stars"></div>
+  <!-- Starfield layer 2 (offset delays for seamless looping) -->
+  <div class="art-synthwave-starfield-stars"></div>
+</div>
+```
+
+The two `art-synthwave-starfield-sides` divs share the same base styles. `art-synthwave-starfield-topbot` adds floor/ceiling planes via `rotateX(±90deg)`, while `art-synthwave-starfield-lefrig` adds left/right walls via `rotateY(±90deg)`.
+
+The two `art-synthwave-starfield-stars` divs each have two pseudo-elements, giving four total star layers with staggered `-1s / -2s / -3s / -4s` delays — ensuring there's always a visible star layer during the animation cycle.
+
+## API Reference
+
+| Class | Description |
+|---|---|
+| `art-synthwave-starfield` | Root element — sets the dark background, perspective, and gradient overlays |
+| `art-synthwave-starfield-topbot` | Adds floor and ceiling grid planes |
+| `art-synthwave-starfield-lefrig` | Adds left and right wall grid planes |
+| `art-synthwave-starfield-sides` | Required base class for both grid panels |
+| `art-synthwave-starfield-stars` | One starfield layer (use two for seamless looping) |
+| `art-synthwave-starfield-paused` | Modifier on root — pauses all animations |
+| `art-synthwave-starfield-sm` | Small size (`--art-synthwave-starfield-size: 300px`) |
+| `art-synthwave-starfield-lg` | Large size (`--art-synthwave-starfield-size: 900px`) |

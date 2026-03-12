@@ -1,0 +1,108 @@
+---
+title: Color Spin
+description: Four colored rings arranged in 3D perspective, slowly rotating on the Y axis with mix-blend-mode glow and reflections.
+category: css-art
+order: 9
+published: true
+tags: ['css-art', 'color-spin', 'animation', '3d', 'perspective']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Color Spin
+
+Four translucent colored rings — gold, blue, green, and red — are positioned 90° apart along a 3D Y-axis rotation. The spinner slowly alternates between 0° and 360°, giving each ring its turn facing forward. Inner circles use `mix-blend-mode: color-burn` to create a luminous glow, and `-webkit-box-reflect` adds ground reflections beneath each ring. Decorative oversized "c" and "r" letterforms frame the composition on a dark striped background.
+
+## Basic Usage
+
+<ComponentShowcase
+  title="Color Spin"
+  code={`<div class="art-color-spin">
+  <ul>
+    <li style="--i:1"></li>
+    <li style="--i:2"></li>
+    <li style="--i:3"></li>
+    <li style="--i:4"></li>
+  </ul>
+</div>`}
+/>
+
+## Sizes
+
+<ComponentShowcase
+  title="Small"
+  code={`<div class="art-color-spin art-color-spin-sm">
+  <ul>
+    <li style="--i:1"></li>
+    <li style="--i:2"></li>
+    <li style="--i:3"></li>
+    <li style="--i:4"></li>
+  </ul>
+</div>`}
+/>
+
+<ComponentShowcase
+  title="Large"
+  code={`<div class="art-color-spin art-color-spin-lg">
+  <ul>
+    <li style="--i:1"></li>
+    <li style="--i:2"></li>
+    <li style="--i:3"></li>
+    <li style="--i:4"></li>
+  </ul>
+</div>`}
+/>
+
+## Custom Colors
+
+Override the color custom properties to change the palette:
+
+<ComponentShowcase
+  title="Custom Colors"
+  code={`<div class="art-color-spin" style="
+  --art-color-spin-color1: #ff6b9d;
+  --art-color-spin-color2: #c084fc;
+  --art-color-spin-color3: #38bdf8;
+  --art-color-spin-color4: #fb923c;
+">
+  <ul>
+    <li style="--i:1"></li>
+    <li style="--i:2"></li>
+    <li style="--i:3"></li>
+    <li style="--i:4"></li>
+  </ul>
+</div>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|---|---|---|
+| `--art-color-spin-size` | `770px` | Overall width; all proportions scale from this |
+| `--art-color-spin-color1` | `#ffd700` | Gold ring color |
+| `--art-color-spin-color2` | `#20a7db` | Blue ring color |
+| `--art-color-spin-color3` | `#8fce00` | Green ring color |
+| `--art-color-spin-color4` | `#ff0000` | Red ring color |
+
+## HTML Structure
+
+```html
+<div class="art-color-spin">
+  <ul>
+    <li style="--i:1"></li>
+    <li style="--i:2"></li>
+    <li style="--i:3"></li>
+    <li style="--i:4"></li>
+  </ul>
+</div>
+```
+
+The `--i` custom property on each `<li>` controls its rotational offset in 3D space: `rotateY(calc(var(--i) * -90deg))`. This places each ring 90° apart on the Y axis.
+
+## API Reference
+
+| Class | Description |
+|---|---|
+| `art-color-spin` | Root element — sets background, perspective, and letter decorations |
+| `art-color-spin-sm` | Small size (`--art-color-spin-size: 385px`) |
+| `art-color-spin-lg` | Large size (`--art-color-spin-size: 1000px`) |

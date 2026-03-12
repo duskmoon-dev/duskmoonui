@@ -1,0 +1,236 @@
+@layer css-art {
+  @keyframes art-synthwave-starfield-color {
+    0% {
+      filter: hue-rotate(1deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes art-synthwave-starfield-lines-x {
+    0% {
+      background-position: calc(var(--art-synthwave-starfield-size) * 0.12) center;
+    }
+    100% {
+      background-position: 0 center;
+    }
+  }
+
+  @keyframes art-synthwave-starfield-lines-y {
+    0% {
+      background-position: center calc(var(--art-synthwave-starfield-size) * 0.12);
+    }
+    100% {
+      background-position: center 0;
+    }
+  }
+
+  @keyframes art-synthwave-starfield-stars {
+    0% {
+      transform: translateZ(calc(var(--art-synthwave-starfield-size) * -0.4));
+      opacity: 0;
+    }
+    30%,
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(calc(var(--art-synthwave-starfield-size) * 0.5)) rotate(15deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes art-synthwave-starfield-stars2 {
+    0% {
+      transform: translateZ(calc(var(--art-synthwave-starfield-size) * -0.4)) rotate(180deg);
+      opacity: 0;
+    }
+    30%,
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(calc(var(--art-synthwave-starfield-size) * 0.5)) rotate(195deg);
+      opacity: 0;
+    }
+  }
+
+  .art-synthwave-starfield {
+    --art-synthwave-starfield-size: 600px;
+    --art-synthwave-starfield-line-color: #6bd600;
+
+    position: relative;
+    width: var(--art-synthwave-starfield-size);
+    height: var(--art-synthwave-starfield-size);
+    overflow: hidden;
+    perspective: calc(var(--art-synthwave-starfield-size) * 0.5);
+    transform-style: preserve-3d;
+    background-image: radial-gradient(#0000, #673ab72e),
+      linear-gradient(-90deg, #2000587d, #000, #9c27b02b),
+      linear-gradient(0deg, #ff98002e, #000, #8bc34a5e);
+    background-color: #000;
+    box-shadow: 0 0 calc(var(--art-synthwave-starfield-size) * 1.5)
+      calc(var(--art-synthwave-starfield-size) * 0.11) #000 inset;
+    font-family: "Press Start 2P", system-ui;
+  }
+
+  /* Secondary gradient overlay (replaces body::before) */
+  .art-synthwave-starfield::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#0000, #0a123a),
+      linear-gradient(180deg, #2000587d, #000, #9c27b02b),
+      linear-gradient(0deg, #ff980054, #000, #009688ba);
+    opacity: 0.25;
+    z-index: 0;
+  }
+
+  /* All descendants: absolute + preserve-3d */
+  .art-synthwave-starfield * {
+    box-sizing: border-box;
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+
+  .art-synthwave-starfield *::before,
+  .art-synthwave-starfield *::after {
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    position: absolute;
+    content: "";
+  }
+
+  /* Shared grid panel base */
+  .art-synthwave-starfield-sides {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#0f0015 10%, #000000e0 35%, #fff0 75% 100%);
+  }
+
+  /* Left wall (shared base for both side panels) */
+  .art-synthwave-starfield-sides::before,
+  .art-synthwave-starfield-sides::after {
+    width: 100%;
+    height: 100%;
+    transform: rotateY(90deg);
+    transform-origin: left center;
+    background-image: repeating-linear-gradient(
+        90deg,
+        #fff0 0,
+        #fff0 calc(var(--art-synthwave-starfield-size) * 0.1),
+        var(--art-synthwave-starfield-line-color) calc(var(--art-synthwave-starfield-size) * 0.1)
+          calc(var(--art-synthwave-starfield-size) * 0.1035),
+        #fff0 calc(var(--art-synthwave-starfield-size) * 0.1035)
+      ),
+      repeating-linear-gradient(
+        180deg,
+        #fff0 0,
+        #fff0 calc(var(--art-synthwave-starfield-size) * 0.1),
+        var(--art-synthwave-starfield-line-color) calc(var(--art-synthwave-starfield-size) * 0.1)
+          calc(var(--art-synthwave-starfield-size) * 0.1035),
+        #fff0 calc(var(--art-synthwave-starfield-size) * 0.1035)
+      );
+    background-color: transparent;
+    animation: art-synthwave-starfield-lines-x 0.5s linear 0s infinite,
+      art-synthwave-starfield-color 5s linear 0s infinite;
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: calc(var(--art-synthwave-starfield-size) * 0.12)
+      calc(var(--art-synthwave-starfield-size) * 0.12);
+    box-shadow: 0 0 calc(var(--art-synthwave-starfield-size) * 0.08)
+      calc(var(--art-synthwave-starfield-size) * 0.1) #000 inset;
+  }
+
+  /* Right wall */
+  .art-synthwave-starfield-lefrig::after {
+    transform: rotateY(-90deg);
+    transform-origin: right center;
+    animation: art-synthwave-starfield-lines-x 0.5s linear 0s infinite reverse,
+      art-synthwave-starfield-color 5s linear 2s infinite;
+    z-index: -1;
+  }
+
+  /* Floor */
+  .art-synthwave-starfield-topbot::before {
+    height: 100%;
+    transform: rotateX(90deg);
+    transform-origin: center bottom;
+    bottom: 0;
+    animation: art-synthwave-starfield-lines-y 0.5s linear 0s infinite reverse,
+      art-synthwave-starfield-color 5s linear 1s infinite;
+  }
+
+  /* Ceiling */
+  .art-synthwave-starfield-topbot::after {
+    height: 100%;
+    transform: rotateX(-90deg);
+    transform-origin: center top;
+    bottom: auto;
+    animation: art-synthwave-starfield-lines-y 0.5s linear 0s infinite,
+      art-synthwave-starfield-color 5s linear 3s infinite;
+  }
+
+  /* Starfield layers */
+  .art-synthwave-starfield-stars {
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  .art-synthwave-starfield-stars::before,
+  .art-synthwave-starfield-stars::after {
+    width: 200%;
+    height: 200%;
+    background: transparent;
+    border-radius: 100%;
+    background-image: repeating-conic-gradient(
+        #fff8 0%,
+        transparent 0.0002%,
+        transparent 0.075%,
+        transparent 0.65%
+      ),
+      repeating-conic-gradient(
+        #fff 0%,
+        transparent 0.0004%,
+        transparent 0.05%,
+        transparent 0.495%
+      );
+    transform: translateZ(calc(var(--art-synthwave-starfield-size) * -0.4));
+    opacity: 0;
+    animation: art-synthwave-starfield-stars 4s ease-in -1s infinite;
+    z-index: 1;
+    left: -50%;
+    top: -50%;
+  }
+
+  .art-synthwave-starfield-stars::after {
+    animation-name: art-synthwave-starfield-stars2;
+    animation-delay: -2s;
+  }
+
+  /* Second stars div: offset delays for smooth looping */
+  .art-synthwave-starfield-stars + .art-synthwave-starfield-stars::before {
+    animation-delay: -3s;
+  }
+
+  .art-synthwave-starfield-stars + .art-synthwave-starfield-stars::after {
+    animation-delay: -4s;
+  }
+
+  /* Pause all animations (opt-in modifier) */
+  .art-synthwave-starfield.art-synthwave-starfield-paused *::before,
+  .art-synthwave-starfield.art-synthwave-starfield-paused *::after {
+    animation-play-state: paused !important;
+  }
+
+  .art-synthwave-starfield-sm {
+    --art-synthwave-starfield-size: 300px;
+  }
+
+  .art-synthwave-starfield-lg {
+    --art-synthwave-starfield-size: 900px;
+  }
+}
