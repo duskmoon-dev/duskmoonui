@@ -90,7 +90,7 @@
       left: calc(var(--art-plasma-ball-size) * 151 / 350);
     }
     .glassball {
-      position: relative;
+      position: absolute;
       overflow: hidden;
       margin: 0 auto;
       width: 100%;
@@ -100,7 +100,7 @@
       top: 0%;
       box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2),
         inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
-      position: absolute;
+      z-index: 1;
     }
     .glassball:after {
       background: radial-gradient(
