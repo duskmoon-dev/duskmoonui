@@ -1,0 +1,251 @@
+@property --art-circular-gallery-rotation {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@layer css-art {
+  .art-circular-gallery {
+    --art-circular-gallery-size: 600px;
+    --art-circular-gallery-radius: calc(var(--art-circular-gallery-size) * 0.42);
+    --art-circular-gallery-card-width: calc(var(--art-circular-gallery-size) * 0.09);
+    --art-circular-gallery-card-border-radius: calc(var(--art-circular-gallery-size) * 0.012);
+    --art-circular-gallery-arc-size: 0.95;
+    --art-circular-gallery-arc-center: 0.275;
+    --art-circular-gallery-arc-start: calc(
+      var(--art-circular-gallery-arc-center) - var(--art-circular-gallery-arc-size) / 2
+    );
+    --art-circular-gallery-arc-shift-delta: 0.0075;
+    --art-circular-gallery-card-trans-duration: 1000ms;
+    --art-circular-gallery-card-trans-easing: linear(
+      0,
+      0.01 0.8%,
+      0.038 1.6%,
+      0.154 3.4%,
+      0.781 9.7%,
+      1.01 12.5%,
+      1.089 13.8%,
+      1.153 15.2%,
+      1.195 16.6%,
+      1.219 18%,
+      1.224 19.7%,
+      1.208 21.6%,
+      1.172 23.6%,
+      1.057 28.6%,
+      1.007 31.2%,
+      0.969 34.1%,
+      0.951 37.1%,
+      0.953 40.9%,
+      0.998 50.4%,
+      1.011 56%,
+      0.998 74.7%,
+      1
+    );
+
+    anchor-name: --art-circular-gallery-center;
+
+    /* transform at 0deg ensures this is always a containing block for position:fixed descendants */
+    transform: rotate(var(--art-circular-gallery-rotation));
+    transition: transform 700ms linear;
+
+    position: relative;
+    width: var(--art-circular-gallery-size);
+    height: var(--art-circular-gallery-size);
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+    font-family: sans-serif;
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: clamp(1rem, calc(var(--art-circular-gallery-size) * 0.035), 2.5rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      /* counter-rotate so the title stays upright as the gallery rotates */
+      transform: rotate(calc(var(--art-circular-gallery-rotation) * -1));
+    }
+
+    div {
+      --arc-step: calc(var(--art-circular-gallery-arc-size) / 19);
+      --arc-shift: calc(var(--art-circular-gallery-arc-shift-delta) * var(--d, 1));
+      --card-offset-distance: calc(
+        (
+            var(--art-circular-gallery-arc-start) + (var(--i) - 1) * var(--arc-step) +
+              var(--arc-shift)
+          ) * 100%
+      );
+
+      &:has(a:hover),
+      &:target {
+        --title-opacity: 1;
+      }
+
+      &:target {
+        --zindex: 2;
+        --center-opacity: 1;
+        --center-scale: 1;
+        --image-outline-color: rgba(255 255 255 / 0.5);
+      }
+
+      /* Large image preview centered in the gallery (shown on :target) */
+      &::before {
+        content: "";
+        position: fixed;
+        position-anchor: --art-circular-gallery-center;
+        position-area: span-all;
+        transform: rotate(calc(var(--art-circular-gallery-rotation) * -1));
+        width: calc(var(--art-circular-gallery-size) * 0.4);
+        aspect-ratio: 1;
+        border-radius: 9in;
+        background: var(--bg-img);
+        box-sizing: border-box;
+        outline: 10px solid rgba(255 255 255 / 0.3);
+        outline-offset: -10px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: var(--center-opacity, 0);
+        scale: var(--center-scale, 0);
+        pointer-events: none;
+        transition-property: scale, opacity;
+        transition-duration: 300ms, 150ms;
+      }
+
+      /* Tooltip showing the photographer's name on hover */
+      &::after {
+        content: attr(data-title);
+        position: fixed;
+        position-anchor: --art-circular-gallery-card;
+        position-area: center span-all;
+        z-index: 2;
+        pointer-events: none;
+        opacity: var(--title-opacity, 0);
+        transition-property: opacity, transform;
+        transition-duration: 150ms;
+        border: 1px solid rgb(255 255 255 / 0.75);
+        background: rgb(0 0 0 / 0.25);
+        backdrop-filter: blur(3px);
+        padding: 0.25em 1em;
+        border-radius: 5px;
+        font-size: clamp(0.55rem, calc(var(--art-circular-gallery-size) * 0.012), 0.85rem);
+        white-space: nowrap;
+
+        @starting-style {
+          opacity: 0;
+        }
+      }
+
+      /* Thumbnail card placed on the circular offset-path */
+      a {
+        position: absolute;
+        display: block;
+        width: var(--art-circular-gallery-card-width);
+        aspect-ratio: 4 / 6;
+        border-radius: var(--art-circular-gallery-card-border-radius);
+        border: 2px solid rgba(255 255 255 / 0.6);
+        offset-path: circle(var(--art-circular-gallery-radius) at 50% 50%);
+        offset-distance: var(--card-offset-distance);
+        offset-rotate: auto;
+        offset-anchor: 50% 0%;
+        transition:
+          offset var(--art-circular-gallery-card-trans-duration)
+            var(--art-circular-gallery-card-trans-easing),
+          scale 200ms ease;
+        z-index: var(--zindex, 1);
+        anchor-name: --art-circular-gallery-card;
+
+        &:hover {
+          scale: 2.5;
+          z-index: 3;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-radius: inherit;
+          outline: 5px solid var(--image-outline-color, transparent);
+          outline-offset: -5px;
+          transition: outline 300ms ease-in-out;
+        }
+      }
+    }
+  }
+
+  /* ============================================================
+     FORWARD siblings (clockwise / +d)
+     ============================================================ */
+
+  /* +1 */
+  .art-circular-gallery:has(> *:hover) > *:hover + *,
+  .art-circular-gallery:has(> :last-child:hover) > :nth-child(1) {
+    --d: 3;
+  }
+
+  /* +2 */
+  .art-circular-gallery:has(> *:hover) > *:hover + * + *,
+  .art-circular-gallery:has(> :last-child:hover) > :nth-child(2),
+  .art-circular-gallery:has(> :nth-last-child(2):hover) > :nth-child(1) {
+    --d: 2;
+  }
+
+  /* +3 */
+  .art-circular-gallery:has(> *:hover) > *:hover + * + * + *,
+  .art-circular-gallery:has(> :last-child:hover) > :nth-child(3),
+  .art-circular-gallery:has(> :nth-last-child(2):hover) > :nth-child(2),
+  .art-circular-gallery:has(> :nth-last-child(3):hover) > :nth-child(1) {
+    --d: 1;
+  }
+
+  /* +4 */
+  .art-circular-gallery:has(> *:hover) > *:hover + * + * + * + *,
+  .art-circular-gallery:has(> :last-child:hover) > :nth-child(4),
+  .art-circular-gallery:has(> :nth-last-child(2):hover) > :nth-child(3),
+  .art-circular-gallery:has(> :nth-last-child(3):hover) > :nth-child(2),
+  .art-circular-gallery:has(> :nth-last-child(4):hover) > :nth-child(1) {
+    --d: 0.5;
+  }
+
+  /* ============================================================
+     BACKWARD siblings (counter-clockwise / -d)
+     ============================================================ */
+
+  /* -1 */
+  .art-circular-gallery *:has(+ *:hover),
+  .art-circular-gallery:has(> :nth-child(1):hover) :nth-last-child(1) {
+    --d: -3;
+  }
+
+  /* -2 */
+  .art-circular-gallery *:has(+ * + *:hover),
+  .art-circular-gallery:has(> :nth-child(1):hover) :nth-last-child(2),
+  .art-circular-gallery:has(> :nth-child(2):hover) :nth-last-child(1) {
+    --d: -2;
+  }
+
+  /* -3 */
+  .art-circular-gallery *:has(+ * + * + *:hover),
+  .art-circular-gallery:has(> :nth-child(1):hover) :nth-last-child(3),
+  .art-circular-gallery:has(> :nth-child(2):hover) :nth-last-child(2),
+  .art-circular-gallery:has(> :nth-child(3):hover) :nth-last-child(1) {
+    --d: -1;
+  }
+
+  /* -4 */
+  .art-circular-gallery *:has(+ * + * + * + *:hover),
+  .art-circular-gallery:has(> :nth-child(1):hover) :nth-last-child(4),
+  .art-circular-gallery:has(> :nth-child(2):hover) :nth-last-child(3),
+  .art-circular-gallery:has(> :nth-child(3):hover) :nth-last-child(2),
+  .art-circular-gallery:has(> :nth-child(4):hover) :nth-last-child(1) {
+    --d: -0.5;
+  }
+
+  .art-circular-gallery-sm {
+    --art-circular-gallery-size: 400px;
+  }
+
+  .art-circular-gallery-lg {
+    --art-circular-gallery-size: 800px;
+  }
+}
