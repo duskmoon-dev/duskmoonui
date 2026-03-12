@@ -11,7 +11,8 @@
     },
     "./art": {
       "style": "./dist/art/index.css"
-    }
+    },
+    "./dist/art/*.css": "./dist/art/*.css"
   },
   "files": [
     "dist",
