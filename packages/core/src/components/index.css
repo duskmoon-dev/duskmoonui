@@ -3,6 +3,9 @@
  * Material Design 3 inspired component library using @layer components
  */
 
+/* Custom utilities (grid-cols-auto-fill-*, grid-cols-auto-fit-*, sr-only) */
+@import "../base/utilities.css";
+
 /* ============================================
  * CORE COMPONENTS (existing)
  * ============================================ */
