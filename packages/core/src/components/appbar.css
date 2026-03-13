@@ -244,7 +244,8 @@
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    flex-shrink: 0;
+    flex-grow: 1;
+    justify-content: flex-end;
     margin-left: auto;
   }
 
