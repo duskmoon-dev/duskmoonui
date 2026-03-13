@@ -71,7 +71,11 @@ const themeColors = {
  */
 const duskmoonPlugin: ReturnType<typeof plugin> = plugin(
   ({ addBase, matchUtilities, theme }) => {
-    // Register responsive grid utilities so they work via @plugin import
+    // Register responsive grid utilities so they work via @plugin import.
+    // Note: the CSS @utility path (src/base/utilities.css) uses --value(integer) which
+    // accepts any integer suffix (e.g. grid-cols-auto-fill-100). The plugin path uses
+    // theme('spacing') — discrete spacing-scale keys only. Arbitrary values via []
+    // syntax (e.g. grid-cols-auto-fill-[200px]) continue to work on both paths.
     matchUtilities(
       {
         'grid-cols-auto-fill': (value) => ({
