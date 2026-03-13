@@ -71,6 +71,19 @@ const themeColors = {
  */
 const duskmoonPlugin: ReturnType<typeof plugin> = plugin(
   ({ addBase, matchUtilities, theme }) => {
+    // Register responsive grid utilities so they work via @plugin import
+    matchUtilities(
+      {
+        'grid-cols-auto-fill': (value) => ({
+          'grid-template-columns': `repeat(auto-fill, minmax(min(${value}, 100%), 1fr))`,
+        }),
+        'grid-cols-auto-fit': (value) => ({
+          'grid-template-columns': `repeat(auto-fit, minmax(min(${value}, 100%), 1fr))`,
+        }),
+      },
+      { values: theme('spacing') }
+    );
+
     // Add CSS custom property declarations for themes
     addBase({
       ':root, [data-theme="sunshine"]': {
