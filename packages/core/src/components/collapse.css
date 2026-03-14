@@ -219,6 +219,38 @@
     background-color: var(--color-tertiary-container);
   }
 
+  .collapse-info .collapse-trigger {
+    color: var(--color-info);
+  }
+
+  .collapse-info .collapse-trigger:hover {
+    background-color: var(--color-info-container);
+  }
+
+  .collapse-success .collapse-trigger {
+    color: var(--color-success);
+  }
+
+  .collapse-success .collapse-trigger:hover {
+    background-color: var(--color-success-container);
+  }
+
+  .collapse-warning .collapse-trigger {
+    color: var(--color-warning);
+  }
+
+  .collapse-warning .collapse-trigger:hover {
+    background-color: var(--color-warning-container);
+  }
+
+  .collapse-error .collapse-trigger {
+    color: var(--color-error);
+  }
+
+  .collapse-error .collapse-trigger:hover {
+    background-color: var(--color-error-container);
+  }
+
   /* Size Variants */
   .collapse-sm .collapse-trigger {
     padding: 0.5rem 0.75rem;

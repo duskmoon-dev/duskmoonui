@@ -20,7 +20,7 @@
     line-height: 1.5rem;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     outline: none;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
@@ -32,7 +32,7 @@
 
   .time-input-field:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .time-input-field:disabled {
@@ -61,7 +61,7 @@
     gap: 0.125rem;
     padding: 0.75rem 1rem;
     background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
   }
 
@@ -159,30 +159,80 @@
   }
 
   /* Color Variants */
+  .time-input-primary .time-input-field,
+  .time-input-primary .time-input-segments {
+    color: var(--color-primary);
+  }
+
   .time-input-primary .time-input-field:focus {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
+  .time-input-secondary .time-input-field,
+  .time-input-secondary .time-input-segments {
+    color: var(--color-secondary);
+  }
+
   .time-input-secondary .time-input-field:focus {
-    border-color: var(--color-secondary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
+  .time-input-tertiary .time-input-field,
+  .time-input-tertiary .time-input-segments {
+    color: var(--color-tertiary);
+  }
+
   .time-input-tertiary .time-input-field:focus {
-    border-color: var(--color-tertiary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
-  /* Error State */
+  .time-input-info .time-input-field,
+  .time-input-info .time-input-segments {
+    color: var(--color-info);
+  }
+
+  .time-input-info .time-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
+  .time-input-success .time-input-field,
+  .time-input-success .time-input-segments {
+    color: var(--color-success);
+  }
+
+  .time-input-success .time-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .time-input-warning .time-input-field,
+  .time-input-warning .time-input-segments {
+    color: var(--color-warning);
+  }
+
+  .time-input-warning .time-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
   .time-input-error .time-input-field,
   .time-input-error .time-input-segments {
-    border-color: var(--color-error);
+    color: var(--color-error);
   }
 
   .time-input-error .time-input-field:focus {
-    border-color: var(--color-error);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Ghost Variant */
+  .time-input-ghost .time-input-field,
+  .time-input-ghost .time-input-segments {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .time-input-ghost .time-input-field:focus {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+    box-shadow: none;
   }
 
   /* Time Picker Dropdown */

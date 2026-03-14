@@ -92,7 +92,7 @@
     font-family: inherit;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     outline: none;
     resize: vertical;
@@ -105,7 +105,7 @@
   }
 
   .textarea:hover:not(:disabled) {
-    border-color: var(--color-on-surface-variant);
+    opacity: 0.8;
   }
 
   .textarea:focus {
@@ -113,8 +113,7 @@
   }
 
   .textarea:focus-visible {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .textarea:disabled {
@@ -186,99 +185,65 @@
 
   /* Primary */
   .textarea-primary {
-    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   .textarea-primary:focus-visible {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
-  }
-
-  .textarea-filled.textarea-primary {
-    border-bottom-color: var(--color-primary);
-  }
-
-  .textarea-filled.textarea-primary:focus-visible {
-    border-bottom-color: var(--color-primary);
   }
 
   /* Secondary */
   .textarea-secondary {
-    border-color: var(--color-secondary);
+    color: var(--color-secondary);
   }
 
   .textarea-secondary:focus-visible {
-    border-color: var(--color-secondary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
-  }
-
-  .textarea-filled.textarea-secondary {
-    border-bottom-color: var(--color-secondary);
-  }
-
-  .textarea-filled.textarea-secondary:focus-visible {
-    border-bottom-color: var(--color-secondary);
   }
 
   /* Tertiary */
   .textarea-tertiary {
-    border-color: var(--color-tertiary);
+    color: var(--color-tertiary);
   }
 
   .textarea-tertiary:focus-visible {
-    border-color: var(--color-tertiary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
-  }
-
-  .textarea-filled.textarea-tertiary {
-    border-bottom-color: var(--color-tertiary);
-  }
-
-  .textarea-filled.textarea-tertiary:focus-visible {
-    border-bottom-color: var(--color-tertiary);
   }
 
   /* ============================================
    * SEMANTIC COLORS
    * ============================================ */
 
-  .textarea-error {
-    border-color: var(--color-error);
+  .textarea-info {
+    color: var(--color-info);
   }
 
-  .textarea-error:focus-visible {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
-  }
-
-  .textarea-filled.textarea-error {
-    border-bottom-color: var(--color-error);
+  .textarea-info:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
   .textarea-success {
-    border-color: var(--color-success);
+    color: var(--color-success);
   }
 
   .textarea-success:focus-visible {
-    border-color: var(--color-success);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
 
-  .textarea-filled.textarea-success {
-    border-bottom-color: var(--color-success);
-  }
-
   .textarea-warning {
-    border-color: var(--color-warning);
+    color: var(--color-warning);
   }
 
   .textarea-warning:focus-visible {
-    border-color: var(--color-warning);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
-  .textarea-filled.textarea-warning {
-    border-bottom-color: var(--color-warning);
+  .textarea-error {
+    color: var(--color-error);
+  }
+
+  .textarea-error:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
   /* ============================================

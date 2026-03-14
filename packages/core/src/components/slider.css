@@ -216,6 +216,86 @@
     border-top-color: var(--color-tertiary);
   }
 
+  /* Info */
+  .slider-info .slider-track-filled,
+  .slider-info .slider-thumb {
+    background-color: var(--color-info);
+  }
+
+  .slider-info .slider-thumb:hover,
+  .slider-info .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-info-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-info .slider-thumb-label {
+    background-color: var(--color-info);
+    color: var(--color-on-info);
+  }
+
+  .slider-info .slider-thumb-label::after {
+    border-top-color: var(--color-info);
+  }
+
+  /* Success */
+  .slider-success .slider-track-filled,
+  .slider-success .slider-thumb {
+    background-color: var(--color-success);
+  }
+
+  .slider-success .slider-thumb:hover,
+  .slider-success .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-success-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-success .slider-thumb-label {
+    background-color: var(--color-success);
+    color: var(--color-on-success);
+  }
+
+  .slider-success .slider-thumb-label::after {
+    border-top-color: var(--color-success);
+  }
+
+  /* Warning */
+  .slider-warning .slider-track-filled,
+  .slider-warning .slider-thumb {
+    background-color: var(--color-warning);
+  }
+
+  .slider-warning .slider-thumb:hover,
+  .slider-warning .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-warning-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-warning .slider-thumb-label {
+    background-color: var(--color-warning);
+    color: var(--color-on-warning);
+  }
+
+  .slider-warning .slider-thumb-label::after {
+    border-top-color: var(--color-warning);
+  }
+
+  /* Error */
+  .slider-error .slider-track-filled,
+  .slider-error .slider-thumb {
+    background-color: var(--color-error);
+  }
+
+  .slider-error .slider-thumb:hover,
+  .slider-error .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-error-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-error .slider-thumb-label {
+    background-color: var(--color-error);
+    color: var(--color-on-error);
+  }
+
+  .slider-error .slider-thumb-label::after {
+    border-top-color: var(--color-error);
+  }
+
   /* Disabled State */
   .slider-disabled {
     opacity: 0.6;

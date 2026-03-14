@@ -374,6 +374,90 @@
     opacity: 0.8;
   }
 
+  .appbar-info {
+    background-color: var(--color-info);
+    color: var(--color-on-info);
+  }
+
+  .appbar-info .appbar-nav,
+  .appbar-info .appbar-action {
+    color: var(--color-on-info);
+  }
+
+  .appbar-info .appbar-nav:hover,
+  .appbar-info .appbar-action:hover {
+    background-color: var(--color-info-container);
+    color: var(--color-on-info-container);
+  }
+
+  .appbar-info .appbar-subtitle {
+    color: var(--color-on-info);
+    opacity: 0.8;
+  }
+
+  .appbar-success {
+    background-color: var(--color-success);
+    color: var(--color-on-success);
+  }
+
+  .appbar-success .appbar-nav,
+  .appbar-success .appbar-action {
+    color: var(--color-on-success);
+  }
+
+  .appbar-success .appbar-nav:hover,
+  .appbar-success .appbar-action:hover {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .appbar-success .appbar-subtitle {
+    color: var(--color-on-success);
+    opacity: 0.8;
+  }
+
+  .appbar-warning {
+    background-color: var(--color-warning);
+    color: var(--color-on-warning);
+  }
+
+  .appbar-warning .appbar-nav,
+  .appbar-warning .appbar-action {
+    color: var(--color-on-warning);
+  }
+
+  .appbar-warning .appbar-nav:hover,
+  .appbar-warning .appbar-action:hover {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .appbar-warning .appbar-subtitle {
+    color: var(--color-on-warning);
+    opacity: 0.8;
+  }
+
+  .appbar-error {
+    background-color: var(--color-error);
+    color: var(--color-on-error);
+  }
+
+  .appbar-error .appbar-nav,
+  .appbar-error .appbar-action {
+    color: var(--color-on-error);
+  }
+
+  .appbar-error .appbar-nav:hover,
+  .appbar-error .appbar-action:hover {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
+  .appbar-error .appbar-subtitle {
+    color: var(--color-on-error);
+    opacity: 0.8;
+  }
+
   /* Surface Variants */
   .appbar-surface {
     background-color: var(--color-surface);

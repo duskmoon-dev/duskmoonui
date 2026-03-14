@@ -162,6 +162,42 @@
     color: var(--color-on-tertiary-container);
   }
 
+  .card-info {
+    background-color: var(--color-info-container);
+    color: var(--color-on-info-container);
+  }
+
+  .card-info .card-title {
+    color: var(--color-on-info-container);
+  }
+
+  .card-success {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .card-success .card-title {
+    color: var(--color-on-success-container);
+  }
+
+  .card-warning {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .card-warning .card-title {
+    color: var(--color-on-warning-container);
+  }
+
+  .card-error {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
+  .card-error .card-title {
+    color: var(--color-on-error-container);
+  }
+
   /* Glass Effect */
   .card-glass {
     background-color: rgb(255 255 255 / 0.1);

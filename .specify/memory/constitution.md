@@ -1,19 +1,20 @@
 <!--
   Sync Impact Report:
-  Version Change: 1.3.0 → 1.4.0
-  Modified Principles:
-    - Principle II "Tailwind-Native Architecture" → Added logical properties requirement
+  Version Change: 1.4.0 → 1.5.0
+  Modified Principles: None renamed
   Added Sections:
-    - New "Logical Properties for Spacing" subsection under Principle II
+    - Principle VIII "Component Color Variant Convention" (new)
+    - Compliance checklist entry for Principle VIII
   Removed Sections: None
   Templates Status:
-    ✅ plan-template.md - Validated, no changes needed (layout agnostic)
+    ✅ plan-template.md - Validated, no changes needed (implementation agnostic)
     ✅ spec-template.md - Validated, no changes needed (implementation agnostic)
     ✅ tasks-template.md - Validated, no changes needed (implementation agnostic)
   Follow-up TODOs:
-    ⚠️ Audit existing component CSS files for physical properties (margin-left, padding-right, etc.)
-    ⚠️ Update any components using physical properties to logical properties
-    ⚠️ This change supports future RTL implementation without breaking changes
+    ⚠️ Audit all existing components to verify default color is `on-surface`
+    ⚠️ Ensure info/success/warning/error color tokens are defined in themes if not already present
+    ⚠️ Add ghost variant to any component that currently lacks a border in its default state
+    ⚠️ Update component docs pages in packages/docs to document the new variant tokens
 -->
 
 # DuskMoonUI Constitution
@@ -150,6 +151,47 @@ Color tokens MUST guarantee WCAG AA contrast ratios:
 
 **Rationale**: Accessibility is a legal requirement in many jurisdictions. Baking it into the color system prevents regression. Three-color system must not compromise accessibility.
 
+### VIII. Component Color Variant Convention
+
+Every component class (e.g., `.btn`, `.badge`, `.alert`) MUST follow a consistent color variant pattern:
+
+**Default Color**:
+- The base component class MUST default its foreground color to `on-surface`
+  (i.e., `color: var(--color-on-surface)`) so it reads correctly on any surface background
+
+**Semantic Color Variants**:
+Each component MUST expose the following modifier classes using the pattern `{component}-{role}`:
+- `{component}-primary` — uses the primary brand color
+- `{component}-secondary` — uses the secondary brand color
+- `{component}-tertiary` — uses the tertiary brand color
+- `{component}-info` — uses the info semantic color
+- `{component}-success` — uses the success semantic color
+- `{component}-warning` — uses the warning semantic color
+- `{component}-error` — uses the error semantic color
+
+Each colored variant MUST set both a background token and a paired foreground content token
+to guarantee contrast (e.g., `background: var(--color-primary); color: var(--color-primary-content)`).
+
+**Ghost Variant**:
+- Any component that has a border in its default or colored variants MUST also provide
+  a `{component}-ghost` modifier that removes the border and background, retaining only
+  the text color (or a subtle transparent fill on hover via `color-mix()`)
+- `{component}-ghost` MUST still apply the appropriate foreground color so it is legible
+  without a background
+
+**Required Theme Tokens**:
+The following CSS custom properties MUST be defined in every theme file:
+- `--color-info`, `--color-info-content`
+- `--color-success`, `--color-success-content`
+- `--color-warning`, `--color-warning-content`
+- `--color-error`, `--color-error-content`
+
+**Rationale**: A predictable, consistent variant API across all components reduces the learning
+curve for consumers. Defaulting to `on-surface` avoids invisible text when a component is placed
+on any surface. The ghost variant is essential for borderless contexts (e.g., icon buttons, inline
+actions) while retaining semantic meaning. Semantic status colors (info/success/warning/error) are
+industry standard and expected by developers using any component library.
+
 ## Quality Gates
 
 ### Pre-Commit Requirements
@@ -169,6 +211,7 @@ Before opening pull requests:
 - New color tokens MUST use OKLCH format
 - New components MUST use logical properties for spacing (no physical margin-left/right, padding-top/bottom)
 - New components MUST include Astro documentation page in `packages/docs`
+- New components MUST implement all required color variants per Principle VIII
 - Tailwind v4 compatibility MUST be verified
 - Documentation site MUST build without errors
 - Examples in docs MUST be tested with actual plugin import
@@ -231,8 +274,11 @@ Constitution changes require:
 
 ### Version Policy
 
-- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump, breaking documentation site changes, color format migration (e.g., HSL → OKLCH)
-- **MINOR**: New principle addition, expanded accessibility requirements, new documentation requirements, new color manipulation techniques, new CSS property conventions (e.g., logical properties)
+- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump,
+  breaking documentation site changes, color format migration (e.g., HSL → OKLCH)
+- **MINOR**: New principle addition, expanded accessibility requirements, new documentation
+  requirements, new color manipulation techniques, new CSS property conventions,
+  new component API conventions
 - **PATCH**: Clarifications, typo fixes, example updates, non-breaking documentation improvements
 
 ### Compliance Review
@@ -246,6 +292,10 @@ Every feature PR MUST include constitution compliance checklist:
 - [ ] Type definitions exported (Principle IV)
 - [ ] Documentation included in packages/docs (Principle VI)
 - [ ] Accessibility tested (Principle VII)
+- [ ] Component defaults to `on-surface` foreground color (Principle VIII)
+- [ ] All seven color variants implemented: primary, secondary, tertiary, info, success, warning, error (Principle VIII)
+- [ ] Ghost variant provided for borderless state (Principle VIII)
+- [ ] info/success/warning/error theme tokens present in all theme files (Principle VIII)
 - [ ] Documentation site builds successfully
 - [ ] Examples tested with actual plugin
 
@@ -256,4 +306,4 @@ Any feature violating these principles MUST justify complexity:
 - **Why**: Problem that requires violation
 - **Alternatives**: Simpler approaches considered and rejected with reasons
 
-**Version**: 1.4.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-12-23
+**Version**: 1.5.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2026-03-14

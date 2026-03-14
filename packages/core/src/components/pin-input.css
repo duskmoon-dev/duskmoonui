@@ -21,7 +21,7 @@
     text-align: center;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 2px solid var(--color-outline);
+    border: 2px solid currentColor;
     border-radius: 0.5rem;
     outline: none;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
@@ -40,7 +40,7 @@
 
   .pin-input-field:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .pin-input-field:disabled {
@@ -111,29 +111,60 @@
   }
 
   /* Color Variants */
+  .pin-input-primary .pin-input-field {
+    color: var(--color-primary);
+  }
+
   .pin-input-primary .pin-input-field:focus {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
+  .pin-input-secondary .pin-input-field {
+    color: var(--color-secondary);
+  }
+
   .pin-input-secondary .pin-input-field:focus {
-    border-color: var(--color-secondary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
+  .pin-input-tertiary .pin-input-field {
+    color: var(--color-tertiary);
+  }
+
   .pin-input-tertiary .pin-input-field:focus {
-    border-color: var(--color-tertiary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
-  /* Error State */
+  .pin-input-info .pin-input-field {
+    color: var(--color-info);
+  }
+
+  .pin-input-info .pin-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
+  .pin-input-success .pin-input-field {
+    color: var(--color-success);
+  }
+
+  .pin-input-success .pin-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .pin-input-warning .pin-input-field {
+    color: var(--color-warning);
+  }
+
+  .pin-input-warning .pin-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
   .pin-input-error .pin-input-field {
-    border-color: var(--color-error);
+    color: var(--color-error);
     animation: pin-shake 300ms ease-in-out;
   }
 
   .pin-input-error .pin-input-field:focus {
-    border-color: var(--color-error);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
@@ -143,9 +174,16 @@
     40%, 80% { transform: translateX(4px); }
   }
 
-  /* Success State */
-  .pin-input-success .pin-input-field {
-    border-color: var(--color-success);
+  /* Ghost Variant */
+  .pin-input-ghost .pin-input-field {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .pin-input-ghost .pin-input-field:focus {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+    box-shadow: none;
   }
 
   /* PIN Group with Label */

@@ -234,6 +234,90 @@
     border-right-color: var(--color-error);
   }
 
+  .tooltip.tooltip-tertiary .tooltip-content {
+    background-color: var(--color-tertiary);
+    color: var(--color-tertiary-content);
+  }
+
+  .tooltip.tooltip-tertiary .tooltip-content::before {
+    border-top-color: var(--color-tertiary);
+  }
+
+  .tooltip.tooltip-tertiary.tooltip-bottom .tooltip-content::before {
+    border-bottom-color: var(--color-tertiary);
+  }
+
+  .tooltip.tooltip-tertiary.tooltip-left .tooltip-content::before {
+    border-left-color: var(--color-tertiary);
+  }
+
+  .tooltip.tooltip-tertiary.tooltip-right .tooltip-content::before {
+    border-right-color: var(--color-tertiary);
+  }
+
+  .tooltip.tooltip-info .tooltip-content {
+    background-color: var(--color-info);
+    color: var(--color-info-content);
+  }
+
+  .tooltip.tooltip-info .tooltip-content::before {
+    border-top-color: var(--color-info);
+  }
+
+  .tooltip.tooltip-info.tooltip-bottom .tooltip-content::before {
+    border-bottom-color: var(--color-info);
+  }
+
+  .tooltip.tooltip-info.tooltip-left .tooltip-content::before {
+    border-left-color: var(--color-info);
+  }
+
+  .tooltip.tooltip-info.tooltip-right .tooltip-content::before {
+    border-right-color: var(--color-info);
+  }
+
+  .tooltip.tooltip-success .tooltip-content {
+    background-color: var(--color-success);
+    color: var(--color-success-content);
+  }
+
+  .tooltip.tooltip-success .tooltip-content::before {
+    border-top-color: var(--color-success);
+  }
+
+  .tooltip.tooltip-success.tooltip-bottom .tooltip-content::before {
+    border-bottom-color: var(--color-success);
+  }
+
+  .tooltip.tooltip-success.tooltip-left .tooltip-content::before {
+    border-left-color: var(--color-success);
+  }
+
+  .tooltip.tooltip-success.tooltip-right .tooltip-content::before {
+    border-right-color: var(--color-success);
+  }
+
+  .tooltip.tooltip-warning .tooltip-content {
+    background-color: var(--color-warning);
+    color: var(--color-warning-content);
+  }
+
+  .tooltip.tooltip-warning .tooltip-content::before {
+    border-top-color: var(--color-warning);
+  }
+
+  .tooltip.tooltip-warning.tooltip-bottom .tooltip-content::before {
+    border-bottom-color: var(--color-warning);
+  }
+
+  .tooltip.tooltip-warning.tooltip-left .tooltip-content::before {
+    border-left-color: var(--color-warning);
+  }
+
+  .tooltip.tooltip-warning.tooltip-right .tooltip-content::before {
+    border-right-color: var(--color-warning);
+  }
+
   /* Multi-line Tooltip */
   .tooltip-multiline .tooltip-content {
     white-space: normal;

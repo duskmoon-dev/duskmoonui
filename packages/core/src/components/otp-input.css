@@ -21,7 +21,7 @@
     text-align: center;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 2px solid var(--color-outline);
+    border: 2px solid currentColor;
     border-radius: 0.5rem;
     outline: none;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
@@ -39,7 +39,7 @@
 
   .otp-input-field:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .otp-input-field:disabled {
@@ -122,39 +122,72 @@
   }
 
   /* Color Variants */
+  .otp-input-primary .otp-input-field {
+    color: var(--color-primary);
+  }
+
   .otp-input-primary .otp-input-field:focus {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
+  .otp-input-secondary .otp-input-field {
+    color: var(--color-secondary);
+  }
+
   .otp-input-secondary .otp-input-field:focus {
-    border-color: var(--color-secondary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
+  .otp-input-tertiary .otp-input-field {
+    color: var(--color-tertiary);
+  }
+
   .otp-input-tertiary .otp-input-field:focus {
-    border-color: var(--color-tertiary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
-  /* Error State */
-  .otp-input-error .otp-input-field {
-    border-color: var(--color-error);
+  .otp-input-info .otp-input-field {
+    color: var(--color-info);
   }
 
-  .otp-input-error .otp-input-field:focus {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  .otp-input-info .otp-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
-  /* Success State */
   .otp-input-success .otp-input-field {
-    border-color: var(--color-success);
+    color: var(--color-success);
   }
 
   .otp-input-success .otp-input-field:focus {
-    border-color: var(--color-success);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .otp-input-warning .otp-input-field {
+    color: var(--color-warning);
+  }
+
+  .otp-input-warning .otp-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
+  .otp-input-error .otp-input-field {
+    color: var(--color-error);
+  }
+
+  .otp-input-error .otp-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Ghost Variant */
+  .otp-input-ghost .otp-input-field {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .otp-input-ghost .otp-input-field:focus {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+    box-shadow: none;
   }
 
   /* Masked Input (dots) */

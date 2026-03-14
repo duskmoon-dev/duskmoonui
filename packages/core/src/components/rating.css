@@ -112,6 +112,18 @@
     color: var(--color-success);
   }
 
+  .rating-tertiary .rating-item.filled {
+    color: var(--color-tertiary);
+  }
+
+  .rating-info .rating-item.filled {
+    color: var(--color-info);
+  }
+
+  .rating-warning .rating-item.filled {
+    color: var(--color-warning);
+  }
+
   /* Read Only */
   .rating-readonly .rating-item {
     cursor: default;

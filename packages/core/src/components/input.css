@@ -13,7 +13,7 @@
     line-height: 1.5rem;
     background-color: var(--color-surface);
     color: var(--color-on-surface);
-    border: 1px solid transparent;
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   }
@@ -28,8 +28,7 @@
   }
 
   .input:focus-visible {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
     outline: none;
   }
 
@@ -51,66 +50,59 @@
 
   /* Color Variants */
   .input-primary {
-    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   .input-primary:focus-visible {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
   .input-secondary {
-    border-color: var(--color-secondary);
+    color: var(--color-secondary);
   }
 
   .input-secondary:focus-visible {
-    border-color: var(--color-secondary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
   .input-tertiary {
-    border-color: var(--color-tertiary);
+    color: var(--color-tertiary);
   }
 
   .input-tertiary:focus-visible {
-    border-color: var(--color-tertiary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
   /* Semantic Colors */
   .input-info {
-    border-color: var(--color-info);
+    color: var(--color-info);
   }
 
   .input-info:focus-visible {
-    border-color: var(--color-info);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
   .input-success {
-    border-color: var(--color-success);
+    color: var(--color-success);
   }
 
   .input-success:focus-visible {
-    border-color: var(--color-success);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
 
   .input-warning {
-    border-color: var(--color-warning);
+    color: var(--color-warning);
   }
 
   .input-warning:focus-visible {
-    border-color: var(--color-warning);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
   .input-error {
-    border-color: var(--color-error);
+    color: var(--color-error);
   }
 
   .input-error:focus-visible {
-    border-color: var(--color-error);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 

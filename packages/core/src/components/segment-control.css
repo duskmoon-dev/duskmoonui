@@ -112,6 +112,26 @@
     color: var(--color-on-tertiary-container);
   }
 
+  .segment-control-info .segment-item-active {
+    background-color: var(--color-info-container);
+    color: var(--color-on-info-container);
+  }
+
+  .segment-control-success .segment-item-active {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .segment-control-warning .segment-item-active {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .segment-control-error .segment-item-active {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
   /* Full Width */
   .segment-control-full {
     display: flex;

@@ -101,6 +101,24 @@
     border-color: transparent;
   }
 
+  .alert-primary {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    border-color: transparent;
+  }
+
+  .alert-secondary {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    border-color: transparent;
+  }
+
+  .alert-tertiary {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+    border-color: transparent;
+  }
+
   /* Filled Variants */
   .alert-filled.alert-info {
     background-color: var(--color-info);
@@ -120,6 +138,21 @@
   .alert-filled.alert-error {
     background-color: var(--color-error);
     color: var(--color-error-content);
+  }
+
+  .alert-filled.alert-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  .alert-filled.alert-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-content);
+  }
+
+  .alert-filled.alert-tertiary {
+    background-color: var(--color-tertiary);
+    color: var(--color-tertiary-content);
   }
 
   /* Outlined Variants */
@@ -145,6 +178,27 @@
   .alert-outlined.alert-error {
     border-color: var(--color-error);
     color: var(--color-error);
+  }
+
+  .alert-outlined.alert-primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .alert-outlined.alert-secondary {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+  }
+
+  .alert-outlined.alert-tertiary {
+    border-color: var(--color-tertiary);
+    color: var(--color-tertiary);
+  }
+
+  /* Ghost Variant */
+  .alert-ghost {
+    background-color: transparent;
+    border-color: transparent;
   }
 
   /* Dismissible */

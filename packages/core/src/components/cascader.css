@@ -23,7 +23,7 @@
     line-height: 1.5rem;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
@@ -35,8 +35,7 @@
 
   .cascader-trigger:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .cascader-trigger:disabled {
@@ -367,14 +366,65 @@
     box-shadow: none;
   }
 
-  /* Error State */
-  .cascader-error .cascader-trigger {
-    border-color: var(--color-error);
+  /* Color Variants */
+  .cascader-primary .cascader-trigger {
+    color: var(--color-primary);
+  }
+  .cascader-primary .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
+  .cascader-secondary .cascader-trigger {
+    color: var(--color-secondary);
+  }
+  .cascader-secondary .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
+  }
+
+  .cascader-tertiary .cascader-trigger {
+    color: var(--color-tertiary);
+  }
+  .cascader-tertiary .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
+  }
+
+  .cascader-info .cascader-trigger {
+    color: var(--color-info);
+  }
+  .cascader-info .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
+  .cascader-success .cascader-trigger {
+    color: var(--color-success);
+  }
+  .cascader-success .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .cascader-warning .cascader-trigger {
+    color: var(--color-warning);
+  }
+  .cascader-warning .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
+  .cascader-error .cascader-trigger {
+    color: var(--color-error);
+  }
   .cascader-error .cascader-trigger:focus {
-    border-color: var(--color-error);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Ghost Variant */
+  .cascader-ghost .cascader-trigger {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .cascader-ghost .cascader-trigger:focus {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+    box-shadow: none;
   }
 
   /* Disabled State */
