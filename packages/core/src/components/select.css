@@ -61,6 +61,7 @@
     box-shadow: none;
   }
 
+  .select-filled.select-primary:focus-visible { border-bottom-color: var(--color-primary); }
   .select-filled.select-secondary:focus-visible { border-bottom-color: var(--color-secondary); }
   .select-filled.select-tertiary:focus-visible { border-bottom-color: var(--color-tertiary); }
   .select-filled.select-info:focus-visible { border-bottom-color: var(--color-info); }
@@ -222,7 +223,7 @@
   .select-ghost:focus-visible {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Reduce Motion */

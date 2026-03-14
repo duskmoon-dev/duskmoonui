@@ -357,7 +357,7 @@
   .file-upload-ghost .file-upload-dropzone:focus-within {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Size Variants */

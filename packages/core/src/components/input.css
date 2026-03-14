@@ -140,7 +140,7 @@
   .input-ghost:focus-visible {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Filled Input */
@@ -156,6 +156,7 @@
     box-shadow: none;
   }
 
+  .input-filled.input-primary:focus-visible { border-bottom-color: var(--color-primary); }
   .input-filled.input-secondary:focus-visible { border-bottom-color: var(--color-secondary); }
   .input-filled.input-tertiary:focus-visible { border-bottom-color: var(--color-tertiary); }
   .input-filled.input-info:focus-visible { border-bottom-color: var(--color-info); }
