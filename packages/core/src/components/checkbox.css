@@ -12,6 +12,7 @@
     --checkbox-size: 1.25rem;
     --checkbox-color: var(--color-primary);
     --checkbox-border-color: var(--color-on-surface-variant);
+    color: var(--color-on-surface);
 
     position: relative;
     display: inline-grid;
@@ -76,8 +77,8 @@
 
   /* Focus State */
   .checkbox:focus-visible {
-    outline: 2px solid var(--checkbox-color);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--checkbox-color) 30%, transparent);
   }
 
   /* Disabled State */
@@ -175,6 +176,15 @@
   .checkbox-info:checked::before,
   .checkbox-info:indeterminate::before {
     border-color: var(--color-info-content);
+  }
+
+  /* Ghost Variant — borderless unchecked state */
+  .checkbox-ghost {
+    --checkbox-border-color: transparent;
+  }
+
+  .checkbox-ghost:hover:not(:disabled):not(:checked) {
+    border-color: transparent;
   }
 
   /* ========================================

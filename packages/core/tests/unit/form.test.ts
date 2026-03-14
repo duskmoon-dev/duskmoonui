@@ -68,8 +68,8 @@ describe('Form Component', () => {
   });
 
   describe('Color Integration', () => {
-    it('should use base-content color for labels', () => {
-      expect(formCSS).toContain('var(--color-base-content)');
+    it('should use on-surface color for labels', () => {
+      expect(formCSS).toContain('var(--color-on-surface)');
     });
 
     it('should use on-surface-variant for alt text', () => {

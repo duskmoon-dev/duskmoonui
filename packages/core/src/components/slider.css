@@ -13,6 +13,7 @@
     height: 2.5rem;
     touch-action: none;
     user-select: none;
+    color: var(--color-on-surface);
   }
 
   /* Slider Track */

@@ -9,6 +9,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.125rem;
+    color: var(--color-on-surface);
   }
 
   /* Rating Item */

@@ -11,6 +11,7 @@
   .switch {
     --switch-width: 3.25rem;
     --switch-height: 2rem;
+    color: var(--color-on-surface);
     --switch-thumb-size: 1rem;
     --switch-color: var(--color-primary);
     --switch-track-color: var(--color-surface-container-highest);
@@ -82,8 +83,8 @@
 
   /* Focus State */
   .switch:focus-visible {
-    outline: 2px solid var(--switch-color);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--switch-color) 30%, transparent);
   }
 
   /* Pressed/Active State - expand thumb slightly */
@@ -184,6 +185,12 @@
 
   .switch-info {
     --switch-color: var(--color-info);
+  }
+
+  /* Ghost Variant — borderless track */
+  .switch-ghost {
+    --switch-border-color: transparent;
+    --switch-track-color: transparent;
   }
 
   /* ========================================
