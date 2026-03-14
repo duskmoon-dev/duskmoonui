@@ -35,8 +35,8 @@
     height: 0.35em;
     transform: scale(0) rotate(-45deg);
     transform-origin: center;
-    border-bottom: 2px solid var(--color-on-primary);
-    border-left: 2px solid var(--color-on-primary);
+    border-bottom: 2px solid var(--color-primary-content);
+    border-left: 2px solid var(--color-primary-content);
     transition: transform 150ms ease-in-out;
   }
 
@@ -59,7 +59,7 @@
   .checkbox:indeterminate::before {
     width: 0.5em;
     height: 0;
-    border-bottom: 2px solid var(--color-on-primary);
+    border-bottom: 2px solid var(--color-primary-content);
     border-left: 0;
     transform: scale(1) rotate(0deg);
   }

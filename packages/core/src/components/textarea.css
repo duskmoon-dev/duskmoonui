@@ -155,6 +155,7 @@
     box-shadow: none;
   }
 
+  .textarea-filled.textarea-primary:focus-visible { border-bottom-color: var(--color-primary); }
   .textarea-filled.textarea-secondary:focus-visible { border-bottom-color: var(--color-secondary); }
   .textarea-filled.textarea-tertiary:focus-visible { border-bottom-color: var(--color-tertiary); }
   .textarea-filled.textarea-info:focus-visible { border-bottom-color: var(--color-info); }

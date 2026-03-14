@@ -61,6 +61,13 @@
     box-shadow: none;
   }
 
+  .select-filled.select-secondary:focus-visible { border-bottom-color: var(--color-secondary); }
+  .select-filled.select-tertiary:focus-visible { border-bottom-color: var(--color-tertiary); }
+  .select-filled.select-info:focus-visible { border-bottom-color: var(--color-info); }
+  .select-filled.select-success:focus-visible { border-bottom-color: var(--color-success); }
+  .select-filled.select-warning:focus-visible { border-bottom-color: var(--color-warning); }
+  .select-filled.select-error:focus-visible { border-bottom-color: var(--color-error); }
+
   /* Outlined Variant (default is outlined) */
   .select-outlined {
     background-color: transparent;
@@ -215,7 +222,7 @@
   .select-ghost:focus-visible {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 10%, transparent);
   }
 
   /* Reduce Motion */

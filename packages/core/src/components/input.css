@@ -140,7 +140,7 @@
   .input-ghost:focus-visible {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 10%, transparent);
   }
 
   /* Filled Input */
@@ -155,6 +155,13 @@
     border-bottom-color: var(--color-primary);
     box-shadow: none;
   }
+
+  .input-filled.input-secondary:focus-visible { border-bottom-color: var(--color-secondary); }
+  .input-filled.input-tertiary:focus-visible { border-bottom-color: var(--color-tertiary); }
+  .input-filled.input-info:focus-visible { border-bottom-color: var(--color-info); }
+  .input-filled.input-success:focus-visible { border-bottom-color: var(--color-success); }
+  .input-filled.input-warning:focus-visible { border-bottom-color: var(--color-warning); }
+  .input-filled.input-error:focus-visible { border-bottom-color: var(--color-error); }
 
   /* Input with Icon */
   .input-group {
