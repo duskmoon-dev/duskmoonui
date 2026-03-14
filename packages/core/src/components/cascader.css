@@ -30,7 +30,7 @@
   }
 
   .cascader-trigger:hover:not(:disabled) {
-    border-color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
   }
 
   .cascader-trigger:focus {

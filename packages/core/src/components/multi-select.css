@@ -31,7 +31,7 @@
   }
 
   .multi-select-trigger:hover:not(:disabled) {
-    border-color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
   }
 
   .multi-select-trigger:focus-within {

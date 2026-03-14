@@ -35,7 +35,7 @@
   }
 
   .pin-input-field:hover:not(:disabled):not(:focus) {
-    border-color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
   }
 
   .pin-input-field:focus {

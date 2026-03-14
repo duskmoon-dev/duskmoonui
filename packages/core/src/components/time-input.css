@@ -27,7 +27,7 @@
   }
 
   .time-input-field:hover:not(:disabled) {
-    border-color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
   }
 
   .time-input-field:focus {
