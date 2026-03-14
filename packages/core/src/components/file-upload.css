@@ -40,7 +40,7 @@
 
   .file-upload-dropzone.dragging {
     border-color: currentColor;
-    background-color: var(--color-primary-container);
+    background-color: color-mix(in oklch, currentColor 10%, var(--color-surface));
   }
 
   .file-upload-dropzone.disabled {
