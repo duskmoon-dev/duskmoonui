@@ -29,17 +29,17 @@
   }
 
   .file-upload-dropzone:hover {
-    border-color: var(--color-primary);
+    border-color: currentColor;
     background-color: var(--color-surface-container);
   }
 
   .file-upload-dropzone:focus-within {
-    border-color: var(--color-primary);
+    border-color: currentColor;
     box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .file-upload-dropzone.dragging {
-    border-color: var(--color-primary);
+    border-color: currentColor;
     background-color: var(--color-primary-container);
   }
 

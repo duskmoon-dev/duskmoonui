@@ -39,7 +39,6 @@
   }
 
   .pin-input-field:focus {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
@@ -183,7 +182,7 @@
   .pin-input-ghost .pin-input-field:focus {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 10%, transparent);
   }
 
   /* PIN Group with Label */

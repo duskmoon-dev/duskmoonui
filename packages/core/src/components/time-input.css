@@ -31,7 +31,6 @@
   }
 
   .time-input-field:focus {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 

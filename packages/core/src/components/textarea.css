@@ -155,6 +155,13 @@
     box-shadow: none;
   }
 
+  .textarea-filled.textarea-secondary:focus-visible { border-bottom-color: var(--color-secondary); }
+  .textarea-filled.textarea-tertiary:focus-visible { border-bottom-color: var(--color-tertiary); }
+  .textarea-filled.textarea-info:focus-visible { border-bottom-color: var(--color-info); }
+  .textarea-filled.textarea-success:focus-visible { border-bottom-color: var(--color-success); }
+  .textarea-filled.textarea-warning:focus-visible { border-bottom-color: var(--color-warning); }
+  .textarea-filled.textarea-error:focus-visible { border-bottom-color: var(--color-error); }
+
   /* Outlined Variant (default) */
   .textarea-outlined {
     background-color: transparent;
@@ -176,7 +183,7 @@
   .textarea-ghost:focus-visible {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 10%, transparent);
   }
 
   /* ============================================
