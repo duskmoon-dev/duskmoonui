@@ -265,13 +265,19 @@
     border-color: transparent;
   }
 
+  /* Filled variant sub-element color inheritance */
+  .toast-filled .toast-title,
+  .toast-filled .toast-message {
+    color: inherit;
+  }
+
   /* Progress Bar (for auto-dismiss) */
   .toast-progress {
     position: absolute;
     bottom: 0;
     left: 0;
     height: 3px;
-    background-color: var(--color-primary);
+    background-color: currentColor;
     border-radius: 0 0 0.75rem 0.75rem;
     animation: toast-progress linear forwards;
   }

@@ -44,8 +44,8 @@
   }
 
   .btn:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--btn-text-color) 20%, transparent);
   }
 
   .btn:disabled {
@@ -67,10 +67,6 @@
     filter: none;
   }
 
-  .btn-primary:focus-visible {
-    outline-color: color-mix(in oklch, var(--color-primary), black 10%);
-  }
-
   /* Secondary Button */
   .btn-secondary {
     --btn-text-color: var(--color-secondary-content);
@@ -84,10 +80,6 @@
     filter: none;
   }
 
-  .btn-secondary:focus-visible {
-    outline-color: color-mix(in oklch, var(--color-secondary), black 10%);
-  }
-
   /* Tertiary Button */
   .btn-tertiary {
     --btn-text-color: var(--color-tertiary-content);
@@ -99,10 +91,6 @@
     background-color: color-mix(in oklch, var(--color-tertiary), black 10%);
     border-color: color-mix(in oklch, var(--color-tertiary), black 10%);
     filter: none;
-  }
-
-  .btn-tertiary:focus-visible {
-    outline-color: color-mix(in oklch, var(--color-tertiary), black 10%);
   }
 
   /* Outline Variant */

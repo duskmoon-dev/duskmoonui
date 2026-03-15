@@ -27,7 +27,6 @@
   /* Hover state */
   .toggle-btn:hover:not(:disabled) {
     background-color: color-mix(in oklch, var(--color-surface-variant) 50%, transparent);
-    border-color: var(--color-outline-variant);
   }
 
   /* Active/Selected state */

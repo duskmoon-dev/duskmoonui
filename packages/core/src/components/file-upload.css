@@ -65,7 +65,7 @@
     justify-content: center;
     width: 3rem;
     height: 3rem;
-    color: var(--color-primary);
+    color: currentColor;
     font-size: 2rem;
   }
 
@@ -87,7 +87,7 @@
   }
 
   .file-upload-browse {
-    color: var(--color-primary);
+    color: currentColor;
     font-weight: 500;
     text-decoration: underline;
     cursor: pointer;
