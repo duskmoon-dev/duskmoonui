@@ -13,7 +13,7 @@
     line-height: 1.5rem;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     outline: none;
     cursor: pointer;
@@ -26,7 +26,7 @@
   }
 
   .select:hover:not(:disabled) {
-    border-color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
   }
 
   .select:focus {
@@ -34,8 +34,7 @@
   }
 
   .select:focus-visible {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .select:disabled {
@@ -62,6 +61,14 @@
     box-shadow: none;
   }
 
+  .select-filled.select-primary:focus-visible { border-bottom-color: var(--color-primary); }
+  .select-filled.select-secondary:focus-visible { border-bottom-color: var(--color-secondary); }
+  .select-filled.select-tertiary:focus-visible { border-bottom-color: var(--color-tertiary); }
+  .select-filled.select-info:focus-visible { border-bottom-color: var(--color-info); }
+  .select-filled.select-success:focus-visible { border-bottom-color: var(--color-success); }
+  .select-filled.select-warning:focus-visible { border-bottom-color: var(--color-warning); }
+  .select-filled.select-error:focus-visible { border-bottom-color: var(--color-error); }
+
   /* Outlined Variant (default is outlined) */
   .select-outlined {
     background-color: transparent;
@@ -70,38 +77,61 @@
   }
 
   /* Color Variants */
+  .select-primary {
+    color: var(--color-primary);
+  }
+
   .select-primary:focus-visible {
-    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
+  .select-secondary {
+    color: var(--color-secondary);
+  }
+
   .select-secondary:focus-visible {
-    border-color: var(--color-secondary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
+  .select-tertiary {
+    color: var(--color-tertiary);
+  }
+
   .select-tertiary:focus-visible {
-    border-color: var(--color-tertiary);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
   /* Semantic Colors */
-  .select-error {
-    border-color: var(--color-error);
+  .select-info {
+    color: var(--color-info);
   }
 
-  .select-error:focus-visible {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  .select-info:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
   .select-success {
-    border-color: var(--color-success);
+    color: var(--color-success);
   }
 
   .select-success:focus-visible {
-    border-color: var(--color-success);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .select-warning {
+    color: var(--color-warning);
+  }
+
+  .select-warning:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
+  .select-error {
+    color: var(--color-error);
+  }
+
+  .select-error:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
   /* Size Variants */
@@ -193,7 +223,7 @@
   .select-ghost:focus-visible {
     background-color: var(--color-surface-container);
     border-color: transparent;
-    box-shadow: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Reduce Motion */

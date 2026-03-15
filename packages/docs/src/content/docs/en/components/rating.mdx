@@ -28,9 +28,9 @@ Ratings provide insight regarding others' opinions and experiences, and can allo
 Display a rating value with filled stars:
 
 <ComponentShowcase title="Filled Rating" code={`<div class="rating">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -39,10 +39,10 @@ Display a rating value with filled stars:
 
 ### Primary (Default)
 
-<ComponentShowcase title="Primary Rating" code={`<div class="rating">
-  <span class="rating-item rating-item-primary-filled">★</span>
-  <span class="rating-item rating-item-primary-filled">★</span>
-  <span class="rating-item rating-item-primary-filled">★</span>
+<ComponentShowcase title="Primary Rating" code={`<div class="rating rating-primary">
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -50,9 +50,9 @@ Display a rating value with filled stars:
 ### Secondary
 
 <ComponentShowcase title="Secondary Rating" code={`<div class="rating rating-secondary">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -60,9 +60,9 @@ Display a rating value with filled stars:
 ### Tertiary
 
 <ComponentShowcase title="Tertiary Rating" code={`<div class="rating rating-tertiary">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -72,12 +72,63 @@ Display a rating value with filled stars:
 The warning variant uses a golden/amber color, which is typical for rating displays:
 
 <ComponentShowcase title="Warning Rating" code={`<div class="rating rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
 </div>`} />
+
+### Info
+<ComponentShowcase title="Info Rating" code={`<div class="rating rating-info">
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item">★</span>
+  <span class="rating-item">★</span>
+</div>`}>
+  <div class="rating rating-info">
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item">★</span>
+    <span class="rating-item">★</span>
+  </div>
+</ComponentShowcase>
+
+### Success
+<ComponentShowcase title="Success Rating" code={`<div class="rating rating-success">
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+</div>`}>
+  <div class="rating rating-success">
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+  </div>
+</ComponentShowcase>
+
+### Error
+<ComponentShowcase title="Error Rating" code={`<div class="rating rating-error">
+  <span class="rating-item filled">★</span>
+  <span class="rating-item">★</span>
+  <span class="rating-item">★</span>
+  <span class="rating-item">★</span>
+  <span class="rating-item">★</span>
+</div>`}>
+  <div class="rating rating-error">
+    <span class="rating-item filled">★</span>
+    <span class="rating-item">★</span>
+    <span class="rating-item">★</span>
+    <span class="rating-item">★</span>
+    <span class="rating-item">★</span>
+  </div>
+</ComponentShowcase>
 
 ## Sizes
 
@@ -85,36 +136,36 @@ Four size variants are available:
 
 <ComponentShowcase title="Rating Sizes" code={`<!-- Small -->
 <div class="rating rating-sm rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>
 
 <!-- Medium (default) -->
 <div class="rating rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>
 
 <!-- Large -->
 <div class="rating rating-lg rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>
 
 <!-- Extra Large -->
 <div class="rating rating-xl rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -124,9 +175,9 @@ Four size variants are available:
 Display precise ratings with half-filled stars:
 
 <ComponentShowcase title="Half Stars" code={`<div class="rating rating-warning rating-precision-half">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item rating-item-half">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -136,10 +187,10 @@ Display precise ratings with half-filled stars:
 Display a non-interactive rating:
 
 <ComponentShowcase title="Read-Only Rating" code={`<div class="rating rating-readonly rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
 </div>`} />
 
@@ -148,9 +199,9 @@ Display a non-interactive rating:
 Display a disabled rating:
 
 <ComponentShowcase title="Disabled Rating" code={`<div class="rating rating-disabled rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -162,10 +213,10 @@ Add descriptive text to your rating:
 <ComponentShowcase title="Rating with Label" code={`<div class="rating-label">
   <span>Product Quality</span>
   <div class="rating rating-warning">
-    <span class="rating-item rating-item-filled">★</span>
-    <span class="rating-item rating-item-filled">★</span>
-    <span class="rating-item rating-item-filled">★</span>
-    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
     <span class="rating-item">☆</span>
   </div>
 </div>`} />
@@ -175,10 +226,10 @@ Add descriptive text to your rating:
 Show the numeric rating value:
 
 <ComponentShowcase title="Rating with Value" code={`<div class="rating rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-value">4.0</span>
 </div>`} />
@@ -188,10 +239,10 @@ Show the numeric rating value:
 Display the number of reviews:
 
 <ComponentShowcase title="Rating with Review Count" code={`<div class="rating rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item rating-item-half">☆</span>
   <span class="rating-value">4.5</span>
   <span class="rating-count">(234 reviews)</span>
@@ -203,10 +254,10 @@ Add contextual descriptions that update with the rating:
 
 <ComponentShowcase title="Rating with Description" code={`<div class="rating-with-description">
   <div class="rating rating-warning">
-    <span class="rating-item rating-item-filled">★</span>
-    <span class="rating-item rating-item-filled">★</span>
-    <span class="rating-item rating-item-filled">★</span>
-    <span class="rating-item rating-item-filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
+    <span class="rating-item filled">★</span>
     <span class="rating-item">☆</span>
   </div>
   <span class="rating-description">Excellent</span>
@@ -229,9 +280,9 @@ Allow users to select their own rating:
 Add a clear button to reset the rating:
 
 <ComponentShowcase title="Clearable Rating" code={`<div class="rating rating-clearable rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <button class="rating-clear-btn" aria-label="Clear rating">✕</button>
@@ -242,9 +293,9 @@ Add a clear button to reset the rating:
 Display rating in a vertical orientation:
 
 <ComponentShowcase title="Vertical Rating" code={`<div class="rating rating-vertical rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>`} />
@@ -254,9 +305,9 @@ Display rating in a vertical orientation:
 Use heart icons instead of stars:
 
 <ComponentShowcase title="Heart Rating" code={`<div class="rating rating-heart">
-  <span class="rating-item rating-item-filled">♥</span>
-  <span class="rating-item rating-item-filled">♥</span>
-  <span class="rating-item rating-item-filled">♥</span>
+  <span class="rating-item filled">♥</span>
+  <span class="rating-item filled">♥</span>
+  <span class="rating-item filled">♥</span>
   <span class="rating-item">♡</span>
   <span class="rating-item">♡</span>
 </div>`} />
@@ -267,17 +318,17 @@ Control the precision of ratings:
 
 <ComponentShowcase title="Precision Variants" code={`<!-- Full star precision (default) -->
 <div class="rating rating-precision-full rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
 </div>
 
 <!-- Half star precision -->
 <div class="rating rating-precision-half rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item rating-item-half">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
@@ -285,9 +336,9 @@ Control the precision of ratings:
 
 <!-- Decimal precision -->
 <div class="rating rating-precision-decimal rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-value">3.7</span>
@@ -320,9 +371,9 @@ Control the precision of ratings:
 
 <ComponentShowcase title="Display vs Input" code={`<!-- Display aggregate rating -->
 <div class="rating rating-readonly rating-warning">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item rating-item-half">☆</span>
   <span class="rating-item">☆</span>
   <span class="rating-value">3.5</span>
@@ -358,10 +409,10 @@ Always provide context for ratings:
   <div class="rating-label">
     <span>Overall</span>
     <div class="rating rating-warning">
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
       <span class="rating-item rating-item-half">☆</span>
       <span class="rating-value">4.5</span>
     </div>
@@ -370,21 +421,21 @@ Always provide context for ratings:
   <div class="rating-label">
     <span>Quality</span>
     <div class="rating rating-sm rating-warning">
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
     </div>
   </div>
 
   <div class="rating-label">
     <span>Value</span>
     <div class="rating rating-sm rating-warning">
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
-      <span class="rating-item rating-item-filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
+      <span class="rating-item filled">★</span>
       <span class="rating-item">☆</span>
     </div>
   </div>
@@ -431,7 +482,7 @@ export function Rating({
       {Array.from({ length: max }, (_, i) => (
         <span
           key={i}
-          className={`rating-item ${i < value ? 'rating-item-filled' : ''}`}
+          className={`rating-item ${i < value ? 'filled' : ''}`}
           onClick={() => handleClick(i)}
           tabIndex={readonly ? -1 : 0}
           role={readonly ? undefined : 'radio'}
@@ -457,7 +508,7 @@ export function Rating({
     <span
       v-for="(_, i) in max"
       :key="i"
-      :class="['rating-item', { 'rating-item-filled': i < value }]"
+      :class="['rating-item', { 'filled': i < value }]"
       @click="handleClick(i)"
       :tabindex="readonly ? -1 : 0"
       :role="readonly ? undefined : 'radio'"
@@ -509,8 +560,7 @@ const handleClick = (index) => {
 |-------|-------------|
 | `.rating` | Base rating container (required) |
 | `.rating-item` | Individual rating icon (star, heart, etc.) |
-| `.rating-item-filled` | Filled/selected rating item |
-| `.rating-item-primary-filled` | Primary color filled item |
+| `.filled` | Filled/selected rating item (combine with `.rating-item`) |
 | `.rating-item-half` | Half-filled rating item |
 | `.rating-primary` | Primary color variant |
 | `.rating-secondary` | Secondary color variant |
@@ -541,9 +591,9 @@ You can combine classes for different effects:
 
 <ComponentShowcase title="Class Combinations" code={`<!-- Large, warning color, read-only rating -->
 <div class="rating rating-lg rating-warning rating-readonly">
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
-  <span class="rating-item rating-item-filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
+  <span class="rating-item filled">★</span>
   <span class="rating-item rating-item-half">☆</span>
   <span class="rating-item">☆</span>
 </div>

@@ -192,6 +192,30 @@
     color: var(--color-error);
   }
 
+  .toast-primary {
+    border-color: var(--color-primary);
+  }
+
+  .toast-primary .toast-icon {
+    color: var(--color-primary);
+  }
+
+  .toast-secondary {
+    border-color: var(--color-secondary);
+  }
+
+  .toast-secondary .toast-icon {
+    color: var(--color-secondary);
+  }
+
+  .toast-tertiary {
+    border-color: var(--color-tertiary);
+  }
+
+  .toast-tertiary .toast-icon {
+    color: var(--color-tertiary);
+  }
+
   /* Filled Variants */
   .toast-filled.toast-info {
     background-color: var(--color-info-container);
@@ -217,13 +241,43 @@
     color: var(--color-on-error-container);
   }
 
+  .toast-filled.toast-primary {
+    background-color: var(--color-primary-container);
+    border-color: transparent;
+    color: var(--color-on-primary-container);
+  }
+
+  .toast-filled.toast-secondary {
+    background-color: var(--color-secondary-container);
+    border-color: transparent;
+    color: var(--color-on-secondary-container);
+  }
+
+  .toast-filled.toast-tertiary {
+    background-color: var(--color-tertiary-container);
+    border-color: transparent;
+    color: var(--color-on-tertiary-container);
+  }
+
+  /* Ghost Variant */
+  .toast-ghost {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  /* Filled variant sub-element color inheritance */
+  .toast-filled .toast-title,
+  .toast-filled .toast-message {
+    color: inherit;
+  }
+
   /* Progress Bar (for auto-dismiss) */
   .toast-progress {
     position: absolute;
     bottom: 0;
     left: 0;
     height: 3px;
-    background-color: var(--color-primary);
+    background-color: currentColor;
     border-radius: 0 0 0.75rem 0.75rem;
     animation: toast-progress linear forwards;
   }

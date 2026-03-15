@@ -23,20 +23,19 @@
     line-height: 1.5rem;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   }
 
   .tree-select-trigger:hover:not(:disabled) {
-    border-color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
   }
 
   .tree-select-trigger:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .tree-select-trigger:disabled,
@@ -53,8 +52,7 @@
 
   div.tree-select-trigger:focus-visible {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Value Display */
@@ -381,14 +379,65 @@
     gap: 0.25rem;
   }
 
-  /* Error State */
-  .tree-select-error .tree-select-trigger {
-    border-color: var(--color-error);
+  /* Color Variants */
+  .tree-select-primary .tree-select-trigger {
+    color: var(--color-primary);
+  }
+  .tree-select-primary .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
+  .tree-select-secondary .tree-select-trigger {
+    color: var(--color-secondary);
+  }
+  .tree-select-secondary .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
+  }
+
+  .tree-select-tertiary .tree-select-trigger {
+    color: var(--color-tertiary);
+  }
+  .tree-select-tertiary .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
+  }
+
+  .tree-select-info .tree-select-trigger {
+    color: var(--color-info);
+  }
+  .tree-select-info .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
+  .tree-select-success .tree-select-trigger {
+    color: var(--color-success);
+  }
+  .tree-select-success .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .tree-select-warning .tree-select-trigger {
+    color: var(--color-warning);
+  }
+  .tree-select-warning .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
+  .tree-select-error .tree-select-trigger {
+    color: var(--color-error);
+  }
   .tree-select-error .tree-select-trigger:focus {
-    border-color: var(--color-error);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Ghost Variant */
+  .tree-select-ghost .tree-select-trigger {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .tree-select-ghost .tree-select-trigger:focus {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Disabled State */

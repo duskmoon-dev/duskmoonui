@@ -24,20 +24,19 @@
     line-height: 1.5rem;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   }
 
   .multi-select-trigger:hover:not(:disabled) {
-    border-color: var(--color-on-surface-variant);
+    background-color: var(--color-surface-container);
   }
 
   .multi-select-trigger:focus-within {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Placeholder */
@@ -435,14 +434,65 @@
     box-shadow: none;
   }
 
-  /* Error State */
-  .multi-select-error .multi-select-trigger {
-    border-color: var(--color-error);
+  /* Color Variants */
+  .multi-select-primary .multi-select-trigger {
+    color: var(--color-primary);
+  }
+  .multi-select-primary .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
+  .multi-select-secondary .multi-select-trigger {
+    color: var(--color-secondary);
+  }
+  .multi-select-secondary .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
+  }
+
+  .multi-select-tertiary .multi-select-trigger {
+    color: var(--color-tertiary);
+  }
+  .multi-select-tertiary .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
+  }
+
+  .multi-select-info .multi-select-trigger {
+    color: var(--color-info);
+  }
+  .multi-select-info .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
+  .multi-select-success .multi-select-trigger {
+    color: var(--color-success);
+  }
+  .multi-select-success .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .multi-select-warning .multi-select-trigger {
+    color: var(--color-warning);
+  }
+  .multi-select-warning .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
+  .multi-select-error .multi-select-trigger {
+    color: var(--color-error);
+  }
   .multi-select-error .multi-select-trigger:focus-within {
-    border-color: var(--color-error);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Ghost Variant */
+  .multi-select-ghost .multi-select-trigger {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .multi-select-ghost .multi-select-trigger:focus-within {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Disabled State */

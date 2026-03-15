@@ -133,6 +133,26 @@ describe('Card Component', () => {
     it('should support tertiary color variant', () => {
       expect(cardCSS).toContain('.card-tertiary');
     });
+
+    it('should support info color variant', () => {
+      expect(cardCSS).toContain('.card-info');
+      expect(cardCSS).toContain('var(--color-info-container)');
+    });
+
+    it('should support success color variant', () => {
+      expect(cardCSS).toContain('.card-success');
+      expect(cardCSS).toContain('var(--color-success-container)');
+    });
+
+    it('should support warning color variant', () => {
+      expect(cardCSS).toContain('.card-warning');
+      expect(cardCSS).toContain('var(--color-warning-container)');
+    });
+
+    it('should support error color variant', () => {
+      expect(cardCSS).toContain('.card-error');
+      expect(cardCSS).toContain('var(--color-error-container)');
+    });
   });
 
   describe('Interactive States', () => {

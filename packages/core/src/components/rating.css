@@ -9,6 +9,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.125rem;
+    color: var(--color-on-surface);
   }
 
   /* Rating Item */
@@ -110,6 +111,18 @@
 
   .rating-success .rating-item.filled {
     color: var(--color-success);
+  }
+
+  .rating-tertiary .rating-item.filled {
+    color: var(--color-tertiary);
+  }
+
+  .rating-info .rating-item.filled {
+    color: var(--color-info);
+  }
+
+  .rating-warning .rating-item.filled {
+    color: var(--color-warning);
   }
 
   /* Read Only */

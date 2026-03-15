@@ -12,6 +12,7 @@
     --radio-size: 1.25rem;
     --radio-color: var(--color-primary);
     --radio-border-color: var(--color-on-surface-variant);
+    color: var(--color-on-surface);
 
     position: relative;
     display: inline-grid;
@@ -62,8 +63,8 @@
 
   /* Focus State */
   .radio:focus-visible {
-    outline: 2px solid var(--radio-color);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--radio-color) 30%, transparent);
   }
 
   /* Disabled State */
@@ -126,6 +127,15 @@
 
   .radio-info {
     --radio-color: var(--color-info);
+  }
+
+  /* Ghost Variant — borderless unchecked state */
+  .radio-ghost {
+    --radio-border-color: transparent;
+  }
+
+  .radio-ghost:hover:not(:disabled):not(:checked) {
+    border-color: transparent;
   }
 
   /* ========================================

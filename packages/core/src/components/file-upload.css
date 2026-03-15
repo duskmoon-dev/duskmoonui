@@ -22,25 +22,25 @@
     min-height: 10rem;
     padding: 2rem;
     background-color: var(--color-surface);
-    border: 2px dashed var(--color-outline);
+    border: 2px dashed currentColor;
     border-radius: 0.75rem;
     cursor: pointer;
     transition: border-color 150ms ease-in-out, background-color 150ms ease-in-out;
   }
 
   .file-upload-dropzone:hover {
-    border-color: var(--color-primary);
+    border-color: currentColor;
     background-color: var(--color-surface-container);
   }
 
   .file-upload-dropzone:focus-within {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px var(--color-primary-container);
+    border-color: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .file-upload-dropzone.dragging {
-    border-color: var(--color-primary);
-    background-color: var(--color-primary-container);
+    border-color: currentColor;
+    background-color: color-mix(in oklch, currentColor 10%, var(--color-surface));
   }
 
   .file-upload-dropzone.disabled {
@@ -65,7 +65,7 @@
     justify-content: center;
     width: 3rem;
     height: 3rem;
-    color: var(--color-primary);
+    color: currentColor;
     font-size: 2rem;
   }
 
@@ -87,7 +87,7 @@
   }
 
   .file-upload-browse {
-    color: var(--color-primary);
+    color: currentColor;
     font-weight: 500;
     text-decoration: underline;
     cursor: pointer;
@@ -297,6 +297,67 @@
   .file-upload-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  /* Color Variants */
+  .file-upload-primary .file-upload-dropzone {
+    color: var(--color-primary);
+  }
+  .file-upload-primary .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
+  }
+
+  .file-upload-secondary .file-upload-dropzone {
+    color: var(--color-secondary);
+  }
+  .file-upload-secondary .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
+  }
+
+  .file-upload-tertiary .file-upload-dropzone {
+    color: var(--color-tertiary);
+  }
+  .file-upload-tertiary .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
+  }
+
+  .file-upload-info .file-upload-dropzone {
+    color: var(--color-info);
+  }
+  .file-upload-info .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
+  .file-upload-success .file-upload-dropzone {
+    color: var(--color-success);
+  }
+  .file-upload-success .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
+  .file-upload-warning .file-upload-dropzone {
+    color: var(--color-warning);
+  }
+  .file-upload-warning .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
+  .file-upload-error .file-upload-dropzone {
+    color: var(--color-error);
+  }
+  .file-upload-error .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* Ghost Variant */
+  .file-upload-ghost .file-upload-dropzone {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .file-upload-ghost .file-upload-dropzone:focus-within {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Size Variants */

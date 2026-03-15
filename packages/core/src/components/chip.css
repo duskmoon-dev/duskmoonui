@@ -35,8 +35,8 @@
   }
 
   .chip:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Color Variants - Filled */
@@ -65,6 +65,42 @@
 
   .chip-tertiary:hover {
     background-color: color-mix(in oklch, var(--color-tertiary), black 10%);
+  }
+
+  .chip-info {
+    background-color: var(--color-info);
+    color: var(--color-info-content);
+  }
+
+  .chip-info:hover {
+    background-color: color-mix(in oklch, var(--color-info), black 10%);
+  }
+
+  .chip-success {
+    background-color: var(--color-success);
+    color: var(--color-success-content);
+  }
+
+  .chip-success:hover {
+    background-color: color-mix(in oklch, var(--color-success), black 10%);
+  }
+
+  .chip-warning {
+    background-color: var(--color-warning);
+    color: var(--color-warning-content);
+  }
+
+  .chip-warning:hover {
+    background-color: color-mix(in oklch, var(--color-warning), black 10%);
+  }
+
+  .chip-error {
+    background-color: var(--color-error);
+    color: var(--color-error-content);
+  }
+
+  .chip-error:hover {
+    background-color: color-mix(in oklch, var(--color-error), black 10%);
   }
 
   /* Outlined Variant */
@@ -104,6 +140,42 @@
     background-color: var(--color-tertiary-container);
   }
 
+  .chip-outlined.chip-info {
+    border-color: var(--color-info);
+    color: var(--color-info);
+  }
+
+  .chip-outlined.chip-info:hover {
+    background-color: var(--color-info-container);
+  }
+
+  .chip-outlined.chip-success {
+    border-color: var(--color-success);
+    color: var(--color-success);
+  }
+
+  .chip-outlined.chip-success:hover {
+    background-color: var(--color-success-container);
+  }
+
+  .chip-outlined.chip-warning {
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+  }
+
+  .chip-outlined.chip-warning:hover {
+    background-color: var(--color-warning-container);
+  }
+
+  .chip-outlined.chip-error {
+    border-color: var(--color-error);
+    color: var(--color-error);
+  }
+
+  .chip-outlined.chip-error:hover {
+    background-color: var(--color-error-container);
+  }
+
   /* Tonal/Soft Variant */
   .chip-tonal {
     background-color: var(--color-surface-container-high);
@@ -122,6 +194,36 @@
   .chip-tonal.chip-tertiary {
     background-color: var(--color-tertiary-container);
     color: var(--color-on-tertiary-container);
+  }
+
+  .chip-tonal.chip-info {
+    background-color: var(--color-info-container);
+    color: var(--color-on-info-container);
+  }
+
+  .chip-tonal.chip-success {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .chip-tonal.chip-warning {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .chip-tonal.chip-error {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
+  /* Ghost Variant */
+  .chip-ghost {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .chip-ghost:hover {
+    background-color: var(--color-surface-container);
   }
 
   /* Size Variants */

@@ -13,6 +13,7 @@
     height: 2.5rem;
     touch-action: none;
     user-select: none;
+    color: var(--color-on-surface);
   }
 
   /* Slider Track */
@@ -73,7 +74,7 @@
     margin-bottom: 0.5rem;
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
     background-color: var(--color-primary);
     border-radius: 0.25rem;
     white-space: nowrap;
@@ -127,7 +128,7 @@
   }
 
   .slider-mark-active {
-    background-color: var(--color-on-primary);
+    background-color: var(--color-primary-content);
   }
 
   /* Mark Label */
@@ -178,6 +179,25 @@
   }
 
   /* Color Variants */
+  .slider-primary .slider-track-filled,
+  .slider-primary .slider-thumb {
+    background-color: var(--color-primary);
+  }
+
+  .slider-primary .slider-thumb:hover,
+  .slider-primary .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-primary .slider-thumb-label {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  .slider-primary .slider-thumb-label::after {
+    border-top-color: var(--color-primary);
+  }
+
   .slider-secondary .slider-track-filled,
   .slider-secondary .slider-thumb {
     background-color: var(--color-secondary);
@@ -190,7 +210,7 @@
 
   .slider-secondary .slider-thumb-label {
     background-color: var(--color-secondary);
-    color: var(--color-on-secondary);
+    color: var(--color-secondary-content);
   }
 
   .slider-secondary .slider-thumb-label::after {
@@ -209,11 +229,91 @@
 
   .slider-tertiary .slider-thumb-label {
     background-color: var(--color-tertiary);
-    color: var(--color-on-tertiary);
+    color: var(--color-tertiary-content);
   }
 
   .slider-tertiary .slider-thumb-label::after {
     border-top-color: var(--color-tertiary);
+  }
+
+  /* Info */
+  .slider-info .slider-track-filled,
+  .slider-info .slider-thumb {
+    background-color: var(--color-info);
+  }
+
+  .slider-info .slider-thumb:hover,
+  .slider-info .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-info-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-info .slider-thumb-label {
+    background-color: var(--color-info);
+    color: var(--color-info-content);
+  }
+
+  .slider-info .slider-thumb-label::after {
+    border-top-color: var(--color-info);
+  }
+
+  /* Success */
+  .slider-success .slider-track-filled,
+  .slider-success .slider-thumb {
+    background-color: var(--color-success);
+  }
+
+  .slider-success .slider-thumb:hover,
+  .slider-success .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-success-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-success .slider-thumb-label {
+    background-color: var(--color-success);
+    color: var(--color-success-content);
+  }
+
+  .slider-success .slider-thumb-label::after {
+    border-top-color: var(--color-success);
+  }
+
+  /* Warning */
+  .slider-warning .slider-track-filled,
+  .slider-warning .slider-thumb {
+    background-color: var(--color-warning);
+  }
+
+  .slider-warning .slider-thumb:hover,
+  .slider-warning .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-warning-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-warning .slider-thumb-label {
+    background-color: var(--color-warning);
+    color: var(--color-warning-content);
+  }
+
+  .slider-warning .slider-thumb-label::after {
+    border-top-color: var(--color-warning);
+  }
+
+  /* Error */
+  .slider-error .slider-track-filled,
+  .slider-error .slider-thumb {
+    background-color: var(--color-error);
+  }
+
+  .slider-error .slider-thumb:hover,
+  .slider-error .slider-thumb:focus-visible {
+    box-shadow: 0 0 0 8px var(--color-error-container), 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .slider-error .slider-thumb-label {
+    background-color: var(--color-error);
+    color: var(--color-error-content);
+  }
+
+  .slider-error .slider-thumb-label::after {
+    border-top-color: var(--color-error);
   }
 
   /* Disabled State */
@@ -272,7 +372,7 @@
     right: 100%;
     transform: translateY(-50%);
     border-top-color: transparent;
-    border-right-color: var(--color-primary);
+    border-right-color: currentColor;
   }
 
   .slider-vertical .slider-marks {
