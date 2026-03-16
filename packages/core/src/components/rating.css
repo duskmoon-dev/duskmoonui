@@ -185,6 +185,7 @@
   .rating-info .rating-item:focus-visible      { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info)      20%, transparent); }
   .rating-success .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success)   20%, transparent); }
   .rating-error .rating-item:focus-visible     { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error)     20%, transparent); }
+  .rating-warning .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning)   20%, transparent); }
 
   /* Rating Display (static) */
   .rating-display {

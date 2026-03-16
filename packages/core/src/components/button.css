@@ -296,6 +296,31 @@
     background-color: var(--color-tertiary-container);
   }
 
+  .btn-ghost.btn-info    { --btn-text-color: var(--color-info); }
+  .btn-ghost.btn-success { --btn-text-color: var(--color-success); }
+  .btn-ghost.btn-warning { --btn-text-color: var(--color-warning); }
+  .btn-ghost.btn-error   { --btn-text-color: var(--color-error); }
+
+  .btn-ghost.btn-info:hover {
+    --btn-text-color: var(--color-on-info-container);
+    background-color: var(--color-info-container);
+  }
+
+  .btn-ghost.btn-success:hover {
+    --btn-text-color: var(--color-on-success-container);
+    background-color: var(--color-success-container);
+  }
+
+  .btn-ghost.btn-warning:hover {
+    --btn-text-color: var(--color-on-warning-container);
+    background-color: var(--color-warning-container);
+  }
+
+  .btn-ghost.btn-error:hover {
+    --btn-text-color: var(--color-on-error-container);
+    background-color: var(--color-error-container);
+  }
+
   /* Text Variant (alias for .btn-ghost - documentation aligned) */
   .btn-text {
     --btn-text-color: var(--color-on-surface);
@@ -333,6 +358,31 @@
   .btn-text.btn-tertiary:hover {
     --btn-text-color: var(--color-on-tertiary-container);
     background-color: var(--color-tertiary-container);
+  }
+
+  .btn-text.btn-info    { --btn-text-color: var(--color-info); }
+  .btn-text.btn-success { --btn-text-color: var(--color-success); }
+  .btn-text.btn-warning { --btn-text-color: var(--color-warning); }
+  .btn-text.btn-error   { --btn-text-color: var(--color-error); }
+
+  .btn-text.btn-info:hover {
+    --btn-text-color: var(--color-on-info-container);
+    background-color: var(--color-info-container);
+  }
+
+  .btn-text.btn-success:hover {
+    --btn-text-color: var(--color-on-success-container);
+    background-color: var(--color-success-container);
+  }
+
+  .btn-text.btn-warning:hover {
+    --btn-text-color: var(--color-on-warning-container);
+    background-color: var(--color-warning-container);
+  }
+
+  .btn-text.btn-error:hover {
+    --btn-text-color: var(--color-on-error-container);
+    background-color: var(--color-error-container);
   }
 
   /* Tonal Variant - uses container colors for subtle appearance */
