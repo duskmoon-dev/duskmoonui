@@ -201,6 +201,14 @@
     border-color: transparent;
   }
 
+  .alert-ghost.alert-primary   { color: var(--color-primary); }
+  .alert-ghost.alert-secondary { color: var(--color-secondary); }
+  .alert-ghost.alert-tertiary  { color: var(--color-tertiary); }
+  .alert-ghost.alert-info      { color: var(--color-info); }
+  .alert-ghost.alert-success   { color: var(--color-success); }
+  .alert-ghost.alert-warning   { color: var(--color-warning); }
+  .alert-ghost.alert-error     { color: var(--color-error); }
+
   /* Dismissible */
   .alert-dismissible {
     padding-right: 2.5rem;

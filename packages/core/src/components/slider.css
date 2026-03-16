@@ -437,7 +437,7 @@
 
   .slider-input:focus {
     outline: none;
-    border-color: var(--color-primary);
+    border-color: currentColor;
   }
 
   /* Reduce Motion */

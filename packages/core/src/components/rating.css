@@ -171,6 +171,13 @@
     color: var(--color-warning);
   }
 
+  .rating-primary:not(.rating-readonly):hover .rating-item   { color: var(--color-primary); }
+  .rating-secondary:not(.rating-readonly):hover .rating-item { color: var(--color-secondary); }
+  .rating-tertiary:not(.rating-readonly):hover .rating-item  { color: var(--color-tertiary); }
+  .rating-info:not(.rating-readonly):hover .rating-item      { color: var(--color-info); }
+  .rating-success:not(.rating-readonly):hover .rating-item   { color: var(--color-success); }
+  .rating-error:not(.rating-readonly):hover .rating-item     { color: var(--color-error); }
+
   /* Focus Visible — use warning (the default fill color) for the base ring;
      per-variant overrides below match the active fill color for each variant. */
   .rating-item:focus-visible {
