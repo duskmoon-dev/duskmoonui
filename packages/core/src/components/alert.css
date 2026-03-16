@@ -72,8 +72,8 @@
   }
 
   .alert-close:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Type Variants */

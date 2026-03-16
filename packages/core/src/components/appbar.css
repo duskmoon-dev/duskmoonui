@@ -317,12 +317,14 @@
   }
 
   .appbar-primary .appbar-nav,
-  .appbar-primary .appbar-action {
+  .appbar-primary .appbar-action,
+  .appbar-primary .appbar-back {
     color: var(--color-primary-content);
   }
 
   .appbar-primary .appbar-nav:hover,
-  .appbar-primary .appbar-action:hover {
+  .appbar-primary .appbar-action:hover,
+  .appbar-primary .appbar-back:hover {
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
   }
@@ -338,12 +340,14 @@
   }
 
   .appbar-secondary .appbar-nav,
-  .appbar-secondary .appbar-action {
+  .appbar-secondary .appbar-action,
+  .appbar-secondary .appbar-back {
     color: var(--color-secondary-content);
   }
 
   .appbar-secondary .appbar-nav:hover,
-  .appbar-secondary .appbar-action:hover {
+  .appbar-secondary .appbar-action:hover,
+  .appbar-secondary .appbar-back:hover {
     background-color: var(--color-secondary-container);
     color: var(--color-on-secondary-container);
   }
@@ -359,12 +363,14 @@
   }
 
   .appbar-tertiary .appbar-nav,
-  .appbar-tertiary .appbar-action {
+  .appbar-tertiary .appbar-action,
+  .appbar-tertiary .appbar-back {
     color: var(--color-tertiary-content);
   }
 
   .appbar-tertiary .appbar-nav:hover,
-  .appbar-tertiary .appbar-action:hover {
+  .appbar-tertiary .appbar-action:hover,
+  .appbar-tertiary .appbar-back:hover {
     background-color: var(--color-tertiary-container);
     color: var(--color-on-tertiary-container);
   }
@@ -380,12 +386,14 @@
   }
 
   .appbar-info .appbar-nav,
-  .appbar-info .appbar-action {
+  .appbar-info .appbar-action,
+  .appbar-info .appbar-back {
     color: var(--color-info-content);
   }
 
   .appbar-info .appbar-nav:hover,
-  .appbar-info .appbar-action:hover {
+  .appbar-info .appbar-action:hover,
+  .appbar-info .appbar-back:hover {
     background-color: var(--color-info-container);
     color: var(--color-on-info-container);
   }
@@ -401,12 +409,14 @@
   }
 
   .appbar-success .appbar-nav,
-  .appbar-success .appbar-action {
+  .appbar-success .appbar-action,
+  .appbar-success .appbar-back {
     color: var(--color-success-content);
   }
 
   .appbar-success .appbar-nav:hover,
-  .appbar-success .appbar-action:hover {
+  .appbar-success .appbar-action:hover,
+  .appbar-success .appbar-back:hover {
     background-color: var(--color-success-container);
     color: var(--color-on-success-container);
   }
@@ -422,12 +432,14 @@
   }
 
   .appbar-warning .appbar-nav,
-  .appbar-warning .appbar-action {
+  .appbar-warning .appbar-action,
+  .appbar-warning .appbar-back {
     color: var(--color-warning-content);
   }
 
   .appbar-warning .appbar-nav:hover,
-  .appbar-warning .appbar-action:hover {
+  .appbar-warning .appbar-action:hover,
+  .appbar-warning .appbar-back:hover {
     background-color: var(--color-warning-container);
     color: var(--color-on-warning-container);
   }
@@ -443,12 +455,14 @@
   }
 
   .appbar-error .appbar-nav,
-  .appbar-error .appbar-action {
+  .appbar-error .appbar-action,
+  .appbar-error .appbar-back {
     color: var(--color-error-content);
   }
 
   .appbar-error .appbar-nav:hover,
-  .appbar-error .appbar-action:hover {
+  .appbar-error .appbar-action:hover,
+  .appbar-error .appbar-back:hover {
     background-color: var(--color-error-container);
     color: var(--color-on-error-container);
   }

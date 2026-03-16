@@ -148,8 +148,8 @@
   }
 
   .toast-close:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Toast Actions */
@@ -280,6 +280,11 @@
   .toast-ghost.toast-success   { color: var(--color-success); }
   .toast-ghost.toast-warning   { color: var(--color-warning); }
   .toast-ghost.toast-error     { color: var(--color-error); }
+
+  .toast-ghost .toast-title,
+  .toast-ghost .toast-message {
+    color: inherit;
+  }
 
   /* Progress Bar (for auto-dismiss) */
   .toast-progress {
