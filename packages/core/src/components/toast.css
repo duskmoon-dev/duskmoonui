@@ -273,12 +273,6 @@
     border-color: transparent;
   }
 
-  /* Filled variant sub-element color inheritance */
-  .toast-filled .toast-title,
-  .toast-filled .toast-message {
-    color: inherit;
-  }
-
   /* Progress Bar (for auto-dismiss) */
   .toast-progress {
     position: absolute;

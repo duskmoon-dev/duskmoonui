@@ -121,6 +121,9 @@
     color: var(--color-info);
   }
 
+  /* Note: .rating-warning is explicit even though the default rating filled color is
+     already --color-warning. This allows resetting to warning after applying another
+     color variant (e.g. class="rating rating-primary rating-warning"). */
   .rating-warning .rating-item.filled {
     color: var(--color-warning);
   }

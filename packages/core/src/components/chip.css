@@ -226,6 +226,15 @@
     background-color: var(--color-surface-container);
   }
 
+  /* Ghost + color sub-variants: transparent bg/border, colored text */
+  .chip-ghost.chip-primary   { background-color: transparent; color: var(--color-primary); }
+  .chip-ghost.chip-secondary { background-color: transparent; color: var(--color-secondary); }
+  .chip-ghost.chip-tertiary  { background-color: transparent; color: var(--color-tertiary); }
+  .chip-ghost.chip-info      { background-color: transparent; color: var(--color-info); }
+  .chip-ghost.chip-success   { background-color: transparent; color: var(--color-success); }
+  .chip-ghost.chip-warning   { background-color: transparent; color: var(--color-warning); }
+  .chip-ghost.chip-error     { background-color: transparent; color: var(--color-error); }
+
   /* Size Variants */
   .chip-sm {
     padding: 0.25rem 0.5rem;

@@ -48,63 +48,17 @@
     border-color: var(--color-outline-variant);
   }
 
-  /* Color Variants */
-  .input-primary {
-    color: var(--color-primary);
-  }
-
-  .input-primary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
-  }
-
-  .input-secondary {
-    color: var(--color-secondary);
-  }
-
-  .input-secondary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
-  }
-
-  .input-tertiary {
-    color: var(--color-tertiary);
-  }
-
-  .input-tertiary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
-  }
+  /* Color Variants — base .input:focus-visible uses currentColor 20%, so no per-variant
+     focus-visible overrides needed; setting color: here is sufficient. */
+  .input-primary   { color: var(--color-primary); }
+  .input-secondary { color: var(--color-secondary); }
+  .input-tertiary  { color: var(--color-tertiary); }
 
   /* Semantic Colors */
-  .input-info {
-    color: var(--color-info);
-  }
-
-  .input-info:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
-  }
-
-  .input-success {
-    color: var(--color-success);
-  }
-
-  .input-success:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
-  }
-
-  .input-warning {
-    color: var(--color-warning);
-  }
-
-  .input-warning:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
-  }
-
-  .input-error {
-    color: var(--color-error);
-  }
-
-  .input-error:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
-  }
+  .input-info    { color: var(--color-info); }
+  .input-success { color: var(--color-success); }
+  .input-warning { color: var(--color-warning); }
+  .input-error   { color: var(--color-error); }
 
   /* Size Variants */
   .input-xs {
