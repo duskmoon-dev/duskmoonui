@@ -226,7 +226,8 @@
     background-color: var(--color-surface-container);
   }
 
-  /* Ghost + color sub-variants: transparent bg/border, colored text */
+  /* Ghost + color sub-variants: transparent bg/border, colored text.
+     Hover uses container color (matches .chip-outlined.chip-*:hover pattern). */
   .chip-ghost.chip-primary   { background-color: transparent; color: var(--color-primary); }
   .chip-ghost.chip-secondary { background-color: transparent; color: var(--color-secondary); }
   .chip-ghost.chip-tertiary  { background-color: transparent; color: var(--color-tertiary); }
@@ -234,6 +235,14 @@
   .chip-ghost.chip-success   { background-color: transparent; color: var(--color-success); }
   .chip-ghost.chip-warning   { background-color: transparent; color: var(--color-warning); }
   .chip-ghost.chip-error     { background-color: transparent; color: var(--color-error); }
+
+  .chip-ghost.chip-primary:hover   { background-color: var(--color-primary-container); }
+  .chip-ghost.chip-secondary:hover { background-color: var(--color-secondary-container); }
+  .chip-ghost.chip-tertiary:hover  { background-color: var(--color-tertiary-container); }
+  .chip-ghost.chip-info:hover      { background-color: var(--color-info-container); }
+  .chip-ghost.chip-success:hover   { background-color: var(--color-success-container); }
+  .chip-ghost.chip-warning:hover   { background-color: var(--color-warning-container); }
+  .chip-ghost.chip-error:hover     { background-color: var(--color-error-container); }
 
   /* Size Variants */
   .chip-sm {
