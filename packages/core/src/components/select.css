@@ -76,63 +76,17 @@
     border-radius: 0.5rem;
   }
 
-  /* Color Variants */
-  .select-primary {
-    color: var(--color-primary);
-  }
-
-  .select-primary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
-  }
-
-  .select-secondary {
-    color: var(--color-secondary);
-  }
-
-  .select-secondary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
-  }
-
-  .select-tertiary {
-    color: var(--color-tertiary);
-  }
-
-  .select-tertiary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
-  }
+  /* Color Variants — base .select:focus-visible uses currentColor 20%, so no per-variant
+     focus-visible overrides needed; setting color: here is sufficient. */
+  .select-primary   { color: var(--color-primary); }
+  .select-secondary { color: var(--color-secondary); }
+  .select-tertiary  { color: var(--color-tertiary); }
 
   /* Semantic Colors */
-  .select-info {
-    color: var(--color-info);
-  }
-
-  .select-info:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
-  }
-
-  .select-success {
-    color: var(--color-success);
-  }
-
-  .select-success:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
-  }
-
-  .select-warning {
-    color: var(--color-warning);
-  }
-
-  .select-warning:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
-  }
-
-  .select-error {
-    color: var(--color-error);
-  }
-
-  .select-error:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
-  }
+  .select-info    { color: var(--color-info); }
+  .select-success { color: var(--color-success); }
+  .select-warning { color: var(--color-warning); }
+  .select-error   { color: var(--color-error); }
 
   /* Size Variants */
   .select-xs {

@@ -191,68 +191,20 @@
    * COLOR VARIANTS
    * ============================================ */
 
-  /* Primary */
-  .textarea-primary {
-    color: var(--color-primary);
-  }
-
-  .textarea-primary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
-  }
-
-  /* Secondary */
-  .textarea-secondary {
-    color: var(--color-secondary);
-  }
-
-  .textarea-secondary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
-  }
-
-  /* Tertiary */
-  .textarea-tertiary {
-    color: var(--color-tertiary);
-  }
-
-  .textarea-tertiary:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
-  }
+  /* Color Variants — base .textarea:focus-visible uses currentColor 20%, so no per-variant
+     focus-visible overrides needed; setting color: here is sufficient. */
+  .textarea-primary   { color: var(--color-primary); }
+  .textarea-secondary { color: var(--color-secondary); }
+  .textarea-tertiary  { color: var(--color-tertiary); }
 
   /* ============================================
    * SEMANTIC COLORS
    * ============================================ */
 
-  .textarea-info {
-    color: var(--color-info);
-  }
-
-  .textarea-info:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
-  }
-
-  .textarea-success {
-    color: var(--color-success);
-  }
-
-  .textarea-success:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
-  }
-
-  .textarea-warning {
-    color: var(--color-warning);
-  }
-
-  .textarea-warning:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
-  }
-
-  .textarea-error {
-    color: var(--color-error);
-  }
-
-  .textarea-error:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
-  }
+  .textarea-info    { color: var(--color-info); }
+  .textarea-success { color: var(--color-success); }
+  .textarea-warning { color: var(--color-warning); }
+  .textarea-error   { color: var(--color-error); }
 
   /* ============================================
    * SIZE VARIANTS

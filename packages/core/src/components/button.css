@@ -135,6 +135,46 @@
     background-color: var(--color-tertiary);
   }
 
+  .btn-outline.btn-info {
+    --btn-text-color: var(--color-info);
+    border-color: var(--color-info);
+  }
+
+  .btn-outline.btn-info:hover {
+    --btn-text-color: var(--color-info-content);
+    background-color: var(--color-info);
+  }
+
+  .btn-outline.btn-success {
+    --btn-text-color: var(--color-success);
+    border-color: var(--color-success);
+  }
+
+  .btn-outline.btn-success:hover {
+    --btn-text-color: var(--color-success-content);
+    background-color: var(--color-success);
+  }
+
+  .btn-outline.btn-warning {
+    --btn-text-color: var(--color-warning);
+    border-color: var(--color-warning);
+  }
+
+  .btn-outline.btn-warning:hover {
+    --btn-text-color: var(--color-warning-content);
+    background-color: var(--color-warning);
+  }
+
+  .btn-outline.btn-error {
+    --btn-text-color: var(--color-error);
+    border-color: var(--color-error);
+  }
+
+  .btn-outline.btn-error:hover {
+    --btn-text-color: var(--color-error-content);
+    background-color: var(--color-error);
+  }
+
   /* Outlined Variant (alias for .btn-outline - documentation aligned) */
   .btn-outlined {
     --btn-text-color: var(--color-on-surface);
@@ -175,6 +215,46 @@
   .btn-outlined.btn-tertiary:hover {
     --btn-text-color: var(--color-tertiary-content);
     background-color: var(--color-tertiary);
+  }
+
+  .btn-outlined.btn-info {
+    --btn-text-color: var(--color-info);
+    border-color: var(--color-info);
+  }
+
+  .btn-outlined.btn-info:hover {
+    --btn-text-color: var(--color-info-content);
+    background-color: var(--color-info);
+  }
+
+  .btn-outlined.btn-success {
+    --btn-text-color: var(--color-success);
+    border-color: var(--color-success);
+  }
+
+  .btn-outlined.btn-success:hover {
+    --btn-text-color: var(--color-success-content);
+    background-color: var(--color-success);
+  }
+
+  .btn-outlined.btn-warning {
+    --btn-text-color: var(--color-warning);
+    border-color: var(--color-warning);
+  }
+
+  .btn-outlined.btn-warning:hover {
+    --btn-text-color: var(--color-warning-content);
+    background-color: var(--color-warning);
+  }
+
+  .btn-outlined.btn-error {
+    --btn-text-color: var(--color-error);
+    border-color: var(--color-error);
+  }
+
+  .btn-outlined.btn-error:hover {
+    --btn-text-color: var(--color-error-content);
+    background-color: var(--color-error);
   }
 
   /* Ghost Variant */
