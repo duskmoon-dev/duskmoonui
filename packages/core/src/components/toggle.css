@@ -108,6 +108,14 @@
     border-color: transparent;
   }
 
+  .toggle-btn-ghost.toggle-btn-primary   { color: var(--color-primary); }
+  .toggle-btn-ghost.toggle-btn-secondary { color: var(--color-secondary); }
+  .toggle-btn-ghost.toggle-btn-tertiary  { color: var(--color-tertiary); }
+  .toggle-btn-ghost.toggle-btn-info      { color: var(--color-info); }
+  .toggle-btn-ghost.toggle-btn-success   { color: var(--color-success); }
+  .toggle-btn-ghost.toggle-btn-warning   { color: var(--color-warning); }
+  .toggle-btn-ghost.toggle-btn-error     { color: var(--color-error); }
+
   /* Focus state */
   .toggle-btn:focus-visible {
     outline: none;

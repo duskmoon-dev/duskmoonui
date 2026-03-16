@@ -438,6 +438,7 @@
   .slider-input:focus {
     outline: none;
     border-color: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Reduce Motion */

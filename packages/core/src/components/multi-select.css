@@ -430,7 +430,7 @@
   }
 
   .multi-select-filled .multi-select-trigger:focus-within {
-    border-bottom-color: var(--color-primary);
+    border-bottom-color: currentColor;
     box-shadow: none;
   }
 
