@@ -9,6 +9,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.125rem;
+    color: var(--color-on-surface);
   }
 
   /* Rating Item */
@@ -112,6 +113,21 @@
     color: var(--color-success);
   }
 
+  .rating-tertiary .rating-item.filled {
+    color: var(--color-tertiary);
+  }
+
+  .rating-info .rating-item.filled {
+    color: var(--color-info);
+  }
+
+  /* Note: .rating-warning is explicit even though the default rating filled color is
+     already --color-warning. This allows resetting to warning after applying another
+     color variant (e.g. class="rating rating-primary rating-warning"). */
+  .rating-warning .rating-item.filled {
+    color: var(--color-warning);
+  }
+
   /* Read Only */
   .rating-readonly .rating-item {
     cursor: default;
@@ -155,12 +171,28 @@
     color: var(--color-warning);
   }
 
-  /* Focus Visible */
+  .rating-primary:not(.rating-readonly):hover .rating-item   { color: var(--color-primary); }
+  .rating-secondary:not(.rating-readonly):hover .rating-item { color: var(--color-secondary); }
+  .rating-tertiary:not(.rating-readonly):hover .rating-item  { color: var(--color-tertiary); }
+  .rating-info:not(.rating-readonly):hover .rating-item      { color: var(--color-info); }
+  .rating-success:not(.rating-readonly):hover .rating-item   { color: var(--color-success); }
+  .rating-error:not(.rating-readonly):hover .rating-item     { color: var(--color-error); }
+
+  /* Focus Visible — use warning (the default fill color) for the base ring;
+     per-variant overrides below match the active fill color for each variant. */
   .rating-item:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 20%, transparent);
     border-radius: 0.25rem;
   }
+
+  .rating-primary .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary)   20%, transparent); }
+  .rating-secondary .rating-item:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 20%, transparent); }
+  .rating-tertiary .rating-item:focus-visible  { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary)  20%, transparent); }
+  .rating-info .rating-item:focus-visible      { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info)      20%, transparent); }
+  .rating-success .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success)   20%, transparent); }
+  .rating-error .rating-item:focus-visible     { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error)     20%, transparent); }
+  .rating-warning .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning)   20%, transparent); }
 
   /* Rating Display (static) */
   .rating-display {

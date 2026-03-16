@@ -297,6 +297,30 @@ Radio group:
 | Disabled | `disabled` attribute |
 | Focus | Automatic via `:focus-visible` |
 
+## Ghost Variant
+
+The ghost variant removes the visible border when not selected — useful for minimal UI contexts.
+
+<ComponentShowcase title="Ghost Radio" code={`<label class="radio-label">
+  <input type="radio" name="demo-ghost-radio" class="radio radio-ghost" />
+  <span>Ghost (no border unselected)</span>
+</label>
+<label class="radio-label">
+  <input type="radio" name="demo-ghost-radio" class="radio radio-ghost" checked />
+  <span>Ghost selected (color appears)</span>
+</label>`}>
+  <div class="flex flex-col gap-2">
+    <label class="radio-label">
+      <input type="radio" name="demo-ghost-radio" class="radio radio-ghost" />
+      <span>Ghost (no border unselected)</span>
+    </label>
+    <label class="radio-label">
+      <input type="radio" name="demo-ghost-radio" class="radio radio-ghost" checked />
+      <span>Ghost selected (color appears)</span>
+    </label>
+  </div>
+</ComponentShowcase>
+
 ## Related Components
 
 - [Checkbox](/duskmoonui/docs/en/components/checkbox/) - Multi-select form control

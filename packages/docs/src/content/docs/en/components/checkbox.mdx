@@ -356,6 +356,30 @@ With label:
 | Indeterminate | `element.indeterminate = true` (JavaScript) |
 | Focus | Automatic via `:focus-visible` |
 
+## Ghost Variant
+
+The ghost variant removes the visible border when unchecked — useful for minimal UI contexts.
+
+<ComponentShowcase title="Ghost Checkbox" code={`<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-ghost" />
+  <span>Ghost (no border unchecked)</span>
+</label>
+<label class="checkbox-label">
+  <input type="checkbox" class="checkbox checkbox-ghost" checked />
+  <span>Ghost checked (color appears)</span>
+</label>`}>
+  <div class="flex flex-col gap-2">
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox checkbox-ghost" />
+      <span>Ghost (no border unchecked)</span>
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" class="checkbox checkbox-ghost" checked />
+      <span>Ghost checked (color appears)</span>
+    </label>
+  </div>
+</ComponentShowcase>
+
 ## Related Components
 
 - [Radio](/duskmoonui/docs/en/components/radio/) - Single selection input

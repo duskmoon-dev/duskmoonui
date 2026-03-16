@@ -11,8 +11,11 @@
   .switch {
     --switch-width: 3.25rem;
     --switch-height: 2rem;
+    color: var(--color-on-surface);
     --switch-thumb-size: 1rem;
     --switch-color: var(--color-primary);
+    --switch-content-color: var(--color-primary-content);
+    --switch-container-color: var(--color-primary-container);
     --switch-track-color: var(--color-surface-container-highest);
     --switch-border-color: var(--color-outline);
     --switch-thumb-color: var(--color-outline);
@@ -58,7 +61,7 @@
   }
 
   .switch:checked::before {
-    background-color: var(--color-primary-content);
+    background-color: var(--switch-content-color);
   }
 
   /* Hover State (unchecked) */
@@ -77,13 +80,13 @@
   }
 
   .switch:checked:hover:not(:disabled)::before {
-    background-color: var(--color-primary-container);
+    background-color: var(--switch-container-color);
   }
 
   /* Focus State */
   .switch:focus-visible {
-    outline: 2px solid var(--switch-color);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--switch-color) 20%, transparent);
   }
 
   /* Pressed/Active State - expand thumb slightly */
@@ -160,30 +163,50 @@
 
   .switch-primary {
     --switch-color: var(--color-primary);
+    --switch-content-color: var(--color-primary-content);
+    --switch-container-color: var(--color-primary-container);
   }
 
   .switch-secondary {
     --switch-color: var(--color-secondary);
+    --switch-content-color: var(--color-secondary-content);
+    --switch-container-color: var(--color-secondary-container);
   }
 
   .switch-tertiary {
     --switch-color: var(--color-tertiary);
+    --switch-content-color: var(--color-tertiary-content);
+    --switch-container-color: var(--color-tertiary-container);
   }
 
   .switch-success {
     --switch-color: var(--color-success);
+    --switch-content-color: var(--color-success-content);
+    --switch-container-color: var(--color-success-container);
   }
 
   .switch-warning {
     --switch-color: var(--color-warning);
+    --switch-content-color: var(--color-warning-content);
+    --switch-container-color: var(--color-warning-container);
   }
 
   .switch-error {
     --switch-color: var(--color-error);
+    --switch-content-color: var(--color-error-content);
+    --switch-container-color: var(--color-error-container);
   }
 
   .switch-info {
     --switch-color: var(--color-info);
+    --switch-content-color: var(--color-info-content);
+    --switch-container-color: var(--color-info-container);
+  }
+
+  /* Ghost Variant — borderless track */
+  .switch-ghost {
+    --switch-border-color: transparent;
+    --switch-track-color: transparent;
   }
 
   /* ========================================

@@ -1,19 +1,26 @@
 <!--
   Sync Impact Report:
-  Version Change: 1.3.0 → 1.4.0
+  Version Change: 1.5.0 → 1.6.0
   Modified Principles:
-    - Principle II "Tailwind-Native Architecture" → Added logical properties requirement
-  Added Sections:
-    - New "Logical Properties for Spacing" subsection under Principle II
+    - Principle VIII "Component Color Variant Convention" — materially revised:
+        • Replaced incorrect "set background + content token" rule for ALL components with
+          two distinct patterns: currentColor (form/interactive) vs. bg+content (display)
+        • Added explicit `border: 1px solid currentColor` base rule for form/interactive
+        • Added focus ring specification: color-mix(in oklch, currentColor 20%, transparent)
+        • Added layout/container exception (may use var(--color-outline))
+  Added Sections: None
   Removed Sections: None
   Templates Status:
-    ✅ plan-template.md - Validated, no changes needed (layout agnostic)
-    ✅ spec-template.md - Validated, no changes needed (implementation agnostic)
-    ✅ tasks-template.md - Validated, no changes needed (implementation agnostic)
+    ✅ plan-template.md — Constitution Check section is implementation-agnostic; no changes needed
+    ✅ spec-template.md — No principle-specific constraints referenced; no changes needed
+    ✅ tasks-template.md — Task categories unchanged; no changes needed
+  Compliance Checklist Updates:
+    • Updated checklist item for color variants to distinguish component type
+    • Added checklist item for currentColor border on form/interactive components
+    • Added checklist item for focus ring pattern
   Follow-up TODOs:
-    ⚠️ Audit existing component CSS files for physical properties (margin-left, padding-right, etc.)
-    ⚠️ Update any components using physical properties to logical properties
-    ⚠️ This change supports future RTL implementation without breaking changes
+    ⚠️ Audit button/chip/switch/toggle components for currentColor border compliance
+    ⚠️ Verify badge/alert/card continue to use bg+content token pattern (display components)
 -->
 
 # DuskMoonUI Constitution
@@ -53,7 +60,10 @@ All color definitions MUST use the OKLCH color space (like DaisyUI 5):
 - NO legacy color formats (HSL, RGB, HEX) for CSS variable definitions
 - OKLCH enables perceptually uniform color operations and better gamut support
 
-**Rationale**: The three-color system IS the product. Breaking color contracts or accessibility guarantees undermines the entire library's value proposition. The tertiary color provides design flexibility beyond typical two-color systems. OKLCH provides perceptually uniform lightness, better color gamut support (P3, Rec2020), and native CSS manipulation without JavaScript.
+**Rationale**: The three-color system IS the product. Breaking color contracts or accessibility guarantees
+undermines the entire library's value proposition. The tertiary color provides design flexibility beyond
+typical two-color systems. OKLCH provides perceptually uniform lightness, better color gamut support
+(P3, Rec2020), and native CSS manipulation without JavaScript.
 
 ### II. Tailwind-Native Architecture
 
@@ -77,7 +87,10 @@ All spacing (margin, padding) MUST use logical properties to support text flow d
 - Use `inset-inline`, `inset-block` for positioning instead of `left`, `right`, `top`, `bottom`
 - Shorthand `margin: 1rem 2rem` is acceptable (maps to block/inline automatically)
 
-**Rationale**: Tailwind v4's CSS-first architecture provides better performance, simpler mental models, and native browser dev tools support. Supporting v3 would require maintaining two incompatible architectures. Logical properties adapt automatically to RTL languages and vertical writing modes, ensuring components work correctly regardless of text direction without additional CSS overrides.
+**Rationale**: Tailwind v4's CSS-first architecture provides better performance, simpler mental models,
+and native browser dev tools support. Supporting v3 would require maintaining two incompatible architectures.
+Logical properties adapt automatically to RTL languages and vertical writing modes, ensuring components
+work correctly regardless of text direction without additional CSS overrides.
 
 ### III. Component Independence
 
@@ -88,7 +101,8 @@ Each UI component (when added) MUST be:
 - Compatible with all built-in themes (sunshine, moonlight, custom)
 - Implemented as composable utility classes or minimal `@layer components` styles
 
-**Rationale**: Monolithic component libraries slow builds. Users should pay only for what they use. DaisyUI-style component architecture provides familiarity while maintaining flexibility.
+**Rationale**: Monolithic component libraries slow builds. Users should pay only for what they use.
+DaisyUI-style component architecture provides familiarity while maintaining flexibility.
 
 ### IV. Type Safety & Developer Experience
 
@@ -99,7 +113,8 @@ TypeScript type definitions are NON-NEGOTIABLE:
 - Breaking changes MUST follow semantic versioning (MAJOR.MINOR.PATCH)
 - Plugin API MUST provide clear error messages for configuration mistakes
 
-**Rationale**: TypeScript users are the primary audience. Poor DX increases support burden and adoption friction. Clear types reduce configuration errors.
+**Rationale**: TypeScript users are the primary audience. Poor DX increases support burden and adoption
+friction. Clear types reduce configuration errors.
 
 ### V. Zero Runtime Dependencies
 
@@ -110,7 +125,9 @@ The core package (`@duskmoon-dev/core`) MUST:
 - Remain compatible with Node.js 18+ for end-user consumption
 - Keep bundle size <10KB (minified) for the plugin itself
 
-**Rationale**: Dependency bloat is a primary complaint about UI libraries. Keep the attack surface minimal. Users should not need to ship JavaScript for styling. Bun provides faster development experience without affecting end-user compatibility.
+**Rationale**: Dependency bloat is a primary complaint about UI libraries. Keep the attack surface minimal.
+Users should not need to ship JavaScript for styling. Bun provides faster development experience without
+affecting end-user compatibility.
 
 ### VI. Documentation as Code
 
@@ -137,7 +154,9 @@ All features MUST include:
 - Build process MUST validate all examples compile successfully
 - Failed builds MUST block deployment
 
-**Rationale**: Undocumented features don't exist. Examples prove the library works with standard Tailwind v4 configuration. Astro.js provides excellent documentation site capabilities with MDX support. GitHub Pages enables free hosting and automatic deployment.
+**Rationale**: Undocumented features don't exist. Examples prove the library works with standard Tailwind
+v4 configuration. Astro.js provides excellent documentation site capabilities with MDX support. GitHub
+Pages enables free hosting and automatic deployment.
 
 ### VII. Accessibility by Default
 
@@ -148,7 +167,71 @@ Color tokens MUST guarantee WCAG AA contrast ratios:
 - Dark mode MUST be equally accessible (contrast ratio enforcement applies)
 - All three brand colors (primary, secondary, tertiary) MUST meet contrast requirements
 
-**Rationale**: Accessibility is a legal requirement in many jurisdictions. Baking it into the color system prevents regression. Three-color system must not compromise accessibility.
+**Rationale**: Accessibility is a legal requirement in many jurisdictions. Baking it into the color system
+prevents regression. Three-color system must not compromise accessibility.
+
+### VIII. Component Color Variant Convention
+
+Every component class (e.g., `.btn`, `.badge`, `.input`) MUST follow a consistent color variant pattern.
+
+**Default Color**:
+- The base component class MUST default its foreground color to `on-surface`
+  (i.e., `color: var(--color-on-surface)`) so it reads correctly on any surface background.
+
+**Minimum Color Variants**:
+Each component MUST expose the following modifier classes using the pattern `{component}-{role}`:
+- `{component}-primary` — uses the primary brand color
+- `{component}-secondary` — uses the secondary brand color
+- `{component}-tertiary` — uses the tertiary brand color
+- `{component}-info` — uses the info semantic color
+- `{component}-success` — uses the success semantic color
+- `{component}-warning` — uses the warning semantic color
+- `{component}-error` — uses the error semantic color
+
+Components may define additional variants beyond these 7 where appropriate.
+
+**Variant Color Application — Two Patterns by Component Type**:
+
+The method of applying color in variants depends on the component's visual role:
+
+1. **Form elements and interactive controls** (`.input`, `.select`, `.textarea`, `.btn`, `.chip`,
+   `.switch`, `.toggle`): these components have a visible border in their default state and use the
+   `currentColor` inheritance pattern:
+   - Base MUST declare `border: 1px solid currentColor` — the border always matches the text color.
+     Do NOT use `var(--color-outline)` or `transparent` for the base border.
+   - Color variants MUST set `color: var(--color-{variant})` only. The border inherits via
+     `currentColor` — never set `border-color` separately on a color variant.
+   - Focus ring MUST use `box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)`.
+
+2. **Display and container components** (`.badge`, `.alert`, `.card`, `.chip` filled variant):
+   these components express color primarily through background fill. Color variants MUST set both
+   a background token and a paired foreground content token to guarantee contrast:
+   - e.g., `background: var(--color-primary); color: var(--color-primary-content)`
+
+   Layout/container components (`.alert`, `.card`) may use `var(--color-outline)` or other border
+   strategies as appropriate for their role.
+
+**Ghost Variant**:
+- Any component that has a visible border in its default state MUST provide a `{component}-ghost`
+  modifier that sets `border-color: transparent`, removing the visible border while retaining the
+  text color (or a subtle transparent fill on hover via `color-mix()`).
+- Components without a default visible border (e.g., `.badge`) do not need a ghost variant.
+- `{component}-ghost` MUST still apply the appropriate foreground color so it is legible without
+  a background.
+
+**Required Theme Tokens**:
+The following CSS custom properties MUST be defined in every theme file:
+- `--color-info`, `--color-info-content`
+- `--color-success`, `--color-success-content`
+- `--color-warning`, `--color-warning-content`
+- `--color-error`, `--color-error-content`
+
+**Rationale**: A predictable, consistent variant API across all components reduces the learning curve
+for consumers. The `currentColor` pattern for form/interactive components keeps variants DRY — setting
+`color` once updates both text and border simultaneously, and the focus ring inherits automatically.
+Display components use bg+content pairs to ensure sufficient contrast. Defaulting to `on-surface`
+avoids invisible text on any surface. The ghost variant is essential for borderless contexts (icon
+buttons, inline actions) while retaining semantic meaning.
 
 ## Quality Gates
 
@@ -169,6 +252,7 @@ Before opening pull requests:
 - New color tokens MUST use OKLCH format
 - New components MUST use logical properties for spacing (no physical margin-left/right, padding-top/bottom)
 - New components MUST include Astro documentation page in `packages/docs`
+- New components MUST implement all required color variants per Principle VIII
 - Tailwind v4 compatibility MUST be verified
 - Documentation site MUST build without errors
 - Examples in docs MUST be tested with actual plugin import
@@ -231,8 +315,11 @@ Constitution changes require:
 
 ### Version Policy
 
-- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump, breaking documentation site changes, color format migration (e.g., HSL → OKLCH)
-- **MINOR**: New principle addition, expanded accessibility requirements, new documentation requirements, new color manipulation techniques, new CSS property conventions (e.g., logical properties)
+- **MAJOR**: Principle removal, Tailwind v4 → v5 migration, Bun version requirement bump,
+  breaking documentation site changes, color format migration (e.g., HSL → OKLCH)
+- **MINOR**: New principle addition, expanded accessibility requirements, new documentation
+  requirements, new color manipulation techniques, new CSS property conventions,
+  new component API conventions
 - **PATCH**: Clarifications, typo fixes, example updates, non-breaking documentation improvements
 
 ### Compliance Review
@@ -246,6 +333,14 @@ Every feature PR MUST include constitution compliance checklist:
 - [ ] Type definitions exported (Principle IV)
 - [ ] Documentation included in packages/docs (Principle VI)
 - [ ] Accessibility tested (Principle VII)
+- [ ] Component defaults to `on-surface` foreground color (Principle VIII)
+- [ ] All seven color variants implemented: primary, secondary, tertiary, info, success, warning, error (Principle VIII)
+- [ ] Ghost variant provided if component has a default visible border (Principle VIII)
+- [ ] info/success/warning/error theme tokens present in all theme files (Principle VIII)
+- [ ] Form/interactive components use `border: 1px solid currentColor` as base border (Principle VIII)
+- [ ] Color variants on form/interactive components set `color` only — no separate `border-color` (Principle VIII)
+- [ ] Focus ring uses `color-mix(in oklch, currentColor 20%, transparent)` (Principle VIII)
+- [ ] Display components use `background` + `color-content` token pairs for variants (Principle VIII)
 - [ ] Documentation site builds successfully
 - [ ] Examples tested with actual plugin
 
@@ -256,4 +351,4 @@ Any feature violating these principles MUST justify complexity:
 - **Why**: Problem that requires violation
 - **Alternatives**: Simpler approaches considered and rejected with reasons
 
-**Version**: 1.4.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-12-23
+**Version**: 1.6.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2026-03-14

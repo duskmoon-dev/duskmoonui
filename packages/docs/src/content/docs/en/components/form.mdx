@@ -658,6 +658,46 @@ Use `<fieldset>` and `<legend>` for semantic section grouping:
 
 ---
 
+## Validation Color States
+
+Form fields support semantic color states for validation feedback:
+
+<ComponentShowcase title="Validation States" code={`<div class="form-control">
+  <label class="label"><span class="label-text">Success field</span></label>
+  <input class="input input-success" type="text" value="Valid input" />
+</div>
+<div class="form-control">
+  <label class="label"><span class="label-text">Error field</span></label>
+  <input class="input input-error" type="text" value="Invalid input" />
+</div>
+<div class="form-control">
+  <label class="label"><span class="label-text">Warning field</span></label>
+  <input class="input input-warning" type="text" placeholder="Needs attention..." />
+</div>
+<div class="form-control">
+  <label class="label"><span class="label-text">Info field</span></label>
+  <input class="input input-info" type="text" placeholder="Informational..." />
+</div>`}>
+  <div class="flex flex-col gap-3">
+    <div class="form-control">
+      <label class="label"><span class="label-text">Success field</span></label>
+      <input class="input input-success" type="text" value="Valid input" />
+    </div>
+    <div class="form-control">
+      <label class="label"><span class="label-text">Error field</span></label>
+      <input class="input input-error" type="text" value="Invalid input" />
+    </div>
+    <div class="form-control">
+      <label class="label"><span class="label-text">Warning field</span></label>
+      <input class="input input-warning" type="text" placeholder="Needs attention..." />
+    </div>
+    <div class="form-control">
+      <label class="label"><span class="label-text">Info field</span></label>
+      <input class="input input-info" type="text" placeholder="Informational..." />
+    </div>
+  </div>
+</ComponentShowcase>
+
 ## Related Components
 
 - [Input](/docs/en/components/input/) - Text input fields

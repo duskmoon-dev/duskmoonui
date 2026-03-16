@@ -303,6 +303,30 @@ Switch group:
 | Disabled | `disabled` attribute |
 | Focus | Automatic via `:focus-visible` |
 
+## Ghost Variant
+
+The ghost variant removes the visible track border and background when off — creates a minimal toggle.
+
+<ComponentShowcase title="Ghost Switch" code={`<label class="switch-label">
+  <input type="checkbox" class="switch switch-ghost" />
+  <span>Ghost off (no track)</span>
+</label>
+<label class="switch-label">
+  <input type="checkbox" class="switch switch-ghost" checked />
+  <span>Ghost on</span>
+</label>`}>
+  <div class="flex flex-col gap-2">
+    <label class="switch-label">
+      <input type="checkbox" class="switch switch-ghost" />
+      <span>Ghost off (no track)</span>
+    </label>
+    <label class="switch-label">
+      <input type="checkbox" class="switch switch-ghost" checked />
+      <span>Ghost on</span>
+    </label>
+  </div>
+</ComponentShowcase>
+
 ## Related Components
 
 - [Checkbox](/duskmoonui/docs/en/components/checkbox/) - Multi-select form control

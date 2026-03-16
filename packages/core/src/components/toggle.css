@@ -15,9 +15,9 @@
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    color: var(--color-on-surface-variant);
+    color: var(--color-on-surface);
     background-color: transparent;
-    border: 1px solid var(--color-outline);
+    border: 1px solid currentColor;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -27,7 +27,6 @@
   /* Hover state */
   .toggle-btn:hover:not(:disabled) {
     background-color: color-mix(in oklch, var(--color-surface-variant) 50%, transparent);
-    border-color: var(--color-outline-variant);
   }
 
   /* Active/Selected state */
@@ -41,6 +40,14 @@
   .toggle-btn-active:hover:not(:disabled),
   .toggle-btn.active:hover:not(:disabled) {
     background-color: color-mix(in oklch, var(--color-primary-container) 90%, transparent);
+  }
+
+  /* Primary variant */
+  .toggle-btn-primary.toggle-btn-active,
+  .toggle-btn-primary.active {
+    color: var(--color-on-primary-container);
+    background-color: var(--color-primary-container);
+    border-color: var(--color-primary);
   }
 
   /* Secondary variant */
@@ -59,10 +66,60 @@
     border-color: var(--color-tertiary);
   }
 
+  /* Info variant */
+  .toggle-btn-info.toggle-btn-active,
+  .toggle-btn-info.active {
+    color: var(--color-on-info-container);
+    background-color: var(--color-info-container);
+    border-color: var(--color-info);
+  }
+
+  /* Success variant */
+  .toggle-btn-success.toggle-btn-active,
+  .toggle-btn-success.active {
+    color: var(--color-on-success-container);
+    background-color: var(--color-success-container);
+    border-color: var(--color-success);
+  }
+
+  /* Warning variant */
+  .toggle-btn-warning.toggle-btn-active,
+  .toggle-btn-warning.active {
+    color: var(--color-on-warning-container);
+    background-color: var(--color-warning-container);
+    border-color: var(--color-warning);
+  }
+
+  /* Error variant */
+  .toggle-btn-error.toggle-btn-active,
+  .toggle-btn-error.active {
+    color: var(--color-on-error-container);
+    background-color: var(--color-error-container);
+    border-color: var(--color-error);
+  }
+
+  /* Ghost Variant */
+  .toggle-btn-ghost {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .toggle-btn-ghost:hover:not(:disabled) {
+    background-color: var(--color-surface-container);
+    border-color: transparent;
+  }
+
+  .toggle-btn-ghost.toggle-btn-primary   { color: var(--color-primary); }
+  .toggle-btn-ghost.toggle-btn-secondary { color: var(--color-secondary); }
+  .toggle-btn-ghost.toggle-btn-tertiary  { color: var(--color-tertiary); }
+  .toggle-btn-ghost.toggle-btn-info      { color: var(--color-info); }
+  .toggle-btn-ghost.toggle-btn-success   { color: var(--color-success); }
+  .toggle-btn-ghost.toggle-btn-warning   { color: var(--color-warning); }
+  .toggle-btn-ghost.toggle-btn-error     { color: var(--color-error); }
+
   /* Focus state */
   .toggle-btn:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Disabled state */
@@ -199,7 +256,7 @@
   .toggle-filled.toggle-btn-active,
   .toggle-filled.active {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   /* With badge/indicator */

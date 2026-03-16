@@ -21,8 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: read
-      issues: read
+      pull-requests: write
+      issues: write
       id-token: write
 
     steps:
@@ -36,9 +36,31 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
-          plugins: 'code-review@claude-code-plugins'
-          prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
+          prompt: |
+            /pr-review-toolkit:review-pr ${{ github.repository }}/pull/${{ github.event.pull_request.number }}
+
+            After the review team completes their analysis, post a single consolidated comment to PR #${{ github.event.pull_request.number }} in the ${{ github.repository }} repository using the GitHub API.
+
+            The comment MUST follow this structure:
+            ## Claude Code Review
+
+            ### 🔇 Silent Failures & Error Handling
+            <findings from silent-failure-hunter, or "No issues found">
+
+            ### 🧩 Type Design
+            <findings from type-design-analyzer with ratings, or "No new types introduced">
+
+            ### 🧪 Test Coverage
+            <findings from pr-test-analyzer with gaps identified, or "Coverage is adequate">
+
+            ### 💬 Comment Quality
+            <findings from comment-analyzer, or "Comments are accurate and maintainable">
+
+            ### 📋 Code Style & Guidelines
+            <findings from code-reviewer against CLAUDE.md and project conventions>
+
+            ### ✅ Summary
+            <overall verdict: Approve / Request Changes / Needs Discussion>
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
 

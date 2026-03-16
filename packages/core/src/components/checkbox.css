@@ -12,6 +12,7 @@
     --checkbox-size: 1.25rem;
     --checkbox-color: var(--color-primary);
     --checkbox-border-color: var(--color-on-surface-variant);
+    color: var(--color-on-surface);
 
     position: relative;
     display: inline-grid;
@@ -34,8 +35,8 @@
     height: 0.35em;
     transform: scale(0) rotate(-45deg);
     transform-origin: center;
-    border-bottom: 2px solid var(--color-on-primary);
-    border-left: 2px solid var(--color-on-primary);
+    border-bottom: 2px solid var(--color-primary-content);
+    border-left: 2px solid var(--color-primary-content);
     transition: transform 150ms ease-in-out;
   }
 
@@ -58,7 +59,7 @@
   .checkbox:indeterminate::before {
     width: 0.5em;
     height: 0;
-    border-bottom: 2px solid var(--color-on-primary);
+    border-bottom: 2px solid var(--color-primary-content);
     border-left: 0;
     transform: scale(1) rotate(0deg);
   }
@@ -76,8 +77,8 @@
 
   /* Focus State */
   .checkbox:focus-visible {
-    outline: 2px solid var(--checkbox-color);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--checkbox-color) 20%, transparent);
   }
 
   /* Disabled State */
@@ -175,6 +176,15 @@
   .checkbox-info:checked::before,
   .checkbox-info:indeterminate::before {
     border-color: var(--color-info-content);
+  }
+
+  /* Ghost Variant — borderless unchecked state */
+  .checkbox-ghost {
+    --checkbox-border-color: transparent;
+  }
+
+  .checkbox-ghost:hover:not(:disabled):not(:checked) {
+    border-color: transparent;
   }
 
   /* ========================================

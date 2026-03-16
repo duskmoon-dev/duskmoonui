@@ -102,8 +102,8 @@
   }
 
   .appbar-nav:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* App Bar Title */
@@ -165,8 +165,8 @@
   }
 
   .appbar-action:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* App Bar Logo/Brand */
@@ -281,8 +281,8 @@
   }
 
   .appbar-back:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Search Input (direct on element) */
@@ -313,64 +313,162 @@
   /* Color Variants */
   .appbar-primary {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   .appbar-primary .appbar-nav,
-  .appbar-primary .appbar-action {
-    color: var(--color-on-primary);
+  .appbar-primary .appbar-action,
+  .appbar-primary .appbar-back {
+    color: var(--color-primary-content);
   }
 
   .appbar-primary .appbar-nav:hover,
-  .appbar-primary .appbar-action:hover {
+  .appbar-primary .appbar-action:hover,
+  .appbar-primary .appbar-back:hover {
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
   }
 
   .appbar-primary .appbar-subtitle {
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
     opacity: 0.8;
   }
 
   .appbar-secondary {
     background-color: var(--color-secondary);
-    color: var(--color-on-secondary);
+    color: var(--color-secondary-content);
   }
 
   .appbar-secondary .appbar-nav,
-  .appbar-secondary .appbar-action {
-    color: var(--color-on-secondary);
+  .appbar-secondary .appbar-action,
+  .appbar-secondary .appbar-back {
+    color: var(--color-secondary-content);
   }
 
   .appbar-secondary .appbar-nav:hover,
-  .appbar-secondary .appbar-action:hover {
+  .appbar-secondary .appbar-action:hover,
+  .appbar-secondary .appbar-back:hover {
     background-color: var(--color-secondary-container);
     color: var(--color-on-secondary-container);
   }
 
   .appbar-secondary .appbar-subtitle {
-    color: var(--color-on-secondary);
+    color: var(--color-secondary-content);
     opacity: 0.8;
   }
 
   .appbar-tertiary {
     background-color: var(--color-tertiary);
-    color: var(--color-on-tertiary);
+    color: var(--color-tertiary-content);
   }
 
   .appbar-tertiary .appbar-nav,
-  .appbar-tertiary .appbar-action {
-    color: var(--color-on-tertiary);
+  .appbar-tertiary .appbar-action,
+  .appbar-tertiary .appbar-back {
+    color: var(--color-tertiary-content);
   }
 
   .appbar-tertiary .appbar-nav:hover,
-  .appbar-tertiary .appbar-action:hover {
+  .appbar-tertiary .appbar-action:hover,
+  .appbar-tertiary .appbar-back:hover {
     background-color: var(--color-tertiary-container);
     color: var(--color-on-tertiary-container);
   }
 
   .appbar-tertiary .appbar-subtitle {
-    color: var(--color-on-tertiary);
+    color: var(--color-tertiary-content);
+    opacity: 0.8;
+  }
+
+  .appbar-info {
+    background-color: var(--color-info);
+    color: var(--color-info-content);
+  }
+
+  .appbar-info .appbar-nav,
+  .appbar-info .appbar-action,
+  .appbar-info .appbar-back {
+    color: var(--color-info-content);
+  }
+
+  .appbar-info .appbar-nav:hover,
+  .appbar-info .appbar-action:hover,
+  .appbar-info .appbar-back:hover {
+    background-color: var(--color-info-container);
+    color: var(--color-on-info-container);
+  }
+
+  .appbar-info .appbar-subtitle {
+    color: var(--color-info-content);
+    opacity: 0.8;
+  }
+
+  .appbar-success {
+    background-color: var(--color-success);
+    color: var(--color-success-content);
+  }
+
+  .appbar-success .appbar-nav,
+  .appbar-success .appbar-action,
+  .appbar-success .appbar-back {
+    color: var(--color-success-content);
+  }
+
+  .appbar-success .appbar-nav:hover,
+  .appbar-success .appbar-action:hover,
+  .appbar-success .appbar-back:hover {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .appbar-success .appbar-subtitle {
+    color: var(--color-success-content);
+    opacity: 0.8;
+  }
+
+  .appbar-warning {
+    background-color: var(--color-warning);
+    color: var(--color-warning-content);
+  }
+
+  .appbar-warning .appbar-nav,
+  .appbar-warning .appbar-action,
+  .appbar-warning .appbar-back {
+    color: var(--color-warning-content);
+  }
+
+  .appbar-warning .appbar-nav:hover,
+  .appbar-warning .appbar-action:hover,
+  .appbar-warning .appbar-back:hover {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .appbar-warning .appbar-subtitle {
+    color: var(--color-warning-content);
+    opacity: 0.8;
+  }
+
+  .appbar-error {
+    background-color: var(--color-error);
+    color: var(--color-error-content);
+  }
+
+  .appbar-error .appbar-nav,
+  .appbar-error .appbar-action,
+  .appbar-error .appbar-back {
+    color: var(--color-error-content);
+  }
+
+  .appbar-error .appbar-nav:hover,
+  .appbar-error .appbar-action:hover,
+  .appbar-error .appbar-back:hover {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
+  .appbar-error .appbar-subtitle {
+    color: var(--color-error-content);
     opacity: 0.8;
   }
 
