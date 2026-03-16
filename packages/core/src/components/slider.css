@@ -372,8 +372,17 @@
     right: 100%;
     transform: translateY(-50%);
     border-top-color: transparent;
-    border-right-color: currentColor;
+    border-right-color: var(--color-primary); /* overridden per-variant below */
   }
+
+  /* Variant-specific vertical arrow colors (border-right-color cannot use currentColor
+     since it must match the label background, not the text color) */
+  .slider-secondary.slider-vertical .slider-thumb-label::after { border-right-color: var(--color-secondary); }
+  .slider-tertiary.slider-vertical .slider-thumb-label::after  { border-right-color: var(--color-tertiary); }
+  .slider-info.slider-vertical .slider-thumb-label::after      { border-right-color: var(--color-info); }
+  .slider-success.slider-vertical .slider-thumb-label::after   { border-right-color: var(--color-success); }
+  .slider-warning.slider-vertical .slider-thumb-label::after   { border-right-color: var(--color-warning); }
+  .slider-error.slider-vertical .slider-thumb-label::after     { border-right-color: var(--color-error); }
 
   .slider-vertical .slider-marks {
     flex-direction: column;

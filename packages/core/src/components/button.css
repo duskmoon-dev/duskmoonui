@@ -45,7 +45,7 @@
 
   .btn:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--btn-text-color) 20%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .btn:disabled {

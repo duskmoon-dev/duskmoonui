@@ -259,6 +259,14 @@
     color: var(--color-on-tertiary-container);
   }
 
+  /* Filled variant sub-element color inheritance fix.
+     .toast-title and .toast-message have explicit color rules that would otherwise
+     override the filled variant's inherited on-container color. */
+  .toast-filled .toast-title,
+  .toast-filled .toast-message {
+    color: inherit;
+  }
+
   /* Ghost Variant */
   .toast-ghost {
     background-color: transparent;
