@@ -64,7 +64,7 @@
   /* Focus State */
   .radio:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--radio-color) 30%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--radio-color) 20%, transparent);
   }
 
   /* Disabled State */
