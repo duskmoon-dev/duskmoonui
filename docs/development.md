@@ -31,18 +31,18 @@ This modular approach allows duskmoon-elements to bundle only the CSS needed for
 
 ## Component Overview
 
-DuskMoonUI includes **50 components** and **layout utilities** organized by category.
+DuskMoonUI includes **51 components** and **layout utilities** organized by category.
 
 ### Included Components
 
 | Category | Components |
 |----------|------------|
 | **Actions** | Button, File Upload, Toggle |
-| **Data Display** | Avatar, Badge, Card, Chip, Collapse, List, Table, Timeline, Skeleton |
+| **Data Display** | Avatar, Badge, Card, Chip, Code Block, Collapse, List, Table, Timeline, Skeleton |
 | **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Theme Controller, Time Input, Tree Select |
 | **Feedback** | Alert, Dialog, Modal, Progress, Snackbar, Toast, Tooltip |
 | **Layout** | App Bar, Divider, Form, Grid Utilities, Markdown Body |
-| **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Nested Menu, Pagination, Stepper |
+| **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Nested Menu, Stepper |
 | **Surfaces** | Accordion, Bottom Sheet, Popover |
 
 ### Layout Utilities
@@ -86,6 +86,7 @@ packages/core/src/components/
 ├── cascader.css        # Hierarchical cascading selection
 ├── checkbox.css        # Multi-selection checkboxes
 ├── chip.css            # Compact elements for tags/filters
+├── code-block.css      # Styled code container with header and copy button
 ├── collapse.css        # Expandable/collapsible content
 ├── datepicker.css      # Calendar date selection
 ├── dialog.css          # Modal dialogs
@@ -439,9 +440,19 @@ duskmoonui/
 │   ├── css-art/                # @duskmoon-dev/css-art
 │   │   ├── src/
 │   │   │   └── art/            # Pure CSS art components
-│   │   │       ├── moon.css    # Moon with crescent, craters, glow
-│   │   │       ├── sun.css     # Sun with rays, sunset variant
-│   │   │       └── mountain.css # Mountain with snow cap, range
+│   │   │       ├── moon.css                # Moon with crescent, craters, glow
+│   │   │       ├── sun.css                 # Sun with rays, sunset variant
+│   │   │       ├── mountain.css            # Mountain with snow cap, range
+│   │   │       ├── atom.css                # Animated atom with orbiting electrons
+│   │   │       ├── eclipse.css             # Solar eclipse with corona layers
+│   │   │       ├── snow.css                # Snowflake with fall animation
+│   │   │       ├── plasma-ball.css         # Interactive plasma ball (CSS toggle)
+│   │   │       ├── cat-stargazer.css       # Cat watching the stars
+│   │   │       ├── color-spin.css          # 3D spinning color rings
+│   │   │       ├── synthwave-starfield.css # Synthwave tunnel starfield
+│   │   │       ├── circular-gallery.css    # CSS anchor-positioned circular gallery
+│   │   │       ├── flower-animation.css    # Blooming flower night scene
+│   │   │       └── gemini-input.css        # Gemini-style animated gradient input
 │   │   ├── scripts/
 │   │   │   └── build-css.ts    # CSS build script
 │   │   ├── tests/
