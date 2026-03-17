@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DuskMoonUI is a CSS-only component library built as a Tailwind CSS v4 plugin. It implements Material Design 3's extended color system with 65+ color tokens in OKLCH format and provides 50 pre-styled components across 5 themes.
+DuskMoonUI is a CSS-only component library built as a Tailwind CSS v4 plugin. It implements Material Design 3's extended color system with 65+ color tokens in OKLCH format and provides 50+ pre-styled components across 5 themes.
 
 ## Commands
 
@@ -15,7 +15,7 @@ bun run build:core
 # Watch mode for development (rebuilds on file change)
 bun run dev:core
 
-# Run unit tests (~240 tests)
+# Run unit tests (~360 tests)
 cd packages/core && bun test tests/unit
 
 # Run a single test file
@@ -45,16 +45,20 @@ bun run build:docs
 ### Monorepo Layout
 
 - `packages/core/` — `@duskmoon-dev/core`, the published library
-- `packages/docs/` — `@duskmoon-dev/docs`, Astro-based docs site (MDX content, i18n: en/fr/es)
+- `packages/css-art/` — `@duskmoon-dev/css-art`, pure CSS decorative illustrations (no JS)
+- `packages/docs/` — `@duskmoon-dev/docs`, Astro-based docs site (MDX content, i18n: en/fr/es, base path `/duskmoonui/`)
 - `examples/` — Starter apps (Astro, Next.js)
+- `.specify/` — speckit workflow: feature spec pipeline (spec → plan → tasks → implement)
 
 ### Build Pipeline
 
 `packages/core/scripts/build-css.ts` is a custom build script (no PostCSS/LightningCSS) that:
-1. Reads `src/index.css` and recursively inlines all `@import` statements into a single `dist/index.css` (~370 KB)
+1. Reads `src/index.css` and recursively inlines all `@import` statements into a single `dist/index.css` (~415 KB)
 2. Copies individual theme CSS files to `dist/themes/`
 3. Copies individual component CSS files to `dist/components/` and generates ESM modules (wrapping CSS in `CSSStyleSheet` for web component adoption)
 4. Bundles `src/tailwind-plugin.ts` into ESM + CJS via Bun.build
+
+The `css-art` package has its own parallel build: `bun run build:css-art` / `bun run dev:css-art`.
 
 ### CSS Layering
 
@@ -73,7 +77,7 @@ Colors use **OKLCH format** (`oklch(L% C H)`). Key conventions:
 5 themes: `sunshine` (light), `moonlight` (dark), `ocean`, `forest`, `sunset`. Applied via `data-theme` attribute.
 
 Each theme has two source files:
-- **`.css` file** (e.g., `sunshine.css`) — OKLCH values, the browser's source of truth. Contains two blocks that **must be kept in sync**: `[data-theme="sunshine"] { ... }` and `:root { ... }` (default fallback)
+- **`.css` file** (e.g., `sunshine.css`) — OKLCH values, the browser's source of truth. Contains two blocks that **must be kept in sync**: `[data-theme="sunshine"] { ... }` and `:root { ... }` (default fallback, used for SSR/no-JS initial paint on GitHub Pages)
 - **`.ts` file** (e.g., `sunshine.ts`) — HSL values for the Tailwind plugin API. These are a legacy interface; the CSS files are authoritative.
 
 ### Component Pattern
@@ -118,6 +122,14 @@ Form elements (input, select, textarea) and interactive controls (button, chip, 
 - **Focus ring**: `box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)`.
 
 Layout/container components (alert, card) may use `var(--color-outline)` or other border strategies as appropriate for their role.
+
+### Docs Site URL Structure
+
+The docs dev server runs on `localhost:4321` with base path `/duskmoonui/`. Component doc pages are at:
+```
+http://localhost:4321/duskmoonui/docs/en/components/{name}/
+```
+(Astro i18n uses `prefixDefaultLocale: false`, so English content under `content/docs/en/` is served without the `/en/` prefix in the `pages/` routes — but the content collection slug still includes `en/`, making the effective URL `/duskmoonui/docs/en/components/{name}/`.)
 
 ### CSS Anchor Positioning
 

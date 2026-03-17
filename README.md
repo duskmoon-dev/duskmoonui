@@ -10,8 +10,8 @@
 ## Features
 
 - **Extended Color System** - 65+ Material Design 3 color tokens in OKLCH format
-- **49 Components** - Buttons, cards, forms, modals, navigation, and more
-- **Beautiful Themes** - Sunshine (light) and Moonlight (dark) built-in themes
+- **50+ Components** - Buttons, cards, forms, modals, navigation, and more
+- **5 Themes** - Sunshine, Moonlight, Ocean, Forest, Sunset built-in
 - **CSS-Only** - No JavaScript runtime, works with any framework
 - **Tailwind CSS v4** - Native CSS imports, modern color functions
 - **Accessible** - WCAG AA contrast ratios with on-color variants
@@ -87,7 +87,7 @@ Or use the color utilities directly:
 
 ## Components
 
-DuskMoonUI includes 49 components organized by category:
+DuskMoonUI includes 50+ components organized by category:
 
 **Forms:** Button, Input, Checkbox, Radio, Select, Textarea, Switch, Slider, Autocomplete, Datepicker, File Upload, Rating
 
@@ -103,21 +103,15 @@ DuskMoonUI includes 49 components organized by category:
 
 ## Built-in Themes
 
-### Sunshine (Light)
+Five themes are included. Apply via `data-theme` on `<html>`:
 
-Warm, energetic light theme with golden and vibrant accents.
-
-- Primary: Warm Orange
-- Secondary: Pink
-- Tertiary: Purple
-
-### Moonlight (Dark)
-
-Serene, elegant dark theme with cool tones and soft accents.
-
-- Primary: Soft Blue
-- Secondary: Purple
-- Tertiary: Teal
+| Theme | Style | Primary | Secondary | Tertiary |
+|-------|-------|---------|-----------|----------|
+| `sunshine` | Light | Warm Orange | Pink | Purple |
+| `moonlight` | Dark | Soft Blue | Purple | Teal |
+| `ocean` | Dark-cool | Cyan | Indigo | Green |
+| `forest` | Dark-warm | Green | Amber | Teal |
+| `sunset` | Light-warm | Rose | Orange | Gold |
 
 Switch themes dynamically:
 
@@ -179,23 +173,23 @@ bun install
 ### Commands
 
 ```bash
-# Build core package
-bun run build:core
+# Build packages
+bun run build:core        # CSS bundle + TS declarations + ESM/CJS plugin
+bun run build:css-art     # CSS art package
+bun run build:docs        # Docs site (includes astro check + pagefind indexing)
 
-# Watch mode for development
-bun run dev:core
+# Development
+bun run dev               # Docs site with hot-reload (localhost:4321/duskmoonui/)
+bun run dev:core          # Watch mode for core CSS
+
+# Tests (run from packages/core/)
+bun test tests/unit                          # Unit tests (~360)
+bun test tests/unit/button.test.ts           # Single test file
+bun run test:visual                          # Playwright visual regression
+bun run test:a11y                            # axe-core accessibility
 
 # Type checking
 bun run typecheck
-
-# Run unit tests
-cd packages/core && bun test tests/unit
-
-# Run visual regression tests
-cd packages/core && bun run test:visual
-
-# Run all tests
-cd packages/core && bun run test:all
 ```
 
 ## Project Structure
@@ -203,27 +197,29 @@ cd packages/core && bun run test:all
 ```
 duskmoonui/
 ├── packages/
-│   └── core/                 # @duskmoon-dev/core
-│       ├── src/
-│       │   ├── base/         # Color token definitions
-│       │   ├── themes/       # Built-in themes (sunshine, moonlight)
-│       │   ├── components/   # 49 component CSS files
-│       │   ├── generators/   # CSS variable generators
-│       │   └── types/        # TypeScript definitions
-│       ├── tests/
-│       │   ├── unit/         # Unit tests
-│       │   ├── visual/       # Visual regression tests
-│       │   └── accessibility/# a11y tests
-│       └── dist/             # Built files
+│   ├── core/                 # @duskmoon-dev/core (published)
+│   │   ├── src/
+│   │   │   ├── base/         # Color token definitions (@theme)
+│   │   │   ├── themes/       # 5 built-in themes (.css + .ts per theme)
+│   │   │   ├── components/   # 50+ component CSS files
+│   │   │   └── tailwind-plugin.ts
+│   │   ├── tests/
+│   │   │   ├── unit/         # CSS assertion tests (~360)
+│   │   │   ├── visual/       # Playwright visual regression
+│   │   │   └── accessibility/# axe-core a11y tests
+│   │   └── dist/             # Built files
+│   ├── css-art/              # @duskmoon-dev/css-art (published)
+│   │   └── src/              # Pure CSS illustrations
+│   └── docs/                 # Documentation site (Astro 5, MDX, i18n)
+│       └── src/content/docs/en/components/  # Component MDX pages
 └── examples/
-    ├── demo/                 # Interactive demo
-    ├── astro-starter/        # Astro example
-    └── nextjs-starter/       # Next.js example
+    ├── astro-starter/
+    └── nextjs-starter/
 ```
 
 ## Who Uses This
 
-- **[duskmoon-elements](https://github.com/duskmoon-dev/duskmoon-elements)** - Web Components library that uses `@duskmoon-dev/core` CSS for its custom elements
+- **[duskmoon-elements](https://github.com/duskmoon-dev/duskmoon-elements)** - Web Components library (`<el-dm-*>`) that adopts `@duskmoon-dev/core` CSS via `CSSStyleSheet`
 
 ## Contributing
 
