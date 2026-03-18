@@ -1,57 +1,90 @@
 /**
  * Divider Component Styles
  * DuskMoonUI - Material Design 3 inspired divider system
+ *
+ * Usage:
+ *   <div class="divider"></div>            — plain horizontal line
+ *   <div class="divider">OR</div>          — text centered between lines
+ *   <div class="divider divider-start">Title</div>  — text at start
  */
 
 @layer components {
-  /* Base Divider (Horizontal) */
+  /* ── Base Divider (Horizontal) ──────────────────────────────────── */
   .divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
     width: 100%;
-    height: 1px;
     margin: 1rem 0;
-    background-color: var(--color-outline-variant);
-    border: none;
+    white-space: nowrap;
   }
 
-  /* Vertical Divider */
+  /* Only add gap when content is present so an empty divider renders as one continuous line */
+  .divider:not(:empty) {
+    gap: 1rem;
+  }
+
+  /* The two line segments flanking any content */
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-outline-variant);
+  }
+
+  /* ── Vertical Divider ───────────────────────────────────────────── */
   .divider-vertical {
-    width: 1px;
-    height: auto;
-    min-height: 1rem;
+    flex-direction: column;
+    width: auto;
     margin: 0 1rem;
     align-self: stretch;
   }
 
-  /* Divider Thickness */
-  .divider-thin {
+  .divider-vertical::before,
+  .divider-vertical::after {
+    width: 1px;
+    height: unset; /* let flex: 1 control the length */
+  }
+
+  /* ── Thickness ──────────────────────────────────────────────────── */
+  .divider-thin::before,
+  .divider-thin::after {
     height: 1px;
   }
 
-  .divider-thin.divider-vertical {
+  .divider-thin.divider-vertical::before,
+  .divider-thin.divider-vertical::after {
     width: 1px;
-    height: auto;
+    height: unset;
   }
 
-  .divider-medium {
+  .divider-medium::before,
+  .divider-medium::after {
     height: 2px;
   }
 
-  .divider-medium.divider-vertical {
+  .divider-medium.divider-vertical::before,
+  .divider-medium.divider-vertical::after {
     width: 2px;
-    height: auto;
+    height: unset;
   }
 
-  .divider-thick {
+  .divider-thick::before,
+  .divider-thick::after {
     height: 4px;
   }
 
-  .divider-thick.divider-vertical {
+  .divider-thick.divider-vertical::before,
+  .divider-thick.divider-vertical::after {
     width: 4px;
-    height: auto;
+    height: unset;
   }
 
-  /* Divider Styles */
-  .divider-dashed {
+  /* ── Line Styles ────────────────────────────────────────────────── */
+  .divider-dashed::before,
+  .divider-dashed::after {
     background-color: transparent;
     background-image: linear-gradient(
       to right,
@@ -62,7 +95,8 @@
     background-repeat: repeat-x;
   }
 
-  .divider-dashed.divider-vertical {
+  .divider-dashed.divider-vertical::before,
+  .divider-dashed.divider-vertical::after {
     background-image: linear-gradient(
       to bottom,
       var(--color-outline-variant) 50%,
@@ -72,7 +106,8 @@
     background-repeat: repeat-y;
   }
 
-  .divider-dotted {
+  .divider-dotted::before,
+  .divider-dotted::after {
     background-color: transparent;
     background-image: linear-gradient(
       to right,
@@ -83,7 +118,8 @@
     background-repeat: repeat-x;
   }
 
-  .divider-dotted.divider-vertical {
+  .divider-dotted.divider-vertical::before,
+  .divider-dotted.divider-vertical::after {
     background-image: linear-gradient(
       to bottom,
       var(--color-outline-variant) 25%,
@@ -93,12 +129,14 @@
     background-repeat: repeat-y;
   }
 
-  /* Color Variants */
-  .divider-primary {
+  /* ── Color Variants ─────────────────────────────────────────────── */
+  .divider-primary::before,
+  .divider-primary::after {
     background-color: var(--color-primary);
   }
 
-  .divider-primary.divider-dashed {
+  .divider-primary.divider-dashed::before,
+  .divider-primary.divider-dashed::after {
     background-image: linear-gradient(
       to right,
       var(--color-primary) 50%,
@@ -106,7 +144,8 @@
     );
   }
 
-  .divider-primary.divider-dashed.divider-vertical {
+  .divider-primary.divider-dashed.divider-vertical::before,
+  .divider-primary.divider-dashed.divider-vertical::after {
     background-image: linear-gradient(
       to bottom,
       var(--color-primary) 50%,
@@ -114,20 +153,114 @@
     );
   }
 
-  .divider-secondary {
+  .divider-secondary::before,
+  .divider-secondary::after {
     background-color: var(--color-secondary);
   }
 
-  .divider-light {
-    background-color: var(--color-outline-variant);
-    opacity: 0.5;
+  .divider-tertiary::before,
+  .divider-tertiary::after {
+    background-color: var(--color-tertiary);
   }
 
-  .divider-dark {
-    background-color: var(--color-outline);
+  .divider-info::before,
+  .divider-info::after {
+    background-color: var(--color-info);
   }
 
-  /* Spacing Variants */
+  .divider-success::before,
+  .divider-success::after {
+    background-color: var(--color-success);
+  }
+
+  .divider-warning::before,
+  .divider-warning::after {
+    background-color: var(--color-warning);
+  }
+
+  .divider-error::before,
+  .divider-error::after {
+    background-color: var(--color-error);
+  }
+
+  /* ── Gradient Lines ─────────────────────────────────────────────── */
+  .divider-gradient::before,
+  .divider-gradient::after {
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-outline-variant) 20%,
+      var(--color-outline-variant) 80%,
+      transparent
+    );
+  }
+
+  .divider-gradient.divider-vertical::before,
+  .divider-gradient.divider-vertical::after {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-outline-variant) 20%,
+      var(--color-outline-variant) 80%,
+      transparent
+    );
+  }
+
+  /* ── Content Positioning ────────────────────────────────────────── */
+
+  /* Push content to start: shrink the leading line segment */
+  .divider-start::before {
+    flex: 0 0 2rem;
+  }
+
+  /* Push content to end: shrink the trailing line segment */
+  .divider-end::after {
+    flex: 0 0 2rem;
+  }
+
+  /* Vertical equivalents */
+  .divider-vertical.divider-start::before {
+    flex: 0 0 2rem;
+  }
+
+  .divider-vertical.divider-end::after {
+    flex: 0 0 2rem;
+  }
+
+  /* ── Spacing Variants ───────────────────────────────────────────── */
+  .divider-compact {
+    margin: 0.25rem 0;
+  }
+
+  .divider-compact:not(:empty) {
+    gap: 0.5rem;
+  }
+
+  .divider-compact.divider-vertical {
+    margin: 0 0.25rem;
+  }
+
+  .divider-comfortable {
+    margin: 1.5rem 0;
+  }
+
+  .divider-comfortable.divider-vertical {
+    margin: 0 1.5rem;
+  }
+
+  .divider-spacious {
+    margin: 2rem 0;
+  }
+
+  .divider-spacious:not(:empty) {
+    gap: 1.5rem;
+  }
+
+  .divider-spacious.divider-vertical {
+    margin: 0 2rem;
+  }
+
+  /* Legacy spacing aliases */
   .divider-none {
     margin: 0;
   }
@@ -164,13 +297,46 @@
     margin: 0 2rem;
   }
 
-  /* Divider with Text (Horizontal) */
+  /* ── Inset Divider ──────────────────────────────────────────────── */
+  .divider-inset {
+    padding-left: 4rem;
+  }
+
+  .divider-inset-right {
+    padding-right: 4rem;
+  }
+
+  .divider-inset-both {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  /* ── List / Card Helpers ────────────────────────────────────────── */
+  .divider-list {
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  .divider-card {
+    margin: 0;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  /* ── Legacy: divider-text aliases ──────────────────────────────── */
+  /* divider-text is now just .divider — kept for backwards compat */
   .divider-text {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 0;
+    width: 100%;
+    margin: 1rem 0;
+    white-space: nowrap;
+  }
+
+  .divider-text:not(:empty) {
     gap: 1rem;
-    height: auto;
-    background-color: transparent;
   }
 
   .divider-text::before,
@@ -181,104 +347,13 @@
     background-color: var(--color-outline-variant);
   }
 
-  .divider-text-content {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--color-on-surface-variant);
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    white-space: nowrap;
-  }
-
-  /* Text Position */
-  .divider-text-left::before {
+  .divider-text-left::before,
+  .divider-text-left.divider-text::before {
     flex: 0 0 2rem;
   }
 
-  .divider-text-right::after {
+  .divider-text-right::after,
+  .divider-text-right.divider-text::after {
     flex: 0 0 2rem;
-  }
-
-  /* Inset Divider */
-  .divider-inset {
-    margin-left: 4rem;
-    width: calc(100% - 4rem);
-  }
-
-  .divider-inset-right {
-    margin-right: 4rem;
-    width: calc(100% - 4rem);
-  }
-
-  .divider-inset-both {
-    margin-left: 4rem;
-    margin-right: 4rem;
-    width: calc(100% - 8rem);
-  }
-
-  /* List Divider (for use between list items) */
-  .divider-list {
-    margin: 0;
-    margin-left: 1rem;
-    width: calc(100% - 1rem);
-  }
-
-  /* Card Divider */
-  .divider-card {
-    margin: 0;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    width: calc(100% + 2rem);
-  }
-
-  /* Gradient Divider */
-  .divider-gradient {
-    background: linear-gradient(
-      to right,
-      transparent,
-      var(--color-outline-variant) 20%,
-      var(--color-outline-variant) 80%,
-      transparent
-    );
-  }
-
-  .divider-gradient.divider-vertical {
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--color-outline-variant) 20%,
-      var(--color-outline-variant) 80%,
-      transparent
-    );
-  }
-
-  /* Decorative Divider */
-  .divider-decorative {
-    position: relative;
-    height: auto;
-    padding: 1rem 0;
-    background-color: transparent;
-    text-align: center;
-  }
-
-  .divider-decorative::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: var(--color-outline-variant);
-  }
-
-  .divider-decorative-icon {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    background-color: var(--color-surface);
-    color: var(--color-on-surface-variant);
   }
 }

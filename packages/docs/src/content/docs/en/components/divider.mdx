@@ -11,81 +11,88 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Divider
 
-Dividers separate content into clear groups. @duskmoon-dev/core provides horizontal and vertical dividers with multiple style options.
+Dividers separate content into clear groups. Place any content inside `.divider` and it will appear centered between two line segments.
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Divider" code={`<div class="divider"></div>`} />
+<ComponentShowcase title="Plain Divider" code={`<div class="divider"></div>`} />
+
+<ComponentShowcase title="Divider with Text" code={`<div class="divider">OR</div>`} />
+
+<ComponentShowcase title="Divider with Icon" code={`<div class="divider">✦</div>`} />
+
+## Content Positioning
+
+<ComponentShowcase title="Content Position" code={`<div class="divider divider-start">Section Title</div>
+<div class="divider">Centered</div>
+<div class="divider divider-end">End</div>`} />
 
 ## Orientation
 
 ### Horizontal (Default)
 
 <ComponentShowcase title="Horizontal Divider" code={`<div>Content above</div>
-<div class="divider"></div>
+<div class="divider">OR</div>
 <div>Content below</div>`} />
 
 ### Vertical
 
-<ComponentShowcase title="Vertical Divider" code={`<div class="flex items-center">
+<ComponentShowcase title="Vertical Divider" code={`<div class="flex items-center h-16">
   <span>Left</span>
   <div class="divider divider-vertical"></div>
   <span>Right</span>
+</div>`} />
+
+<ComponentShowcase title="Vertical with Text" code={`<div class="flex items-center h-24">
+  <span>Section A</span>
+  <div class="divider divider-vertical">OR</div>
+  <span>Section B</span>
 </div>`} />
 
 ## Styles
 
 ### Solid (Default)
 
-<ComponentShowcase title="Solid Divider" code={`<div class="divider divider-solid"></div>`} />
+<ComponentShowcase title="Solid Divider" code={`<div class="divider">Solid</div>`} />
 
 ### Dashed
 
-<ComponentShowcase title="Dashed Divider" code={`<div class="divider divider-dashed"></div>`} />
+<ComponentShowcase title="Dashed Divider" code={`<div class="divider divider-dashed">Dashed</div>`} />
 
 ### Dotted
 
-<ComponentShowcase title="Dotted Divider" code={`<div class="divider divider-dotted"></div>`} />
+<ComponentShowcase title="Dotted Divider" code={`<div class="divider divider-dotted">Dotted</div>`} />
 
 ## Thickness
 
-<ComponentShowcase title="Divider Thickness" code={`<div class="divider divider-thin"></div>
-<div class="divider divider-medium"></div>
-<div class="divider divider-thick"></div>`} />
+<ComponentShowcase title="Divider Thickness" code={`<div class="divider divider-thin">Thin</div>
+<div class="divider">Default</div>
+<div class="divider divider-medium">Medium</div>
+<div class="divider divider-thick">Thick</div>`} />
 
 ## Colors
 
-<ComponentShowcase title="Colored Dividers" code={`<div class="divider divider-primary"></div>
-<div class="divider divider-secondary"></div>
-<div class="divider divider-tertiary"></div>`} />
+<ComponentShowcase title="Colored Dividers" code={`<div class="divider divider-primary">Primary</div>
+<div class="divider divider-secondary">Secondary</div>
+<div class="divider divider-tertiary">Tertiary</div>
+<div class="divider divider-success">Success</div>
+<div class="divider divider-warning">Warning</div>
+<div class="divider divider-error">Error</div>`} />
 
-## Gradients
+## Gradient
 
-<ComponentShowcase title="Gradient Dividers" code={`<div class="divider divider-gradient-primary"></div>
-<div class="divider divider-gradient-secondary"></div>
-<div class="divider divider-gradient-tertiary"></div>`} />
+<ComponentShowcase title="Gradient Divider" code={`<div class="divider divider-gradient">OR</div>`} />
 
 ## Spacing
 
-<ComponentShowcase title="Divider Spacing" code={`<div class="divider divider-compact"></div>
-<div class="divider"></div>
-<div class="divider divider-comfortable"></div>
-<div class="divider divider-spacious"></div>`} />
-
-## With Text
-
-<ComponentShowcase title="Divider with Text" code={`<!-- Centered text -->
-<div class="divider-text">OR</div>
-
-<!-- Left-aligned text -->
-<div class="divider-text-left">Section Title</div>
-
-<!-- Right-aligned text -->
-<div class="divider-text-right">End</div>`} />
+<ComponentShowcase title="Divider Spacing" code={`<div class="divider divider-compact">Compact</div>
+<div class="divider">Default</div>
+<div class="divider divider-comfortable">Comfortable</div>
+<div class="divider divider-spacious">Spacious</div>`} />
 
 ## Inset
 
-For list items:
+For list items or indented layouts:
 
 <ComponentShowcase title="Inset Dividers" code={`<div class="divider divider-inset"></div>
 <div class="divider divider-inset-both"></div>`} />
@@ -94,28 +101,28 @@ For list items:
 
 | Class | Description |
 |-------|-------------|
-| `.divider` | Base divider (horizontal) |
-| `.divider-vertical` | Vertical divider |
-| `.divider-solid` | Solid style (default) |
-| `.divider-dashed` | Dashed style |
-| `.divider-dotted` | Dotted style |
-| `.divider-thin` | Thin (1px) |
-| `.divider-medium` | Medium (2px) |
-| `.divider-thick` | Thick (4px) |
-| `.divider-primary` | Primary color |
-| `.divider-secondary` | Secondary color |
-| `.divider-tertiary` | Tertiary color |
-| `.divider-gradient-primary` | Primary gradient |
-| `.divider-gradient-secondary` | Secondary gradient |
-| `.divider-gradient-tertiary` | Tertiary gradient |
-| `.divider-compact` | Compact spacing |
-| `.divider-comfortable` | Comfortable spacing |
-| `.divider-spacious` | Spacious spacing |
-| `.divider-text` | Divider with centered text |
-| `.divider-text-left` | Divider with left text |
-| `.divider-text-right` | Divider with right text |
-| `.divider-inset` | Inset from left |
-| `.divider-inset-both` | Inset from both sides |
+| `.divider` | Base divider; content inside appears between lines |
+| `.divider-vertical` | Vertical orientation |
+| `.divider-start` | Content aligned to start |
+| `.divider-end` | Content aligned to end |
+| `.divider-thin` | 1px line thickness |
+| `.divider-medium` | 2px line thickness |
+| `.divider-thick` | 4px line thickness |
+| `.divider-dashed` | Dashed line style |
+| `.divider-dotted` | Dotted line style |
+| `.divider-gradient` | Fades out at edges |
+| `.divider-primary` | Primary color lines |
+| `.divider-secondary` | Secondary color lines |
+| `.divider-tertiary` | Tertiary color lines |
+| `.divider-info` | Info color lines |
+| `.divider-success` | Success color lines |
+| `.divider-warning` | Warning color lines |
+| `.divider-error` | Error color lines |
+| `.divider-compact` | Reduced spacing and gap |
+| `.divider-comfortable` | Increased margin |
+| `.divider-spacious` | Maximum margin and gap |
+| `.divider-inset` | Left-indented |
+| `.divider-inset-both` | Both sides indented |
 
 ## Related Components
 
