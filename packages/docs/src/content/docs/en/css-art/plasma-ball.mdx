@@ -66,6 +66,58 @@ The plasma ball has a complex HTML structure with a hidden checkbox for the togg
 </div>`}
 />
 
+## Without Base
+
+Use `art-plasma-ball-no-base` to display just the glass sphere without the stand. Clicking the ball toggles the plasma effect.
+
+<ComponentShowcase
+  title="Plasma Ball (No Base)"
+  code={`<div class="art-plasma-ball art-plasma-ball-no-base">
+  <input class="switcher" type="checkbox" checked />
+  <div class="glassball">
+    <div class="electrode"></div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray bigwave"><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+    <div class="rays">
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+      <div class="ray"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</div>`}
+/>
+
 ## Sizes
 
 <ComponentShowcase
@@ -161,6 +213,7 @@ The plasma ball uses pure CSS interactivity:
 
 | Class | Description |
 |-------|-------------|
-| `.art-plasma-ball` | Base plasma ball with interactive toggle |
+| `.art-plasma-ball` | Base plasma ball with interactive toggle and stand |
+| `.art-plasma-ball-no-base` | Hides the stand and switch; click the ball to toggle |
 | `.art-plasma-ball-sm` | Small size (200px) |
 | `.art-plasma-ball-lg` | Large size (500px) |

@@ -4,9 +4,10 @@
     --art-plasma-ball-base-color: #222222;
     --art-plasma-ball-switch-size: calc(var(--art-plasma-ball-size) * 37 / 350);
     position: relative;
+    isolation: isolate;
     margin: 0 auto;
     width: var(--art-plasma-ball-size);
-    height: var(--art-plasma-ball-size);
+    height: calc(var(--art-plasma-ball-size) * 1.6);
     box-sizing: border-box;
 
     * {
@@ -21,6 +22,7 @@
       margin: calc(var(--art-plasma-ball-size) * 48 / 350) auto;
       top: calc(var(--art-plasma-ball-size) * 286 / 350);
       left: calc(var(--art-plasma-ball-size) * 25 / 350);
+      z-index: -2;
     }
     .base:before {
       position: absolute;
@@ -93,8 +95,8 @@
       position: absolute;
       overflow: hidden;
       margin: 0 auto;
-      width: 100%;
-      height: 100%;
+      width: var(--art-plasma-ball-size);
+      height: var(--art-plasma-ball-size);
       border-radius: 100%;
       background-color: rgb(255 255 255 / 0.15);
       top: 0%;
@@ -523,6 +525,22 @@
 
   .art-plasma-ball-lg {
     --art-plasma-ball-size: 500px;
+  }
+
+  /* No-base variant: hides the stand/switch, shrinks container to ball size only */
+  .art-plasma-ball-no-base {
+    height: var(--art-plasma-ball-size);
+  }
+  .art-plasma-ball-no-base .base,
+  .art-plasma-ball-no-base .switch {
+    display: none;
+  }
+  .art-plasma-ball-no-base input.switcher {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100% !important;
   }
 
   @keyframes art-plasma-ball-rotation {

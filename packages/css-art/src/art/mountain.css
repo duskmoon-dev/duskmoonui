@@ -1,112 +1,273 @@
 @layer css-art {
+  @keyframes art-mountain-slide {
+    0%   { transform: translateX(-2%); }
+    50%  { transform: translateX(2%);  }
+    100% { transform: translateX(-2%); }
+  }
+
+  @keyframes art-mountain-grow {
+    50% {
+      width: 2%;
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes art-mountain-slide-right {
+    0%   { transform: translateX(-200%);  }
+    100% { transform: translateX(2000%);  }
+  }
+
+  @keyframes art-mountain-slide-left {
+    0%   { transform: translateX(200%);   }
+    100% { transform: translateX(-2000%); }
+  }
+
+  /* === Canvas === */
   .art-mountain {
-    --art-mountain-width: 16rem;
-    --art-mountain-height: 10rem;
-    --art-mountain-color: oklch(45% 0.05 150);
-    --art-mountain-shadow: oklch(35% 0.04 150);
-    --art-mountain-snow: oklch(97% 0.005 90);
+    --art-mountain-size: 600px;
 
     position: relative;
-    width: var(--art-mountain-width);
-    height: var(--art-mountain-height);
-  }
-
-  /* Main peak */
-  .art-mountain::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: calc(var(--art-mountain-width) * 0.45) solid transparent;
-    border-right: calc(var(--art-mountain-width) * 0.45) solid transparent;
-    border-bottom: var(--art-mountain-height) solid var(--art-mountain-color);
-  }
-
-  /* Snow cap */
-  .art-mountain::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: calc(var(--art-mountain-width) * 0.1) solid transparent;
-    border-right: calc(var(--art-mountain-width) * 0.1) solid transparent;
-    border-bottom: calc(var(--art-mountain-height) * 0.25) solid var(--art-mountain-snow);
+    width: var(--art-mountain-size);
+    height: var(--art-mountain-size);
+    overflow: hidden;
+    background:
+      /* Aurora glow layer — bottom 60% of canvas */
+      linear-gradient(transparent, rgba(31, 164, 152, 0.6)) 0 100% / 100% 60%,
+      /* Stars */
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%)  3%  70% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%)  7%  60% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%)  3%  47% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 26%  65% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 20%  50% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 12%  53% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 10%  40% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 24%  34% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 38%  35% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 24%  48% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%)  7%  30% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%)  2%  20% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%)  5%   4% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 10%  15% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 15%   8% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 20%  20% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 80%  36% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 84%  50% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 97%  50% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 85%  40% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 90%  54% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 50%  40% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 55%  49% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 48%  55% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 33%  45% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 80%  60% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 88%  70% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 30%  24% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 30%  10% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 15%  30% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 38%   3% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 68%  30% / 0.2% 0.2%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 90%  32% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 85%  10% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 60%  16% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 88%  12% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 96%   5% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 75%  18% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.9) 70%, transparent 70%) 47%  14% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 54%  10% / 0.2% 0.25%,
+      radial-gradient(rgba(255, 250, 250, 0.5) 70%, transparent 70%) 53%  23% / 0.2% 0.25%,
+      /* Night sky gradient */
+      linear-gradient(rgb(20, 21, 33), #022e4e, #03518a);
+    background-repeat: no-repeat;
     z-index: 1;
   }
 
-  /* Range — multiple peaks */
-  .art-mountain-range {
-    --art-mountain-width: 24rem;
-    --art-mountain-height: 10rem;
+  /* === Mountains === */
 
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-    width: var(--art-mountain-width);
-    height: var(--art-mountain-height);
-  }
-
-  .art-mountain-range::before,
-  .art-mountain-range::after {
-    content: none;
-  }
-
-  .art-mountain-range .art-peak {
+  /* Shared mountain base */
+  .art-mountain .mountain {
     position: absolute;
-    bottom: 0;
-    width: 0;
-    height: 0;
+    clip-path: polygon(49% 0, 51% 0, 100% 100%, 0% 100%);
+    border-radius: 50% 50% 0 0;
+    z-index: 2;
   }
 
-  .art-mountain-range .art-peak:nth-child(1) {
-    left: 10%;
-    border-left: calc(var(--art-mountain-width) * 0.25) solid transparent;
-    border-right: calc(var(--art-mountain-width) * 0.25) solid transparent;
-    border-bottom: calc(var(--art-mountain-height) * 0.7) solid var(--art-mountain-shadow);
-  }
-
-  .art-mountain-range .art-peak:nth-child(2) {
-    left: 30%;
-    border-left: calc(var(--art-mountain-width) * 0.3) solid transparent;
-    border-right: calc(var(--art-mountain-width) * 0.3) solid transparent;
-    border-bottom: var(--art-mountain-height) solid var(--art-mountain-color);
-    z-index: 1;
-  }
-
-  .art-mountain-range .art-peak:nth-child(3) {
+  /* Shadow sub-peak offset to the right */
+  .art-mountain .mountain::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
     right: 5%;
-    border-left: calc(var(--art-mountain-width) * 0.22) solid transparent;
-    border-right: calc(var(--art-mountain-width) * 0.22) solid transparent;
-    border-bottom: calc(var(--art-mountain-height) * 0.6) solid oklch(40% 0.04 150);
+    background: inherit;
+    clip-path: inherit;
+    border-radius: inherit;
   }
 
-  /* Sunset color variant */
-  .art-mountain-sunset {
-    --art-mountain-color: oklch(30% 0.06 280);
-    --art-mountain-shadow: oklch(22% 0.05 280);
-    --art-mountain-snow: oklch(85% 0.08 50);
+  /* Snow highlight at peak */
+  .art-mountain .mountain::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(rgba(255, 250, 250, 0.5), transparent);
   }
 
-  /* Forest color variant */
-  .art-mountain-forest {
-    --art-mountain-color: oklch(40% 0.08 145);
-    --art-mountain-shadow: oklch(30% 0.06 145);
+  .art-mountain .mountain:nth-of-type(1) {
+    background: linear-gradient(#02284a, transparent);
+    width: 50%;
+    height: 40%;
+    left: -10%;
+    bottom: 0;
   }
 
-  /* Size variants */
-  .art-mountain-sm {
-    --art-mountain-width: 10rem;
-    --art-mountain-height: 6rem;
+  .art-mountain .mountain:nth-of-type(2) {
+    background: linear-gradient(#022e4e, rgba(20, 21, 33, 0.8));
+    width: 60%;
+    height: 50%;
+    left: 10%;
+    bottom: 0;
+    z-index: 3;
   }
 
-  .art-mountain-lg {
-    --art-mountain-width: 24rem;
-    --art-mountain-height: 15rem;
+  .art-mountain .mountain:nth-of-type(3) {
+    background: linear-gradient(#02284a, transparent);
+    width: 50%;
+    height: 65%;
+    left: 40%;
+    bottom: 0;
   }
+
+  .art-mountain .mountain:nth-of-type(4) {
+    background: linear-gradient(#022e4e, rgba(20, 21, 33, 0.8));
+    width: 30%;
+    height: 40%;
+    right: -10%;
+    bottom: 0;
+  }
+
+  /* === Trees === */
+
+  .art-mountain .tree {
+    position: absolute;
+    width: 0.5%;
+    bottom: 0;
+    background: linear-gradient(rgb(4, 24, 22), rgb(20, 21, 33));
+    z-index: 4;
+  }
+
+  /* Layered triangles forming a pine silhouette */
+  .art-mountain .tree::before {
+    content: "";
+    position: absolute;
+    width: 800%;
+    height: 100%;
+    top: -5%;
+    left: -350%;
+    background: rgb(4, 24, 22);
+    clip-path: polygon(
+      50% 0%,
+      0% 30%,
+      50% 30%,
+      0% 60%,
+      50% 60%,
+      0% 90%,
+      50% 90%,
+      100% 90%,
+      50% 60%,
+      100% 60%,
+      50% 30%,
+      100% 30%
+    );
+  }
+
+  .art-mountain .tree:nth-of-type(1) {
+    height: 20%;
+    right: 25%;
+  }
+
+  .art-mountain .tree:nth-of-type(2) {
+    height: 15%;
+    right: 20%;
+  }
+
+  .art-mountain .tree:nth-of-type(3) {
+    height: 12%;
+    right: 28%;
+  }
+
+  /* === Aurora lights container === */
+
+  .art-mountain .lights {
+    height: 100%;
+    width: 100%;
+    animation: art-mountain-slide 15s ease-in-out infinite;
+  }
+
+  /* === Borealis beams === */
+
+  .art-mountain .borealis {
+    position: absolute;
+    width: 5%;
+    height: 100%;
+    bottom: 8%;
+    filter: blur(40px);
+    background: radial-gradient(rgb(31, 164, 152) 40%, transparent);
+    opacity: 0.6;
+  }
+
+  .art-mountain .borealis:nth-of-type(1) {
+    left: 0%;
+    animation: art-mountain-grow 30s ease-in-out infinite;
+  }
+
+  .art-mountain .borealis:nth-of-type(2) {
+    left: 20%;
+    animation: art-mountain-grow 25s 10s ease-in-out infinite;
+  }
+
+  .art-mountain .borealis:nth-of-type(3) {
+    left: 40%;
+    animation: art-mountain-grow 30s ease-in-out infinite;
+  }
+
+  .art-mountain .borealis:nth-of-type(4) {
+    left: 60%;
+    animation: art-mountain-grow 20s 3s ease-in-out infinite;
+  }
+
+  .art-mountain .borealis:nth-of-type(5) {
+    left: 80%;
+    animation: art-mountain-grow 25s ease-in-out infinite;
+  }
+
+  .art-mountain .borealis:nth-of-type(6) {
+    left: 97%;
+    animation: art-mountain-grow 20s 8s ease-in-out infinite;
+  }
+
+  /* Purple beam sweeping left → right */
+  .art-mountain .borealis:nth-of-type(7) {
+    background: radial-gradient(rgb(157, 78, 221) 40%, transparent);
+    transform: translateX(-200%);
+    animation: art-mountain-slide-right 25s infinite;
+  }
+
+  .art-mountain .borealis:nth-of-type(8) {
+    background: radial-gradient(rgb(157, 78, 221) 40%, transparent);
+    transform: translateX(-200%);
+    animation: art-mountain-slide-right 25s 8s infinite;
+  }
+
+  /* Blue beam sweeping right → left */
+  .art-mountain .borealis:nth-of-type(9) {
+    left: unset;
+    right: 0%;
+    transform: translateX(200%);
+    background: radial-gradient(#045fa0 40%, transparent);
+    animation: art-mountain-slide-left 18s 5s ease-in-out infinite;
+  }
+
+  /* === Size variants === */
+  .art-mountain-sm { --art-mountain-size: 300px; }
+  .art-mountain-lg { --art-mountain-size: 900px; }
 }
