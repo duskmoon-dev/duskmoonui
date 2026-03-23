@@ -249,6 +249,68 @@ describe('CSS Art', () => {
     });
   });
 
+  describe('snowball-preloader', () => {
+    it('should use @layer css-art', async () => {
+      const css = await readArtCss('snowball-preloader');
+      expect(css).toContain('@layer css-art');
+    });
+
+    it('should define base class and size variants', async () => {
+      const css = await readArtCss('snowball-preloader');
+      expect(css).toContain('.art-snowball-preloader');
+      expect(css).toContain('.art-snowball-preloader-sm');
+      expect(css).toContain('.art-snowball-preloader-lg');
+    });
+
+    it('should define all required keyframes', async () => {
+      const css = await readArtCss('snowball-preloader');
+      expect(css).toContain('@keyframes art-snowball-preloader-ball');
+      expect(css).toContain('@keyframes art-snowball-preloader-inner-shadow');
+      expect(css).toContain('@keyframes art-snowball-preloader-outer-shadow');
+      expect(css).toContain('@keyframes art-snowball-preloader-texture');
+      expect(css).toContain('@keyframes art-snowball-preloader-track-cover');
+    });
+
+    it('should define all required child element classes', async () => {
+      const css = await readArtCss('snowball-preloader');
+      expect(css).toContain('.art-snowball-preloader-outer-ring');
+      expect(css).toContain('.art-snowball-preloader-inner-ring');
+      expect(css).toContain('.art-snowball-preloader-track-cover');
+      expect(css).toContain('.art-snowball-preloader-ball');
+      expect(css).toContain('.art-snowball-preloader-ball-texture');
+      expect(css).toContain('.art-snowball-preloader-ball-outer-shadow');
+      expect(css).toContain('.art-snowball-preloader-ball-inner-shadow');
+      expect(css).toContain('.art-snowball-preloader-ball-side-shadows');
+    });
+
+    it('should use CSS custom properties', async () => {
+      const css = await readArtCss('snowball-preloader');
+      expect(css).toContain('--art-snowball-preloader-size');
+      expect(css).toContain('--art-snowball-preloader-bg');
+    });
+
+    it('should set z-index: 1 on track-cover so it stacks above the ball', async () => {
+      const css = await readArtCss('snowball-preloader');
+      // Find the dedicated track-cover rule (not a multi-selector group) by looking
+      // for the sole-selector occurrence followed immediately by a brace
+      const match = css.match(/\.art-snowball-preloader-track-cover\s*\{([^}]+)\}/);
+      expect(match).not.toBeNull();
+      expect(match![1]).toContain('z-index: 1');
+    });
+
+    it('should use conic-gradient with oklch relative color on track-cover', async () => {
+      const css = await readArtCss('snowball-preloader');
+      expect(css).toContain('conic-gradient(');
+      expect(css).toContain('oklch(from var(--art-snowball-preloader-bg)');
+    });
+
+    it('should animate ball with orbit keyframes', async () => {
+      const css = await readArtCss('snowball-preloader');
+      expect(css).toContain('animation: art-snowball-preloader-ball');
+      expect(css).toContain('animation: art-snowball-preloader-track-cover');
+    });
+  });
+
   describe('index', () => {
     it('should import all art files', async () => {
       const index = await readFile(join(ART_DIR, 'index.css'), 'utf-8');
@@ -259,6 +321,7 @@ describe('CSS Art', () => {
       expect(index).toContain('./eclipse.css');
       expect(index).toContain('./plasma-ball.css');
       expect(index).toContain('./snow.css');
+      expect(index).toContain('./snowball-preloader.css');
     });
   });
 });
