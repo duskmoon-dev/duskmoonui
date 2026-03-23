@@ -11,6 +11,7 @@
     "dev": "bun run --filter @duskmoon-dev/docs dev",
     "dev:core": "bun run --filter @duskmoon-dev/core dev",
     "dev:css-art": "bun run --filter @duskmoon-dev/css-art dev",
+    "docs": "bun run --filter @duskmoon-dev/docs dev",
     "build": "bun run build:core && bun run build:css-art && bun run build:docs",
     "build:core": "bun run --filter @duskmoon-dev/core build",
     "build:css-art": "bun run --filter @duskmoon-dev/css-art build",
