@@ -1,15 +1,20 @@
-name: Auto Patch Release
+name: Release
 
 on:
-  pull_request:
-    types: [closed]
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 1.2.3)'
+        required: true
+        type: string
+      git_ref:
+        description: 'Git ref to release from'
+        required: true
+        default: 'main'
+        type: string
 
 jobs:
-  patch-release:
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.pull_request.merged == true && contains(toJSON(github.event.pull_request.labels.*.name), 'internal request fixed'))
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,8 +24,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: ${{ inputs.git_ref }}
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -36,36 +41,23 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Bump patch version in all packages
-        id: bump
+      - name: Update versions in all packages
         run: |
-          CURRENT=$(node -p "require('./packages/core/package.json').version")
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
-          NEW_VERSION="${MAJOR}.${MINOR}.$((PATCH + 1))"
-
           node -e "
             const fs = require('fs');
-            const version = '${NEW_VERSION}';
-            for (const dir of ['packages/core', 'packages/css-art']) {
+            const version = '${{ inputs.version }}';
+            const packages = ['packages/core', 'packages/css-art'];
+            for (const dir of packages) {
               const path = \`\${dir}/package.json\`;
               const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
               pkg.version = version;
               fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+              console.log('Updated', pkg.name, 'to', version);
             }
           "
-          echo "version=${NEW_VERSION}" >> $GITHUB_OUTPUT
-          echo "Bumped: ${CURRENT} → ${NEW_VERSION}"
 
       - name: Build all packages
         run: bun run build:core && bun run build:css-art
-
-      - name: Commit version bump
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add packages/core/package.json packages/css-art/package.json
-          git commit -m "chore: bump all packages to v${{ steps.bump.outputs.version }}"
-          git push origin main
 
       - name: Publish @duskmoon-dev/core
         working-directory: packages/core
@@ -79,30 +71,32 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add packages/core/package.json packages/css-art/package.json
+          git commit -am "chore(release): v${{ inputs.version }}"
+          git push origin HEAD:${{ inputs.git_ref }}
+
       - name: Create git tag
         run: |
-          git tag -a "v${{ steps.bump.outputs.version }}" -m "Release v${{ steps.bump.outputs.version }}"
-          git push origin "v${{ steps.bump.outputs.version }}"
+          git tag -a "v${{ inputs.version }}" -m "Release v${{ inputs.version }}"
+          git push origin "v${{ inputs.version }}"
 
       - name: Generate release notes
         run: |
-          VERSION="v${{ steps.bump.outputs.version }}"
+          VERSION="v${{ inputs.version }}"
           PREV_TAG=$(git tag -l "v*" --sort=-v:refname | grep -v "^${VERSION}$" | head -1)
 
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            TRIGGER_NOTE="Merged PR: #${{ github.event.pull_request.number }} — ${{ github.event.pull_request.title }}"
-          else
-            TRIGGER_NOTE="Manually triggered patch release"
-          fi
-
           {
-            echo "## Bug Fixes"
-            echo ""
-            echo "${TRIGGER_NOTE}"
+            echo "## What's Changed"
             echo ""
 
             if [ -n "$PREV_TAG" ]; then
               git log "${PREV_TAG}..HEAD" --pretty=format:"- %s" --no-merges
+            else
+              git log --pretty=format:"- %s" --no-merges -20
             fi
 
             echo ""
@@ -111,14 +105,14 @@ jobs:
             echo ""
             echo "| Package | Version |"
             echo "|---------|---------|"
-            echo "| \`@duskmoon-dev/core\` | \`${{ steps.bump.outputs.version }}\` |"
-            echo "| \`@duskmoon-dev/css-art\` | \`${{ steps.bump.outputs.version }}\` |"
+            echo "| \`@duskmoon-dev/core\` | \`${{ inputs.version }}\` |"
+            echo "| \`@duskmoon-dev/css-art\` | \`${{ inputs.version }}\` |"
             echo ""
             echo "## Installation"
             echo ""
             echo '```bash'
-            echo "npm install @duskmoon-dev/core@${{ steps.bump.outputs.version }}"
-            echo "npm install @duskmoon-dev/css-art@${{ steps.bump.outputs.version }}"
+            echo "npm install @duskmoon-dev/core@${{ inputs.version }}"
+            echo "npm install @duskmoon-dev/css-art@${{ inputs.version }}"
             echo '```'
 
             if [ -n "$PREV_TAG" ]; then
@@ -131,7 +125,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "v${{ steps.bump.outputs.version }}" \
-            --title "v${{ steps.bump.outputs.version }}" \
+          gh release create "v${{ inputs.version }}" \
+            --title "v${{ inputs.version }}" \
             --notes-file release_notes.md \
             --verify-tag

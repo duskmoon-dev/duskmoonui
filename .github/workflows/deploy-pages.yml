@@ -1,9 +1,15 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
   workflow_dispatch:
+    inputs:
+      git_ref:
+        description: 'Git ref to deploy from'
+        required: true
+        default: 'main'
+        type: string
 
 permissions:
   contents: read
@@ -20,6 +26,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.git_ref }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
