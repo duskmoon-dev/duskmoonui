@@ -1,0 +1,283 @@
+---
+title: Nintendo CSSwitch
+description: A fully responsive, pure CSS Nintendo Switch illustration with clickable buttons, adaptive layouts for handheld/tabletop/portable modes, and color-customizable Joy-Cons
+category: css-art
+order: 10
+published: true
+tags: ['css-art', 'csswitch', 'nintendo', 'switch', 'gaming', 'interactive', 'responsive']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Nintendo CSSwitch
+
+A pure CSS Nintendo Switch illustration with three responsive breakpoints — docked (full console + screen), tabletop (Joy-Cons with grip stand), and handheld (Joy-Cons only with wrist-strap bar). All buttons are interactive and highlight yellow on press. Joy-Con colors are customizable via CSS custom properties.
+
+Original art by [Álvaro Montoro](https://codepen.io/alvaromontoro/pen/WNWwvvZ).
+
+## Basic Usage
+
+<ComponentShowcase
+  title="Nintendo CSSwitch"
+  code={`<article class="art-csswitch" aria-label="Drawing of a Nintendo Switch">
+  <section class="comfort-grip">
+    <div class="grip"></div>
+    <div class="grip right"></div>
+    <div class="holder"></div>
+  </section>
+  <section class="controller left">
+    <section class="bar">
+      <div class="cord"></div>
+      <button class="sub-lr"></button>
+      <button class="sub-rr"></button>
+      <div class="peripheral"></div>
+      <div class="minus-sign"></div>
+    </section>
+    <section class="connector">
+      <button class="con-lr"></button>
+      <button class="con-rr"></button>
+      <div class="con-part"></div>
+    </section>
+    <button class="lr" aria-label="LR"></button>
+    <button class="minus" aria-label="minus"></button>
+    <button class="mushroom round" aria-label="mushroom"></button>
+    <button class="direction arrow round up" aria-label="up"></button>
+    <button class="direction arrow round left" aria-label="left"></button>
+    <button class="direction arrow round right" aria-label="right"></button>
+    <button class="direction arrow round down" aria-label="down"></button>
+    <button class="menu" aria-label="menu"></button>
+  </section>
+  <section class="controller right">
+    <section class="bar">
+      <div class="cord"></div>
+      <button class="sub-lr"></button>
+      <button class="sub-rr"></button>
+      <div class="peripheral"></div>
+      <div class="minus-sign"></div>
+    </section>
+    <section class="connector">
+      <button class="con-lr"></button>
+      <button class="con-rr"></button>
+      <div class="con-part"></div>
+    </section>
+    <button class="lr rr" aria-label="RR"></button>
+    <button class="minus plus" aria-label="plus"></button>
+    <button class="direction round up x" aria-label="x"></button>
+    <button class="direction round left y" aria-label="y"></button>
+    <button class="direction round right a" aria-label="a"></button>
+    <button class="direction round down b" aria-label="b"></button>
+    <button class="mushroom round" aria-label="mushroom"></button>
+    <button class="round home" aria-label="home"></button>
+  </section>
+  <section class="body">
+    <button class="volume" aria-label="volume"></button>
+    <div class="frame"></div>
+    <div class="screen"></div>
+  </section>
+  <section class="comfort-grip">
+    <div class="main-frame">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="logo"></div>
+      <div class="logo right"></div>
+      <div class="nintendo">NINTENDO</div>
+      <div class="switch">SWITCH</div>
+    </div>
+  </section>
+</article>`}
+/>
+
+## Sizes
+
+<ComponentShowcase
+  title="CSSwitch Sizes"
+  code={`<div style="display: flex; flex-direction: column; gap: 2rem; align-items: flex-start;">
+  <article class="art-csswitch art-csswitch-sm" aria-label="Small Nintendo Switch">
+    <section class="comfort-grip">
+      <div class="grip"></div><div class="grip right"></div><div class="holder"></div>
+    </section>
+    <section class="controller left">
+      <section class="bar"><div class="cord"></div><button class="sub-lr"></button><button class="sub-rr"></button><div class="peripheral"></div><div class="minus-sign"></div></section>
+      <section class="connector"><button class="con-lr"></button><button class="con-rr"></button><div class="con-part"></div></section>
+      <button class="lr"></button><button class="minus"></button>
+      <button class="mushroom round"></button>
+      <button class="direction arrow round up"></button><button class="direction arrow round left"></button><button class="direction arrow round right"></button><button class="direction arrow round down"></button>
+      <button class="menu"></button>
+    </section>
+    <section class="controller right">
+      <section class="bar"><div class="cord"></div><button class="sub-lr"></button><button class="sub-rr"></button><div class="peripheral"></div><div class="minus-sign"></div></section>
+      <section class="connector"><button class="con-lr"></button><button class="con-rr"></button><div class="con-part"></div></section>
+      <button class="lr rr"></button><button class="minus plus"></button>
+      <button class="direction round up x"></button><button class="direction round left y"></button><button class="direction round right a"></button><button class="direction round down b"></button>
+      <button class="mushroom round"></button><button class="round home"></button>
+    </section>
+    <section class="body"><button class="volume"></button><div class="frame"></div><div class="screen"></div></section>
+    <section class="comfort-grip">
+      <div class="main-frame">
+        <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+        <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+        <div class="logo"></div><div class="logo right"></div>
+        <div class="nintendo">NINTENDO</div><div class="switch">SWITCH</div>
+      </div>
+    </section>
+  </article>
+</div>`}
+/>
+
+| Class | Size |
+|-------|------|
+| `.art-csswitch-sm` | 500px |
+| (default) | 800px |
+| `.art-csswitch-lg` | 1000px |
+
+## Custom Joy-Con Colors
+
+Use `--joycon-left` and `--joycon-right` to override the Joy-Con colors:
+
+<ComponentShowcase
+  title="Custom Colors — OLED White"
+  code={`<article class="art-csswitch" style="--joycon-left: #f0f0f0; --joycon-left-shadow: #8884; --joycon-right: #f0f0f0; --joycon-right-shadow: #8884;" aria-label="White Nintendo Switch">
+  <section class="comfort-grip">
+    <div class="grip"></div><div class="grip right"></div><div class="holder"></div>
+  </section>
+  <section class="controller left">
+    <section class="bar"><div class="cord"></div><button class="sub-lr"></button><button class="sub-rr"></button><div class="peripheral"></div><div class="minus-sign"></div></section>
+    <section class="connector"><button class="con-lr"></button><button class="con-rr"></button><div class="con-part"></div></section>
+    <button class="lr"></button><button class="minus"></button>
+    <button class="mushroom round"></button>
+    <button class="direction arrow round up"></button><button class="direction arrow round left"></button><button class="direction arrow round right"></button><button class="direction arrow round down"></button>
+    <button class="menu"></button>
+  </section>
+  <section class="controller right">
+    <section class="bar"><div class="cord"></div><button class="sub-lr"></button><button class="sub-rr"></button><div class="peripheral"></div><div class="minus-sign"></div></section>
+    <section class="connector"><button class="con-lr"></button><button class="con-rr"></button><div class="con-part"></div></section>
+    <button class="lr rr"></button><button class="minus plus"></button>
+    <button class="direction round up x"></button><button class="direction round left y"></button><button class="direction round right a"></button><button class="direction round down b"></button>
+    <button class="mushroom round"></button><button class="round home"></button>
+  </section>
+  <section class="body"><button class="volume"></button><div class="frame"></div><div class="screen"></div></section>
+  <section class="comfort-grip">
+    <div class="main-frame">
+      <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+      <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+      <div class="logo"></div><div class="logo right"></div>
+      <div class="nintendo">NINTENDO</div><div class="switch">SWITCH</div>
+    </div>
+  </section>
+</article>`}
+/>
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-csswitch-size` | `800px` | Overall container size — scales the whole illustration |
+| `--joycon-left` | `#00c5e2` | Left Joy-Con color (cyan) |
+| `--joycon-left-shadow` | `#0128` | Left Joy-Con shadow tint |
+| `--joycon-right` | `#ff6658` | Right Joy-Con color (red/coral) |
+| `--joycon-right-shadow` | `#c218` | Right Joy-Con shadow tint |
+
+## HTML Structure
+
+```html
+<article class="art-csswitch" aria-label="Drawing of a Nintendo Switch">
+  <!-- Comfort grip stand (visible at tablet breakpoint) -->
+  <section class="comfort-grip">
+    <div class="grip"></div>
+    <div class="grip right"></div>
+    <div class="holder"></div>
+  </section>
+
+  <!-- Left Joy-Con -->
+  <section class="controller left">
+    <section class="bar">
+      <div class="cord"></div>
+      <button class="sub-lr"></button>
+      <button class="sub-rr"></button>
+      <div class="peripheral"></div>
+      <div class="minus-sign"></div>
+    </section>
+    <section class="connector">
+      <button class="con-lr"></button>
+      <button class="con-rr"></button>
+      <div class="con-part"></div>
+    </section>
+    <button class="lr" aria-label="LR"></button>
+    <button class="minus" aria-label="minus"></button>
+    <button class="mushroom round" aria-label="mushroom"></button>
+    <button class="direction arrow round up" aria-label="up"></button>
+    <button class="direction arrow round left" aria-label="left"></button>
+    <button class="direction arrow round right" aria-label="right"></button>
+    <button class="direction arrow round down" aria-label="down"></button>
+    <button class="menu" aria-label="menu"></button>
+  </section>
+
+  <!-- Right Joy-Con -->
+  <section class="controller right">
+    <section class="bar">
+      <div class="cord"></div>
+      <button class="sub-lr"></button>
+      <button class="sub-rr"></button>
+      <div class="peripheral"></div>
+      <div class="minus-sign"></div>
+    </section>
+    <section class="connector">
+      <button class="con-lr"></button>
+      <button class="con-rr"></button>
+      <div class="con-part"></div>
+    </section>
+    <button class="lr rr" aria-label="RR"></button>
+    <button class="minus plus" aria-label="plus"></button>
+    <button class="direction round up x" aria-label="x"></button>
+    <button class="direction round left y" aria-label="y"></button>
+    <button class="direction round right a" aria-label="a"></button>
+    <button class="direction round down b" aria-label="b"></button>
+    <button class="mushroom round" aria-label="mushroom"></button>
+    <button class="round home" aria-label="home"></button>
+  </section>
+
+  <!-- Console body with screen (full breakpoint only) -->
+  <section class="body">
+    <button class="volume" aria-label="volume"></button>
+    <div class="frame"></div>
+    <div class="screen"></div>
+  </section>
+
+  <!-- Back of grip stand with Nintendo logo (tablet breakpoint) -->
+  <section class="comfort-grip">
+    <div class="main-frame">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="logo"></div>
+      <div class="logo right"></div>
+      <div class="nintendo">NINTENDO</div>
+      <div class="switch">SWITCH</div>
+    </div>
+  </section>
+</article>
+```
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-csswitch` | Root container — full docked console at ≥1010px viewport |
+| `.art-csswitch-sm` | Small size variant (500px) |
+| `.art-csswitch-lg` | Large size variant (1000px — original full size) |
+| `.controller.left` | Left Joy-Con with D-pad, mushroom stick, and shoulder buttons |
+| `.controller.right` | Right Joy-Con with ABXY buttons, home, and capture |
+| `.body` | Console body with screen (hidden below 1010px) |
+| `.comfort-grip` | Tabletop grip stand (shown between 670px–1010px) |
+| `.bar` | Wrist strap bar connector (shown between 460px–670px) |
+| `.connector` | Tiny physical connector segment (shown below 460px) |

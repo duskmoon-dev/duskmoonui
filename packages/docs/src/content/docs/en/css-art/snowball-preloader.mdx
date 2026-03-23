@@ -1,0 +1,303 @@
+---
+title: Snowball Preloader
+description: Animated loading spinner with a textured snowball orbiting a concentric ring track, with depth achieved via box-shadow and a rotating conic-gradient mask
+category: css-art
+order: 14
+published: true
+tags: ['css-art', 'snowball-preloader', 'loader', 'preloader', 'animated', 'spinner']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Snowball Preloader
+
+An animated loading spinner featuring a textured snowball that orbits a circular ring track. The ring depth is built entirely from `box-shadow` — no borders — with both inner and outer rings using opposing highlight/shadow pairs to create a concave groove illusion. The ball's rolling snow texture is a scrolling `::before` pseudo-element clipped by `overflow: hidden`. A rotating `conic-gradient` on `.art-snowball-preloader-track-cover` acts as a mask that hides the ball for roughly one-sixth of its orbit, creating the illusion of the ball passing behind the ring.
+
+Ported from a CodePen by [Ryan Mulligan](https://codepen.io/hexagoncircle/pen/YzOaqRp).
+
+## Basic Usage
+
+<ComponentShowcase
+  title="Snowball Preloader"
+  code={`<div style="background: hsl(223, 90%, 95%); padding: 2rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+  <div class="art-snowball-preloader" style="--art-snowball-preloader-bg: hsl(223, 90%, 95%);">
+    <div class="art-snowball-preloader-outer-ring"></div>
+    <div class="art-snowball-preloader-inner-ring"></div>
+    <div class="art-snowball-preloader-track-cover"></div>
+    <div class="art-snowball-preloader-ball">
+      <div class="art-snowball-preloader-ball-texture"></div>
+      <div class="art-snowball-preloader-ball-outer-shadow"></div>
+      <div class="art-snowball-preloader-ball-inner-shadow"></div>
+      <div class="art-snowball-preloader-ball-side-shadows"></div>
+    </div>
+  </div>
+</div>`}
+/>
+
+## Sizes
+
+<ComponentShowcase
+  title="Small (192px)"
+  code={`<div style="background: hsl(223, 90%, 95%); padding: 2rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+  <div class="art-snowball-preloader art-snowball-preloader-sm" style="--art-snowball-preloader-bg: hsl(223, 90%, 95%);">
+    <div class="art-snowball-preloader-outer-ring"></div>
+    <div class="art-snowball-preloader-inner-ring"></div>
+    <div class="art-snowball-preloader-track-cover"></div>
+    <div class="art-snowball-preloader-ball">
+      <div class="art-snowball-preloader-ball-texture"></div>
+      <div class="art-snowball-preloader-ball-outer-shadow"></div>
+      <div class="art-snowball-preloader-ball-inner-shadow"></div>
+      <div class="art-snowball-preloader-ball-side-shadows"></div>
+    </div>
+  </div>
+</div>`}
+/>
+
+<ComponentShowcase
+  title="Default (256px)"
+  code={`<div style="background: hsl(223, 90%, 95%); padding: 2rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+  <div class="art-snowball-preloader" style="--art-snowball-preloader-bg: hsl(223, 90%, 95%);">
+    <div class="art-snowball-preloader-outer-ring"></div>
+    <div class="art-snowball-preloader-inner-ring"></div>
+    <div class="art-snowball-preloader-track-cover"></div>
+    <div class="art-snowball-preloader-ball">
+      <div class="art-snowball-preloader-ball-texture"></div>
+      <div class="art-snowball-preloader-ball-outer-shadow"></div>
+      <div class="art-snowball-preloader-ball-inner-shadow"></div>
+      <div class="art-snowball-preloader-ball-side-shadows"></div>
+    </div>
+  </div>
+</div>`}
+/>
+
+<ComponentShowcase
+  title="Large (384px)"
+  code={`<div style="background: hsl(223, 90%, 95%); padding: 2rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+  <div class="art-snowball-preloader art-snowball-preloader-lg" style="--art-snowball-preloader-bg: hsl(223, 90%, 95%);">
+    <div class="art-snowball-preloader-outer-ring"></div>
+    <div class="art-snowball-preloader-inner-ring"></div>
+    <div class="art-snowball-preloader-track-cover"></div>
+    <div class="art-snowball-preloader-ball">
+      <div class="art-snowball-preloader-ball-texture"></div>
+      <div class="art-snowball-preloader-ball-outer-shadow"></div>
+      <div class="art-snowball-preloader-ball-inner-shadow"></div>
+      <div class="art-snowball-preloader-ball-side-shadows"></div>
+    </div>
+  </div>
+</div>`}
+/>
+
+## CSS
+
+```css
+@layer css-art {
+  @keyframes art-snowball-preloader-ball {
+    from { transform: rotate(0) translateY(-6.5em); }
+    50% { transform: rotate(180deg) translateY(-6em); }
+    to { transform: rotate(360deg) translateY(-6.5em); }
+  }
+
+  @keyframes art-snowball-preloader-inner-shadow {
+    from { transform: rotate(0); }
+    to { transform: rotate(-360deg); }
+  }
+
+  @keyframes art-snowball-preloader-outer-shadow {
+    from { transform: rotate(20deg); }
+    to { transform: rotate(-340deg); }
+  }
+
+  @keyframes art-snowball-preloader-texture {
+    from { transform: translateX(0); }
+    to { transform: translateX(50%); }
+  }
+
+  @keyframes art-snowball-preloader-track-cover {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+  }
+
+  .art-snowball-preloader {
+    --art-snowball-preloader-size: 256px;
+    --art-snowball-preloader-bg: hsl(223, 90%, 95%);
+
+    font-size: calc(var(--art-snowball-preloader-size) / 16);
+    position: relative;
+    width: 16em;
+    height: 16em;
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .art-snowball-preloader-outer-ring,
+    .art-snowball-preloader-inner-ring,
+    .art-snowball-preloader-track-cover,
+    .art-snowball-preloader-ball,
+    .art-snowball-preloader-ball-inner-shadow,
+    .art-snowball-preloader-ball-side-shadows,
+    .art-snowball-preloader-ball-texture {
+      border-radius: 50%;
+    }
+
+    .art-snowball-preloader-outer-ring,
+    .art-snowball-preloader-inner-ring,
+    .art-snowball-preloader-track-cover,
+    .art-snowball-preloader-ball,
+    .art-snowball-preloader-ball-inner-shadow,
+    .art-snowball-preloader-ball-outer-shadow,
+    .art-snowball-preloader-ball-side-shadows,
+    .art-snowball-preloader-ball-texture,
+    .art-snowball-preloader-ball-texture::before {
+      position: absolute;
+    }
+
+    .art-snowball-preloader-ball {
+      animation: art-snowball-preloader-ball 3s linear infinite;
+      top: calc(50% - 1.25em);
+      left: calc(50% - 1.25em);
+      transform: rotate(0) translateY(-6.5em);
+      width: 2.5em;
+      height: 2.5em;
+    }
+
+    .art-snowball-preloader-ball-inner-shadow {
+      animation: art-snowball-preloader-inner-shadow 3s linear infinite;
+      box-shadow:
+        0 0.1em 0.2em hsla(0, 0%, 0%, 0.3),
+        0 0 0.2em hsla(0, 0%, 0%, 0.1) inset,
+        0 -1em 0.5em hsla(0, 0%, 0%, 0.15) inset;
+      width: 100%;
+      height: 100%;
+    }
+
+    .art-snowball-preloader-ball-outer-shadow {
+      animation: art-snowball-preloader-outer-shadow 3s linear infinite;
+      background-image: linear-gradient(hsla(0, 0%, 0%, 0.15), hsla(0, 0%, 0%, 0));
+      border-radius: 0 0 50% 50% / 0 0 100% 100%;
+      filter: blur(2px);
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 250%;
+      transform: rotate(20deg);
+      transform-origin: 50% 0;
+      z-index: -2;
+    }
+
+    .art-snowball-preloader-ball-side-shadows {
+      background-color: hsla(0, 0%, 0%, 0.1);
+      filter: blur(2px);
+      width: 100%;
+      height: 100%;
+      transform: scale(0.75, 1.1);
+      z-index: -1;
+    }
+
+    .art-snowball-preloader-ball-texture {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      transform: translate3d(0, 0, 0);
+
+      &::before {
+        animation: art-snowball-preloader-texture 0.25s linear infinite;
+        background: url(https://assets.codepen.io/416221/snow.jpg) 0 0 / 50% 100%;
+        content: "";
+        display: block;
+        filter: brightness(1.05);
+        top: 0;
+        right: 0;
+        width: 200%;
+        height: 100%;
+      }
+    }
+
+    .art-snowball-preloader-inner-ring {
+      box-shadow:
+        0 -0.25em 0.5em hsla(0, 0%, 100%, 0.4),
+        0 0.5em 0.75em hsla(0, 0%, 100%, 0.4) inset,
+        0 0.5em 0.375em hsla(0, 0%, 0%, 0.15),
+        0 -0.5em 0.75em hsla(0, 0%, 0%, 0.15) inset;
+      top: 2.375em;
+      left: 2.375em;
+      width: calc(100% - 4.75em);
+      height: calc(100% - 4.75em);
+    }
+
+    .art-snowball-preloader-outer-ring {
+      box-shadow:
+        0 -0.45em 0.375em hsla(0, 0%, 0%, 0.15),
+        0 0.5em 0.75em hsla(0, 0%, 0%, 0.15) inset,
+        0 0.25em 0.5em hsla(0, 0%, 100%, 0.4),
+        0 -0.5em 0.75em hsla(0, 0%, 100%, 0.4) inset;
+      top: 0.75em;
+      left: 0.75em;
+      width: calc(100% - 1.5em);
+      height: calc(100% - 1.5em);
+    }
+
+    .art-snowball-preloader-track-cover {
+      animation: art-snowball-preloader-track-cover 3s linear infinite;
+      background-image: conic-gradient(
+        var(--art-snowball-preloader-bg) 210deg,
+        oklch(from var(--art-snowball-preloader-bg) l c h / 0) 270deg
+      );
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  }
+
+  .art-snowball-preloader-sm { --art-snowball-preloader-size: 192px; }
+  .art-snowball-preloader-lg { --art-snowball-preloader-size: 384px; }
+}
+```
+
+## HTML Structure
+
+```html
+<div class="art-snowball-preloader">
+  <div class="art-snowball-preloader-outer-ring"></div>
+  <div class="art-snowball-preloader-inner-ring"></div>
+  <div class="art-snowball-preloader-track-cover"></div>
+  <div class="art-snowball-preloader-ball">
+    <div class="art-snowball-preloader-ball-texture"></div>
+    <div class="art-snowball-preloader-ball-outer-shadow"></div>
+    <div class="art-snowball-preloader-ball-inner-shadow"></div>
+    <div class="art-snowball-preloader-ball-side-shadows"></div>
+  </div>
+</div>
+```
+
+The DOM order matters: `outer-ring` and `inner-ring` render first (behind the ball), `track-cover` sits on top and hides the ball during its behind-the-ring segment, and `ball` with its four shadow/texture children renders last. All four ball children are `position: absolute` inside the `position: absolute` ball container.
+
+**Background matching:** The `conic-gradient` on `track-cover` must match the page background. Set `--art-snowball-preloader-bg` on the root element or a parent to match your page's background color. The transparent stop is derived automatically via CSS relative color syntax (`oklch(from var(--art-snowball-preloader-bg) l c h / 0)`), which requires Chrome 119+, Firefox 128+, or Safari 16.4+.
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--art-snowball-preloader-size` | `256px` | Overall container size; drives `font-size` which scales all internal `em` values |
+| `--art-snowball-preloader-bg` | `hsl(223, 90%, 95%)` | Background color used by the track-cover mask — must match the page background |
+
+## API Reference
+
+| Class | Description |
+|-------|-------------|
+| `.art-snowball-preloader` | Root container — sets size, font-size scaling, and background token |
+| `.art-snowball-preloader-sm` | Size modifier — sets size to `192px` |
+| `.art-snowball-preloader-lg` | Size modifier — sets size to `384px` |
+| `.art-snowball-preloader-outer-ring` | Outer concentric ring — depth via opposing `box-shadow` highlights and shadows |
+| `.art-snowball-preloader-inner-ring` | Inner concentric ring — same technique, creates a grooved track illusion |
+| `.art-snowball-preloader-track-cover` | Rotating `conic-gradient` overlay that hides the ball for ~60° of its orbit |
+| `.art-snowball-preloader-ball` | Orbiting ball container — animates via `rotate() translateY()` |
+| `.art-snowball-preloader-ball-texture` | Clipping container for the scrolling snow texture pseudo-element |
+| `.art-snowball-preloader-ball-outer-shadow` | Teardrop-shaped shadow cast below the ball, counter-rotates to stay downward |
+| `.art-snowball-preloader-ball-inner-shadow` | Inner shading and highlight on the ball surface, counter-rotates to stay consistent |
+| `.art-snowball-preloader-ball-side-shadows` | Blurred oval that adds dimensional side shading to the ball |
