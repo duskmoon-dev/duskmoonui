@@ -1,0 +1,40 @@
+/**
+ * Navbar Component Styles
+ * DuskMoonUI - Material Design 3 inspired navigation bar
+ */
+
+@layer components {
+  .navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 4rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  .navbar-start {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .navbar-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 0.5rem;
+  }
+
+  .navbar-end {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+}
