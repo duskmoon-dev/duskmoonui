@@ -17,6 +17,11 @@ export { ocean } from './ocean';
 export { forest } from './forest';
 export { sunset } from './sunset';
 
+// Re-export generated design tokens
+export { typeScale } from './generated/typography.generated';
+export type { TypeScaleEntry } from './generated/typography.generated';
+export { spacing, radius, elevation } from './generated/spacing.generated';
+
 /**
  * All available themes
  */
