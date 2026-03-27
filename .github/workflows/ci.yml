@@ -23,6 +23,28 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Checkout design repo for codegen
+        uses: actions/checkout@v4
+        with:
+          repository: duskmoon-dev/design
+          path: ../design
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install design dependencies
+        working-directory: ../design
+        run: bun install
+
+      - name: Generate TS themes from design tokens
+        working-directory: ../design
+        run: bun run scripts/codegen.ts generate --target typescript
+
+      - name: Staleness check — generated TS themes
+        run: |
+          if ! git diff --exit-code packages/core/src/themes/generated/; then
+            echo "ERROR: core TS generated files are stale. Run codegen from design repo and commit."
+            exit 1
+          fi
+
       - name: Type check core package
         run: bun run --filter @duskmoon-dev/core typecheck
 
