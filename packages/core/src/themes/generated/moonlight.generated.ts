@@ -1,45 +1,33 @@
-/**
- * Moonlight Theme (Dark)
- * A serene, elegant dark theme with cool tones and soft accents
- */
+// GENERATED — DO NOT EDIT
+// Source: tokens/moonlight.yaml
+// Generator: duskmoon-codegen v1.0.0
 
 import type { ThemeColors } from '../types';
 
 export const moonlight: ThemeColors = {
-  // Primary Colors - Soft Blue
-  primary: '217 91% 60%',          // #3b82f6 (Blue 500)
+  primary: '217 91% 60%',
   'primary-focus': '217 91% 70%',
   'primary-content': '0 0% 100%',
   'primary-container': '217 91% 20%',
   'on-primary-container': '217 91% 90%',
-
-  // Secondary Colors - Purple
-  secondary: '262 83% 70%',        // #a78bfa (Violet 400)
+  secondary: '262 83% 70%',
   'secondary-focus': '262 83% 80%',
   'secondary-content': '0 0% 100%',
   'secondary-container': '262 83% 25%',
   'on-secondary-container': '262 83% 90%',
-
-  // Tertiary Colors - Teal (NEW!)
-  tertiary: '173 80% 50%',         // #14b8a6 (Teal 500)
+  tertiary: '173 80% 50%',
   'tertiary-focus': '173 80% 60%',
   'tertiary-content': '0 0% 100%',
   'tertiary-container': '173 80% 20%',
   'on-tertiary-container': '173 80% 90%',
-
-  // Accent Colors - Cyan
-  accent: '189 94% 43%',           // #06b6d4 (Cyan 500)
+  accent: '189 94% 43%',
   'accent-focus': '189 94% 53%',
   'accent-content': '0 0% 100%',
-
-  // Neutral Colors
-  neutral: '220 13% 91%',          // #e5e7eb (Gray 200)
+  neutral: '220 13% 91%',
   'neutral-focus': '220 13% 85%',
   'neutral-content': '220 9% 15%',
   'neutral-variant': '220 9% 46%',
-
-  // Surface Colors (Material Design 3 Dark)
-  surface: '220 13% 11%',          // #1c1e22
+  surface: '220 13% 11%',
   'surface-dim': '220 13% 7%',
   'surface-bright': '220 13% 20%',
   'surface-container-lowest': '220 13% 7%',
@@ -50,34 +38,36 @@ export const moonlight: ThemeColors = {
   'surface-variant': '220 9% 20%',
   'on-surface': '220 13% 91%',
   'on-surface-variant': '220 9% 70%',
-
-  // Base Colors (Legacy support)
-  'base-100': '220 13% 11%',       // Dark background
-  'base-200': '220 13% 9%',        // Darker
-  'base-300': '220 13% 7%',        // Darkest
-  'base-content': '220 13% 91%',   // Light text
-
-  // Outline Colors
+  'base-100': '220 13% 11%',
+  'base-200': '220 13% 9%',
+  'base-300': '220 13% 7%',
+  'base-400': '220 9% 18%',
+  'base-500': '220 9% 26%',
+  'base-600': '220 9% 36%',
+  'base-700': '220 9% 50%',
+  'base-800': '220 9% 65%',
+  'base-900': '220 9% 78%',
+  'base-content': '220 13% 91%',
   outline: '220 9% 46%',
   'outline-variant': '220 9% 30%',
-
-  // Inverse Colors
   'inverse-surface': '220 13% 91%',
   'inverse-on-surface': '220 13% 11%',
   'inverse-primary': '217 91% 40%',
-
-  // Shadow & Scrim
   shadow: '0 0% 0%',
   scrim: '0 0% 0%',
-
-  // Semantic Colors
-  info: '199 89% 60%',             // Light Blue
+  info: '199 89% 60%',
   'info-content': '0 0% 100%',
-  success: '142 76% 60%',          // Light Green
+  'info-container': '199 89% 20%',
+  'on-info-container': '199 89% 85%',
+  success: '142 76% 60%',
   'success-content': '0 0% 100%',
-  warning: '38 92% 60%',           // Light Orange
+  'success-container': '142 76% 18%',
+  'on-success-container': '142 76% 82%',
+  warning: '38 92% 60%',
   'warning-content': '0 0% 100%',
-  error: '0 84% 70%',              // Light Red
+  'warning-container': '38 92% 20%',
+  'on-warning-container': '38 92% 88%',
+  error: '0 84% 70%',
   'error-content': '0 0% 100%',
   'error-container': '0 84% 25%',
   'on-error-container': '0 84% 90%',

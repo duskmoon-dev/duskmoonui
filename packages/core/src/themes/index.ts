@@ -3,16 +3,16 @@
  * Built-in theme definitions
  */
 
-import { sunshine } from './sunshine';
-import { moonlight } from './moonlight';
+import { sunshine } from './generated/sunshine.generated';
+import { moonlight } from './generated/moonlight.generated';
 import { ocean } from './ocean';
 import { forest } from './forest';
 import { sunset } from './sunset';
 import type { ThemeColors } from '../types';
 
-// Re-export individual themes
-export { sunshine } from './sunshine';
-export { moonlight } from './moonlight';
+// Re-export individual themes (sunshine/moonlight from codegen)
+export { sunshine } from './generated/sunshine.generated';
+export { moonlight } from './generated/moonlight.generated';
 export { ocean } from './ocean';
 export { forest } from './forest';
 export { sunset } from './sunset';
