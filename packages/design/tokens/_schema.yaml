@@ -1,0 +1,54 @@
+version: "1.0"
+color_format: "hsl"  # All values: "H S% L%"
+
+groups:
+  primary:
+    tokens: [primary, primary-focus, primary-content, primary-container, on-primary-container]
+  secondary:
+    tokens: [secondary, secondary-focus, secondary-content, secondary-container, on-secondary-container]
+  tertiary:
+    tokens: [tertiary, tertiary-focus, tertiary-content, tertiary-container, on-tertiary-container]
+  accent:
+    tokens: [accent, accent-focus, accent-content]
+  neutral:
+    tokens: [neutral, neutral-focus, neutral-content, neutral-variant]
+  surface:
+    tokens:
+      - surface
+      - surface-dim
+      - surface-bright
+      - surface-container-lowest
+      - surface-container-low
+      - surface-container
+      - surface-container-high
+      - surface-container-highest
+      - surface-variant
+      - on-surface
+      - on-surface-variant
+  base:
+    description: "Legacy DaisyUI compatibility + extended scale"
+    tokens: [base-100, base-200, base-300, base-400, base-500, base-600, base-700, base-800, base-900, base-content]
+  outline:
+    tokens: [outline, outline-variant]
+  inverse:
+    tokens: [inverse-surface, inverse-on-surface, inverse-primary]
+  shadow:
+    tokens: [shadow, scrim]
+  semantic:
+    tokens:
+      - info
+      - info-content
+      - info-container
+      - on-info-container
+      - success
+      - success-content
+      - success-container
+      - on-success-container
+      - warning
+      - warning-content
+      - warning-container
+      - on-warning-container
+      - error
+      - error-content
+      - error-container
+      - on-error-container

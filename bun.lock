@@ -58,7 +58,7 @@
     },
     "packages/core": {
       "name": "@duskmoon-dev/core",
-      "version": "1.11.1",
+      "version": "1.15.0",
       "devDependencies": {
         "@axe-core/playwright": "^4.8.0",
         "@playwright/test": "^1.40.0",
@@ -75,11 +75,19 @@
     },
     "packages/css-art": {
       "name": "@duskmoon-dev/css-art",
-      "version": "0.1.0",
+      "version": "1.15.0",
       "devDependencies": {
         "@types/bun": "latest",
         "lightningcss": "^1.22.0",
         "vitest": "^1.0.0",
+      },
+    },
+    "packages/design": {
+      "name": "@duskmoon-dev/design",
+      "version": "1.0.0",
+      "devDependencies": {
+        "@types/bun": "latest",
+        "yaml": "^2.4.0",
       },
     },
     "packages/docs": {
@@ -197,6 +205,8 @@
     "@duskmoon-dev/core": ["@duskmoon-dev/core@workspace:packages/core"],
 
     "@duskmoon-dev/css-art": ["@duskmoon-dev/css-art@workspace:packages/css-art"],
+
+    "@duskmoon-dev/design": ["@duskmoon-dev/design@workspace:packages/design"],
 
     "@duskmoon-dev/docs": ["@duskmoon-dev/docs@workspace:packages/docs"],
 
@@ -2022,6 +2032,8 @@
 
     "@duskmoon-dev/css-art/@types/bun": ["@types/bun@1.3.9", "", { "dependencies": { "bun-types": "1.3.9" } }, "sha512-KQ571yULOdWJiMH+RIWIOZ7B2RXQGpL1YQrBtLIV3FqDcCu6FsbFUBwhdKUlCKUpS3PJDsHlJ1QKlpxoVR+xtw=="],
 
+    "@duskmoon-dev/design/@types/bun": ["@types/bun@1.3.11", "", { "dependencies": { "bun-types": "1.3.11" } }, "sha512-5vPne5QvtpjGpsGYXiFyycfpDF2ECyPcTSsFBMa0fraoxiQyMJ3SmuQIGhzPg2WJuWxVBoxWJ2kClYTcw/4fAg=="],
+
     "@duskmoon-dev/docs/@types/bun": ["@types/bun@1.3.9", "", { "dependencies": { "bun-types": "1.3.9" } }, "sha512-KQ571yULOdWJiMH+RIWIOZ7B2RXQGpL1YQrBtLIV3FqDcCu6FsbFUBwhdKUlCKUpS3PJDsHlJ1QKlpxoVR+xtw=="],
 
     "@isaacs/cliui/string-width": ["string-width@5.1.2", "", { "dependencies": { "eastasianwidth": "^0.2.0", "emoji-regex": "^9.2.2", "strip-ansi": "^7.0.1" } }, "sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA=="],
@@ -2205,6 +2217,8 @@
     "@duskmoon-dev/core/@types/bun/bun-types": ["bun-types@1.3.9", "", { "dependencies": { "@types/node": "*" } }, "sha512-+UBWWOakIP4Tswh0Bt0QD0alpTY8cb5hvgiYeWCMet9YukHbzuruIEeXC2D7nMJPB12kbh8C7XJykSexEqGKJg=="],
 
     "@duskmoon-dev/css-art/@types/bun/bun-types": ["bun-types@1.3.9", "", { "dependencies": { "@types/node": "*" } }, "sha512-+UBWWOakIP4Tswh0Bt0QD0alpTY8cb5hvgiYeWCMet9YukHbzuruIEeXC2D7nMJPB12kbh8C7XJykSexEqGKJg=="],
+
+    "@duskmoon-dev/design/@types/bun/bun-types": ["bun-types@1.3.11", "", { "dependencies": { "@types/node": "*" } }, "sha512-1KGPpoxQWl9f6wcZh57LvrPIInQMn2TQ7jsgxqpRzg+l0QPOFvJVH7HmvHo/AiPgwXy+/Thf6Ov3EdVn1vOabg=="],
 
     "@duskmoon-dev/docs/@types/bun/bun-types": ["bun-types@1.3.9", "", { "dependencies": { "@types/node": "*" } }, "sha512-+UBWWOakIP4Tswh0Bt0QD0alpTY8cb5hvgiYeWCMet9YukHbzuruIEeXC2D7nMJPB12kbh8C7XJykSexEqGKJg=="],
 
@@ -2468,7 +2482,7 @@
 
     "@astrojs/tailwind/tailwindcss/chokidar/readdirp/picomatch": ["picomatch@2.3.1", "", {}, "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA=="],
 
-    "duskmoonui-astro-starter/@astrojs/check/@astrojs/language-server/volar-service-emmet/@emmetio/css-parser": ["@emmetio/css-parser@github:ramya-rao-a/css-parser#370c480", { "dependencies": { "@emmetio/stream-reader": "^2.2.0", "@emmetio/stream-reader-utils": "^0.1.0" } }, "ramya-rao-a-css-parser-370c480", "sha512-dYkDEiBYU6kAT6FMOUEZM5QsIOvOJ4zVC5IYTRDizfhEuAptmf+tXSaGmJSRy4HEgqITT9Af7FZxbskdg6E2xg=="],
+    "duskmoonui-astro-starter/@astrojs/check/@astrojs/language-server/volar-service-emmet/@emmetio/css-parser": ["@emmetio/css-parser@github:ramya-rao-a/css-parser#370c480", { "dependencies": { "@emmetio/stream-reader": "^2.2.0", "@emmetio/stream-reader-utils": "^0.1.0" } }, "ramya-rao-a-css-parser-370c480"],
 
     "duskmoonui-astro-starter/astro/shiki/@shikijs/engine-javascript/oniguruma-to-es": ["oniguruma-to-es@2.3.0", "", { "dependencies": { "emoji-regex-xs": "^1.0.0", "regex": "^5.1.1", "regex-recursion": "^5.1.1" } }, "sha512-bwALDxriqfKGfUufKGGepCzu9x7nJQuoRoAFp4AnwehhC2crqrDIAP/uN2qdlsAvSMpeRC3+Yzhqc7hLmle5+g=="],
 
