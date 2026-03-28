@@ -116,6 +116,7 @@ const componentFiles = [
   'bottomsheet',
   'button',
   'circle-menu',
+  'code-block',
   'card',
   'cascader',
   'checkbox',
