@@ -87,6 +87,7 @@
  * ============================================ */
 
 @import "./bottom-navigation.css";
+@import "./circle-menu.css";
 @import "./drawer.css";
 @import "./nested-menu.css";
 @import "./stepper.css";

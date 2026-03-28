@@ -115,6 +115,7 @@ const componentFiles = [
   'bottom-navigation',
   'bottomsheet',
   'button',
+  'circle-menu',
   'card',
   'cascader',
   'checkbox',

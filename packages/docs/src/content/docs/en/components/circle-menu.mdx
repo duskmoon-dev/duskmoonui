@@ -1,0 +1,263 @@
+---
+title: Circle Menu
+description: CSS-only radial navigation menu that fans items out in a circle from a central toggle button
+category: components
+order: 20
+published: true
+tags: ['circle-menu', 'radial', 'navigation', 'menu', 'css-only', 'components', 'material-design']
+---
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Circle Menu
+
+Circle menus fan navigation items out in a radial pattern from a central toggle button. Built entirely with CSS — no JavaScript required. The toggle is a hidden checkbox; clicking the circular button shows or hides up to 6 items evenly distributed around it.
+
+## Basic Usage
+
+A circle menu with 6 items. The toggle button uses a hamburger icon that animates to an X when open:
+
+<ComponentShowcase title="Basic Circle Menu" code={`<nav class="circle-menu" style="margin: 8rem auto; display: flex; justify-content: center; align-items: center; height: 12rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-basic">
+  <label class="circle-menu-label" for="demo-cm-basic"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">🐱</a></li>
+    <li class="circle-menu-item"><a href="#">🍪</a></li>
+    <li class="circle-menu-item"><a href="#">🐦</a></li>
+    <li class="circle-menu-item"><a href="#">🦋</a></li>
+    <li class="circle-menu-item"><a href="#">💎</a></li>
+    <li class="circle-menu-item"><a href="#">🥂</a></li>
+  </ul>
+</nav>`} />
+
+## Fewer Items
+
+The radial positions still evenly space up to 6 items. Fewer items create a partial arc:
+
+<ComponentShowcase title="Three Items" code={`<nav class="circle-menu" style="margin: 8rem auto; display: flex; justify-content: center; align-items: center; height: 12rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-three">
+  <label class="circle-menu-label" for="demo-cm-three"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">🏠</a></li>
+    <li class="circle-menu-item"><a href="#">⚙️</a></li>
+    <li class="circle-menu-item"><a href="#">👤</a></li>
+  </ul>
+</nav>`} />
+
+## Color Variants
+
+### Primary
+
+<ComponentShowcase title="Primary" code={`<nav class="circle-menu circle-menu-primary" style="margin: 8rem auto; display: flex; justify-content: center; align-items: center; height: 12rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-primary">
+  <label class="circle-menu-label" for="demo-cm-primary"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">✏️</a></li>
+    <li class="circle-menu-item"><a href="#">📋</a></li>
+    <li class="circle-menu-item"><a href="#">🔍</a></li>
+    <li class="circle-menu-item"><a href="#">📎</a></li>
+    <li class="circle-menu-item"><a href="#">🗑️</a></li>
+    <li class="circle-menu-item"><a href="#">📤</a></li>
+  </ul>
+</nav>`} />
+
+### Secondary
+
+<ComponentShowcase title="Secondary" code={`<nav class="circle-menu circle-menu-secondary" style="margin: 8rem auto; display: flex; justify-content: center; align-items: center; height: 12rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-secondary">
+  <label class="circle-menu-label" for="demo-cm-secondary"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">✏️</a></li>
+    <li class="circle-menu-item"><a href="#">📋</a></li>
+    <li class="circle-menu-item"><a href="#">🔍</a></li>
+    <li class="circle-menu-item"><a href="#">📎</a></li>
+    <li class="circle-menu-item"><a href="#">🗑️</a></li>
+    <li class="circle-menu-item"><a href="#">📤</a></li>
+  </ul>
+</nav>`} />
+
+### Tertiary
+
+<ComponentShowcase title="Tertiary" code={`<nav class="circle-menu circle-menu-tertiary" style="margin: 8rem auto; display: flex; justify-content: center; align-items: center; height: 12rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-tertiary">
+  <label class="circle-menu-label" for="demo-cm-tertiary"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">✏️</a></li>
+    <li class="circle-menu-item"><a href="#">📋</a></li>
+    <li class="circle-menu-item"><a href="#">🔍</a></li>
+    <li class="circle-menu-item"><a href="#">📎</a></li>
+    <li class="circle-menu-item"><a href="#">🗑️</a></li>
+    <li class="circle-menu-item"><a href="#">📤</a></li>
+  </ul>
+</nav>`} />
+
+### Semantic Variants
+
+<ComponentShowcase title="Info, Success, Warning, Error" code={`<div style="display: flex; gap: 10rem; flex-wrap: wrap; justify-content: center; padding: 8rem 2rem;">
+  <nav class="circle-menu circle-menu-info">
+    <input type="checkbox" class="circle-menu-toggler" id="demo-cm-info">
+    <label class="circle-menu-label" for="demo-cm-info"></label>
+    <ul class="circle-menu-list">
+      <li class="circle-menu-item"><a href="#">ℹ️</a></li>
+      <li class="circle-menu-item"><a href="#">📖</a></li>
+      <li class="circle-menu-item"><a href="#">🔗</a></li>
+    </ul>
+  </nav>
+  <nav class="circle-menu circle-menu-success">
+    <input type="checkbox" class="circle-menu-toggler" id="demo-cm-success">
+    <label class="circle-menu-label" for="demo-cm-success"></label>
+    <ul class="circle-menu-list">
+      <li class="circle-menu-item"><a href="#">✅</a></li>
+      <li class="circle-menu-item"><a href="#">💾</a></li>
+      <li class="circle-menu-item"><a href="#">📤</a></li>
+    </ul>
+  </nav>
+  <nav class="circle-menu circle-menu-warning">
+    <input type="checkbox" class="circle-menu-toggler" id="demo-cm-warning">
+    <label class="circle-menu-label" for="demo-cm-warning"></label>
+    <ul class="circle-menu-list">
+      <li class="circle-menu-item"><a href="#">⚠️</a></li>
+      <li class="circle-menu-item"><a href="#">🔔</a></li>
+      <li class="circle-menu-item"><a href="#">⚡</a></li>
+    </ul>
+  </nav>
+  <nav class="circle-menu circle-menu-error">
+    <input type="checkbox" class="circle-menu-toggler" id="demo-cm-error">
+    <label class="circle-menu-label" for="demo-cm-error"></label>
+    <ul class="circle-menu-list">
+      <li class="circle-menu-item"><a href="#">🗑️</a></li>
+      <li class="circle-menu-item"><a href="#">🚫</a></li>
+      <li class="circle-menu-item"><a href="#">⛔</a></li>
+    </ul>
+  </nav>
+</div>`} />
+
+## Size Variants
+
+### Small
+
+<ComponentShowcase title="Small" code={`<nav class="circle-menu circle-menu-sm" style="margin: 7rem auto; display: flex; justify-content: center; align-items: center; height: 10rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-sm">
+  <label class="circle-menu-label" for="demo-cm-sm"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">🏠</a></li>
+    <li class="circle-menu-item"><a href="#">⚙️</a></li>
+    <li class="circle-menu-item"><a href="#">👤</a></li>
+    <li class="circle-menu-item"><a href="#">🔔</a></li>
+    <li class="circle-menu-item"><a href="#">📧</a></li>
+    <li class="circle-menu-item"><a href="#">🔍</a></li>
+  </ul>
+</nav>`} />
+
+### Default
+
+<ComponentShowcase title="Default" code={`<nav class="circle-menu" style="margin: 8rem auto; display: flex; justify-content: center; align-items: center; height: 12rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-md">
+  <label class="circle-menu-label" for="demo-cm-md"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">🏠</a></li>
+    <li class="circle-menu-item"><a href="#">⚙️</a></li>
+    <li class="circle-menu-item"><a href="#">👤</a></li>
+    <li class="circle-menu-item"><a href="#">🔔</a></li>
+    <li class="circle-menu-item"><a href="#">📧</a></li>
+    <li class="circle-menu-item"><a href="#">🔍</a></li>
+  </ul>
+</nav>`} />
+
+### Large
+
+<ComponentShowcase title="Large" code={`<nav class="circle-menu circle-menu-lg" style="margin: 9rem auto; display: flex; justify-content: center; align-items: center; height: 14rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-lg">
+  <label class="circle-menu-label" for="demo-cm-lg"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="#">🏠</a></li>
+    <li class="circle-menu-item"><a href="#">⚙️</a></li>
+    <li class="circle-menu-item"><a href="#">👤</a></li>
+    <li class="circle-menu-item"><a href="#">🔔</a></li>
+    <li class="circle-menu-item"><a href="#">📧</a></li>
+    <li class="circle-menu-item"><a href="#">🔍</a></li>
+  </ul>
+</nav>`} />
+
+## Using Buttons
+
+Use `<button>` elements instead of `<a>` for action items:
+
+<ComponentShowcase title="Button Items" code={`<nav class="circle-menu circle-menu-primary" style="margin: 8rem auto; display: flex; justify-content: center; align-items: center; height: 12rem;">
+  <input type="checkbox" class="circle-menu-toggler" id="demo-cm-btn">
+  <label class="circle-menu-label" for="demo-cm-btn"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><button type="button" onclick="alert('Edit')">✏️</button></li>
+    <li class="circle-menu-item"><button type="button" onclick="alert('Copy')">📋</button></li>
+    <li class="circle-menu-item"><button type="button" onclick="alert('Search')">🔍</button></li>
+    <li class="circle-menu-item"><button type="button" onclick="alert('Attach')">📎</button></li>
+    <li class="circle-menu-item"><button type="button" onclick="alert('Delete')">🗑️</button></li>
+    <li class="circle-menu-item"><button type="button" onclick="alert('Share')">📤</button></li>
+  </ul>
+</nav>`} />
+
+## API Reference
+
+### Classes
+
+| Class | Description |
+|-------|-------------|
+| `circle-menu` | Root container (applied to `<nav>`) |
+| `circle-menu-toggler` | Hidden checkbox input that controls open/close state |
+| `circle-menu-label` | Visible circular toggle button (label for the checkbox) |
+| `circle-menu-list` | The `<ul>` holding menu items |
+| `circle-menu-item` | Each `<li>` menu item |
+
+### Color Variants
+
+Apply to the `circle-menu` container:
+
+| Class | Description |
+|-------|-------------|
+| `circle-menu-primary` | Primary color scheme |
+| `circle-menu-secondary` | Secondary color scheme |
+| `circle-menu-tertiary` | Tertiary color scheme |
+| `circle-menu-info` | Info color scheme |
+| `circle-menu-success` | Success color scheme |
+| `circle-menu-warning` | Warning color scheme |
+| `circle-menu-error` | Error color scheme |
+
+### Size Variants
+
+Apply to the `circle-menu` container:
+
+| Class | Toggle size | Item size | Radius |
+|-------|-------------|-----------|--------|
+| `circle-menu-sm` | 2.5rem | 2.5rem | 4.5rem |
+| *(default)* | 3rem | 3rem | 5.5rem |
+| `circle-menu-lg` | 3.5rem | 3.5rem | 6.5rem |
+
+### CSS Custom Properties
+
+These properties are set on `.circle-menu` and can be overridden for custom sizing:
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--circle-menu-size` | `3rem` | Toggle button diameter |
+| `--circle-menu-item-size` | `3rem` | Menu item diameter |
+| `--circle-menu-radius` | `5.5rem` | Distance from center to items |
+| `--circle-menu-icon-size` | `1.25rem` | Font size inside items |
+| `--circle-menu-bar-width` | `1.125rem` | Hamburger bar width |
+| `--circle-menu-bar-height` | `0.1875rem` | Hamburger bar height |
+| `--circle-menu-bar-gap` | `0.375rem` | Gap between hamburger bars |
+
+### HTML Structure
+
+```html
+<nav class="circle-menu">
+  <input type="checkbox" class="circle-menu-toggler" id="my-menu">
+  <label class="circle-menu-label" for="my-menu"></label>
+  <ul class="circle-menu-list">
+    <li class="circle-menu-item"><a href="/path">icon</a></li>
+    <!-- up to 6 items -->
+  </ul>
+</nav>
+```
+
+> **Note:** The `id` on the input and the `for` on the label must match. Each circle menu on a page needs a unique id.
+
+> **Overflow:** Menu items extend beyond the container bounds when open. Ensure the parent element does not have `overflow: hidden`.
