@@ -27,15 +27,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: duskmoon-dev/design
-          path: ../design
+          path: design
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install design dependencies
-        working-directory: ../design
+        working-directory: design
         run: bun install
 
       - name: Generate TS themes from design tokens
-        working-directory: ../design
+        working-directory: design
         run: bun run scripts/codegen.ts generate --target typescript
 
       - name: Staleness check — generated TS themes
