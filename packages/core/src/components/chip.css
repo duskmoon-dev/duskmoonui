@@ -16,7 +16,7 @@
     border-radius: 0.5rem;
     background-color: var(--color-surface-container);
     color: var(--color-on-surface);
-    border: 1px solid transparent;
+    border: 1px solid currentColor;
     cursor: default;
     transition: all 150ms ease-in-out;
   }
@@ -43,6 +43,7 @@
   .chip-primary {
     background-color: var(--color-primary);
     color: var(--color-primary-content);
+    border-color: var(--color-primary);
   }
 
   .chip-primary:hover {
@@ -52,6 +53,7 @@
   .chip-secondary {
     background-color: var(--color-secondary);
     color: var(--color-secondary-content);
+    border-color: var(--color-secondary);
   }
 
   .chip-secondary:hover {
@@ -61,6 +63,7 @@
   .chip-tertiary {
     background-color: var(--color-tertiary);
     color: var(--color-tertiary-content);
+    border-color: var(--color-tertiary);
   }
 
   .chip-tertiary:hover {
@@ -70,6 +73,7 @@
   .chip-info {
     background-color: var(--color-info);
     color: var(--color-info-content);
+    border-color: var(--color-info);
   }
 
   .chip-info:hover {
@@ -79,6 +83,7 @@
   .chip-success {
     background-color: var(--color-success);
     color: var(--color-success-content);
+    border-color: var(--color-success);
   }
 
   .chip-success:hover {
@@ -88,6 +93,7 @@
   .chip-warning {
     background-color: var(--color-warning);
     color: var(--color-warning-content);
+    border-color: var(--color-warning);
   }
 
   .chip-warning:hover {
@@ -97,6 +103,7 @@
   .chip-error {
     background-color: var(--color-error);
     color: var(--color-error-content);
+    border-color: var(--color-error);
   }
 
   .chip-error:hover {
@@ -114,7 +121,6 @@
   }
 
   .chip-outlined.chip-primary {
-    border-color: var(--color-primary);
     color: var(--color-primary);
   }
 
@@ -123,7 +129,6 @@
   }
 
   .chip-outlined.chip-secondary {
-    border-color: var(--color-secondary);
     color: var(--color-secondary);
   }
 
@@ -132,7 +137,6 @@
   }
 
   .chip-outlined.chip-tertiary {
-    border-color: var(--color-tertiary);
     color: var(--color-tertiary);
   }
 
@@ -141,7 +145,6 @@
   }
 
   .chip-outlined.chip-info {
-    border-color: var(--color-info);
     color: var(--color-info);
   }
 
@@ -150,7 +153,6 @@
   }
 
   .chip-outlined.chip-success {
-    border-color: var(--color-success);
     color: var(--color-success);
   }
 
@@ -159,7 +161,6 @@
   }
 
   .chip-outlined.chip-warning {
-    border-color: var(--color-warning);
     color: var(--color-warning);
   }
 
@@ -168,7 +169,6 @@
   }
 
   .chip-outlined.chip-error {
-    border-color: var(--color-error);
     color: var(--color-error);
   }
 
@@ -179,6 +179,7 @@
   /* Tonal/Soft Variant */
   .chip-tonal {
     background-color: var(--color-surface-container-high);
+    border-color: transparent;
   }
 
   .chip-tonal.chip-primary {
@@ -298,6 +299,7 @@
   .chip-selected {
     background-color: var(--color-primary);
     color: var(--color-primary-content);
+    border-color: var(--color-primary);
   }
 
   .chip-selected.chip-outlined {
