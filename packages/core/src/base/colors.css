@@ -141,6 +141,19 @@
   --shadow-2xl: 0 25px 50px -12px color-mix(in srgb, var(--color-shadow) 25%, transparent);
 
   /* ============================================
+   * MD3 ELEVATION LEVELS (6 semantic tokens)
+   * Maps MD3 elevation levels (0–5) to shadow effects
+   * level0=none, level1=xs, level2=sm, level3=md, level4=lg, level5=xl
+   * ============================================ */
+
+  --shadow-elevation-0: none;
+  --shadow-elevation-1: var(--shadow-xs);
+  --shadow-elevation-2: var(--shadow-sm);
+  --shadow-elevation-3: var(--shadow-md);
+  --shadow-elevation-4: var(--shadow-lg);
+  --shadow-elevation-5: var(--shadow-xl);
+
+  /* ============================================
    * SHAPE / BORDER RADIUS (8 tokens)
    * Values provided by generated/spacing.css
    * ============================================ */
@@ -275,4 +288,12 @@
   .bg-inverse-surface { background-color: var(--color-inverse-surface); }
   .text-inverse-on-surface { color: var(--color-inverse-on-surface); }
   .text-inverse-primary { color: var(--color-inverse-primary); }
+
+  /* MD3 Elevation Utilities — semantic shadow levels */
+  .elevation-0 { box-shadow: var(--shadow-elevation-0); }
+  .elevation-1 { box-shadow: var(--shadow-elevation-1); }
+  .elevation-2 { box-shadow: var(--shadow-elevation-2); }
+  .elevation-3 { box-shadow: var(--shadow-elevation-3); }
+  .elevation-4 { box-shadow: var(--shadow-elevation-4); }
+  .elevation-5 { box-shadow: var(--shadow-elevation-5); }
 }

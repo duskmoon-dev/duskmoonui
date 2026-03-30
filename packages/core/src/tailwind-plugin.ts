@@ -119,6 +119,13 @@ const themeShadows = {
   'lg': 'var(--shadow-lg)',
   'xl': 'var(--shadow-xl)',
   '2xl': 'var(--shadow-2xl)',
+  // MD3 elevation levels (semantic shadows)
+  'elevation-0': 'var(--shadow-elevation-0)',
+  'elevation-1': 'var(--shadow-elevation-1)',
+  'elevation-2': 'var(--shadow-elevation-2)',
+  'elevation-3': 'var(--shadow-elevation-3)',
+  'elevation-4': 'var(--shadow-elevation-4)',
+  'elevation-5': 'var(--shadow-elevation-5)',
 };
 
 // Shape tokens — reference CSS custom properties from @theme in colors.css

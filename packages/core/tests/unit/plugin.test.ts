@@ -77,6 +77,26 @@ describe('Tailwind Plugin Registration', () => {
     });
   });
 
+  describe('MD3 Elevation shadows', () => {
+    it('should include elevation shadow tokens in themeShadows', () => {
+      expect(pluginSrc).toContain("'elevation-0'");
+      expect(pluginSrc).toContain("'elevation-1'");
+      expect(pluginSrc).toContain("'elevation-2'");
+      expect(pluginSrc).toContain("'elevation-3'");
+      expect(pluginSrc).toContain("'elevation-4'");
+      expect(pluginSrc).toContain("'elevation-5'");
+    });
+
+    it('should reference elevation shadow CSS custom properties', () => {
+      expect(pluginSrc).toContain('var(--shadow-elevation-0)');
+      expect(pluginSrc).toContain('var(--shadow-elevation-1)');
+      expect(pluginSrc).toContain('var(--shadow-elevation-2)');
+      expect(pluginSrc).toContain('var(--shadow-elevation-3)');
+      expect(pluginSrc).toContain('var(--shadow-elevation-4)');
+      expect(pluginSrc).toContain('var(--shadow-elevation-5)');
+    });
+  });
+
   describe('Color tokens', () => {
     it('should include shadow and scrim color tokens', () => {
       expect(pluginSrc).toContain("'shadow'");
