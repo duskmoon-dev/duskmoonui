@@ -312,6 +312,20 @@ describe('Form Group Component', () => {
     });
   });
 
+  describe('Switch Validation', () => {
+    it('should style switch :user-invalid', () => {
+      expect(css).toContain('.switch:user-invalid');
+    });
+
+    it('should apply error focus ring on switch :user-invalid', () => {
+      expect(css).toMatch(/\.switch:user-invalid:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should style switch :user-valid when checked', () => {
+      expect(css).toContain('.switch:user-valid:checked');
+    });
+  });
+
   describe('File Input Validation', () => {
     it('should style file-input :user-invalid', () => {
       expect(css).toContain('.file-input:user-invalid');

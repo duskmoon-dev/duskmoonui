@@ -435,6 +435,20 @@
     background-color: var(--color-success);
   }
 
+  /* Switch — validation pseudo-classes (required but unchecked) */
+  .switch:user-invalid {
+    border-color: var(--color-error);
+  }
+
+  .switch:user-invalid:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
+  }
+
+  .switch:user-valid:checked {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+  }
+
   /* File Input — validation pseudo-classes */
   .file-input:user-invalid {
     border-color: var(--color-error);
