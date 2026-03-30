@@ -50,50 +50,12 @@ describe('Tailwind Plugin Registration', () => {
   });
 
   describe('Shadow tokens', () => {
-    it('should define themeShadows object', () => {
-      expect(pluginSrc).toContain('themeShadows');
-    });
-
-    it('should include all standard shadow sizes', () => {
-      expect(pluginSrc).toContain("'xs'");
-      expect(pluginSrc).toContain("'sm'");
-      expect(pluginSrc).toContain("'md'");
-      expect(pluginSrc).toContain("'lg'");
-      expect(pluginSrc).toContain("'xl'");
-      expect(pluginSrc).toContain("'2xl'");
-    });
-
-    it('should reference CSS custom properties for shadows', () => {
-      expect(pluginSrc).toContain('var(--shadow-xs)');
-      expect(pluginSrc).toContain('var(--shadow-sm)');
-      expect(pluginSrc).toContain('var(--shadow-md)');
-      expect(pluginSrc).toContain('var(--shadow-lg)');
-      expect(pluginSrc).toContain('var(--shadow-xl)');
-      expect(pluginSrc).toContain('var(--shadow-2xl)');
-    });
-
-    it('should register shadows in boxShadow theme extension', () => {
-      expect(pluginSrc).toContain('boxShadow: themeShadows');
-    });
-  });
-
-  describe('MD3 Elevation shadows', () => {
-    it('should include elevation shadow tokens in themeShadows', () => {
-      expect(pluginSrc).toContain("'elevation-0'");
-      expect(pluginSrc).toContain("'elevation-1'");
-      expect(pluginSrc).toContain("'elevation-2'");
-      expect(pluginSrc).toContain("'elevation-3'");
-      expect(pluginSrc).toContain("'elevation-4'");
-      expect(pluginSrc).toContain("'elevation-5'");
-    });
-
-    it('should reference elevation shadow CSS custom properties', () => {
-      expect(pluginSrc).toContain('var(--shadow-elevation-0)');
-      expect(pluginSrc).toContain('var(--shadow-elevation-1)');
-      expect(pluginSrc).toContain('var(--shadow-elevation-2)');
-      expect(pluginSrc).toContain('var(--shadow-elevation-3)');
-      expect(pluginSrc).toContain('var(--shadow-elevation-4)');
-      expect(pluginSrc).toContain('var(--shadow-elevation-5)');
+    it('should note that shadow tokens are handled by @theme (not plugin)', () => {
+      // Shadow tokens (--shadow-*) are registered in @theme in colors.css,
+      // so Tailwind v4 generates shadow-* utilities natively.
+      // The plugin should NOT have a boxShadow extend.
+      expect(pluginSrc).not.toContain('boxShadow');
+      expect(pluginSrc).not.toContain('themeShadows');
     });
   });
 
@@ -107,23 +69,12 @@ describe('Tailwind Plugin Registration', () => {
   });
 
   describe('Shape tokens', () => {
-    it('should define themeRadius object', () => {
-      expect(pluginSrc).toContain('themeRadius');
-    });
-
-    it('should map radius tokens to CSS custom properties', () => {
-      expect(pluginSrc).toContain('var(--radius-none)');
-      expect(pluginSrc).toContain('var(--radius-xs)');
-      expect(pluginSrc).toContain('var(--radius-sm)');
-      expect(pluginSrc).toContain('var(--radius-md)');
-      expect(pluginSrc).toContain('var(--radius-lg)');
-      expect(pluginSrc).toContain('var(--radius-xl)');
-      expect(pluginSrc).toContain('var(--radius-2xl)');
-      expect(pluginSrc).toContain('var(--radius-full)');
-    });
-
-    it('should register radius in borderRadius theme extension', () => {
-      expect(pluginSrc).toContain('borderRadius: themeRadius');
+    it('should note that radius tokens are handled by @theme (not plugin)', () => {
+      // Radius tokens (--radius-*) are registered in @theme in colors.css,
+      // so Tailwind v4 generates rounded-* utilities natively.
+      // The plugin should NOT have a borderRadius extend.
+      expect(pluginSrc).not.toContain('borderRadius');
+      expect(pluginSrc).not.toContain('themeRadius');
     });
   });
 });

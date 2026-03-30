@@ -145,7 +145,9 @@ describe('Color Token Generation', () => {
   });
 
   describe('Shadow Tokens', () => {
-    it('should define theme-aware shadow tokens', () => {
+    it('should define theme-aware shadow tokens in @theme', () => {
+      // Shadow tokens are registered in @theme so Tailwind v4 generates
+      // shadow-* utilities natively (no plugin boxShadow extend needed)
       expect(colorsCSS).toContain('--shadow-xs:');
       expect(colorsCSS).toContain('--shadow-sm:');
       expect(colorsCSS).toContain('--shadow-md:');

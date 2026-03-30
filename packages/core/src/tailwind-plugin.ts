@@ -111,34 +111,9 @@ const themeColors = {
   'shadow': 'var(--color-shadow)',
 };
 
-// Shadow tokens — reference CSS custom properties from @theme in colors.css
-const themeShadows = {
-  'xs': 'var(--shadow-xs)',
-  'sm': 'var(--shadow-sm)',
-  'md': 'var(--shadow-md)',
-  'lg': 'var(--shadow-lg)',
-  'xl': 'var(--shadow-xl)',
-  '2xl': 'var(--shadow-2xl)',
-  // MD3 elevation levels (semantic shadows)
-  'elevation-0': 'var(--shadow-elevation-0)',
-  'elevation-1': 'var(--shadow-elevation-1)',
-  'elevation-2': 'var(--shadow-elevation-2)',
-  'elevation-3': 'var(--shadow-elevation-3)',
-  'elevation-4': 'var(--shadow-elevation-4)',
-  'elevation-5': 'var(--shadow-elevation-5)',
-};
-
-// Shape tokens — reference CSS custom properties from @theme in colors.css
-const themeRadius = {
-  'none': 'var(--radius-none)',
-  'xs': 'var(--radius-xs)',
-  'sm': 'var(--radius-sm)',
-  'md': 'var(--radius-md)',
-  'lg': 'var(--radius-lg)',
-  'xl': 'var(--radius-xl)',
-  '2xl': 'var(--radius-2xl)',
-  'full': 'var(--radius-full)',
-};
+// Shadow and shape tokens are registered in @theme (colors.css) — Tailwind v4
+// generates shadow-* and rounded-* utilities natively from the --shadow-* and
+// --radius-* namespaces, so no plugin extend is needed for those.
 
 /**
  * DuskMoonUI Tailwind CSS v4 Plugin
@@ -163,12 +138,12 @@ const duskmoonPlugin: ReturnType<typeof plugin> = plugin(
     );
   },
   {
-    // Extend Tailwind's theme with our color tokens and shadow tokens
+    // Extend Tailwind's theme with our color tokens.
+    // Shadow (--shadow-*) and radius (--radius-*) tokens are registered in @theme
+    // (colors.css) and picked up by Tailwind v4 natively — no extend needed.
     theme: {
       extend: {
         colors: themeColors,
-        boxShadow: themeShadows,
-        borderRadius: themeRadius,
       },
     },
   }

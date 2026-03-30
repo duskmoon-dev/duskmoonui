@@ -129,26 +129,11 @@
   --color-scrim: initial;
 
   /* ============================================
-   * SHAPE / BORDER RADIUS (8 tokens)
-   * Values provided by generated/spacing.css
+   * ELEVATION SHADOWS (6 + 6 tokens)
+   * Computed from --color-shadow (theme-provided) via color-mix()
+   * Registered in @theme so Tailwind v4 generates shadow-* utilities natively
    * ============================================ */
 
-  --radius-none: initial;
-  --radius-xs: initial;
-  --radius-sm: initial;
-  --radius-md: initial;
-  --radius-lg: initial;
-  --radius-xl: initial;
-  --radius-2xl: initial;
-  --radius-full: initial;
-}
-
-/* ============================================
- * ELEVATION SHADOWS
- * Computed from --color-shadow (theme-provided) via color-mix()
- * Outside @theme: derived values, not theme declarations
- * ============================================ */
-:root {
   --shadow-xs: 0 1px 2px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent);
   --shadow-sm: 0 1px 3px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 1px 2px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent);
   --shadow-md: 0 4px 6px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 10%, transparent);
@@ -163,6 +148,20 @@
   --shadow-elevation-3: var(--shadow-md);
   --shadow-elevation-4: var(--shadow-lg);
   --shadow-elevation-5: var(--shadow-xl);
+
+  /* ============================================
+   * SHAPE / BORDER RADIUS (8 tokens)
+   * Values provided by generated/spacing.css
+   * ============================================ */
+
+  --radius-none: initial;
+  --radius-xs: initial;
+  --radius-sm: initial;
+  --radius-md: initial;
+  --radius-lg: initial;
+  --radius-xl: initial;
+  --radius-2xl: initial;
+  --radius-full: initial;
 }
 
 /* Utility classes for colors — token references + color-mix() for states */
