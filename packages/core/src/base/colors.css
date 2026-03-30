@@ -6,29 +6,49 @@
 
 @theme {
   /* ============================================
-   * BRAND COLORS (12 tokens - focus tokens removed, use color-mix())
+   * BRAND COLORS (15 tokens — includes focus from codegen)
    * ============================================ */
 
   /* Primary Color Family */
   --color-primary: initial;
+  --color-primary-focus: initial;
   --color-primary-content: initial;
   --color-primary-container: initial;
   --color-on-primary-container: initial;
 
   /* Secondary Color Family */
   --color-secondary: initial;
+  --color-secondary-focus: initial;
   --color-secondary-content: initial;
   --color-secondary-container: initial;
   --color-on-secondary-container: initial;
 
   /* Tertiary Color Family */
   --color-tertiary: initial;
+  --color-tertiary-focus: initial;
   --color-tertiary-content: initial;
   --color-tertiary-container: initial;
   --color-on-tertiary-container: initial;
 
   /* ============================================
-   * SURFACE COLORS (10 tokens)
+   * ACCENT COLORS (3 tokens)
+   * ============================================ */
+
+  --color-accent: initial;
+  --color-accent-focus: initial;
+  --color-accent-content: initial;
+
+  /* ============================================
+   * NEUTRAL COLORS (4 tokens)
+   * ============================================ */
+
+  --color-neutral: initial;
+  --color-neutral-focus: initial;
+  --color-neutral-content: initial;
+  --color-neutral-variant: initial;
+
+  /* ============================================
+   * SURFACE COLORS (11 tokens)
    * ============================================ */
 
   --color-surface: initial;
@@ -39,6 +59,7 @@
   --color-surface-container: initial;
   --color-surface-container-high: initial;
   --color-surface-container-highest: initial;
+  --color-surface-variant: initial;
   --color-on-surface: initial;
   --color-on-surface-variant: initial;
 
@@ -71,7 +92,7 @@
   --color-on-error-container: initial;
 
   /* ============================================
-   * NEUTRAL COLORS (10 tokens)
+   * BASE SCALE (10 tokens)
    * ============================================ */
 
   --color-base-100: initial;
@@ -93,27 +114,6 @@
   --color-outline-variant: initial;
 
   /* ============================================
-   * ACCENT COLORS (2 tokens - focus tokens removed, use color-mix())
-   * ============================================ */
-
-  --color-accent: initial;
-  --color-accent-content: initial;
-
-  /* ============================================
-   * NEUTRAL COLORS (3 tokens - focus tokens removed, use color-mix())
-   * ============================================ */
-
-  --color-neutral: initial;
-  --color-neutral-content: initial;
-  --color-neutral-variant: initial;
-
-  /* ============================================
-   * SURFACE VARIANT (1 token)
-   * ============================================ */
-
-  --color-surface-variant: initial;
-
-  /* ============================================
    * INVERSE COLORS (3 tokens)
    * ============================================ */
 
@@ -130,14 +130,15 @@
 
   /* ============================================
    * ELEVATION SHADOWS (6 tokens)
+   * Theme-aware via --color-shadow token
    * ============================================ */
 
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-xs: 0 1px 2px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent);
+  --shadow-sm: 0 1px 3px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 1px 2px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-md: 0 4px 6px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-lg: 0 10px 15px -3px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 4px 6px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-xl: 0 20px 25px -5px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 8px 10px -6px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-2xl: 0 25px 50px -12px color-mix(in srgb, var(--color-shadow) 25%, transparent);
 }
 
 /* Utility classes for colors - OKLCH format */
