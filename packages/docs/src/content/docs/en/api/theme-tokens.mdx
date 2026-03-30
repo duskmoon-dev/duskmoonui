@@ -13,12 +13,12 @@ Complete reference for all CSS custom properties (design tokens) available in @d
 
 ## Overview
 
-Each theme defines **65+ color tokens** plus shape and depth tokens. All color tokens use the OKLCH format for perceptually uniform color manipulation.
+Each theme defines **65+ color tokens** plus shape and depth tokens. All color tokens are generated from `@duskmoon-dev/design` YAML files in **HSL format**.
 
 ```css
 /* Tokens are CSS custom properties on [data-theme] selectors */
 [data-theme="sunshine"] {
-  --color-primary: oklch(95.86% 0.0693 95.91);
+  --color-primary: hsl(38 92% 50%);
   /* ... */
 }
 ```
@@ -168,9 +168,6 @@ Focus tokens were removed in v2.0. Use `color-mix()` instead:
 |-------|------|------------|-----------|
 | `sunshine` | Light | Warm orange | Energetic, warm |
 | `moonlight` | Dark | Soft blue | Serene, elegant |
-| `ocean` | Dark | Deep cyan | Calming, deep |
-| `forest` | Light | Forest green | Natural, earthy |
-| `sunset` | Light | Burnt orange | Warm, vibrant |
 
 ## Custom Themes
 
@@ -179,8 +176,8 @@ Override any token with a `[data-theme]` selector:
 ```css
 [data-theme="my-theme"] {
   color-scheme: light;
-  --color-primary: oklch(55% 0.20 260);
-  --color-primary-content: oklch(100% 0 0);
+  --color-primary: hsl(220 80% 55%);
+  --color-primary-content: hsl(0 0% 100%);
   /* ... define all tokens */
 }
 ```
