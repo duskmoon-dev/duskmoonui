@@ -48,4 +48,41 @@ describe('Tailwind Plugin Registration', () => {
       expect(pluginSrc).toContain("theme('spacing')");
     });
   });
+
+  describe('Shadow tokens', () => {
+    it('should define themeShadows object', () => {
+      expect(pluginSrc).toContain('themeShadows');
+    });
+
+    it('should include all standard shadow sizes', () => {
+      expect(pluginSrc).toContain("'xs'");
+      expect(pluginSrc).toContain("'sm'");
+      expect(pluginSrc).toContain("'md'");
+      expect(pluginSrc).toContain("'lg'");
+      expect(pluginSrc).toContain("'xl'");
+      expect(pluginSrc).toContain("'2xl'");
+    });
+
+    it('should reference CSS custom properties for shadows', () => {
+      expect(pluginSrc).toContain('var(--shadow-xs)');
+      expect(pluginSrc).toContain('var(--shadow-sm)');
+      expect(pluginSrc).toContain('var(--shadow-md)');
+      expect(pluginSrc).toContain('var(--shadow-lg)');
+      expect(pluginSrc).toContain('var(--shadow-xl)');
+      expect(pluginSrc).toContain('var(--shadow-2xl)');
+    });
+
+    it('should register shadows in boxShadow theme extension', () => {
+      expect(pluginSrc).toContain('boxShadow: themeShadows');
+    });
+  });
+
+  describe('Color tokens', () => {
+    it('should include shadow and scrim color tokens', () => {
+      expect(pluginSrc).toContain("'shadow'");
+      expect(pluginSrc).toContain("'scrim'");
+      expect(pluginSrc).toContain('var(--color-shadow)');
+      expect(pluginSrc).toContain('var(--color-scrim)');
+    });
+  });
 });

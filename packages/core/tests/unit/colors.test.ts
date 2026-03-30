@@ -143,4 +143,28 @@ describe('Color Token Generation', () => {
       expect(tokenMatches.length).toBeGreaterThanOrEqual(55);
     });
   });
+
+  describe('Shadow Tokens', () => {
+    it('should define theme-aware shadow tokens', () => {
+      expect(colorsCSS).toContain('--shadow-xs:');
+      expect(colorsCSS).toContain('--shadow-sm:');
+      expect(colorsCSS).toContain('--shadow-md:');
+      expect(colorsCSS).toContain('--shadow-lg:');
+      expect(colorsCSS).toContain('--shadow-xl:');
+      expect(colorsCSS).toContain('--shadow-2xl:');
+    });
+
+    it('should use var(--color-shadow) in shadow definitions', () => {
+      expect(colorsCSS).toContain('var(--color-shadow)');
+    });
+
+    it('should use color-mix for shadow opacity', () => {
+      expect(colorsCSS).toMatch(/color-mix\(in srgb, var\(--color-shadow\)/);
+    });
+
+    it('should define shadow and scrim color tokens', () => {
+      expect(colorsCSS).toContain('--color-shadow:');
+      expect(colorsCSS).toContain('--color-scrim:');
+    });
+  });
 });
