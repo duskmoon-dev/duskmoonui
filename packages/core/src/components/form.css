@@ -518,32 +518,8 @@
     color: var(--color-info);
   }
 
-  /* Native HTML Validation — :user-invalid/:user-valid for post-interaction styling */
-  .input:user-invalid,
-  .select:user-invalid,
-  .textarea:user-invalid {
-    border-color: var(--color-error);
-  }
-
-  .input:user-invalid:focus-visible,
-  .select:user-invalid:focus-visible,
-  .textarea:user-invalid:focus-visible {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
-  }
-
-  .input:user-valid,
-  .select:user-valid,
-  .textarea:user-valid {
-    border-color: var(--color-success);
-  }
-
-  .input:user-valid:focus-visible,
-  .select:user-valid:focus-visible,
-  .textarea:user-valid:focus-visible {
-    border-color: var(--color-success);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
-  }
+  /* Native HTML Validation (:user-invalid/:user-valid, :invalid/:valid, ARIA)
+   * is handled in form-group.css to avoid duplication. */
 
   /* Required Field Indicator */
   .label-text.required::after {

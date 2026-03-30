@@ -417,4 +417,49 @@
     border-color: var(--color-success);
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
+
+  /* Checkbox & Radio — validation pseudo-classes */
+  .checkbox:user-invalid,
+  .radio:user-invalid {
+    border-color: var(--color-error);
+  }
+
+  .checkbox:user-invalid:focus-visible,
+  .radio:user-invalid:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
+  }
+
+  .checkbox:user-valid:checked,
+  .radio:user-valid:checked {
+    border-color: var(--color-success);
+    background-color: var(--color-success);
+  }
+
+  /* File Input — validation pseudo-classes */
+  .file-input:user-invalid {
+    border-color: var(--color-error);
+  }
+
+  .file-input:user-invalid:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
+  }
+
+  /* Filled Input — validation with bottom border */
+  .input-filled:user-invalid {
+    border-bottom-color: var(--color-error);
+  }
+
+  .input-filled:user-invalid:focus-visible {
+    border-bottom-color: var(--color-error);
+    box-shadow: none;
+  }
+
+  .input-filled:user-valid {
+    border-bottom-color: var(--color-success);
+  }
+
+  .input-filled:user-valid:focus-visible {
+    border-bottom-color: var(--color-success);
+    box-shadow: none;
+  }
 }

@@ -291,4 +291,44 @@ describe('Form Group Component', () => {
       expect(css).toContain('var(--color-on-surface)');
     });
   });
+
+  describe('Checkbox & Radio Validation', () => {
+    it('should style checkbox :user-invalid', () => {
+      expect(css).toContain('.checkbox:user-invalid');
+    });
+
+    it('should style radio :user-invalid', () => {
+      expect(css).toContain('.radio:user-invalid');
+    });
+
+    it('should apply error focus ring on checkbox/radio :user-invalid', () => {
+      expect(css).toMatch(/\.checkbox:user-invalid:focus-visible[^}]*box-shadow/s);
+      expect(css).toMatch(/\.radio:user-invalid:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should style checkbox/radio :user-valid when checked', () => {
+      expect(css).toContain('.checkbox:user-valid:checked');
+      expect(css).toContain('.radio:user-valid:checked');
+    });
+  });
+
+  describe('File Input Validation', () => {
+    it('should style file-input :user-invalid', () => {
+      expect(css).toContain('.file-input:user-invalid');
+    });
+
+    it('should apply error focus ring on file-input :user-invalid', () => {
+      expect(css).toMatch(/\.file-input:user-invalid:focus-visible[^}]*box-shadow/s);
+    });
+  });
+
+  describe('Filled Input Validation', () => {
+    it('should style filled input :user-invalid with bottom border', () => {
+      expect(css).toMatch(/\.input-filled:user-invalid[^}]*border-bottom-color:\s*var\(--color-error\)/s);
+    });
+
+    it('should style filled input :user-valid with bottom border', () => {
+      expect(css).toMatch(/\.input-filled:user-valid[^}]*border-bottom-color:\s*var\(--color-success\)/s);
+    });
+  });
 });

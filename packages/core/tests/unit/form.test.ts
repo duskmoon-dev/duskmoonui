@@ -260,18 +260,9 @@ describe('Form Component', () => {
       expect(formCSS).toMatch(/\.helper-text\.info[^}]*var\(--color-info\)/s);
     });
 
-    it('should support native :user-invalid pseudo-class', () => {
-      expect(formCSS).toContain(':user-invalid');
-      expect(formCSS).toMatch(/\.input:user-invalid[^}]*border-color:\s*var\(--color-error\)/s);
-    });
-
-    it('should support native :user-valid pseudo-class', () => {
-      expect(formCSS).toContain(':user-valid');
-      expect(formCSS).toMatch(/\.input:user-valid[^}]*border-color:\s*var\(--color-success\)/s);
-    });
-
-    it('should apply focus ring on :user-invalid focus', () => {
-      expect(formCSS).toMatch(/\.input:user-invalid:focus-visible[^}]*box-shadow/s);
+    it('should defer native validation to form-group.css (no duplication)', () => {
+      // :user-invalid/:user-valid rules live in form-group.css only
+      expect(formCSS).toContain('form-group.css');
     });
   });
 
