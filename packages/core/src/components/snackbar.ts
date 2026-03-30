@@ -17,7 +17,7 @@ export const snackbarStyles: Record<string, any> = {
     backgroundColor: 'var(--color-inverse-surface)',
     color: 'var(--color-inverse-on-surface)',
     borderRadius: '0.25rem',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.15)',
+    boxShadow: '0 4px 6px -1px color-mix(in srgb, var(--color-shadow) 20%, transparent), 0 2px 4px -1px color-mix(in srgb, var(--color-shadow) 15%, transparent)',
     zIndex: '9999',
     opacity: '0',
     visibility: 'hidden',

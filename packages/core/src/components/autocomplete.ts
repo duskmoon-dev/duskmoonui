@@ -78,7 +78,7 @@ export const autocompleteStyles: Record<string, any> = {
     maxHeight: '16rem',
     backgroundColor: 'var(--color-surface-container-high)',
     borderRadius: '0.25rem',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    boxShadow: 'var(--shadow-md)',
     overflowY: 'auto',
     zIndex: '50',
     opacity: '0',
@@ -208,7 +208,7 @@ export const autocompleteStyles: Record<string, any> = {
     transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover': {
-      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      backgroundColor: 'color-mix(in srgb, var(--color-shadow) 10%, transparent)',
     },
   },
 

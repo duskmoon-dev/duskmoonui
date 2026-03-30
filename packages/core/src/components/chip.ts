@@ -35,7 +35,7 @@ export const chipStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 8%, transparent)',
-      boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+      boxShadow: 'var(--shadow-xs)',
     },
 
     '&:active': {
@@ -159,7 +159,7 @@ export const chipStyles: Record<string, any> = {
 
     '&:hover': {
       opacity: '1',
-      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      backgroundColor: 'color-mix(in srgb, var(--color-shadow) 10%, transparent)',
     },
 
     '&:focus': {

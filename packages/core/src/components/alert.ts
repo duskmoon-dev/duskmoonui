@@ -77,13 +77,13 @@ export const alertStyles: Record<string, any> = {
 
     '&:hover': {
       opacity: '1',
-      backgroundColor: 'rgba(0, 0, 0, 0.05)',
+      backgroundColor: 'color-mix(in srgb, var(--color-shadow) 5%, transparent)',
     },
 
     '&:focus': {
       opacity: '1',
       outline: 'none',
-      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      backgroundColor: 'color-mix(in srgb, var(--color-shadow) 10%, transparent)',
     },
   },
 

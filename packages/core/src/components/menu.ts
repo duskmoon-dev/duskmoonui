@@ -18,7 +18,7 @@ export const menuStyles: Record<string, any> = {
     backgroundColor: 'var(--color-surface-container-high)',
     color: 'var(--color-on-surface)',
     borderRadius: '0.5rem',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    boxShadow: 'var(--shadow-md)',
     zIndex: '100',
     opacity: '0',
     visibility: 'hidden',

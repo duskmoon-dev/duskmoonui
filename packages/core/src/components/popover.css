@@ -532,33 +532,33 @@
 
   /* Native popover backdrop */
   .popover[popover]::backdrop {
-    background-color: rgb(0 0 0 / 0);
+    background-color: transparent;
     transition: background-color 150ms ease-out, overlay 150ms ease-out allow-discrete, display 150ms ease-out allow-discrete;
   }
 
   .popover[popover]:popover-open::backdrop {
-    background-color: rgb(0 0 0 / 0.1);
+    background-color: color-mix(in srgb, var(--color-scrim) 10%, transparent);
   }
 
   @starting-style {
     .popover[popover]:popover-open::backdrop {
-      background-color: rgb(0 0 0 / 0);
+      background-color: transparent;
     }
   }
 
   /* Native popover with modal backdrop */
   .popover-modal[popover]::backdrop {
-    background-color: rgb(0 0 0 / 0);
+    background-color: transparent;
     transition: background-color 150ms ease-out, overlay 150ms ease-out allow-discrete, display 150ms ease-out allow-discrete;
   }
 
   .popover-modal[popover]:popover-open::backdrop {
-    background-color: rgb(0 0 0 / 0.3);
+    background-color: color-mix(in srgb, var(--color-scrim) 30%, transparent);
   }
 
   @starting-style {
     .popover-modal[popover]:popover-open::backdrop {
-      background-color: rgb(0 0 0 / 0);
+      background-color: transparent;
     }
   }
 

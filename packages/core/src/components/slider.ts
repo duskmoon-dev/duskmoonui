@@ -46,7 +46,7 @@ export const sliderStyles: Record<string, any> = {
     backgroundColor: 'var(--color-primary)',
     border: '2px solid var(--color-surface)',
     borderRadius: '50%',
-    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 2px 4px 0 color-mix(in srgb, var(--color-shadow) 20%, transparent)',
     cursor: 'grab',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     zIndex: '1',

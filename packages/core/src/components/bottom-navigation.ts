@@ -155,7 +155,7 @@ export const bottomNavigationStyles: Record<string, any> = {
 
   '.bottom-nav-surface-container-high': {
     backgroundColor: 'var(--color-surface-container-high)',
-    boxShadow: '0 -1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: '0 -1px 2px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent)',
   },
 
   // Transparent variant

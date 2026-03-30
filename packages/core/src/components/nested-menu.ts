@@ -50,6 +50,6 @@ export const nestedMenuStyles: Record<string, any> = {
     backgroundColor: 'var(--color-surface)',
     border: '1px solid var(--color-outline-variant)',
     borderRadius: 'var(--radius-card, 0.75rem)',
-    boxShadow: 'var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05))',
+    boxShadow: 'var(--shadow-sm)',
   },
 };

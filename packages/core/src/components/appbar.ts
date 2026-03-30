@@ -13,7 +13,7 @@ export const appBarStyles: Record<string, any> = {
     padding: '1rem 1.5rem',
     backgroundColor: 'var(--color-surface)',
     color: 'var(--color-on-surface)',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: 'var(--shadow-xs)',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     zIndex: '30',
   },
@@ -29,7 +29,7 @@ export const appBarStyles: Record<string, any> = {
     bottom: '0',
     left: '0',
     right: '0',
-    boxShadow: '0 -1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: '0 -1px 2px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent)',
   },
 
   // Position variants for top bar
@@ -64,12 +64,12 @@ export const appBarStyles: Record<string, any> = {
 
   '.appbar-surface-container-high': {
     backgroundColor: 'var(--color-surface-container-high)',
-    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.08)',
+    boxShadow: 'var(--shadow-sm)',
   },
 
   '.appbar-surface-container-highest': {
     backgroundColor: 'var(--color-surface-container-highest)',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    boxShadow: 'var(--shadow-md)',
   },
 
   // Color variants
