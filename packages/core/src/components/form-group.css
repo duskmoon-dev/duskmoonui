@@ -371,6 +371,28 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  /* ARIA-based validation for checkbox, radio, switch, file-input
+     (frameworks like React Hook Form / Angular set aria-invalid programmatically) */
+  .checkbox[aria-invalid="true"],
+  .radio[aria-invalid="true"],
+  .file-input[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+
+  .checkbox[aria-invalid="true"]:focus-visible,
+  .radio[aria-invalid="true"]:focus-visible,
+  .file-input[aria-invalid="true"]:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
+  }
+
+  .switch[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+
+  .switch[aria-invalid="true"]:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
+  }
+
   /* ARIA required indicator for labels */
   .form-label[aria-required="true"]::after,
   label[aria-required="true"]::after {

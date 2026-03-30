@@ -147,6 +147,31 @@ describe('Form Group Component', () => {
     it('should support aria-required on labels', () => {
       expect(css).toContain('[aria-required="true"]::after');
     });
+
+    it('should support aria-invalid on checkbox', () => {
+      expect(css).toContain('.checkbox[aria-invalid="true"]');
+    });
+
+    it('should support aria-invalid on radio', () => {
+      expect(css).toContain('.radio[aria-invalid="true"]');
+    });
+
+    it('should support aria-invalid on switch', () => {
+      expect(css).toContain('.switch[aria-invalid="true"]');
+    });
+
+    it('should support aria-invalid on file-input', () => {
+      expect(css).toContain('.file-input[aria-invalid="true"]');
+    });
+
+    it('should apply focus ring to aria-invalid checkbox/radio', () => {
+      expect(css).toMatch(/\.checkbox\[aria-invalid="true"\]:focus-visible[^}]*box-shadow/s);
+      expect(css).toMatch(/\.radio\[aria-invalid="true"\]:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should apply focus ring to aria-invalid switch', () => {
+      expect(css).toMatch(/\.switch\[aria-invalid="true"\]:focus-visible[^}]*box-shadow/s);
+    });
   });
 
   describe('Native Validation', () => {
