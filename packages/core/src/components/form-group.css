@@ -332,6 +332,24 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
+  /* Info State on Form Group */
+  .form-group-info .form-label {
+    color: var(--color-info);
+  }
+
+  .form-group-info .input,
+  .form-group-info .select,
+  .form-group-info .textarea {
+    border-color: var(--color-info);
+  }
+
+  .form-group-info .input:focus-visible,
+  .form-group-info .select:focus-visible,
+  .form-group-info .textarea:focus-visible {
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
   /* Disabled Form Group */
   .form-group-disabled {
     opacity: 0.5;

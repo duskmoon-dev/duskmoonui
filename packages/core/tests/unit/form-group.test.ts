@@ -104,6 +104,23 @@ describe('Form Group Component', () => {
     it('should use focus ring on error state focus', () => {
       expect(css).toMatch(/\.form-group-error .input:focus-visible[^}]*box-shadow/s);
     });
+
+    it('should define info state on form-group', () => {
+      expect(css).toContain('.form-group-info');
+    });
+
+    it('should apply info color to label in info state', () => {
+      expect(css).toMatch(/\.form-group-info .form-label[^}]*var\(--color-info\)/s);
+    });
+
+    it('should apply info border to inputs in info state', () => {
+      expect(css).toContain('.form-group-info .input');
+      expect(css).toMatch(/\.form-group-info[\s\S]*?border-color:\s*var\(--color-info\)/);
+    });
+
+    it('should use focus ring on info state focus', () => {
+      expect(css).toMatch(/\.form-group-info .input:focus-visible[^}]*box-shadow/s);
+    });
   });
 
   describe('ARIA-based Validation', () => {
