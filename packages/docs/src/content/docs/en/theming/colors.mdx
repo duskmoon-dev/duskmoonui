@@ -11,6 +11,15 @@ tags: ['colors', 'tokens', 'material-design', 'theming']
 
 @duskmoon-dev/core provides 65+ color tokens based on Material Design 3's dynamic color system. All tokens are generated from `@duskmoon-dev/design` YAML files in **HSL format** and delivered as CSS custom properties. Components use `color-mix(in oklch, ...)` for hover/focus states, which works regardless of the input color format.
 
+### Token Naming Convention
+
+DuskMoonUI uses two naming patterns for text-on-background tokens:
+
+- **`-content`** (e.g., `--color-primary-content`) — text color on **filled** backgrounds. Use when the parent has a solid brand/semantic color.
+- **`on-*-container`** (e.g., `--color-on-primary-container`) — text color on **container** (lighter) backgrounds. Use when the parent has a soft container background.
+
+Both patterns are standard in Material Design 3. The `-content` suffix is used for the full-intensity color role; the `on-` prefix is used for container-level roles.
+
 ## Color Token Categories
 
 ### Primary Colors
@@ -474,6 +483,32 @@ Theme-aware shadow tokens that use `--color-shadow` with `color-mix()` for prope
 
 <!-- Or via CSS custom properties -->
 <div style="box-shadow: var(--shadow-md);">Custom element</div>
+```
+
+### MD3 Elevation Levels
+
+Semantic elevation tokens map Material Design 3 levels (0–5) to shadow effects. Use these when you want to express UI hierarchy rather than specific shadow sizes.
+
+```css
+--shadow-elevation-0  /* Level 0: No shadow (flat) */
+--shadow-elevation-1  /* Level 1: Subtle lift (maps to --shadow-xs) */
+--shadow-elevation-2  /* Level 2: Cards, raised surfaces (maps to --shadow-sm) */
+--shadow-elevation-3  /* Level 3: Dropdowns, menus (maps to --shadow-md) */
+--shadow-elevation-4  /* Level 4: Dialogs, modals (maps to --shadow-lg) */
+--shadow-elevation-5  /* Level 5: Maximum prominence (maps to --shadow-xl) */
+```
+
+```html
+<!-- Elevation utility classes -->
+<div class="elevation-0">Flat surface</div>
+<div class="elevation-1">Slightly raised</div>
+<div class="elevation-2">Card surface</div>
+<div class="elevation-3">Dropdown menu</div>
+<div class="elevation-4">Modal dialog</div>
+<div class="elevation-5">Top-level overlay</div>
+
+<!-- Also available as Tailwind shadow utilities -->
+<div class="shadow-elevation-3">Dropdown via Tailwind</div>
 ```
 
 ## Using Color Tokens

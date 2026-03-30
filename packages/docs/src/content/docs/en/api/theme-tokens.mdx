@@ -159,6 +159,28 @@ Theme-aware shadow tokens that use `--color-shadow` with `color-mix()` for prope
 <div class="shadow-lg">Modal dialog</div>
 ```
 
+## MD3 Elevation Levels (6 tokens)
+
+Semantic shadow tokens that map Material Design 3 elevation levels to shadow effects. These provide a hierarchy-based API on top of the size-based shadow tokens.
+
+| Level | CSS Variable | Maps To | Description |
+|-------|-------------|---------|-------------|
+| 0 | `--shadow-elevation-0` | `none` | Flat surface |
+| 1 | `--shadow-elevation-1` | `--shadow-xs` | Slight lift |
+| 2 | `--shadow-elevation-2` | `--shadow-sm` | Card surface |
+| 3 | `--shadow-elevation-3` | `--shadow-md` | Dropdown/menu |
+| 4 | `--shadow-elevation-4` | `--shadow-lg` | Dialog/modal |
+| 5 | `--shadow-elevation-5` | `--shadow-xl` | Top-level overlay |
+
+```html
+<!-- Utility classes -->
+<div class="elevation-2">Card surface</div>
+<div class="elevation-4">Modal dialog</div>
+
+<!-- Tailwind shadow utilities -->
+<div class="shadow-elevation-3">Dropdown menu</div>
+```
+
 ## Spacing Tokens
 
 Generated from `@duskmoon-dev/design` YAML. Available as CSS custom properties on `:root`.
