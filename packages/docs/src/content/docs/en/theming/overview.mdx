@@ -167,18 +167,18 @@ Use Tailwind's utility classes with theme colors:
 
 ### In Custom CSS
 
-Reference theme CSS variables directly:
+Reference theme CSS variables directly. Token values are complete `hsl()` expressions — use them directly without wrapping:
 
 ```css
 .custom-button {
-  background-color: hsl(var(--color-primary));
-  color: hsl(var(--color-primary-content));
-  border: 1px solid hsl(var(--color-outline));
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  border: 1px solid var(--color-outline);
 }
 
-/* With opacity */
+/* With opacity using color-mix() — works regardless of token format */
 .custom-overlay {
-  background-color: color-mix(in srgb, hsl(var(--color-surface)) 80%, transparent);
+  background-color: color-mix(in oklch, var(--color-surface) 80%, transparent);
 }
 ```
 
@@ -187,11 +187,11 @@ Reference theme CSS variables directly:
 Use theme colors with Tailwind's arbitrary value syntax:
 
 ```html
-<div class="bg-[hsl(var(--color-primary))]">
+<div class="bg-[var(--color-primary)]">
   Custom background
 </div>
 
-<div class="text-[hsl(var(--color-tertiary))]">
+<div class="text-[var(--color-tertiary)]">
   Custom text color
 </div>
 ```
@@ -328,20 +328,32 @@ All color combinations meet WCAG AA standards for accessibility.
 
 ## HSL Color Format
 
-@duskmoon-dev/core uses HSL (Hue, Saturation, Lightness) color format:
+@duskmoon-dev/core uses HSL color format generated from `@duskmoon-dev/design` YAML files:
 
 ```css
-/* Format: hue saturation% lightness% */
---color-primary: 38 92% 50%;
+/* Tokens are complete hsl() values — use var() directly */
+--color-primary: hsl(38 92% 50%);
 ```
 
-This format allows Tailwind to apply opacity utilities:
+Use `color-mix()` for opacity and hover states:
 
 ```html
-<div class="bg-primary bg-opacity-50">   <!-- 50% opacity -->
-<div class="bg-primary bg-opacity-75">   <!-- 75% opacity -->
-<div class="bg-primary bg-opacity-100">  <!-- 100% opacity (default) -->
+<div class="bg-primary">Full opacity primary</div>
 ```
+
+```css
+/* 50% opacity using color-mix() */
+.my-element {
+  background-color: color-mix(in oklch, var(--color-primary) 50%, transparent);
+}
+
+/* Hover darkening — the pattern used internally by DuskMoonUI */
+.btn-primary:hover {
+  background-color: color-mix(in oklch, var(--color-primary), black 10%);
+}
+```
+
+> **Why `color-mix(in oklch, ...)`?** OKLCH is a perceptually uniform color space — mixing colors in OKLCH produces more natural-looking transitions than mixing in sRGB or HSL. DuskMoonUI uses this for all hover/focus state calculations, even when the input token is in HSL format.
 
 ## Theme Scope
 
