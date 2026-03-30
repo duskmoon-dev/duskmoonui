@@ -42,6 +42,6 @@ describe('Dialog Component', () => {
   });
 
   it('should have border-radius for rounded corners', () => {
-    expect(css).toMatch(/border-radius:\s*1\.5rem/);
+    expect(css).toMatch(/border-radius:\s*var\(--radius-2xl\)/);
   });
 });

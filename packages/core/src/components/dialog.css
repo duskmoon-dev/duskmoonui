@@ -16,7 +16,7 @@
     max-height: calc(100vh - 4rem);
     background-color: var(--color-surface);
     color: var(--color-on-surface);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-2xl);
     box-shadow: var(--shadow-2xl);
     overflow: hidden;
   }
