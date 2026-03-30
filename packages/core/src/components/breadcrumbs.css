@@ -225,4 +225,14 @@
     pointer-events: none;
     cursor: not-allowed;
   }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .breadcrumbs a,
+    .breadcrumbs-item a,
+    .breadcrumbs-link,
+    .breadcrumbs-separator {
+      transition: none;
+    }
+  }
 }

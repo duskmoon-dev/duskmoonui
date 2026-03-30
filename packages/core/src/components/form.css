@@ -564,4 +564,16 @@
     outline: none;
     box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .form-control,
+    .input,
+    .select,
+    .textarea,
+    .range,
+    .label-float .form-control ~ label {
+      transition: none;
+    }
+  }
 }

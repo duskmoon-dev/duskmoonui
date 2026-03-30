@@ -103,4 +103,11 @@
     padding: 1rem 1.5rem;
     font-size: 1rem;
   }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .tab {
+      transition: none;
+    }
+  }
 }

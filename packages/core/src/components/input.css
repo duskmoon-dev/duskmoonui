@@ -191,4 +191,13 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
     outline: none;
   }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .input,
+    .input-filled,
+    .file-input {
+      transition: none;
+    }
+  }
 }

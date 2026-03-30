@@ -253,4 +253,11 @@
   .card-full-image .card-title {
     color: white;
   }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+    }
+  }
 }

@@ -96,4 +96,11 @@
     letter-spacing: 0.05em;
     color: var(--color-on-surface-variant);
   }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .menu-item {
+      transition: none;
+    }
+  }
 }
