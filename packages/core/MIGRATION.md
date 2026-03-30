@@ -103,34 +103,33 @@ duskmoonui({
 [data-theme="custom"] {
   color-scheme: light;
 
-  --color-primary: 217 91% 60%;  /* HSL values without commas */
-  --color-primary-content: 0 0% 100%;
-  --color-secondary: 258 90% 66%;
+  --color-primary: hsl(217 91% 60%);    /* Full hsl() value */
+  --color-primary-content: hsl(0 0% 100%);
+  --color-secondary: hsl(258 90% 66%);
   /* ... */
 }
 ```
 
-### Step 6: Update Color Format in Custom CSS
+### Step 6: Use Color Tokens Directly
 
-If you used custom colors in your CSS, update them from hex to HSL:
+Tokens now store complete `hsl()` values. Use `var()` directly without wrapping:
 
-**Before:**
 ```css
+/* Correct — var() returns the full color value */
 .my-element {
   background-color: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
+/* For opacity — use color-mix() */
+.my-overlay {
+  background-color: color-mix(in oklch, var(--color-surface) 80%, transparent);
 }
 ```
 
-**After:**
-```css
-.my-element {
-  background-color: hsl(var(--color-primary));
-}
-```
-
-Or use Tailwind's utility classes which handle this automatically:
+Tailwind utility classes (`bg-primary`, `text-primary-content`) work the same:
 ```html
-<div class="bg-primary">...</div>
+<div class="bg-primary text-primary-content">...</div>
 ```
 
 ## Breaking Changes Summary
@@ -139,7 +138,7 @@ Or use Tailwind's utility classes which handle this automatically:
 |------|--------|
 | `plugins: [duskmoonui()]` | `@import "@duskmoon-dev/core"` |
 | JavaScript configuration | CSS custom properties |
-| Hex colors (`#3b82f6`) | HSL space-separated (`217 91% 60%`) |
+| Hex colors (`#3b82f6`) | Complete HSL values (`hsl(217 91% 60%)`) |
 | `tailwind.config.js` required | Optional (only for other settings) |
 | Runtime theme generation | Static CSS themes |
 
@@ -166,7 +165,7 @@ Make sure your custom theme CSS is loaded after the `@import "@duskmoon-dev/core
 
 /* Custom themes MUST come after the import */
 [data-theme="custom"] {
-  --color-primary: 217 91% 60%;
+  --color-primary: hsl(217 91% 60%);
 }
 ```
 
@@ -176,6 +175,84 @@ If you see errors like "Cannot find module '@duskmoon-dev/core'", ensure:
 1. You've installed v1.0.0 (`bun add @duskmoon-dev/core@^1.0.0`)
 2. You're using Tailwind CSS v4 (`bun add tailwindcss@^4.0.0`)
 3. Your CSS uses `@import` not `@plugin`
+
+---
+
+# Migration Guide: v1.x Token Refactor (Design Token Consolidation)
+
+This section covers the token naming and theme changes introduced when `@duskmoon-dev/core` adopted `@duskmoon-dev/design` as its single color source of truth.
+
+## Themes Removed: ocean, forest, sunset
+
+The `ocean`, `forest`, and `sunset` themes have been removed. Only `sunshine` and `moonlight` are available.
+
+**Before:**
+```html
+<html data-theme="ocean">
+```
+
+**After:** Use `sunshine` or `moonlight`, or define a custom theme with your own color overrides.
+
+## Token Naming: Tailwind Plugin (`on-*` → `*-content`)
+
+If you use the Tailwind plugin (`@plugin "@duskmoon-dev/core/plugin"`), content token names changed:
+
+| Before | After |
+|--------|-------|
+| `text-on-primary` | `text-primary-content` |
+| `text-on-secondary` | `text-secondary-content` |
+| `text-on-tertiary` | `text-tertiary-content` |
+| `text-on-error` | `text-error-content` |
+| `bg-on-primary` | `bg-primary-content` |
+
+> **Note**: CSS variables (`--color-on-primary-container` etc.) remain unchanged — only the Tailwind utility class names for `-content` tokens changed.
+
+**Migration:** Find and replace in templates:
+```bash
+# Example sed command
+sed -i 's/text-on-primary\b/text-primary-content/g; s/text-on-secondary\b/text-secondary-content/g; s/text-on-tertiary\b/text-tertiary-content/g; s/text-on-error\b/text-error-content/g' src/**/*.html
+```
+
+## New Tokens Available
+
+The following tokens are now available:
+
+```css
+/* Focus state tokens */
+--color-primary-focus
+--color-secondary-focus
+--color-tertiary-focus
+--color-accent-focus
+--color-neutral-focus
+
+/* Extended base scale */
+--color-base-400 through --color-base-900
+
+/* Semantic container tokens */
+--color-info-container / --color-on-info-container
+--color-success-container / --color-on-success-container
+--color-warning-container / --color-on-warning-container
+```
+
+## Color Values: OKLCH → HSL
+
+Hand-written OKLCH theme values have been replaced with HSL values generated from `@duskmoon-dev/design`. Colors are visually close but not pixel-identical.
+
+If you are overriding specific tokens with precise OKLCH values, update them to HSL format:
+
+```css
+/* Before (OKLCH) */
+[data-theme="sunshine"] {
+  --color-primary: oklch(0.55 0.2 260);
+}
+
+/* After (HSL — matches codegen format) */
+[data-theme="sunshine"] {
+  --color-primary: hsl(217 91% 60%);
+}
+```
+
+---
 
 ## Getting Help
 
