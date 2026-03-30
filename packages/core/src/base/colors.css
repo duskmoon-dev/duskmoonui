@@ -1,7 +1,7 @@
 /**
  * Color Token Definitions
  * 65+ Material Design 3 color tokens using CSS custom properties
- * Format: OKLCH with wrapper (e.g., "oklch(65% 0.18 255)")
+ * Format: HSL from codegen (e.g., "hsl(38 92% 50%)")
  */
 
 @theme {
@@ -141,7 +141,7 @@
   --shadow-2xl: 0 25px 50px -12px color-mix(in srgb, var(--color-shadow) 25%, transparent);
 }
 
-/* Utility classes for colors - OKLCH format */
+/* Utility classes for colors — token references + color-mix() for states */
 @layer utilities {
   /* Background Colors */
   .bg-primary { background-color: var(--color-primary); }
