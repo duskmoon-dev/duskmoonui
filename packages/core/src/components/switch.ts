@@ -54,7 +54,7 @@ export const switchStyles: Record<string, any> = {
 
   '.switch-input:checked + .switch-track .switch-thumb, .switch-input:checked + .switch-primary .switch-thumb': {
     left: 'calc(100% - 1.25rem)',
-    backgroundColor: 'var(--color-on-primary)',
+    backgroundColor: 'var(--color-primary-content)',
   },
 
   // Secondary variant
@@ -69,7 +69,7 @@ export const switchStyles: Record<string, any> = {
   },
 
   '.switch-input:checked + .switch-secondary .switch-thumb': {
-    backgroundColor: 'var(--color-on-secondary)',
+    backgroundColor: 'var(--color-secondary-content)',
   },
 
   // Tertiary variant
@@ -84,7 +84,7 @@ export const switchStyles: Record<string, any> = {
   },
 
   '.switch-input:checked + .switch-tertiary .switch-thumb': {
-    backgroundColor: 'var(--color-on-tertiary)',
+    backgroundColor: 'var(--color-tertiary-content)',
   },
 
   // Hover state

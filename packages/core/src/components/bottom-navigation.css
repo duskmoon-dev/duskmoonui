@@ -17,7 +17,7 @@
     min-height: 5rem;
     padding-bottom: env(safe-area-inset-bottom, 0);
     background-color: var(--color-surface);
-    box-shadow: 0 -1px 3px 0 rgb(0 0 0 / 0.1);
+    box-shadow: 0 -1px 3px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent);
   }
 
   /* Navigation Item */
@@ -111,7 +111,7 @@
     font-size: 0.625rem;
     font-weight: 600;
     line-height: 1rem;
-    color: var(--color-on-error);
+    color: var(--color-error-content);
     background-color: var(--color-error);
     border-radius: 9999px;
     text-align: center;
@@ -128,7 +128,7 @@
 
   /* Variants */
   .bottom-nav-elevated {
-    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1);
+    box-shadow: 0 -4px 6px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent);
   }
 
   .bottom-nav-bordered {

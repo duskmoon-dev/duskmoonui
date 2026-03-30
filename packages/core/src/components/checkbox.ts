@@ -40,7 +40,7 @@ export const checkboxStyles: Record<string, any> = {
     opacity: '0',
     transform: 'scale(0)',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-    color: 'var(--color-on-primary)',
+    color: 'var(--color-primary-content)',
     fontSize: '1rem',
     lineHeight: '1',
   },
@@ -68,7 +68,7 @@ export const checkboxStyles: Record<string, any> = {
   },
 
   '.checkbox-input:checked + .checkbox-secondary .checkbox-checkmark': {
-    color: 'var(--color-on-secondary)',
+    color: 'var(--color-secondary-content)',
   },
 
   // Tertiary variant
@@ -83,7 +83,7 @@ export const checkboxStyles: Record<string, any> = {
   },
 
   '.checkbox-input:checked + .checkbox-tertiary .checkbox-checkmark': {
-    color: 'var(--color-on-tertiary)',
+    color: 'var(--color-tertiary-content)',
   },
 
   // Indeterminate state

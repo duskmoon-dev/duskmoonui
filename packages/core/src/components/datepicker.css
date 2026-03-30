@@ -255,7 +255,7 @@
 
   .datepicker-day-selected {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   .datepicker-day-selected:hover {
@@ -278,13 +278,13 @@
 
   .datepicker-day-range-start {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
     border-radius: 50% 0 0 50%;
   }
 
   .datepicker-day-range-end {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
     border-radius: 0 50% 50% 0;
   }
 
@@ -323,7 +323,7 @@
   .datepicker-year.selected,
   .datepicker-year-selected {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   .datepicker-day-disabled {
@@ -403,7 +403,7 @@
 
   .datepicker-time-period-btn.active {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
     border-color: var(--color-primary);
   }
 

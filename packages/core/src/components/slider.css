@@ -44,19 +44,19 @@
     background-color: var(--color-primary);
     border: none;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
     transform: translate(-50%, -50%);
     cursor: grab;
     transition: box-shadow 150ms ease-in-out, transform 150ms ease-in-out;
   }
 
   .slider-thumb:hover {
-    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-thumb:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-thumb:active {
@@ -188,7 +188,7 @@
 
   .slider-primary .slider-thumb:hover,
   .slider-primary .slider-thumb:focus-visible {
-    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-primary-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-primary .slider-thumb-label {
@@ -207,7 +207,7 @@
 
   .slider-secondary .slider-thumb:hover,
   .slider-secondary .slider-thumb:focus-visible {
-    box-shadow: 0 0 0 8px var(--color-secondary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-secondary-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-secondary .slider-mark-active { background-color: var(--color-secondary-content); }
@@ -228,7 +228,7 @@
 
   .slider-tertiary .slider-thumb:hover,
   .slider-tertiary .slider-thumb:focus-visible {
-    box-shadow: 0 0 0 8px var(--color-tertiary-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-tertiary-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-tertiary .slider-mark-active { background-color: var(--color-tertiary-content); }
@@ -250,7 +250,7 @@
 
   .slider-info .slider-thumb:hover,
   .slider-info .slider-thumb:focus-visible {
-    box-shadow: 0 0 0 8px var(--color-info-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-info-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-info .slider-mark-active { background-color: var(--color-info-content); }
@@ -272,7 +272,7 @@
 
   .slider-success .slider-thumb:hover,
   .slider-success .slider-thumb:focus-visible {
-    box-shadow: 0 0 0 8px var(--color-success-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-success-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-success .slider-mark-active { background-color: var(--color-success-content); }
@@ -294,7 +294,7 @@
 
   .slider-warning .slider-thumb:hover,
   .slider-warning .slider-thumb:focus-visible {
-    box-shadow: 0 0 0 8px var(--color-warning-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-warning-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-warning .slider-mark-active { background-color: var(--color-warning-content); }
@@ -316,7 +316,7 @@
 
   .slider-error .slider-thumb:hover,
   .slider-error .slider-thumb:focus-visible {
-    box-shadow: 0 0 0 8px var(--color-error-container), 0 2px 4px rgb(0 0 0 / 0.2);
+    box-shadow: 0 0 0 8px var(--color-error-container), 0 2px 4px color-mix(in srgb, var(--color-shadow) 20%, transparent);
   }
 
   .slider-error .slider-mark-active { background-color: var(--color-error-content); }

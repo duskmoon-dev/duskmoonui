@@ -328,7 +328,7 @@
     display: block;
     width: 0.375rem;
     height: 0.625rem;
-    border: 2px solid var(--color-on-primary);
+    border: 2px solid var(--color-primary-content);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg) translateY(-1px);
   }

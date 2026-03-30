@@ -51,7 +51,7 @@
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-color: rgb(0 0 0 / 0.5);
+    background-color: color-mix(in srgb, var(--color-scrim) 50%, transparent);
     cursor: pointer;
   }
 

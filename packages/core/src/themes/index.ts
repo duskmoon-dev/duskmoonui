@@ -1,23 +1,15 @@
 /**
  * DuskMoonUI Themes
- * Built-in theme definitions
+ * Generated from @duskmoon-dev/design YAML tokens
  */
 
 import { sunshine } from './generated/sunshine.generated';
 import { moonlight } from './generated/moonlight.generated';
-import { ocean } from './ocean';
-import { forest } from './forest';
-import { sunset } from './sunset';
 import type { ThemeColors } from '../types';
 
-// Re-export individual themes (sunshine/moonlight from codegen)
 export { sunshine } from './generated/sunshine.generated';
 export { moonlight } from './generated/moonlight.generated';
-export { ocean } from './ocean';
-export { forest } from './forest';
-export { sunset } from './sunset';
 
-// Re-export generated design tokens
 export { typeScale } from './generated/typography.generated';
 export type { TypeScaleEntry } from './generated/typography.generated';
 export { spacing, radius, elevation } from './generated/spacing.generated';
@@ -28,9 +20,6 @@ export { spacing, radius, elevation } from './generated/spacing.generated';
 export const themes = {
   sunshine,
   moonlight,
-  ocean,
-  forest,
-  sunset,
 } as const;
 
 /**

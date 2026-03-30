@@ -308,7 +308,7 @@
   }
 
   .multi-select-option-selected .multi-select-option-checkbox svg {
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   /* Option Icon */

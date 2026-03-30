@@ -161,9 +161,9 @@ export const circleMenuStyles: Record<string, any> = {
 
   '.circle-menu-error': {
     '--circle-menu-btn-bg': 'var(--color-error)',
-    '--circle-menu-bar-color': 'var(--color-on-error)',
+    '--circle-menu-bar-color': 'var(--color-error-content)',
     '--circle-menu-item-bg': 'var(--color-error)',
-    '--circle-menu-item-color': 'var(--color-on-error)',
+    '--circle-menu-item-color': 'var(--color-error-content)',
     '--circle-menu-item-ring': 'color-mix(in oklch, var(--color-error) 40%, transparent)',
   },
 };

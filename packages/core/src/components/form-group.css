@@ -337,4 +337,39 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  /* ARIA-based validation states — mirrors class-based states for native form validation */
+  .input[aria-invalid="true"],
+  .select[aria-invalid="true"],
+  .textarea[aria-invalid="true"] {
+    border-color: var(--color-error);
+    color: var(--color-error);
+  }
+
+  .input[aria-invalid="true"]:focus-visible,
+  .select[aria-invalid="true"]:focus-visible,
+  .textarea[aria-invalid="true"]:focus-visible {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  /* ARIA required indicator for labels */
+  .form-label[aria-required="true"]::after,
+  label[aria-required="true"]::after {
+    content: ' *';
+    color: var(--color-error);
+  }
+
+  /* Native :invalid pseudo-class (opt-in with .validate class to avoid red on page load) */
+  .validate .input:invalid,
+  .validate .select:invalid,
+  .validate .textarea:invalid {
+    border-color: var(--color-error);
+  }
+
+  .validate .input:valid,
+  .validate .select:valid,
+  .validate .textarea:valid {
+    border-color: var(--color-success);
+  }
 }

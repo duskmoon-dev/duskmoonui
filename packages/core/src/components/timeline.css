@@ -147,7 +147,7 @@
   }
 
   .timeline-item.completed .timeline-marker-icon {
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   /* Active State */
@@ -159,8 +159,8 @@
 
   .timeline-item.active .timeline-marker-icon,
   .timeline-item.active .timeline-marker-dot {
-    color: var(--color-on-primary);
-    background-color: var(--color-on-primary);
+    color: var(--color-primary-content);
+    background-color: var(--color-primary-content);
   }
 
   /* Size Variants */

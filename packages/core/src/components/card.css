@@ -244,7 +244,7 @@
   .card-full-image .card-body {
     position: relative;
     z-index: 1;
-    background: linear-gradient(to top, rgb(0 0 0 / 0.7), transparent);
+    background: linear-gradient(to top, color-mix(in srgb, var(--color-scrim) 70%, transparent), transparent);
     color: white;
     margin-top: auto;
     min-height: 50%;
