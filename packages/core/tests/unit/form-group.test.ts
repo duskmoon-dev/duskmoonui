@@ -150,6 +150,40 @@ describe('Form Group Component', () => {
     });
   });
 
+  describe('User-Invalid Validation', () => {
+    it('should support :user-invalid pseudo-class', () => {
+      expect(css).toContain('.input:user-invalid');
+    });
+
+    it('should apply error border on :user-invalid', () => {
+      expect(css).toMatch(/\.input:user-invalid[^}]*border-color:\s*var\(--color-error\)/s);
+    });
+
+    it('should apply focus ring on :user-invalid', () => {
+      expect(css).toMatch(/\.input:user-invalid:focus-visible[^}]*box-shadow:/s);
+    });
+
+    it('should support :user-valid pseudo-class', () => {
+      expect(css).toContain('.input:user-valid');
+    });
+
+    it('should apply success border on :user-valid', () => {
+      expect(css).toMatch(/\.input:user-valid[^}]*border-color:\s*var\(--color-success\)/s);
+    });
+
+    it('should apply focus ring on :user-valid', () => {
+      expect(css).toMatch(/\.input:user-valid:focus-visible[^}]*box-shadow:/s);
+    });
+
+    it('should support :user-invalid on select elements', () => {
+      expect(css).toContain('.select:user-invalid');
+    });
+
+    it('should support :user-invalid on textarea elements', () => {
+      expect(css).toContain('.textarea:user-invalid');
+    });
+  });
+
   describe('Fieldset', () => {
     it('should define .fieldset class', () => {
       expect(css).toContain('.fieldset');
