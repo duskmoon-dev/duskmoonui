@@ -193,7 +193,7 @@
   /* Focus State for Interactive Tables */
   .table tr:focus-visible,
   .table-row:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 }

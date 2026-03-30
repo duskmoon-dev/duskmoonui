@@ -194,15 +194,15 @@ describe('Avatar Component', () => {
       expect(css).toContain('.avatar-ring');
     });
 
-    it('should use outline for ring', () => {
+    it('should use box-shadow for ring', () => {
       expect(css).toMatch(
-        /\.avatar-ring\s*\{[^}]*outline:\s*2px solid var\(--color-primary\)/s,
+        /\.avatar-ring\s*\{[^}]*box-shadow:\s*0 0 0 3px color-mix/s,
       );
     });
 
-    it('should have offset for ring', () => {
+    it('should remove outline for ring', () => {
       expect(css).toMatch(
-        /\.avatar-ring\s*\{[^}]*outline-offset:\s*2px/s,
+        /\.avatar-ring\s*\{[^}]*outline:\s*none/s,
       );
     });
 

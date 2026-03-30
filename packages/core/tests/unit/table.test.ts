@@ -341,9 +341,9 @@ describe('Table Component', () => {
       expect(css).toContain('.table tr:focus-visible');
     });
 
-    it('should use primary color for focus outline', () => {
+    it('should use box-shadow for focus ring', () => {
       expect(css).toMatch(
-        /\.table tr:focus-visible[\s\S]*?outline:\s*2px solid var\(--color-primary\)/,
+        /\.table tr:focus-visible[\s\S]*?box-shadow:\s*0 0 0 3px color-mix\(in oklch, currentColor/,
       );
     });
   });

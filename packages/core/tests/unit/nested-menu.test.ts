@@ -70,9 +70,9 @@ describe('Nested Menu Component', () => {
       expect(css).toContain('var(--color-surface-container)');
     });
 
-    it('should include focus-visible outline', () => {
+    it('should include focus-visible box-shadow', () => {
       expect(css).toContain('.nested-menu li > a:focus-visible');
-      expect(css).toContain('var(--color-primary)');
+      expect(css).toMatch(/box-shadow:\s*0 0 0 3px color-mix\(in oklch, currentColor/);
     });
 
     it('should include transitions', () => {

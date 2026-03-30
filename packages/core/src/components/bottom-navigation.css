@@ -48,8 +48,8 @@
   }
 
   .bottom-nav-item:focus-visible .bottom-nav-indicator {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Active State */

@@ -149,9 +149,9 @@ describe('Tabs Component', () => {
       expect(css).toMatch(/\.tab:focus-visible/);
     });
 
-    it('should use primary color for focus outline', () => {
+    it('should use box-shadow for focus ring', () => {
       expect(css).toMatch(
-        /\.tab:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--color-primary\)/s
+        /\.tab:focus-visible\s*\{[^}]*box-shadow:\s*0 0 0 3px color-mix\(in oklch, currentColor/s
       );
     });
 
