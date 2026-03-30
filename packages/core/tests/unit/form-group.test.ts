@@ -219,6 +219,61 @@ describe('Form Group Component', () => {
     });
   });
 
+  describe('Disabled State', () => {
+    it('should define disabled form group state', () => {
+      expect(css).toContain('.form-group-disabled');
+    });
+
+    it('should reduce opacity for disabled state', () => {
+      expect(css).toMatch(/\.form-group-disabled[^}]*opacity:\s*0\.5/s);
+    });
+
+    it('should disable pointer events in disabled state', () => {
+      expect(css).toMatch(/\.form-group-disabled[^}]*pointer-events:\s*none/s);
+    });
+  });
+
+  describe('Form Sections & Layout', () => {
+    it('should define form-section with title and description', () => {
+      expect(css).toContain('.form-section');
+      expect(css).toContain('.form-section-title');
+      expect(css).toContain('.form-section-description');
+    });
+
+    it('should define form-inline layout', () => {
+      expect(css).toContain('.form-inline');
+    });
+
+    it('should define form-actions with alignment variants', () => {
+      expect(css).toContain('.form-actions');
+      expect(css).toContain('.form-actions-right');
+      expect(css).toContain('.form-actions-center');
+      expect(css).toContain('.form-actions-between');
+    });
+
+    it('should define form-divider with text variant', () => {
+      expect(css).toContain('.form-divider');
+      expect(css).toContain('.form-divider-text');
+    });
+
+    it('should define character counter with error state', () => {
+      expect(css).toContain('.form-counter');
+      expect(css).toContain('.form-counter-error');
+    });
+  });
+
+  describe('Grid Layouts', () => {
+    it('should define responsive grid columns', () => {
+      expect(css).toContain('.form-grid-2');
+      expect(css).toContain('.form-grid-3');
+      expect(css).toContain('.form-grid-4');
+    });
+
+    it('should collapse grid to single column on mobile', () => {
+      expect(css).toMatch(/@media.*max-width:\s*640px/s);
+    });
+  });
+
   describe('Color Tokens', () => {
     it('should use semantic error color', () => {
       expect(css).toContain('var(--color-error)');
