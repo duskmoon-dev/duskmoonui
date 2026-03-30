@@ -277,7 +277,7 @@ describe('Drawer Component', () => {
 
     it('should have pill-shaped border-radius', () => {
       expect(css).toMatch(
-        /\.drawer-item\s*\{[^}]*border-radius:\s*1\.75rem/s,
+        /\.drawer-item\s*\{[^}]*border-radius:\s*var\(--radius-2xl\)/s,
       );
     });
 

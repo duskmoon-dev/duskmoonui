@@ -56,7 +56,7 @@
     width: 20rem;
     max-width: calc(100vw - 3.5rem);
     transform: translateX(-100%);
-    border-radius: 0 1rem 1rem 0;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   }
 
   .drawer-left.drawer-open {
@@ -70,7 +70,7 @@
     width: 20rem;
     max-width: calc(100vw - 3.5rem);
     transform: translateX(100%);
-    border-radius: 1rem 0 0 1rem;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
   }
 
   .drawer-right.drawer-open {
@@ -84,7 +84,7 @@
     height: auto;
     max-height: 80vh;
     transform: translateY(-100%);
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
 
   .drawer-top.drawer-open {
@@ -98,7 +98,7 @@
     height: auto;
     max-height: 80vh;
     transform: translateY(100%);
-    border-radius: 1rem 1rem 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 
   .drawer-bottom.drawer-open {
@@ -173,7 +173,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 1.75rem;
+    border-radius: var(--radius-2xl);
     cursor: pointer;
     text-decoration: none;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
