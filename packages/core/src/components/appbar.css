@@ -295,7 +295,7 @@
     color: var(--color-on-surface);
     background-color: var(--color-surface-container);
     border: none;
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     transition: background-color 150ms ease-in-out;
   }
 
@@ -553,7 +553,7 @@
     color: var(--color-on-surface);
     background-color: var(--color-surface-container);
     border: none;
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     transition: background-color 150ms ease-in-out;
   }
 

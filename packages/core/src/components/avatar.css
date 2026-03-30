@@ -70,7 +70,7 @@
 
   /* Shape Variants */
   .avatar-rounded {
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .avatar-square {

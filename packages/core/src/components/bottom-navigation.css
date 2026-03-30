@@ -65,7 +65,7 @@
     justify-content: center;
     width: 4rem;
     height: 2rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-lg);
     transition: background-color 150ms ease-in-out;
   }
 
@@ -113,7 +113,7 @@
     line-height: 1rem;
     color: var(--color-error-content);
     background-color: var(--color-error);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     text-align: center;
   }
 

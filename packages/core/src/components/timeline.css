@@ -92,7 +92,7 @@
   .timeline-card {
     padding: 1rem;
     background-color: var(--color-surface-container);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     margin-top: 0.5rem;
   }
 

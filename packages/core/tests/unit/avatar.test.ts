@@ -138,9 +138,9 @@ describe('Avatar Component', () => {
       expect(css).toContain('.avatar-rounded');
     });
 
-    it('should set rounded border-radius to 0.5rem', () => {
+    it('should set rounded border-radius to radius token', () => {
       expect(css).toMatch(
-        /\.avatar-rounded\s*\{[^}]*border-radius:\s*0\.5rem/s,
+        /\.avatar-rounded\s*\{[^}]*border-radius:\s*var\(--radius-sm\)/s,
       );
     });
 

@@ -73,7 +73,7 @@
     left: 50%;
     width: var(--circle-menu-bar-width);
     height: var(--circle-menu-bar-height);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     background-color: var(--circle-menu-bar-color);
     /* Box-shadow creates middle + bottom bars */
     box-shadow:
@@ -93,7 +93,7 @@
     left: 50%;
     width: var(--circle-menu-bar-width);
     height: var(--circle-menu-bar-height);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     background-color: var(--circle-menu-bar-color);
     transform: translate(-50%, -50%) rotate(-45deg);
     opacity: 0;

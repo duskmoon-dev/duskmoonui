@@ -20,7 +20,7 @@
     color: var(--color-on-surface);
     background-color: var(--color-surface);
     border: 1px solid currentColor;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   }
 
@@ -47,7 +47,7 @@
     margin-top: 0.25rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
     overflow-y: auto;
     opacity: 0;
@@ -200,7 +200,7 @@
     min-height: 2.75rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .autocomplete-tags:focus-within {
@@ -216,7 +216,7 @@
     font-size: 0.75rem;
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
   }
 
   .autocomplete-tag-remove {

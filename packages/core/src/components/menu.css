@@ -28,7 +28,7 @@
     font-size: 0.875rem;
     color: var(--color-on-surface);
     text-decoration: none;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
     white-space: nowrap;
