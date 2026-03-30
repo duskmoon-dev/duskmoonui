@@ -306,7 +306,7 @@
     margin-left: 0.5rem;
     border: 2px solid var(--color-outline);
     border-top-color: var(--color-primary);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     animation: collapse-spin 0.8s linear infinite;
   }
 

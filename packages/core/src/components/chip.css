@@ -285,7 +285,7 @@
     opacity: 0.7;
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: opacity 150ms ease-in-out;
   }

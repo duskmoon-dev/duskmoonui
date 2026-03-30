@@ -78,7 +78,7 @@
     background-color: var(--color-surface-container);
     border: none;
     border-bottom: 2px solid var(--color-outline);
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   }
 
   .pin-input-filled .pin-input-field:focus {
@@ -90,7 +90,7 @@
   .pin-input-circle .pin-input-field {
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
   }
 
   .pin-input-circle.pin-input-sm .pin-input-field {

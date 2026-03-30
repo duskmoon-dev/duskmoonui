@@ -78,7 +78,7 @@
   .tabs-lifted .tab {
     border: 1px solid transparent;
     border-bottom: none;
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     margin-bottom: -1px;
   }
 

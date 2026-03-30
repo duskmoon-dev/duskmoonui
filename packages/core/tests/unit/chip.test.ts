@@ -297,7 +297,7 @@ describe('Chip Component', () => {
 
     it('should make chip-close circular', () => {
       expect(css).toMatch(
-        /\.chip-close\s*\{[^}]*border-radius:\s*50%/s,
+        /\.chip-close\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s,
       );
     });
 

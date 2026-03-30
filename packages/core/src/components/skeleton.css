@@ -19,7 +19,7 @@
   }
 
   .skeleton-circle {
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     aspect-ratio: 1;
   }
 
@@ -56,7 +56,7 @@
   .skeleton-avatar {
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
   }
 
   .skeleton-avatar-sm {

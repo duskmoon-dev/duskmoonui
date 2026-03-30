@@ -103,7 +103,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color 150ms ease-in-out;
@@ -358,7 +358,7 @@
     background-color: var(--color-surface-container);
     border: none;
     border-bottom: 2px solid var(--color-outline);
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   }
 
   .cascader-filled .cascader-trigger:focus {
@@ -445,7 +445,7 @@
     height: 1rem;
     border: 2px solid var(--color-outline);
     border-top-color: var(--color-primary);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     animation: cascader-spin 0.8s linear infinite;
   }
 

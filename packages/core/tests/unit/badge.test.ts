@@ -243,7 +243,7 @@ describe('Badge Component', () => {
 
     it('should make the indicator dot a circle', () => {
       expect(css).toMatch(
-        /\.badge-indicator::before\s*\{[^}]*border-radius:\s*50%/s,
+        /\.badge-indicator::before\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s,
       );
     });
 
@@ -261,7 +261,7 @@ describe('Badge Component', () => {
 
     it('should be a small circle with no padding', () => {
       expect(css).toMatch(/\.badge-dot\s*\{[^}]*padding:\s*0/s);
-      expect(css).toMatch(/\.badge-dot\s*\{[^}]*border-radius:\s*50%/s);
+      expect(css).toMatch(/\.badge-dot\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s);
     });
 
     it('should have fixed width and height', () => {

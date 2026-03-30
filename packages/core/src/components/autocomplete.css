@@ -129,7 +129,7 @@
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
     font-weight: 600;
-    border-radius: 0.125rem;
+    border-radius: var(--radius-xs);
   }
 
   /* Group Header */
@@ -175,7 +175,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
   }
@@ -229,7 +229,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     transition: background-color 150ms ease-in-out;
   }
 

@@ -449,7 +449,7 @@
   .tabs-lifted .tab {
     border: 1px solid transparent;
     border-bottom: none;
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     margin-bottom: -1px;
   }
 
@@ -711,12 +711,12 @@
 
   .pagination-compact .pagination-item:first-child,
   .pagination-compact .pagination-prev {
-    border-radius: 0.5rem 0 0 0.5rem;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
   }
 
   .pagination-compact .pagination-item:last-child,
   .pagination-compact .pagination-next {
-    border-radius: 0 0.5rem 0.5rem 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   }
 
   /* Pagination Responsive */

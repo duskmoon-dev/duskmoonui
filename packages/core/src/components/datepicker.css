@@ -90,7 +90,7 @@
     padding: 0;
     background: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     color: var(--color-on-surface-variant);
     transition: background-color 150ms ease-in-out;
@@ -173,7 +173,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
   }
@@ -230,7 +230,7 @@
     color: var(--color-on-surface);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
   }
@@ -279,13 +279,13 @@
   .datepicker-day-range-start {
     background-color: var(--color-primary);
     color: var(--color-primary-content);
-    border-radius: 50% 0 0 50%;
+    border-radius: var(--radius-full) 0 0 var(--radius-full);
   }
 
   .datepicker-day-range-end {
     background-color: var(--color-primary);
     color: var(--color-primary-content);
-    border-radius: 0 50% 50% 0;
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
   }
 
   /* Month/Year View */
@@ -393,11 +393,11 @@
   }
 
   .datepicker-time-period-btn:first-child {
-    border-radius: 0.25rem 0.25rem 0 0;
+    border-radius: var(--radius-xs) var(--radius-xs) 0 0;
   }
 
   .datepicker-time-period-btn:last-child {
-    border-radius: 0 0 0.25rem 0.25rem;
+    border-radius: 0 0 var(--radius-xs) var(--radius-xs);
     border-top: none;
   }
 

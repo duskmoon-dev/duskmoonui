@@ -41,7 +41,7 @@ describe('Avatar Component', () => {
     });
 
     it('should be circular by default', () => {
-      expect(css).toMatch(/\.avatar\s*\{[^}]*border-radius:\s*50%/s);
+      expect(css).toMatch(/\.avatar\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s);
     });
 
     it('should hide overflow', () => {
@@ -246,7 +246,7 @@ describe('Avatar Component', () => {
     });
 
     it('should make indicators circular', () => {
-      expect(css).toMatch(/border-radius:\s*50%/);
+      expect(css).toMatch(/border-radius:\s*var\(--radius-full\)/);
     });
   });
 

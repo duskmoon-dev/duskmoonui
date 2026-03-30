@@ -148,7 +148,7 @@
     background-color: var(--color-surface-container);
     border: none;
     border-bottom: 2px solid var(--color-outline);
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   }
 
   .time-input-filled .time-input-field:focus,

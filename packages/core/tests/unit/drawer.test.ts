@@ -223,7 +223,7 @@ describe('Drawer Component', () => {
 
     it('should make close button circular', () => {
       expect(css).toMatch(
-        /\.drawer-close\s*\{[^}]*border-radius:\s*50%/s,
+        /\.drawer-close\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s,
       );
     });
   });

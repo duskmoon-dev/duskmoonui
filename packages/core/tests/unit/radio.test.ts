@@ -22,7 +22,7 @@ describe('Radio Component', () => {
   });
 
   it('should have border-radius 50% for circular shape', () => {
-    expect(css).toMatch(/border-radius:\s*50%/);
+    expect(css).toMatch(/border-radius:\s*var\(--radius-full\)/);
   });
 
   it('should use primary color token', () => {

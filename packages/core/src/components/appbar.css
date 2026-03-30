@@ -91,7 +91,7 @@
     color: var(--color-on-surface);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
     flex-shrink: 0;
@@ -154,7 +154,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
   }
@@ -270,7 +270,7 @@
     color: var(--color-on-surface);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
     flex-shrink: 0;

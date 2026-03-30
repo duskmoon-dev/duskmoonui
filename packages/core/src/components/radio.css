@@ -24,7 +24,7 @@
     appearance: none;
     background-color: transparent;
     border: 2px solid var(--radio-border-color);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     transition: border-color 150ms ease-in-out;
   }
 
@@ -33,7 +33,7 @@
     content: "";
     width: 0.5em;
     height: 0.5em;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background-color: var(--radio-color);
     transform: scale(0);
     transition: transform 150ms ease-in-out;

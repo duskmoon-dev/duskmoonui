@@ -72,7 +72,7 @@
     color: var(--color-on-surface-variant);
     background-color: var(--color-surface);
     border: 2px solid var(--color-outline-variant);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out, color 150ms ease-in-out;
   }
 

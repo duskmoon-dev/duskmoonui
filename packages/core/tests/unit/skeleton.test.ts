@@ -24,7 +24,7 @@ describe('Skeleton Component', () => {
   });
 
   it('should have circular shape for skeleton-circle', () => {
-    expect(css).toMatch(/\.skeleton-circle[^}]*border-radius:\s*50%/s);
+    expect(css).toMatch(/\.skeleton-circle[^}]*border-radius:\s*var\(--radius-full\)/s);
   });
 
   it('should use surface container color token', () => {

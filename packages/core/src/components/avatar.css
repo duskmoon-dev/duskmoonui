@@ -12,7 +12,7 @@
     position: relative;
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     overflow: hidden;
     background-color: var(--color-surface-container);
     color: var(--color-on-surface);
@@ -142,7 +142,7 @@
     height: 25%;
     min-width: 0.5rem;
     min-height: 0.5rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     border: 2px solid var(--color-surface);
   }
 

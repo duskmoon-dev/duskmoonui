@@ -87,7 +87,7 @@
     color: inherit;
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 150ms ease-in-out, background-color 150ms ease-in-out;
@@ -167,7 +167,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color 150ms ease-in-out;
@@ -298,7 +298,7 @@
     height: 1rem;
     background-color: transparent;
     border: 2px solid var(--color-on-surface-variant);
-    border-radius: 0.125rem;
+    border-radius: var(--radius-xs);
     flex-shrink: 0;
   }
 
@@ -392,7 +392,7 @@
     font-weight: 600;
     color: var(--color-primary-content);
     background-color: var(--color-primary);
-    border-radius: 0.625rem;
+    border-radius: var(--radius-sm);
   }
 
   /* Size Variants */
@@ -426,7 +426,7 @@
     background-color: var(--color-surface-container);
     border: none;
     border-bottom: 2px solid var(--color-outline);
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   }
 
   .multi-select-filled .multi-select-trigger:focus-within {
@@ -517,7 +517,7 @@
     height: 1rem;
     border: 2px solid var(--color-outline);
     border-top-color: var(--color-primary);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     animation: multi-select-spin 0.8s linear infinite;
   }
 

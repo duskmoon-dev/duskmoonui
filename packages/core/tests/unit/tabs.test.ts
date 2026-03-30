@@ -255,7 +255,7 @@ describe('Tabs Component', () => {
 
     it('should apply top-only border-radius for lifted tabs', () => {
       expect(css).toMatch(
-        /\.tabs-lifted\s+\.tab\s*\{[^}]*border-radius:\s*0\.5rem 0\.5rem 0 0/s
+        /\.tabs-lifted\s+\.tab\s*\{[^}]*border-radius:\s*var\(--radius-sm\) var\(--radius-sm\) 0 0/s
       );
     });
 
