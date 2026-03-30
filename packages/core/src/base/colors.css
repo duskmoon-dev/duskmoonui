@@ -129,31 +129,6 @@
   --color-scrim: initial;
 
   /* ============================================
-   * ELEVATION SHADOWS (6 tokens)
-   * Theme-aware via --color-shadow token
-   * ============================================ */
-
-  --shadow-xs: 0 1px 2px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent);
-  --shadow-sm: 0 1px 3px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 1px 2px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent);
-  --shadow-md: 0 4px 6px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 10%, transparent);
-  --shadow-lg: 0 10px 15px -3px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 4px 6px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent);
-  --shadow-xl: 0 20px 25px -5px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 8px 10px -6px color-mix(in srgb, var(--color-shadow) 10%, transparent);
-  --shadow-2xl: 0 25px 50px -12px color-mix(in srgb, var(--color-shadow) 25%, transparent);
-
-  /* ============================================
-   * MD3 ELEVATION LEVELS (6 semantic tokens)
-   * Maps MD3 elevation levels (0–5) to shadow effects
-   * level0=none, level1=xs, level2=sm, level3=md, level4=lg, level5=xl
-   * ============================================ */
-
-  --shadow-elevation-0: none;
-  --shadow-elevation-1: var(--shadow-xs);
-  --shadow-elevation-2: var(--shadow-sm);
-  --shadow-elevation-3: var(--shadow-md);
-  --shadow-elevation-4: var(--shadow-lg);
-  --shadow-elevation-5: var(--shadow-xl);
-
-  /* ============================================
    * SHAPE / BORDER RADIUS (8 tokens)
    * Values provided by generated/spacing.css
    * ============================================ */
@@ -166,6 +141,28 @@
   --radius-xl: initial;
   --radius-2xl: initial;
   --radius-full: initial;
+}
+
+/* ============================================
+ * ELEVATION SHADOWS
+ * Computed from --color-shadow (theme-provided) via color-mix()
+ * Outside @theme: derived values, not theme declarations
+ * ============================================ */
+:root {
+  --shadow-xs: 0 1px 2px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent);
+  --shadow-sm: 0 1px 3px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 1px 2px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-md: 0 4px 6px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-lg: 0 10px 15px -3px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 4px 6px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-xl: 0 20px 25px -5px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 8px 10px -6px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-2xl: 0 25px 50px -12px color-mix(in srgb, var(--color-shadow) 25%, transparent);
+
+  /* MD3 Elevation Levels — semantic shadow aliases */
+  --shadow-elevation-0: none;
+  --shadow-elevation-1: var(--shadow-xs);
+  --shadow-elevation-2: var(--shadow-sm);
+  --shadow-elevation-3: var(--shadow-md);
+  --shadow-elevation-4: var(--shadow-lg);
+  --shadow-elevation-5: var(--shadow-xl);
 }
 
 /* Utility classes for colors — token references + color-mix() for states */
