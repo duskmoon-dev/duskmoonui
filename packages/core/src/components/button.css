@@ -24,7 +24,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    border: 1px solid transparent;
+    border: 1px solid currentColor;
     border-radius: var(--radius-sm);
     transition: all 150ms ease-in-out;
     background-color: var(--color-surface-container);
@@ -98,7 +98,7 @@
   .btn-outlined {
     --btn-text-color: var(--color-on-surface);
     background-color: transparent;
-    border: 1px solid var(--color-outline);
+    border-color: var(--color-outline);
   }
 
   .btn-outline:hover,
@@ -110,7 +110,7 @@
   .btn-outline.btn-primary,
   .btn-outlined.btn-primary {
     --btn-text-color: var(--color-primary);
-    border-color: var(--color-primary);
+    border-color: currentColor;
   }
 
   .btn-outline.btn-primary:hover,
@@ -122,7 +122,7 @@
   .btn-outline.btn-secondary,
   .btn-outlined.btn-secondary {
     --btn-text-color: var(--color-secondary);
-    border-color: var(--color-secondary);
+    border-color: currentColor;
   }
 
   .btn-outline.btn-secondary:hover,
@@ -134,7 +134,7 @@
   .btn-outline.btn-tertiary,
   .btn-outlined.btn-tertiary {
     --btn-text-color: var(--color-tertiary);
-    border-color: var(--color-tertiary);
+    border-color: currentColor;
   }
 
   .btn-outline.btn-tertiary:hover,
@@ -146,7 +146,7 @@
   .btn-outline.btn-info,
   .btn-outlined.btn-info {
     --btn-text-color: var(--color-info);
-    border-color: var(--color-info);
+    border-color: currentColor;
   }
 
   .btn-outline.btn-info:hover,
@@ -158,7 +158,7 @@
   .btn-outline.btn-success,
   .btn-outlined.btn-success {
     --btn-text-color: var(--color-success);
-    border-color: var(--color-success);
+    border-color: currentColor;
   }
 
   .btn-outline.btn-success:hover,
@@ -170,7 +170,7 @@
   .btn-outline.btn-warning,
   .btn-outlined.btn-warning {
     --btn-text-color: var(--color-warning);
-    border-color: var(--color-warning);
+    border-color: currentColor;
   }
 
   .btn-outline.btn-warning:hover,
@@ -182,7 +182,7 @@
   .btn-outline.btn-error,
   .btn-outlined.btn-error {
     --btn-text-color: var(--color-error);
-    border-color: var(--color-error);
+    border-color: currentColor;
   }
 
   .btn-outline.btn-error:hover,
