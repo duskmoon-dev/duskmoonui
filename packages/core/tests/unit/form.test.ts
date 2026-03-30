@@ -99,6 +99,44 @@ describe('Form Component', () => {
     });
   });
 
+  describe('Checkbox Color Variants', () => {
+    const variants = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'error'];
+
+    for (const variant of variants) {
+      it(`should define .checkbox-${variant} variant`, () => {
+        expect(formCSS).toContain(`.checkbox-${variant}`);
+      });
+
+      it(`should set ${variant} background on .checkbox-${variant}:checked`, () => {
+        expect(formCSS).toMatch(
+          new RegExp(`.checkbox-${variant}:checked[^}]*background-color:\\s*var\\(--color-${variant}\\)`, 's')
+        );
+      });
+    }
+  });
+
+  describe('Radio Color Variants', () => {
+    const variants = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'error'];
+
+    for (const variant of variants) {
+      it(`should define .radio-${variant} variant`, () => {
+        expect(formCSS).toContain(`.radio-${variant}`);
+      });
+
+      it(`should set ${variant} border on .radio-${variant}:checked`, () => {
+        expect(formCSS).toMatch(
+          new RegExp(`.radio-${variant}:checked[^}]*border-color:\\s*var\\(--color-${variant}\\)`, 's')
+        );
+      });
+
+      it(`should set ${variant} fill on .radio-${variant}:checked::after`, () => {
+        expect(formCSS).toMatch(
+          new RegExp(`.radio-${variant}:checked::after[^}]*background-color:\\s*var\\(--color-${variant}\\)`, 's')
+        );
+      });
+    }
+  });
+
   describe('Toggle/Switch', () => {
     it('should define .toggle class', () => {
       expect(formCSS).toContain('.toggle');

@@ -94,6 +94,21 @@
     border-color: var(--color-success);
   }
 
+  .checkbox-tertiary:checked {
+    background-color: var(--color-tertiary);
+    border-color: var(--color-tertiary);
+  }
+
+  .checkbox-info:checked {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+  }
+
+  .checkbox-warning:checked {
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+  }
+
   .checkbox-error:checked {
     background-color: var(--color-error);
     border-color: var(--color-error);
@@ -173,6 +188,46 @@
 
   .radio-secondary:checked::after {
     background-color: var(--color-secondary);
+  }
+
+  .radio-tertiary:checked {
+    border-color: var(--color-tertiary);
+  }
+
+  .radio-tertiary:checked::after {
+    background-color: var(--color-tertiary);
+  }
+
+  .radio-info:checked {
+    border-color: var(--color-info);
+  }
+
+  .radio-info:checked::after {
+    background-color: var(--color-info);
+  }
+
+  .radio-success:checked {
+    border-color: var(--color-success);
+  }
+
+  .radio-success:checked::after {
+    background-color: var(--color-success);
+  }
+
+  .radio-warning:checked {
+    border-color: var(--color-warning);
+  }
+
+  .radio-warning:checked::after {
+    background-color: var(--color-warning);
+  }
+
+  .radio-error:checked {
+    border-color: var(--color-error);
+  }
+
+  .radio-error:checked::after {
+    background-color: var(--color-error);
   }
 
   /* Toggle/Switch */
