@@ -31,18 +31,18 @@ This modular approach allows duskmoon-elements to bundle only the CSS needed for
 
 ## Component Overview
 
-DuskMoonUI includes **51 components** and **layout utilities** organized by category.
+DuskMoonUI includes **57 components** and **layout utilities** organized by category.
 
 ### Included Components
 
 | Category | Components |
 |----------|------------|
-| **Actions** | Button, File Upload, Toggle |
+| **Actions** | Button, Circle Menu, File Upload, Toggle |
 | **Data Display** | Avatar, Badge, Card, Chip, Code Block, Collapse, List, Table, Timeline, Skeleton |
 | **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Theme Controller, Time Input, Tree Select |
 | **Feedback** | Alert, Dialog, Modal, Progress, Snackbar, Toast, Tooltip |
 | **Layout** | App Bar, Divider, Form, Grid Utilities, Markdown Body |
-| **Navigation** | Bottom Navigation, Drawer, Navigation (Navbar/Tabs/Menu), Nested Menu, Stepper |
+| **Navigation** | Bottom Navigation, Breadcrumbs, Drawer, Menu, Navbar, Navigation (combined), Nested Menu, Pagination, Stepper, Tabs |
 | **Surfaces** | Accordion, Bottom Sheet, Popover |
 
 ### Layout Utilities
@@ -81,11 +81,13 @@ packages/core/src/components/
 ├── badge.css           # Small status indicators
 ├── bottom-navigation.css # Mobile bottom nav bar
 ├── bottomsheet.css     # Mobile bottom panels
+├── breadcrumbs.css     # Breadcrumb navigation trails
 ├── button.css          # Clickable buttons (filled, outlined, text, tonal)
 ├── card.css            # Content container with elevation
 ├── cascader.css        # Hierarchical cascading selection
 ├── checkbox.css        # Multi-selection checkboxes
 ├── chip.css            # Compact elements for tags/filters
+├── circle-menu.css     # Radial navigation menu with animated items
 ├── code-block.css      # Styled code container with header and copy button
 ├── collapse.css        # Expandable/collapsible content
 ├── datepicker.css      # Calendar date selection
@@ -98,11 +100,14 @@ packages/core/src/components/
 ├── input.css           # Text input fields
 ├── list.css            # Vertical list of items
 ├── markdown-body.css   # Markdown content styling
+├── menu.css            # Dropdown/context menu
 ├── modal.css           # Full-featured modal overlays
 ├── multi-select.css    # Multiple selection dropdown
-├── navigation.css      # Navbar, tabs, menu components
+├── navbar.css          # Top navigation bar (standalone)
+├── navigation.css      # Combined navbar, tabs, menu component
 ├── nested-menu.css     # Collapsible sidebar navigation
 ├── otp-input.css       # One-time password input fields
+├── pagination.css      # Page navigation controls
 ├── pin-input.css       # PIN entry input fields
 ├── popover.css         # Contextual overlays
 ├── progress.css        # Linear and circular indicators
@@ -116,6 +121,7 @@ packages/core/src/components/
 ├── stepper.css         # Multi-step process guide
 ├── switch.css          # Toggle on/off control
 ├── table.css           # Data tables
+├── tabs.css            # Tab navigation (standalone)
 ├── textarea.css        # Multi-line text input
 ├── theme-controller.css # Theme switching controls (switch & dropdown)
 ├── time-input.css      # Time selection input
@@ -137,7 +143,6 @@ The following Material Design 3 components could be added:
 | **FAB** | Floating Action Button | Medium |
 | **Search Bar** | Dedicated search input | Low |
 | **Navigation Rail** | Compact side navigation | Low |
-| **Speed Dial** | Expandable FAB with actions | Low |
 
 ---
 
@@ -426,7 +431,7 @@ duskmoonui/
 │   │   │   │   ├── ocean.css   # Ocean theme
 │   │   │   │   ├── forest.css  # Forest theme
 │   │   │   │   └── sunset.css  # Sunset theme
-│   │   │   ├── components/     # 50 component CSS files
+│   │   │   ├── components/     # 57 component CSS files
 │   │   │   ├── generators/     # CSS variable generation
 │   │   │   └── types/          # TypeScript definitions
 │   │   ├── scripts/
@@ -451,8 +456,10 @@ duskmoonui/
 │   │   │       ├── color-spin.css          # 3D spinning color rings
 │   │   │       ├── synthwave-starfield.css # Synthwave tunnel starfield
 │   │   │       ├── circular-gallery.css    # CSS anchor-positioned circular gallery
+│   │   │       ├── csswitch.css            # CSS-only game controller switch
 │   │   │       ├── flower-animation.css    # Blooming flower night scene
-│   │   │       └── gemini-input.css        # Gemini-style animated gradient input
+│   │   │       ├── gemini-input.css        # Gemini-style animated gradient input
+│   │   │       └── snowball-preloader.css  # Animated snowball loading spinner
 │   │   ├── scripts/
 │   │   │   └── build-css.ts    # CSS build script
 │   │   ├── tests/
