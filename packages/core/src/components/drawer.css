@@ -225,7 +225,7 @@
     font-weight: 500;
     background-color: var(--color-error-container);
     color: var(--color-on-error-container);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     margin-left: auto;
   }
 

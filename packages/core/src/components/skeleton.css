@@ -7,7 +7,7 @@
   /* Base Skeleton */
   .skeleton {
     background-color: var(--color-surface-container-high);
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
     animation: skeleton-pulse 2s ease-in-out infinite;
   }
 
@@ -15,7 +15,7 @@
   .skeleton-text {
     height: 1rem;
     width: 100%;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
   }
 
   .skeleton-circle {
@@ -24,11 +24,11 @@
   }
 
   .skeleton-rect {
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .skeleton-rounded {
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   /* Size Variants */
@@ -72,18 +72,18 @@
   .skeleton-button {
     height: 2.5rem;
     width: 6rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .skeleton-image {
     aspect-ratio: 16 / 9;
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .skeleton-card {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: var(--radius-lg);
     padding: 1rem;
   }
 
@@ -92,7 +92,7 @@
     height: 0.875rem;
     width: 100%;
     margin-bottom: 0.5rem;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
   }
 
   .skeleton-line:last-child {
@@ -186,7 +186,7 @@
   .skeleton-table-cell {
     flex: 1;
     height: 1rem;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
   }
 
   /* List Skeleton */

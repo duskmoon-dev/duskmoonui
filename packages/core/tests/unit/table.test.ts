@@ -172,7 +172,7 @@ describe('Table Component', () => {
 
     it('should have border-radius', () => {
       expect(css).toMatch(
-        /\.table-bordered\s*\{[^}]*border-radius:\s*0\.5rem/s,
+        /\.table-bordered\s*\{[^}]*border-radius:\s*var\(--radius-sm\)/s,
       );
     });
 

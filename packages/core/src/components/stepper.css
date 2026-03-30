@@ -262,7 +262,7 @@
 
   .stepper-dots .stepper-step-active .stepper-step-icon {
     width: 1.5rem;
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     background-color: var(--color-primary);
   }
 

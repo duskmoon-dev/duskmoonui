@@ -8,7 +8,7 @@
   .collapse {
     display: flex;
     flex-direction: column;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     background-color: var(--color-surface);
     /* Override Tailwind's visibility: collapse utility */
     visibility: visible !important;
@@ -124,7 +124,7 @@
     border: none;
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .collapse-toggle:hover {
@@ -154,7 +154,7 @@
   .collapse-card {
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
   }
@@ -182,7 +182,7 @@
   /* Bordered Variant */
   .collapse-bordered {
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   /* Ghost Variant */

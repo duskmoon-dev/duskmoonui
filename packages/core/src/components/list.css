@@ -87,7 +87,7 @@
   /* List Variants */
   .list-bordered {
     border: 1px solid var(--color-outline);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     padding: 0;
   }
 

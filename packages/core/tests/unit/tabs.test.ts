@@ -183,7 +183,7 @@ describe('Tabs Component', () => {
 
     it('should have border-radius on the container', () => {
       expect(css).toMatch(
-        /\.tabs-boxed\s*\{[^}]*border-radius:\s*0\.5rem/s
+        /\.tabs-boxed\s*\{[^}]*border-radius:\s*var\(--radius-sm\)/s
       );
     });
 
@@ -203,7 +203,7 @@ describe('Tabs Component', () => {
 
     it('should give boxed tabs their own border-radius', () => {
       expect(css).toMatch(
-        /\.tabs-boxed\s+\.tab\s*\{[^}]*border-radius:\s*0\.375rem/s
+        /\.tabs-boxed\s+\.tab\s*\{[^}]*border-radius:\s*var\(--radius-xs\)/s
       );
     });
 

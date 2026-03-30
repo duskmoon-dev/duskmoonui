@@ -41,7 +41,7 @@ describe('Progress Component', () => {
     });
 
     it('should have pill-shaped border-radius', () => {
-      expect(css).toMatch(/\.progress\s*\{[^}]*border-radius:\s*9999px/s);
+      expect(css).toMatch(/\.progress\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s);
     });
 
     it('should hide overflow', () => {
