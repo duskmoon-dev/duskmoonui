@@ -418,7 +418,9 @@
   .form-control.error .input,
   .form-control.error .select,
   .form-control.error .textarea,
-  .input-error {
+  .input-error,
+  .select-error,
+  .textarea-error {
     border-color: var(--color-error);
   }
 
@@ -435,7 +437,10 @@
 
   .form-control.success .input,
   .form-control.success .select,
-  .form-control.success .textarea {
+  .form-control.success .textarea,
+  .input-success,
+  .select-success,
+  .textarea-success {
     border-color: var(--color-success);
   }
 
@@ -452,7 +457,10 @@
 
   .form-control.warning .input,
   .form-control.warning .select,
-  .form-control.warning .textarea {
+  .form-control.warning .textarea,
+  .input-warning,
+  .select-warning,
+  .textarea-warning {
     border-color: var(--color-warning);
   }
 
@@ -469,7 +477,10 @@
 
   .form-control.info .input,
   .form-control.info .select,
-  .form-control.info .textarea {
+  .form-control.info .textarea,
+  .input-info,
+  .select-info,
+  .textarea-info {
     border-color: var(--color-info);
   }
 
@@ -497,6 +508,41 @@
 
   .helper-text.success {
     color: var(--color-success);
+  }
+
+  .helper-text.warning {
+    color: var(--color-warning);
+  }
+
+  .helper-text.info {
+    color: var(--color-info);
+  }
+
+  /* Native HTML Validation — :user-invalid/:user-valid for post-interaction styling */
+  .input:user-invalid,
+  .select:user-invalid,
+  .textarea:user-invalid {
+    border-color: var(--color-error);
+  }
+
+  .input:user-invalid:focus-visible,
+  .select:user-invalid:focus-visible,
+  .textarea:user-invalid:focus-visible {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
+  .input:user-valid,
+  .select:user-valid,
+  .textarea:user-valid {
+    border-color: var(--color-success);
+  }
+
+  .input:user-valid:focus-visible,
+  .select:user-valid:focus-visible,
+  .textarea:user-valid:focus-visible {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
 
   /* Required Field Indicator */

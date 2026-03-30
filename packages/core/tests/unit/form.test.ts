@@ -231,6 +231,48 @@ describe('Form Component', () => {
     it('should use color-mix for focus ring opacity', () => {
       expect(formCSS).toMatch(/color-mix\(in oklch, var\(--color-error\)/);
     });
+
+    it('should define standalone select-error and textarea-error classes', () => {
+      expect(formCSS).toContain('.select-error');
+      expect(formCSS).toContain('.textarea-error');
+    });
+
+    it('should define standalone success validation classes for all form elements', () => {
+      expect(formCSS).toContain('.input-success');
+      expect(formCSS).toContain('.select-success');
+      expect(formCSS).toContain('.textarea-success');
+    });
+
+    it('should define standalone warning validation classes for all form elements', () => {
+      expect(formCSS).toContain('.input-warning');
+      expect(formCSS).toContain('.select-warning');
+      expect(formCSS).toContain('.textarea-warning');
+    });
+
+    it('should define standalone info validation classes for all form elements', () => {
+      expect(formCSS).toContain('.input-info');
+      expect(formCSS).toContain('.select-info');
+      expect(formCSS).toContain('.textarea-info');
+    });
+
+    it('should define helper-text warning and info variants', () => {
+      expect(formCSS).toMatch(/\.helper-text\.warning[^}]*var\(--color-warning\)/s);
+      expect(formCSS).toMatch(/\.helper-text\.info[^}]*var\(--color-info\)/s);
+    });
+
+    it('should support native :user-invalid pseudo-class', () => {
+      expect(formCSS).toContain(':user-invalid');
+      expect(formCSS).toMatch(/\.input:user-invalid[^}]*border-color:\s*var\(--color-error\)/s);
+    });
+
+    it('should support native :user-valid pseudo-class', () => {
+      expect(formCSS).toContain(':user-valid');
+      expect(formCSS).toMatch(/\.input:user-valid[^}]*border-color:\s*var\(--color-success\)/s);
+    });
+
+    it('should apply focus ring on :user-invalid focus', () => {
+      expect(formCSS).toMatch(/\.input:user-invalid:focus-visible[^}]*box-shadow/s);
+    });
   });
 
   describe('Accessibility', () => {
