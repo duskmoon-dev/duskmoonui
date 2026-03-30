@@ -139,6 +139,20 @@
   --shadow-lg: 0 10px 15px -3px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 4px 6px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent);
   --shadow-xl: 0 20px 25px -5px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 8px 10px -6px color-mix(in srgb, var(--color-shadow) 10%, transparent);
   --shadow-2xl: 0 25px 50px -12px color-mix(in srgb, var(--color-shadow) 25%, transparent);
+
+  /* ============================================
+   * SHAPE / BORDER RADIUS (8 tokens)
+   * Values provided by generated/spacing.css
+   * ============================================ */
+
+  --radius-none: initial;
+  --radius-xs: initial;
+  --radius-sm: initial;
+  --radius-md: initial;
+  --radius-lg: initial;
+  --radius-xl: initial;
+  --radius-2xl: initial;
+  --radius-full: initial;
 }
 
 /* Utility classes for colors — token references + color-mix() for states */

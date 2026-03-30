@@ -85,4 +85,25 @@ describe('Tailwind Plugin Registration', () => {
       expect(pluginSrc).toContain('var(--color-scrim)');
     });
   });
+
+  describe('Shape tokens', () => {
+    it('should define themeRadius object', () => {
+      expect(pluginSrc).toContain('themeRadius');
+    });
+
+    it('should map radius tokens to CSS custom properties', () => {
+      expect(pluginSrc).toContain('var(--radius-none)');
+      expect(pluginSrc).toContain('var(--radius-xs)');
+      expect(pluginSrc).toContain('var(--radius-sm)');
+      expect(pluginSrc).toContain('var(--radius-md)');
+      expect(pluginSrc).toContain('var(--radius-lg)');
+      expect(pluginSrc).toContain('var(--radius-xl)');
+      expect(pluginSrc).toContain('var(--radius-2xl)');
+      expect(pluginSrc).toContain('var(--radius-full)');
+    });
+
+    it('should register radius in borderRadius theme extension', () => {
+      expect(pluginSrc).toContain('borderRadius: themeRadius');
+    });
+  });
 });

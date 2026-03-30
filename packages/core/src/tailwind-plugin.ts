@@ -121,6 +121,18 @@ const themeShadows = {
   '2xl': 'var(--shadow-2xl)',
 };
 
+// Shape tokens — reference CSS custom properties from @theme in colors.css
+const themeRadius = {
+  'none': 'var(--radius-none)',
+  'xs': 'var(--radius-xs)',
+  'sm': 'var(--radius-sm)',
+  'md': 'var(--radius-md)',
+  'lg': 'var(--radius-lg)',
+  'xl': 'var(--radius-xl)',
+  '2xl': 'var(--radius-2xl)',
+  'full': 'var(--radius-full)',
+};
+
 /**
  * DuskMoonUI Tailwind CSS v4 Plugin
  *
@@ -149,6 +161,7 @@ const duskmoonPlugin: ReturnType<typeof plugin> = plugin(
       extend: {
         colors: themeColors,
         boxShadow: themeShadows,
+        borderRadius: themeRadius,
       },
     },
   }

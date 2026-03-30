@@ -167,4 +167,21 @@ describe('Color Token Generation', () => {
       expect(colorsCSS).toContain('--color-scrim:');
     });
   });
+
+  describe('Shape / Radius Tokens', () => {
+    it('should define all radius tokens in @theme', () => {
+      expect(colorsCSS).toContain('--radius-none:');
+      expect(colorsCSS).toContain('--radius-xs:');
+      expect(colorsCSS).toContain('--radius-sm:');
+      expect(colorsCSS).toContain('--radius-md:');
+      expect(colorsCSS).toContain('--radius-lg:');
+      expect(colorsCSS).toContain('--radius-xl:');
+      expect(colorsCSS).toContain('--radius-2xl:');
+      expect(colorsCSS).toContain('--radius-full:');
+    });
+
+    it('should set radius tokens to initial (values from codegen spacing.css)', () => {
+      expect(colorsCSS).toMatch(/--radius-md:\s*initial/);
+    });
+  });
 });
