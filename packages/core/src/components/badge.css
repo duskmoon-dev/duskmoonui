@@ -14,7 +14,7 @@
     font-weight: 500;
     line-height: 1rem;
     white-space: nowrap;
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     background-color: var(--color-surface-container);
     color: var(--color-on-surface);
   }

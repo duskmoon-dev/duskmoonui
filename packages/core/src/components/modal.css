@@ -34,7 +34,7 @@
     padding: 1.5rem;
     background-color: var(--color-surface);
     color: var(--color-on-surface);
-    border-radius: 1rem;
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-2xl);
     overflow-y: auto;
     transform: scale(0.95);

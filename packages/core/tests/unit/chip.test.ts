@@ -50,8 +50,8 @@ describe('Chip Component', () => {
       expect(css).toMatch(/\.chip\s*\{[^}]*font-weight:\s*500/s);
     });
 
-    it('should set border-radius to 0.5rem', () => {
-      expect(css).toMatch(/\.chip\s*\{[^}]*border-radius:\s*0\.5rem/s);
+    it('should set border-radius to var(--radius-sm)', () => {
+      expect(css).toMatch(/\.chip\s*\{[^}]*border-radius:\s*var\(--radius-sm\)/s);
     });
 
     it('should use surface-container background by default', () => {

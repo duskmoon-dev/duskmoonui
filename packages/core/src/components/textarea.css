@@ -93,7 +93,7 @@
     color: var(--color-on-surface);
     background-color: var(--color-surface);
     border: 1px solid currentColor;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     outline: none;
     resize: vertical;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
@@ -167,7 +167,7 @@
   .textarea-outlined {
     background-color: transparent;
     border: 1px solid var(--color-outline);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   /* Ghost Variant */
@@ -215,7 +215,7 @@
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    border-radius: 0.375rem;
+    border-radius: var(--radius-xs);
   }
 
   .textarea-lg {
@@ -223,7 +223,7 @@
     padding: 1rem 1.25rem;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    border-radius: 0.625rem;
+    border-radius: var(--radius-sm);
   }
 
   /* ============================================

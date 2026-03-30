@@ -36,7 +36,7 @@ describe('Badge Component', () => {
     });
 
     it('should set pill-shaped border-radius', () => {
-      expect(css).toMatch(/border-radius:\s*9999px/);
+      expect(css).toMatch(/border-radius:\s*var\(--radius-full\)/);
     });
 
     it('should set font-size to 0.75rem', () => {

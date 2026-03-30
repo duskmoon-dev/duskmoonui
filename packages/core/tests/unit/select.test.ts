@@ -206,13 +206,13 @@ describe('Select Component', () => {
 
     it('should have smaller border-radius for xs', () => {
       expect(css).toMatch(
-        /\.select-xs\s*\{[^}]*border-radius:\s*0\.25rem/s,
+        /\.select-xs\s*\{[^}]*border-radius:\s*var\(--radius-xs\)/s,
       );
     });
 
     it('should have larger border-radius for lg', () => {
       expect(css).toMatch(
-        /\.select-lg\s*\{[^}]*border-radius:\s*0\.625rem/s,
+        /\.select-lg\s*\{[^}]*border-radius:\s*var\(--radius-sm\)/s,
       );
     });
   });

@@ -118,7 +118,7 @@ describe('Tooltip Component', () => {
 
     it('should set border-radius', () => {
       expect(css).toMatch(
-        /\.tooltip-content\s*\{[^}]*border-radius:\s*0\.25rem/s
+        /\.tooltip-content\s*\{[^}]*border-radius:\s*var\(--radius-xs\)/s
       );
     });
 

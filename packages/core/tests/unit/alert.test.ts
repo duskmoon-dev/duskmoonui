@@ -43,7 +43,7 @@ describe('Alert Component', () => {
     });
 
     it('should set border-radius', () => {
-      expect(css).toMatch(/\.alert\s*\{[^}]*border-radius:\s*0\.5rem/s);
+      expect(css).toMatch(/\.alert\s*\{[^}]*border-radius:\s*var\(--radius-sm\)/s);
     });
 
     it('should use surface-container background by default', () => {
