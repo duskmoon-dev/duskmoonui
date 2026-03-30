@@ -293,7 +293,7 @@
     left: 0;
     height: 3px;
     background-color: currentColor;
-    border-radius: 0 0 0.75rem 0.75rem;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
     animation: toast-progress linear forwards;
   }
 
