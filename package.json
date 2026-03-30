@@ -8,6 +8,7 @@
     "examples/*"
   ],
   "scripts": {
+    "test": "bun run --filter @duskmoon-dev/core test",
     "dev": "bun run --filter @duskmoon-dev/docs dev",
     "dev:core": "bun run --filter @duskmoon-dev/core dev",
     "dev:css-art": "bun run --filter @duskmoon-dev/css-art dev",

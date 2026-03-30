@@ -146,9 +146,52 @@ describe('Form Component', () => {
       expect(formCSS).toContain('var(--color-error)');
     });
 
+    it('should apply focus ring on error state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.error .input:focus-visible[^}]*box-shadow/s);
+    });
+
     it('should support success state styling', () => {
-      const hasSuccess = formCSS.includes('success') || formCSS.includes('valid');
-      expect(hasSuccess).toBe(true);
+      expect(formCSS).toContain('.form-control.success');
+    });
+
+    it('should apply focus ring on success state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.success .input:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should support warning state styling', () => {
+      expect(formCSS).toContain('.form-control.warning');
+    });
+
+    it('should apply warning color to border in warning state', () => {
+      expect(formCSS).toMatch(/\.form-control\.warning[\s\S]*?border-color:\s*var\(--color-warning\)/);
+    });
+
+    it('should apply focus ring on warning state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.warning .input:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should apply warning color to label in warning state', () => {
+      expect(formCSS).toMatch(/\.form-control\.warning .label-text[^}]*var\(--color-warning\)/s);
+    });
+
+    it('should support info state styling', () => {
+      expect(formCSS).toContain('.form-control.info');
+    });
+
+    it('should apply info color to border in info state', () => {
+      expect(formCSS).toMatch(/\.form-control\.info[\s\S]*?border-color:\s*var\(--color-info\)/);
+    });
+
+    it('should apply focus ring on info state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.info .input:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should apply info color to label in info state', () => {
+      expect(formCSS).toMatch(/\.form-control\.info .label-text[^}]*var\(--color-info\)/s);
+    });
+
+    it('should use color-mix for focus ring opacity', () => {
+      expect(formCSS).toMatch(/color-mix\(in oklch, var\(--color-error\)/);
     });
   });
 

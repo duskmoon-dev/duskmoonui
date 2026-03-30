@@ -367,6 +367,13 @@
     border-color: var(--color-error);
   }
 
+  .form-control.error .input:focus-visible,
+  .form-control.error .select:focus-visible,
+  .form-control.error .textarea:focus-visible {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  }
+
   .form-control.error .label-text {
     color: var(--color-error);
   }
@@ -377,8 +384,49 @@
     border-color: var(--color-success);
   }
 
+  .form-control.success .input:focus-visible,
+  .form-control.success .select:focus-visible,
+  .form-control.success .textarea:focus-visible {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
+  }
+
   .form-control.success .label-text {
     color: var(--color-success);
+  }
+
+  .form-control.warning .input,
+  .form-control.warning .select,
+  .form-control.warning .textarea {
+    border-color: var(--color-warning);
+  }
+
+  .form-control.warning .input:focus-visible,
+  .form-control.warning .select:focus-visible,
+  .form-control.warning .textarea:focus-visible {
+    border-color: var(--color-warning);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
+  }
+
+  .form-control.warning .label-text {
+    color: var(--color-warning);
+  }
+
+  .form-control.info .input,
+  .form-control.info .select,
+  .form-control.info .textarea {
+    border-color: var(--color-info);
+  }
+
+  .form-control.info .input:focus-visible,
+  .form-control.info .select:focus-visible,
+  .form-control.info .textarea:focus-visible {
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
+  }
+
+  .form-control.info .label-text {
+    color: var(--color-info);
   }
 
   /* Helper Text */
