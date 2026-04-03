@@ -21,33 +21,28 @@ import plugin from 'tailwindcss/plugin';
 const themeColors = {
   // Primary colors
   'primary': 'var(--color-primary)',
-  'primary-focus': 'var(--color-primary-focus)',
   'primary-content': 'var(--color-primary-content)',
   'primary-container': 'var(--color-primary-container)',
   'on-primary-container': 'var(--color-on-primary-container)',
 
   // Secondary colors
   'secondary': 'var(--color-secondary)',
-  'secondary-focus': 'var(--color-secondary-focus)',
   'secondary-content': 'var(--color-secondary-content)',
   'secondary-container': 'var(--color-secondary-container)',
   'on-secondary-container': 'var(--color-on-secondary-container)',
 
   // Tertiary colors
   'tertiary': 'var(--color-tertiary)',
-  'tertiary-focus': 'var(--color-tertiary-focus)',
   'tertiary-content': 'var(--color-tertiary-content)',
   'tertiary-container': 'var(--color-tertiary-container)',
   'on-tertiary-container': 'var(--color-on-tertiary-container)',
 
   // Accent colors
   'accent': 'var(--color-accent)',
-  'accent-focus': 'var(--color-accent-focus)',
   'accent-content': 'var(--color-accent-content)',
 
   // Neutral colors
   'neutral': 'var(--color-neutral)',
-  'neutral-focus': 'var(--color-neutral-focus)',
   'neutral-content': 'var(--color-neutral-content)',
   'neutral-variant': 'var(--color-neutral-variant)',
 
