@@ -3,6 +3,7 @@
  * Generated from @duskmoon-dev/design YAML tokens
  */
 
+@import "./defaults.css";
 @import "./generated/sunshine.css";
 @import "./generated/moonlight.css";
 @import "./generated/ocean.css";

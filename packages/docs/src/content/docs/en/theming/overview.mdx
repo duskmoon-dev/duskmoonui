@@ -68,7 +68,6 @@ The main brand color used for key components:
 
 ```css
 --color-primary              /* Primary brand color */
---color-primary-focus        /* Hover/focus state */
 --color-primary-content      /* Text on primary */
 --color-primary-container    /* Container background */
 --color-on-primary-container /* Text on container */
@@ -80,7 +79,6 @@ Accent color that complements primary:
 
 ```css
 --color-secondary              /* Secondary brand color */
---color-secondary-focus        /* Hover/focus state */
 --color-secondary-content      /* Text on secondary */
 --color-secondary-container    /* Container background */
 --color-on-secondary-container /* Text on container */
@@ -92,7 +90,6 @@ Third brand color for additional variety (unique to @duskmoon-dev/core):
 
 ```css
 --color-tertiary              /* Tertiary brand color */
---color-tertiary-focus        /* Hover/focus state */
 --color-tertiary-content      /* Text on tertiary */
 --color-tertiary-container    /* Container background */
 --color-on-tertiary-container /* Text on container */
@@ -353,7 +350,7 @@ Use `color-mix()` for opacity and hover states:
 }
 ```
 
-> **Why `color-mix(in oklch, ...)`?** OKLCH is a perceptually uniform color space — mixing colors in OKLCH produces more natural-looking transitions than mixing in sRGB or HSL. DuskMoonUI uses this for all hover/focus state calculations, even when the input token is in HSL format.
+> **Why `color-mix(in oklch, ...)`?** OKLCH is a perceptually uniform color space — mixing colors in OKLCH produces more natural-looking transitions than mixing in sRGB or HSL. DuskMoonUI uses this for all hover/focus state calculations, regardless of the input color format.
 
 ## Theme Scope
 

@@ -9,7 +9,7 @@ tags: ['colors', 'tokens', 'material-design', 'theming']
 
 # Color Tokens
 
-@duskmoon-dev/core provides 65+ color tokens based on Material Design 3's dynamic color system. All tokens are generated from `@duskmoon-dev/design` YAML files in **HSL format** and delivered as CSS custom properties. Components use `color-mix(in oklch, ...)` for hover/focus states, which works regardless of the input color format.
+@duskmoon-dev/core provides 65+ color tokens based on Material Design 3's dynamic color system. All tokens are generated from `@duskmoon-dev/design` YAML files in **OKLCH format** and delivered as CSS custom properties. Components use `color-mix(in oklch, ...)` for hover/focus states, which works regardless of the input color format.
 
 ### Token Naming Convention
 
@@ -31,10 +31,6 @@ The main brand color used for key UI elements like buttons, links, and active st
     <span class="swatch-label text-primary-content">primary</span>
     <code class="swatch-code">--color-primary</code>
   </div>
-  <div class="color-swatch" style="background: var(--color-primary-focus);">
-    <span class="swatch-label text-primary-content">primary-focus</span>
-    <code class="swatch-code">--color-primary-focus</code>
-  </div>
   <div class="color-swatch" style="background: var(--color-primary-content);">
     <span class="swatch-label" style="color: white;">primary-content</span>
     <code class="swatch-code">--color-primary-content</code>
@@ -52,7 +48,6 @@ The main brand color used for key UI elements like buttons, links, and active st
 ```css
 /* Primary color tokens */
 --color-primary              /* Main brand color */
---color-primary-focus        /* Hover/focus state */
 --color-primary-content      /* Text on primary */
 --color-primary-container    /* Light background variant */
 --color-on-primary-container /* Text on container */
@@ -66,10 +61,6 @@ Complementary accent color for secondary actions and elements.
   <div class="color-swatch" style="background: var(--color-secondary);">
     <span class="swatch-label text-secondary-content">secondary</span>
     <code class="swatch-code">--color-secondary</code>
-  </div>
-  <div class="color-swatch" style="background: var(--color-secondary-focus);">
-    <span class="swatch-label text-secondary-content">secondary-focus</span>
-    <code class="swatch-code">--color-secondary-focus</code>
   </div>
   <div class="color-swatch" style="background: var(--color-secondary-content);">
     <span class="swatch-label" style="color: black;">secondary-content</span>
@@ -88,7 +79,6 @@ Complementary accent color for secondary actions and elements.
 ```css
 /* Secondary color tokens */
 --color-secondary              /* Accent brand color */
---color-secondary-focus        /* Hover/focus state */
 --color-secondary-content      /* Text on secondary */
 --color-secondary-container    /* Light background variant */
 --color-on-secondary-container /* Text on container */
@@ -102,10 +92,6 @@ Third brand color unique to @duskmoon-dev/core for additional visual variety.
   <div class="color-swatch" style="background: var(--color-tertiary);">
     <span class="swatch-label text-tertiary-content">tertiary</span>
     <code class="swatch-code">--color-tertiary</code>
-  </div>
-  <div class="color-swatch" style="background: var(--color-tertiary-focus);">
-    <span class="swatch-label text-tertiary-content">tertiary-focus</span>
-    <code class="swatch-code">--color-tertiary-focus</code>
   </div>
   <div class="color-swatch" style="background: var(--color-tertiary-content);">
     <span class="swatch-label" style="color: black;">tertiary-content</span>
@@ -124,7 +110,6 @@ Third brand color unique to @duskmoon-dev/core for additional visual variety.
 ```css
 /* Tertiary color tokens */
 --color-tertiary              /* Third brand color */
---color-tertiary-focus        /* Hover/focus state */
 --color-tertiary-content      /* Text on tertiary */
 --color-tertiary-container    /* Light background variant */
 --color-on-tertiary-container /* Text on container */
@@ -379,10 +364,6 @@ A highlight color for emphasis and interactive elements.
     <span class="swatch-label text-accent-content">accent</span>
     <code class="swatch-code">--color-accent</code>
   </div>
-  <div class="color-swatch" style="background: var(--color-accent-focus);">
-    <span class="swatch-label text-accent-content">accent-focus</span>
-    <code class="swatch-code">--color-accent-focus</code>
-  </div>
   <div class="color-swatch" style="background: var(--color-accent-content);">
     <span class="swatch-label" style="color: black;">accent-content</span>
     <code class="swatch-code">--color-accent-content</code>
@@ -392,7 +373,6 @@ A highlight color for emphasis and interactive elements.
 ```css
 /* Accent color tokens */
 --color-accent         /* Highlight color */
---color-accent-focus   /* Hover/focus state */
 --color-accent-content /* Text on accent */
 ```
 
@@ -404,10 +384,6 @@ Used for backgrounds, borders, and muted UI elements.
   <div class="color-swatch" style="background: var(--color-neutral);">
     <span class="swatch-label text-neutral-content">neutral</span>
     <code class="swatch-code">--color-neutral</code>
-  </div>
-  <div class="color-swatch" style="background: var(--color-neutral-focus);">
-    <span class="swatch-label text-neutral-content">neutral-focus</span>
-    <code class="swatch-code">--color-neutral-focus</code>
   </div>
   <div class="color-swatch" style="background: var(--color-neutral-content);">
     <span class="swatch-label" style="color: black;">neutral-content</span>
@@ -422,7 +398,6 @@ Used for backgrounds, borders, and muted UI elements.
 ```css
 /* Neutral color tokens */
 --color-neutral         /* Neutral background */
---color-neutral-focus   /* Hover/focus state */
 --color-neutral-content /* Text on neutral */
 --color-neutral-variant /* Muted variant */
 ```
@@ -564,11 +539,11 @@ Apply opacity to any color:
 
 | Category      | Token Count |
 |--------------|-------------|
-| Primary      | 5           |
-| Secondary    | 5           |
-| Tertiary     | 5           |
-| Accent       | 3           |
-| Neutral      | 4           |
+| Primary      | 4           |
+| Secondary    | 4           |
+| Tertiary     | 4           |
+| Accent       | 2           |
+| Neutral      | 3           |
 | Surface      | 11          |
 | Base         | 10          |
 | Info         | 4           |
@@ -579,7 +554,7 @@ Apply opacity to any color:
 | Inverse      | 3           |
 | Shadow/Scrim | 2           |
 | Shadows      | 6           |
-| **Total**    | **72**      |
+| **Total**    | **65**      |
 
 ## Theme Comparison
 

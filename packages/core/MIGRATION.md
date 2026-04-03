@@ -8,7 +8,7 @@ v1.0.0 is a complete rewrite for Tailwind CSS v4's new CSS-first architecture. T
 
 1. **No JavaScript plugin** - Use CSS `@import` instead of `plugins: []`
 2. **Pure CSS** - All configuration is now in CSS, not JavaScript
-3. **New color format** - HSL space-separated values instead of hex
+3. **New color format** - OKLCH values instead of hex
 
 ## Step-by-Step Migration
 
@@ -103,16 +103,16 @@ duskmoonui({
 [data-theme="custom"] {
   color-scheme: light;
 
-  --color-primary: hsl(217 91% 60%);    /* Full hsl() value */
-  --color-primary-content: hsl(0 0% 100%);
-  --color-secondary: hsl(258 90% 66%);
+  --color-primary: oklch(62% 0.22 265);    /* Full oklch() value */
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(55% 0.25 290);
   /* ... */
 }
 ```
 
 ### Step 6: Use Color Tokens Directly
 
-Tokens now store complete `hsl()` values. Use `var()` directly without wrapping:
+Tokens now store complete `oklch()` values. Use `var()` directly without wrapping:
 
 ```css
 /* Correct — var() returns the full color value */
@@ -138,7 +138,7 @@ Tailwind utility classes (`bg-primary`, `text-primary-content`) work the same:
 |------|--------|
 | `plugins: [duskmoonui()]` | `@import "@duskmoon-dev/core"` |
 | JavaScript configuration | CSS custom properties |
-| Hex colors (`#3b82f6`) | Complete HSL values (`hsl(217 91% 60%)`) |
+| Hex colors (`#3b82f6`) | OKLCH values (`oklch(72% 0.17 75)`) |
 | `tailwind.config.js` required | Optional (only for other settings) |
 | Runtime theme generation | Static CSS themes |
 
@@ -153,7 +153,7 @@ Tailwind utility classes (`bg-primary`, `text-primary-content`) work the same:
 
 ### Issue: Colors look different
 
-HSL color format may render slightly differently than hex in some browsers. The visual difference is minimal and shouldn't affect design intent.
+OKLCH color format may render slightly differently than hex in some browsers. The visual difference is minimal and shouldn't affect design intent.
 
 ### Issue: Custom theme doesn't work
 
@@ -165,7 +165,7 @@ Make sure your custom theme CSS is loaded after the `@import "@duskmoon-dev/core
 
 /* Custom themes MUST come after the import */
 [data-theme="custom"] {
-  --color-primary: hsl(217 91% 60%);
+  --color-primary: oklch(62% 0.22 265);
 }
 ```
 
@@ -182,16 +182,17 @@ If you see errors like "Cannot find module '@duskmoon-dev/core'", ensure:
 
 This section covers the token naming and theme changes introduced when `@duskmoon-dev/core` adopted `@duskmoon-dev/design` as its single color source of truth.
 
-## Themes Removed: ocean, forest, sunset
+## Themes
 
-The `ocean`, `forest`, and `sunset` themes have been removed. Only `sunshine` and `moonlight` are available.
+All 5 built-in themes remain available: `sunshine`, `moonlight`, `ocean`, `forest`, and `sunset`.
 
-**Before:**
 ```html
+<html data-theme="sunshine">
+<html data-theme="moonlight">
 <html data-theme="ocean">
+<html data-theme="forest">
+<html data-theme="sunset">
 ```
-
-**After:** Use `sunshine` or `moonlight`, or define a custom theme with your own color overrides.
 
 ## Token Naming: Tailwind Plugin (`on-*` → `*-content`)
 
@@ -218,13 +219,6 @@ sed -i 's/text-on-primary\b/text-primary-content/g; s/text-on-secondary\b/text-s
 The following tokens are now available:
 
 ```css
-/* Focus state tokens */
---color-primary-focus
---color-secondary-focus
---color-tertiary-focus
---color-accent-focus
---color-neutral-focus
-
 /* Extended base scale */
 --color-base-400 through --color-base-900
 
@@ -234,21 +228,19 @@ The following tokens are now available:
 --color-warning-container / --color-on-warning-container
 ```
 
-## Color Values: OKLCH → HSL
+## Color Values
 
-Hand-written OKLCH theme values have been replaced with HSL values generated from `@duskmoon-dev/design`. Colors are visually close but not pixel-identical.
-
-If you are overriding specific tokens with precise OKLCH values, update them to HSL format:
+Theme color tokens use OKLCH format (`oklch(L% C H)`), generated from `@duskmoon-dev/design`. If you previously overrode tokens with hex or HSL values, update them to OKLCH:
 
 ```css
-/* Before (OKLCH) */
+/* Before (hex) */
 [data-theme="sunshine"] {
-  --color-primary: oklch(0.55 0.2 260);
+  --color-primary: #3b82f6;
 }
 
-/* After (HSL — matches codegen format) */
+/* After (OKLCH — matches codegen format) */
 [data-theme="sunshine"] {
-  --color-primary: hsl(217 91% 60%);
+  --color-primary: oklch(72% 0.17 75);
 }
 ```
 

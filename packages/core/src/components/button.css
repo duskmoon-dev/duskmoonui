@@ -24,7 +24,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    border: 1px solid currentColor;
+    border: 1px solid transparent;
     border-radius: var(--radius-sm);
     transition: all 150ms ease-in-out;
     background-color: var(--color-surface-container);
