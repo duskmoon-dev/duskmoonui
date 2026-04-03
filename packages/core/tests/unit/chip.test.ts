@@ -68,7 +68,7 @@ describe('Chip Component', () => {
 
     it('should have transparent border by default', () => {
       expect(css).toMatch(
-        /\.chip\s*\{[^}]*border:\s*1px solid transparent/s,
+        /\.chip\s*\{[^}]*border:\s*1px\s+solid\s+currentColor/s,
       );
     });
 
@@ -175,7 +175,7 @@ describe('Chip Component', () => {
 
       it(`should set border-color for outlined ${color}`, () => {
         const regex = new RegExp(
-          `\\.chip-outlined\\.chip-${color}\\s*\\{[^}]*border-color:\\s*var\\(--color-${color}\\)`,
+          `\\.chip-outlined\\.chip-${color}\\s*\\{[^}]*color:\\s*var\\(--color-${color}\\)`,
           's',
         );
         expect(css).toMatch(regex);
