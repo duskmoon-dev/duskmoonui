@@ -16,10 +16,12 @@ export type {
 
 // Theme configuration types
 export type {
+  OklchColor,
   HSLColor,
   ColorScheme,
   ThemeDefinition,
   ThemeColors,
+  ThemeShape,
   PartialThemeColors,
   ThemeConfig,
   ThemeValidationResult,
