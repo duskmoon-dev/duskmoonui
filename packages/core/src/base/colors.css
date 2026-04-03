@@ -1,49 +1,44 @@
 /**
  * Color Token Definitions
  * 65+ Material Design 3 color tokens using CSS custom properties
- * Format: HSL from codegen (e.g., "hsl(38 92% 50%)")
+ * Format: OKLCH from codegen (e.g., "oklch(72% 0.17 75)")
  */
 
 @theme {
   /* ============================================
-   * BRAND COLORS (15 tokens — includes focus from codegen)
+   * BRAND COLORS (12 tokens)
    * ============================================ */
 
   /* Primary Color Family */
   --color-primary: initial;
-  --color-primary-focus: initial;
   --color-primary-content: initial;
   --color-primary-container: initial;
   --color-on-primary-container: initial;
 
   /* Secondary Color Family */
   --color-secondary: initial;
-  --color-secondary-focus: initial;
   --color-secondary-content: initial;
   --color-secondary-container: initial;
   --color-on-secondary-container: initial;
 
   /* Tertiary Color Family */
   --color-tertiary: initial;
-  --color-tertiary-focus: initial;
   --color-tertiary-content: initial;
   --color-tertiary-container: initial;
   --color-on-tertiary-container: initial;
 
   /* ============================================
-   * ACCENT COLORS (3 tokens)
+   * ACCENT COLORS (2 tokens)
    * ============================================ */
 
   --color-accent: initial;
-  --color-accent-focus: initial;
   --color-accent-content: initial;
 
   /* ============================================
-   * NEUTRAL COLORS (4 tokens)
+   * NEUTRAL COLORS (3 tokens)
    * ============================================ */
 
   --color-neutral: initial;
-  --color-neutral-focus: initial;
   --color-neutral-content: initial;
   --color-neutral-variant: initial;
 
@@ -162,6 +157,20 @@
   --radius-xl: initial;
   --radius-2xl: initial;
   --radius-full: initial;
+
+  /* ============================================
+   * THEME SHAPE TOKENS (8 tokens)
+   * Per-theme shape values from codegen
+   * ============================================ */
+
+  --radius-selector: initial;
+  --radius-field: initial;
+  --radius-box: initial;
+  --size-selector: initial;
+  --size-field: initial;
+  --border: initial;
+  --depth: initial;
+  --noise: initial;
 }
 
 /* Utility classes for colors — token references + color-mix() for states */
