@@ -228,6 +228,20 @@ The following tokens are now available:
 --color-warning-container / --color-on-warning-container
 ```
 
+## TypeScript Theme Exports
+
+If you import theme objects from TypeScript, the named exports have changed:
+
+| Before | After |
+|--------|-------|
+| `import { sunshine } from '@duskmoon-dev/core/themes'` | `import { sunshineColors } from '@duskmoon-dev/core/themes'` |
+| `import { moonlight } from '@duskmoon-dev/core/themes'` | `import { moonlightColors } from '@duskmoon-dev/core/themes'` |
+| `import { ocean } from '@duskmoon-dev/core/themes'` | `import { oceanColors } from '@duskmoon-dev/core/themes'` |
+| `import { forest } from '@duskmoon-dev/core/themes'` | `import { forestColors } from '@duskmoon-dev/core/themes'` |
+| `import { sunset } from '@duskmoon-dev/core/themes'` | `import { sunsetColors } from '@duskmoon-dev/core/themes'` |
+
+Additionally, shape tokens are now exported separately (e.g., `sunshineShape`, `moonlightShape`).
+
 ## Color Values
 
 Theme color tokens use OKLCH format (`oklch(L% C H)`), generated from `@duskmoon-dev/design`. If you previously overrode tokens with hex or HSL values, update them to OKLCH:

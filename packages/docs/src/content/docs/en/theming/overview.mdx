@@ -323,13 +323,13 @@ Use elevation to create visual hierarchy:
 
 All color combinations meet WCAG AA standards for accessibility.
 
-## HSL Color Format
+## OKLCH Color Format
 
-@duskmoon-dev/core uses HSL color format generated from `@duskmoon-dev/design` YAML files:
+@duskmoon-dev/core uses OKLCH color format generated from `@duskmoon-dev/design` YAML files:
 
 ```css
-/* Tokens are complete hsl() values — use var() directly */
---color-primary: hsl(38 92% 50%);
+/* Tokens are complete oklch() values — use var() directly */
+--color-primary: oklch(72% 0.17 75);
 ```
 
 Use `color-mix()` for opacity and hover states:
