@@ -8,6 +8,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const THEMES_DIR = join(import.meta.dir, '../../src/themes');
+const GENERATED_DIR = join(THEMES_DIR, 'generated');
 
 describe('Theme Switching Logic', () => {
   describe('Sunshine Theme (Light)', () => {
@@ -15,7 +16,7 @@ describe('Theme Switching Logic', () => {
 
     beforeAll(async () => {
       try {
-        sunshineCSS = await readFile(join(THEMES_DIR, 'sunshine.css'), 'utf-8');
+        sunshineCSS = await readFile(join(GENERATED_DIR, 'sunshine.css'), 'utf-8');
       } catch {
         sunshineCSS = '';
       }
@@ -37,7 +38,7 @@ describe('Theme Switching Logic', () => {
 
     it('should define light-appropriate base colors', () => {
       // Light themes should have bright base-100 (high lightness)
-      const base100Match = sunshineCSS.match(/--color-base-100:\s*(\d+)\s+(\d+)%\s+(\d+)%/);
+      const base100Match = sunshineCSS.match(/--color-base-100:\s*hsl\((\d+)\s+(\d+)%\s+(\d+)%\)/);
       if (base100Match) {
         const lightness = parseInt(base100Match[3], 10);
         expect(lightness).toBeGreaterThanOrEqual(90);
@@ -50,7 +51,7 @@ describe('Theme Switching Logic', () => {
 
     beforeAll(async () => {
       try {
-        moonlightCSS = await readFile(join(THEMES_DIR, 'moonlight.css'), 'utf-8');
+        moonlightCSS = await readFile(join(GENERATED_DIR, 'moonlight.css'), 'utf-8');
       } catch {
         moonlightCSS = '';
       }
@@ -72,7 +73,7 @@ describe('Theme Switching Logic', () => {
 
     it('should define dark-appropriate base colors', () => {
       // Dark themes should have dark base-100 (low lightness)
-      const base100Match = moonlightCSS.match(/--color-base-100:\s*(\d+)\s+(\d+)%\s+(\d+)%/);
+      const base100Match = moonlightCSS.match(/--color-base-100:\s*hsl\((\d+)\s+(\d+)%\s+(\d+)%\)/);
       if (base100Match) {
         const lightness = parseInt(base100Match[3], 10);
         expect(lightness).toBeLessThanOrEqual(20);
@@ -106,8 +107,8 @@ describe('Theme Switching Logic', () => {
 
     beforeAll(async () => {
       try {
-        sunshineCSS = await readFile(join(THEMES_DIR, 'sunshine.css'), 'utf-8');
-        moonlightCSS = await readFile(join(THEMES_DIR, 'moonlight.css'), 'utf-8');
+        sunshineCSS = await readFile(join(GENERATED_DIR, 'sunshine.css'), 'utf-8');
+        moonlightCSS = await readFile(join(GENERATED_DIR, 'moonlight.css'), 'utf-8');
       } catch {
         sunshineCSS = '';
         moonlightCSS = '';
@@ -115,8 +116,8 @@ describe('Theme Switching Logic', () => {
     });
 
     it('should have same tokens in both themes', () => {
-      const sunshineTokens = (sunshineCSS.match(/--color-[\w-]+:/g) || []).sort();
-      const moonlightTokens = (moonlightCSS.match(/--color-[\w-]+:/g) || []).sort();
+      const sunshineTokens = [...new Set(sunshineCSS.match(/--color-[\w-]+:/g) || [])].sort();
+      const moonlightTokens = [...new Set(moonlightCSS.match(/--color-[\w-]+:/g) || [])].sort();
 
       expect(sunshineTokens).toEqual(moonlightTokens);
     });

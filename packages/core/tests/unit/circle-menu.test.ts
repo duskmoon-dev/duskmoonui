@@ -73,7 +73,7 @@ describe('Circle Menu Component', () => {
     });
 
     it('should be a circle (border-radius 50%)', () => {
-      expect(css).toMatch(/\.circle-menu-label[\s\S]*?border-radius:\s*50%/);
+      expect(css).toMatch(/\.circle-menu-label[\s\S]*?border-radius:\s*var\(--radius-full\)/);
     });
 
     it('should use primary-container background by default', () => {
@@ -150,7 +150,7 @@ describe('Circle Menu Component', () => {
     });
 
     it('should make items circular (border-radius 50%)', () => {
-      expect(css).toMatch(/\.circle-menu-item a[\s\S]*?border-radius:\s*50%/);
+      expect(css).toMatch(/\.circle-menu-item a[\s\S]*?border-radius:\s*var\(--radius-full\)/);
     });
 
     it('should use color tokens for item colors', () => {

@@ -232,7 +232,7 @@ export const avatarStyles: Record<string, any> = {
 
     '&:hover': {
       transform: 'scale(1.05)',
-      boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
+      boxShadow: '0 2px 4px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent)',
     },
 
     '&:active': {

@@ -130,8 +130,8 @@ Whether to include component styles. Set to `false` if you only want theme CSS v
 ```css
 /* You can still use theme variables */
 .my-custom-button {
-  background-color: hsl(var(--color-primary));
-  color: hsl(var(--color-primary-content));
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
 }
@@ -309,7 +309,6 @@ const { duskmoonui } = require('@duskmoon-dev/core');
 const brandTheme = {
   name: 'brand',
   primary: '220 90% 50%',
-  'primary-focus': '220 90% 40%',
   // ... other tokens
 };
 

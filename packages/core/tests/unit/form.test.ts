@@ -99,6 +99,44 @@ describe('Form Component', () => {
     });
   });
 
+  describe('Checkbox Color Variants', () => {
+    const variants = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'error'];
+
+    for (const variant of variants) {
+      it(`should define .checkbox-${variant} variant`, () => {
+        expect(formCSS).toContain(`.checkbox-${variant}`);
+      });
+
+      it(`should set ${variant} background on .checkbox-${variant}:checked`, () => {
+        expect(formCSS).toMatch(
+          new RegExp(`.checkbox-${variant}:checked[^}]*background-color:\\s*var\\(--color-${variant}\\)`, 's')
+        );
+      });
+    }
+  });
+
+  describe('Radio Color Variants', () => {
+    const variants = ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'error'];
+
+    for (const variant of variants) {
+      it(`should define .radio-${variant} variant`, () => {
+        expect(formCSS).toContain(`.radio-${variant}`);
+      });
+
+      it(`should set ${variant} border on .radio-${variant}:checked`, () => {
+        expect(formCSS).toMatch(
+          new RegExp(`.radio-${variant}:checked[^}]*border-color:\\s*var\\(--color-${variant}\\)`, 's')
+        );
+      });
+
+      it(`should set ${variant} fill on .radio-${variant}:checked::after`, () => {
+        expect(formCSS).toMatch(
+          new RegExp(`.radio-${variant}:checked::after[^}]*background-color:\\s*var\\(--color-${variant}\\)`, 's')
+        );
+      });
+    }
+  });
+
   describe('Toggle/Switch', () => {
     it('should define .toggle class', () => {
       expect(formCSS).toContain('.toggle');
@@ -146,9 +184,85 @@ describe('Form Component', () => {
       expect(formCSS).toContain('var(--color-error)');
     });
 
+    it('should apply focus ring on error state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.error .input:focus-visible[^}]*box-shadow/s);
+    });
+
     it('should support success state styling', () => {
-      const hasSuccess = formCSS.includes('success') || formCSS.includes('valid');
-      expect(hasSuccess).toBe(true);
+      expect(formCSS).toContain('.form-control.success');
+    });
+
+    it('should apply focus ring on success state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.success .input:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should support warning state styling', () => {
+      expect(formCSS).toContain('.form-control.warning');
+    });
+
+    it('should apply warning color to border in warning state', () => {
+      expect(formCSS).toMatch(/\.form-control\.warning[\s\S]*?border-color:\s*var\(--color-warning\)/);
+    });
+
+    it('should apply focus ring on warning state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.warning .input:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should apply warning color to label in warning state', () => {
+      expect(formCSS).toMatch(/\.form-control\.warning .label-text[^}]*var\(--color-warning\)/s);
+    });
+
+    it('should support info state styling', () => {
+      expect(formCSS).toContain('.form-control.info');
+    });
+
+    it('should apply info color to border in info state', () => {
+      expect(formCSS).toMatch(/\.form-control\.info[\s\S]*?border-color:\s*var\(--color-info\)/);
+    });
+
+    it('should apply focus ring on info state focus', () => {
+      expect(formCSS).toMatch(/\.form-control\.info .input:focus-visible[^}]*box-shadow/s);
+    });
+
+    it('should apply info color to label in info state', () => {
+      expect(formCSS).toMatch(/\.form-control\.info .label-text[^}]*var\(--color-info\)/s);
+    });
+
+    it('should use color-mix for focus ring opacity', () => {
+      expect(formCSS).toMatch(/color-mix\(in oklch, var\(--color-error\)/);
+    });
+
+    it('should define standalone select-error and textarea-error classes', () => {
+      expect(formCSS).toContain('.select-error');
+      expect(formCSS).toContain('.textarea-error');
+    });
+
+    it('should define standalone success validation classes for all form elements', () => {
+      expect(formCSS).toContain('.input-success');
+      expect(formCSS).toContain('.select-success');
+      expect(formCSS).toContain('.textarea-success');
+    });
+
+    it('should define standalone warning validation classes for all form elements', () => {
+      expect(formCSS).toContain('.input-warning');
+      expect(formCSS).toContain('.select-warning');
+      expect(formCSS).toContain('.textarea-warning');
+    });
+
+    it('should define standalone info validation classes for all form elements', () => {
+      expect(formCSS).toContain('.input-info');
+      expect(formCSS).toContain('.select-info');
+      expect(formCSS).toContain('.textarea-info');
+    });
+
+    it('should define helper-text warning and info variants', () => {
+      expect(formCSS).toMatch(/\.helper-text\.warning[^}]*var\(--color-warning\)/s);
+      expect(formCSS).toMatch(/\.helper-text\.info[^}]*var\(--color-info\)/s);
+    });
+
+    it('should defer native validation to form-group.css (no duplication)', () => {
+      // :user-invalid/:user-valid rules live in form-group.css only
+      expect(formCSS).toContain('form-group.css');
     });
   });
 

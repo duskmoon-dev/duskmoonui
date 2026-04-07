@@ -95,9 +95,9 @@ describe('Theme Controller Component', () => {
       expect(css).toMatch(/\.theme-controller-item:focus-visible\s*\+\s*\.theme-controller-label/);
     });
 
-    it('should use primary color for focus outline', () => {
+    it('should use box-shadow for focus ring', () => {
       expect(css).toMatch(
-        /\.theme-controller-item:focus-visible\s*\+\s*\.theme-controller-label[^}]*var\(--color-primary\)/s
+        /\.theme-controller-item:focus-visible\s*\+\s*\.theme-controller-label[^}]*box-shadow:\s*0 0 0 3px color-mix\(in oklch, currentColor/s
       );
     });
   });

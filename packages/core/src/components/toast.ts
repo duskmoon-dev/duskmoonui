@@ -62,7 +62,7 @@ export const toastStyles: Record<string, any> = {
     color: 'var(--color-on-surface)',
     border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+    boxShadow: '0 4px 12px color-mix(in srgb, var(--color-shadow) 15%, transparent)',
     pointerEvents: 'auto',
     opacity: '0',
     transform: 'translateX(100%)',
@@ -150,7 +150,7 @@ export const toastStyles: Record<string, any> = {
 
   '.toast-close:hover': {
     opacity: '1',
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor: 'color-mix(in srgb, var(--color-shadow) 10%, transparent)',
   },
 
   // Toast action button

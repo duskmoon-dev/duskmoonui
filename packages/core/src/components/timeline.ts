@@ -78,7 +78,7 @@ export const timelineStyles: Record<string, any> = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'var(--color-primary)',
-    color: 'var(--color-on-primary)',
+    color: 'var(--color-primary-content)',
     fontSize: '0.875rem',
   },
 

@@ -143,4 +143,84 @@ describe('Color Token Generation', () => {
       expect(tokenMatches.length).toBeGreaterThanOrEqual(55);
     });
   });
+
+  describe('Shadow Tokens', () => {
+    it('should define theme-aware shadow tokens in @theme', () => {
+      // Shadow tokens are registered in @theme so Tailwind v4 generates
+      // shadow-* utilities natively (no plugin boxShadow extend needed)
+      expect(colorsCSS).toContain('--shadow-xs:');
+      expect(colorsCSS).toContain('--shadow-sm:');
+      expect(colorsCSS).toContain('--shadow-md:');
+      expect(colorsCSS).toContain('--shadow-lg:');
+      expect(colorsCSS).toContain('--shadow-xl:');
+      expect(colorsCSS).toContain('--shadow-2xl:');
+    });
+
+    it('should use var(--color-shadow) in shadow definitions', () => {
+      expect(colorsCSS).toContain('var(--color-shadow)');
+    });
+
+    it('should use color-mix for shadow opacity', () => {
+      expect(colorsCSS).toMatch(/color-mix\(in srgb, var\(--color-shadow\)/);
+    });
+
+    it('should define shadow and scrim color tokens', () => {
+      expect(colorsCSS).toContain('--color-shadow:');
+      expect(colorsCSS).toContain('--color-scrim:');
+    });
+  });
+
+  describe('MD3 Elevation Tokens', () => {
+    it('should define all 6 elevation shadow tokens', () => {
+      expect(colorsCSS).toContain('--shadow-elevation-0:');
+      expect(colorsCSS).toContain('--shadow-elevation-1:');
+      expect(colorsCSS).toContain('--shadow-elevation-2:');
+      expect(colorsCSS).toContain('--shadow-elevation-3:');
+      expect(colorsCSS).toContain('--shadow-elevation-4:');
+      expect(colorsCSS).toContain('--shadow-elevation-5:');
+    });
+
+    it('should map elevation-0 to none', () => {
+      expect(colorsCSS).toMatch(/--shadow-elevation-0:\s*none/);
+    });
+
+    it('should map elevation levels to shadow tokens via var()', () => {
+      expect(colorsCSS).toMatch(/--shadow-elevation-1:\s*var\(--shadow-xs\)/);
+      expect(colorsCSS).toMatch(/--shadow-elevation-2:\s*var\(--shadow-sm\)/);
+      expect(colorsCSS).toMatch(/--shadow-elevation-3:\s*var\(--shadow-md\)/);
+      expect(colorsCSS).toMatch(/--shadow-elevation-4:\s*var\(--shadow-lg\)/);
+      expect(colorsCSS).toMatch(/--shadow-elevation-5:\s*var\(--shadow-xl\)/);
+    });
+
+    it('should define elevation utility classes', () => {
+      expect(colorsCSS).toContain('.elevation-0');
+      expect(colorsCSS).toContain('.elevation-1');
+      expect(colorsCSS).toContain('.elevation-2');
+      expect(colorsCSS).toContain('.elevation-3');
+      expect(colorsCSS).toContain('.elevation-4');
+      expect(colorsCSS).toContain('.elevation-5');
+    });
+
+    it('should use box-shadow in elevation utilities', () => {
+      expect(colorsCSS).toMatch(/\.elevation-0[^}]*box-shadow:\s*var\(--shadow-elevation-0\)/s);
+      expect(colorsCSS).toMatch(/\.elevation-3[^}]*box-shadow:\s*var\(--shadow-elevation-3\)/s);
+    });
+  });
+
+  describe('Shape / Radius Tokens', () => {
+    it('should define all radius tokens in @theme', () => {
+      expect(colorsCSS).toContain('--radius-none:');
+      expect(colorsCSS).toContain('--radius-xs:');
+      expect(colorsCSS).toContain('--radius-sm:');
+      expect(colorsCSS).toContain('--radius-md:');
+      expect(colorsCSS).toContain('--radius-lg:');
+      expect(colorsCSS).toContain('--radius-xl:');
+      expect(colorsCSS).toContain('--radius-2xl:');
+      expect(colorsCSS).toContain('--radius-full:');
+    });
+
+    it('should set radius tokens to initial (values from codegen spacing.css)', () => {
+      expect(colorsCSS).toMatch(/--radius-md:\s*initial/);
+    });
+  });
 });

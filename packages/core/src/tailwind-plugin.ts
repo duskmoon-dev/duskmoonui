@@ -17,35 +17,41 @@
 import plugin from 'tailwindcss/plugin';
 
 // Theme color tokens for Tailwind CSS v4
+// All tokens reference CSS custom properties set by theme CSS files (from codegen)
 const themeColors = {
   // Primary colors
   'primary': 'var(--color-primary)',
-  'on-primary': 'var(--color-on-primary)',
+  'primary-content': 'var(--color-primary-content)',
   'primary-container': 'var(--color-primary-container)',
   'on-primary-container': 'var(--color-on-primary-container)',
 
   // Secondary colors
   'secondary': 'var(--color-secondary)',
-  'on-secondary': 'var(--color-on-secondary)',
+  'secondary-content': 'var(--color-secondary-content)',
   'secondary-container': 'var(--color-secondary-container)',
   'on-secondary-container': 'var(--color-on-secondary-container)',
 
   // Tertiary colors
   'tertiary': 'var(--color-tertiary)',
-  'on-tertiary': 'var(--color-on-tertiary)',
+  'tertiary-content': 'var(--color-tertiary-content)',
   'tertiary-container': 'var(--color-tertiary-container)',
   'on-tertiary-container': 'var(--color-on-tertiary-container)',
 
-  // Error colors
-  'error': 'var(--color-error)',
-  'on-error': 'var(--color-on-error)',
-  'error-container': 'var(--color-error-container)',
-  'on-error-container': 'var(--color-on-error-container)',
+  // Accent colors
+  'accent': 'var(--color-accent)',
+  'accent-content': 'var(--color-accent-content)',
+
+  // Neutral colors
+  'neutral': 'var(--color-neutral)',
+  'neutral-content': 'var(--color-neutral-content)',
+  'neutral-variant': 'var(--color-neutral-variant)',
 
   // Surface colors
   'surface': 'var(--color-surface)',
-  'on-surface': 'var(--color-on-surface)',
+  'surface-dim': 'var(--color-surface-dim)',
+  'surface-bright': 'var(--color-surface-bright)',
   'surface-variant': 'var(--color-surface-variant)',
+  'on-surface': 'var(--color-on-surface)',
   'on-surface-variant': 'var(--color-on-surface-variant)',
   'surface-container': 'var(--color-surface-container)',
   'surface-container-low': 'var(--color-surface-container-low)',
@@ -53,29 +59,67 @@ const themeColors = {
   'surface-container-high': 'var(--color-surface-container-high)',
   'surface-container-highest': 'var(--color-surface-container-highest)',
 
-  // Other colors
+  // Semantic colors
+  'info': 'var(--color-info)',
+  'info-content': 'var(--color-info-content)',
+  'info-container': 'var(--color-info-container)',
+  'on-info-container': 'var(--color-on-info-container)',
+
+  'success': 'var(--color-success)',
+  'success-content': 'var(--color-success-content)',
+  'success-container': 'var(--color-success-container)',
+  'on-success-container': 'var(--color-on-success-container)',
+
+  'warning': 'var(--color-warning)',
+  'warning-content': 'var(--color-warning-content)',
+  'warning-container': 'var(--color-warning-container)',
+  'on-warning-container': 'var(--color-on-warning-container)',
+
+  'error': 'var(--color-error)',
+  'error-content': 'var(--color-error-content)',
+  'error-container': 'var(--color-error-container)',
+  'on-error-container': 'var(--color-on-error-container)',
+
+  // Base scale
+  'base-100': 'var(--color-base-100)',
+  'base-200': 'var(--color-base-200)',
+  'base-300': 'var(--color-base-300)',
+  'base-400': 'var(--color-base-400)',
+  'base-500': 'var(--color-base-500)',
+  'base-600': 'var(--color-base-600)',
+  'base-700': 'var(--color-base-700)',
+  'base-800': 'var(--color-base-800)',
+  'base-900': 'var(--color-base-900)',
+  'base-content': 'var(--color-base-content)',
+
+  // Outline colors
   'outline': 'var(--color-outline)',
   'outline-variant': 'var(--color-outline-variant)',
+
+  // Inverse colors
   'inverse-surface': 'var(--color-inverse-surface)',
   'inverse-on-surface': 'var(--color-inverse-on-surface)',
   'inverse-primary': 'var(--color-inverse-primary)',
+
+  // Shadow & Scrim
   'scrim': 'var(--color-scrim)',
   'shadow': 'var(--color-shadow)',
 };
+
+// Shadow and shape tokens are registered in @theme (colors.css) — Tailwind v4
+// generates shadow-* and rounded-* utilities natively from the --shadow-* and
+// --radius-* namespaces, so no plugin extend is needed for those.
 
 /**
  * DuskMoonUI Tailwind CSS v4 Plugin
  *
  * This plugin extends Tailwind with Material Design 3 color tokens.
+ * Theme colors are defined by CSS theme files (from codegen) — no inline values here.
  * For component styles, use @import "@duskmoon-dev/core" in addition to this plugin.
  */
 const duskmoonPlugin: ReturnType<typeof plugin> = plugin(
-  ({ addBase, matchUtilities, theme }) => {
+  ({ matchUtilities, theme }) => {
     // Register responsive grid utilities so they work via @plugin import.
-    // Note: the CSS @utility path (src/base/utilities.css) uses --value(integer) which
-    // accepts any integer suffix (e.g. grid-cols-auto-fill-100). The plugin path uses
-    // theme('spacing') — discrete spacing-scale keys only. Arbitrary values via []
-    // syntax (e.g. grid-cols-auto-fill-[200px]) continue to work on both paths.
     matchUtilities(
       {
         'grid-cols-auto-fill': (value) => ({
@@ -87,81 +131,11 @@ const duskmoonPlugin: ReturnType<typeof plugin> = plugin(
       },
       { values: theme('spacing') }
     );
-
-    // Add CSS custom property declarations for themes
-    addBase({
-      ':root, [data-theme="sunshine"]': {
-        '--color-primary': 'oklch(0.55 0.2 260)',
-        '--color-on-primary': 'oklch(1 0 0)',
-        '--color-primary-container': 'oklch(0.9 0.05 260)',
-        '--color-on-primary-container': 'oklch(0.25 0.1 260)',
-        '--color-secondary': 'oklch(0.5 0.1 280)',
-        '--color-on-secondary': 'oklch(1 0 0)',
-        '--color-secondary-container': 'oklch(0.92 0.03 280)',
-        '--color-on-secondary-container': 'oklch(0.25 0.05 280)',
-        '--color-tertiary': 'oklch(0.55 0.15 30)',
-        '--color-on-tertiary': 'oklch(1 0 0)',
-        '--color-tertiary-container': 'oklch(0.92 0.04 30)',
-        '--color-on-tertiary-container': 'oklch(0.3 0.08 30)',
-        '--color-error': 'oklch(0.55 0.2 25)',
-        '--color-on-error': 'oklch(1 0 0)',
-        '--color-error-container': 'oklch(0.92 0.05 25)',
-        '--color-on-error-container': 'oklch(0.3 0.1 25)',
-        '--color-surface': 'oklch(0.99 0.005 260)',
-        '--color-on-surface': 'oklch(0.2 0.02 260)',
-        '--color-surface-variant': 'oklch(0.93 0.01 260)',
-        '--color-on-surface-variant': 'oklch(0.45 0.03 260)',
-        '--color-surface-container': 'oklch(0.96 0.008 260)',
-        '--color-surface-container-low': 'oklch(0.97 0.006 260)',
-        '--color-surface-container-lowest': 'oklch(1 0 0)',
-        '--color-surface-container-high': 'oklch(0.94 0.01 260)',
-        '--color-surface-container-highest': 'oklch(0.92 0.012 260)',
-        '--color-outline': 'oklch(0.55 0.02 260)',
-        '--color-outline-variant': 'oklch(0.8 0.015 260)',
-        '--color-inverse-surface': 'oklch(0.25 0.02 260)',
-        '--color-inverse-on-surface': 'oklch(0.95 0.005 260)',
-        '--color-inverse-primary': 'oklch(0.8 0.12 260)',
-        '--color-scrim': 'oklch(0 0 0)',
-        '--color-shadow': 'oklch(0 0 0)',
-      },
-      '[data-theme="moonlight"]': {
-        '--color-primary': 'oklch(0.8 0.12 260)',
-        '--color-on-primary': 'oklch(0.3 0.15 260)',
-        '--color-primary-container': 'oklch(0.35 0.15 260)',
-        '--color-on-primary-container': 'oklch(0.9 0.05 260)',
-        '--color-secondary': 'oklch(0.8 0.06 280)',
-        '--color-on-secondary': 'oklch(0.3 0.08 280)',
-        '--color-secondary-container': 'oklch(0.35 0.08 280)',
-        '--color-on-secondary-container': 'oklch(0.92 0.03 280)',
-        '--color-tertiary': 'oklch(0.8 0.1 30)',
-        '--color-on-tertiary': 'oklch(0.35 0.12 30)',
-        '--color-tertiary-container': 'oklch(0.4 0.1 30)',
-        '--color-on-tertiary-container': 'oklch(0.92 0.04 30)',
-        '--color-error': 'oklch(0.85 0.12 25)',
-        '--color-on-error': 'oklch(0.35 0.15 25)',
-        '--color-error-container': 'oklch(0.4 0.12 25)',
-        '--color-on-error-container': 'oklch(0.92 0.05 25)',
-        '--color-surface': 'oklch(0.2 0.015 260)',
-        '--color-on-surface': 'oklch(0.93 0.01 260)',
-        '--color-surface-variant': 'oklch(0.35 0.02 260)',
-        '--color-on-surface-variant': 'oklch(0.8 0.02 260)',
-        '--color-surface-container': 'oklch(0.22 0.018 260)',
-        '--color-surface-container-low': 'oklch(0.18 0.012 260)',
-        '--color-surface-container-lowest': 'oklch(0.15 0.01 260)',
-        '--color-surface-container-high': 'oklch(0.25 0.02 260)',
-        '--color-surface-container-highest': 'oklch(0.28 0.022 260)',
-        '--color-outline': 'oklch(0.55 0.025 260)',
-        '--color-outline-variant': 'oklch(0.35 0.02 260)',
-        '--color-inverse-surface': 'oklch(0.93 0.01 260)',
-        '--color-inverse-on-surface': 'oklch(0.25 0.02 260)',
-        '--color-inverse-primary': 'oklch(0.55 0.2 260)',
-        '--color-scrim': 'oklch(0 0 0)',
-        '--color-shadow': 'oklch(0 0 0)',
-      },
-    });
   },
   {
-    // Extend Tailwind's theme with our color tokens
+    // Extend Tailwind's theme with our color tokens.
+    // Shadow (--shadow-*) and radius (--radius-*) tokens are registered in @theme
+    // (colors.css) and picked up by Tailwind v4 natively — no extend needed.
     theme: {
       extend: {
         colors: themeColors,

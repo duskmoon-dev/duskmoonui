@@ -9,7 +9,7 @@
     position: fixed;
     inset: 0;
     z-index: 1100;
-    background-color: rgb(0 0 0 / 0.5);
+    background-color: color-mix(in srgb, var(--color-scrim) 50%, transparent);
     opacity: 0;
     visibility: hidden;
     transition: opacity 300ms ease-out, visibility 300ms ease-out;
@@ -56,7 +56,7 @@
     width: 20rem;
     max-width: calc(100vw - 3.5rem);
     transform: translateX(-100%);
-    border-radius: 0 1rem 1rem 0;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   }
 
   .drawer-left.drawer-open {
@@ -70,7 +70,7 @@
     width: 20rem;
     max-width: calc(100vw - 3.5rem);
     transform: translateX(100%);
-    border-radius: 1rem 0 0 1rem;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
   }
 
   .drawer-right.drawer-open {
@@ -84,7 +84,7 @@
     height: auto;
     max-height: 80vh;
     transform: translateY(-100%);
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
 
   .drawer-top.drawer-open {
@@ -98,7 +98,7 @@
     height: auto;
     max-height: 80vh;
     transform: translateY(100%);
-    border-radius: 1rem 1rem 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 
   .drawer-bottom.drawer-open {
@@ -131,7 +131,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
   }
@@ -141,8 +141,8 @@
   }
 
   .drawer-close:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Drawer Body (main content area) */
@@ -173,7 +173,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 1.75rem;
+    border-radius: var(--radius-2xl);
     cursor: pointer;
     text-decoration: none;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
@@ -186,8 +186,8 @@
   }
 
   .drawer-item:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Active Item States */
@@ -225,7 +225,7 @@
     font-weight: 500;
     background-color: var(--color-error-container);
     color: var(--color-on-error-container);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     margin-left: auto;
   }
 
@@ -267,7 +267,7 @@
   .drawer-profile-avatar {
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background-color: var(--color-primary-container);
     display: flex;
     align-items: center;

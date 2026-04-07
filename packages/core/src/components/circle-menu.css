@@ -58,7 +58,7 @@
     display: block;
     width: var(--circle-menu-size);
     height: var(--circle-menu-size);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background-color: var(--circle-menu-btn-bg);
     z-index: 1;
     pointer-events: none;
@@ -73,7 +73,7 @@
     left: 50%;
     width: var(--circle-menu-bar-width);
     height: var(--circle-menu-bar-height);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     background-color: var(--circle-menu-bar-color);
     /* Box-shadow creates middle + bottom bars */
     box-shadow:
@@ -93,7 +93,7 @@
     left: 50%;
     width: var(--circle-menu-bar-width);
     height: var(--circle-menu-bar-height);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     background-color: var(--circle-menu-bar-color);
     transform: translate(-50%, -50%) rotate(-45deg);
     opacity: 0;
@@ -152,7 +152,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     text-decoration: none;
     font-size: var(--circle-menu-icon-size);
     color: var(--circle-menu-item-color);
@@ -295,9 +295,9 @@
 
   .circle-menu-error {
     --circle-menu-btn-bg: var(--color-error);
-    --circle-menu-bar-color: var(--color-on-error);
+    --circle-menu-bar-color: var(--color-error-content);
     --circle-menu-item-bg: var(--color-error);
-    --circle-menu-item-color: var(--color-on-error);
+    --circle-menu-item-color: var(--color-error-content);
     --circle-menu-item-ring: color-mix(in oklch, var(--color-error) 40%, transparent);
   }
 

@@ -12,7 +12,7 @@
     position: relative;
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     overflow: hidden;
     background-color: var(--color-surface-container);
     color: var(--color-on-surface);
@@ -70,7 +70,7 @@
 
   /* Shape Variants */
   .avatar-rounded {
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .avatar-square {
@@ -115,8 +115,8 @@
 
   /* Ring */
   .avatar-ring {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .avatar-ring-primary {
@@ -142,7 +142,7 @@
     height: 25%;
     min-width: 0.5rem;
     min-height: 0.5rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     border: 2px solid var(--color-surface);
   }
 

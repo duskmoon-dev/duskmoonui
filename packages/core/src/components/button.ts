@@ -43,7 +43,7 @@ export const buttonStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-primary), black 10%)',
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
     },
 
     '&:active': {
@@ -57,7 +57,7 @@ export const buttonStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-secondary), black 10%)',
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
     },
 
     '&:active': {
@@ -71,7 +71,7 @@ export const buttonStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-tertiary), black 10%)',
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
     },
 
     '&:active': {
@@ -174,7 +174,7 @@ export const buttonStyles: Record<string, any> = {
     color: 'var(--color-on-primary-container)',
 
     '&:hover': {
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
       backgroundColor: 'color-mix(in oklch, var(--color-primary-container), black 5%)',
     },
 
@@ -188,7 +188,7 @@ export const buttonStyles: Record<string, any> = {
     color: 'var(--color-on-secondary-container)',
 
     '&:hover': {
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
       backgroundColor: 'color-mix(in oklch, var(--color-secondary-container), black 5%)',
     },
 
@@ -202,7 +202,7 @@ export const buttonStyles: Record<string, any> = {
     color: 'var(--color-on-tertiary-container)',
 
     '&:hover': {
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
       backgroundColor: 'color-mix(in oklch, var(--color-tertiary-container), black 5%)',
     },
 
@@ -257,7 +257,7 @@ export const buttonStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-success), black 10%)',
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
     },
   },
 
@@ -267,7 +267,7 @@ export const buttonStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-error), black 10%)',
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
     },
   },
 
@@ -277,7 +277,7 @@ export const buttonStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-warning), black 10%)',
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
     },
   },
 
@@ -287,7 +287,7 @@ export const buttonStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-info), black 10%)',
-      boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      boxShadow: 'var(--shadow-sm)',
     },
   },
 

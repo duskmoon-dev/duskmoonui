@@ -56,8 +56,8 @@
   }
 
   .stepper-step-button:focus-visible .stepper-step-icon {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Step Icon (Number/Icon Circle) */
@@ -72,26 +72,26 @@
     color: var(--color-on-surface-variant);
     background-color: var(--color-surface);
     border: 2px solid var(--color-outline-variant);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out, color 150ms ease-in-out;
   }
 
   .stepper-step-active .stepper-step-icon {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   .stepper-step-completed .stepper-step-icon {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   .stepper-step-error .stepper-step-icon {
     background-color: var(--color-error);
     border-color: var(--color-error);
-    color: var(--color-on-error);
+    color: var(--color-error-content);
   }
 
   .stepper-step-disabled .stepper-step-icon {
@@ -180,7 +180,7 @@
   .stepper-secondary .stepper-step-completed .stepper-step-icon {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
-    color: var(--color-on-secondary);
+    color: var(--color-secondary-content);
   }
 
   .stepper-secondary .stepper-step-completed .stepper-step-connector {
@@ -195,7 +195,7 @@
   .stepper-tertiary .stepper-step-completed .stepper-step-icon {
     background-color: var(--color-tertiary);
     border-color: var(--color-tertiary);
-    color: var(--color-on-tertiary);
+    color: var(--color-tertiary-content);
   }
 
   .stepper-tertiary .stepper-step-completed .stepper-step-connector {
@@ -262,7 +262,7 @@
 
   .stepper-dots .stepper-step-active .stepper-step-icon {
     width: 1.5rem;
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     background-color: var(--color-primary);
   }
 

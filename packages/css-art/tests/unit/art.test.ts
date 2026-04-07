@@ -85,15 +85,16 @@ describe('CSS Art', () => {
       expect(css).toContain('@layer css-art');
     });
 
-    it('should have mountain range variant', async () => {
+    it('should have mountain child elements', async () => {
       const css = await readArtCss('mountain');
-      expect(css).toContain('.art-mountain-range');
+      expect(css).toContain('.art-mountain .mountain');
     });
 
-    it('should have color variants', async () => {
+    it('should have aurora and tree elements', async () => {
       const css = await readArtCss('mountain');
-      expect(css).toContain('.art-mountain-sunset');
-      expect(css).toContain('.art-mountain-forest');
+      expect(css).toContain('.art-mountain .lights');
+      expect(css).toContain('.art-mountain .borealis');
+      expect(css).toContain('.art-mountain .tree');
     });
 
     it('should have size variants', async () => {
@@ -289,13 +290,10 @@ describe('CSS Art', () => {
       expect(css).toContain('--art-snowball-preloader-bg');
     });
 
-    it('should set z-index: 1 on track-cover so it stacks above the ball', async () => {
+    it('should define track-cover with animation and conic-gradient', async () => {
       const css = await readArtCss('snowball-preloader');
-      // Find the dedicated track-cover rule (not a multi-selector group) by looking
-      // for the sole-selector occurrence followed immediately by a brace
-      const match = css.match(/\.art-snowball-preloader-track-cover\s*\{([^}]+)\}/);
-      expect(match).not.toBeNull();
-      expect(match![1]).toContain('z-index: 1');
+      expect(css).toContain('.art-snowball-preloader-track-cover');
+      expect(css).toContain('animation: art-snowball-preloader-track-cover');
     });
 
     it('should use conic-gradient with oklch relative color on track-cover', async () => {

@@ -17,9 +17,9 @@ DuskMoonUI ships with two official themes: **sunshine** (light) and **moonlight*
 @import "@duskmoon-dev/core";
 
 [data-theme="sunshine"] {
-  --color-primary: oklch(95.86% 0.0693 95.91);
+  --color-primary: oklch(72% 0.17 75);
   --color-primary-container: oklch(95% 0.035 95.91);
-  --color-base-100: oklch(100% 0.1 255);
+  --color-base-100: oklch(100% 0.005 255);
 }
 
 [data-theme="moonlight"] {
@@ -31,13 +31,13 @@ DuskMoonUI ships with two official themes: **sunshine** (light) and **moonlight*
 
 ## Base Scale Adjustments
 
-If you need to tune the neutral scale, update the base range to keep the same hue family while shifting lightness:
+If you need to tune the neutral scale, update the base range while shifting lightness:
 
 ```css
 [data-theme="sunshine"] {
-  --color-base-100: oklch(100% 0.1 255);
-  --color-base-200: oklch(85% 0.1 255);
-  --color-base-300: oklch(70% 0.1 255);
+  --color-base-100: oklch(100% 0.005 255);
+  --color-base-200: oklch(95% 0.008 255);
+  --color-base-300: oklch(90% 0.01 255);
   --color-base-400: oklch(55% 0.06 255);
   --color-base-500: oklch(45% 0.05 255);
   --color-base-600: oklch(35% 0.04 255);

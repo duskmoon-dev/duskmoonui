@@ -86,7 +86,7 @@ export const collapseStyles: Record<string, any> = {
     backgroundColor: 'var(--color-surface)',
     border: '1px solid var(--color-outline-variant)',
     borderRadius: '0.5rem',
-    boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+    boxShadow: 'var(--shadow-sm)',
   },
 
   // Accordion style (multiple collapses)

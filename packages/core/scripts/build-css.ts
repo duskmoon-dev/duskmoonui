@@ -88,18 +88,20 @@ async function copyThemes(): Promise<void> {
 
   const themesDir = join(SRC_DIR, 'themes');
   const distThemesDir = join(DIST_DIR, 'themes');
+  const distGeneratedDir = join(distThemesDir, 'generated');
 
   await ensureDir(distThemesDir);
+  await ensureDir(distGeneratedDir);
 
-  // Copy individual theme files
-  const themeFiles = ['sunshine.css', 'moonlight.css', 'ocean.css', 'forest.css', 'sunset.css'];
+  // Copy generated theme files from codegen
+  const generatedThemeFiles = ['sunshine.css', 'moonlight.css', 'ocean.css', 'forest.css', 'sunset.css', 'spacing.css'];
 
-  for (const file of themeFiles) {
-    const srcPath = join(themesDir, file);
+  for (const file of generatedThemeFiles) {
+    const srcPath = join(themesDir, 'generated', file);
     if (existsSync(srcPath)) {
       const content = await readAndInlineCss(srcPath);
-      await writeFile(join(distThemesDir, file), content);
-      console.log(`✓ Copied themes/${file}`);
+      await writeFile(join(distGeneratedDir, file), content);
+      console.log(`✓ Copied themes/generated/${file}`);
     }
   }
 }

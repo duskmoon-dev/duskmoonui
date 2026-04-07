@@ -70,7 +70,7 @@ Create a composable for theme management:
 // src/composables/useTheme.ts
 import { ref, onMounted } from 'vue';
 
-const themes = ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'] as const;
+const themes = ['sunshine', 'moonlight'] as const;
 type Theme = (typeof themes)[number];
 
 const theme = ref<Theme>('sunshine');

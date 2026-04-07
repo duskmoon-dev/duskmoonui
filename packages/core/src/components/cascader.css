@@ -24,7 +24,7 @@
     color: var(--color-on-surface);
     background-color: var(--color-surface);
     border: 1px solid currentColor;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   }
@@ -103,7 +103,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color 150ms ease-in-out;
@@ -123,7 +123,7 @@
     margin-top: 0.25rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-md);
     overflow: hidden;
   }
@@ -224,7 +224,7 @@
     color: var(--color-on-surface);
     background-color: transparent;
     border: none;
-    border-radius: 0.375rem;
+    border-radius: var(--radius-xs);
     cursor: pointer;
     text-align: left;
     width: 100%;
@@ -294,7 +294,7 @@
     color: var(--color-on-surface);
     background-color: var(--color-surface-container);
     border: none;
-    border-radius: 0.375rem;
+    border-radius: var(--radius-xs);
     outline: none;
   }
 
@@ -318,7 +318,7 @@
   .cascader-sm .cascader-trigger {
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
-    border-radius: 0.375rem;
+    border-radius: var(--radius-xs);
   }
 
   .cascader-sm .cascader-panel {
@@ -334,7 +334,7 @@
   .cascader-lg .cascader-trigger {
     padding: 1rem 1.25rem;
     font-size: 1.125rem;
-    border-radius: 0.625rem;
+    border-radius: var(--radius-sm);
   }
 
   .cascader-lg .cascader-panel {
@@ -358,7 +358,7 @@
     background-color: var(--color-surface-container);
     border: none;
     border-bottom: 2px solid var(--color-outline);
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   }
 
   .cascader-filled .cascader-trigger:focus {
@@ -445,7 +445,7 @@
     height: 1rem;
     border: 2px solid var(--color-outline);
     border-top-color: var(--color-primary);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     animation: cascader-spin 0.8s linear infinite;
   }
 

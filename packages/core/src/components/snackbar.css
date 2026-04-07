@@ -64,7 +64,7 @@
     padding: 0.875rem 1rem;
     background-color: var(--color-surface-container-highest);
     color: var(--color-on-surface);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-md);
     pointer-events: auto;
     opacity: 0;
@@ -171,7 +171,7 @@
     color: var(--color-primary);
     background-color: transparent;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
     white-space: nowrap;
@@ -183,8 +183,8 @@
   }
 
   .snackbar-action:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Snackbar Close */
@@ -198,7 +198,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
     flex-shrink: 0;

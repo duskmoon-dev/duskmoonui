@@ -1,10 +1,12 @@
 /**
  * Built-in themes
- * Theme definitions for all built-in themes
+ * Generated from @duskmoon-dev/design YAML tokens
  */
 
-@import "./sunshine.css";
-@import "./moonlight.css";
-@import "./ocean.css";
-@import "./forest.css";
-@import "./sunset.css";
+@import "./defaults.css";
+@import "./generated/sunshine.css";
+@import "./generated/moonlight.css";
+@import "./generated/ocean.css";
+@import "./generated/forest.css";
+@import "./generated/sunset.css";
+@import "./generated/spacing.css";

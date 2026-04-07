@@ -156,7 +156,7 @@ export const toggleStyles: Record<string, any> = {
   '.toggle-segmented .toggle-btn.toggle-btn-active': {
     backgroundColor: 'var(--color-surface-variant)',
     borderColor: 'transparent',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    boxShadow: 'var(--shadow-sm)',
   },
 
   // Chip-like toggle
@@ -187,7 +187,7 @@ export const toggleStyles: Record<string, any> = {
 
   '.toggle-filled.toggle-btn-active': {
     backgroundColor: 'var(--color-primary)',
-    color: 'var(--color-on-primary)',
+    color: 'var(--color-primary-content)',
   },
 
   // With badge/indicator

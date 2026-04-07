@@ -28,7 +28,7 @@
     font-size: 0.875rem;
     color: var(--color-on-surface);
     text-decoration: none;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
     white-space: nowrap;
@@ -43,8 +43,8 @@
   .menu li > a:focus-visible,
   .menu li > button:focus-visible,
   .menu-item:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .menu li > a.active,
@@ -95,5 +95,12 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--color-on-surface-variant);
+  }
+
+  /* Reduce Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .menu-item {
+      transition: none;
+    }
   }
 }

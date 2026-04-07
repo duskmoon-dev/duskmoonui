@@ -54,8 +54,8 @@
 
   /* Focus-visible ring on the label when its radio is focused */
   .theme-controller-item:focus-visible + .theme-controller-label {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Active/checked state */
@@ -161,8 +161,8 @@
   }
 
   .theme-controller-trigger:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Chevron indicator */

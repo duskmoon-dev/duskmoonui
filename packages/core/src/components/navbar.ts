@@ -28,12 +28,12 @@ export const navbarStyles: Record<string, any> = {
 
   '.navbar-surface-container-high': {
     backgroundColor: 'var(--color-surface-container-high)',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: 'var(--shadow-xs)',
   },
 
   '.navbar-surface-container-highest': {
     backgroundColor: 'var(--color-surface-container-highest)',
-    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.08)',
+    boxShadow: 'var(--shadow-sm)',
   },
 
   // Primary variant
@@ -186,7 +186,7 @@ export const navbarStyles: Record<string, any> = {
     padding: '0.5rem',
     backgroundColor: 'var(--color-surface-container)',
     borderRadius: '0.5rem',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    boxShadow: 'var(--shadow-md)',
   },
 
   // Hamburger menu button

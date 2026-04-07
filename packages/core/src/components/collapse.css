@@ -8,7 +8,7 @@
   .collapse {
     display: flex;
     flex-direction: column;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     background-color: var(--color-surface);
     /* Override Tailwind's visibility: collapse utility */
     visibility: visible !important;
@@ -36,8 +36,8 @@
   }
 
   .collapse-trigger:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Collapse Icon */
@@ -124,7 +124,7 @@
     border: none;
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   .collapse-toggle:hover {
@@ -132,8 +132,8 @@
   }
 
   .collapse-toggle:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Toggle Icon */
@@ -154,7 +154,7 @@
   .collapse-card {
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
   }
@@ -182,7 +182,7 @@
   /* Bordered Variant */
   .collapse-bordered {
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
   }
 
   /* Ghost Variant */
@@ -306,7 +306,7 @@
     margin-left: 0.5rem;
     border: 2px solid var(--color-outline);
     border-top-color: var(--color-primary);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     animation: collapse-spin 0.8s linear infinite;
   }
 

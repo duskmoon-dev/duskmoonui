@@ -13,12 +13,12 @@ Complete reference for all CSS custom properties (design tokens) available in @d
 
 ## Overview
 
-Each theme defines **65+ color tokens** plus shape and depth tokens. All color tokens use the OKLCH format for perceptually uniform color manipulation.
+Each theme defines **65+ color tokens** plus shape and depth tokens. All color tokens are generated from `@duskmoon-dev/design` YAML files in **OKLCH format**.
 
 ```css
 /* Tokens are CSS custom properties on [data-theme] selectors */
 [data-theme="sunshine"] {
-  --color-primary: oklch(95.86% 0.0693 95.91);
+  --color-primary: oklch(72% 0.17 75);
   /* ... */
 }
 ```
@@ -106,12 +106,17 @@ Lowest → Low → Default → High → Highest
 | Outline | `--color-outline` | Default border color |
 | Outline Variant | `--color-outline-variant` | Subtle border color |
 
-## Accent & Neutral (5 tokens)
+## Accent Colors (2 tokens)
 
 | Token | CSS Variable | Description |
 |-------|-------------|-------------|
 | Accent | `--color-accent` | Accent highlight |
 | Accent Content | `--color-accent-content` | Text on accent |
+
+## Neutral Colors (3 tokens)
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
 | Neutral | `--color-neutral` | Neutral base |
 | Neutral Content | `--color-neutral-content` | Text on neutral |
 | Neutral Variant | `--color-neutral-variant` | Muted neutral |
@@ -131,26 +136,91 @@ Lowest → Low → Default → High → Highest
 | Shadow | `--color-shadow` | Shadow color |
 | Scrim | `--color-scrim` | Overlay backdrop |
 
-## Shape & Depth Tokens
+## Elevation Shadows (6 tokens)
 
-| Token | CSS Variable | Default | Description |
+Theme-aware shadow tokens that use `--color-shadow` with `color-mix()` for proper opacity. These adapt automatically when switching themes.
+
+| Token | CSS Variable | Description |
+|-------|-------------|-------------|
+| XS | `--shadow-xs` | Subtle elevation (1px) |
+| SM | `--shadow-sm` | Low elevation (cards) |
+| MD | `--shadow-md` | Medium elevation (dropdowns) |
+| LG | `--shadow-lg` | High elevation (modals) |
+| XL | `--shadow-xl` | Higher elevation |
+| 2XL | `--shadow-2xl` | Maximum elevation |
+
+```html
+<div class="shadow-sm">Low elevation card</div>
+<div class="shadow-lg">Modal dialog</div>
+```
+
+## MD3 Elevation Levels (6 tokens)
+
+Semantic shadow tokens that map Material Design 3 elevation levels to shadow effects. These provide a hierarchy-based API on top of the size-based shadow tokens.
+
+| Level | CSS Variable | Maps To | Description |
 |-------|-------------|---------|-------------|
-| Radius Selector | `--radius-selector` | `0rem` | Toggle/selector radius |
-| Radius Field | `--radius-field` | `0.5rem` | Input/field radius |
-| Radius Box | `--radius-box` | `2rem` | Card/container radius |
-| Size Selector | `--size-selector` | `0.1875rem` | Selector border width |
-| Size Field | `--size-field` | `0.1875rem` | Field border width |
-| Border | `--border` | `0.5px` | Default border width |
-| Depth | `--depth` | `1` | Shadow intensity multiplier |
-| Noise | `--noise` | `1` | Texture noise level |
+| 0 | `--shadow-elevation-0` | `none` | Flat surface |
+| 1 | `--shadow-elevation-1` | `--shadow-xs` | Slight lift |
+| 2 | `--shadow-elevation-2` | `--shadow-sm` | Card surface |
+| 3 | `--shadow-elevation-3` | `--shadow-md` | Dropdown/menu |
+| 4 | `--shadow-elevation-4` | `--shadow-lg` | Dialog/modal |
+| 5 | `--shadow-elevation-5` | `--shadow-xl` | Top-level overlay |
 
-## Focus States
+```html
+<!-- Utility classes -->
+<div class="elevation-2">Card surface</div>
+<div class="elevation-4">Modal dialog</div>
 
-Focus tokens were removed in v2.0. Use `color-mix()` instead:
+<!-- Tailwind shadow utilities -->
+<div class="shadow-elevation-3">Dropdown menu</div>
+```
+
+## Spacing Tokens
+
+Generated from `@duskmoon-dev/design` YAML. Available as CSS custom properties on `:root`.
+
+| Token | CSS Variable | Value | Description |
+|-------|-------------|-------|-------------|
+| Spacing 0–24 | `--spacing-{N}` | `0px`–`96px` | Layout spacing scale |
+
+## Radius Tokens
+
+| Token | CSS Variable | Value | Description |
+|-------|-------------|-------|-------------|
+| None | `--radius-none` | `0px` | No rounding |
+| XS | `--radius-xs` | `4px` | Subtle rounding |
+| SM | `--radius-sm` | `8px` | Small rounding |
+| MD | `--radius-md` | `12px` | Medium rounding |
+| LG | `--radius-lg` | `16px` | Large rounding |
+| XL | `--radius-xl` | `20px` | Extra large rounding |
+| 2XL | `--radius-2xl` | `28px` | Maximum rounding |
+| Full | `--radius-full` | `9999px` | Pill shape |
+
+## Elevation Tokens
+
+| Token | CSS Variable | Value | Description |
+|-------|-------------|-------|-------------|
+| Level 0 | `--elevation-level0` | `0px` | No elevation |
+| Level 1 | `--elevation-level1` | `1px` | Subtle lift |
+| Level 2 | `--elevation-level2` | `3px` | Card elevation |
+| Level 3 | `--elevation-level3` | `6px` | Raised elevation |
+| Level 4 | `--elevation-level4` | `8px` | Dialog elevation |
+| Level 5 | `--elevation-level5` | `12px` | Maximum elevation |
+
+## Focus / Hover States
+
+Components use `color-mix()` to compute focus and hover states at runtime rather than dedicated focus tokens:
 
 ```css
-.custom-focus:focus {
+/* Hover state — darken by mixing with black */
+.btn-primary:hover {
   background-color: color-mix(in oklch, var(--color-primary), black 10%);
+}
+
+/* Focus ring — semi-transparent currentColor */
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
 }
 ```
 
@@ -168,9 +238,9 @@ Focus tokens were removed in v2.0. Use `color-mix()` instead:
 |-------|------|------------|-----------|
 | `sunshine` | Light | Warm orange | Energetic, warm |
 | `moonlight` | Dark | Soft blue | Serene, elegant |
-| `ocean` | Dark | Deep cyan | Calming, deep |
-| `forest` | Light | Forest green | Natural, earthy |
-| `sunset` | Light | Burnt orange | Warm, vibrant |
+| `ocean` | Dark | Deep blue | Calm, immersive |
+| `forest` | Light | Rich green | Natural, grounded |
+| `sunset` | Light | Warm coral | Vibrant, expressive |
 
 ## Custom Themes
 
@@ -179,7 +249,7 @@ Override any token with a `[data-theme]` selector:
 ```css
 [data-theme="my-theme"] {
   color-scheme: light;
-  --color-primary: oklch(55% 0.20 260);
+  --color-primary: oklch(62% 0.22 265);
   --color-primary-content: oklch(100% 0 0);
   /* ... define all tokens */
 }

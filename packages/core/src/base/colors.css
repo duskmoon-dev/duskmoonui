@@ -1,12 +1,12 @@
 /**
  * Color Token Definitions
  * 65+ Material Design 3 color tokens using CSS custom properties
- * Format: OKLCH with wrapper (e.g., "oklch(65% 0.18 255)")
+ * Format: OKLCH from codegen (e.g., "oklch(72% 0.17 75)")
  */
 
 @theme {
   /* ============================================
-   * BRAND COLORS (12 tokens - focus tokens removed, use color-mix())
+   * BRAND COLORS (12 tokens)
    * ============================================ */
 
   /* Primary Color Family */
@@ -28,7 +28,22 @@
   --color-on-tertiary-container: initial;
 
   /* ============================================
-   * SURFACE COLORS (10 tokens)
+   * ACCENT COLORS (2 tokens)
+   * ============================================ */
+
+  --color-accent: initial;
+  --color-accent-content: initial;
+
+  /* ============================================
+   * NEUTRAL COLORS (3 tokens)
+   * ============================================ */
+
+  --color-neutral: initial;
+  --color-neutral-content: initial;
+  --color-neutral-variant: initial;
+
+  /* ============================================
+   * SURFACE COLORS (11 tokens)
    * ============================================ */
 
   --color-surface: initial;
@@ -39,6 +54,7 @@
   --color-surface-container: initial;
   --color-surface-container-high: initial;
   --color-surface-container-highest: initial;
+  --color-surface-variant: initial;
   --color-on-surface: initial;
   --color-on-surface-variant: initial;
 
@@ -71,7 +87,7 @@
   --color-on-error-container: initial;
 
   /* ============================================
-   * NEUTRAL COLORS (10 tokens)
+   * BASE SCALE (10 tokens)
    * ============================================ */
 
   --color-base-100: initial;
@@ -93,27 +109,6 @@
   --color-outline-variant: initial;
 
   /* ============================================
-   * ACCENT COLORS (2 tokens - focus tokens removed, use color-mix())
-   * ============================================ */
-
-  --color-accent: initial;
-  --color-accent-content: initial;
-
-  /* ============================================
-   * NEUTRAL COLORS (3 tokens - focus tokens removed, use color-mix())
-   * ============================================ */
-
-  --color-neutral: initial;
-  --color-neutral-content: initial;
-  --color-neutral-variant: initial;
-
-  /* ============================================
-   * SURFACE VARIANT (1 token)
-   * ============================================ */
-
-  --color-surface-variant: initial;
-
-  /* ============================================
    * INVERSE COLORS (3 tokens)
    * ============================================ */
 
@@ -129,18 +124,56 @@
   --color-scrim: initial;
 
   /* ============================================
-   * ELEVATION SHADOWS (6 tokens)
+   * ELEVATION SHADOWS (6 + 6 tokens)
+   * Computed from --color-shadow (theme-provided) via color-mix()
+   * Registered in @theme so Tailwind v4 generates shadow-* utilities natively
    * ============================================ */
 
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-xs: 0 1px 2px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent);
+  --shadow-sm: 0 1px 3px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 1px 2px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-md: 0 4px 6px -1px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-lg: 0 10px 15px -3px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 4px 6px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-xl: 0 20px 25px -5px color-mix(in srgb, var(--color-shadow) 10%, transparent), 0 8px 10px -6px color-mix(in srgb, var(--color-shadow) 10%, transparent);
+  --shadow-2xl: 0 25px 50px -12px color-mix(in srgb, var(--color-shadow) 25%, transparent);
+
+  /* MD3 Elevation Levels — semantic shadow aliases */
+  --shadow-elevation-0: none;
+  --shadow-elevation-1: var(--shadow-xs);
+  --shadow-elevation-2: var(--shadow-sm);
+  --shadow-elevation-3: var(--shadow-md);
+  --shadow-elevation-4: var(--shadow-lg);
+  --shadow-elevation-5: var(--shadow-xl);
+
+  /* ============================================
+   * SHAPE / BORDER RADIUS (8 tokens)
+   * Values provided by generated/spacing.css
+   * ============================================ */
+
+  --radius-none: initial;
+  --radius-xs: initial;
+  --radius-sm: initial;
+  --radius-md: initial;
+  --radius-lg: initial;
+  --radius-xl: initial;
+  --radius-2xl: initial;
+  --radius-full: initial;
+
+  /* ============================================
+   * THEME SHAPE TOKENS (8 tokens)
+   * Per-theme shape values from codegen
+   * ============================================ */
+
+  --radius-selector: initial;
+  --radius-field: initial;
+  --radius-box: initial;
+  --size-selector: initial;
+  --size-field: initial;
+  --border: initial;
+  --depth: initial;
+  --noise: initial;
 }
 
-/* Utility classes for colors - OKLCH format */
+/* Utility classes for colors — token references + color-mix() for states */
 @layer utilities {
   /* Background Colors */
   .bg-primary { background-color: var(--color-primary); }
@@ -260,4 +293,12 @@
   .bg-inverse-surface { background-color: var(--color-inverse-surface); }
   .text-inverse-on-surface { color: var(--color-inverse-on-surface); }
   .text-inverse-primary { color: var(--color-inverse-primary); }
+
+  /* MD3 Elevation Utilities — semantic shadow levels */
+  .elevation-0 { box-shadow: var(--shadow-elevation-0); }
+  .elevation-1 { box-shadow: var(--shadow-elevation-1); }
+  .elevation-2 { box-shadow: var(--shadow-elevation-2); }
+  .elevation-3 { box-shadow: var(--shadow-elevation-3); }
+  .elevation-4 { box-shadow: var(--shadow-elevation-4); }
+  .elevation-5 { box-shadow: var(--shadow-elevation-5); }
 }

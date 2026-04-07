@@ -61,8 +61,8 @@
 
   .nested-menu li > a:focus-visible,
   .nested-menu li > button:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Active state */
@@ -126,8 +126,8 @@
   }
 
   .nested-menu summary:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Chevron indicator */
@@ -223,7 +223,7 @@
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-card, 0.75rem);
-    box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+    box-shadow: var(--shadow-sm);
   }
 
   /* Compact — tighter padding throughout */

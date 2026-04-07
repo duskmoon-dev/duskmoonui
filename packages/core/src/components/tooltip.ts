@@ -15,7 +15,7 @@ export const tooltipStyles: Record<string, any> = {
     color: 'var(--color-inverse-on-surface)',
     backgroundColor: 'var(--color-inverse-surface)',
     borderRadius: '0.25rem',
-    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 2px 4px 0 color-mix(in srgb, var(--color-shadow) 20%, transparent)',
     zIndex: '100',
     maxWidth: '12rem',
     wordWrap: 'break-word',

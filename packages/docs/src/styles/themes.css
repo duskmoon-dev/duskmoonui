@@ -1,4 +1,4 @@
-/* Sunshine Theme (Light) - bridges to @duskmoon-dev/core OKLCH tokens */
+/* Sunshine Theme (Light) - bridges to @duskmoon-dev/core design tokens */
 :root[data-theme="sunshine"] {
   /* Base colors - mapped from core tokens */
   --background: var(--color-base-100);
@@ -47,7 +47,7 @@
   --preview-bg: var(--color-surface-container);
 }
 
-/* Moonlight Theme (Dark) - bridges to @duskmoon-dev/core OKLCH tokens */
+/* Moonlight Theme (Dark) - bridges to @duskmoon-dev/core design tokens */
 :root[data-theme="moonlight"] {
   /* Base colors */
   --background: var(--color-base-100);

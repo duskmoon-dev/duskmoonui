@@ -8,7 +8,7 @@
   .accordion {
     display: flex;
     flex-direction: column;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     overflow: hidden;
   }
 
@@ -21,13 +21,13 @@
 
   .accordion-item:first-child {
     margin-top: 0;
-    border-top-left-radius: 0.75rem;
-    border-top-right-radius: 0.75rem;
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
   }
 
   .accordion-item:last-child {
-    border-bottom-left-radius: 0.75rem;
-    border-bottom-right-radius: 0.75rem;
+    border-bottom-left-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
   }
 
   /* Accordion Header */
@@ -53,7 +53,7 @@
   .accordion-header:focus-visible {
     outline: none;
     background-color: var(--color-surface-container);
-    box-shadow: inset 0 0 0 2px var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .accordion-item.open .accordion-header {
@@ -138,7 +138,7 @@
   /* Separated Variant */
   .accordion-separated .accordion-item {
     margin-top: 0.5rem;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
   }
 
   .accordion-separated .accordion-item:first-child {

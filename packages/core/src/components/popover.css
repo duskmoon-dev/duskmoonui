@@ -19,7 +19,7 @@
     padding: 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     opacity: 0;
     visibility: hidden;
@@ -54,7 +54,7 @@
     padding: 1rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     opacity: 0;
     visibility: hidden;
@@ -220,7 +220,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
   }
@@ -230,8 +230,8 @@
   }
 
   .popover-close:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   /* Popover Body */
@@ -453,7 +453,7 @@
     color: var(--color-on-surface);
     background-color: transparent;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     text-align: left;
     transition: background-color 150ms ease-in-out;
@@ -464,8 +464,8 @@
   }
 
   .popover-menu-item:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
   .popover-menu-item-icon {
@@ -508,7 +508,7 @@
     margin: 0;
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline-variant);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     opacity: 0;
     transform: scale(0.95);
@@ -532,33 +532,33 @@
 
   /* Native popover backdrop */
   .popover[popover]::backdrop {
-    background-color: rgb(0 0 0 / 0);
+    background-color: transparent;
     transition: background-color 150ms ease-out, overlay 150ms ease-out allow-discrete, display 150ms ease-out allow-discrete;
   }
 
   .popover[popover]:popover-open::backdrop {
-    background-color: rgb(0 0 0 / 0.1);
+    background-color: color-mix(in srgb, var(--color-scrim) 10%, transparent);
   }
 
   @starting-style {
     .popover[popover]:popover-open::backdrop {
-      background-color: rgb(0 0 0 / 0);
+      background-color: transparent;
     }
   }
 
   /* Native popover with modal backdrop */
   .popover-modal[popover]::backdrop {
-    background-color: rgb(0 0 0 / 0);
+    background-color: transparent;
     transition: background-color 150ms ease-out, overlay 150ms ease-out allow-discrete, display 150ms ease-out allow-discrete;
   }
 
   .popover-modal[popover]:popover-open::backdrop {
-    background-color: rgb(0 0 0 / 0.3);
+    background-color: color-mix(in srgb, var(--color-scrim) 30%, transparent);
   }
 
   @starting-style {
     .popover-modal[popover]:popover-open::backdrop {
-      background-color: rgb(0 0 0 / 0);
+      background-color: transparent;
     }
   }
 

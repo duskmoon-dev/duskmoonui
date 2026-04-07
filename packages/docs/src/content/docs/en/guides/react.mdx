@@ -68,7 +68,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 // src/hooks/useTheme.ts
 import { useState, useEffect } from 'react';
 
-const themes = ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'] as const;
+const themes = ['sunshine', 'moonlight'] as const;
 type Theme = (typeof themes)[number];
 
 export function useTheme() {

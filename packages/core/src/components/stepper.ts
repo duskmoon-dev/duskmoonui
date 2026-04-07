@@ -51,21 +51,21 @@ export const stepperStyles: Record<string, any> = {
 
   // Active step
   ".stepper-step-active .stepper-step-icon": {
-    color: "var(--color-on-primary)",
+    color: "var(--color-primary-content)",
     backgroundColor: "var(--color-primary)",
     borderColor: "var(--color-primary)",
   },
 
   // Completed step
   ".stepper-step-completed .stepper-step-icon": {
-    color: "var(--color-on-primary)",
+    color: "var(--color-primary-content)",
     backgroundColor: "var(--color-primary)",
     borderColor: "var(--color-primary)",
   },
 
   // Error step
   ".stepper-step-error .stepper-step-icon": {
-    color: "var(--color-on-error)",
+    color: "var(--color-error-content)",
     backgroundColor: "var(--color-error)",
     borderColor: "var(--color-error)",
   },

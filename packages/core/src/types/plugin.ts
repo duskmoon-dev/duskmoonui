@@ -6,7 +6,7 @@
 /**
  * Theme names available in the plugin
  */
-export type BuiltInTheme = 'sunshine' | 'moonlight';
+export type BuiltInTheme = 'sunshine' | 'moonlight' | 'ocean' | 'forest' | 'sunset';
 
 /**
  * Plugin configuration options

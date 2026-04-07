@@ -65,7 +65,7 @@
     background-color: var(--color-surface);
     color: var(--color-on-surface);
     border: 1px solid var(--color-outline);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     pointer-events: auto;
     opacity: 0;
@@ -135,7 +135,7 @@
     color: var(--color-on-surface-variant);
     background-color: transparent;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-xs);
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
     flex-shrink: 0;
@@ -293,7 +293,7 @@
     left: 0;
     height: 3px;
     background-color: currentColor;
-    border-radius: 0 0 0.75rem 0.75rem;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
     animation: toast-progress linear forwards;
   }
 

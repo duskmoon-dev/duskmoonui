@@ -18,7 +18,7 @@ function generateBreadcrumbs(pathname: string): Crumb[] {
 
   let currentPath = '';
 
-  segments.forEach((segment, index) => {
+  segments.forEach((segment) => {
     currentPath += `/${segment}`;
 
     // Format label (replace hyphens, capitalize)

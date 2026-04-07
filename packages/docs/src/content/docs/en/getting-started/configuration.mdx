@@ -130,13 +130,13 @@ Override the built-in theme tokens in your own stylesheet when you need tweaks b
 ```css
 /* After importing @duskmoon-dev/core */
 [data-theme="sunshine"] {
-  --color-primary: oklch(95.86% 0.0693 95.91);
-  --color-primary-container: oklch(95% 0.035 95.91);
+  --color-primary: hsl(38 92% 50%);
+  --color-primary-container: hsl(38 80% 90%);
 }
 
 [data-theme="moonlight"] {
-  --color-primary: oklch(85.45% 0 0);
-  --color-primary-container: oklch(25% 0.01 0);
+  --color-primary: hsl(220 60% 70%);
+  --color-primary-container: hsl(220 30% 25%);
 }
 ```
 
@@ -169,8 +169,8 @@ Then use theme variables in your custom components:
 
 ```css
 .my-button {
-  background-color: hsl(var(--color-primary));
-  color: hsl(var(--color-primary-content));
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
 }
 ```
 

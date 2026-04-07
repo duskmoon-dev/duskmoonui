@@ -72,11 +72,11 @@ export const ratingStyles: Record<string, any> = {
 
   // Warning/amber variant (typical for ratings)
   '.rating-warning .rating-item-filled': {
-    color: 'hsl(45 100% 50%)',
+    color: 'var(--color-warning)',
   },
 
   '.rating-warning .rating-item:hover': {
-    color: 'hsl(45 100% 45%)',
+    color: 'color-mix(in oklch, var(--color-warning), black 10%)',
   },
 
   // Size variants

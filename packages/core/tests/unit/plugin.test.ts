@@ -48,4 +48,33 @@ describe('Tailwind Plugin Registration', () => {
       expect(pluginSrc).toContain("theme('spacing')");
     });
   });
+
+  describe('Shadow tokens', () => {
+    it('should note that shadow tokens are handled by @theme (not plugin)', () => {
+      // Shadow tokens (--shadow-*) are registered in @theme in colors.css,
+      // so Tailwind v4 generates shadow-* utilities natively.
+      // The plugin should NOT have a boxShadow extend.
+      expect(pluginSrc).not.toContain('boxShadow');
+      expect(pluginSrc).not.toContain('themeShadows');
+    });
+  });
+
+  describe('Color tokens', () => {
+    it('should include shadow and scrim color tokens', () => {
+      expect(pluginSrc).toContain("'shadow'");
+      expect(pluginSrc).toContain("'scrim'");
+      expect(pluginSrc).toContain('var(--color-shadow)');
+      expect(pluginSrc).toContain('var(--color-scrim)');
+    });
+  });
+
+  describe('Shape tokens', () => {
+    it('should note that radius tokens are handled by @theme (not plugin)', () => {
+      // Radius tokens (--radius-*) are registered in @theme in colors.css,
+      // so Tailwind v4 generates rounded-* utilities natively.
+      // The plugin should NOT have a borderRadius extend.
+      expect(pluginSrc).not.toContain('borderRadius');
+      expect(pluginSrc).not.toContain('themeRadius');
+    });
+  });
 });

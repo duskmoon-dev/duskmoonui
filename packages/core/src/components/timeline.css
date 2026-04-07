@@ -45,7 +45,7 @@
     height: 2.5rem;
     background-color: var(--color-surface);
     border: 2px solid var(--color-outline-variant);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     flex-shrink: 0;
     z-index: 1;
   }
@@ -59,7 +59,7 @@
     width: 0.75rem;
     height: 0.75rem;
     background-color: var(--color-outline-variant);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
   }
 
   /* Timeline Content */
@@ -92,7 +92,7 @@
   .timeline-card {
     padding: 1rem;
     background-color: var(--color-surface-container);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     margin-top: 0.5rem;
   }
 
@@ -147,7 +147,7 @@
   }
 
   .timeline-item.completed .timeline-marker-icon {
-    color: var(--color-on-primary);
+    color: var(--color-primary-content);
   }
 
   /* Active State */
@@ -159,8 +159,8 @@
 
   .timeline-item.active .timeline-marker-icon,
   .timeline-item.active .timeline-marker-dot {
-    color: var(--color-on-primary);
-    background-color: var(--color-on-primary);
+    color: var(--color-primary-content);
+    background-color: var(--color-primary-content);
   }
 
   /* Size Variants */

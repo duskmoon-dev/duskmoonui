@@ -46,7 +46,7 @@
     width: var(--switch-thumb-size);
     height: var(--switch-thumb-size);
     background-color: var(--switch-thumb-color);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     /* Use !important to override global * { transition } rules */
     transition: background-color 200ms ease-in-out !important,
       width 200ms ease-in-out !important,

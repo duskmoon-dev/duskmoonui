@@ -85,7 +85,7 @@ export const tableStyles: Record<string, any> = {
     top: '0',
     zIndex: '10',
     backgroundColor: 'var(--color-surface-container)',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: 'var(--shadow-xs)',
   },
 
   // Sortable column
