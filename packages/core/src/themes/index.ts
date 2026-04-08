@@ -7,18 +7,16 @@ import { sunshineColors } from './generated/ts/sunshine.generated';
 import { moonlightColors } from './generated/ts/moonlight.generated';
 import { oceanColors } from './generated/ts/ocean.generated';
 import { forestColors } from './generated/ts/forest.generated';
-import { sunsetColors } from './generated/ts/sunset.generated';
 import type { ThemeColors } from './generated/ts/types';
 
 // Re-export types from generated types.ts
-export type { ThemeColors, ThemeShape, OklchColor } from './generated/ts/types';
+export type { ThemeColors, ThemeShape, ThemeMeta, OklchColor } from './generated/ts/types';
 
-// Re-export individual theme colors + shapes
-export { sunshineColors, sunshineShape } from './generated/ts/sunshine.generated';
-export { moonlightColors, moonlightShape } from './generated/ts/moonlight.generated';
-export { oceanColors, oceanShape } from './generated/ts/ocean.generated';
-export { forestColors, forestShape } from './generated/ts/forest.generated';
-export { sunsetColors, sunsetShape } from './generated/ts/sunset.generated';
+// Re-export individual theme colors + shapes + meta
+export { sunshineColors, sunshineShape, sunshineMeta } from './generated/ts/sunshine.generated';
+export { moonlightColors, moonlightShape, moonlightMeta } from './generated/ts/moonlight.generated';
+export { oceanColors, oceanShape, oceanMeta } from './generated/ts/ocean.generated';
+export { forestColors, forestShape, forestMeta } from './generated/ts/forest.generated';
 
 // Re-export typography and spacing
 export { typeScale } from './generated/ts/typography.generated';
@@ -33,7 +31,6 @@ export const themes = {
   moonlight: moonlightColors,
   ocean: oceanColors,
   forest: forestColors,
-  sunset: sunsetColors,
 } as const;
 
 /**

@@ -4,7 +4,7 @@
  */
 
 // Re-export codegen-generated types as the source of truth
-export type { ThemeColors, ThemeShape, OklchColor } from '../themes/generated/ts/types';
+export type { ThemeColors, ThemeShape, ThemeMeta, OklchColor } from '../themes/generated/ts/types';
 
 /**
  * @deprecated Use OklchColor instead — kept for backwards compatibility

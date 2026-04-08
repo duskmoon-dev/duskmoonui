@@ -12,7 +12,7 @@ import type { DuskMoonUIOptions, ThemeColors, CustomTheme } from './types';
  * Default plugin options
  */
 const defaultOptions: DuskMoonUIOptions = {
-  themes: ['sunshine', 'moonlight', 'ocean', 'forest', 'sunset'],
+  themes: ['sunshine', 'moonlight', 'ocean', 'forest'],
   darkTheme: 'moonlight',
   prefix: '',
   components: 'all',

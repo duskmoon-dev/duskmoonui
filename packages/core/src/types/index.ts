@@ -22,6 +22,7 @@ export type {
   ThemeDefinition,
   ThemeColors,
   ThemeShape,
+  ThemeMeta,
   PartialThemeColors,
   ThemeConfig,
   ThemeValidationResult,

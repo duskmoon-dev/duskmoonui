@@ -28,9 +28,6 @@
     "./themes/forest": {
       "style": "./dist/themes/generated/forest.css"
     },
-    "./themes/sunset": {
-      "style": "./dist/themes/generated/sunset.css"
-    },
     "./components": {
       "style": "./dist/components/index.css"
     },
