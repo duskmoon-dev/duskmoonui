@@ -4,6 +4,11 @@
 
 [data-theme="sunshine"] {
   color-scheme: light;
+  --theme-name: "sunshine";
+  --theme-mode: "light";
+  --theme-family: "duskmoon";
+  --theme-pair: "moonlight";
+  --theme-description: "Warm amber/coral";
   --color-primary: oklch(72% 0.17 75);
   --color-primary-content: oklch(100% 0 0);
   --color-primary-container: oklch(95% 0.035 95.91);
@@ -58,7 +63,7 @@
   --color-success-container: oklch(93% 0.04 150);
   --color-on-success-container: oklch(30% 0.08 150);
   --color-warning: oklch(68.19% 0.203 42.44);
-  --color-warning-content: oklch(18.19% 0.3 42);
+  --color-warning-content: oklch(18.19% 0.6 42);
   --color-warning-container: oklch(93% 0.05 80);
   --color-on-warning-container: oklch(38% 0.10 80);
   --color-error: oklch(61.17% 0.237 28.15);
