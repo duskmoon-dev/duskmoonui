@@ -1,4 +1,6 @@
 ---
+import pkg from '../../../../../packages/core/package.json';
+
 interface NavItem {
   title: string;
   href?: string;
@@ -12,6 +14,7 @@ interface Props {
 
 const { currentPath = '' } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const version = `v${pkg.version}`;
 
 const navigation: NavItem[] = [
   {
@@ -169,7 +172,7 @@ function isActive(href: string, current: string): boolean {
   <div class="sidebar-header">
     <a href={base} class="sidebar-logo">
       <span class="logo-text">@duskmoon-dev/core</span>
-      <span class="logo-version">v0.1.0</span>
+      <span class="logo-version">{version}</span>
     </a>
   </div>
 

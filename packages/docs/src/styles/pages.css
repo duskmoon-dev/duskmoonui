@@ -1,7 +1,7 @@
 /* Home Page Styles */
 .site-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--color-primary);
+  color: var(--color-primary-content);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -17,12 +17,13 @@
 .logo {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--foreground);
+  color: var(--color-primary-content);
 }
 
 .logo:hover {
   text-decoration: none;
-  color: var(--primary);
+  color: var(--color-primary-content);
+  opacity: 0.85;
 }
 
 .nav-links {
@@ -32,13 +33,14 @@
 }
 
 .nav-links a {
-  color: var(--foreground-muted);
+  color: var(--color-primary-content);
   font-weight: 500;
-  transition: color 0.2s;
+  opacity: 0.85;
+  transition: opacity 0.2s;
 }
 
 .nav-links a:hover {
-  color: var(--primary);
+  opacity: 1;
   text-decoration: none;
 }
 
@@ -274,8 +276,8 @@
 }
 
 .docs-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--color-primary);
+  color: var(--color-primary-content);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -284,6 +286,8 @@
 .docs-main {
   flex: 1;
   display: flex;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .docs-footer {

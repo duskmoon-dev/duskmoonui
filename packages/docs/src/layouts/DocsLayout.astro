@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
+import pkg from '../../../../packages/core/package.json';
 
 export interface Props {
   title: string;
@@ -10,6 +11,7 @@ export interface Props {
 
 const { title, description, locale } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const version = `v${pkg.version}`;
 ---
 
 <BaseLayout title={title} description={description} locale={locale}>
@@ -19,6 +21,7 @@ const base = import.meta.env.BASE_URL;
         <nav class="header-nav">
           <a href={base} class="logo">
             <span class="logo-text">@duskmoon-dev/core</span>
+            <span class="badge badge-secondary">{version}</span>
           </a>
           <div class="nav-links">
             <a href={`${base}docs/en/getting-started/installation/`}>Docs</a>
