@@ -134,5 +134,5 @@ export type {
   ComponentVariant,
 } from './types';
 
-// Export themes
-export { themes } from './themes';
+// Export themes and couple helpers
+export { themes, themeMeta, getThemePair, getThemeFamily, getThemeMeta } from './themes';

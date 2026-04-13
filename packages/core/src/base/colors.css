@@ -6,6 +6,18 @@
 
 @theme {
   /* ============================================
+   * THEME METADATA (5 tokens)
+   * Set by generated theme CSS files (e.g., sunshine.css)
+   * Enables data-driven theme switching via --theme-pair
+   * ============================================ */
+
+  --theme-name: initial;
+  --theme-mode: initial;
+  --theme-family: initial;
+  --theme-pair: initial;
+  --theme-description: initial;
+
+  /* ============================================
    * BRAND COLORS (12 tokens)
    * ============================================ */
 

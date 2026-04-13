@@ -122,4 +122,99 @@ describe('Theme Switching Logic', () => {
       expect(sunshineTokens).toEqual(moonlightTokens);
     });
   });
+
+  describe('Theme Metadata CSS Properties', () => {
+    const themeFiles = ['sunshine', 'moonlight', 'ocean', 'forest'];
+    const themeCSS: Record<string, string> = {};
+
+    beforeAll(async () => {
+      for (const name of themeFiles) {
+        try {
+          themeCSS[name] = await readFile(join(GENERATED_DIR, `${name}.css`), 'utf-8');
+        } catch {
+          themeCSS[name] = '';
+        }
+      }
+    });
+
+    for (const name of ['sunshine', 'moonlight', 'ocean', 'forest']) {
+      it(`${name} should contain --theme-name`, () => {
+        expect(themeCSS[name]).toContain(`--theme-name: "${name}"`);
+      });
+
+      it(`${name} should contain --theme-mode`, () => {
+        expect(themeCSS[name]).toMatch(/--theme-mode: "(light|dark)"/);
+      });
+
+      it(`${name} should contain --theme-family`, () => {
+        expect(themeCSS[name]).toMatch(/--theme-family: "\w+"/);
+      });
+
+      it(`${name} should contain --theme-pair`, () => {
+        expect(themeCSS[name]).toMatch(/--theme-pair: "\w+"/);
+      });
+    }
+  });
+
+  describe('Theme Couples', () => {
+    const couples: [string, string][] = [
+      ['sunshine', 'moonlight'],
+      ['ocean', 'forest'],
+    ];
+
+    for (const [a, b] of couples) {
+      it(`${a} and ${b} should be paired (symmetric)`, async () => {
+        const cssA = await readFile(join(GENERATED_DIR, `${a}.css`), 'utf-8');
+        const cssB = await readFile(join(GENERATED_DIR, `${b}.css`), 'utf-8');
+
+        expect(cssA).toContain(`--theme-pair: "${b}"`);
+        expect(cssB).toContain(`--theme-pair: "${a}"`);
+      });
+
+      it(`${a} and ${b} should share the same family`, async () => {
+        const cssA = await readFile(join(GENERATED_DIR, `${a}.css`), 'utf-8');
+        const cssB = await readFile(join(GENERATED_DIR, `${b}.css`), 'utf-8');
+
+        const familyA = cssA.match(/--theme-family: "(\w+)"/)?.[1];
+        const familyB = cssB.match(/--theme-family: "(\w+)"/)?.[1];
+
+        expect(familyA).toBeDefined();
+        expect(familyA).toEqual(familyB);
+      });
+
+      it(`${a} and ${b} should have opposite modes`, async () => {
+        const cssA = await readFile(join(GENERATED_DIR, `${a}.css`), 'utf-8');
+        const cssB = await readFile(join(GENERATED_DIR, `${b}.css`), 'utf-8');
+
+        const modeA = cssA.match(/--theme-mode: "(light|dark)"/)?.[1];
+        const modeB = cssB.match(/--theme-mode: "(light|dark)"/)?.[1];
+
+        expect(modeA).toBeDefined();
+        expect(modeB).toBeDefined();
+        expect(modeA).not.toEqual(modeB);
+      });
+    }
+  });
+
+  describe('Theme Defaults Metadata', () => {
+    let defaultsCSS: string;
+
+    beforeAll(async () => {
+      try {
+        defaultsCSS = await readFile(join(THEMES_DIR, 'defaults.css'), 'utf-8');
+      } catch {
+        defaultsCSS = '';
+      }
+    });
+
+    it('should set sunshine metadata in :root', () => {
+      expect(defaultsCSS).toContain('--theme-pair: "moonlight"');
+      expect(defaultsCSS).toContain('--theme-name: "sunshine"');
+    });
+
+    it('should set moonlight metadata in dark media query', () => {
+      expect(defaultsCSS).toContain('--theme-pair: "sunshine"');
+      expect(defaultsCSS).toContain('--theme-name: "moonlight"');
+    });
+  });
 });
