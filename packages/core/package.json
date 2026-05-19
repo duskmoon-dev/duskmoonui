@@ -86,6 +86,11 @@
       "import": "./dist/esm/components/cascader.js",
       "default": "./dist/esm/components/cascader.js"
     },
+    "./components/chat": {
+      "style": "./dist/components/chat.css",
+      "import": "./dist/esm/components/chat.js",
+      "default": "./dist/esm/components/chat.js"
+    },
     "./components/checkbox": {
       "style": "./dist/components/checkbox.css",
       "import": "./dist/esm/components/checkbox.js",

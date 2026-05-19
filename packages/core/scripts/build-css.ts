@@ -119,6 +119,7 @@ const componentFiles = [
   'button',
   'card',
   'cascader',
+  'chat',
   'checkbox',
   'chip',
   'circle-menu',
