@@ -28,6 +28,7 @@ export { progressStyles } from "./progress";
 // Phase 1: Data Display components
 export { tableStyles } from "./table";
 export { listStyles } from "./list";
+export { chatStyles } from "./chat";
 
 // Phase 1: Forms components
 export { switchStyles } from "./switch";
@@ -89,6 +90,7 @@ import { dialogStyles } from "./dialog";
 import { progressStyles } from "./progress";
 import { tableStyles } from "./table";
 import { listStyles } from "./list";
+import { chatStyles } from "./chat";
 import { switchStyles } from "./switch";
 import { menuStyles } from "./menu";
 import { breadcrumbsStyles } from "./breadcrumbs";
@@ -137,6 +139,7 @@ export function getAllComponentStyles(): Record<string, any> {
     ...progressStyles,
     ...tableStyles,
     ...listStyles,
+    ...chatStyles,
     ...switchStyles,
     ...menuStyles,
     ...breadcrumbsStyles,
@@ -193,6 +196,7 @@ export function getComponentStyles(
     progress: progressStyles,
     table: tableStyles,
     list: listStyles,
+    chat: chatStyles,
     switch: switchStyles,
     menu: menuStyles,
     breadcrumbs: breadcrumbsStyles,
@@ -250,6 +254,7 @@ export const componentsList = [
   "progress",
   "table",
   "list",
+  "chat",
   "switch",
   "menu",
   "breadcrumbs",

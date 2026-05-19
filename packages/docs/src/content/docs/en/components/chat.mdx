@@ -1,0 +1,298 @@
+---
+title: Chat
+description: CSS-only conversational UI primitives for user messages, assistant turns, reasoning traces, tool calls, and live states
+category: components
+order: 23
+published: true
+tags: ['chat', 'components', 'conversation', 'llm', 'messages']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Chat
+
+Chat provides CSS-only primitives for conversational interfaces. It supports user and assistant rows, avatars, message bubbles, reasoning traces, tool calls, and live streaming states without requiring JavaScript.
+
+## Basic Usage
+
+Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put any existing `.avatar` inside `.chat-avatar`.
+
+<ComponentShowcase
+  title="Basic Chat"
+  code={`<div id="demo-basic-chat" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+  <div class="chat chat-start">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-primary">AI</div>
+    </div>
+    <div class="chat-header">Assistant - 2:15 PM</div>
+    <div class="chat-bubble">How can I help you today?</div>
+    <div class="chat-footer">Delivered</div>
+  </div>
+
+  <div class="chat chat-end">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm">GA</div>
+    </div>
+    <div class="chat-header">You - 2:16 PM</div>
+    <div class="chat-bubble chat-bubble-primary">Show me a compact chat transcript.</div>
+    <div class="chat-footer">Sent</div>
+  </div>
+</div>`}
+/>
+
+## Bubble Variants
+
+Color variants use soft container tones by default. Add `.chat-bubble-filled` when a saturated bubble is needed.
+
+<ComponentShowcase
+  title="Bubble Colors"
+  code={`<div id="demo-chat-colors" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 0.75rem;">
+  <div class="chat chat-start">
+    <div class="chat-bubble">Default bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-primary">Primary bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-secondary">Secondary bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-tertiary">Tertiary bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-info">Info bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-success">Success bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-warning">Warning bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-error">Error bubble</div>
+  </div>
+  <div class="chat chat-end">
+    <div class="chat-bubble chat-bubble-primary chat-bubble-filled">Filled primary bubble</div>
+  </div>
+</div>`}
+/>
+
+## Bubble Sizes
+
+Use bubble size modifiers for dense history views or larger conversational layouts.
+
+<ComponentShowcase
+  title="Bubble Sizes"
+  code={`<div id="demo-chat-sizes" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 0.75rem;">
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-xs">Extra small transcript bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-sm">Small dense chat bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-md">Medium default chat bubble</div>
+  </div>
+  <div class="chat chat-start">
+    <div class="chat-bubble chat-bubble-lg">Large accessible chat bubble</div>
+  </div>
+</div>`}
+/>
+
+## LLM Chat
+
+One assistant turn should group reasoning, tool calls, and final messages under one `.chat` row. Native `<details>` and `<summary>` provide keyboard and screen-reader support for expandable blocks.
+
+<ComponentShowcase
+  title="Reasoning, Tool Call, and Streaming"
+  code={`<div id="demo-llm-chat" style="width: min(48rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+  <div class="chat chat-start" aria-live="polite">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-info">AI</div>
+    </div>
+    <div class="chat-header">Assistant - 2:18 PM</div>
+
+    <details class="chat-reasoning" open>
+      <summary>Thinking (3s)</summary>
+      <div>I need to check the weather tool result, then summarize it in one sentence.</div>
+    </details>
+
+    <details class="chat-tool chat-tool-success" open>
+      <summary class="chat-tool-header">
+        <span>get_weather</span>
+        <span class="chat-tool-status">Done</span>
+      </summary>
+      <div class="chat-tool-call">
+        <div class="code-block code-block-compact">
+          <div class="code-header">
+            <span class="code-title">Call</span>
+            <span class="code-language">json</span>
+          </div>
+          <div class="code-content">
+            <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="chat-tool-result">
+        <div class="code-block code-block-compact">
+          <div class="code-header">
+            <span class="code-title">Result</span>
+            <span class="code-language">json</span>
+          </div>
+          <div class="code-content">
+            <pre><code>{&quot;temperature&quot;:&quot;18 C&quot;,&quot;condition&quot;:&quot;cloudy&quot;}</code></pre>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="chat-bubble chat-bubble-streaming">It is 18 C and cloudy in Tokyo right now.</div>
+    <div class="chat-footer">Streaming</div>
+  </div>
+</div>`}
+/>
+
+## Live States
+
+Use `.chat-typing` inside an empty bubble while waiting for the first token. Use `.chat-bubble-streaming` while message text is still arriving.
+
+<ComponentShowcase
+  title="Typing and Streaming"
+  code={`<div id="demo-chat-live-states" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+  <div class="chat chat-start" aria-live="polite">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-secondary">AI</div>
+    </div>
+    <div class="chat-bubble" aria-label="Assistant is typing">
+      <span class="chat-typing"></span>
+    </div>
+  </div>
+
+  <div class="chat chat-start" aria-live="polite">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-secondary">AI</div>
+    </div>
+    <div class="chat-bubble chat-bubble-streaming">Generating a response</div>
+  </div>
+</div>`}
+/>
+
+## Tool Status
+
+Tool blocks use status modifiers so state is visible in both color and text.
+
+<ComponentShowcase
+  title="Tool Statuses"
+  code={`<div id="demo-chat-tool-statuses" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 0.75rem;">
+  <details class="chat-tool chat-tool-pending" open>
+    <summary class="chat-tool-header">
+      <span>search_docs</span>
+      <span class="chat-tool-status">Pending</span>
+    </summary>
+  </details>
+
+  <details class="chat-tool chat-tool-running" open>
+    <summary class="chat-tool-header">
+      <span>run_query</span>
+      <span class="chat-tool-status">Running...</span>
+    </summary>
+  </details>
+
+  <details class="chat-tool chat-tool-success" open>
+    <summary class="chat-tool-header">
+      <span>get_profile</span>
+      <span class="chat-tool-status">Done</span>
+    </summary>
+  </details>
+
+  <details class="chat-tool chat-tool-error" open>
+    <summary class="chat-tool-header">
+      <span>deploy_preview</span>
+      <span class="chat-tool-status">Failed</span>
+    </summary>
+  </details>
+</div>`}
+/>
+
+## With Markdown
+
+Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant output. The bubble handles spacing and max width, while markdown handles typography.
+
+<ComponentShowcase
+  title="Markdown Body in a Bubble"
+  code={`<div id="demo-chat-markdown" style="width: min(42rem, 100%);">
+  <div class="chat chat-start">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-tertiary">AI</div>
+    </div>
+    <div class="chat-bubble">
+      <div class="markdown-body">
+        <p><strong>Summary:</strong> the deployment is ready.</p>
+        <ul>
+          <li>Build completed</li>
+          <li>Smoke test passed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>`}
+/>
+
+## API Reference
+
+### Structure
+
+| Class | Description |
+|---|---|
+| `.chat` | Row wrapper for avatar and message stack |
+| `.chat-start` | Left-aligned row, commonly used for assistant messages |
+| `.chat-end` | Right-aligned row, commonly used for user messages |
+| `.chat-avatar` | Avatar slot; compose with the existing `.avatar` component |
+| `.chat-header` | Small muted metadata above the message stack |
+| `.chat-footer` | Small muted metadata below the message stack |
+| `.chat-bubble` | Message bubble with directional tail |
+
+### Bubble Modifiers
+
+| Class | Description |
+|---|---|
+| `.chat-bubble-primary` | Primary color bubble |
+| `.chat-bubble-secondary` | Secondary color bubble |
+| `.chat-bubble-tertiary` | Tertiary color bubble |
+| `.chat-bubble-info` | Info color bubble |
+| `.chat-bubble-success` | Success color bubble |
+| `.chat-bubble-warning` | Warning color bubble |
+| `.chat-bubble-error` | Error color bubble |
+| `.chat-bubble-filled` | Saturated filled style for color variants |
+| `.chat-bubble-xs` | Extra small bubble |
+| `.chat-bubble-sm` | Small bubble |
+| `.chat-bubble-md` | Medium bubble, explicit alias of the base size |
+| `.chat-bubble-lg` | Large bubble |
+| `.chat-bubble-streaming` | Adds a streaming caret after bubble content |
+
+### LLM Classes
+
+| Class | Description |
+|---|---|
+| `.chat-reasoning` | Collapsible reasoning trace using `<details>` |
+| `.chat-tool` | Collapsible tool call block using `<details>` |
+| `.chat-tool-header` | Summary content for tool name and status text |
+| `.chat-tool-call` | Tool call payload slot |
+| `.chat-tool-result` | Tool result payload slot |
+| `.chat-tool-pending` | Pending tool status |
+| `.chat-tool-running` | Running tool status with activity indicator |
+| `.chat-tool-success` | Successful tool status |
+| `.chat-tool-error` | Failed tool status |
+| `.chat-typing` | Typing indicator dots |
+
+## Accessibility
+
+- Use visible text for tool statuses such as `Pending`, `Running...`, `Done`, and `Failed`.
+- Add `aria-label="Assistant is typing"` to the bubble that contains `.chat-typing`, or place `aria-live="polite"` on the row stack.
+- Prefer native `<details>` and `<summary>` for reasoning and tool blocks so keyboard interaction works without custom JavaScript.
+
+## Related Components
+
+- [Avatar](/duskmoonui/docs/en/components/avatar/) - user and assistant identity slots
+- [Code Block](/duskmoonui/docs/en/components/code-block/) - tool call and result payloads
+- [Markdown Body](/duskmoonui/docs/en/components/markdown-body/) - rich assistant message typography
