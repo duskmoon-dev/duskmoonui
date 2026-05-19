@@ -34,13 +34,13 @@ Naming follows DuskMoon's `{component}` + `{component}-{modifier}` convention. T
 | `.chat-avatar` | Slot container for an avatar. Composes with existing `.avatar` (no duplication). |
 | `.chat-header` | Muted small text above the stack — name, timestamp. |
 | `.chat-footer` | Muted small text below the stack — delivery status, edited marker. |
-| `.chat-bubble` | The message bubble. Renders a directional tail via CSS mask. |
+| `.chat-bubble` | The message bubble. Renders a directional tail via CSS `clip-path`. |
 
 ### Bubble color variants (minimum 7, per project constitution)
 
 `.chat-bubble-primary`, `.chat-bubble-secondary`, `.chat-bubble-tertiary`, `.chat-bubble-info`, `.chat-bubble-success`, `.chat-bubble-warning`, `.chat-bubble-error`.
 
-Default (no variant): `background: var(--color-surface-container)`, `color: var(--color-on-surface)`.
+Default (no variant): `background: var(--color-surface-container-highest)`, `color: var(--color-on-surface)`, with an inset `--color-outline-variant` edge so bubbles remain visible on dark preview surfaces.
 
 Color variants use **container tones** by default (e.g., `--color-primary-container` / `--color-on-primary-container`) — soft look matching the `.alert` pattern. The `.chat-bubble-filled` modifier swaps to the saturated base token (`--color-primary` / `--color-primary-content`), also matching `.alert-filled`.
 
@@ -109,7 +109,7 @@ This is the approved structural decision: one row per turn, not one row per bloc
 
 ## Visual design
 
-- **Bubble tail:** daisyUI-style tail rendered via CSS mask (`mask: radial-gradient(…)`) on a pseudo-element. Tail sits at the bottom-start corner of `chat-start` bubbles and bottom-end corner of `chat-end` bubbles. Colors inherit from the bubble background.
+- **Bubble tail:** daisyUI-style tail rendered as two clipped wedges (`clip-path: polygon(…)`) on pseudo-elements. Tail sits at the top-start corner of `chat-start` bubbles and top-end corner of `chat-end` bubbles. `::before` paints the `--color-outline-variant` border and `::after` paints the inset `--chat-bubble-bg` fill, so variant tails match their bubble background.
 - **Border radius:** `1rem` on bubbles, `var(--radius-sm)` on reasoning/tool containers.
 - **Max width:** bubbles capped at `min(80ch, 100%)`; `overflow-wrap: anywhere` prevents long URLs/tokens from breaking layout.
 - **Focus ring** on interactive children (e.g., open/close summary): project's standard `0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)`.
@@ -157,7 +157,7 @@ Following the pattern of existing unit tests (read source CSS, assert structure)
 - All rules wrapped in `@layer components { }`.
 - Each of the 7 color variants has both a default (`-container`) declaration and a `-filled` override.
 - `.chat-tool-{pending,running,success,error}` each reference a matching color token.
-- Tail rendering: `.chat-start .chat-bubble::before` and `.chat-end .chat-bubble::before` both use `mask: radial-gradient(…)`.
+- Tail rendering: `.chat-start .chat-bubble::{before,after}` and `.chat-end .chat-bubble::{before,after}` use `clip-path: polygon(…)`.
 - 4 size classes each declare `padding` and `font-size`.
 - One `@media (prefers-reduced-motion: reduce)` block overrides all three animations.
 - No redefinition of `.avatar`, `.code-block`, or `.markdown-body` selectors (composition constraint).

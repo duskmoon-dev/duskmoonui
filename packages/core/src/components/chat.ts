@@ -22,7 +22,7 @@ export const chatStyles: Record<string, any> = {
   '.chat-avatar': {
     gridRow: '1 / span 999',
     gridColumn: '1',
-    alignSelf: 'end',
+    alignSelf: 'start',
     justifySelf: 'start',
   },
 
@@ -59,105 +59,136 @@ export const chatStyles: Record<string, any> = {
   },
 
   '.chat-bubble': {
+    '--chat-bubble-bg': 'var(--color-surface-container-highest)',
+    '--chat-bubble-fg': 'var(--color-on-surface)',
     position: 'relative',
     maxWidth: 'min(80ch, 100%)',
     padding: '0.625rem 0.875rem',
     borderRadius: '1rem',
-    backgroundColor: 'var(--color-surface-container)',
-    color: 'var(--color-on-surface)',
+    backgroundColor: 'var(--chat-bubble-bg)',
+    color: 'var(--chat-bubble-fg)',
+    boxShadow: 'inset 0 0 0 1px var(--color-outline-variant)',
     fontSize: '0.875rem',
     lineHeight: '1.45',
     overflowWrap: 'anywhere',
     wordBreak: 'break-word',
   },
 
-  '.chat-start .chat-bubble::before, .chat-end .chat-bubble::before': {
+  '.chat-start .chat-bubble::before, .chat-end .chat-bubble::before, .chat-start .chat-bubble::after, .chat-end .chat-bubble::after': {
     content: '""',
     position: 'absolute',
-    bottom: '0',
-    width: '0.75rem',
-    height: '0.75rem',
-    backgroundColor: 'inherit',
-    mask: 'radial-gradient(circle at 0 0, transparent 0.72rem, #000 0.75rem)',
+    top: '0',
+    clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
   },
 
   '.chat-start .chat-bubble::before': {
-    left: '-0.375rem',
+    left: '-0.625rem',
+    width: '1rem',
+    height: '1rem',
+    backgroundColor: 'var(--color-outline-variant)',
+  },
+
+  '.chat-start .chat-bubble::after': {
+    left: '-0.5rem',
+    width: 'calc(1rem - 2px)',
+    height: 'calc(1rem - 2px)',
+    top: '1px',
+    backgroundColor: 'var(--chat-bubble-bg)',
+  },
+
+  '.chat-start .chat-bubble': {
+    borderTopLeftRadius: '0',
   },
 
   '.chat-end .chat-bubble::before': {
-    right: '-0.375rem',
+    right: '-0.625rem',
+    width: '1rem',
+    height: '1rem',
+    backgroundColor: 'var(--color-outline-variant)',
     transform: 'scaleX(-1)',
   },
 
+  '.chat-end .chat-bubble::after': {
+    right: '-0.5rem',
+    width: 'calc(1rem - 2px)',
+    height: 'calc(1rem - 2px)',
+    top: '1px',
+    backgroundColor: 'var(--chat-bubble-bg)',
+    transform: 'scaleX(-1)',
+  },
+
+  '.chat-end .chat-bubble': {
+    borderTopRightRadius: '0',
+  },
+
   '.chat-bubble-primary': {
-    backgroundColor: 'var(--color-primary-container)',
-    color: 'var(--color-on-primary-container)',
+    '--chat-bubble-bg': 'var(--color-primary-container)',
+    '--chat-bubble-fg': 'var(--color-on-primary-container)',
   },
 
   '.chat-bubble-secondary': {
-    backgroundColor: 'var(--color-secondary-container)',
-    color: 'var(--color-on-secondary-container)',
+    '--chat-bubble-bg': 'var(--color-secondary-container)',
+    '--chat-bubble-fg': 'var(--color-on-secondary-container)',
   },
 
   '.chat-bubble-tertiary': {
-    backgroundColor: 'var(--color-tertiary-container)',
-    color: 'var(--color-on-tertiary-container)',
+    '--chat-bubble-bg': 'var(--color-tertiary-container)',
+    '--chat-bubble-fg': 'var(--color-on-tertiary-container)',
   },
 
   '.chat-bubble-info': {
-    backgroundColor: 'var(--color-info-container)',
-    color: 'var(--color-on-info-container)',
+    '--chat-bubble-bg': 'var(--color-info-container)',
+    '--chat-bubble-fg': 'var(--color-on-info-container)',
   },
 
   '.chat-bubble-success': {
-    backgroundColor: 'var(--color-success-container)',
-    color: 'var(--color-on-success-container)',
+    '--chat-bubble-bg': 'var(--color-success-container)',
+    '--chat-bubble-fg': 'var(--color-on-success-container)',
   },
 
   '.chat-bubble-warning': {
-    backgroundColor: 'var(--color-warning-container)',
-    color: 'var(--color-on-warning-container)',
+    '--chat-bubble-bg': 'var(--color-warning-container)',
+    '--chat-bubble-fg': 'var(--color-on-warning-container)',
   },
 
   '.chat-bubble-error': {
-    backgroundColor: 'var(--color-error-container)',
-    color: 'var(--color-on-error-container)',
+    '--chat-bubble-bg': 'var(--color-error-container)',
+    '--chat-bubble-fg': 'var(--color-on-error-container)',
   },
 
   '.chat-bubble-filled.chat-bubble-primary': {
-    backgroundColor: 'var(--color-primary)',
-    color: 'var(--color-primary-content)',
+    '--chat-bubble-bg': 'var(--color-primary)',
+    '--chat-bubble-fg': 'var(--color-primary-content)',
   },
 
   '.chat-bubble-filled.chat-bubble-secondary': {
-    backgroundColor: 'var(--color-secondary)',
-    color: 'var(--color-secondary-content)',
+    '--chat-bubble-bg': 'var(--color-secondary)',
+    '--chat-bubble-fg': 'var(--color-secondary-content)',
   },
 
   '.chat-bubble-filled.chat-bubble-tertiary': {
-    backgroundColor: 'var(--color-tertiary)',
-    color: 'var(--color-tertiary-content)',
+    '--chat-bubble-bg': 'var(--color-tertiary)',
+    '--chat-bubble-fg': 'var(--color-tertiary-content)',
   },
 
   '.chat-bubble-filled.chat-bubble-info': {
-    backgroundColor: 'var(--color-info)',
-    color: 'var(--color-info-content)',
+    '--chat-bubble-bg': 'var(--color-info)',
+    '--chat-bubble-fg': 'var(--color-info-content)',
   },
 
   '.chat-bubble-filled.chat-bubble-success': {
-    backgroundColor: 'var(--color-success)',
-    color: 'var(--color-success-content)',
+    '--chat-bubble-bg': 'var(--color-success)',
+    '--chat-bubble-fg': 'var(--color-success-content)',
   },
 
   '.chat-bubble-filled.chat-bubble-warning': {
-    backgroundColor: 'var(--color-warning)',
-    color: 'var(--color-warning-content)',
+    '--chat-bubble-bg': 'var(--color-warning)',
+    '--chat-bubble-fg': 'var(--color-warning-content)',
   },
 
   '.chat-bubble-filled.chat-bubble-error': {
-    backgroundColor: 'var(--color-error)',
-    color: 'var(--color-error-content)',
+    '--chat-bubble-bg': 'var(--color-error)',
+    '--chat-bubble-fg': 'var(--color-error-content)',
   },
 
   '.chat-bubble-xs': {

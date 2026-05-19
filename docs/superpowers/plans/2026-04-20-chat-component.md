@@ -101,9 +101,9 @@ describe('Chat Component', () => {
       expect(css).toMatch(/\.chat-bubble\s*\{[^}]*position:\s*relative/s);
     });
 
-    it('should use surface-container background on default bubble', () => {
+    it('should use elevated surface container background on default bubble', () => {
       expect(css).toMatch(
-        /\.chat-bubble\s*\{[^}]*background-color:\s*var\(--color-surface-container\)/s,
+        /\.chat-bubble\s*\{[^}]*background-color:\s*var\(--color-surface-container-highest\)/s,
       );
     });
 
@@ -153,7 +153,7 @@ Replace the contents of `packages/core/src/components/chat.css` with:
   }
 
   /* Assistant (left) and user (right) row handling.
-   * The avatar spans all rows and sits at the bottom.
+   * The avatar spans all rows and sits at the top.
    * All other children stack in the remaining column. */
   .chat > :not(.chat-avatar) {
     grid-column: 2;
@@ -169,12 +169,16 @@ Replace the contents of `packages/core/src/components/chat.css` with:
 
   /* Base bubble */
   .chat-bubble {
+    --chat-bubble-bg: var(--color-surface-container-highest);
+    --chat-bubble-fg: var(--color-on-surface);
+
     position: relative;
     max-width: min(80ch, 100%);
     padding: 0.625rem 0.875rem;
     border-radius: 1rem;
-    background-color: var(--color-surface-container);
-    color: var(--color-on-surface);
+    background-color: var(--chat-bubble-bg);
+    color: var(--chat-bubble-fg);
+    box-shadow: inset 0 0 0 1px var(--color-outline-variant);
     font-size: 0.875rem;
     line-height: 1.45;
     overflow-wrap: anywhere;
@@ -567,11 +571,11 @@ Append inside the `@layer components` block, after size variants:
 
 ```css
   /* Avatar slot — composes with existing .avatar component.
-   * Spans all rows of the chat grid so it sits at the bottom. */
+   * Spans all rows of the chat grid so it sits at the top. */
   .chat > .chat-avatar {
     grid-column: 1;
     grid-row: 1 / -1;
-    align-self: end;
+    align-self: start;
     flex-shrink: 0;
   }
   .chat-end > .chat-avatar {
@@ -614,16 +618,18 @@ Append inside the main `describe` block:
 
 ```ts
   describe('Bubble tail', () => {
-    it('should define ::before pseudo-element on .chat-bubble for tail rendering', () => {
+    it('should define ::before and ::after pseudo-elements for tail rendering', () => {
       expect(css).toMatch(/\.chat-bubble::before\s*\{/);
+      expect(css).toMatch(/\.chat-bubble::after\s*\{/);
     });
 
-    it('should use mask radial-gradient for the tail', () => {
-      expect(css).toMatch(/mask:\s*radial-gradient\(/);
+    it('should use clip-path for the tail', () => {
+      expect(css).toMatch(/clip-path:\s*polygon\(/);
     });
 
-    it('should include webkit-mask for broader browser support', () => {
-      expect(css).toMatch(/-webkit-mask:\s*radial-gradient\(/);
+    it('should paint tail border and fill as separate clipped wedges', () => {
+      expect(css).toMatch(/\.chat-bubble::before\s*\{[^}]*background-color:\s*var\(--color-outline-variant\)/s);
+      expect(css).toMatch(/\.chat-bubble::after\s*\{[^}]*background-color:\s*var\(--chat-bubble-bg\)/s);
     });
 
     it('should render tail on the start side for .chat-start bubbles', () => {
@@ -634,19 +640,19 @@ Append inside the main `describe` block:
       expect(css).toMatch(/\.chat-end\s+\.chat-bubble::before/);
     });
 
-    it('should round off the bottom corner facing the avatar', () => {
-      // chat-start removes bottom-left radius; chat-end removes bottom-right
+    it('should round off the top corner facing the avatar', () => {
+      // chat-start removes top-left radius; chat-end removes top-right
       expect(css).toMatch(
-        /\.chat-start\s+\.chat-bubble\s*\{[^}]*border-bottom-left-radius:\s*0/s,
+        /\.chat-start\s+\.chat-bubble\s*\{[^}]*border-top-left-radius:\s*0/s,
       );
       expect(css).toMatch(
-        /\.chat-end\s+\.chat-bubble\s*\{[^}]*border-bottom-right-radius:\s*0/s,
+        /\.chat-end\s+\.chat-bubble\s*\{[^}]*border-top-right-radius:\s*0/s,
       );
     });
 
-    it('should inherit the bubble background on the tail', () => {
+    it('should inherit the bubble background on the tail fill', () => {
       expect(css).toMatch(
-        /\.chat-bubble::before\s*\{[^}]*background(?:-color)?:\s*inherit/s,
+        /\.chat-bubble::after\s*\{[^}]*background-color:\s*var\(--chat-bubble-bg\)/s,
       );
     });
   });
@@ -662,33 +668,49 @@ Expected: tail tests FAIL.
 Append inside the `@layer components` block, after the slots section:
 
 ```css
-  /* Bubble tail — rendered on ::before, cut into a curve via mask.
-   * Color inherits from the bubble background. */
-  .chat-bubble::before {
+  /* Bubble tail — rendered as two clipped wedges.
+   * ::before paints the border; ::after paints the bubble-matching fill. */
+  .chat-bubble::before,
+  .chat-bubble::after {
     content: "";
     position: absolute;
-    bottom: 0;
-    width: 0.75rem;
-    height: 0.75rem;
-    background: inherit;
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+  }
+
+  .chat-bubble::before {
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-outline-variant);
+  }
+
+  .chat-bubble::after {
+    width: calc(1rem - 2px);
+    height: calc(1rem - 2px);
+    top: 1px;
+    background-color: var(--chat-bubble-bg);
   }
 
   .chat-start .chat-bubble {
-    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
   .chat-start .chat-bubble::before {
-    left: -0.45rem;
-    mask: radial-gradient(0.75rem at 0.75rem 0, transparent 98%, black 100%);
-    -webkit-mask: radial-gradient(0.75rem at 0.75rem 0, transparent 98%, black 100%);
+    left: -0.625rem;
+  }
+  .chat-start .chat-bubble::after {
+    left: -0.5rem;
   }
 
   .chat-end .chat-bubble {
-    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
   }
   .chat-end .chat-bubble::before {
-    right: -0.45rem;
-    mask: radial-gradient(0.75rem at 0 0, transparent 98%, black 100%);
-    -webkit-mask: radial-gradient(0.75rem at 0 0, transparent 98%, black 100%);
+    right: -0.625rem;
+    transform: scaleX(-1);
+  }
+  .chat-end .chat-bubble::after {
+    right: -0.5rem;
+    transform: scaleX(-1);
   }
 ```
 
@@ -701,7 +723,7 @@ Expected: all PASS.
 
 ```bash
 git add packages/core/src/components/chat.css packages/core/tests/unit/chat.test.ts
-git commit -m "feat(core): add directional tail to chat-bubble via CSS mask"
+git commit -m "feat(core): add directional tail to chat-bubble"
 ```
 
 ---

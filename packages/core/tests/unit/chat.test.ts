@@ -41,19 +41,29 @@ describe('Chat Component', () => {
       }
     });
 
+    it('should align chat avatar to the top of the row stack', () => {
+      expect(css).toMatch(/\.chat-avatar\s*\{[^}]*align-self:\s*start/s);
+    });
+
     it('should set relative positioning on .chat-bubble for tail rendering', () => {
       expect(css).toMatch(/\.chat-bubble\s*\{[^}]*position:\s*relative/s);
     });
 
-    it('should use surface-container background on default bubble', () => {
+    it('should use elevated surface container background on default bubble', () => {
       expect(css).toMatch(
-        /\.chat-bubble\s*\{[^}]*background-color:\s*var\(--color-surface-container\)/s,
+        /\.chat-bubble\s*\{[^}]*--chat-bubble-bg:\s*var\(--color-surface-container-highest\)[^}]*background-color:\s*var\(--chat-bubble-bg\)/s,
+      );
+    });
+
+    it('should outline default bubbles for dark surface contrast', () => {
+      expect(css).toMatch(
+        /\.chat-bubble\s*\{[^}]*box-shadow:\s*inset 0 0 0 1px var\(--color-outline-variant\)/s,
       );
     });
 
     it('should use on-surface text color on default bubble', () => {
       expect(css).toMatch(
-        /\.chat-bubble\s*\{[^}]*color:\s*var\(--color-on-surface\)/s,
+        /\.chat-bubble\s*\{[^}]*--chat-bubble-fg:\s*var\(--color-on-surface\)[^}]*color:\s*var\(--chat-bubble-fg\)/s,
       );
     });
 
@@ -67,15 +77,42 @@ describe('Chat Component', () => {
   });
 
   describe('Bubble tail', () => {
-    it('should render start tail with a CSS mask', () => {
+    it('should render start tail with a clipped wedge', () => {
       expect(css).toMatch(
-        /\.chat-start \.chat-bubble::before[^}]*mask:\s*radial-gradient/s,
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before,\s*\.chat-start \.chat-bubble::after,\s*\.chat-end \.chat-bubble::after\s*\{[^}]*clip-path:\s*polygon/s,
       );
     });
 
-    it('should render end tail with a CSS mask', () => {
+    it('should render end tail with mirrored placement', () => {
       expect(css).toMatch(
-        /\.chat-end \.chat-bubble::before[^}]*mask:\s*radial-gradient/s,
+        /\.chat-end \.chat-bubble::before\s*\{[^}]*right:\s*-0\.625rem[^}]*transform:\s*scaleX\(-1\)/s,
+      );
+    });
+
+    it('should place bubble tails at the top edge', () => {
+      expect(css).toMatch(
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before,\s*\.chat-start \.chat-bubble::after,\s*\.chat-end \.chat-bubble::after\s*\{[^}]*top:\s*0/s,
+      );
+      expect(css).not.toMatch(
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before,\s*\.chat-start \.chat-bubble::after,\s*\.chat-end \.chat-bubble::after\s*\{[^}]*bottom:\s*0/s,
+      );
+    });
+
+    it('should render larger tails with explicit border strokes and matching fill', () => {
+      expect(css).toMatch(
+        /\.chat-start \.chat-bubble::before\s*\{[^}]*width:\s*1rem[^}]*height:\s*1rem[^}]*background-color:\s*var\(--color-outline-variant\)/s,
+      );
+      expect(css).toMatch(
+        /\.chat-start \.chat-bubble::after\s*\{[^}]*width:\s*calc\(1rem - 2px\)[^}]*height:\s*calc\(1rem - 2px\)[^}]*background-color:\s*var\(--chat-bubble-bg\)/s,
+      );
+    });
+
+    it('should square the top corner that connects to the tail', () => {
+      expect(css).toMatch(
+        /\.chat-start \.chat-bubble\s*\{[^}]*border-top-left-radius:\s*0/s,
+      );
+      expect(css).toMatch(
+        /\.chat-end \.chat-bubble\s*\{[^}]*border-top-right-radius:\s*0/s,
       );
     });
   });
@@ -96,19 +133,19 @@ describe('Chat Component', () => {
         expect(css).toContain(`.chat-bubble-${variant}`);
       });
 
-      it(`should use ${variant}-container background for .chat-bubble-${variant}`, () => {
+      it(`should set ${variant}-container background variable for .chat-bubble-${variant}`, () => {
         expect(css).toMatch(
           new RegExp(
-            `\\.chat-bubble-${variant}\\s*\\{[^}]*background-color:\\s*var\\(--color-${variant}-container\\)`,
+            `\\.chat-bubble-${variant}\\s*\\{[^}]*--chat-bubble-bg:\\s*var\\(--color-${variant}-container\\)`,
             's',
           ),
         );
       });
 
-      it(`should use on-${variant}-container text for .chat-bubble-${variant}`, () => {
+      it(`should set on-${variant}-container text variable for .chat-bubble-${variant}`, () => {
         expect(css).toMatch(
           new RegExp(
-            `\\.chat-bubble-${variant}\\s*\\{[^}]*color:\\s*var\\(--color-on-${variant}-container\\)`,
+            `\\.chat-bubble-${variant}\\s*\\{[^}]*--chat-bubble-fg:\\s*var\\(--color-on-${variant}-container\\)`,
             's',
           ),
         );
@@ -117,7 +154,7 @@ describe('Chat Component', () => {
       it(`should define filled override for .chat-bubble-${variant}`, () => {
         expect(css).toMatch(
           new RegExp(
-            `\\.chat-bubble-filled\\.chat-bubble-${variant}\\s*\\{[^}]*background-color:\\s*var\\(--color-${variant}\\)[^}]*color:\\s*var\\(--color-${variant}-content\\)`,
+            `\\.chat-bubble-filled\\.chat-bubble-${variant}\\s*\\{[^}]*--chat-bubble-bg:\\s*var\\(--color-${variant}\\)[^}]*--chat-bubble-fg:\\s*var\\(--color-${variant}-content\\)`,
             's',
           ),
         );
