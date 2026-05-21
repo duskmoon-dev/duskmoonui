@@ -31,14 +31,14 @@ This modular approach allows duskmoon-elements to bundle only the CSS needed for
 
 ## Component Overview
 
-DuskMoonUI includes **57 components** and **layout utilities** organized by category.
+DuskMoonUI includes **58 components** and **layout utilities** organized by category.
 
 ### Included Components
 
 | Category | Components |
 |----------|------------|
 | **Actions** | Button, Circle Menu, File Upload, Toggle |
-| **Data Display** | Avatar, Badge, Card, Chip, Code Block, Collapse, List, Table, Timeline, Skeleton |
+| **Data Display** | Avatar, Badge, Card, Chat, Chip, Code Block, Collapse, List, Table, Timeline, Skeleton |
 | **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Theme Controller, Time Input, Tree Select |
 | **Feedback** | Alert, Dialog, Modal, Progress, Snackbar, Toast, Tooltip |
 | **Layout** | App Bar, Divider, Form, Grid Utilities, Markdown Body |
@@ -85,6 +85,7 @@ packages/core/src/components/
 ├── button.css          # Clickable buttons (filled, outlined, text, tonal)
 ├── card.css            # Content container with elevation
 ├── cascader.css        # Hierarchical cascading selection
+├── chat.css            # LLM-oriented chat bubbles with reasoning, tool calls, typing indicator
 ├── checkbox.css        # Multi-selection checkboxes
 ├── chip.css            # Compact elements for tags/filters
 ├── circle-menu.css     # Radial navigation menu with animated items
@@ -425,14 +426,16 @@ duskmoonui/
 │   │   │   ├── base/           # Root styles, color tokens
 │   │   │   │   ├── colors.css  # 65+ color token definitions
 │   │   │   │   └── utilities.css # Grid and accessibility utilities
-│   │   │   ├── themes/         # Theme definitions (5 themes)
-│   │   │   │   ├── sunshine.css # Light theme
-│   │   │   │   ├── moonlight.css# Dark theme
-│   │   │   │   ├── ocean.css   # Ocean theme
-│   │   │   │   ├── forest.css  # Forest theme
-│   │   │   │   └── sunset.css  # Sunset theme
-│   │   │   ├── components/     # 57 component CSS files
-│   │   │   ├── generators/     # CSS variable generation
+│   │   │   ├── themes/         # Theme definitions (4 themes)
+│   │   │   │   ├── defaults.css # Default :root fallbacks (sunshine light + moonlight dark auto)
+│   │   │   │   ├── index.css    # Theme barrel export
+│   │   │   │   └── generated/   # Theme CSS files
+│   │   │   │       ├── sunshine.css # Light theme
+│   │   │   │       ├── moonlight.css# Dark theme
+│   │   │   │       ├── ocean.css   # Ocean theme
+│   │   │   │       ├── forest.css  # Forest theme
+│   │   │   │       └── spacing.css # Spacing/shape tokens
+│   │   │   ├── components/     # 58 component CSS files
 │   │   │   └── types/          # TypeScript definitions
 │   │   ├── scripts/
 │   │   │   └── build-css.ts    # CSS build script
