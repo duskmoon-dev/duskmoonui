@@ -68,6 +68,9 @@
   .select-filled.select-success:focus-visible { border-bottom-color: var(--color-success); }
   .select-filled.select-warning:focus-visible { border-bottom-color: var(--color-warning); }
   .select-filled.select-error:focus-visible { border-bottom-color: var(--color-error); }
+  .select-filled.select-accent:focus-visible { border-bottom-color: var(--color-accent); }
+  .select-filled.select-neutral:focus-visible { border-bottom-color: var(--color-neutral); }
+  .select-filled.select-base:focus-visible { border-bottom-color: var(--color-base-content); }
 
   /* Outlined Variant (default is outlined) */
   .select-outlined {
@@ -87,6 +90,9 @@
   .select-success { color: var(--color-success); }
   .select-warning { color: var(--color-warning); }
   .select-error   { color: var(--color-error); }
+  .select-accent  { color: var(--color-accent); }
+  .select-neutral { color: var(--color-neutral); }
+  .select-base    { color: var(--color-base-content); }
 
   /* Size Variants */
   .select-xs {

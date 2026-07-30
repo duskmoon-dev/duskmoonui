@@ -167,6 +167,30 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .pin-input-accent .pin-input-field {
+    color: var(--color-accent);
+  }
+
+  .pin-input-accent .pin-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .pin-input-neutral .pin-input-field {
+    color: var(--color-neutral);
+  }
+
+  .pin-input-neutral .pin-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .pin-input-base .pin-input-field {
+    color: var(--color-base-content);
+  }
+
+  .pin-input-base .pin-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   @keyframes pin-shake {
     0%, 100% { transform: translateX(0); }
     20%, 60% { transform: translateX(-4px); }

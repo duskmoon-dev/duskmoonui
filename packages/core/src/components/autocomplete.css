@@ -298,6 +298,27 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .autocomplete-accent .autocomplete-input {
+    color: var(--color-accent);
+  }
+  .autocomplete-accent .autocomplete-input:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .autocomplete-neutral .autocomplete-input {
+    color: var(--color-neutral);
+  }
+  .autocomplete-neutral .autocomplete-input:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .autocomplete-base .autocomplete-input {
+    color: var(--color-base-content);
+  }
+  .autocomplete-base .autocomplete-input:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   /* Ghost Variant */
   .autocomplete-ghost .autocomplete-input {
     background-color: transparent;

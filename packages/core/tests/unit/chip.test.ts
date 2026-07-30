@@ -147,6 +147,24 @@ describe('Chip Component', () => {
         expect(css).toContain(`.chip-${color}:hover`);
       });
     }
+
+    const extendedColors = [
+      { name: 'accent', background: 'accent', content: 'accent-content' },
+      { name: 'neutral', background: 'neutral', content: 'neutral-content' },
+      { name: 'base', background: 'base-100', content: 'base-content' },
+    ];
+
+    for (const { name, background, content } of extendedColors) {
+      it(`should define chip-${name} with the correct filled tokens`, () => {
+        expect(css).toMatch(
+          new RegExp(
+            `\\.chip-${name}\\s*\\{[^}]*background-color:\\s*var\\(--color-${background}\\)[^}]*color:\\s*var\\(--color-${content}\\)`,
+            's',
+          ),
+        );
+        expect(css).toContain(`.chip-${name}:hover`);
+      });
+    }
   });
 
   describe('Outlined Variant', () => {
@@ -185,6 +203,13 @@ describe('Chip Component', () => {
         expect(css).toContain(`.chip-outlined.chip-${color}:hover`);
       });
     }
+
+    for (const color of ['accent', 'neutral', 'base']) {
+      it(`should define outlined + ${color} with a hover state`, () => {
+        expect(css).toContain(`.chip-outlined.chip-${color}`);
+        expect(css).toContain(`.chip-outlined.chip-${color}:hover`);
+      });
+    }
   });
 
   describe('Tonal Variant', () => {
@@ -210,6 +235,23 @@ describe('Chip Component', () => {
         expect(css).toContain(`var(--color-on-${color}-container)`);
       });
     }
+
+    it('should derive accent and neutral tonal backgrounds from existing tokens', () => {
+      for (const color of ['accent', 'neutral']) {
+        expect(css).toMatch(
+          new RegExp(
+            `\\.chip-tonal\\.chip-${color}\\s*\\{[^}]*background-color:\\s*color-mix\\(in oklch, var\\(--color-${color}\\) 15%, var\\(--color-surface\\)\\)[^}]*color:\\s*var\\(--color-on-surface\\)`,
+            's',
+          ),
+        );
+      }
+    });
+
+    it('should use base scale tokens for the base tonal variant', () => {
+      expect(css).toMatch(
+        /\.chip-tonal\.chip-base\s*\{[^}]*background-color:\s*var\(--color-base-200\)[^}]*color:\s*var\(--color-base-content\)/s,
+      );
+    });
   });
 
   describe('Ghost Variant', () => {
@@ -237,6 +279,13 @@ describe('Chip Component', () => {
       });
 
       it(`should have hover state for ghost ${color}`, () => {
+        expect(css).toContain(`.chip-ghost.chip-${color}:hover`);
+      });
+    }
+
+    for (const color of ['accent', 'neutral', 'base']) {
+      it(`should define ghost + ${color} with a hover state`, () => {
+        expect(css).toContain(`.chip-ghost.chip-${color}`);
         expect(css).toContain(`.chip-ghost.chip-${color}:hover`);
       });
     }

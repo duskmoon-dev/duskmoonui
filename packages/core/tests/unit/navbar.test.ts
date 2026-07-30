@@ -9,9 +9,13 @@ import { resolve } from 'path';
 
 describe('Navbar Component', () => {
   let css: string;
+  let bundledCSS: string;
 
   beforeAll(async () => {
-    css = await readFile(resolve(__dirname, '../../src/components/navbar.css'), 'utf-8');
+    [css, bundledCSS] = await Promise.all([
+      readFile(resolve(__dirname, '../../src/components/navbar.css'), 'utf-8'),
+      readFile(resolve(__dirname, '../../src/components/navigation.css'), 'utf-8'),
+    ]);
   });
 
   describe('Base Layout', () => {
@@ -70,6 +74,31 @@ describe('Navbar Component', () => {
     it('should use on-surface text color', () => {
       expect(css).toContain('var(--color-on-surface)');
     });
+
+    const colors = [
+      { name: 'primary', background: 'primary', content: 'primary-content' },
+      { name: 'secondary', background: 'secondary', content: 'secondary-content' },
+      { name: 'tertiary', background: 'tertiary', content: 'tertiary-content' },
+      { name: 'accent', background: 'accent', content: 'accent-content' },
+      { name: 'neutral', background: 'neutral', content: 'neutral-content' },
+      { name: 'base', background: 'base-100', content: 'base-content' },
+      { name: 'info', background: 'info', content: 'info-content' },
+      { name: 'success', background: 'success', content: 'success-content' },
+      { name: 'warning', background: 'warning', content: 'warning-content' },
+      { name: 'error', background: 'error', content: 'error-content' },
+    ];
+
+    for (const { name, background, content } of colors) {
+      it(`should define and bundle navbar-${name}`, () => {
+        const variant = new RegExp(
+          `\\.navbar-${name}\\s*\\{[^}]*background-color:\\s*var\\(--color-${background}\\)[^}]*color:\\s*var\\(--color-${content}\\)`,
+          's',
+        );
+
+        expect(css).toMatch(variant);
+        expect(bundledCSS).toMatch(variant);
+      });
+    }
   });
 
   describe('Layer', () => {

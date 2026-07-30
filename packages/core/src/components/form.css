@@ -114,6 +114,33 @@
     border-color: var(--color-error);
   }
 
+  .checkbox-accent:checked {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .checkbox-accent:checked::after {
+    border-color: var(--color-accent-content);
+  }
+
+  .checkbox-neutral:checked {
+    background-color: var(--color-neutral);
+    border-color: var(--color-neutral);
+  }
+
+  .checkbox-neutral:checked::after {
+    border-color: var(--color-neutral-content);
+  }
+
+  .checkbox-base:checked {
+    background-color: var(--color-base-100);
+    border-color: var(--color-base-100);
+  }
+
+  .checkbox-base:checked::after {
+    border-color: var(--color-base-content);
+  }
+
   /* Checkbox Sizes */
   .checkbox-xs {
     width: 0.875rem;
@@ -228,6 +255,30 @@
 
   .radio-error:checked::after {
     background-color: var(--color-error);
+  }
+
+  .radio-accent:checked {
+    border-color: var(--color-accent);
+  }
+
+  .radio-accent:checked::after {
+    background-color: var(--color-accent);
+  }
+
+  .radio-neutral:checked {
+    border-color: var(--color-neutral);
+  }
+
+  .radio-neutral:checked::after {
+    background-color: var(--color-neutral);
+  }
+
+  .radio-base:checked {
+    border-color: var(--color-base-content);
+  }
+
+  .radio-base:checked::after {
+    background-color: var(--color-base-content);
   }
 
   /* Toggle/Switch */
@@ -355,6 +406,38 @@
 
   .select-secondary:focus-visible {
     border-color: var(--color-secondary);
+  }
+
+  .select-tertiary:focus-visible {
+    border-color: var(--color-tertiary);
+  }
+
+  .select-info:focus-visible {
+    border-color: var(--color-info);
+  }
+
+  .select-success:focus-visible {
+    border-color: var(--color-success);
+  }
+
+  .select-warning:focus-visible {
+    border-color: var(--color-warning);
+  }
+
+  .select-error:focus-visible {
+    border-color: var(--color-error);
+  }
+
+  .select-accent:focus-visible {
+    border-color: var(--color-accent);
+  }
+
+  .select-neutral:focus-visible {
+    border-color: var(--color-neutral);
+  }
+
+  .select-base:focus-visible {
+    border-color: var(--color-base-content);
   }
 
   /* Select Sizes */

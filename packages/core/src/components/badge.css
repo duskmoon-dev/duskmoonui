@@ -35,6 +35,21 @@
     color: var(--color-tertiary-content);
   }
 
+  .badge-accent {
+    background-color: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+
+  .badge-neutral {
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
+  }
+
+  .badge-base {
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+
   .badge-info {
     background-color: var(--color-info);
     color: var(--color-info-content);
@@ -76,6 +91,21 @@
     border-color: var(--color-tertiary);
   }
 
+  .badge-outline.badge-accent {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .badge-outline.badge-neutral {
+    color: var(--color-neutral);
+    border-color: var(--color-neutral);
+  }
+
+  .badge-outline.badge-base {
+    color: var(--color-base-content);
+    border-color: var(--color-base-content);
+  }
+
   .badge-outline.badge-info {
     color: var(--color-info);
     border-color: var(--color-info);
@@ -115,6 +145,21 @@
   .badge-soft.badge-tertiary {
     background-color: var(--color-tertiary-container);
     color: var(--color-on-tertiary-container);
+  }
+
+  .badge-soft.badge-accent {
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+    color: var(--color-on-surface);
+  }
+
+  .badge-soft.badge-neutral {
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+    color: var(--color-on-surface);
+  }
+
+  .badge-soft.badge-base {
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
   }
 
   .badge-soft.badge-info {

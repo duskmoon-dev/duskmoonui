@@ -129,6 +129,18 @@
     --radio-color: var(--color-info);
   }
 
+  .radio-accent {
+    --radio-color: var(--color-accent);
+  }
+
+  .radio-neutral {
+    --radio-color: var(--color-neutral);
+  }
+
+  .radio-base {
+    --radio-color: var(--color-base-content);
+  }
+
   /* Ghost Variant — borderless unchecked state */
   .radio-ghost {
     --radio-border-color: transparent;

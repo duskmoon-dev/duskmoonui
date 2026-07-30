@@ -93,6 +93,42 @@
     filter: none;
   }
 
+  .btn-accent {
+    --btn-text-color: var(--color-accent-content);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .btn-accent:hover {
+    background-color: color-mix(in oklch, var(--color-accent), black 10%);
+    border-color: color-mix(in oklch, var(--color-accent), black 10%);
+    filter: none;
+  }
+
+  .btn-neutral {
+    --btn-text-color: var(--color-neutral-content);
+    background-color: var(--color-neutral);
+    border-color: var(--color-neutral);
+  }
+
+  .btn-neutral:hover {
+    background-color: color-mix(in oklch, var(--color-neutral), black 10%);
+    border-color: color-mix(in oklch, var(--color-neutral), black 10%);
+    filter: none;
+  }
+
+  .btn-base {
+    --btn-text-color: var(--color-base-content);
+    background-color: var(--color-base-100);
+    border-color: var(--color-base-100);
+  }
+
+  .btn-base:hover {
+    background-color: var(--color-base-200);
+    border-color: var(--color-base-200);
+    filter: none;
+  }
+
   /* Outline / Outlined Variant (.btn-outlined is an alias) */
   .btn-outline,
   .btn-outlined {
@@ -141,6 +177,42 @@
   .btn-outlined.btn-tertiary:hover {
     --btn-text-color: var(--color-tertiary-content);
     background-color: var(--color-tertiary);
+  }
+
+  .btn-outline.btn-accent,
+  .btn-outlined.btn-accent {
+    --btn-text-color: var(--color-accent);
+    border-color: currentColor;
+  }
+
+  .btn-outline.btn-accent:hover,
+  .btn-outlined.btn-accent:hover {
+    --btn-text-color: var(--color-accent-content);
+    background-color: var(--color-accent);
+  }
+
+  .btn-outline.btn-neutral,
+  .btn-outlined.btn-neutral {
+    --btn-text-color: var(--color-neutral);
+    border-color: currentColor;
+  }
+
+  .btn-outline.btn-neutral:hover,
+  .btn-outlined.btn-neutral:hover {
+    --btn-text-color: var(--color-neutral-content);
+    background-color: var(--color-neutral);
+  }
+
+  .btn-outline.btn-base,
+  .btn-outlined.btn-base {
+    --btn-text-color: var(--color-base-content);
+    border-color: currentColor;
+  }
+
+  .btn-outline.btn-base:hover,
+  .btn-outlined.btn-base:hover {
+    --btn-text-color: var(--color-base-content);
+    background-color: var(--color-base-100);
   }
 
   .btn-outline.btn-info,
@@ -234,6 +306,24 @@
   .btn-ghost.btn-success { --btn-text-color: var(--color-success); }
   .btn-ghost.btn-warning { --btn-text-color: var(--color-warning); }
   .btn-ghost.btn-error   { --btn-text-color: var(--color-error); }
+  .btn-ghost.btn-accent  { --btn-text-color: var(--color-accent); }
+  .btn-ghost.btn-neutral { --btn-text-color: var(--color-neutral); }
+  .btn-ghost.btn-base    { --btn-text-color: var(--color-base-content); }
+
+  .btn-ghost.btn-accent:hover {
+    --btn-text-color: var(--color-accent);
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+  }
+
+  .btn-ghost.btn-neutral:hover {
+    --btn-text-color: var(--color-neutral);
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+  }
+
+  .btn-ghost.btn-base:hover {
+    --btn-text-color: var(--color-base-content);
+    background-color: var(--color-base-200);
+  }
 
   .btn-ghost.btn-info:hover {
     --btn-text-color: var(--color-on-info-container);
@@ -298,6 +388,24 @@
   .btn-text.btn-success { --btn-text-color: var(--color-success); }
   .btn-text.btn-warning { --btn-text-color: var(--color-warning); }
   .btn-text.btn-error   { --btn-text-color: var(--color-error); }
+  .btn-text.btn-accent  { --btn-text-color: var(--color-accent); }
+  .btn-text.btn-neutral { --btn-text-color: var(--color-neutral); }
+  .btn-text.btn-base    { --btn-text-color: var(--color-base-content); }
+
+  .btn-text.btn-accent:hover {
+    --btn-text-color: var(--color-accent);
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+  }
+
+  .btn-text.btn-neutral:hover {
+    --btn-text-color: var(--color-neutral);
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+  }
+
+  .btn-text.btn-base:hover {
+    --btn-text-color: var(--color-base-content);
+    background-color: var(--color-base-200);
+  }
 
   .btn-text.btn-info:hover {
     --btn-text-color: var(--color-on-info-container);
@@ -343,6 +451,21 @@
   .btn-tonal.btn-tertiary {
     --btn-text-color: var(--color-on-tertiary-container);
     background-color: var(--color-tertiary-container);
+  }
+
+  .btn-tonal.btn-accent {
+    --btn-text-color: var(--color-on-surface);
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+  }
+
+  .btn-tonal.btn-neutral {
+    --btn-text-color: var(--color-on-surface);
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+  }
+
+  .btn-tonal.btn-base {
+    --btn-text-color: var(--color-base-content);
+    background-color: var(--color-base-200);
   }
 
   .btn-tonal.btn-info {

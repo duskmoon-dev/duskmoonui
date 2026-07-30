@@ -203,6 +203,24 @@
     --switch-container-color: var(--color-info-container);
   }
 
+  .switch-accent {
+    --switch-color: var(--color-accent);
+    --switch-content-color: var(--color-accent-content);
+    --switch-container-color: color-mix(in oklch, var(--color-accent) 20%, var(--color-surface));
+  }
+
+  .switch-neutral {
+    --switch-color: var(--color-neutral);
+    --switch-content-color: var(--color-neutral-content);
+    --switch-container-color: color-mix(in oklch, var(--color-neutral) 20%, var(--color-surface));
+  }
+
+  .switch-base {
+    --switch-color: var(--color-base-100);
+    --switch-content-color: var(--color-base-content);
+    --switch-container-color: color-mix(in oklch, var(--color-base-100) 20%, var(--color-surface));
+  }
+
   /* Ghost Variant — borderless track */
   .switch-ghost {
     --switch-border-color: transparent;

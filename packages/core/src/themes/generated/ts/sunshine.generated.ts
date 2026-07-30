@@ -14,7 +14,7 @@ export const sunshineMeta: ThemeMeta = {
 
 export const sunshineColors: ThemeColors = {
   primary: '72% 0.17 75',
-  'primary-content': '100% 0 0',
+  'primary-content': '25% 0.03 95.91',
   'primary-container': '95% 0.035 95.91',
   'on-primary-container': '25% 0.03 95.91',
   secondary: '62% 0.19 20',

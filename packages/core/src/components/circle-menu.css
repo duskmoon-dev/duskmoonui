@@ -301,6 +301,30 @@
     --circle-menu-item-ring: color-mix(in oklch, var(--color-error) 40%, transparent);
   }
 
+  .circle-menu-accent {
+    --circle-menu-btn-bg: var(--color-accent);
+    --circle-menu-bar-color: var(--color-accent-content);
+    --circle-menu-item-bg: var(--color-accent);
+    --circle-menu-item-color: var(--color-accent-content);
+    --circle-menu-item-ring: color-mix(in oklch, var(--color-accent) 40%, transparent);
+  }
+
+  .circle-menu-neutral {
+    --circle-menu-btn-bg: var(--color-neutral);
+    --circle-menu-bar-color: var(--color-neutral-content);
+    --circle-menu-item-bg: var(--color-neutral);
+    --circle-menu-item-color: var(--color-neutral-content);
+    --circle-menu-item-ring: color-mix(in oklch, var(--color-neutral) 40%, transparent);
+  }
+
+  .circle-menu-base {
+    --circle-menu-btn-bg: var(--color-base-100);
+    --circle-menu-bar-color: var(--color-base-content);
+    --circle-menu-item-bg: var(--color-base-100);
+    --circle-menu-item-color: var(--color-base-content);
+    --circle-menu-item-ring: color-mix(in oklch, var(--color-base-content) 40%, transparent);
+  }
+
   /* === Reduced motion === */
   @media (prefers-reduced-motion: reduce) {
     .circle-menu-label {

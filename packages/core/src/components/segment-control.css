@@ -133,6 +133,21 @@
     color: var(--color-on-error-container);
   }
 
+  .segment-control-accent .segment-item-active {
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+    color: var(--color-on-surface);
+  }
+
+  .segment-control-neutral .segment-item-active {
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+    color: var(--color-on-surface);
+  }
+
+  .segment-control-base .segment-item-active {
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
+  }
+
   /* Full Width */
   .segment-control-full {
     display: flex;

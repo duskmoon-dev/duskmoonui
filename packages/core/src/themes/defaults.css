@@ -17,7 +17,7 @@
   --theme-pair: "moonlight";
   --theme-description: "Warm amber/coral";
   --color-primary: oklch(72% 0.17 75);
-  --color-primary-content: oklch(100% 0 0);
+  --color-primary-content: oklch(25% 0.03 95.91);
   --color-primary-container: oklch(95% 0.035 95.91);
   --color-on-primary-container: oklch(25% 0.03 95.91);
   --color-secondary: oklch(62% 0.19 20);

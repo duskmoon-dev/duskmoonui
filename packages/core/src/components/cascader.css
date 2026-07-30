@@ -416,6 +416,27 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .cascader-accent .cascader-trigger {
+    color: var(--color-accent);
+  }
+  .cascader-accent .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .cascader-neutral .cascader-trigger {
+    color: var(--color-neutral);
+  }
+  .cascader-neutral .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .cascader-base .cascader-trigger {
+    color: var(--color-base-content);
+  }
+  .cascader-base .cascader-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   /* Ghost Variant */
   .cascader-ghost .cascader-trigger {
     background-color: transparent;

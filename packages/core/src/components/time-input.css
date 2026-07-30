@@ -221,6 +221,33 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .time-input-accent .time-input-field,
+  .time-input-accent .time-input-segments {
+    color: var(--color-accent);
+  }
+
+  .time-input-accent .time-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .time-input-neutral .time-input-field,
+  .time-input-neutral .time-input-segments {
+    color: var(--color-neutral);
+  }
+
+  .time-input-neutral .time-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .time-input-base .time-input-field,
+  .time-input-base .time-input-segments {
+    color: var(--color-base-content);
+  }
+
+  .time-input-base .time-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   /* Ghost Variant */
   .time-input-ghost .time-input-field,
   .time-input-ghost .time-input-segments {

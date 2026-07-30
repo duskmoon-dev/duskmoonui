@@ -14,10 +14,10 @@
       "hex": "#E19100"
     },
     "primary-content": {
-      "l": 1,
-      "c": 0,
-      "h": 0,
-      "hex": "#FFFFFF"
+      "l": 0.25,
+      "c": 0.03,
+      "h": 95.91,
+      "hex": "#262210"
     },
     "primary-container": {
       "l": 0.95,

@@ -183,6 +183,21 @@
     background-color: var(--color-error);
   }
 
+  .divider-accent::before,
+  .divider-accent::after {
+    background-color: var(--color-accent);
+  }
+
+  .divider-neutral::before,
+  .divider-neutral::after {
+    background-color: var(--color-neutral);
+  }
+
+  .divider-base::before,
+  .divider-base::after {
+    background-color: var(--color-base-content);
+  }
+
   /* ── Gradient Lines ─────────────────────────────────────────────── */
   .divider-gradient::before,
   .divider-gradient::after {

@@ -128,6 +128,18 @@
     color: var(--color-warning);
   }
 
+  .rating-accent .rating-item.filled {
+    color: var(--color-accent);
+  }
+
+  .rating-neutral .rating-item.filled {
+    color: var(--color-neutral);
+  }
+
+  .rating-base .rating-item.filled {
+    color: var(--color-base-content);
+  }
+
   /* Read Only */
   .rating-readonly .rating-item {
     cursor: default;
@@ -177,6 +189,9 @@
   .rating-info:not(.rating-readonly):hover .rating-item      { color: var(--color-info); }
   .rating-success:not(.rating-readonly):hover .rating-item   { color: var(--color-success); }
   .rating-error:not(.rating-readonly):hover .rating-item     { color: var(--color-error); }
+  .rating-accent:not(.rating-readonly):hover .rating-item    { color: var(--color-accent); }
+  .rating-neutral:not(.rating-readonly):hover .rating-item   { color: var(--color-neutral); }
+  .rating-base:not(.rating-readonly):hover .rating-item      { color: var(--color-base-content); }
 
   /* Focus Visible — use warning (the default fill color) for the base ring;
      per-variant overrides below match the active fill color for each variant. */
@@ -193,6 +208,9 @@
   .rating-success .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success)   20%, transparent); }
   .rating-error .rating-item:focus-visible     { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error)     20%, transparent); }
   .rating-warning .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning)   20%, transparent); }
+  .rating-accent .rating-item:focus-visible    { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent)    20%, transparent); }
+  .rating-neutral .rating-item:focus-visible   { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral)   20%, transparent); }
+  .rating-base .rating-item:focus-visible      { box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 20%, transparent); }
 
   /* Rating Display (static) */
   .rating-display {
