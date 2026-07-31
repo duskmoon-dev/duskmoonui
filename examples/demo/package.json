@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@duskmoon-dev/core": "file:../../packages/core",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "4.3.3"
   }
 }
