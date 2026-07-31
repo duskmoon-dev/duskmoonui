@@ -484,6 +484,27 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .multi-select-accent .multi-select-trigger {
+    color: var(--color-accent);
+  }
+  .multi-select-accent .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .multi-select-neutral .multi-select-trigger {
+    color: var(--color-neutral);
+  }
+  .multi-select-neutral .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .multi-select-base .multi-select-trigger {
+    color: var(--color-base-content);
+  }
+  .multi-select-base .multi-select-trigger:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   /* Ghost Variant */
   .multi-select-ghost .multi-select-trigger {
     background-color: transparent;

@@ -40,4 +40,16 @@ describe('Collapse Component', () => {
   it('should have transition for animation', () => {
     expect(css).toContain('transition');
   });
+
+  it('should only apply card content bottom padding while open', () => {
+    expect(css).toMatch(
+      /\.collapse-card \.collapse-content > \*\s*\{[^}]*color:[^}]*\}/s,
+    );
+    expect(css).not.toMatch(
+      /\.collapse-card \.collapse-content > \*\s*\{[^}]*padding:[^}]*\}/s,
+    );
+    expect(css).toMatch(
+      /\.collapse-card\.collapse-open \.collapse-content > \*[\s\S]*?\.collapse-card\.show \.collapse-content > \*\s*\{[^}]*padding:\s*0 1rem 1rem/s,
+    );
+  });
 });

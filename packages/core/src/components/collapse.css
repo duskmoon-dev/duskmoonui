@@ -175,8 +175,14 @@
 
   .collapse-card .collapse-inner,
   .collapse-card .collapse-content > * {
-    padding: 0 1rem 1rem;
     color: var(--color-on-surface-variant);
+  }
+
+  .collapse-card.collapse-open .collapse-inner,
+  .collapse-card.collapse-open .collapse-content > *,
+  .collapse-card.show .collapse-inner,
+  .collapse-card.show .collapse-content > * {
+    padding: 0 1rem 1rem;
   }
 
   /* Bordered Variant */
@@ -249,6 +255,30 @@
 
   .collapse-error .collapse-trigger:hover {
     background-color: var(--color-error-container);
+  }
+
+  .collapse-accent .collapse-trigger {
+    color: var(--color-accent);
+  }
+
+  .collapse-accent .collapse-trigger:hover {
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+  }
+
+  .collapse-neutral .collapse-trigger {
+    color: var(--color-neutral);
+  }
+
+  .collapse-neutral .collapse-trigger:hover {
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+  }
+
+  .collapse-base .collapse-trigger {
+    color: var(--color-base-content);
+  }
+
+  .collapse-base .collapse-trigger:hover {
+    background-color: var(--color-base-200);
   }
 
   /* Size Variants */

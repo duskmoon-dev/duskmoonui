@@ -380,6 +380,75 @@
     opacity: 0.8;
   }
 
+  .appbar-accent {
+    background-color: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+
+  .appbar-accent .appbar-nav,
+  .appbar-accent .appbar-action,
+  .appbar-accent .appbar-back {
+    color: var(--color-accent-content);
+  }
+
+  .appbar-accent .appbar-nav:hover,
+  .appbar-accent .appbar-action:hover,
+  .appbar-accent .appbar-back:hover {
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+    color: var(--color-accent);
+  }
+
+  .appbar-accent .appbar-subtitle {
+    color: var(--color-accent-content);
+    opacity: 0.8;
+  }
+
+  .appbar-neutral {
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
+  }
+
+  .appbar-neutral .appbar-nav,
+  .appbar-neutral .appbar-action,
+  .appbar-neutral .appbar-back {
+    color: var(--color-neutral-content);
+  }
+
+  .appbar-neutral .appbar-nav:hover,
+  .appbar-neutral .appbar-action:hover,
+  .appbar-neutral .appbar-back:hover {
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+    color: var(--color-neutral);
+  }
+
+  .appbar-neutral .appbar-subtitle {
+    color: var(--color-neutral-content);
+    opacity: 0.8;
+  }
+
+  .appbar-base {
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+
+  .appbar-base .appbar-nav,
+  .appbar-base .appbar-action,
+  .appbar-base .appbar-back {
+    color: var(--color-base-content);
+  }
+
+  .appbar-base .appbar-nav:hover,
+  .appbar-base .appbar-action:hover,
+  .appbar-base .appbar-back:hover {
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
+  }
+
+  .appbar-base .appbar-subtitle {
+    color: var(--color-base-content);
+    opacity: 0.8;
+  }
+
   .appbar-info {
     background-color: var(--color-info);
     color: var(--color-info-content);

@@ -59,6 +59,9 @@
   .input-success { color: var(--color-success); }
   .input-warning { color: var(--color-warning); }
   .input-error   { color: var(--color-error); }
+  .input-accent  { color: var(--color-accent); }
+  .input-neutral { color: var(--color-neutral); }
+  .input-base    { color: var(--color-base-content); }
 
   /* Size Variants */
   .input-xs {
@@ -117,6 +120,9 @@
   .input-filled.input-success:focus-visible { border-bottom-color: var(--color-success); }
   .input-filled.input-warning:focus-visible { border-bottom-color: var(--color-warning); }
   .input-filled.input-error:focus-visible { border-bottom-color: var(--color-error); }
+  .input-filled.input-accent:focus-visible { border-bottom-color: var(--color-accent); }
+  .input-filled.input-neutral:focus-visible { border-bottom-color: var(--color-neutral); }
+  .input-filled.input-base:focus-visible { border-bottom-color: var(--color-base-content); }
 
   /* Input with Icon */
   .input-group {

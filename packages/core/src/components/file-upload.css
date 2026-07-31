@@ -348,6 +348,27 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .file-upload-accent .file-upload-dropzone {
+    color: var(--color-accent);
+  }
+  .file-upload-accent .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .file-upload-neutral .file-upload-dropzone {
+    color: var(--color-neutral);
+  }
+  .file-upload-neutral .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .file-upload-base .file-upload-dropzone {
+    color: var(--color-base-content);
+  }
+  .file-upload-base .file-upload-dropzone:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   /* Ghost Variant */
   .file-upload-ghost .file-upload-dropzone {
     background-color: transparent;

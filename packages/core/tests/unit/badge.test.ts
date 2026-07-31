@@ -97,6 +97,23 @@ describe('Badge Component', () => {
         /\.badge-primary\s*\{[^}]*color:\s*var\(--color-primary-content\)/s,
       );
     });
+
+    const extendedColors = [
+      { name: 'accent', background: 'accent', content: 'accent-content' },
+      { name: 'neutral', background: 'neutral', content: 'neutral-content' },
+      { name: 'base', background: 'base-100', content: 'base-content' },
+    ];
+
+    for (const { name, background, content } of extendedColors) {
+      it(`should define badge-${name} with the correct filled tokens`, () => {
+        expect(css).toMatch(
+          new RegExp(
+            `\\.badge-${name}\\s*\\{[^}]*background-color:\\s*var\\(--color-${background}\\)[^}]*color:\\s*var\\(--color-${content}\\)`,
+            's',
+          ),
+        );
+      });
+    }
   });
 
   describe('Outline Variant', () => {
@@ -145,6 +162,12 @@ describe('Badge Component', () => {
         expect(css).toMatch(borderRegex);
       });
     }
+
+    for (const color of ['accent', 'neutral', 'base']) {
+      it(`should define outline + ${color} combo`, () => {
+        expect(css).toContain(`.badge-outline.badge-${color}`);
+      });
+    }
   });
 
   describe('Soft/Tonal Variant', () => {
@@ -184,6 +207,23 @@ describe('Badge Component', () => {
         expect(css).toContain(`var(--color-on-${color}-container)`);
       });
     }
+
+    it('should derive accent and neutral soft backgrounds from existing tokens', () => {
+      for (const color of ['accent', 'neutral']) {
+        expect(css).toMatch(
+          new RegExp(
+            `\\.badge-soft\\.badge-${color}\\s*\\{[^}]*background-color:\\s*color-mix\\(in oklch, var\\(--color-${color}\\) 15%, var\\(--color-surface\\)\\)[^}]*color:\\s*var\\(--color-on-surface\\)`,
+            's',
+          ),
+        );
+      }
+    });
+
+    it('should use base scale tokens for the base soft variant', () => {
+      expect(css).toMatch(
+        /\.badge-soft\.badge-base\s*\{[^}]*background-color:\s*var\(--color-base-200\)[^}]*color:\s*var\(--color-base-content\)/s,
+      );
+    });
   });
 
   describe('Size Variants', () => {

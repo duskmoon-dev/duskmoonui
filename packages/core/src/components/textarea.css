@@ -162,6 +162,9 @@
   .textarea-filled.textarea-success:focus-visible { border-bottom-color: var(--color-success); }
   .textarea-filled.textarea-warning:focus-visible { border-bottom-color: var(--color-warning); }
   .textarea-filled.textarea-error:focus-visible { border-bottom-color: var(--color-error); }
+  .textarea-filled.textarea-accent:focus-visible { border-bottom-color: var(--color-accent); }
+  .textarea-filled.textarea-neutral:focus-visible { border-bottom-color: var(--color-neutral); }
+  .textarea-filled.textarea-base:focus-visible { border-bottom-color: var(--color-base-content); }
 
   /* Outlined Variant (default) */
   .textarea-outlined {
@@ -205,6 +208,9 @@
   .textarea-success { color: var(--color-success); }
   .textarea-warning { color: var(--color-warning); }
   .textarea-error   { color: var(--color-error); }
+  .textarea-accent  { color: var(--color-accent); }
+  .textarea-neutral { color: var(--color-neutral); }
+  .textarea-base    { color: var(--color-base-content); }
 
   /* ============================================
    * SIZE VARIANTS

@@ -162,6 +162,21 @@
     --chat-bubble-fg: var(--color-on-error-container);
   }
 
+  .chat-bubble-accent {
+    --chat-bubble-bg: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+    --chat-bubble-fg: var(--color-on-surface);
+  }
+
+  .chat-bubble-neutral {
+    --chat-bubble-bg: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+    --chat-bubble-fg: var(--color-on-surface);
+  }
+
+  .chat-bubble-base {
+    --chat-bubble-bg: var(--color-base-200);
+    --chat-bubble-fg: var(--color-base-content);
+  }
+
   .chat-bubble-filled.chat-bubble-primary {
     --chat-bubble-bg: var(--color-primary);
     --chat-bubble-fg: var(--color-primary-content);
@@ -195,6 +210,21 @@
   .chat-bubble-filled.chat-bubble-error {
     --chat-bubble-bg: var(--color-error);
     --chat-bubble-fg: var(--color-error-content);
+  }
+
+  .chat-bubble-filled.chat-bubble-accent {
+    --chat-bubble-bg: var(--color-accent);
+    --chat-bubble-fg: var(--color-accent-content);
+  }
+
+  .chat-bubble-filled.chat-bubble-neutral {
+    --chat-bubble-bg: var(--color-neutral);
+    --chat-bubble-fg: var(--color-neutral-content);
+  }
+
+  .chat-bubble-filled.chat-bubble-base {
+    --chat-bubble-bg: var(--color-base-100);
+    --chat-bubble-fg: var(--color-base-content);
   }
 
   .chat-bubble-xs {

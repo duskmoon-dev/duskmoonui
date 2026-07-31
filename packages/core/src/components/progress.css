@@ -54,6 +54,18 @@
     background-color: var(--color-error);
   }
 
+  .progress-accent .progress-bar {
+    background-color: var(--color-accent);
+  }
+
+  .progress-neutral .progress-bar {
+    background-color: var(--color-neutral);
+  }
+
+  .progress-base .progress-bar {
+    background-color: var(--color-base-content);
+  }
+
   /* Size Variants */
   .progress-xs {
     height: 0.25rem;

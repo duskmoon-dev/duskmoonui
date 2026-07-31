@@ -216,6 +216,30 @@
     color: var(--color-tertiary);
   }
 
+  .toast-accent {
+    border-color: var(--color-accent);
+  }
+
+  .toast-accent .toast-icon {
+    color: var(--color-accent);
+  }
+
+  .toast-neutral {
+    border-color: var(--color-neutral);
+  }
+
+  .toast-neutral .toast-icon {
+    color: var(--color-neutral);
+  }
+
+  .toast-base {
+    border-color: var(--color-base-content);
+  }
+
+  .toast-base .toast-icon {
+    color: var(--color-base-content);
+  }
+
   /* Filled Variants */
   .toast-filled.toast-info {
     background-color: var(--color-info-container);
@@ -259,6 +283,24 @@
     color: var(--color-on-tertiary-container);
   }
 
+  .toast-filled.toast-accent {
+    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+    border-color: transparent;
+    color: var(--color-on-surface);
+  }
+
+  .toast-filled.toast-neutral {
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
+    border-color: transparent;
+    color: var(--color-on-surface);
+  }
+
+  .toast-filled.toast-base {
+    background-color: var(--color-base-200);
+    border-color: transparent;
+    color: var(--color-base-content);
+  }
+
   /* Filled variant sub-element color inheritance fix.
      .toast-title and .toast-message have explicit color rules that would otherwise
      override the filled variant's inherited on-container color. */
@@ -280,6 +322,9 @@
   .toast-ghost.toast-success   { color: var(--color-success); }
   .toast-ghost.toast-warning   { color: var(--color-warning); }
   .toast-ghost.toast-error     { color: var(--color-error); }
+  .toast-ghost.toast-accent    { color: var(--color-accent); }
+  .toast-ghost.toast-neutral   { color: var(--color-neutral); }
+  .toast-ghost.toast-base      { color: var(--color-base-content); }
 
   .toast-ghost .toast-title,
   .toast-ghost .toast-message {

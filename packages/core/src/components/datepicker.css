@@ -755,6 +755,48 @@
     color: var(--color-warning-content);
   }
 
+  .datepicker-accent .datepicker-input {
+    color: var(--color-accent);
+  }
+  .datepicker-accent .datepicker-input:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .datepicker-accent .datepicker-day-selected,
+  .datepicker-accent .datepicker-day-range-start,
+  .datepicker-accent .datepicker-day-range-end {
+    background-color: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+
+  .datepicker-neutral .datepicker-input {
+    color: var(--color-neutral);
+  }
+  .datepicker-neutral .datepicker-input:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .datepicker-neutral .datepicker-day-selected,
+  .datepicker-neutral .datepicker-day-range-start,
+  .datepicker-neutral .datepicker-day-range-end {
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
+  }
+
+  .datepicker-base .datepicker-input {
+    color: var(--color-base-content);
+  }
+  .datepicker-base .datepicker-input:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
+  .datepicker-base .datepicker-day-selected,
+  .datepicker-base .datepicker-day-range-start,
+  .datepicker-base .datepicker-day-range-end {
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+
   /* Day Selected Color Variants */
   .datepicker-primary .datepicker-day-selected,
   .datepicker-primary .datepicker-day-range-start,

@@ -20,6 +20,36 @@ DuskMoonUI uses two naming patterns for text-on-background tokens:
 
 Both patterns are standard in Material Design 3. The `-content` suffix is used for the full-intensity color role; the `on-` prefix is used for container-level roles.
 
+## Component Palette
+
+Colorable components expose the same ten role names:
+`primary`, `secondary`, `tertiary`, `accent`, `neutral`, `base`, `info`,
+`success`, `warning`, and `error`. Combine the component prefix with the role,
+for example:
+
+```html
+<button class="btn btn-accent">Accent</button>
+<span class="badge badge-neutral">Neutral</span>
+<input class="input input-base" />
+<div class="alert alert-success">Saved</div>
+```
+
+The complete palette is available for alerts, app bars, autocompletes, avatars,
+badges, buttons, cards, cascaders, chat bubbles, checkboxes, chips, circle
+menus, collapses, date pickers, dividers, file uploads, inputs, multi-selects,
+navbars, OTP and PIN inputs, progress indicators, radios, ratings, segment
+controls, selects, sliders, snackbars, switches, textareas, time inputs,
+toasts, toggles, tooltips, and tree selects.
+
+`base` uses the theme-aware base scale (`--color-base-100`,
+`--color-base-200`, and `--color-base-content`). Because `accent`, `neutral`,
+and `base` do not have container-role tokens, soft or tonal appearances derive
+their backgrounds from the existing role and surface tokens.
+
+Structural shells such as dialogs, drawers, menus, modals, tables, and tabs
+remain surface-driven. Their state-specific modifiers do not imply an
+arbitrary component palette.
+
 ## Color Token Categories
 
 ### Primary Colors

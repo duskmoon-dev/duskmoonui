@@ -13,7 +13,7 @@ abstract final class DuskMoonSunshineTokens {
   static const String pair = 'moonlight';
   static const String description = 'Warm amber/coral';
   static const Color primary = Color(0xFFE19100);
-  static const Color primaryContent = Color(0xFFFFFFFF);
+  static const Color primaryContent = Color(0xFF262210);
   static const Color primaryContainer = Color(0xFFF5EFD5);
   static const Color onPrimaryContainer = Color(0xFF262210);
   static const Color secondary = Color(0xFFE14754);

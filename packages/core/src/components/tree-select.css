@@ -429,6 +429,27 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .tree-select-accent .tree-select-trigger {
+    color: var(--color-accent);
+  }
+  .tree-select-accent .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .tree-select-neutral .tree-select-trigger {
+    color: var(--color-neutral);
+  }
+  .tree-select-neutral .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .tree-select-base .tree-select-trigger {
+    color: var(--color-base-content);
+  }
+  .tree-select-base .tree-select-trigger:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   /* Ghost Variant */
   .tree-select-ghost .tree-select-trigger {
     background-color: transparent;

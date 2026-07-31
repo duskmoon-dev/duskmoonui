@@ -68,6 +68,41 @@ describe('Button Component', () => {
       expect(buttonCSS).toContain('var(--color-tertiary)');
       expect(buttonCSS).toContain('var(--color-tertiary-content)');
     });
+
+    const extendedColors = [
+      { name: 'accent', background: 'accent', content: 'accent-content' },
+      { name: 'neutral', background: 'neutral', content: 'neutral-content' },
+      { name: 'base', background: 'base-100', content: 'base-content' },
+    ];
+
+    for (const { name, background, content } of extendedColors) {
+      it(`should define .btn-${name} with the correct filled tokens`, () => {
+        expect(buttonCSS).toMatch(
+          new RegExp(
+            `\\.btn-${name}\\s*\\{[^}]*--btn-text-color:\\s*var\\(--color-${content}\\)[^}]*background-color:\\s*var\\(--color-${background}\\)`,
+            's',
+          ),
+        );
+      });
+
+      it(`should support outline, ghost, text, and tonal ${name} variants`, () => {
+        expect(buttonCSS).toContain(`.btn-outline.btn-${name}`);
+        expect(buttonCSS).toContain(`.btn-ghost.btn-${name}`);
+        expect(buttonCSS).toContain(`.btn-text.btn-${name}`);
+        expect(buttonCSS).toContain(`.btn-tonal.btn-${name}`);
+      });
+    }
+
+    for (const color of ['accent', 'neutral']) {
+      it(`should use theme-aware text for tonal ${color}`, () => {
+        expect(buttonCSS).toMatch(
+          new RegExp(
+            `\\.btn-tonal\\.btn-${color}\\s*\\{[^}]*--btn-text-color:\\s*var\\(--color-on-surface\\)`,
+            's',
+          ),
+        );
+      });
+    }
   });
 
   describe('Style Variants', () => {

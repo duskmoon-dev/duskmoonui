@@ -177,6 +177,30 @@
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
+  .otp-input-accent .otp-input-field {
+    color: var(--color-accent);
+  }
+
+  .otp-input-accent .otp-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
+  }
+
+  .otp-input-neutral .otp-input-field {
+    color: var(--color-neutral);
+  }
+
+  .otp-input-neutral .otp-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-neutral) 10%, transparent);
+  }
+
+  .otp-input-base .otp-input-field {
+    color: var(--color-base-content);
+  }
+
+  .otp-input-base .otp-input-field:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-base-content) 10%, transparent);
+  }
+
   /* Ghost Variant */
   .otp-input-ghost .otp-input-field {
     background-color: transparent;

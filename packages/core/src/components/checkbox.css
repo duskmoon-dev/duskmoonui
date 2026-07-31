@@ -178,6 +178,33 @@
     border-color: var(--color-info-content);
   }
 
+  .checkbox-accent {
+    --checkbox-color: var(--color-accent);
+  }
+
+  .checkbox-accent:checked::before,
+  .checkbox-accent:indeterminate::before {
+    border-color: var(--color-accent-content);
+  }
+
+  .checkbox-neutral {
+    --checkbox-color: var(--color-neutral);
+  }
+
+  .checkbox-neutral:checked::before,
+  .checkbox-neutral:indeterminate::before {
+    border-color: var(--color-neutral-content);
+  }
+
+  .checkbox-base {
+    --checkbox-color: var(--color-base-100);
+  }
+
+  .checkbox-base:checked::before,
+  .checkbox-base:indeterminate::before {
+    border-color: var(--color-base-content);
+  }
+
   /* Ghost Variant — borderless unchecked state */
   .checkbox-ghost {
     --checkbox-border-color: transparent;

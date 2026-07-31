@@ -113,6 +113,21 @@
     color: var(--color-error-content);
   }
 
+  .avatar-accent {
+    background-color: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+
+  .avatar-neutral {
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
+  }
+
+  .avatar-base {
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+
   /* Ring */
   .avatar-ring {
     outline: none;
