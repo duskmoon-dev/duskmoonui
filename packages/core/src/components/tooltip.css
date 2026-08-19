@@ -1,36 +1,85 @@
 /**
  * Tooltip Component Styles
  * DuskMoonUI - Material Design 3 inspired tooltip system
+ *
+ * Breaking: uses native Popover API (popover="hint") + CSS Anchor Positioning.
+ * Markup:
+ *   <button interestfor="id" style="anchor-name: --id" class="tooltip-delay">…</button>
+ *   <div id="id" popover="hint" class="tooltip tooltip-top" style="position-anchor: --id">…</div>
  */
 
 @layer components {
-  /* Base Tooltip */
-  .tooltip {
-    position: relative;
-    display: inline-block;
-  }
+  /* ========================================
+   * Base surface (the popover element itself)
+   * ======================================== */
 
-  /* Tooltip Content */
-  .tooltip-content {
+  .tooltip[popover] {
+    --tooltip-bg: var(--color-on-surface);
+    --tooltip-fg: var(--color-surface);
+
     position: absolute;
+    inset: auto;
     z-index: 1000;
+    margin: 0.5rem;
     padding: 0.375rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
     white-space: nowrap;
-    background-color: var(--color-on-surface);
-    color: var(--color-surface);
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-fg);
+    border: none;
     border-radius: var(--radius-xs);
     box-shadow: var(--shadow-md);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 150ms ease-out, visibility 150ms ease-out;
     pointer-events: none;
+    opacity: 0;
+    transform: scale(0.95);
+    position-area: top;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    transition:
+      opacity 150ms ease-out,
+      transform 150ms ease-out,
+      overlay 150ms ease-out allow-discrete,
+      display 150ms ease-out allow-discrete;
   }
 
-  /* Tooltip Arrow */
-  .tooltip-content::before {
+  .tooltip[popover]:popover-open {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @starting-style {
+    .tooltip[popover]:popover-open {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  /* ========================================
+   * Preferred position-area
+   * ======================================== */
+
+  .tooltip-top[popover] {
+    position-area: top;
+  }
+
+  .tooltip-bottom[popover] {
+    position-area: bottom;
+  }
+
+  .tooltip-left[popover] {
+    position-area: left;
+  }
+
+  .tooltip-right[popover] {
+    position-area: right;
+  }
+
+  /* ========================================
+   * Arrow (preferred position only; may be wrong after flip)
+   * ======================================== */
+
+  .tooltip[popover]::before {
     content: '';
     position: absolute;
     width: 0;
@@ -38,358 +87,113 @@
     border: 0.375rem solid transparent;
   }
 
-  /* Show Tooltip */
-  .tooltip:hover .tooltip-content,
-  .tooltip:focus-within .tooltip-content,
-  .tooltip-open .tooltip-content {
-    opacity: 1;
-    visibility: visible;
+  .tooltip-top[popover]::before,
+  .tooltip[popover]:not(.tooltip-bottom):not(.tooltip-left):not(.tooltip-right)::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: var(--tooltip-bg);
   }
 
-  /* Position: Top (default) - applied to all tooltips as base */
-  .tooltip .tooltip-content {
+  .tooltip-bottom[popover]::before {
     bottom: 100%;
     top: auto;
     left: 50%;
-    right: auto;
     transform: translateX(-50%);
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .tooltip .tooltip-content::before {
-    top: 100%;
-    bottom: auto;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    border-top-color: var(--color-on-surface);
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-  }
-
-  /* Position: Bottom */
-  .tooltip.tooltip-bottom .tooltip-content {
-    top: 100%;
-    bottom: auto;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .tooltip.tooltip-bottom .tooltip-content::before {
-    bottom: 100%;
-    top: auto;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    border-bottom-color: var(--color-on-surface);
+    border-bottom-color: var(--tooltip-bg);
     border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
   }
 
-  /* Position: Left */
-  .tooltip.tooltip-left .tooltip-content {
+  .tooltip-left[popover]::before {
+    left: 100%;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    border-left-color: var(--tooltip-bg);
+    border-top-color: transparent;
+  }
+
+  .tooltip-right[popover]::before {
     right: 100%;
     left: auto;
     top: 50%;
     bottom: auto;
     transform: translateY(-50%);
-    margin-right: 0.5rem;
-    margin-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .tooltip.tooltip-left .tooltip-content::before {
-    left: 100%;
-    right: auto;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    border-left-color: var(--color-on-surface);
-    border-right-color: transparent;
+    border-right-color: var(--tooltip-bg);
     border-top-color: transparent;
-    border-bottom-color: transparent;
   }
 
-  /* Position: Right */
-  .tooltip.tooltip-right .tooltip-content {
-    left: 100%;
-    right: auto;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    margin-left: 0.5rem;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+  /* ========================================
+   * Color variants
+   * ======================================== */
 
-  .tooltip.tooltip-right .tooltip-content::before {
-    right: 100%;
-    left: auto;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    border-right-color: var(--color-on-surface);
-    border-left-color: transparent;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-  }
-
-  /* Light Tooltip */
-  .tooltip.tooltip-light .tooltip-content {
-    background-color: var(--color-surface);
-    color: var(--color-on-surface);
+  .tooltip-light[popover] {
+    --tooltip-bg: var(--color-surface);
+    --tooltip-fg: var(--color-on-surface);
     border: 1px solid var(--color-outline);
-    box-shadow: var(--shadow-md);
   }
 
-  .tooltip.tooltip-light .tooltip-content::before {
-    border-top-color: var(--color-surface);
+  .tooltip-primary[popover] {
+    --tooltip-bg: var(--color-primary);
+    --tooltip-fg: var(--color-primary-content);
   }
 
-  .tooltip.tooltip-light.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-surface);
+  .tooltip-secondary[popover] {
+    --tooltip-bg: var(--color-secondary);
+    --tooltip-fg: var(--color-secondary-content);
   }
 
-  .tooltip.tooltip-light.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-surface);
+  .tooltip-tertiary[popover] {
+    --tooltip-bg: var(--color-tertiary);
+    --tooltip-fg: var(--color-tertiary-content);
   }
 
-  .tooltip.tooltip-light.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-surface);
+  .tooltip-info[popover] {
+    --tooltip-bg: var(--color-info);
+    --tooltip-fg: var(--color-info-content);
   }
 
-  /* Color Variants */
-  .tooltip.tooltip-primary .tooltip-content {
-    background-color: var(--color-primary);
-    color: var(--color-primary-content);
+  .tooltip-success[popover] {
+    --tooltip-bg: var(--color-success);
+    --tooltip-fg: var(--color-success-content);
   }
 
-  .tooltip.tooltip-primary .tooltip-content::before {
-    border-top-color: var(--color-primary);
+  .tooltip-warning[popover] {
+    --tooltip-bg: var(--color-warning);
+    --tooltip-fg: var(--color-warning-content);
   }
 
-  .tooltip.tooltip-primary.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-primary);
+  .tooltip-error[popover] {
+    --tooltip-bg: var(--color-error);
+    --tooltip-fg: var(--color-error-content);
   }
 
-  .tooltip.tooltip-primary.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-primary);
+  .tooltip-accent[popover] {
+    --tooltip-bg: var(--color-accent);
+    --tooltip-fg: var(--color-accent-content);
   }
 
-  .tooltip.tooltip-primary.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-primary);
+  .tooltip-neutral[popover] {
+    --tooltip-bg: var(--color-neutral);
+    --tooltip-fg: var(--color-neutral-content);
   }
 
-  .tooltip.tooltip-secondary .tooltip-content {
-    background-color: var(--color-secondary);
-    color: var(--color-secondary-content);
+  .tooltip-base[popover] {
+    --tooltip-bg: var(--color-base-100);
+    --tooltip-fg: var(--color-base-content);
   }
 
-  .tooltip.tooltip-secondary .tooltip-content::before {
-    border-top-color: var(--color-secondary);
-  }
+  /* ========================================
+   * Content variants
+   * ======================================== */
 
-  .tooltip.tooltip-secondary.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-secondary);
-  }
-
-  .tooltip.tooltip-secondary.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-secondary);
-  }
-
-  .tooltip.tooltip-secondary.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-secondary);
-  }
-
-  .tooltip.tooltip-error .tooltip-content {
-    background-color: var(--color-error);
-    color: var(--color-error-content);
-  }
-
-  .tooltip.tooltip-error .tooltip-content::before {
-    border-top-color: var(--color-error);
-  }
-
-  .tooltip.tooltip-error.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-error);
-  }
-
-  .tooltip.tooltip-error.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-error);
-  }
-
-  .tooltip.tooltip-error.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-error);
-  }
-
-  .tooltip.tooltip-tertiary .tooltip-content {
-    background-color: var(--color-tertiary);
-    color: var(--color-tertiary-content);
-  }
-
-  .tooltip.tooltip-tertiary .tooltip-content::before {
-    border-top-color: var(--color-tertiary);
-  }
-
-  .tooltip.tooltip-tertiary.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-tertiary);
-  }
-
-  .tooltip.tooltip-tertiary.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-tertiary);
-  }
-
-  .tooltip.tooltip-tertiary.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-tertiary);
-  }
-
-  .tooltip.tooltip-info .tooltip-content {
-    background-color: var(--color-info);
-    color: var(--color-info-content);
-  }
-
-  .tooltip.tooltip-info .tooltip-content::before {
-    border-top-color: var(--color-info);
-  }
-
-  .tooltip.tooltip-info.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-info);
-  }
-
-  .tooltip.tooltip-info.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-info);
-  }
-
-  .tooltip.tooltip-info.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-info);
-  }
-
-  .tooltip.tooltip-success .tooltip-content {
-    background-color: var(--color-success);
-    color: var(--color-success-content);
-  }
-
-  .tooltip.tooltip-success .tooltip-content::before {
-    border-top-color: var(--color-success);
-  }
-
-  .tooltip.tooltip-success.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-success);
-  }
-
-  .tooltip.tooltip-success.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-success);
-  }
-
-  .tooltip.tooltip-success.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-success);
-  }
-
-  .tooltip.tooltip-warning .tooltip-content {
-    background-color: var(--color-warning);
-    color: var(--color-warning-content);
-  }
-
-  .tooltip.tooltip-warning .tooltip-content::before {
-    border-top-color: var(--color-warning);
-  }
-
-  .tooltip.tooltip-warning.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-warning);
-  }
-
-  .tooltip.tooltip-warning.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-warning);
-  }
-
-  .tooltip.tooltip-warning.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-warning);
-  }
-
-  .tooltip.tooltip-accent .tooltip-content {
-    background-color: var(--color-accent);
-    color: var(--color-accent-content);
-  }
-
-  .tooltip.tooltip-accent .tooltip-content::before {
-    border-top-color: var(--color-accent);
-  }
-
-  .tooltip.tooltip-accent.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-accent);
-  }
-
-  .tooltip.tooltip-accent.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-accent);
-  }
-
-  .tooltip.tooltip-accent.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-accent);
-  }
-
-  .tooltip.tooltip-neutral .tooltip-content {
-    background-color: var(--color-neutral);
-    color: var(--color-neutral-content);
-  }
-
-  .tooltip.tooltip-neutral .tooltip-content::before {
-    border-top-color: var(--color-neutral);
-  }
-
-  .tooltip.tooltip-neutral.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-neutral);
-  }
-
-  .tooltip.tooltip-neutral.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-neutral);
-  }
-
-  .tooltip.tooltip-neutral.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-neutral);
-  }
-
-  .tooltip.tooltip-base .tooltip-content {
-    background-color: var(--color-base-100);
-    color: var(--color-base-content);
-  }
-
-  .tooltip.tooltip-base .tooltip-content::before {
-    border-top-color: var(--color-base-100);
-  }
-
-  .tooltip.tooltip-base.tooltip-bottom .tooltip-content::before {
-    border-bottom-color: var(--color-base-100);
-  }
-
-  .tooltip.tooltip-base.tooltip-left .tooltip-content::before {
-    border-left-color: var(--color-base-100);
-  }
-
-  .tooltip.tooltip-base.tooltip-right .tooltip-content::before {
-    border-right-color: var(--color-base-100);
-  }
-
-  /* Multi-line Tooltip */
-  .tooltip-multiline .tooltip-content {
+  .tooltip-multiline[popover] {
     white-space: normal;
     max-width: 16rem;
     text-align: center;
   }
 
-  /* Rich Tooltip */
-  .tooltip-rich .tooltip-content {
+  .tooltip-rich[popover] {
     padding: 0.75rem 1rem;
     max-width: 20rem;
     white-space: normal;
@@ -408,23 +212,28 @@
     opacity: 0.9;
   }
 
-  /* Delay Variants */
-  .tooltip-delay .tooltip-content {
-    transition-delay: 300ms;
+  /* ========================================
+   * Invoker utilities (apply on the trigger)
+   * ======================================== */
+
+  .tooltip-delay {
+    interest-delay: 300ms;
   }
 
-  .tooltip-delay-long .tooltip-content {
-    transition-delay: 500ms;
+  .tooltip-delay-long {
+    interest-delay: 500ms;
   }
 
-  /* Interactive Tooltip */
-  .tooltip-interactive .tooltip-content {
+  .tooltip-interactive[popover] {
     pointer-events: auto;
   }
 
-  /* Reduce Motion */
+  /* ========================================
+   * Reduce Motion
+   * ======================================== */
+
   @media (prefers-reduced-motion: reduce) {
-    .tooltip-content {
+    .tooltip[popover] {
       transition: none;
     }
   }

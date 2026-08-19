@@ -99,7 +99,7 @@ Apply theme via `data-theme` attribute on HTML element:
 - `snackbar` - Brief messages
 - `progress` - Loading: `progress-primary`, `progress-indeterminate`
 - `skeleton` - Placeholders: `skeleton-text`, `skeleton-circle`
-- `tooltip` - Hover info: `tooltip-top`, `tooltip-bottom`
+- `tooltip` - Hint popovers: `tooltip-top`, `tooltip-bottom` (`interestfor` + `popover="hint"`)
 
 ### Navigation
 - `breadcrumbs` - Breadcrumb navigation: `breadcrumb-item`, `breadcrumb-item-active`, `breadcrumb-item-disabled`, `breadcrumb-link`, `breadcrumb-separator`, `breadcrumb-icon`, `breadcrumb-home`, `breadcrumb-home-icon`, `breadcrumb-ellipsis`, `breadcrumbs-contained`, `breadcrumbs-sm`, `breadcrumbs-lg`, `breadcrumbs-nowrap`
@@ -126,7 +126,7 @@ Apply theme via `data-theme` attribute on HTML element:
 ### Surfaces
 - `accordion` - Expandable panels: `accordion-item-open`
 - `bottomsheet` - Mobile panels: `bottom-sheet-show`
-- `popover` - Contextual overlays: `popover-top`, `popover-show`
+- `popover` - Contextual overlays: `popover-top`, `popover-bottom` (Popover API + `position-area`)
 - `collapse` - Collapsible content
 
 ## Usage Examples

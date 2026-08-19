@@ -305,12 +305,33 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
     });
   }
 
+  // Open tooltips/popovers marked for always-visible demos
+  function initOpenPopovers() {
+    const openMarked = () => {
+      document.querySelectorAll<HTMLElement>('[data-popover-open]').forEach((el) => {
+        if (typeof el.showPopover === 'function' && !el.matches(':popover-open')) {
+          try {
+            el.showPopover();
+          } catch {
+            // Already open or not a popover element
+          }
+        }
+      });
+    };
+    requestAnimationFrame(() => requestAnimationFrame(openMarked));
+  }
+
   // Position popovers relative to their triggers (fallback for browsers
   // without CSS Anchor Positioning support)
   function initPopoverPositioning() {
-    // Skip if browser supports CSS Anchor Positioning natively —
-    // the component CSS handles positioning via anchor() functions.
-    if (CSS.supports('top', 'anchor(bottom)')) return;
+    // Skip when native anchor positioning is available —
+    // component CSS uses position-area + position-try-fallbacks.
+    if (
+      CSS.supports('position-area', 'bottom') ||
+      CSS.supports('top', 'anchor(bottom)')
+    ) {
+      return;
+    }
 
     function positionPopover(popover: HTMLElement, trigger: HTMLElement) {
       requestAnimationFrame(() => {
@@ -363,10 +384,12 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
   // Run on initial load
   initAllShowcases();
   initPopoverPositioning();
+  initOpenPopovers();
 
   // Re-run after Astro page transitions (if using View Transitions)
   document.addEventListener('astro:page-load', () => {
     initAllShowcases();
     initPopoverPositioning();
+    initOpenPopovers();
   });
 </script>

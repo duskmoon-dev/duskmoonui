@@ -140,7 +140,7 @@ Theme switching is instant and uses pure CSS custom properties.
 | Skeleton | `.skeleton`, `.skeleton-text`, `.skeleton-circle`, `.skeleton-wave` | Loading placeholders |
 | Snackbar | `.snackbar`, `.snackbar-message`, `.snackbar-action` | Brief notifications |
 | Toast | `.toast`, `.toast-container`, `.toast-info`, `.toast-success` | Toast notifications |
-| Tooltip | `.tooltip`, `.tooltip-content`, `.tooltip-top`, `.tooltip-bottom` | Hover tooltips |
+| Tooltip | `.tooltip[popover]`, `.tooltip-top`, `.tooltip-bottom` | Hint popovers (`interestfor`) |
 
 ### Layout (2)
 
@@ -164,7 +164,7 @@ Theme switching is instant and uses pure CSS custom properties.
 | Accordion | `.accordion`, `.accordion-item`, `.accordion-header`, `.accordion-content` | Expandable panels |
 | Bottom Sheet | `.bottomsheet`, `.bottomsheet-handle`, `.bottomsheet-content` | Mobile sheets |
 | Collapse | `.collapse`, `.collapse-content`, `.collapse-toggle` | Collapsible content |
-| Popover | `.popover`, `.popover-content`, `.popover-arrow` | Floating content |
+| Popover | `.popover[popover]`, `.popover-body`, `.popover-arrow` | Floating content (Popover API) |
 
 ### Misc (1)
 
