@@ -30,7 +30,7 @@ export const chatStyles: Record<string, any> = {
     zIndex: '1',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     gap: 'var(--chat-scroll-indicator-gap)',
     width: 'calc(var(--chat-scroll-indicator-active-size) * var(--chat-scroll-indicator-hover-scale))',
@@ -332,6 +332,10 @@ export const chatStyles: Record<string, any> = {
     '--chat-bubble-bg': 'var(--color-surface-container-highest)',
     '--chat-bubble-fg': 'var(--color-on-surface)',
     position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    gap: '0.5rem',
     maxWidth: 'min(80ch, 100%)',
     padding: '0.625rem 0.875rem',
     borderRadius: '1rem',
@@ -342,6 +346,10 @@ export const chatStyles: Record<string, any> = {
     lineHeight: '1.45',
     overflowWrap: 'anywhere',
     wordBreak: 'break-word',
+  },
+
+  '.chat-bubble-content': {
+    minWidth: '0',
   },
 
   '.chat-start .chat-bubble::before, .chat-end .chat-bubble::before, .chat-start .chat-bubble::after, .chat-end .chat-bubble::after': {
@@ -492,6 +500,11 @@ export const chatStyles: Record<string, any> = {
     overflow: 'hidden',
   },
 
+  '.chat-bubble > .chat-reasoning, .chat-bubble > .chat-tool, .chat-reasoning .chat-tool, .chat-reasoning-body > .chat-tool': {
+    width: '100%',
+    maxWidth: 'none',
+  },
+
   '.chat-reasoning > summary, .chat-tool > summary': {
     cursor: 'pointer',
     listStylePosition: 'inside',
@@ -503,10 +516,26 @@ export const chatStyles: Record<string, any> = {
     fontWeight: '500',
   },
 
-  '.chat-reasoning > :not(summary)': {
+  '.chat-reasoning-body': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    padding: '0 0.75rem 0.75rem',
+    color: 'var(--color-on-surface-variant)',
+  },
+
+  '.chat-reasoning-body > :not(.chat-tool)': {
+    fontStyle: 'italic',
+  },
+
+  '.chat-reasoning > div:not(.chat-tool):not(.chat-reasoning-body)': {
     padding: '0 0.75rem 0.75rem',
     color: 'var(--color-on-surface-variant)',
     fontStyle: 'italic',
+  },
+
+  '.chat-reasoning > .chat-tool': {
+    margin: '0 0.75rem 0.75rem',
   },
 
   '.chat-tool-header': {
@@ -600,7 +629,7 @@ export const chatStyles: Record<string, any> = {
     animationDelay: '300ms',
   },
 
-  '.chat-bubble-streaming::after': {
+  '.chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after': {
     content: '""',
     display: 'inline-block',
     width: '1px',
@@ -609,6 +638,10 @@ export const chatStyles: Record<string, any> = {
     backgroundColor: 'currentColor',
     verticalAlign: '-0.125em',
     animation: 'chat-stream-caret 1s step-end infinite',
+  },
+
+  '.chat-bubble.chat-bubble-streaming:has(.chat-reasoning, .chat-tool, .chat-bubble-content)::after': {
+    content: 'none',
   },
 
   '.chat-reasoning > summary:focus-visible, .chat-tool > summary:focus-visible': {

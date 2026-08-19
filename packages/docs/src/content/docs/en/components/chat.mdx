@@ -249,7 +249,7 @@ Use bubble size modifiers for dense history views or larger conversational layou
 
 ## LLM Chat
 
-One assistant turn should group reasoning, tool calls, and final messages under one `.chat` row. Native `<details>` and `<summary>` provide keyboard and screen-reader support for expandable blocks.
+Put reasoning and tool calls **inside** the `.chat-bubble` as collapsible `<details>` blocks. Streaming tool calls may nest inside `.chat-reasoning-body`. Put the final answer in `.chat-bubble-content`.
 
 <ComponentShowcase
   title="Reasoning, Tool Call, and Streaming"
@@ -260,41 +260,65 @@ One assistant turn should group reasoning, tool calls, and final messages under 
     </div>
     <div class="chat-header">Assistant - 2:18 PM</div>
 
-    <details class="chat-reasoning" open>
-      <summary>Thinking (3s)</summary>
-      <div>I need to check the weather tool result, then summarize it in one sentence.</div>
-    </details>
+    <div class="chat-bubble">
+      <details class="chat-reasoning" open>
+        <summary>Thinking (3s)</summary>
+        <div class="chat-reasoning-body">
+          <div>I should call the weather tool, then summarize the result in one sentence.</div>
 
-    <details class="chat-tool chat-tool-success" open>
-      <summary class="chat-tool-header">
-        <span>get_weather</span>
-        <span class="chat-tool-status">Done</span>
-      </summary>
-      <div class="chat-tool-call">
-        <div class="code-block code-block-compact">
-          <div class="code-header">
-            <span class="code-title">Call</span>
-            <span class="code-language">json</span>
-          </div>
-          <div class="code-content">
-            <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+          <details class="chat-tool chat-tool-running" open>
+            <summary class="chat-tool-header">
+              <span>get_weather</span>
+              <span class="chat-tool-status">Running...</span>
+            </summary>
+            <div class="chat-tool-call">
+              <div class="code-block code-block-compact">
+                <div class="code-header">
+                  <span class="code-title">Call</span>
+                  <span class="code-language">json</span>
+                </div>
+                <div class="code-content">
+                  <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <div>Tool returned cloudy at 18 C. Drafting the final answer.</div>
+        </div>
+      </details>
+
+      <details class="chat-tool chat-tool-success" open>
+        <summary class="chat-tool-header">
+          <span>get_weather</span>
+          <span class="chat-tool-status">Done</span>
+        </summary>
+        <div class="chat-tool-call">
+          <div class="code-block code-block-compact">
+            <div class="code-header">
+              <span class="code-title">Call</span>
+              <span class="code-language">json</span>
+            </div>
+            <div class="code-content">
+              <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="chat-tool-result">
-        <div class="code-block code-block-compact">
-          <div class="code-header">
-            <span class="code-title">Result</span>
-            <span class="code-language">json</span>
-          </div>
-          <div class="code-content">
-            <pre><code>{&quot;temperature&quot;:&quot;18 C&quot;,&quot;condition&quot;:&quot;cloudy&quot;}</code></pre>
+        <div class="chat-tool-result">
+          <div class="code-block code-block-compact">
+            <div class="code-header">
+              <span class="code-title">Result</span>
+              <span class="code-language">json</span>
+            </div>
+            <div class="code-content">
+              <pre><code>{&quot;temperature&quot;:&quot;18 C&quot;,&quot;condition&quot;:&quot;cloudy&quot;}</code></pre>
+            </div>
           </div>
         </div>
-      </div>
-    </details>
+      </details>
 
-    <div class="chat-bubble chat-bubble-streaming">It is 18 C and cloudy in Tokyo right now.</div>
+      <div class="chat-bubble-content chat-bubble-streaming">It is 18 C and cloudy in Tokyo right now.</div>
+    </div>
     <div class="chat-footer">Streaming</div>
   </div>
 </div>`}
@@ -404,7 +428,8 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 | `.chat-avatar` | Avatar slot; compose with the existing `.avatar` component |
 | `.chat-header` | Small muted metadata above the message stack |
 | `.chat-footer` | Small muted metadata below the message stack |
-| `.chat-bubble` | Message bubble with directional tail |
+| `.chat-bubble` | Message bubble with directional tail; may contain reasoning, tools, and `.chat-bubble-content` |
+| `.chat-bubble-content` | Final answer slot when the bubble also holds collapsible blocks |
 
 ### Bubble Modifiers
 
@@ -428,8 +453,9 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 
 | Class | Description |
 |---|---|
-| `.chat-reasoning` | Collapsible reasoning trace using `<details>` |
-| `.chat-tool` | Collapsible tool call block using `<details>` |
+| `.chat-reasoning` | Collapsible reasoning trace using `<details>`; place inside `.chat-bubble` |
+| `.chat-reasoning-body` | Reasoning content stack; may nest streaming `.chat-tool` blocks |
+| `.chat-tool` | Collapsible tool call block using `<details>`; inside the bubble, or nested in reasoning |
 | `.chat-tool-header` | Summary content for tool name and status text |
 | `.chat-tool-call` | Tool call payload slot |
 | `.chat-tool-result` | Tool result payload slot |

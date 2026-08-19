@@ -56,7 +56,7 @@
     z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: var(--chat-scroll-indicator-gap);
     width: calc(
@@ -426,6 +426,10 @@
     --chat-bubble-fg: var(--color-on-surface);
 
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
     max-width: min(80ch, 100%);
     padding: 0.625rem 0.875rem;
     border-radius: 1rem;
@@ -436,6 +440,10 @@
     line-height: 1.45;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  .chat-bubble-content {
+    min-width: 0;
   }
 
   .chat-start .chat-bubble::before,
@@ -620,6 +628,14 @@
     overflow: hidden;
   }
 
+  .chat-bubble > .chat-reasoning,
+  .chat-bubble > .chat-tool,
+  .chat-reasoning .chat-tool,
+  .chat-reasoning-body > .chat-tool {
+    width: 100%;
+    max-width: none;
+  }
+
   .chat-reasoning > summary,
   .chat-tool > summary {
     cursor: pointer;
@@ -632,10 +648,26 @@
     font-weight: 500;
   }
 
-  .chat-reasoning > :not(summary) {
+  .chat-reasoning-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 0.75rem 0.75rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  .chat-reasoning-body > :not(.chat-tool) {
+    font-style: italic;
+  }
+
+  .chat-reasoning > div:not(.chat-tool):not(.chat-reasoning-body) {
     padding: 0 0.75rem 0.75rem;
     color: var(--color-on-surface-variant);
     font-style: italic;
+  }
+
+  .chat-reasoning > .chat-tool {
+    margin: 0 0.75rem 0.75rem;
   }
 
   .chat-tool-header {
@@ -732,7 +764,8 @@
     animation-delay: 300ms;
   }
 
-  .chat-bubble-streaming::after {
+  .chat-bubble-streaming::after,
+  .chat-bubble-content.chat-bubble-streaming::after {
     content: "";
     display: inline-block;
     width: 1px;
@@ -741,6 +774,10 @@
     background-color: currentColor;
     vertical-align: -0.125em;
     animation: chat-stream-caret 1s step-end infinite;
+  }
+
+  .chat-bubble.chat-bubble-streaming:has(.chat-reasoning, .chat-tool, .chat-bubble-content)::after {
+    content: none;
   }
 
   .chat-reasoning > summary:focus-visible,
@@ -795,11 +832,13 @@
     .chat-typing::after,
     .chat-typing span,
     .chat-bubble-streaming::after,
+    .chat-bubble-content.chat-bubble-streaming::after,
     .chat-tool-running .chat-tool-header::before {
       animation: none;
     }
 
-    .chat-bubble-streaming::after {
+    .chat-bubble-streaming::after,
+    .chat-bubble-content.chat-bubble-streaming::after {
       opacity: 1;
     }
   }

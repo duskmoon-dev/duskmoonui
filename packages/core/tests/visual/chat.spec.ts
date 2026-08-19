@@ -24,20 +24,31 @@ test.describe('Visual Regression - Chat Component', () => {
             <div class="avatar avatar-sm avatar-primary">AI</div>
           </div>
           <div class="chat-header">Assistant · 10:24</div>
-          <details class="chat-reasoning" open>
-            <summary>Reasoning · 3s</summary>
-            <div>Checked the input constraints and selected a compact response.</div>
-          </details>
-          <details class="chat-tool chat-tool-success" open>
-            <summary class="chat-tool-header">
-              <span>search_docs</span>
-              <span class="chat-tool-status">Done</span>
-            </summary>
-            <div class="chat-tool-call">{ "query": "chat component" }</div>
-            <div class="chat-tool-result">2 matching documents found.</div>
-          </details>
-          <div class="chat-bubble chat-bubble-streaming">
-            The chat component supports reasoning, tool calls, and streaming states.
+          <div class="chat-bubble">
+            <details class="chat-reasoning" open>
+              <summary>Reasoning · 3s</summary>
+              <div class="chat-reasoning-body">
+                <div>Checked the input constraints and selected a compact response.</div>
+                <details class="chat-tool chat-tool-running" open>
+                  <summary class="chat-tool-header">
+                    <span>search_docs</span>
+                    <span class="chat-tool-status">Running</span>
+                  </summary>
+                  <div class="chat-tool-call">{ "query": "chat component" }</div>
+                </details>
+              </div>
+            </details>
+            <details class="chat-tool chat-tool-success" open>
+              <summary class="chat-tool-header">
+                <span>search_docs</span>
+                <span class="chat-tool-status">Done</span>
+              </summary>
+              <div class="chat-tool-call">{ "query": "chat component" }</div>
+              <div class="chat-tool-result">2 matching documents found.</div>
+            </details>
+            <div class="chat-bubble-content chat-bubble-streaming">
+              The chat component supports reasoning, tool calls, and streaming states.
+            </div>
           </div>
           <div class="chat-footer">Delivered</div>
         </div>

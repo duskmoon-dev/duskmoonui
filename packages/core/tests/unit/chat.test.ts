@@ -45,6 +45,12 @@ describe('Chat Component', () => {
       expect(css).toMatch(/\.chat-avatar\s*\{[^}]*align-self:\s*start/s);
     });
 
+    it('should use flex column layout on .chat-bubble for nested blocks', () => {
+      expect(css).toMatch(
+        /\.chat-bubble\s*\{[^}]*display:\s*flex[^}]*flex-direction:\s*column/s,
+      );
+    });
+
     it('should set relative positioning on .chat-bubble for tail rendering', () => {
       expect(css).toMatch(/\.chat-bubble\s*\{[^}]*position:\s*relative/s);
     });
@@ -256,11 +262,13 @@ describe('Chat Component', () => {
     it('should define reasoning and tool containers', () => {
       for (const className of [
         '.chat-reasoning',
+        '.chat-reasoning-body',
         '.chat-tool',
         '.chat-tool-header',
         '.chat-tool-status',
         '.chat-tool-call',
         '.chat-tool-result',
+        '.chat-bubble-content',
       ]) {
         expect(css).toContain(className);
       }
@@ -270,6 +278,14 @@ describe('Chat Component', () => {
       expect(css).toMatch(
         /\.chat-reasoning,\s*\.chat-tool\s*\{[^}]*border:\s*1px solid var\(--color-outline\)[^}]*background-color:\s*var\(--color-surface-container-low\)/s,
       );
+    });
+
+    it('should allow nested tools inside reasoning and full-width blocks in bubbles', () => {
+      expect(css).toMatch(
+        /\.chat-bubble\s*>\s*\.chat-reasoning,\s*\.chat-bubble\s*>\s*\.chat-tool,\s*\.chat-reasoning\s*\.chat-tool/s,
+      );
+      expect(css).toContain('.chat-reasoning-body > .chat-tool');
+      expect(css).toContain('.chat-reasoning > .chat-tool');
     });
 
     it('should define tool status modifiers with matching color tokens', () => {
