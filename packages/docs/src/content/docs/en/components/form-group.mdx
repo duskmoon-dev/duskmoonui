@@ -144,7 +144,7 @@ Form Group provides layout utilities for organizing form elements with labels, h
 
 <ComponentShowcase title="Fieldset with Description" code={`<fieldset class="fieldset">
   <legend class="fieldset-legend">Account Settings</legend>
-  <p class="fieldset-description">Configure your account preferences</p>
+  <p class="form-section-description">Configure your account preferences</p>
 
   <div class="form-group">
     <label class="form-label">Username</label>
@@ -157,9 +157,9 @@ Form Group provides layout utilities for organizing form elements with labels, h
   </div>
 </fieldset>`} />
 
-### Bordered Fieldset
+### Fieldset Variants
 
-<ComponentShowcase title="Bordered Fieldset" code={`<fieldset class="fieldset fieldset-bordered">
+<ComponentShowcase title="Filled Fieldset" code={`<fieldset class="fieldset fieldset-filled">
   <legend class="fieldset-legend">Shipping Address</legend>
 
   <div class="form-group">
@@ -168,11 +168,51 @@ Form Group provides layout utilities for organizing form elements with labels, h
   </div>
 
   <div class="form-row">
-    <div class="form-group form-group-half">
+    <div class="form-group">
       <label class="form-label">City</label>
       <input type="text" class="input" />
     </div>
-    <div class="form-group form-group-half">
+    <div class="form-group">
+      <label class="form-label">ZIP Code</label>
+      <input type="text" class="input" />
+    </div>
+  </div>
+</fieldset>`} />
+
+<ComponentShowcase title="Borderless Fieldset" code={`<fieldset class="fieldset fieldset-borderless">
+  <legend class="fieldset-legend">Shipping Address</legend>
+
+  <div class="form-group">
+    <label class="form-label">Street Address</label>
+    <input type="text" class="input" />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">City</label>
+      <input type="text" class="input" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">ZIP Code</label>
+      <input type="text" class="input" />
+    </div>
+  </div>
+</fieldset>`} />
+
+<ComponentShowcase title="Card Fieldset" code={`<fieldset class="fieldset fieldset-card">
+  <legend class="fieldset-legend">Shipping Address</legend>
+
+  <div class="form-group">
+    <label class="form-label">Street Address</label>
+    <input type="text" class="input" />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">City</label>
+      <input type="text" class="input" />
+    </div>
+    <div class="form-group">
       <label class="form-label">ZIP Code</label>
       <input type="text" class="input" />
     </div>
@@ -255,7 +295,7 @@ Form Group provides layout utilities for organizing form elements with labels, h
 <ComponentShowcase title="Complete Form" code={`<form class="form">
   <fieldset class="fieldset">
     <legend class="fieldset-legend">Create Account</legend>
-    <p class="fieldset-description">Fill in your details to create a new account</p>
+    <p class="form-section-description">Fill in your details to create a new account</p>
 
     <div class="form-row">
       <div class="form-group form-group-half">
@@ -281,14 +321,9 @@ Form Group provides layout utilities for organizing form elements with labels, h
     </div>
 
     <div class="form-group">
-      <label class="checkbox">
-        <input type="checkbox" class="checkbox-input" required />
-        <span class="checkbox-box">
-          <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-          </svg>
-        </span>
-        <span class="checkbox-label">I agree to the terms and conditions</span>
+      <label class="checkbox-label">
+        <input type="checkbox" class="checkbox" required />
+        <span>I agree to the terms and conditions</span>
       </label>
     </div>
 
@@ -320,8 +355,10 @@ Form Group provides layout utilities for organizing form elements with labels, h
 | `.character-counter` | Character count display |
 | `.fieldset` | Fieldset container |
 | `.fieldset-legend` | Fieldset legend/title |
-| `.fieldset-description` | Fieldset description |
-| `.fieldset-bordered` | Bordered fieldset variant |
+| `.fieldset-filled` | Filled fieldset variant |
+| `.fieldset-borderless` | Borderless fieldset variant |
+| `.fieldset-card` | Card-style fieldset variant |
+| `.form-section-description` | Section/fieldset description text |
 | `.form` | Form container |
 | `.form-vertical` | Vertical form layout |
 | `.form-horizontal` | Horizontal form layout |
