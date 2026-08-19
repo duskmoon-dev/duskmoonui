@@ -61,15 +61,15 @@ jobs:
 
       - name: Publish @duskmoon-dev/core
         working-directory: packages/core
-        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: bash ../../.github/scripts/npm-publish.sh
 
       - name: Publish @duskmoon-dev/css-art
         working-directory: packages/css-art
-        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: bash ../../.github/scripts/npm-publish.sh
 
       - name: Commit version bump
         run: |
