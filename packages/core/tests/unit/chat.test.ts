@@ -76,6 +76,81 @@ describe('Chat Component', () => {
     });
   });
 
+  describe('Scroll container', () => {
+    it('should define .chat-scroll with overflow and smooth scroll behavior', () => {
+      expect(css).toMatch(
+        /\.chat-scroll\s*\{[^}]*overflow-y:\s*auto[^}]*scroll-behavior:\s*smooth/s,
+      );
+    });
+
+    it('should hoist named view timelines with timeline-scope', () => {
+      expect(css).toMatch(/\.chat-scroll\s*\{[^}]*timeline-scope:/s);
+      expect(css).toContain('--chat-1');
+      expect(css).toContain('--chat-24');
+    });
+
+    it('should define scroll track, body, and indicator primitives', () => {
+      expect(css).toContain('.chat-scroll-track');
+      expect(css).toContain('.chat-scroll-body');
+      expect(css).toContain('.chat-scroll-indicator');
+    });
+
+    it('should bind indicators with animation-timeline and animation-range', () => {
+      expect(css).toMatch(
+        /\.chat-scroll-indicator\s*\{[^}]*animation-timeline:|--chat-1/s,
+      );
+      expect(css).toContain('animation-range: entry 0% exit 100%');
+      expect(css).toContain(
+        '.chat-scroll-indicator[data-chat-tl="1"]',
+      );
+      expect(css).toMatch(
+        /\.chat-scroll-indicator\[data-chat-tl="1"\]\s*\{[^}]*animation-timeline:\s*--chat-1/s,
+      );
+    });
+
+    it('should declare view-timeline on chat rows via data-chat-tl', () => {
+      expect(css).toMatch(
+        /\.chat\[data-chat-tl="1"\]\s*\{[^}]*view-timeline-name:\s*--chat-1[^}]*view-timeline-axis:\s*block/s,
+      );
+      expect(css).toContain('.chat[data-chat-tl="24"]');
+    });
+
+    it('should define indicator activate keyframes', () => {
+      expect(css).toContain('@keyframes chat-scroll-indicator-activate');
+    });
+
+    it('should enlarge indicators on hover with neighbor fisheye', () => {
+      expect(css).toMatch(
+        /\.chat-scroll-indicator:hover,\s*\.chat-scroll-indicator:focus-visible\s*\{[^}]*scaleX\(var\(--chat-scroll-indicator-hover-scale\)\)/s,
+      );
+      expect(css).toContain(
+        '.chat-scroll-indicator:hover + .chat-scroll-indicator',
+      );
+      expect(css).toContain('--chat-scroll-indicator-neighbor-scale');
+    });
+
+    it('should style indicators as button-friendly controls', () => {
+      expect(css).toMatch(
+        /\.chat-scroll-indicator\s*\{[^}]*appearance:\s*none/s,
+      );
+    });
+
+    it('should add scroll-margin on timeline subjects', () => {
+      expect(css).toMatch(
+        /\.chat\[data-chat-tl\]\s*\{[^}]*scroll-margin-block-start:/s,
+      );
+    });
+
+    it('should disable smooth scrolling under reduced motion', () => {
+      expect(css).toMatch(
+        /prefers-reduced-motion:[^)]+reduce[^}]*\.chat-scroll\s*\{[^}]*scroll-behavior:\s*auto/s,
+      );
+      expect(css).toMatch(
+        /prefers-reduced-motion:[^)]+reduce[\s\S]*\.chat-scroll-indicator\s*\{[^}]*animation:\s*none/s,
+      );
+    });
+  });
+
   describe('Bubble tail', () => {
     it('should render start tail with a clipped wedge', () => {
       expect(css).toMatch(
@@ -216,7 +291,9 @@ describe('Chat Component', () => {
 
     it('should include reduced motion fallbacks', () => {
       expect(css).toContain('@media (prefers-reduced-motion: reduce)');
-      expect(css).toMatch(/prefers-reduced-motion:[^)]+reduce[^}]*animation:\s*none/s);
+      expect(css).toMatch(
+        /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*animation:\s*none/,
+      );
     });
   });
 

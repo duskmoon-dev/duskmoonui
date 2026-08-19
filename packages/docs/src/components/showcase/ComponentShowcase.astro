@@ -381,15 +381,52 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
     });
   }
 
+  /**
+   * Keep chat indicator jumps inside `.chat-scroll`.
+   * Bare hash links would scroll the document; demos use
+   * `data-chat-target` (or href="#id") and we scroll only the local scroller.
+   */
+  function initChatScrollIndicators() {
+    document.querySelectorAll<HTMLElement>('.chat-scroll').forEach((scroller) => {
+      if (scroller.hasAttribute('data-chat-scroll-enhanced')) return;
+      scroller.setAttribute('data-chat-scroll-enhanced', 'true');
+
+      scroller.addEventListener('click', (event) => {
+        const indicator = (event.target as HTMLElement).closest<HTMLElement>(
+          '.chat-scroll-indicator',
+        );
+        if (!indicator || !scroller.contains(indicator)) return;
+
+        const targetId =
+          indicator.getAttribute('data-chat-target') ||
+          indicator.getAttribute('href')?.replace(/^#/, '');
+        if (!targetId) return;
+
+        const target = scroller.querySelector<HTMLElement>(`#${CSS.escape(targetId)}`);
+        if (!target) return;
+
+        event.preventDefault();
+
+        const nextTop =
+          scroller.scrollTop +
+          (target.getBoundingClientRect().top - scroller.getBoundingClientRect().top);
+
+        scroller.scrollTo({ top: nextTop, behavior: 'smooth' });
+      });
+    });
+  }
+
   // Run on initial load
   initAllShowcases();
   initPopoverPositioning();
   initOpenPopovers();
+  initChatScrollIndicators();
 
   // Re-run after Astro page transitions (if using View Transitions)
   document.addEventListener('astro:page-load', () => {
     initAllShowcases();
     initPopoverPositioning();
     initOpenPopovers();
+    initChatScrollIndicators();
   });
 </script>

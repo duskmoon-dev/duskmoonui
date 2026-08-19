@@ -17,6 +17,8 @@ Chat provides CSS-only primitives for conversational interfaces. It supports use
 
 Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put any existing `.avatar` inside `.chat-avatar`.
 
+Wrap a transcript in `.chat-scroll` when the conversation should scroll inside a fixed-height panel. Scroll behavior defaults to `smooth`. Pair **agent replies** with matching indicators via `data-chat-tl` so Scroll-Driven Animations can sync the rail with visible assistant rows.
+
 <ComponentShowcase
   title="Basic Chat"
   code={`<div id="demo-basic-chat" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
@@ -36,6 +38,152 @@ Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put
     <div class="chat-header">You - 2:16 PM</div>
     <div class="chat-bubble chat-bubble-primary">Show me a compact chat transcript.</div>
     <div class="chat-footer">Sent</div>
+  </div>
+</div>`}
+/>
+
+## Scroll-Driven Indicators
+
+`.chat-scroll` hoists named view timelines with `timeline-scope` (`--chat-1` … `--chat-24`). Pair **agent / assistant rows only** (`.chat-start`) with matching indicators: `.chat[data-chat-tl="N"]` declares `view-timeline-name`, and `.chat-scroll-indicator[data-chat-tl="N"]` binds `animation-timeline` + `animation-range: entry 0% exit 100%`.
+
+User turns stay in the transcript but do not get ticks. Click an indicator to jump to that agent response **inside** `.chat-scroll` — use `button` + `data-chat-target` (not bare `href="#…"`), otherwise the document will scroll. Docs demos wire the click handler; app code should call `scroller.scrollTo(...)` the same way.
+
+Requires a browser that supports Scroll-Driven Animations. Unsupported browsers still scroll smoothly; indicators stay in the idle style.
+
+<ComponentShowcase
+  title="Scroll-Driven Chat Indicators"
+  code={`<div id="demo-chat-scroll" class="chat-scroll" style="width: min(48rem, 100%); height: 22rem;">
+  <div class="chat-scroll-track" aria-label="Assistant replies">
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="1" data-chat-target="demo-chat-agent-1" aria-label="Jump to assistant reply 1"></button>
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="2" data-chat-target="demo-chat-agent-2" aria-label="Jump to assistant reply 2"></button>
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="3" data-chat-target="demo-chat-agent-3" aria-label="Jump to assistant reply 3"></button>
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="4" data-chat-target="demo-chat-agent-4" aria-label="Jump to assistant reply 4"></button>
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="5" data-chat-target="demo-chat-agent-5" aria-label="Jump to assistant reply 5"></button>
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="6" data-chat-target="demo-chat-agent-6" aria-label="Jump to assistant reply 6"></button>
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="7" data-chat-target="demo-chat-agent-7" aria-label="Jump to assistant reply 7"></button>
+    <button type="button" class="chat-scroll-indicator" data-chat-tl="8" data-chat-target="demo-chat-agent-8" aria-label="Jump to assistant reply 8"></button>
+  </div>
+
+  <div class="chat-scroll-body">
+    <div id="demo-chat-agent-1" class="chat chat-start" data-chat-tl="1">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:00 PM</div>
+      <div class="chat-bubble">Welcome back. The left ticks mark each assistant reply — scroll or click a tick to jump to that response.</div>
+    </div>
+
+    <div class="chat chat-end">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm">GA</div>
+      </div>
+      <div class="chat-header">You - 2:01 PM</div>
+      <div class="chat-bubble chat-bubble-primary">Can we use Scroll-Driven Animations for the rail?</div>
+    </div>
+
+    <div id="demo-chat-agent-2" class="chat chat-start" data-chat-tl="2">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:01 PM</div>
+      <div class="chat-bubble">Yes. Each agent row exposes a named view-timeline. The parent raises timeline-scope so indicators can bind animation-timeline without living in the same subtree.</div>
+    </div>
+
+    <div class="chat chat-end">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm">GA</div>
+      </div>
+      <div class="chat-header">You - 2:02 PM</div>
+      <div class="chat-bubble chat-bubble-primary">Should user messages also get ticks?</div>
+    </div>
+
+    <div id="demo-chat-agent-3" class="chat chat-start" data-chat-tl="3">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:02 PM</div>
+      <div class="chat-bubble">No. Ticks only navigate to the start of an agent response. User turns stay in the transcript but are skipped by the rail.</div>
+    </div>
+
+    <div class="chat chat-end">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm">GA</div>
+      </div>
+      <div class="chat-header">You - 2:03 PM</div>
+      <div class="chat-bubble chat-bubble-primary">What about animation-range?</div>
+    </div>
+
+    <div id="demo-chat-agent-4" class="chat chat-start" data-chat-tl="4">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:03 PM</div>
+      <div class="chat-bubble">Indicators use entry 0% exit 100%, so they brighten while the paired assistant message is in view and fade as it leaves.</div>
+    </div>
+
+    <div class="chat chat-end">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm">GA</div>
+      </div>
+      <div class="chat-header">You - 2:04 PM</div>
+      <div class="chat-bubble chat-bubble-primary">Why not use href hash links for the ticks?</div>
+    </div>
+
+    <div id="demo-chat-agent-5" class="chat chat-start" data-chat-tl="5">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:04 PM</div>
+      <div class="chat-bubble">Hash navigation scrolls the document. For an overflow panel, use a button with data-chat-target and scroll the .chat-scroll container itself.</div>
+    </div>
+
+    <div class="chat chat-end">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm">GA</div>
+      </div>
+      <div class="chat-header">You - 2:05 PM</div>
+      <div class="chat-bubble chat-bubble-primary">Can clicks land exactly on the agent row start?</div>
+    </div>
+
+    <div id="demo-chat-agent-6" class="chat chat-start" data-chat-tl="6">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:05 PM</div>
+      <div class="chat-bubble">Yes. The handler computes the target offset inside the scroller and calls scrollTo with smooth behavior, aligning to the agent row top (plus scroll-margin).</div>
+    </div>
+
+    <div class="chat chat-end">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm">GA</div>
+      </div>
+      <div class="chat-header">You - 2:06 PM</div>
+      <div class="chat-bubble chat-bubble-primary">Add one more long answer so the list actually overflows.</div>
+    </div>
+
+    <div id="demo-chat-agent-7" class="chat chat-start" data-chat-tl="7">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:06 PM</div>
+      <div class="chat-bubble">Here is a denser turn for scrolling practice: timeline-scope lifts --chat-N names, view-timeline-name is set on each agent .chat, and indicators stay sticky in .chat-scroll-track while .chat-scroll-body carries the messages.</div>
+    </div>
+
+    <div class="chat chat-end">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm">GA</div>
+      </div>
+      <div class="chat-header">You - 2:07 PM</div>
+      <div class="chat-bubble chat-bubble-primary">Great — last tick should jump to that reply.</div>
+    </div>
+
+    <div id="demo-chat-agent-8" class="chat chat-start" data-chat-tl="8">
+      <div class="chat-avatar">
+        <div class="avatar avatar-sm avatar-primary">AI</div>
+      </div>
+      <div class="chat-header">Assistant - 2:07 PM</div>
+      <div class="chat-bubble">Done. Click the last dash to return to this agent response start without moving the page behind the panel.</div>
+    </div>
   </div>
 </div>`}
 />
@@ -242,8 +390,14 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 
 ### Structure
 
-| Class | Description |
+| Class / Attribute | Description |
 |---|---|
+| `.chat-scroll` | Scrollable transcript (`overflow-y: auto`, `scroll-behavior: smooth`, `timeline-scope` for `--chat-1`…`--chat-24`) |
+| `.chat-scroll-track` | Sticky indicator rail (use `aria-hidden="true"` when indicators are decorative/duplicative) |
+| `.chat-scroll-body` | Message column that holds `.chat` rows |
+| `.chat-scroll-indicator` | Dash indicator for an agent reply; bind with `data-chat-tl="N"` + `data-chat-target="message-id"` (prefer `<button>`, not hash links) |
+| `[data-chat-tl="N"]` | Shared slot `1`–`24` on **agent** `.chat` rows and their indicators |
+| `[data-chat-target]` | Message id to scroll to inside `.chat-scroll` (docs demo wires the click handler) |
 | `.chat` | Row wrapper for avatar and message stack |
 | `.chat-start` | Left-aligned row, commonly used for assistant messages |
 | `.chat-end` | Right-aligned row, commonly used for user messages |
@@ -290,6 +444,7 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 - Use visible text for tool statuses such as `Pending`, `Running...`, `Done`, and `Failed`.
 - Add `aria-label="Assistant is typing"` to the bubble that contains `.chat-typing`, or place `aria-live="polite"` on the row stack.
 - Prefer native `<details>` and `<summary>` for reasoning and tool blocks so keyboard interaction works without custom JavaScript.
+- `.chat-scroll` respects `prefers-reduced-motion` by switching `scroll-behavior` to `auto` and disabling indicator animations. Give the scroll container a reachable height. Map ticks only to agent reply starts. Prefer `<button data-chat-target>` over hash links so navigation stays inside the panel; give each indicator an `aria-label`.
 
 ## Related Components
 
