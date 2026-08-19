@@ -129,6 +129,56 @@
     filter: none;
   }
 
+  /* Semantic Colors — must precede outline/ghost/text/tonal so those variants
+     can override the filled background at equal specificity. */
+  .btn-info {
+    --btn-text-color: var(--color-info-content);
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+  }
+
+  .btn-info:hover {
+    background-color: color-mix(in oklch, var(--color-info), black 10%);
+    border-color: color-mix(in oklch, var(--color-info), black 10%);
+    filter: none;
+  }
+
+  .btn-success {
+    --btn-text-color: var(--color-success-content);
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+  }
+
+  .btn-success:hover {
+    background-color: color-mix(in oklch, var(--color-success), black 10%);
+    border-color: color-mix(in oklch, var(--color-success), black 10%);
+    filter: none;
+  }
+
+  .btn-warning {
+    --btn-text-color: var(--color-warning-content);
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+  }
+
+  .btn-warning:hover {
+    background-color: color-mix(in oklch, var(--color-warning), black 10%);
+    border-color: color-mix(in oklch, var(--color-warning), black 10%);
+    filter: none;
+  }
+
+  .btn-error {
+    --btn-text-color: var(--color-error-content);
+    background-color: var(--color-error);
+    border-color: var(--color-error);
+  }
+
+  .btn-error:hover {
+    background-color: color-mix(in oklch, var(--color-error), black 10%);
+    border-color: color-mix(in oklch, var(--color-error), black 10%);
+    filter: none;
+  }
+
   /* Outline / Outlined Variant (.btn-outlined is an alias) */
   .btn-outline,
   .btn-outlined {
@@ -486,55 +536,6 @@
   .btn-tonal.btn-error {
     --btn-text-color: var(--color-on-error-container);
     background-color: var(--color-error-container);
-  }
-
-  /* Semantic Colors */
-  .btn-info {
-    --btn-text-color: var(--color-info-content);
-    background-color: var(--color-info);
-    border-color: var(--color-info);
-  }
-
-  .btn-info:hover {
-    background-color: color-mix(in oklch, var(--color-info), black 10%);
-    border-color: color-mix(in oklch, var(--color-info), black 10%);
-    filter: none;
-  }
-
-  .btn-success {
-    --btn-text-color: var(--color-success-content);
-    background-color: var(--color-success);
-    border-color: var(--color-success);
-  }
-
-  .btn-success:hover {
-    background-color: color-mix(in oklch, var(--color-success), black 10%);
-    border-color: color-mix(in oklch, var(--color-success), black 10%);
-    filter: none;
-  }
-
-  .btn-warning {
-    --btn-text-color: var(--color-warning-content);
-    background-color: var(--color-warning);
-    border-color: var(--color-warning);
-  }
-
-  .btn-warning:hover {
-    background-color: color-mix(in oklch, var(--color-warning), black 10%);
-    border-color: color-mix(in oklch, var(--color-warning), black 10%);
-    filter: none;
-  }
-
-  .btn-error {
-    --btn-text-color: var(--color-error-content);
-    background-color: var(--color-error);
-    border-color: var(--color-error);
-  }
-
-  .btn-error:hover {
-    background-color: color-mix(in oklch, var(--color-error), black 10%);
-    border-color: color-mix(in oklch, var(--color-error), black 10%);
-    filter: none;
   }
 
   /* Size Variants */
