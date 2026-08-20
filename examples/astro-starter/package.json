@@ -14,11 +14,11 @@
     "@duskmoon-dev/core": "^0.1.0",
     "@astrojs/check": "0.9.10",
     "@astrojs/tailwind": "6.0.2",
-    "astro": "7.1.6",
+    "astro": "7.2.4",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "typescript": "7.0.2"
+    "typescript": "6.0.3"
   }
 }
