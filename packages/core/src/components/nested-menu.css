@@ -83,7 +83,7 @@
 
   /* Disabled state */
   .nested-menu li.disabled {
-    opacity: 0.5;
+    opacity: 1;
     pointer-events: none;
   }
 

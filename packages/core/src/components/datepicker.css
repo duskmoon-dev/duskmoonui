@@ -246,7 +246,7 @@
 
   .datepicker-day-other-month {
     color: var(--color-on-surface-variant);
-    opacity: 0.5;
+    opacity: 0.9;
   }
 
   .datepicker-day-today {
@@ -328,7 +328,7 @@
 
   .datepicker-day-disabled {
     color: var(--color-on-surface-variant);
-    opacity: 0.4;
+    opacity: 0.9;
     cursor: not-allowed;
     pointer-events: none;
   }
