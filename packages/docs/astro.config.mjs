@@ -15,15 +15,6 @@ export default defineConfig({
   base: "/duskmoonui",
   trailingSlash: "always",
 
-  // Internationalization
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "fr", "es"],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
-
   // Markdown configuration
   markdown: {
     shikiConfig: {

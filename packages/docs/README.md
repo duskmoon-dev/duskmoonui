@@ -62,8 +62,8 @@ packages/docs/
 │   │   ├── navigation/  # Navigation components
 │   │   ├── showcase/    # Component showcases
 │   │   └── ui/          # UI components (ThemeToggle, etc.)
+│   ├── content.config.ts # Content collection loader and schema
 │   ├── content/          # Content collections
-│   │   ├── config.ts    # Content schema
 │   │   └── docs/        # Documentation MDX files
 │   │       └── en/
 │   │           ├── getting-started/
@@ -176,7 +176,7 @@ bun run preview
 
 ### Astro Config
 - Located in `astro.config.mjs`
-- Configured for i18n (en, fr, es)
+- English documentation is served from `/docs/en/`
 - Markdown syntax highlighting
 - Sitemap generation
 
