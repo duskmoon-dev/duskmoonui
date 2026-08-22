@@ -288,8 +288,8 @@ Here's a complete example with step content:
     <div class="stepper-step-connector"></div>
     <div class="stepper-step-content">
       <form>
-        <label>Email: user@example.com</label>
-        <label>Password: ••••••••</label>
+        <p>Email: user@example.com</p>
+        <p>Password: ••••••••</p>
       </form>
     </div>
   </div>
@@ -305,9 +305,9 @@ Here's a complete example with step content:
     <div class="stepper-step-connector"></div>
     <div class="stepper-step-content">
       <form>
-        <input type="text" placeholder="First Name" class="input">
-        <input type="text" placeholder="Last Name" class="input">
-        <textarea placeholder="Bio" class="input"></textarea>
+        <input type="text" name="first-name" placeholder="First Name" aria-label="First name" autocomplete="given-name" class="input">
+        <input type="text" name="last-name" placeholder="Last Name" aria-label="Last name" autocomplete="family-name" class="input">
+        <textarea name="bio" placeholder="Bio" aria-label="Bio" class="input"></textarea>
         <div class="flex gap-2 mt-4">
           <button type="button" class="btn btn-text" onclick="previousStep()">Back</button>
           <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>

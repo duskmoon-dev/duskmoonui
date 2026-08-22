@@ -294,6 +294,15 @@ describe('Alert Component', () => {
     it('should set alert-actions margin-top', () => {
       expect(css).toMatch(/\.alert-actions\s*\{[^}]*margin-top:\s*0\.5rem/s);
     });
+
+    it('should keep text actions readable on filled alerts', () => {
+      expect(css).toMatch(
+        /\.alert-filled\s+\.alert-actions\s+\.btn-text\s*\{[^}]*color:\s*inherit/s,
+      );
+      expect(css).toMatch(
+        /\.alert-filled\s+\.alert-actions\s+\.btn-text:hover\s*\{[^}]*background-color:\s*color-mix\(in oklch, currentColor 12%, transparent\)/s,
+      );
+    });
   });
 
   describe('Close Button', () => {

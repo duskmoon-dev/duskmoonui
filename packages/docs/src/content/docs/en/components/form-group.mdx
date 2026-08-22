@@ -15,8 +15,8 @@ Form Group provides layout utilities for organizing form elements with labels, h
 ## Basic Usage
 
 <ComponentShowcase title="Basic Form Group" code={`<div class="form-group">
-  <label class="form-label">Email Address</label>
-  <input type="email" class="input" placeholder="you@example.com" />
+  <label class="form-label" for="form-group-email-address">Email Address</label>
+  <input id="form-group-email-address" name="form-group-email-address" autocomplete="email" type="email" class="input" placeholder="you@example.com" />
 </div>`} />
 
 ## Labels
@@ -24,43 +24,43 @@ Form Group provides layout utilities for organizing form elements with labels, h
 ### Basic Label
 
 <ComponentShowcase title="Form Label" code={`<div class="form-group">
-  <label class="form-label">Username</label>
-  <input type="text" class="input" />
+  <label class="form-label" for="form-group-username">Username</label>
+  <input id="form-group-username" name="form-group-username" autocomplete="username" type="text" class="input" />
 </div>`} />
 
 ### Required Label
 
 <ComponentShowcase title="Required Label" code={`<div class="form-group">
-  <label class="form-label form-label-required">Email Address</label>
-  <input type="email" class="input" required />
+  <label class="form-label form-label-required" for="form-group-email-address-2">Email Address</label>
+  <input id="form-group-email-address-2" name="form-group-email-address-2" autocomplete="email" type="email" class="input" required />
 </div>`} />
 
 ### Optional Label
 
 <ComponentShowcase title="Optional Label" code={`<div class="form-group">
-  <label class="form-label">
+  <label class="form-label" for="form-group-phone-number">
     Phone Number
     <span class="form-label-optional">(optional)</span>
   </label>
-  <input type="tel" class="input" />
+  <input id="form-group-phone-number" name="form-group-phone-number" autocomplete="tel" type="tel" class="input" />
 </div>`} />
 
 ### Label Sizes
 
 <ComponentShowcase title="Label Sizes" code={`<div class="space-y-4">
   <div class="form-group">
-    <label class="form-label form-label-sm">Small Label</label>
-    <input type="text" class="input input-sm" />
+    <label class="form-label form-label-sm" for="form-group-small-label">Small Label</label>
+    <input id="form-group-small-label" name="form-group-small-label" type="text" class="input input-sm" />
   </div>
 
   <div class="form-group">
-    <label class="form-label">Medium Label (Default)</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-medium-label">Medium Label (Default)</label>
+    <input id="form-group-medium-label" name="form-group-medium-label" type="text" class="input" />
   </div>
 
   <div class="form-group">
-    <label class="form-label form-label-lg">Large Label</label>
-    <input type="text" class="input input-lg" />
+    <label class="form-label form-label-lg" for="form-group-large-label">Large Label</label>
+    <input id="form-group-large-label" name="form-group-large-label" type="text" class="input input-lg" />
   </div>
 </div>`} />
 
@@ -69,40 +69,40 @@ Form Group provides layout utilities for organizing form elements with labels, h
 ### Basic Helper Text
 
 <ComponentShowcase title="Helper Text" code={`<div class="form-group">
-  <label class="form-label">Password</label>
-  <input type="password" class="input" />
+  <label class="form-label" for="form-group-password">Password</label>
+  <input id="form-group-password" name="form-group-password" autocomplete="current-password" type="password" class="input" />
   <span class="helper-text">Must be at least 8 characters</span>
 </div>`} />
 
 ### Error Helper Text
 
 <ComponentShowcase title="Error Helper Text" code={`<div class="form-group form-group-error">
-  <label class="form-label">Password</label>
-  <input type="password" class="input input-error" />
+  <label class="form-label" for="form-group-password-2">Password</label>
+  <input id="form-group-password-2" name="form-group-password-2" autocomplete="current-password" type="password" class="input input-error" />
   <span class="helper-text helper-text-error">Password is too short</span>
 </div>`} />
 
 ### Success Helper Text
 
 <ComponentShowcase title="Success Helper Text" code={`<div class="form-group form-group-success">
-  <label class="form-label">Username</label>
-  <input type="text" class="input input-success" value="johndoe" />
+  <label class="form-label" for="form-group-username-2">Username</label>
+  <input id="form-group-username-2" name="form-group-username-2" autocomplete="username" type="text" class="input input-success" value="johndoe" />
   <span class="helper-text helper-text-success">Username is available</span>
 </div>`} />
 
 ### Warning Helper Text
 
 <ComponentShowcase title="Warning Helper Text" code={`<div class="form-group form-group-warning">
-  <label class="form-label">Display Name</label>
-  <input type="text" class="input input-warning" value="admin" />
+  <label class="form-label" for="form-group-display-name">Display Name</label>
+  <input id="form-group-display-name" name="form-group-display-name" autocomplete="name" type="text" class="input input-warning" value="admin" />
   <span class="helper-text helper-text-warning">This name might be mistaken for a system account</span>
 </div>`} />
 
 ### Helper Text with Icon
 
 <ComponentShowcase title="Helper Text with Icon" code={`<div class="form-group">
-  <label class="form-label">Email</label>
-  <input type="email" class="input" />
+  <label class="form-label" for="form-group-email">Email</label>
+  <input id="form-group-email" name="form-group-email" autocomplete="email" type="email" class="input" />
   <span class="helper-text helper-text-icon">
     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -114,8 +114,8 @@ Form Group provides layout utilities for organizing form elements with labels, h
 ## Character Counter
 
 <ComponentShowcase title="Character Counter" code={`<div class="form-group">
-  <label class="form-label">Bio</label>
-  <textarea class="textarea" maxlength="150" placeholder="Tell us about yourself..."></textarea>
+  <label class="form-label" for="form-group-bio">Bio</label>
+  <textarea id="form-group-bio" name="form-group-bio" class="textarea" maxlength="150" placeholder="Tell us about yourself..."></textarea>
   <div class="helper-text-row">
     <span class="helper-text">Brief description for your profile</span>
     <span class="character-counter">0/150</span>
@@ -130,13 +130,13 @@ Form Group provides layout utilities for organizing form elements with labels, h
   <legend class="fieldset-legend">Personal Information</legend>
 
   <div class="form-group">
-    <label class="form-label">First Name</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-first-name">First Name</label>
+    <input id="form-group-first-name" name="form-group-first-name" autocomplete="given-name" type="text" class="input" />
   </div>
 
   <div class="form-group">
-    <label class="form-label">Last Name</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-last-name">Last Name</label>
+    <input id="form-group-last-name" name="form-group-last-name" autocomplete="family-name" type="text" class="input" />
   </div>
 </fieldset>`} />
 
@@ -147,13 +147,13 @@ Form Group provides layout utilities for organizing form elements with labels, h
   <p class="fieldset-description">Configure your account preferences</p>
 
   <div class="form-group">
-    <label class="form-label">Username</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-username-3">Username</label>
+    <input id="form-group-username-3" name="form-group-username-3" autocomplete="username" type="text" class="input" />
   </div>
 
   <div class="form-group">
-    <label class="form-label">Email</label>
-    <input type="email" class="input" />
+    <label class="form-label" for="form-group-email-2">Email</label>
+    <input id="form-group-email-2" name="form-group-email-2" autocomplete="email" type="email" class="input" />
   </div>
 </fieldset>`} />
 
@@ -163,18 +163,18 @@ Form Group provides layout utilities for organizing form elements with labels, h
   <legend class="fieldset-legend">Shipping Address</legend>
 
   <div class="form-group">
-    <label class="form-label">Street Address</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-street-address">Street Address</label>
+    <input id="form-group-street-address" name="form-group-street-address" autocomplete="street-address" type="text" class="input" />
   </div>
 
   <div class="form-row">
     <div class="form-group form-group-half">
-      <label class="form-label">City</label>
-      <input type="text" class="input" />
+      <label class="form-label" for="form-group-city">City</label>
+      <input id="form-group-city" name="form-group-city" autocomplete="address-level2" type="text" class="input" />
     </div>
     <div class="form-group form-group-half">
-      <label class="form-label">ZIP Code</label>
-      <input type="text" class="input" />
+      <label class="form-label" for="form-group-zip-code">ZIP Code</label>
+      <input id="form-group-zip-code" name="form-group-zip-code" autocomplete="postal-code" type="text" class="input" />
     </div>
   </div>
 </fieldset>`} />
@@ -185,13 +185,13 @@ Form Group provides layout utilities for organizing form elements with labels, h
 
 <ComponentShowcase title="Vertical Layout" code={`<form class="form form-vertical">
   <div class="form-group">
-    <label class="form-label">Email</label>
-    <input type="email" class="input" />
+    <label class="form-label" for="form-group-email-3">Email</label>
+    <input id="form-group-email-3" name="form-group-email-3" autocomplete="email" type="email" class="input" />
   </div>
 
   <div class="form-group">
-    <label class="form-label">Password</label>
-    <input type="password" class="input" />
+    <label class="form-label" for="form-group-password-3">Password</label>
+    <input id="form-group-password-3" name="form-group-password-3" autocomplete="current-password" type="password" class="input" />
   </div>
 </form>`} />
 
@@ -199,13 +199,13 @@ Form Group provides layout utilities for organizing form elements with labels, h
 
 <ComponentShowcase title="Horizontal Layout" code={`<form class="form form-horizontal">
   <div class="form-group">
-    <label class="form-label">Email</label>
-    <input type="email" class="input" />
+    <label class="form-label" for="form-group-email-4">Email</label>
+    <input id="form-group-email-4" name="form-group-email-4" autocomplete="email" type="email" class="input" />
   </div>
 
   <div class="form-group">
-    <label class="form-label">Password</label>
-    <input type="password" class="input" />
+    <label class="form-label" for="form-group-password-4">Password</label>
+    <input id="form-group-password-4" name="form-group-password-4" autocomplete="current-password" type="password" class="input" />
   </div>
 </form>`} />
 
@@ -213,8 +213,8 @@ Form Group provides layout utilities for organizing form elements with labels, h
 
 <ComponentShowcase title="Inline Layout" code={`<form class="form form-inline">
   <div class="form-group">
-    <label class="form-label">Search</label>
-    <input type="text" class="input" placeholder="Search..." />
+    <label class="form-label" for="form-group-search">Search</label>
+    <input id="form-group-search" name="form-group-search" type="text" class="input" placeholder="Search..." />
   </div>
 
   <button type="submit" class="btn btn-primary">Search</button>
@@ -224,12 +224,12 @@ Form Group provides layout utilities for organizing form elements with labels, h
 
 <ComponentShowcase title="Form Row" code={`<div class="form-row">
   <div class="form-group form-group-half">
-    <label class="form-label">First Name</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-first-name-2">First Name</label>
+    <input id="form-group-first-name-2" name="form-group-first-name-2" autocomplete="given-name" type="text" class="input" />
   </div>
   <div class="form-group form-group-half">
-    <label class="form-label">Last Name</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-last-name-2">Last Name</label>
+    <input id="form-group-last-name-2" name="form-group-last-name-2" autocomplete="family-name" type="text" class="input" />
   </div>
 </div>`} />
 
@@ -237,16 +237,16 @@ Form Group provides layout utilities for organizing form elements with labels, h
 
 <ComponentShowcase title="Three Column Row" code={`<div class="form-row">
   <div class="form-group form-group-third">
-    <label class="form-label">City</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-city-2">City</label>
+    <input id="form-group-city-2" name="form-group-city-2" autocomplete="address-level2" type="text" class="input" />
   </div>
   <div class="form-group form-group-third">
-    <label class="form-label">State</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-state">State</label>
+    <input id="form-group-state" name="form-group-state" autocomplete="address-level1" type="text" class="input" />
   </div>
   <div class="form-group form-group-third">
-    <label class="form-label">ZIP</label>
-    <input type="text" class="input" />
+    <label class="form-label" for="form-group-zip">ZIP</label>
+    <input id="form-group-zip" name="form-group-zip" autocomplete="postal-code" type="text" class="input" />
   </div>
 </div>`} />
 
@@ -259,30 +259,30 @@ Form Group provides layout utilities for organizing form elements with labels, h
 
     <div class="form-row">
       <div class="form-group form-group-half">
-        <label class="form-label form-label-required">First Name</label>
-        <input type="text" class="input" required />
+        <label class="form-label form-label-required" for="form-group-first-name-3">First Name</label>
+        <input id="form-group-first-name-3" name="form-group-first-name-3" autocomplete="given-name" type="text" class="input" required />
       </div>
       <div class="form-group form-group-half">
-        <label class="form-label form-label-required">Last Name</label>
-        <input type="text" class="input" required />
+        <label class="form-label form-label-required" for="form-group-last-name-3">Last Name</label>
+        <input id="form-group-last-name-3" name="form-group-last-name-3" autocomplete="family-name" type="text" class="input" required />
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label form-label-required">Email</label>
-      <input type="email" class="input" required />
+      <label class="form-label form-label-required" for="form-group-email-5">Email</label>
+      <input id="form-group-email-5" name="form-group-email-5" autocomplete="email" type="email" class="input" required />
       <span class="helper-text">We'll send a verification link to this email</span>
     </div>
 
     <div class="form-group">
-      <label class="form-label form-label-required">Password</label>
-      <input type="password" class="input" required />
+      <label class="form-label form-label-required" for="form-group-password-5">Password</label>
+      <input id="form-group-password-5" name="form-group-password-5" autocomplete="current-password" type="password" class="input" required />
       <span class="helper-text">Must be at least 8 characters with a number</span>
     </div>
 
     <div class="form-group">
       <label class="checkbox">
-        <input type="checkbox" class="checkbox-input" required />
+        <input type="checkbox" name="terms-accepted" class="checkbox-input" required />
         <span class="checkbox-box">
           <svg class="checkbox-checkmark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />

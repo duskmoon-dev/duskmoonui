@@ -211,17 +211,38 @@ describe('Theme metadata consistency', () => {
 });
 
 describe('Theme contrast', () => {
-  it('keeps Sunshine primary text readable at normal text sizes', () => {
+  it('keeps Sunshine role colors readable at normal text sizes', () => {
     const sunshine = parseYAML(
       readFileSync(resolve(ROOT, 'tokens/sunshine.yaml'), 'utf-8'),
     );
 
-    expect(
-      contrastRatio(
-        sunshine.colors['primary-content'],
-        sunshine.colors.primary,
-      ),
-    ).toBeGreaterThanOrEqual(4.5);
+    const roles = [
+      'primary',
+      'secondary',
+      'tertiary',
+      'accent',
+      'info',
+      'success',
+      'warning',
+      'error',
+    ];
+
+    for (const role of roles) {
+      expect(
+        contrastRatio(sunshine.colors[role], sunshine.colors.surface),
+      ).toBeGreaterThanOrEqual(4.5);
+
+      const container = sunshine.colors[`${role}-container`];
+      if (container) {
+        expect(
+          contrastRatio(sunshine.colors[role], container),
+        ).toBeGreaterThanOrEqual(4.5);
+      }
+
+      expect(
+        contrastRatio(sunshine.colors[`${role}-content`], sunshine.colors[role]),
+      ).toBeGreaterThanOrEqual(4.5);
+    }
   });
 });
 

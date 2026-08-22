@@ -202,7 +202,7 @@ Remove default padding from the body for custom layouts.
 <ComponentShowcase title="No Padding" code={`<div class="bottom-sheet bottom-sheet-no-padding bottom-sheet-show">
   <div class="bottom-sheet-handle"></div>
   <div class="bottom-sheet-body">
-    <img src="image.jpg" alt="Full width image" class="w-full" />
+    <img src="https://picsum.photos/seed/bottom-sheet/1200/480" alt="Mountain landscape" class="w-full" />
     <div class="p-4">
       <p>Content with custom padding</p>
     </div>
@@ -343,8 +343,8 @@ Display filtering options.
     <div class="mb-6">
       <h3 class="text-sm font-medium mb-3">Price Range</h3>
       <div class="flex gap-2">
-        <input type="number" placeholder="Min" class="input flex-1" />
-        <input type="number" placeholder="Max" class="input flex-1" />
+        <input type="number" name="minimum-price" placeholder="Min" aria-label="Minimum price" class="input flex-1" />
+        <input type="number" name="maximum-price" placeholder="Max" aria-label="Maximum price" class="input flex-1" />
       </div>
     </div>
   </div>

@@ -18,7 +18,7 @@ Select components (also known as dropdowns) allow users to choose one or more op
 The basic select component uses the outlined variant by default:
 
 <ComponentShowcase title="Basic Select" code={`<div class="select-container">
-  <select class="select">
+  <select name="basic-select" class="select" aria-label="Basic select">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -32,7 +32,7 @@ Add a label to provide context for the select:
 
 <ComponentShowcase title="Select with Label" code={`<div class="select-container">
   <label class="select-label" for="country">Country</label>
-  <select class="select" id="country">
+  <select class="select" id="country" name="country" autocomplete="country">
     <option value="">Select a country</option>
     <option value="us">United States</option>
     <option value="uk">United Kingdom</option>
@@ -48,7 +48,7 @@ Add a label to provide context for the select:
 The outlined variant has a transparent background with a visible border:
 
 <ComponentShowcase title="Outlined Select" code={`<div class="select-container">
-  <select class="select select-outlined">
+  <select name="outlined-select" class="select select-outlined" aria-label="Outlined select">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -61,7 +61,7 @@ The outlined variant has a transparent background with a visible border:
 The filled variant has a filled background with a bottom border, perfect for forms with a consistent visual style:
 
 <ComponentShowcase title="Filled Select" code={`<div class="select-container select-container-filled">
-  <select class="select select-filled">
+  <select name="filled-select" class="select select-filled" aria-label="Filled select">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -74,13 +74,13 @@ The filled variant has a filled background with a bottom border, perfect for for
 Create a modern filled select with a floating label:
 
 <ComponentShowcase title="Filled Select with Floating Label" code={`<div class="select-container select-container-filled">
-  <select class="select select-filled" placeholder=" ">
+  <select id="floating-select" name="floating-select" class="select select-filled" placeholder=" ">
     <option value="">Choose an option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
   </select>
-  <label class="select-label-floating">Select an option</label>
+  <label class="select-label-floating" for="floating-select">Select an option</label>
 </div>`} />
 
 ## Color Variants
@@ -90,7 +90,7 @@ Create a modern filled select with a floating label:
 Use primary color for the focus state:
 
 <ComponentShowcase title="Primary Select" code={`<div class="select-container">
-  <select class="select select-primary">
+  <select name="primary-select" class="select select-primary" aria-label="Primary select">
     <option value="">Primary select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -102,7 +102,7 @@ Use primary color for the focus state:
 Use secondary color for the focus state:
 
 <ComponentShowcase title="Secondary Select" code={`<div class="select-container">
-  <select class="select select-secondary">
+  <select name="secondary-select" class="select select-secondary" aria-label="Secondary select">
     <option value="">Secondary select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -114,7 +114,7 @@ Use secondary color for the focus state:
 Use tertiary color for the focus state:
 
 <ComponentShowcase title="Tertiary Select" code={`<div class="select-container">
-  <select class="select select-tertiary">
+  <select name="tertiary-select" class="select select-tertiary" aria-label="Tertiary select">
     <option value="">Tertiary select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -123,13 +123,13 @@ Use tertiary color for the focus state:
 
 ### Info Select
 <ComponentShowcase title="Info Select" code={`<div class="select-container">
-  <select class="select select-info">
+  <select name="info-select" class="select select-info" aria-label="Info select">
     <option value="">Info select</option>
     <option value="1">Option 1</option>
   </select>
 </div>`}>
   <div class="select-container">
-    <select class="select select-info">
+    <select name="info-select" class="select select-info" aria-label="Info select">
       <option value="">Info select</option>
       <option value="1">Option 1</option>
     </select>
@@ -138,13 +138,13 @@ Use tertiary color for the focus state:
 
 ### Success Select
 <ComponentShowcase title="Success Select" code={`<div class="select-container">
-  <select class="select select-success">
+  <select name="success-select" class="select select-success" aria-label="Success select">
     <option value="">Success select</option>
     <option value="1">Option 1</option>
   </select>
 </div>`}>
   <div class="select-container">
-    <select class="select select-success">
+    <select name="success-select" class="select select-success" aria-label="Success select">
       <option value="">Success select</option>
       <option value="1">Option 1</option>
     </select>
@@ -153,13 +153,13 @@ Use tertiary color for the focus state:
 
 ### Warning Select
 <ComponentShowcase title="Warning Select" code={`<div class="select-container">
-  <select class="select select-warning">
+  <select name="warning-select" class="select select-warning" aria-label="Warning select">
     <option value="">Warning select</option>
     <option value="1">Option 1</option>
   </select>
 </div>`}>
   <div class="select-container">
-    <select class="select select-warning">
+    <select name="warning-select" class="select select-warning" aria-label="Warning select">
       <option value="">Warning select</option>
       <option value="1">Option 1</option>
     </select>
@@ -168,13 +168,13 @@ Use tertiary color for the focus state:
 
 ### Error Select
 <ComponentShowcase title="Error Select" code={`<div class="select-container">
-  <select class="select select-error">
+  <select name="error-select" class="select select-error" aria-label="Error select">
     <option value="">Error select</option>
     <option value="1">Option 1</option>
   </select>
 </div>`}>
   <div class="select-container">
-    <select class="select select-error">
+    <select name="error-select" class="select select-error" aria-label="Error select">
       <option value="">Error select</option>
       <option value="1">Option 1</option>
     </select>
@@ -188,7 +188,7 @@ Three sizes are available to fit different design needs:
 ### Small
 
 <ComponentShowcase title="Small Select" code={`<div class="select-container">
-  <select class="select select-sm">
+  <select name="small-select" class="select select-sm" aria-label="Small select">
     <option value="">Small select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -198,7 +198,7 @@ Three sizes are available to fit different design needs:
 ### Medium (Default)
 
 <ComponentShowcase title="Medium Select" code={`<div class="select-container">
-  <select class="select">
+  <select name="medium-select" class="select" aria-label="Medium select">
     <option value="">Medium select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -208,7 +208,7 @@ Three sizes are available to fit different design needs:
 ### Large
 
 <ComponentShowcase title="Large Select" code={`<div class="select-container">
-  <select class="select select-lg">
+  <select name="large-select" class="select select-lg" aria-label="Large select">
     <option value="">Large select</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -220,8 +220,8 @@ Three sizes are available to fit different design needs:
 Allow users to select multiple options:
 
 <ComponentShowcase title="Multiple Selection" code={`<div class="select-container">
-  <label class="select-label">Select multiple items</label>
-  <select class="select" multiple size="5">
+  <label class="select-label" for="multiple-select">Select multiple items</label>
+  <select class="select" id="multiple-select" name="multiple-select" multiple size="5">
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -236,8 +236,8 @@ Allow users to select multiple options:
 Organize options using optgroups:
 
 <ComponentShowcase title="Grouped Options" code={`<div class="select-container">
-  <label class="select-label">Select a fruit</label>
-  <select class="select">
+  <label class="select-label" for="fruit-select">Select a fruit</label>
+  <select class="select" id="fruit-select" name="fruit-select">
     <option value="">Choose a fruit</option>
     <optgroup label="Citrus">
       <option value="orange">Orange</option>
@@ -264,8 +264,8 @@ Organize options using optgroups:
 Disabled selects are non-interactive:
 
 <ComponentShowcase title="Disabled Select" code={`<div class="select-container">
-  <label class="select-label">Disabled select</label>
-  <select class="select" disabled>
+  <label class="select-label" for="disabled-select">Disabled select</label>
+  <select class="select" id="disabled-select" name="disabled-select" disabled>
     <option value="">This select is disabled</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -277,8 +277,8 @@ Disabled selects are non-interactive:
 Show validation errors:
 
 <ComponentShowcase title="Error State" code={`<div class="select-container select-container-error">
-  <label class="select-label">Select with error</label>
-  <select class="select select-error">
+  <label class="select-label" for="error-state-select">Select with error</label>
+  <select class="select select-error" id="error-state-select" name="error-state-select">
     <option value="">Please select an option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -291,8 +291,8 @@ Show validation errors:
 Show a loading indicator:
 
 <ComponentShowcase title="Loading State" code={`<div class="select-container">
-  <label class="select-label">Loading options...</label>
-  <select class="select select-loading" disabled>
+  <label class="select-label" for="loading-select">Loading options...</label>
+  <select class="select select-loading" id="loading-select" name="loading-select" disabled>
     <option value="">Loading...</option>
   </select>
 </div>`} />
@@ -302,8 +302,8 @@ Show a loading indicator:
 Provide additional context or instructions:
 
 <ComponentShowcase title="Select with Helper Text" code={`<div class="select-container">
-  <label class="select-label">Language preference</label>
-  <select class="select">
+  <label class="select-label" for="language-select">Language preference</label>
+  <select class="select" id="language-select" name="language-select">
     <option value="">Select your language</option>
     <option value="en">English</option>
     <option value="es">Spanish</option>
@@ -318,8 +318,8 @@ Provide additional context or instructions:
 Make the select take the full width of its container:
 
 <ComponentShowcase title="Full Width Select" code={`<div class="select-container select-full">
-  <label class="select-label">Full width select</label>
-  <select class="select">
+  <label class="select-label" for="full-width-select">Full width select</label>
+  <select class="select" id="full-width-select" name="full-width-select">
     <option value="">Select an option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -336,7 +336,7 @@ Combine selects with other form elements for a cohesive design:
 <ComponentShowcase title="Form Example" code={`<form class="space-y-4">
   <div class="select-container">
     <label class="select-label" for="title">Title</label>
-    <select class="select" id="title" required>
+    <select class="select" id="title" name="title" autocomplete="honorific-prefix" required>
       <option value="">Select title</option>
       <option value="mr">Mr.</option>
       <option value="mrs">Mrs.</option>
@@ -347,7 +347,7 @@ Combine selects with other form elements for a cohesive design:
 
   <div class="select-container">
     <label class="select-label" for="department">Department</label>
-    <select class="select" id="department" required>
+    <select class="select" id="department" name="department" required>
       <option value="">Select department</option>
       <option value="engineering">Engineering</option>
       <option value="design">Design</option>
@@ -372,7 +372,7 @@ Combine selects with other form elements for a cohesive design:
 <ComponentShowcase title="Accessible Select" code={`<!-- Good: Accessible select with label and helper text -->
 <div class="select-container">
   <label class="select-label" for="country-select">Country of residence</label>
-  <select class="select" id="country-select" aria-describedby="country-helper">
+  <select class="select" id="country-select" name="country" autocomplete="country" aria-describedby="country-helper">
     <option value="">Select your country</option>
     <option value="us">United States</option>
     <option value="uk">United Kingdom</option>
@@ -389,7 +389,7 @@ Always provide clear error messages:
 
 <ComponentShowcase title="Error Handling Example" code={`<div class="select-container select-container-error">
   <label class="select-label" for="payment-method">Payment method</label>
-  <select class="select select-error" id="payment-method" aria-invalid="true" aria-describedby="payment-error">
+  <select class="select select-error" id="payment-method" name="payment-method" aria-invalid="true" aria-describedby="payment-error">
     <option value="">Select payment method</option>
     <option value="credit">Credit Card</option>
     <option value="debit">Debit Card</option>
@@ -707,8 +707,8 @@ const selectedCountry = ref('');
 
 <ComponentShowcase title="Combined Styles" code={`<!-- Filled secondary select, large size with error -->
 <div class="select-container select-container-filled select-container-error">
-  <label class="select-label">Department</label>
-  <select class="select select-filled select-secondary select-lg select-error">
+  <label class="select-label" for="combined-department-select">Department</label>
+  <select id="combined-department-select" name="combined-department" class="select select-filled select-secondary select-lg select-error">
     <option value="">Select department</option>
     <option value="1">Engineering</option>
     <option value="2">Design</option>
@@ -719,13 +719,13 @@ const selectedCountry = ref('');
 ## Ghost Variant
 
 <ComponentShowcase title="Ghost Select" code={`<div class="select-container">
-  <select class="select select-ghost">
+  <select name="ghost-select" class="select select-ghost" aria-label="Ghost select">
     <option value="">Ghost select (no border)</option>
     <option value="1">Option 1</option>
   </select>
 </div>`}>
   <div class="select-container">
-    <select class="select select-ghost">
+    <select name="ghost-select" class="select select-ghost" aria-label="Ghost select">
       <option value="">Ghost select (no border)</option>
       <option value="1">Option 1</option>
     </select>

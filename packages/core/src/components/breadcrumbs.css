@@ -221,7 +221,7 @@
   }
 
   .breadcrumb-item-disabled {
-    opacity: 0.38;
+    opacity: 1;
     pointer-events: none;
     cursor: not-allowed;
   }

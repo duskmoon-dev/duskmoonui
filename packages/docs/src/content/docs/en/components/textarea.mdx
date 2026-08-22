@@ -14,7 +14,7 @@ Textareas allow users to enter multi-line text input. @duskmoon-dev/core provide
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Textarea" code={`<textarea class="textarea" placeholder="Enter your message..."></textarea>`} />
+<ComponentShowcase title="Basic Textarea" code={`<textarea name="message" class="textarea" placeholder="Enter your message..." aria-label="Message"></textarea>`} />
 
 ## Variants
 
@@ -22,62 +22,62 @@ Textareas allow users to enter multi-line text input. @duskmoon-dev/core provide
 
 Outlined textareas have a transparent background with a visible border, making them stand out on any surface.
 
-<ComponentShowcase title="Outlined Textarea" code={`<textarea class="textarea textarea-outlined" placeholder="Outlined textarea..."></textarea>`} />
+<ComponentShowcase title="Outlined Textarea" code={`<textarea name="outlined-textarea" class="textarea textarea-outlined" placeholder="Outlined textarea..." aria-label="Outlined textarea"></textarea>`} />
 
 ### Filled Textarea
 
 Filled textareas have a solid background with a bottom border, providing a more subtle appearance.
 
-<ComponentShowcase title="Filled Textarea" code={`<textarea class="textarea textarea-filled" placeholder="Filled textarea..."></textarea>`} />
+<ComponentShowcase title="Filled Textarea" code={`<textarea name="filled-textarea" class="textarea textarea-filled" placeholder="Filled textarea..." aria-label="Filled textarea"></textarea>`} />
 
 ## Color Variants
 
 Focus colors can be customized using color variants:
 
-<ComponentShowcase title="Color Variants" code={`<textarea class="textarea textarea-primary" placeholder="Primary focus color..."></textarea>
-<textarea class="textarea textarea-secondary" placeholder="Secondary focus color..."></textarea>
-<textarea class="textarea textarea-tertiary" placeholder="Tertiary focus color..."></textarea>`} />
+<ComponentShowcase title="Color Variants" code={`<textarea name="primary-textarea" class="textarea textarea-primary" placeholder="Primary focus color..." aria-label="Primary textarea"></textarea>
+<textarea name="secondary-textarea" class="textarea textarea-secondary" placeholder="Secondary focus color..." aria-label="Secondary textarea"></textarea>
+<textarea name="tertiary-textarea" class="textarea textarea-tertiary" placeholder="Tertiary focus color..." aria-label="Tertiary textarea"></textarea>`} />
 
 ### Status Variants
-<ComponentShowcase title="Status Variants" code={`<textarea class="textarea textarea-info" placeholder="Info focus color..."></textarea>
-<textarea class="textarea textarea-success" placeholder="Success focus color..."></textarea>
-<textarea class="textarea textarea-warning" placeholder="Warning focus color..."></textarea>
-<textarea class="textarea textarea-error" placeholder="Error focus color..."></textarea>`}>
-  <textarea class="textarea textarea-info" placeholder="Info focus color..."></textarea>
-  <textarea class="textarea textarea-success" placeholder="Success focus color..."></textarea>
-  <textarea class="textarea textarea-warning" placeholder="Warning focus color..."></textarea>
-  <textarea class="textarea textarea-error" placeholder="Error focus color..."></textarea>
+<ComponentShowcase title="Status Variants" code={`<textarea name="info-textarea" class="textarea textarea-info" placeholder="Info focus color..." aria-label="Info textarea"></textarea>
+<textarea name="success-textarea" class="textarea textarea-success" placeholder="Success focus color..." aria-label="Success textarea"></textarea>
+<textarea name="warning-textarea" class="textarea textarea-warning" placeholder="Warning focus color..." aria-label="Warning textarea"></textarea>
+<textarea name="error-textarea" class="textarea textarea-error" placeholder="Error focus color..." aria-label="Error textarea"></textarea>`}>
+  <textarea name="info-textarea" class="textarea textarea-info" placeholder="Info focus color..." aria-label="Info textarea"></textarea>
+  <textarea name="success-textarea" class="textarea textarea-success" placeholder="Success focus color..." aria-label="Success textarea"></textarea>
+  <textarea name="warning-textarea" class="textarea textarea-warning" placeholder="Warning focus color..." aria-label="Warning textarea"></textarea>
+  <textarea name="error-textarea" class="textarea textarea-error" placeholder="Error focus color..." aria-label="Error textarea"></textarea>
 </ComponentShowcase>
 
 ## Sizes
 
 Three sizes are available:
 
-<ComponentShowcase title="Textarea Sizes" code={`<textarea class="textarea textarea-sm" placeholder="Small textarea..."></textarea>
-<textarea class="textarea" placeholder="Medium textarea (default)..."></textarea>
-<textarea class="textarea textarea-lg" placeholder="Large textarea..."></textarea>`} />
+<ComponentShowcase title="Textarea Sizes" code={`<textarea name="small-textarea" class="textarea textarea-sm" placeholder="Small textarea..." aria-label="Small textarea"></textarea>
+<textarea name="medium-textarea" class="textarea" placeholder="Medium textarea (default)..." aria-label="Medium textarea"></textarea>
+<textarea name="large-textarea" class="textarea textarea-lg" placeholder="Large textarea..." aria-label="Large textarea"></textarea>`} />
 
 ## Resize Options
 
 Control how users can resize the textarea:
 
 <ComponentShowcase title="Resize Options" code={`<!-- Vertical resize (default) -->
-<textarea class="textarea textarea-resize-vertical" placeholder="Resize vertically..."></textarea>
+<textarea name="vertical-resize-textarea" class="textarea textarea-resize-vertical" placeholder="Resize vertically..." aria-label="Vertically resizable textarea"></textarea>
 
 <!-- No resize -->
-<textarea class="textarea textarea-resize-none" placeholder="Cannot be resized..."></textarea>
+<textarea name="fixed-textarea" class="textarea textarea-resize-none" placeholder="Cannot be resized..." aria-label="Fixed size textarea"></textarea>
 
 <!-- Horizontal resize -->
-<textarea class="textarea textarea-resize-horizontal" placeholder="Resize horizontally..."></textarea>
+<textarea name="horizontal-resize-textarea" class="textarea textarea-resize-horizontal" placeholder="Resize horizontally..." aria-label="Horizontally resizable textarea"></textarea>
 
 <!-- Both directions -->
-<textarea class="textarea textarea-resize-both" placeholder="Resize in any direction..."></textarea>`} />
+<textarea name="both-resize-textarea" class="textarea textarea-resize-both" placeholder="Resize in any direction..." aria-label="Resizable textarea"></textarea>`} />
 
 ## Auto-Resize
 
 All `.textarea` elements use native `field-sizing: content` by default, so supporting browsers automatically adjust their height based on content. Add `.textarea-auto-resize` for a compact textarea without a manual resize handle or visible overflow:
 
-<ComponentShowcase title="Auto-Resize Textarea" code={`<textarea class="textarea textarea-auto-resize" placeholder="Grows with content..."></textarea>`} />
+<ComponentShowcase title="Auto-Resize Textarea" code={`<textarea name="auto-resize-textarea" class="textarea textarea-auto-resize" placeholder="Grows with content..." aria-label="Auto-resizing textarea"></textarea>`} />
 
 For browsers without `field-sizing` support, use JavaScript as a fallback:
 
@@ -177,19 +177,19 @@ Indicate successful validation:
 
 Non-interactive textarea:
 
-<ComponentShowcase title="Disabled State" code={`<textarea class="textarea" disabled placeholder="Disabled textarea..."></textarea>`} />
+<ComponentShowcase title="Disabled State" code={`<textarea name="disabled-textarea" class="textarea" disabled placeholder="Disabled textarea..." aria-label="Disabled textarea"></textarea>`} />
 
 ### Read-only State
 
 Display-only content:
 
-<ComponentShowcase title="Read-only State" code={`<textarea class="textarea" readonly>This content cannot be edited</textarea>`} />
+<ComponentShowcase title="Read-only State" code={`<textarea name="readonly-textarea" class="textarea" readonly aria-label="Read-only textarea">This content cannot be edited</textarea>`} />
 
 ## Full Width
 
 Ensure textarea spans the full container width:
 
-<ComponentShowcase title="Full Width Textarea" code={`<textarea class="textarea textarea-full" placeholder="Full width textarea..."></textarea>`} />
+<ComponentShowcase title="Full Width Textarea" code={`<textarea name="full-width-textarea" class="textarea textarea-full" placeholder="Full width textarea..." aria-label="Full width textarea"></textarea>`} />
 
 ## Complete Examples
 
@@ -273,10 +273,10 @@ autoResize();
 - Don't rely solely on placeholders for critical information
 
 <ComponentShowcase title="Placeholder Best Practices" code={`<!-- Good: Clear example -->
-<textarea class="textarea" placeholder="e.g., I'm interested in learning more about..."></textarea>
+<textarea name="interest" class="textarea" placeholder="e.g., I'm interested in learning more about..." aria-label="Interest"></textarea>
 
 <!-- Bad: Using placeholder as label -->
-<textarea class="textarea" placeholder="Comments*"></textarea>`} />
+<textarea name="comments" class="textarea" placeholder="Comments*" aria-label="Comments"></textarea>`} />
 
 ### Labels and Helper Text
 
@@ -285,8 +285,8 @@ autoResize();
 - Place error messages in helper text
 
 <ComponentShowcase title="Labels and Helper Text" code={`<div class="textarea-container">
-  <label class="textarea-label" for="description">Project Description</label>
-  <textarea id="description" class="textarea" placeholder="Describe your project..."></textarea>
+  <label class="textarea-label" for="project-description">Project Description</label>
+  <textarea id="project-description" name="project-description" class="textarea" placeholder="Describe your project..."></textarea>
   <span class="textarea-helper">Include key features and goals (minimum 50 characters)</span>
 </div>`} />
 
@@ -298,10 +298,10 @@ autoResize();
 - Consider auto-resize for variable-length content
 
 <ComponentShowcase title="Sizing Best Practices" code={`<!-- Short feedback -->
-<textarea class="textarea textarea-sm" rows="2" placeholder="Quick feedback..."></textarea>
+<textarea name="quick-feedback" class="textarea textarea-sm" rows="2" placeholder="Quick feedback..." aria-label="Quick feedback"></textarea>
 
 <!-- Long-form content -->
-<textarea class="textarea textarea-lg" rows="8" placeholder="Write your article..."></textarea>`} />
+<textarea name="article" class="textarea textarea-lg" rows="8" placeholder="Write your article..." aria-label="Article"></textarea>`} />
 
 ### Accessibility
 
@@ -550,21 +550,21 @@ const handleInput = (e) => {
 You can combine classes for different effects:
 
 <ComponentShowcase title="Class Combinations" code={`<!-- Filled tertiary textarea, large size with error -->
-<textarea class="textarea textarea-filled textarea-tertiary textarea-lg textarea-error">
+<textarea name="combined-textarea" class="textarea textarea-filled textarea-tertiary textarea-lg textarea-error" aria-label="Combined textarea styles">
 </textarea>
 
 <!-- Small outlined textarea with no resize -->
-<textarea class="textarea textarea-outlined textarea-sm textarea-resize-none">
+<textarea name="compact-textarea" class="textarea textarea-outlined textarea-sm textarea-resize-none" aria-label="Compact textarea">
 </textarea>
 
 <!-- Auto-resize primary textarea with success state -->
-<textarea class="textarea textarea-primary textarea-auto-resize textarea-success">
+<textarea name="auto-resize-success-textarea" class="textarea textarea-primary textarea-auto-resize textarea-success" aria-label="Successful auto-resizing textarea">
 </textarea>`} />
 
 ## Ghost Variant
 
-<ComponentShowcase title="Ghost Textarea" code={`<textarea class="textarea textarea-ghost" placeholder="Ghost textarea (no border)..."></textarea>`}>
-  <textarea class="textarea textarea-ghost" placeholder="Ghost textarea (no border)..."></textarea>
+<ComponentShowcase title="Ghost Textarea" code={`<textarea name="ghost-textarea" class="textarea textarea-ghost" placeholder="Ghost textarea (no border)..." aria-label="Ghost textarea"></textarea>`}>
+  <textarea name="ghost-textarea" class="textarea textarea-ghost" placeholder="Ghost textarea (no border)..." aria-label="Ghost textarea"></textarea>
 </ComponentShowcase>
 
 ## Related Components

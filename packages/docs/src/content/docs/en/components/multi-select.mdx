@@ -80,7 +80,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
   <button class="multi-select-trigger" popovertarget="multi-select-search">
     <div class="multi-select-tags">
       <span class="multi-select-tag">React</span>
-      <input type="text" class="multi-select-input" placeholder="Search..." />
+      <input type="text" name="multi-select-filter" class="multi-select-input" placeholder="Search..." aria-label="Filter selected options" />
     </div>
     <svg class="multi-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -88,7 +88,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
   </button>
   <div class="multi-select-dropdown" id="multi-select-search" popover="auto">
     <div class="multi-select-search">
-      <input type="text" class="multi-select-search-input" placeholder="Search options..." />
+      <input type="text" name="multi-select-search" class="multi-select-search-input" placeholder="Search options..." aria-label="Search options" />
     </div>
     <div class="multi-select-options">
       <div class="multi-select-option multi-select-option-selected">
@@ -324,7 +324,7 @@ Multi-Select allows users to select multiple options from a dropdown list. Selec
 ### Error State
 
 <ComponentShowcase title="Error State" code={`<div class="form-group">
-  <label class="form-label form-label-required">Skills</label>
+  <span class="form-label form-label-required">Skills</span>
   <div class="multi-select multi-select-error">
     <button class="multi-select-trigger" popovertarget="multi-select-error">
       <span class="multi-select-placeholder">Select at least 2 skills</span>
