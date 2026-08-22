@@ -104,8 +104,13 @@ describe('Nested Menu Component', () => {
       expect(css).toContain('.nested-menu li.disabled');
     });
 
-    it('should reduce opacity', () => {
-      expect(css).toMatch(/opacity:\s*0\.5/);
+    it('should keep disabled text opaque and use the muted content color', () => {
+      expect(css).toMatch(
+        /\.nested-menu li\.disabled\s*\{[^}]*opacity:\s*1\s*!important/s,
+      );
+      expect(css).toMatch(
+        /\.nested-menu li\.disabled > (?:a|button)[^{]*\{[^}]*color:\s*var\(--color-on-surface-variant\)/s,
+      );
     });
 
     it('should disable pointer events', () => {

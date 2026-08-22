@@ -83,8 +83,13 @@
 
   /* Disabled state */
   .nested-menu li.disabled {
-    opacity: 1;
+    opacity: 1 !important;
     pointer-events: none;
+  }
+
+  .nested-menu li.disabled > a,
+  .nested-menu li.disabled > button {
+    color: var(--color-on-surface-variant);
   }
 
   /* ============================================
