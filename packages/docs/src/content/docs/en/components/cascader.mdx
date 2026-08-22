@@ -297,7 +297,7 @@ Add headers to identify each level:
   </button>
   <div class="cascader-dropdown" id="cascader-search" popover="auto">
     <div class="cascader-search">
-      <input type="text" class="cascader-search-input" placeholder="Search..." />
+      <input type="text" name="cascader-search" class="cascader-search-input" placeholder="Search..." aria-label="Search locations" />
     </div>
     <div class="cascader-panels">
       <div class="cascader-panel">
@@ -325,7 +325,7 @@ Add headers to identify each level:
 ### Error State
 
 <ComponentShowcase title="Error State" code={`<div class="form-group">
-  <label class="form-label form-label-required">Location</label>
+  <span class="form-label form-label-required">Location</span>
   <div class="cascader cascader-error">
     <button class="cascader-trigger" popovertarget="cascader-error">
       <span class="cascader-placeholder">Select location</span>

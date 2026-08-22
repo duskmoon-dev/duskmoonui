@@ -48,7 +48,7 @@ Tree Select is a hierarchical dropdown component that allows users to select fro
 
   <div class="tree-select-dropdown" id="tree-select-2" popover="auto">
     <div class="tree-select-search">
-      <input type="text" class="tree-select-search-input" placeholder="Search..." />
+      <input type="text" name="tree-select-search" class="tree-select-search-input" placeholder="Search..." aria-label="Search categories" />
     </div>
     <div class="tree-select-options">
       <div class="tree-select-node tree-select-node-expanded">
@@ -248,7 +248,7 @@ Tree Select is a hierarchical dropdown component that allows users to select fro
 ### Error State
 
 <ComponentShowcase title="Error State" code={`<div class="form-group">
-  <label class="form-label form-label-required">Category</label>
+  <span class="form-label form-label-required">Category</span>
   <div class="tree-select tree-select-error">
     <button class="tree-select-trigger" popovertarget="tree-select-error">
       <span class="tree-select-value">Select a category</span>

@@ -70,12 +70,12 @@ The file upload component is designed to work seamlessly with drag-and-drop func
 Enable multiple file selection using the `multiple` attribute:
 
 <ComponentShowcase title="Multiple File Upload" code={`<div class="file-upload">
-  <label for="multiple-files" class="file-upload-dropzone">
+  <label for="multiple-file-input" class="file-upload-dropzone">
     <div class="file-upload-icon">📄</div>
     <p class="file-upload-text">Upload multiple files</p>
     <p class="file-upload-hint">Select or drop multiple files at once</p>
   </label>
-  <input type="file" id="multiple-files" class="file-upload-input" multiple />
+  <input type="file" id="multiple-file-input" name="multiple-files" class="file-upload-input" multiple />
 
   <div class="file-upload-list" id="file-list">
     <!-- File items will be added here dynamically -->

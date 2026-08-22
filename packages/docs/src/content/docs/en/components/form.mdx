@@ -18,12 +18,12 @@ A minimal form example to get started:
 
 <ComponentShowcase title="Minimal Form" code={`<form class="space-y-4">
   <div class="form-group">
-    <label class="form-label form-label-required">Email</label>
-    <input type="email" class="input" placeholder="you@example.com" required />
+    <label class="form-label form-label-required" for="form-email">Email</label>
+    <input id="form-email" name="form-email" autocomplete="email" type="email" class="input" placeholder="you@example.com" required />
   </div>
   <div class="form-group">
-    <label class="form-label form-label-required">Password</label>
-    <input type="password" class="input" placeholder="••••••••" required />
+    <label class="form-label form-label-required" for="form-password">Password</label>
+    <input id="form-password" name="form-password" autocomplete="current-password" type="password" class="input" placeholder="••••••••" required />
   </div>
   <button type="submit" class="btn btn-primary">Sign In</button>
 </form>`} />
@@ -42,13 +42,13 @@ The following sections demonstrate all Data Entry components organized into a co
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
     <div class="form-group">
       <label class="form-label form-label-required" for="fullname">Full Name</label>
-      <input type="text" id="fullname" class="input" placeholder="John Doe" required aria-required="true" />
+      <input type="text" id="fullname" name="fullname" autocomplete="name" class="input" placeholder="John Doe" required aria-required="true" />
     </div>
 
     <div class="form-group">
       <label class="form-label form-label-required" for="country">Country</label>
       <div class="autocomplete">
-        <input type="text" id="country" class="input autocomplete-input" placeholder="Start typing..." required aria-required="true" aria-autocomplete="list" />
+        <input type="text" id="country" name="country" autocomplete="country-name" class="input autocomplete-input" placeholder="Start typing..." required aria-required="true" aria-autocomplete="list" />
         <ul class="autocomplete-dropdown hidden">
           <li class="autocomplete-item">United States</li>
           <li class="autocomplete-item">United Kingdom</li>
@@ -121,7 +121,7 @@ The following sections demonstrate all Data Entry components organized into a co
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
     <div class="form-group">
       <label class="form-label form-label-required" for="email">Email Address</label>
-      <input type="email" id="email" class="input" placeholder="you@example.com" required aria-required="true" />
+      <input type="email" id="email" name="email" autocomplete="email" class="input" placeholder="you@example.com" required aria-required="true" />
       <span class="helper-text">We'll never share your email</span>
     </div>
 
@@ -130,7 +130,7 @@ The following sections demonstrate all Data Entry components organized into a co
         Phone Number
         <span class="form-label-optional">(optional)</span>
       </label>
-      <input type="tel" id="phone" class="input" placeholder="+1 (555) 000-0000" />
+      <input type="tel" id="phone" name="phone" autocomplete="tel" class="input" placeholder="+1 (555) 000-0000" />
     </div>
   </div>
 
@@ -139,7 +139,7 @@ The following sections demonstrate all Data Entry components organized into a co
       Bio
       <span class="form-label-optional">(optional)</span>
     </label>
-    <textarea id="bio" class="textarea" rows="3" placeholder="Tell us about yourself..." aria-describedby="bio-helper"></textarea>
+    <textarea id="bio" name="bio" class="textarea" rows="3" placeholder="Tell us about yourself..." aria-describedby="bio-helper"></textarea>
     <span id="bio-helper" class="helper-text">Max 500 characters</span>
   </div>
 </fieldset>`} />
@@ -152,7 +152,7 @@ The following sections demonstrate all Data Entry components organized into a co
   <div class="space-y-4 mt-4">
     <div class="form-group">
       <label class="form-label form-label-required" for="language">Language</label>
-      <select id="language" class="select" required aria-required="true">
+      <select id="language" name="language" class="select" required aria-required="true">
         <option value="">Select a language</option>
         <option value="en">English</option>
         <option value="es">Spanish</option>
@@ -163,12 +163,12 @@ The following sections demonstrate all Data Entry components organized into a co
     </div>
 
     <div class="form-group">
-      <label class="form-label" for="interests">
+      <span class="form-label" id="interests-label">
         Interests
         <span class="form-label-optional">(optional)</span>
-      </label>
+      </span>
       <div class="multi-select" id="interests" aria-describedby="interests-helper">
-        <button type="button" class="multi-select-trigger" popovertarget="multi-select-interests">
+        <button type="button" class="multi-select-trigger" popovertarget="multi-select-interests" aria-labelledby="interests-label">
           <div class="multi-select-tags">
             <span class="multi-select-tag">
               Technology
@@ -212,12 +212,12 @@ The following sections demonstrate all Data Entry components organized into a co
     </div>
 
     <div class="form-group">
-      <label class="form-label" for="department">
+      <span class="form-label" id="department-label">
         Department
         <span class="form-label-optional">(optional)</span>
-      </label>
+      </span>
       <div class="tree-select" id="department">
-        <button type="button" class="tree-select-trigger" popovertarget="tree-select-dept">
+        <button type="button" class="tree-select-trigger" popovertarget="tree-select-dept" aria-labelledby="department-label">
           <span class="tree-select-value">Select department...</span>
           <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -256,12 +256,12 @@ The following sections demonstrate all Data Entry components organized into a co
     </div>
 
     <div class="form-group">
-      <label class="form-label">
+      <span class="form-label" id="location-label">
         Location
         <span class="form-label-optional">(optional)</span>
-      </label>
+      </span>
       <div class="cascader">
-        <button type="button" class="cascader-trigger" popovertarget="cascader-location">
+        <button type="button" class="cascader-trigger" popovertarget="cascader-location" aria-labelledby="location-label">
           <span class="cascader-value">
             <span class="cascader-path">
               USA
@@ -326,7 +326,7 @@ The following sections demonstrate all Data Entry components organized into a co
     </div>
 
     <div class="form-group">
-      <label class="form-label">Theme Preference</label>
+      <span class="form-label">Theme Preference</span>
       <div class="segment" role="radiogroup" aria-label="Theme preference">
         <button type="button" class="segment-item segment-item-active" role="radio" aria-checked="true">Light</button>
         <button type="button" class="segment-item" role="radio" aria-checked="false">Dark</button>
@@ -347,15 +347,15 @@ The following sections demonstrate all Data Entry components organized into a co
       <legend class="form-label mb-2">Email Notifications</legend>
       <div class="space-y-2">
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="checkbox checkbox-primary" checked />
+          <input type="checkbox" name="product-updates" class="checkbox checkbox-primary" checked />
           <span>Product updates</span>
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="checkbox checkbox-primary" checked />
+          <input type="checkbox" name="security-alerts" class="checkbox checkbox-primary" checked />
           <span>Security alerts</span>
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="checkbox checkbox-primary" />
+          <input type="checkbox" name="marketing-emails" class="checkbox checkbox-primary" />
           <span>Marketing emails</span>
         </label>
       </div>
@@ -386,7 +386,7 @@ The following sections demonstrate all Data Entry components organized into a co
         <div class="flex items-center justify-between">
           <span class="form-label">Dark Mode</span>
           <label class="switch-label">
-            <input type="checkbox" id="darkmode" class="switch" />
+            <input type="checkbox" id="darkmode" name="darkmode" class="switch" />
             <span class="sr-only">Dark Mode</span>
           </label>
         </div>
@@ -396,7 +396,7 @@ The following sections demonstrate all Data Entry components organized into a co
       <!-- Slider -->
       <div class="form-group">
         <label class="form-label" for="volume">Volume Level</label>
-        <input type="range" id="volume" class="slider slider-primary" min="0" max="100" value="75" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" />
+        <input type="range" id="volume" name="volume" class="slider slider-primary" min="0" max="100" value="75" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" />
         <div class="flex justify-between text-xs text-on-surface-variant">
           <span>0%</span>
           <span>100%</span>
@@ -412,7 +412,7 @@ The following sections demonstrate all Data Entry components organized into a co
   <legend class="px-2 text-lg font-medium">Feedback</legend>
 
   <div class="form-group mt-4">
-    <label class="form-label" id="rating-label">How would you rate your experience?</label>
+    <span class="form-label" id="rating-label">How would you rate your experience?</span>
     <div class="rating" role="radiogroup" aria-labelledby="rating-label">
       <input type="radio" name="rating" class="rating-input" value="1" id="star1" />
       <label for="star1" class="rating-star">★</label>
@@ -440,7 +440,7 @@ The following sections demonstrate all Data Entry components organized into a co
       <span class="form-label-optional">(optional)</span>
     </label>
     <div class="time-input">
-      <input type="time" id="reminder" class="input time-input-field" value="09:00" />
+      <input type="time" id="reminder" name="reminder" class="input time-input-field" value="09:00" />
     </div>
     <span class="helper-text">When should we send daily digests?</span>
   </div>
@@ -453,31 +453,31 @@ The following sections demonstrate all Data Entry components organized into a co
 
   <div class="space-y-6 mt-4">
     <div class="form-group">
-      <label class="form-label">
+      <span class="form-label">
         Two-Factor Authentication Code
         <span class="form-label-optional">(optional)</span>
-      </label>
+      </span>
       <div class="otp-input otp-input-6" aria-label="Enter 6-digit verification code">
-        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 1" />
-        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 2" />
-        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 3" />
-        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 4" />
-        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 5" />
-        <input type="text" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 6" />
+        <input type="text" name="otp-digit-1" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 1" autocomplete="one-time-code" />
+        <input type="text" name="otp-digit-2" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 2" />
+        <input type="text" name="otp-digit-3" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 3" />
+        <input type="text" name="otp-digit-4" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 4" />
+        <input type="text" name="otp-digit-5" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 5" />
+        <input type="text" name="otp-digit-6" class="otp-input-field" maxlength="1" inputmode="numeric" aria-label="Digit 6" />
       </div>
       <span class="otp-input-helper">Enter the code from your authenticator app</span>
     </div>
 
     <div class="form-group">
-      <label class="form-label">
+      <span class="form-label">
         Security PIN
         <span class="form-label-optional">(optional)</span>
-      </label>
+      </span>
       <div class="pin-input pin-input-4" aria-label="Enter 4-digit PIN">
-        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 1" />
-        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 2" />
-        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 3" />
-        <input type="password" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 4" />
+        <input type="password" name="pin-digit-1" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 1" />
+        <input type="password" name="pin-digit-2" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 2" />
+        <input type="password" name="pin-digit-3" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 3" />
+        <input type="password" name="pin-digit-4" class="pin-input-field" maxlength="1" inputmode="numeric" aria-label="PIN digit 4" />
       </div>
       <span class="pin-input-helper">Set a 4-digit PIN for quick access</span>
     </div>
@@ -503,7 +503,7 @@ The following sections demonstrate all Data Entry components organized into a co
           <span class="file-upload-link">Click to upload</span> or drag and drop
         </p>
         <p class="file-upload-hint">PNG, JPG up to 5MB</p>
-        <input type="file" id="avatar" class="file-upload-input" accept="image/png,image/jpeg" />
+        <input type="file" id="avatar" name="avatar" class="file-upload-input" accept="image/png,image/jpeg" />
       </div>
     </div>
     <span id="avatar-helper" class="helper-text">Upload a profile picture</span>
@@ -527,16 +527,16 @@ Use CSS Grid or Flexbox utilities for responsive form layouts:
 
 <ComponentShowcase title="Responsive Grid" code={`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   <div class="form-group">
-    <label class="form-label">First Name</label>
-    <input type="text" class="input input-bordered" placeholder="John" />
+    <label class="form-label" for="form-first-name">First Name</label>
+    <input id="form-first-name" name="form-first-name" autocomplete="given-name" type="text" class="input input-bordered" placeholder="John" />
   </div>
   <div class="form-group">
-    <label class="form-label">Last Name</label>
-    <input type="text" class="input input-bordered" placeholder="Doe" />
+    <label class="form-label" for="form-last-name">Last Name</label>
+    <input id="form-last-name" name="form-last-name" autocomplete="family-name" type="text" class="input input-bordered" placeholder="Doe" />
   </div>
   <div class="form-group">
-    <label class="form-label">Email</label>
-    <input type="email" class="input input-bordered" placeholder="john@example.com" />
+    <label class="form-label" for="form-email-2">Email</label>
+    <input id="form-email-2" name="form-email-2" autocomplete="email" type="email" class="input input-bordered" placeholder="john@example.com" />
   </div>
 </div>`} />
 
@@ -548,12 +548,12 @@ Use `<fieldset>` and `<legend>` for semantic section grouping:
   <legend class="px-2 text-lg font-medium text-on-surface">Account Settings</legend>
   <div class="space-y-4 mt-4">
     <div class="form-group">
-      <label class="form-label">Username</label>
-      <input type="text" class="input input-bordered" placeholder="Enter username" />
+      <label class="form-label" for="form-username">Username</label>
+      <input id="form-username" name="form-username" autocomplete="username" type="text" class="input input-bordered" placeholder="Enter username" />
     </div>
     <div class="form-group">
-      <label class="form-label">Email</label>
-      <input type="email" class="input input-bordered" placeholder="you@example.com" />
+      <label class="form-label" for="form-email-3">Email</label>
+      <input id="form-email-3" name="form-email-3" autocomplete="email" type="email" class="input input-bordered" placeholder="you@example.com" />
     </div>
   </div>
 </fieldset>`} />
@@ -563,17 +563,17 @@ Use `<fieldset>` and `<legend>` for semantic section grouping:
 <ComponentShowcase title="Field Indicators" code={`<div class="space-y-4">
   <!-- Required field with asterisk -->
   <div class="form-group">
-    <label class="form-label form-label-required">Email Address</label>
-    <input type="email" class="input input-bordered" placeholder="you@example.com" required aria-required="true" />
+    <label class="form-label form-label-required" for="form-email-address">Email Address</label>
+    <input id="form-email-address" name="form-email-address" autocomplete="email" type="email" class="input input-bordered" placeholder="you@example.com" required aria-required="true" />
   </div>
 
   <!-- Optional field with label -->
   <div class="form-group">
-    <label class="form-label">
+    <label class="form-label" for="form-phone-number">
       Phone Number
       <span class="form-label-optional">(optional)</span>
     </label>
-    <input type="tel" class="input input-bordered" placeholder="+1 (555) 000-0000" />
+    <input id="form-phone-number" name="form-phone-number" autocomplete="tel" type="tel" class="input input-bordered" placeholder="+1 (555) 000-0000" />
   </div>
 </div>`} />
 
@@ -584,24 +584,24 @@ Use `<fieldset>` and `<legend>` for semantic section grouping:
 ### Error State
 
 <ComponentShowcase title="Error State" code={`<div class="form-group form-group-error">
-  <label class="form-label form-label-required">Email</label>
-  <input type="email" class="input input-bordered input-error" value="invalid-email" aria-invalid="true" aria-describedby="email-error" />
+  <label class="form-label form-label-required" for="form-email-4">Email</label>
+  <input id="form-email-4" name="form-email-4" autocomplete="email" type="email" class="input input-bordered input-error" value="invalid-email" aria-invalid="true" aria-describedby="email-error" />
   <span id="email-error" class="helper-text helper-text-error">Please enter a valid email address</span>
 </div>`} />
 
 ### Success State
 
 <ComponentShowcase title="Success State" code={`<div class="form-group form-group-success">
-  <label class="form-label">Username</label>
-  <input type="text" class="input input-bordered input-success" value="johndoe" aria-describedby="username-success" />
+  <label class="form-label" for="form-username-2">Username</label>
+  <input id="form-username-2" name="form-username-2" autocomplete="username" type="text" class="input input-bordered input-success" value="johndoe" aria-describedby="username-success" />
   <span id="username-success" class="helper-text helper-text-success">Username is available!</span>
 </div>`} />
 
 ### Disabled State
 
 <ComponentShowcase title="Disabled State" code={`<div class="form-group">
-  <label class="form-label">Read-only Field</label>
-  <input type="text" class="input input-bordered" value="Cannot edit this" disabled />
+  <label class="form-label" for="form-read-only-field">Read-only Field</label>
+  <input id="form-read-only-field" name="form-read-only-field" type="text" class="input input-bordered" value="Cannot edit this" disabled />
   <span class="helper-text">This field is locked</span>
 </div>`} />
 
@@ -663,37 +663,37 @@ Use `<fieldset>` and `<legend>` for semantic section grouping:
 Form fields support semantic color states for validation feedback:
 
 <ComponentShowcase title="Validation States" code={`<div class="form-control">
-  <label class="label"><span class="label-text">Success field</span></label>
-  <input class="input input-success" type="text" value="Valid input" />
+  <label class="label" for="form-success-field"><span class="label-text">Success field</span></label>
+  <input id="form-success-field" name="form-success-field" class="input input-success" type="text" value="Valid input" />
 </div>
 <div class="form-control">
-  <label class="label"><span class="label-text">Error field</span></label>
-  <input class="input input-error" type="text" value="Invalid input" />
+  <label class="label" for="form-error-field"><span class="label-text">Error field</span></label>
+  <input id="form-error-field" name="form-error-field" class="input input-error" type="text" value="Invalid input" />
 </div>
 <div class="form-control">
-  <label class="label"><span class="label-text">Warning field</span></label>
-  <input class="input input-warning" type="text" placeholder="Needs attention..." />
+  <label class="label" for="form-warning-field"><span class="label-text">Warning field</span></label>
+  <input id="form-warning-field" name="form-warning-field" class="input input-warning" type="text" placeholder="Needs attention..." />
 </div>
 <div class="form-control">
-  <label class="label"><span class="label-text">Info field</span></label>
-  <input class="input input-info" type="text" placeholder="Informational..." />
+  <label class="label" for="form-info-field"><span class="label-text">Info field</span></label>
+  <input id="form-info-field" name="form-info-field" class="input input-info" type="text" placeholder="Informational..." />
 </div>`}>
   <div class="flex flex-col gap-3">
     <div class="form-control">
-      <label class="label"><span class="label-text">Success field</span></label>
-      <input class="input input-success" type="text" value="Valid input" />
+      <label class="label" for="form-success-field-2"><span class="label-text">Success field</span></label>
+      <input id="form-success-field-2" name="form-success-field-2" class="input input-success" type="text" value="Valid input" />
     </div>
     <div class="form-control">
-      <label class="label"><span class="label-text">Error field</span></label>
-      <input class="input input-error" type="text" value="Invalid input" />
+      <label class="label" for="form-error-field-2"><span class="label-text">Error field</span></label>
+      <input id="form-error-field-2" name="form-error-field-2" class="input input-error" type="text" value="Invalid input" />
     </div>
     <div class="form-control">
-      <label class="label"><span class="label-text">Warning field</span></label>
-      <input class="input input-warning" type="text" placeholder="Needs attention..." />
+      <label class="label" for="form-warning-field-2"><span class="label-text">Warning field</span></label>
+      <input id="form-warning-field-2" name="form-warning-field-2" class="input input-warning" type="text" placeholder="Needs attention..." />
     </div>
     <div class="form-control">
-      <label class="label"><span class="label-text">Info field</span></label>
-      <input class="input input-info" type="text" placeholder="Informational..." />
+      <label class="label" for="form-info-field-2"><span class="label-text">Info field</span></label>
+      <input id="form-info-field-2" name="form-info-field-2" class="input input-info" type="text" placeholder="Informational..." />
     </div>
   </div>
 </ComponentShowcase>
