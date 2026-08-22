@@ -296,6 +296,14 @@
     margin-top: 0.5rem;
   }
 
+  .alert-filled .alert-actions .btn-text {
+    color: inherit;
+  }
+
+  .alert-filled .alert-actions .btn-text:hover {
+    background-color: color-mix(in oklch, currentColor 12%, transparent);
+  }
+
   /* Banner Style (full width) */
   .alert-banner {
     border-radius: 0;

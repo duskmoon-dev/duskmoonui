@@ -64,6 +64,10 @@
     color: var(--color-error-content);
   }
 
+  .navbar a {
+    color: inherit;
+  }
+
   .navbar-start {
     display: flex;
     align-items: center;

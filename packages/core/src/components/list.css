@@ -148,7 +148,7 @@
   /* Disabled State */
   .list-item:disabled,
   .list-item-disabled {
-    opacity: 0.5;
+    opacity: 0.7;
     pointer-events: none;
     cursor: not-allowed;
   }

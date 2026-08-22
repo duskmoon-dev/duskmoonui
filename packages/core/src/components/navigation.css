@@ -65,6 +65,10 @@
     color: var(--color-error-content);
   }
 
+  .navbar a {
+    color: inherit;
+  }
+
   .navbar-start {
     display: flex;
     align-items: center;
@@ -417,7 +421,7 @@
 
   /* Disabled Breadcrumb Item */
   .breadcrumb-item-disabled {
-    opacity: 0.38;
+    opacity: 1;
     pointer-events: none;
     cursor: not-allowed;
   }
