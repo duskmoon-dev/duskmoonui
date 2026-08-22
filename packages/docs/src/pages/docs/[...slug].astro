@@ -23,7 +23,7 @@ const { Content } = await render(entry);
 >
   <article class="max-w-4xl mx-auto">
     <header class="mb-12">
-      <h1 class="mt-0 text-5xl font-bold">{entry.data.title}</h1>
+      <h1 class="mt-0 break-words text-4xl font-bold sm:text-5xl">{entry.data.title}</h1>
       {entry.data.description && (
         <p class="text-xl text-on-surface-variant mb-0">{entry.data.description}</p>
       )}
