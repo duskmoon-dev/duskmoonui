@@ -471,6 +471,7 @@
     border: 1px solid currentColor;
     border-radius: var(--radius-sm);
     resize: vertical;
+    field-sizing: content;
     transition: border-color 150ms ease-in-out;
   }
 

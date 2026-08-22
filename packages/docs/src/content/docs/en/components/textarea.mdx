@@ -75,11 +75,11 @@ Control how users can resize the textarea:
 
 ## Auto-Resize
 
-Automatically adjust height based on content:
+All `.textarea` elements use native `field-sizing: content` by default, so supporting browsers automatically adjust their height based on content. Add `.textarea-auto-resize` for a compact textarea without a manual resize handle or visible overflow:
 
 <ComponentShowcase title="Auto-Resize Textarea" code={`<textarea class="textarea textarea-auto-resize" placeholder="Grows with content..."></textarea>`} />
 
-**Note:** Auto-resize requires JavaScript to function. Example implementation:
+For browsers without `field-sizing` support, use JavaScript as a fallback:
 
 ```html
 <textarea class="textarea textarea-auto-resize" placeholder="Auto-growing textarea..."></textarea>
@@ -529,7 +529,7 @@ const handleInput = (e) => {
 | `.textarea-resize-vertical` | Allow vertical resize (default) |
 | `.textarea-resize-horizontal` | Allow horizontal resize |
 | `.textarea-resize-both` | Allow resizing in both directions |
-| `.textarea-auto-resize` | Auto-resize with content (requires JS) |
+| `.textarea-auto-resize` | Compact auto-resize styling; use a JS fallback in browsers without `field-sizing` support |
 | `.textarea-full` | Full width |
 | `.textarea-container` | Wrapper for label and helper text |
 | `.textarea-label` | Label styling |

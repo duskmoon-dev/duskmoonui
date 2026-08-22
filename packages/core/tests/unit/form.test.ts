@@ -170,6 +170,10 @@ describe('Form Component', () => {
       expect(formCSS).toMatch(/\.textarea[^}]*min-height/s);
     });
 
+    it('should size to its content by default', () => {
+      expect(formCSS).toMatch(/\.textarea\s*\{[^}]*field-sizing:\s*content;/s);
+    });
+
     it('should handle resize property', () => {
       expect(formCSS).toMatch(/\.textarea[^}]*resize/s);
     });

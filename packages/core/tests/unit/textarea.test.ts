@@ -21,6 +21,10 @@ describe('Textarea Component', () => {
     expect(css).toContain('.textarea');
   });
 
+  it('should size to its content by default', () => {
+    expect(css).toMatch(/\.textarea\s*\{[^}]*field-sizing:\s*content;/s);
+  });
+
   it('should define .textarea-label class', () => {
     expect(css).toContain('.textarea-label');
   });
