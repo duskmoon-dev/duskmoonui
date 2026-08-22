@@ -361,14 +361,15 @@ Disabled sliders are non-interactive:
 - Use `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-label` attributes
 - Consider always showing value labels for better accessibility
 
-<ComponentShowcase title="Accessible Slider" code={`<label for="volume-slider">Volume</label>
+<ComponentShowcase title="Accessible Slider" code={`<span id="volume-slider-label">Volume</span>
 <div
+  id="volume-slider"
   class="slider"
   role="slider"
   aria-valuenow="50"
   aria-valuemin="0"
   aria-valuemax="100"
-  aria-label="Volume control"
+  aria-labelledby="volume-slider-label"
   tabindex="0"
 >
   <div class="slider-track">

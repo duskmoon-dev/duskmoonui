@@ -15,27 +15,27 @@ Time Input provides an intuitive way to select time values with separate hour, m
 ## Basic Usage
 
 <ComponentShowcase title="Basic Time Input" code={`<div class="time-input">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" />
 </div>`} />
 
 ## With Seconds
 
 <ComponentShowcase title="Time Input with Seconds" code={`<div class="time-input time-input-seconds">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="SS" maxlength="2" />
+  <input type="text" name="seconds" aria-label="Seconds" class="time-input-segment" placeholder="SS" maxlength="2" />
 </div>`} />
 
 ## 12-Hour Format with AM/PM
 
 <ComponentShowcase title="12-Hour Format" code={`<div class="time-input time-input-12h">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="09" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" value="09" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="30" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" value="30" />
   <div class="time-input-period">
     <button class="time-input-period-btn time-input-period-btn-active">AM</button>
     <button class="time-input-period-btn">PM</button>
@@ -47,17 +47,17 @@ Time Input provides an intuitive way to select time values with separate hour, m
 ### Outlined (Default)
 
 <ComponentShowcase title="Outlined Time Input" code={`<div class="time-input time-input-outlined">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" />
 </div>`} />
 
 ### Filled
 
 <ComponentShowcase title="Filled Time Input" code={`<div class="time-input time-input-filled">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" />
 </div>`} />
 
 ## Sizes
@@ -65,26 +65,26 @@ Time Input provides an intuitive way to select time values with separate hour, m
 ### Small
 
 <ComponentShowcase title="Small Time Input" code={`<div class="time-input time-input-sm">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" />
 </div>`} />
 
 ### Large
 
 <ComponentShowcase title="Large Time Input" code={`<div class="time-input time-input-lg">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" />
 </div>`} />
 
 ## With Time Picker Dropdown
 
 <ComponentShowcase title="Time Input with Picker" code={`<div class="time-input-wrapper">
   <div class="time-input time-input-with-picker">
-    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="14" />
+    <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" value="14" />
     <span class="time-input-separator">:</span>
-    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="30" />
+    <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" value="30" />
     <button class="time-input-picker-trigger" aria-label="Open time picker">
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -121,19 +121,19 @@ Time Input provides an intuitive way to select time values with separate hour, m
 ### Focused
 
 <ComponentShowcase title="Focused State" code={`<div class="time-input time-input-focused">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="10" />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" value="10" />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment time-input-segment-focused" placeholder="MM" maxlength="2" />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment time-input-segment-focused" placeholder="MM" maxlength="2" />
 </div>`} />
 
 ### Error State
 
 <ComponentShowcase title="Error State" code={`<div class="form-group">
-  <label class="form-label">Start Time</label>
+  <span class="form-label">Start Time</span>
   <div class="time-input time-input-error">
-    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="25" />
+    <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" value="25" />
     <span class="time-input-separator">:</span>
-    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
+    <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
   </div>
   <span class="helper-text helper-text-error">Invalid hour value</span>
 </div>`} />
@@ -141,43 +141,43 @@ Time Input provides an intuitive way to select time values with separate hour, m
 ### Disabled
 
 <ComponentShowcase title="Disabled State" code={`<div class="time-input time-input-disabled">
-  <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" disabled />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" disabled />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" disabled />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" disabled />
 </div>`} />
 
 ### Read Only
 
 <ComponentShowcase title="Read Only State" code={`<div class="time-input time-input-readonly">
-  <input type="text" class="time-input-segment" value="09" maxlength="2" readonly />
+  <input type="text" name="hours" aria-label="Hours" class="time-input-segment" value="09" maxlength="2" readonly />
   <span class="time-input-separator">:</span>
-  <input type="text" class="time-input-segment" value="30" maxlength="2" readonly />
+  <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" value="30" maxlength="2" readonly />
 </div>`} />
 
 ## Time Range
 
 <ComponentShowcase title="Time Range Selection" code={`<div class="time-input-range">
   <div class="time-input">
-    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="09" />
+    <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" value="09" />
     <span class="time-input-separator">:</span>
-    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
+    <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
   </div>
   <span class="time-input-range-separator">to</span>
   <div class="time-input">
-    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" value="17" />
+    <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" value="17" />
     <span class="time-input-separator">:</span>
-    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
+    <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" value="00" />
   </div>
 </div>`} />
 
 ## With Label and Helper
 
 <ComponentShowcase title="Complete Time Input Form" code={`<div class="form-group">
-  <label class="form-label form-label-required">Meeting Time</label>
+  <span class="form-label form-label-required">Meeting Time</span>
   <div class="time-input time-input-12h">
-    <input type="text" class="time-input-segment" placeholder="HH" maxlength="2" />
+    <input type="text" name="hours" aria-label="Hours" class="time-input-segment" placeholder="HH" maxlength="2" />
     <span class="time-input-separator">:</span>
-    <input type="text" class="time-input-segment" placeholder="MM" maxlength="2" />
+    <input type="text" name="minutes" aria-label="Minutes" class="time-input-segment" placeholder="MM" maxlength="2" />
     <div class="time-input-period">
       <button class="time-input-period-btn time-input-period-btn-active">AM</button>
       <button class="time-input-period-btn">PM</button>
@@ -225,55 +225,55 @@ Time Input provides an intuitive way to select time values with separate hour, m
 ## Color Variants
 
 <ComponentShowcase title="Color Variants" code={`<div class="time-input time-input-primary">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>
 <div class="time-input time-input-secondary">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>
 <div class="time-input time-input-tertiary">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>
 <div class="time-input time-input-info">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>
 <div class="time-input time-input-success">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>
 <div class="time-input time-input-warning">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>
 <div class="time-input time-input-error">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>`}>
   <div class="flex flex-col gap-3">
     <div class="time-input time-input-primary">
-      <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+      <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
       <span class="time-input-separator">:</span>
-      <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+      <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
     </div>
     <div class="time-input time-input-success">
-      <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+      <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
       <span class="time-input-separator">:</span>
-      <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+      <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
     </div>
     <div class="time-input time-input-error">
-      <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+      <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
       <span class="time-input-separator">:</span>
-      <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+      <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
     </div>
   </div>
 </ComponentShowcase>
@@ -281,14 +281,14 @@ Time Input provides an intuitive way to select time values with separate hour, m
 ## Ghost Variant
 
 <ComponentShowcase title="Ghost Time Input" code={`<div class="time-input time-input-ghost">
-  <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+  <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
   <span class="time-input-separator">:</span>
-  <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+  <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
 </div>`}>
   <div class="time-input time-input-ghost">
-    <input class="time-input-field" type="text" placeholder="HH" maxlength="2" />
+    <input name="hours" aria-label="Hours" class="time-input-field" type="text" placeholder="HH" maxlength="2" />
     <span class="time-input-separator">:</span>
-    <input class="time-input-field" type="text" placeholder="MM" maxlength="2" />
+    <input name="minutes" aria-label="Minutes" class="time-input-field" type="text" placeholder="MM" maxlength="2" />
   </div>
 </ComponentShowcase>
 

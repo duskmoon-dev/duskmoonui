@@ -18,8 +18,10 @@ Autocomplete provides suggestions as users type, helping them quickly find and s
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="basic-autocomplete"
       class="autocomplete-input"
       placeholder="Search..."
+      aria-label="Search options"
       aria-autocomplete="list"
       aria-controls="autocomplete-dropdown"
     />
@@ -46,8 +48,10 @@ The default autocomplete with a filled background:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="country-autocomplete"
       class="autocomplete-input"
       placeholder="Choose a country..."
+      aria-label="Choose a country"
       aria-autocomplete="list"
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
@@ -70,8 +74,10 @@ Autocomplete with an outlined border:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="product-autocomplete"
       class="autocomplete-input"
       placeholder="Search products..."
+      aria-label="Search products"
       aria-autocomplete="list"
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
@@ -95,8 +101,10 @@ Standard autocomplete with a single selected option:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="language-autocomplete"
       class="autocomplete-input"
       placeholder="Select a language..."
+      aria-label="Select a language"
       value="JavaScript"
       aria-autocomplete="list"
     />
@@ -132,8 +140,10 @@ Autocomplete supporting multiple selections displayed as chips:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="additional-language-autocomplete"
       class="autocomplete-input"
       placeholder="Add more languages..."
+      aria-label="Add more languages"
       aria-autocomplete="list"
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
@@ -157,8 +167,10 @@ Add icons to autocomplete options for better visual context:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="file-type-autocomplete"
       class="autocomplete-input"
       placeholder="Choose a file type..."
+      aria-label="Choose a file type"
       aria-autocomplete="list"
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
@@ -195,8 +207,10 @@ Organize options into labeled groups:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="app-autocomplete"
       class="autocomplete-input"
       placeholder="Search apps..."
+      aria-label="Search apps"
       aria-autocomplete="list"
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
@@ -229,8 +243,10 @@ Display a loading indicator while fetching async data:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="user-autocomplete"
       class="autocomplete-input"
       placeholder="Search users..."
+      aria-label="Search users"
       aria-autocomplete="list"
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
@@ -254,8 +270,10 @@ Show a message when no matching options are found:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="empty-result-autocomplete"
       class="autocomplete-input"
       placeholder="Search..."
+      aria-label="Search options with no results"
       value="xyz123"
       aria-autocomplete="list"
     />
@@ -276,18 +294,20 @@ Keyboard navigation highlights the focused option:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="focused-autocomplete"
       class="autocomplete-input"
       placeholder="Navigate with arrows..."
+      aria-label="Keyboard navigation example"
       aria-autocomplete="list"
-      aria-activedescendant="option-2"
+      aria-activedescendant="focused-option-2"
     />
     <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
   </div>
   <div class="autocomplete-dropdown autocomplete-dropdown-open">
     <ul class="autocomplete-options" role="listbox">
-      <li role="option" id="option-1" class="autocomplete-option">Option 1</li>
-      <li role="option" id="option-2" class="autocomplete-option autocomplete-option-focused">Option 2</li>
-      <li role="option" id="option-3" class="autocomplete-option">Option 3</li>
+      <li role="option" id="focused-option-1" class="autocomplete-option">Option 1</li>
+      <li role="option" id="focused-option-2" class="autocomplete-option autocomplete-option-focused">Option 2</li>
+      <li role="option" id="focused-option-3" class="autocomplete-option">Option 3</li>
     </ul>
   </div>
 </div>`} />
@@ -300,8 +320,10 @@ Non-interactive autocomplete:
   <div class="autocomplete-input-wrapper">
     <input
       type="text"
+      name="disabled-autocomplete"
       class="autocomplete-input"
       placeholder="Disabled..."
+      aria-label="Disabled autocomplete"
       disabled
       aria-autocomplete="list"
     />
@@ -336,6 +358,8 @@ Autocomplete requires proper ARIA attributes for screen reader support:
   <div class="autocomplete-input-wrapper">
     <input
       id="autocomplete-input"
+      name="country"
+      autocomplete="country-name"
       type="text"
       class="autocomplete-input"
       placeholder="Type to search..."
@@ -359,8 +383,8 @@ Autocomplete requires proper ARIA attributes for screen reader support:
     role="listbox"
   >
     <ul class="autocomplete-options">
-      <li role="option" id="option-1" class="autocomplete-option">United States</li>
-      <li role="option" id="option-2" class="autocomplete-option">Canada</li>
+      <li role="option" id="country-option-1" class="autocomplete-option">United States</li>
+      <li role="option" id="country-option-2" class="autocomplete-option">Canada</li>
     </ul>
   </div>
 </div>`} />
@@ -789,60 +813,60 @@ Key ARIA attributes for accessibility:
 ## Color Variants
 
 <ComponentShowcase title="Color Variants" code={`<div class="autocomplete autocomplete-primary">
-  <input class="autocomplete-input" placeholder="Primary autocomplete..." />
+  <input name="primary-autocomplete" class="autocomplete-input" placeholder="Primary autocomplete..." aria-label="Primary autocomplete" />
   <ul class="autocomplete-dropdown">
     <li class="autocomplete-item">Option 1</li>
     <li class="autocomplete-item">Option 2</li>
   </ul>
 </div>
 <div class="autocomplete autocomplete-secondary">
-  <input class="autocomplete-input" placeholder="Secondary autocomplete..." />
+  <input name="secondary-autocomplete" class="autocomplete-input" placeholder="Secondary autocomplete..." aria-label="Secondary autocomplete" />
 </div>
 <div class="autocomplete autocomplete-tertiary">
-  <input class="autocomplete-input" placeholder="Tertiary autocomplete..." />
+  <input name="tertiary-autocomplete" class="autocomplete-input" placeholder="Tertiary autocomplete..." aria-label="Tertiary autocomplete" />
 </div>
 <div class="autocomplete autocomplete-info">
-  <input class="autocomplete-input" placeholder="Info autocomplete..." />
+  <input name="info-autocomplete" class="autocomplete-input" placeholder="Info autocomplete..." aria-label="Info autocomplete" />
 </div>
 <div class="autocomplete autocomplete-success">
-  <input class="autocomplete-input" placeholder="Success autocomplete..." />
+  <input name="success-autocomplete" class="autocomplete-input" placeholder="Success autocomplete..." aria-label="Success autocomplete" />
 </div>
 <div class="autocomplete autocomplete-warning">
-  <input class="autocomplete-input" placeholder="Warning autocomplete..." />
+  <input name="warning-autocomplete" class="autocomplete-input" placeholder="Warning autocomplete..." aria-label="Warning autocomplete" />
 </div>
 <div class="autocomplete autocomplete-error">
-  <input class="autocomplete-input" placeholder="Error autocomplete..." />
+  <input name="error-autocomplete" class="autocomplete-input" placeholder="Error autocomplete..." aria-label="Error autocomplete" />
 </div>`}>
   <div class="autocomplete autocomplete-primary">
-    <input class="autocomplete-input" placeholder="Primary autocomplete..." />
+    <input name="primary-autocomplete" class="autocomplete-input" placeholder="Primary autocomplete..." aria-label="Primary autocomplete" />
   </div>
   <div class="autocomplete autocomplete-secondary">
-    <input class="autocomplete-input" placeholder="Secondary autocomplete..." />
+    <input name="secondary-autocomplete" class="autocomplete-input" placeholder="Secondary autocomplete..." aria-label="Secondary autocomplete" />
   </div>
   <div class="autocomplete autocomplete-tertiary">
-    <input class="autocomplete-input" placeholder="Tertiary autocomplete..." />
+    <input name="tertiary-autocomplete" class="autocomplete-input" placeholder="Tertiary autocomplete..." aria-label="Tertiary autocomplete" />
   </div>
   <div class="autocomplete autocomplete-info">
-    <input class="autocomplete-input" placeholder="Info autocomplete..." />
+    <input name="info-autocomplete" class="autocomplete-input" placeholder="Info autocomplete..." aria-label="Info autocomplete" />
   </div>
   <div class="autocomplete autocomplete-success">
-    <input class="autocomplete-input" placeholder="Success autocomplete..." />
+    <input name="success-autocomplete" class="autocomplete-input" placeholder="Success autocomplete..." aria-label="Success autocomplete" />
   </div>
   <div class="autocomplete autocomplete-warning">
-    <input class="autocomplete-input" placeholder="Warning autocomplete..." />
+    <input name="warning-autocomplete" class="autocomplete-input" placeholder="Warning autocomplete..." aria-label="Warning autocomplete" />
   </div>
   <div class="autocomplete autocomplete-error">
-    <input class="autocomplete-input" placeholder="Error autocomplete..." />
+    <input name="error-autocomplete" class="autocomplete-input" placeholder="Error autocomplete..." aria-label="Error autocomplete" />
   </div>
 </ComponentShowcase>
 
 ## Ghost Variant
 
 <ComponentShowcase title="Ghost Autocomplete" code={`<div class="autocomplete autocomplete-ghost">
-  <input class="autocomplete-input" placeholder="Ghost autocomplete (no border)..." />
+  <input name="ghost-autocomplete" class="autocomplete-input" placeholder="Ghost autocomplete (no border)..." aria-label="Ghost autocomplete" />
 </div>`}>
   <div class="autocomplete autocomplete-ghost">
-    <input class="autocomplete-input" placeholder="Ghost autocomplete (no border)..." />
+    <input name="ghost-autocomplete" class="autocomplete-input" placeholder="Ghost autocomplete (no border)..." aria-label="Ghost autocomplete" />
   </div>
 </ComponentShowcase>
 
