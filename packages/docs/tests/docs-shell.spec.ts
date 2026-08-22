@@ -29,6 +29,60 @@ test.describe('documentation shell', () => {
     expect(documentWidth).toBeLessThanOrEqual(375);
   });
 
+  test('keeps long component titles readable within the mobile viewport', async ({
+    page,
+  }) => {
+    const docsUrl =
+      process.env.DOCS_BASE_URL ??
+      '/duskmoonui/docs/en/components/autocomplete/';
+
+    await page.goto(docsUrl);
+    await page.waitForLoadState('networkidle');
+
+    const heading = page.locator('article > header h1');
+    await expect(heading).toBeVisible();
+    await expect(heading).toHaveText('Autocomplete');
+
+    const headingMetrics = await heading.evaluate(element => {
+      const bounds = element.getBoundingClientRect();
+
+      return {
+        clientWidth: element.clientWidth,
+        fontSize: Number.parseFloat(getComputedStyle(element).fontSize),
+        scrollWidth: element.scrollWidth,
+        left: bounds.left,
+        right: bounds.right,
+      };
+    });
+
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBeLessThanOrEqual(375);
+    expect(headingMetrics.scrollWidth).toBeLessThanOrEqual(
+      headingMetrics.clientWidth,
+    );
+    expect(headingMetrics.left).toBeGreaterThanOrEqual(0);
+    expect(headingMetrics.right).toBeLessThanOrEqual(375);
+    expect(headingMetrics.fontSize).toBeGreaterThanOrEqual(36);
+
+    const futureTitleMetrics = await heading.evaluate(element => {
+      element.textContent =
+        'ExtraordinarilyLongUnbrokenComponentDocumentationTitle';
+
+      return {
+        clientWidth: element.clientWidth,
+        scrollWidth: element.scrollWidth,
+      };
+    });
+
+    expect(futureTitleMetrics.scrollWidth).toBeLessThanOrEqual(
+      futureTitleMetrics.clientWidth,
+    );
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBeLessThanOrEqual(375);
+  });
+
   test('fits the tablet viewport with every navigation control visible', async ({
     page,
   }) => {
