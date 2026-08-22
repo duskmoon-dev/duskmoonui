@@ -29,6 +29,47 @@ test.describe('documentation shell', () => {
     expect(documentWidth).toBeLessThanOrEqual(375);
   });
 
+  test('fits the tablet viewport with every navigation control visible', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 768, height: 1024 });
+
+    const docsUrl =
+      process.env.DOCS_BASE_URL ??
+      '/duskmoonui/docs/en/components/button/';
+
+    await page.goto(docsUrl);
+    await page.waitForLoadState('networkidle');
+
+    const navLinks = page.locator('.nav-links > a');
+    const themeController = page.locator('.nav-links .theme-controller');
+    await expect(navLinks).toHaveCount(5);
+    await expect(themeController).toBeVisible();
+    await expect(themeController).toBeEnabled();
+
+    const controlsFit = await page
+      .locator('.nav-links > a, .nav-links .theme-controller')
+      .evaluateAll(controls =>
+        controls.every(control => {
+          const bounds = control.getBoundingClientRect();
+          const style = window.getComputedStyle(control);
+          return (
+            style.display !== 'none' &&
+            style.visibility !== 'hidden' &&
+            bounds.width > 0 &&
+            bounds.height > 0 &&
+            bounds.left >= 0 &&
+            bounds.right <= window.innerWidth
+          );
+        }),
+      );
+
+    expect(controlsFit).toBe(true);
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBeLessThanOrEqual(768);
+  });
+
   test('skips unavailable Pagefind assets in development', async ({ page }) => {
     const pagefindFailures: string[] = [];
 
