@@ -1,3 +1,8 @@
+---
+name: cmd-update-project-docs
+description: Update existing project documentation and package-consumer skills to match the current DuskmoonUI codebase.
+---
+
 # Update Project Documentation
 
 

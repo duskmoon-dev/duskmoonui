@@ -56,6 +56,9 @@ test-results/
 # Explicitly keep commands (optional, but documents intent)
 !.claude/commands/
 
+# Agent runtime artifacts
+.agents/settings.local.json
+
 # Spec-kit
 .specify/.cache/
 
@@ -65,5 +68,4 @@ test-results/
 
 # Audit artifacts
 audit-screenshots/
-
 

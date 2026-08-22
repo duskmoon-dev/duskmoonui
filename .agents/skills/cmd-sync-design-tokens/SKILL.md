@@ -1,3 +1,8 @@
+---
+name: cmd-sync-design-tokens
+description: Pull the latest DuskMoon design tokens, regenerate core theme outputs, update integrations, and validate the result.
+---
+
 # Sync Design Tokens
 
 Pull the latest design tokens from the `duskmoon-dev/design` GitHub repo and propagate changes through `packages/core`. This is the single command to run whenever the remote design repo has been updated.
