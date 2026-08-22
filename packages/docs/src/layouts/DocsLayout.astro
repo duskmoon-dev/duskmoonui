@@ -12,6 +12,7 @@ export interface Props {
 const { title, description, locale } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const version = `v${pkg.version}`;
+const pagefindEnabled = import.meta.env.PROD;
 ---
 
 <BaseLayout title={title} description={description} locale={locale}>
@@ -28,7 +29,7 @@ const version = `v${pkg.version}`;
             <a href={`${base}components/`}>Components</a>
             <a href={`${base}css-art/`}>CSS Art</a>
             <a href={`${base}docs/en/theming/themes/`}>Themes</a>
-            <div id="search" class="header-search"></div>
+            {pagefindEnabled && <div id="search" class="header-search"></div>}
             <a href="https://github.com/duskmoon-dev/duskmoonui" target="_blank">GitHub</a>
             <ThemeToggle client:load />
           </div>
@@ -49,22 +50,25 @@ const version = `v${pkg.version}`;
     </footer>
   </div>
 
-  <link rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />
-  <script is:inline define:vars={{ base }}>
-    window.addEventListener('DOMContentLoaded', () => {
-      const el = document.getElementById('search');
-      if (!el) return;
-      const script = document.createElement('script');
-      script.src = `${base}pagefind/pagefind-ui.js`;
-      script.onload = () => {
-        new window.PagefindUI({
-          element: '#search',
-          showSubResults: true,
-          showImages: false,
-        });
-      };
-      document.head.appendChild(script);
-    });
-  </script>
+  {pagefindEnabled && (
+    <link rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />
+  )}
+  {pagefindEnabled && (
+    <script is:inline define:vars={{ base }}>
+      window.addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('search');
+        if (!el) return;
+        const script = document.createElement('script');
+        script.src = `${base}pagefind/pagefind-ui.js`;
+        script.onload = () => {
+          new window.PagefindUI({
+            element: '#search',
+            showSubResults: true,
+            showImages: false,
+          });
+        };
+        document.head.appendChild(script);
+      });
+    </script>
+  )}
 </BaseLayout>
-
