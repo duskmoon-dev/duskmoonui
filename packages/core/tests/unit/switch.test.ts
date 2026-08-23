@@ -6,6 +6,7 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { transform } from 'lightningcss';
 
 describe('Switch Component', () => {
   let css: string;
@@ -32,6 +33,25 @@ describe('Switch Component', () => {
       expect(css).toContain('--switch-height');
       expect(css).toContain('--switch-thumb-size');
       expect(css).toContain('--switch-color');
+    });
+
+    it('should keep important after each complete transition list', () => {
+      expect(css).toMatch(
+        /transition:\s*background-color 200ms ease-in-out,\s*border-color 200ms ease-in-out,\s*grid-template-columns 200ms ease-in-out !important;/s,
+      );
+      expect(css).toMatch(
+        /transition:\s*background-color 200ms ease-in-out,\s*width 200ms ease-in-out,\s*margin 200ms ease-in-out !important;/s,
+      );
+    });
+
+    it('should compile with Lightning CSS', () => {
+      expect(() =>
+        transform({
+          filename: 'switch.css',
+          code: Buffer.from(css),
+          minify: true,
+        }),
+      ).not.toThrow();
     });
   });
 
