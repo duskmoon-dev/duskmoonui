@@ -447,28 +447,22 @@
   }
 
   .chat-start .chat-bubble::before,
-  .chat-end .chat-bubble::before,
-  .chat-start .chat-bubble::after,
-  .chat-end .chat-bubble::after {
+  .chat-end .chat-bubble::before {
     content: "";
     position: absolute;
     top: 0;
+    width: calc(1rem - 2px);
+    height: calc(1rem - 2px);
+    background-color: var(--chat-bubble-bg);
     clip-path: polygon(0 0, 100% 0, 100% 100%);
+    filter:
+      drop-shadow(-1px 0 0 var(--color-outline-variant))
+      drop-shadow(0 -1px 0 var(--color-outline-variant));
+    pointer-events: none;
   }
 
   .chat-start .chat-bubble::before {
-    left: -0.625rem;
-    width: 1rem;
-    height: 1rem;
-    background-color: var(--color-outline-variant);
-  }
-
-  .chat-start .chat-bubble::after {
     left: -0.5rem;
-    width: calc(1rem - 2px);
-    height: calc(1rem - 2px);
-    top: 1px;
-    background-color: var(--chat-bubble-bg);
   }
 
   .chat-start .chat-bubble {
@@ -476,19 +470,7 @@
   }
 
   .chat-end .chat-bubble::before {
-    right: -0.625rem;
-    width: 1rem;
-    height: 1rem;
-    background-color: var(--color-outline-variant);
-    transform: scaleX(-1);
-  }
-
-  .chat-end .chat-bubble::after {
     right: -0.5rem;
-    width: calc(1rem - 2px);
-    height: calc(1rem - 2px);
-    top: 1px;
-    background-color: var(--chat-bubble-bg);
     transform: scaleX(-1);
   }
 
@@ -767,13 +749,21 @@
   .chat-bubble-streaming::after,
   .chat-bubble-content.chat-bubble-streaming::after {
     content: "";
+    position: static;
+    inset: auto;
     display: inline-block;
     width: 1px;
     height: 1em;
     margin-left: 0.25rem;
     background-color: currentColor;
+    clip-path: none;
+    transform: none;
     vertical-align: -0.125em;
     animation: chat-stream-caret 1s step-end infinite;
+  }
+
+  .chat-bubble.chat-bubble-streaming:not(:has(.chat-reasoning, .chat-tool, .chat-bubble-content)) {
+    display: block;
   }
 
   .chat-bubble.chat-bubble-streaming:has(.chat-reasoning, .chat-tool, .chat-bubble-content)::after {

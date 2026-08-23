@@ -160,31 +160,28 @@ describe('Chat Component', () => {
   describe('Bubble tail', () => {
     it('should render start tail with a clipped wedge', () => {
       expect(css).toMatch(
-        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before,\s*\.chat-start \.chat-bubble::after,\s*\.chat-end \.chat-bubble::after\s*\{[^}]*clip-path:\s*polygon/s,
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*clip-path:\s*polygon/s,
       );
     });
 
     it('should render end tail with mirrored placement', () => {
       expect(css).toMatch(
-        /\.chat-end \.chat-bubble::before\s*\{[^}]*right:\s*-0\.625rem[^}]*transform:\s*scaleX\(-1\)/s,
+        /\.chat-end \.chat-bubble::before\s*\{[^}]*right:\s*-0\.5rem[^}]*transform:\s*scaleX\(-1\)/s,
       );
     });
 
     it('should place bubble tails at the top edge', () => {
       expect(css).toMatch(
-        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before,\s*\.chat-start \.chat-bubble::after,\s*\.chat-end \.chat-bubble::after\s*\{[^}]*top:\s*0/s,
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*top:\s*0/s,
       );
       expect(css).not.toMatch(
-        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before,\s*\.chat-start \.chat-bubble::after,\s*\.chat-end \.chat-bubble::after\s*\{[^}]*bottom:\s*0/s,
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*bottom:\s*0/s,
       );
     });
 
-    it('should render larger tails with explicit border strokes and matching fill', () => {
+    it('should render outlined tails with matching bubble fill', () => {
       expect(css).toMatch(
-        /\.chat-start \.chat-bubble::before\s*\{[^}]*width:\s*1rem[^}]*height:\s*1rem[^}]*background-color:\s*var\(--color-outline-variant\)/s,
-      );
-      expect(css).toMatch(
-        /\.chat-start \.chat-bubble::after\s*\{[^}]*width:\s*calc\(1rem - 2px\)[^}]*height:\s*calc\(1rem - 2px\)[^}]*background-color:\s*var\(--chat-bubble-bg\)/s,
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*width:\s*calc\(1rem - 2px\)[^}]*height:\s*calc\(1rem - 2px\)[^}]*background-color:\s*var\(--chat-bubble-bg\)[^}]*filter:\s*drop-shadow/s,
       );
     });
 
@@ -303,6 +300,18 @@ describe('Chat Component', () => {
       expect(css).toContain('@keyframes chat-typing-dot');
       expect(css).toContain('@keyframes chat-stream-caret');
       expect(css).toContain('@keyframes chat-tool-spin');
+    });
+
+    it('should keep the streaming caret separate from the bubble tail', () => {
+      expect(css).toMatch(
+        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*filter:\s*drop-shadow/s,
+      );
+      expect(css).toMatch(
+        /\.chat-bubble\.chat-bubble-streaming:not\(:has\([^)]+\)\)\s*\{[^}]*display:\s*block/s,
+      );
+      expect(css).toMatch(
+        /\.chat-bubble-streaming::after,\s*\.chat-bubble-content\.chat-bubble-streaming::after\s*\{[^}]*position:\s*static[^}]*clip-path:\s*none/s,
+      );
     });
 
     it('should include reduced motion fallbacks', () => {
