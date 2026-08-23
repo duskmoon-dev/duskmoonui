@@ -133,6 +133,9 @@ http://localhost:4321/duskmoonui/docs/en/components/{name}/
 
 ### CSS Anchor Positioning
 
-The popover component uses CSS Anchor Positioning (`anchor()` functions). Known issues:
-- `position-area` has a rendering bug on Chrome at HiDPI (DPR ≥ 2) — use explicit `anchor()` functions instead
-- `ComponentShowcase.astro` has a JS positioning fallback guarded by `CSS.supports('top', 'anchor(bottom)')` — it only runs on browsers without native support
+Tooltip and popover use CSS Anchor Positioning with `anchor-name` / `position-anchor` / `position-area` / `position-try-fallbacks` (not `anchor()` inset functions). Notes:
+- Prefer Chrome 130+ for `position-area` on HiDPI; older Chromium had DSF double-application bugs that are largely fixed
+- Residual risk: nested scroll containers combined with ancestor `transform` / `will-change` compositing layers
+- Tooltip is Popover API only (`interestfor` + `popover="hint"`) — no wrapper / `:hover` fallback
+- Prefix demo element IDs with `demo-` to avoid collisions with markdown heading IDs used by `popovertarget` / `interestfor`
+- `ComponentShowcase.astro` has a JS positioning fallback when `position-area` / `anchor()` is unsupported

@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-import duskmoonui from '@duskmoon-dev/core';
+import duskmoonui from '@duskmoon-dev/core/plugin';
 
 const config: Config = {
   content: [
@@ -10,12 +10,7 @@ const config: Config = {
   theme: {
     extend: {},
   },
-  plugins: [
-    duskmoonui({
-      themes: ['sunshine', 'moonlight'],
-      darkTheme: 'moonlight',
-    }),
-  ],
+  plugins: [duskmoonui],
 };
 
 export default config;

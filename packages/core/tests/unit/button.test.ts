@@ -187,6 +187,20 @@ describe('Button Component', () => {
     it('should define .btn-error class', () => {
       expect(buttonCSS).toContain('.btn-error');
     });
+
+    it('should define filled semantic colors before outline/text so variants keep transparent backgrounds', () => {
+      // Same-specificity cascade: later .btn-success would paint over .btn-outline/.btn-text
+      // and leave --btn-text-color as the semantic hue → invisible text on filled bg.
+      const filledSuccess = buttonCSS.indexOf('\n  .btn-success {');
+      const outlineVariant = buttonCSS.indexOf('\n  .btn-outline,');
+      const textVariant = buttonCSS.indexOf('\n  .btn-text {');
+
+      expect(filledSuccess).toBeGreaterThan(-1);
+      expect(outlineVariant).toBeGreaterThan(-1);
+      expect(textVariant).toBeGreaterThan(-1);
+      expect(filledSuccess).toBeLessThan(outlineVariant);
+      expect(filledSuccess).toBeLessThan(textVariant);
+    });
   });
 
   describe('Accessibility', () => {

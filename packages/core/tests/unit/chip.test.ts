@@ -382,8 +382,10 @@ describe('Chip Component', () => {
       expect(css).toContain('.chip-disabled');
     });
 
-    it('should reduce opacity when disabled', () => {
-      expect(css).toMatch(/opacity:\s*0\.5/);
+    it('should keep disabled chips readable', () => {
+      expect(css).toMatch(
+        /\.chip:disabled,\s*\.chip-disabled\s*\{[^}]*opacity:\s*0\.7/s,
+      );
     });
 
     it('should prevent pointer events when disabled', () => {

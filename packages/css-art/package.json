@@ -1,6 +1,6 @@
 {
   "name": "@duskmoon-dev/css-art",
-  "version": "1.17.2",
+  "version": "1.18.1",
   "description": "Pure CSS art components - decorative illustrations built entirely with CSS",
   "type": "module",
   "main": "./dist/index.css",
@@ -49,7 +49,7 @@
   "devDependencies": {
     "@types/bun": "latest",
     "lightningcss": "1.33.0",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "engines": {
     "node": ">=18.0.0",

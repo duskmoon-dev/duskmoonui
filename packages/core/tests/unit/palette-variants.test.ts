@@ -63,7 +63,7 @@ describe('Complete component palette', () => {
     it(`${prefix} exposes all ten semantic color roles`, () => {
       for (const role of roles) {
         expect(css).toMatch(
-          new RegExp(`\\.${prefix}-${role}(?=[\\s.:,{])`),
+          new RegExp(`\\.${prefix}-${role}(?=[\\s.:\\[,{])`),
         );
       }
     });
