@@ -34,8 +34,8 @@
     border: 2px solid var(--switch-border-color);
     border-radius: var(--switch-height);
     /* Use !important to override global * { transition } rules from layers */
-    transition: background-color 200ms ease-in-out !important,
-      border-color 200ms ease-in-out !important,
+    transition: background-color 200ms ease-in-out,
+      border-color 200ms ease-in-out,
       grid-template-columns 200ms ease-in-out !important;
   }
 
@@ -48,8 +48,8 @@
     background-color: var(--switch-thumb-color);
     border-radius: var(--radius-full);
     /* Use !important to override global * { transition } rules */
-    transition: background-color 200ms ease-in-out !important,
-      width 200ms ease-in-out !important,
+    transition: background-color 200ms ease-in-out,
+      width 200ms ease-in-out,
       margin 200ms ease-in-out !important;
   }
 
