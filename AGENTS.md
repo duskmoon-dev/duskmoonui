@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to agent when working with code in this repository.
 
 ## Project Overview
 
@@ -139,3 +139,10 @@ Tooltip and popover use CSS Anchor Positioning with `anchor-name` / `position-an
 - Tooltip is Popover API only (`interestfor` + `popover="hint"`) — no wrapper / `:hover` fallback
 - Prefix demo element IDs with `demo-` to avoid collisions with markdown heading IDs used by `popovertarget` / `interestfor`
 - `ComponentShowcase.astro` has a JS positioning fallback when `position-area` / `anchor()` is unsupported
+
+## Agent note
+
+After we add new feature, change architecture or fix issues we write agent note.
+When save note to agent-note, should add labels:
+- `project: duskmoon`
+- `variant: tailwind`
