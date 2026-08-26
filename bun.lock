@@ -8,6 +8,7 @@
         "@types/bun": "latest",
         "autoprefixer": "10.5.4",
         "postcss": "8.5.26",
+        "postcss-js": "5.1.0",
         "postcss-selector-parser": "7.1.5",
         "typescript": "6.0.3",
       },
@@ -59,7 +60,7 @@
     },
     "packages/core": {
       "name": "@duskmoon-dev/core",
-      "version": "1.18.0",
+      "version": "1.18.3",
       "devDependencies": {
         "@axe-core/playwright": "4.13.0",
         "@playwright/test": "1.62.1",
@@ -76,7 +77,7 @@
     },
     "packages/css-art": {
       "name": "@duskmoon-dev/css-art",
-      "version": "1.18.0",
+      "version": "1.18.3",
       "devDependencies": {
         "@types/bun": "latest",
         "lightningcss": "1.33.0",
@@ -1666,7 +1667,7 @@
 
     "postcss-import": ["postcss-import@15.1.0", "", { "dependencies": { "postcss-value-parser": "^4.0.0", "read-cache": "^1.0.0", "resolve": "^1.1.7" }, "peerDependencies": { "postcss": "^8.0.0" } }, "sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew=="],
 
-    "postcss-js": ["postcss-js@4.1.0", "", { "dependencies": { "camelcase-css": "^2.0.1" }, "peerDependencies": { "postcss": "^8.4.21" } }, "sha512-oIAOTqgIo7q2EOwbhb8UalYePMvYoIeRY2YKntdpFQXNosSu3vLrniGgmH9OKs/qAkfoj5oB3le/7mINW1LCfw=="],
+    "postcss-js": ["postcss-js@5.1.0", "", { "peerDependencies": { "postcss": "^8.4.21" } }, "sha512-glrtXSrLt3eH/mgceNgP6u/6jHodqRQ/ToFht+yqwquw0KBf6Zue5qJQFgcIEfQQyYl+BCPN/TYdWyeOQh3c5Q=="],
 
     "postcss-load-config": ["postcss-load-config@4.0.2", "", { "dependencies": { "lilconfig": "^3.0.0", "yaml": "^2.3.4" }, "peerDependencies": { "postcss": ">=8.0.9", "ts-node": ">=9.0.0" }, "optionalPeers": ["postcss", "ts-node"] }, "sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ=="],
 
@@ -2423,6 +2424,8 @@
     "@astrojs/tailwind/autoprefixer/fraction.js": ["fraction.js@4.3.7", "", {}, "sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew=="],
 
     "@astrojs/tailwind/tailwindcss/chokidar": ["chokidar@3.6.0", "", { "dependencies": { "anymatch": "~3.1.2", "braces": "~3.0.2", "glob-parent": "~5.1.2", "is-binary-path": "~2.1.0", "is-glob": "~4.0.1", "normalize-path": "~3.0.0", "readdirp": "~3.6.0" }, "optionalDependencies": { "fsevents": "~2.3.2" } }, "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw=="],
+
+    "@astrojs/tailwind/tailwindcss/postcss-js": ["postcss-js@4.1.0", "", { "dependencies": { "camelcase-css": "^2.0.1" }, "peerDependencies": { "postcss": "^8.4.21" } }, "sha512-oIAOTqgIo7q2EOwbhb8UalYePMvYoIeRY2YKntdpFQXNosSu3vLrniGgmH9OKs/qAkfoj5oB3le/7mINW1LCfw=="],
 
     "@bruits/satteri-wasm32-wasi/@emnapi/core/@emnapi/wasi-threads": ["@emnapi/wasi-threads@1.2.2", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA=="],
 

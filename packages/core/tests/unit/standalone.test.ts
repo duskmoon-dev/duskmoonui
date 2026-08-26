@@ -4,6 +4,7 @@ import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { compile } from 'tailwindcss';
 import { buildStandaloneBundles } from '../../scripts/build-standalone';
 
 const bundleNames = ['duskmoonui.js', 'duskmoonui.mjs', 'duskmoonui.css', 'duskmoonui-themes.css'];
@@ -38,8 +39,8 @@ describe('Standalone release bundles', () => {
 
     for (const content of contents) {
       expect(content).toContain('@license MIT');
-      expect(content).not.toMatch(/from\s+["']tailwindcss\/plugin["']/);
-      expect(content).not.toMatch(/require\(["']tailwindcss\/plugin["']\)/);
+      expect(content).not.toMatch(/from\s+["'](?:tailwindcss|postcss|postcss-js)/);
+      expect(content).not.toMatch(/require\(["'](?:tailwindcss|postcss|postcss-js)/);
     }
   });
 
@@ -48,8 +49,20 @@ describe('Standalone release bundles', () => {
       `${pathToFileURL(join(outputDir, 'duskmoonui.mjs')).href}?test=${Date.now()}`
     );
     const utilities: Record<string, (value: string) => Record<string, string>> = {};
+    const baseRules: Record<string, unknown>[] = [];
+    const componentRules: Record<string, unknown>[] = [];
+    const staticUtilities: Record<string, unknown>[] = [];
 
     pluginBundle.default.handler({
+      addBase(value: Record<string, unknown>) {
+        baseRules.push(value);
+      },
+      addComponents(value: Record<string, unknown>) {
+        componentRules.push(value);
+      },
+      addUtilities(value: Record<string, unknown>) {
+        staticUtilities.push(value);
+      },
       matchUtilities(value: typeof utilities) {
         Object.assign(utilities, value);
       },
@@ -65,11 +78,75 @@ describe('Standalone release bundles', () => {
     expect(utilities['grid-cols-auto-fit']('12rem')).toEqual({
       'grid-template-columns': 'repeat(auto-fit, minmax(min(12rem, 100%), 1fr))',
     });
+    expect(JSON.stringify(baseRules)).toContain('[data-theme=\\"sunshine\\"]');
+    expect(JSON.stringify(componentRules)).toContain('.btn');
+    expect(JSON.stringify(componentRules)).toContain('.art-moon');
+    expect(JSON.stringify(staticUtilities)).toContain('.sr-only');
 
     const require = createRequire(import.meta.url);
     const commonJsPlugin = require(join(outputDir, 'duskmoonui.js'));
     expect(commonJsPlugin.default.config.theme.extend.colors.primary).toBe('var(--color-primary)');
     expect(typeof commonJsPlugin.default.handler).toBe('function');
+  });
+
+  it('compiles Core, CSS Art, themes, and utilities from the plugin alone', async () => {
+    const pluginPath = join(outputDir, 'duskmoonui.mjs');
+    const pluginBundle = await import(`${pathToFileURL(pluginPath).href}?compile=${Date.now()}`);
+    const compiler = await compile('@plugin "duskmoonui";\n@tailwind utilities;', {
+      base: outputDir,
+      async loadModule() {
+        return {
+          base: outputDir,
+          module: pluginBundle.default,
+          path: pluginPath,
+        };
+      },
+    });
+    const css = compiler.build([
+      'btn',
+      'btn-primary',
+      'tree-select',
+      'markdown-body',
+      'circle-menu',
+      'art-moon',
+      'art-plasma-ball',
+      'art-circular-gallery',
+      'art-gemini-input',
+      'bg-primary',
+      'sr-only',
+      'rounded-box',
+      'shadow-elevation-1',
+      'grid-cols-auto-fill-4',
+    ]);
+
+    for (const expected of [
+      '.btn',
+      '.btn-primary',
+      '.tree-select',
+      '.markdown-body',
+      '.circle-menu',
+      '.art-moon',
+      '.art-plasma-ball',
+      '.art-circular-gallery',
+      '.art-gemini-input',
+      '.bg-primary',
+      '.sr-only',
+      '.rounded-box',
+      '.shadow-elevation-1',
+      '.grid-cols-auto-fill-4',
+      '[data-theme="sunshine"]',
+      '@property --art-circular-gallery-rotation',
+      '@property --art-gemini-input-rotation',
+      '@keyframes btn-spin',
+      '@keyframes art-moon-pulse',
+      '@keyframes art-gemini-input-rotate',
+      '@supports (anchor-name:',
+      '@starting-style',
+    ]) {
+      expect(css).toContain(expected);
+    }
+    expect(css).not.toMatch(/^\s*\.card\s*\{/m);
+    expect(css).not.toMatch(/^\s*\.art-atom\s*\{/m);
   });
 
   it('inlines every built-in theme into one CSS asset', async () => {
@@ -96,12 +173,15 @@ describe('Standalone release bundles', () => {
     expect(bundleCss).toContain('.art-atom {');
   });
 
-  it('documents Tailwind before the standalone DuskMoonUI imports', async () => {
+  it('documents plugin-only standalone usage', async () => {
     const releaseWorkflow = await readFile(releaseWorkflowPath, 'utf8');
     const tailwindImport = releaseWorkflow.indexOf('@import "tailwindcss";');
-    const duskmoonImport = releaseWorkflow.indexOf('@import "./duskmoonui.css";');
+    const sourceExclusion = releaseWorkflow.indexOf('@source not "./duskmoonui{,*}.mjs";');
+    const duskmoonPlugin = releaseWorkflow.indexOf('@plugin "./duskmoonui.mjs";');
 
     expect(tailwindImport).toBeGreaterThan(-1);
-    expect(duskmoonImport).toBeGreaterThan(tailwindImport);
+    expect(sourceExclusion).toBeGreaterThan(tailwindImport);
+    expect(duskmoonPlugin).toBeGreaterThan(sourceExclusion);
+    expect(releaseWorkflow).not.toContain(`echo '@import "./duskmoonui.css";'`);
   });
 });

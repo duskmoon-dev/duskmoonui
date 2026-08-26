@@ -134,20 +134,19 @@ jobs:
             echo ""
             echo "## Standalone Tailwind CLI"
             echo ""
-            echo "Download the ESM plugin and complete Core + CSS Art stylesheet beside the Tailwind standalone executable:"
+            echo "Download the standalone ESM plugin beside the Tailwind executable:"
             echo ""
             echo '```bash'
             echo "curl -sLO https://github.com/duskmoon-dev/duskmoonui/releases/download/${VERSION}/duskmoonui.mjs"
-            echo "curl -sLO https://github.com/duskmoon-dev/duskmoonui/releases/download/${VERSION}/duskmoonui.css"
             echo '```'
             echo ""
-            echo 'A themes-only bundle is also available as `duskmoonui-themes.css`.'
+            echo 'CSS-only bundles remain available as `duskmoonui.css` and `duskmoonui-themes.css`.'
             echo ""
             echo "Then load them from your CSS:"
             echo ""
             echo '```css'
             echo '@import "tailwindcss";'
-            echo '@import "./duskmoonui.css";'
+            echo '@source not "./duskmoonui{,*}.mjs";'
             echo '@plugin "./duskmoonui.mjs";'
             echo '```'
 
