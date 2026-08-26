@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url';
 import { buildStandaloneBundles } from '../../scripts/build-standalone';
 
 const bundleNames = ['duskmoonui.js', 'duskmoonui.mjs', 'duskmoonui.css', 'duskmoonui-themes.css'];
+const releaseWorkflowPath = join(import.meta.dir, '../../../../.github/workflows/release.yml');
 
 describe('Standalone release bundles', () => {
   let outputDir: string;
@@ -93,5 +94,14 @@ describe('Standalone release bundles', () => {
     expect(bundleCss).toContain('.btn {');
     expect(bundleCss).toContain('.art-moon {');
     expect(bundleCss).toContain('.art-atom {');
+  });
+
+  it('documents Tailwind before the standalone DuskMoonUI imports', async () => {
+    const releaseWorkflow = await readFile(releaseWorkflowPath, 'utf8');
+    const tailwindImport = releaseWorkflow.indexOf('@import "tailwindcss";');
+    const duskmoonImport = releaseWorkflow.indexOf('@import "./duskmoonui.css";');
+
+    expect(tailwindImport).toBeGreaterThan(-1);
+    expect(duskmoonImport).toBeGreaterThan(tailwindImport);
   });
 });

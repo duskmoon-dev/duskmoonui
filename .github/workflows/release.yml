@@ -146,6 +146,7 @@ jobs:
             echo "Then load them from your CSS:"
             echo ""
             echo '```css'
+            echo '@import "tailwindcss";'
             echo '@import "./duskmoonui.css";'
             echo '@plugin "./duskmoonui.mjs";'
             echo '```'
