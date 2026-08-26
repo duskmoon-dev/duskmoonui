@@ -131,6 +131,25 @@ jobs:
             echo "npm install @duskmoon-dev/css-art@${{ inputs.version }}"
             echo '```'
 
+            echo ""
+            echo "## Standalone Tailwind CLI"
+            echo ""
+            echo "Download the ESM plugin and complete Core + CSS Art stylesheet beside the Tailwind standalone executable:"
+            echo ""
+            echo '```bash'
+            echo "curl -sLO https://github.com/duskmoon-dev/duskmoonui/releases/download/${VERSION}/duskmoonui.mjs"
+            echo "curl -sLO https://github.com/duskmoon-dev/duskmoonui/releases/download/${VERSION}/duskmoonui.css"
+            echo '```'
+            echo ""
+            echo 'A themes-only bundle is also available as `duskmoonui-themes.css`.'
+            echo ""
+            echo "Then load them from your CSS:"
+            echo ""
+            echo '```css'
+            echo '@import "./duskmoonui.css";'
+            echo '@plugin "./duskmoonui.mjs";'
+            echo '```'
+
             if [ -n "$PREV_TAG" ]; then
               echo ""
               echo "**Full Changelog**: https://github.com/duskmoon-dev/duskmoonui/compare/${PREV_TAG}...${VERSION}"
@@ -144,4 +163,8 @@ jobs:
           gh release create "v${{ inputs.version }}" \
             --title "v${{ inputs.version }}" \
             --notes-file release_notes.md \
-            --verify-tag
+            --verify-tag \
+            packages/core/dist/standalone/duskmoonui.js \
+            packages/core/dist/standalone/duskmoonui.mjs \
+            packages/core/dist/standalone/duskmoonui.css \
+            packages/core/dist/standalone/duskmoonui-themes.css

@@ -7,6 +7,7 @@ import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import { join, dirname, resolve } from 'node:path';
 import { existsSync } from 'node:fs';
 import { transform } from 'lightningcss';
+import { buildStandaloneBundles } from './build-standalone';
 
 const SRC_DIR = join(import.meta.dir, '../src');
 const DIST_DIR = join(import.meta.dir, '../dist');
@@ -266,6 +267,8 @@ async function main(): Promise<void> {
     await copyThemes();
     await copyComponents();
     await buildPlugin();
+    await buildStandaloneBundles();
+    console.log('✓ Built standalone plugin and themes bundles');
 
     // Minify with LightningCSS
     console.log('\nMinifying CSS...');
