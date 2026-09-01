@@ -148,6 +148,31 @@ describe('Button Component', () => {
     });
   });
 
+  describe('Icon Button Variants', () => {
+    const iconSizes = [
+      { className: 'btn-icon', padding: '0.75rem', size: '2.5rem' },
+      { className: 'btn-icon-sm', padding: '0.5rem', size: '2rem' },
+      { className: 'btn-icon-lg', padding: '1rem', size: '3rem' },
+    ];
+
+    for (const { className, padding, size } of iconSizes) {
+      it(`should define .${className} with the documented dimensions`, () => {
+        expect(buttonCSS).toMatch(
+          new RegExp(
+            `\\.${className}\\s*\\{[^}]*padding:\\s*${padding}[^}]*width:\\s*${size}[^}]*height:\\s*${size}`,
+            's',
+          ),
+        );
+      });
+    }
+
+    it('should keep icon buttons circular', () => {
+      expect(buttonCSS).toMatch(
+        /\.btn-icon\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s,
+      );
+    });
+  });
+
   describe('Interactive States', () => {
     it('should define hover state styles', () => {
       expect(buttonCSS).toMatch(/\.btn[^{]*:hover/);

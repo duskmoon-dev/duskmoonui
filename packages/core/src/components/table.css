@@ -13,6 +13,11 @@
     color: var(--color-on-surface);
   }
 
+  /* Surface Variant */
+  .table-surface {
+    background-color: var(--color-surface);
+  }
+
   /* Table Head */
   .table thead,
   .table-header {
@@ -60,7 +65,9 @@
 
   /* Zebra Striping */
   .table-zebra tbody tr:nth-child(even),
-  .table-zebra .table-row:nth-child(even) {
+  .table-zebra .table-row:nth-child(even),
+  .table-striped tbody tr:nth-child(even),
+  .table-striped .table-row:nth-child(even) {
     background-color: var(--color-surface-container-low);
   }
 
@@ -82,6 +89,16 @@
     border: 1px solid var(--color-outline-variant);
   }
 
+  /* Borderless Table */
+  .table-borderless,
+  .table-borderless th,
+  .table-borderless td,
+  .table-borderless tfoot td,
+  .table-borderless .table-header-cell,
+  .table-borderless .table-cell {
+    border: none;
+  }
+
   /* Compact Table */
   .table-compact th,
   .table-compact td {
@@ -98,6 +115,16 @@
   /* Fixed Layout */
   .table-fixed {
     table-layout: fixed;
+  }
+
+  /* Sticky Header */
+  .table-sticky thead,
+  .table-sticky .table-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-surface-container);
+    box-shadow: var(--shadow-xs);
   }
 
   /* Sortable Header */
@@ -120,9 +147,24 @@
     opacity: 0.7;
   }
 
+  /* Selectable Rows */
+  .table-selectable tbody tr,
+  .table-selectable .table-row {
+    cursor: pointer;
+  }
+
+  .table-selectable tbody tr:hover,
+  .table-selectable .table-row:hover {
+    background-color: color-mix(in oklch, var(--color-on-surface) 8%, transparent);
+  }
+
   /* Selected Row */
   .table-row-selected,
-  .table tr.selected {
+  .table tr.selected,
+  .table-selectable tbody tr.table-row-selected,
+  .table-selectable .table-row.table-row-selected,
+  .table-selectable tbody tr.selected,
+  .table-selectable .table-row.selected {
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
   }

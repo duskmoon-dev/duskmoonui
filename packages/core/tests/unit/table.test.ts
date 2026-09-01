@@ -143,6 +143,55 @@ describe('Table Component', () => {
     });
   });
 
+  describe('Documented Compatibility Modifiers', () => {
+    it('should support .table-striped as a zebra-striping alias', () => {
+      expect(css).toMatch(
+        /\.table-striped tbody tr:nth-child\(even\)[\s\S]*?background-color:\s*var\(--color-surface-container-low\)/,
+      );
+    });
+
+    it('should remove cell borders for .table-borderless', () => {
+      expect(css).toMatch(
+        /\.table-borderless th,[\s\S]*?\.table-borderless td[\s\S]*?border:\s*none/,
+      );
+      expect(css).toContain('.table-borderless tfoot td');
+      expect(css).toContain('.table-borderless .table-cell');
+    });
+
+    it('should make .table-sticky headers sticky', () => {
+      expect(css).toMatch(
+        /\.table-sticky thead[\s\S]*?position:\s*sticky[\s\S]*?top:\s*0/,
+      );
+    });
+
+    it('should expose selectable row states', () => {
+      expect(css).toMatch(
+        /\.table-selectable tbody tr[\s\S]*?cursor:\s*pointer/,
+      );
+      expect(css).toContain('.table-selectable tbody tr:hover');
+      expect(css).toContain('.table-selectable tbody tr.selected');
+    });
+
+    it('should keep both selected-row forms above selectable hover styles', () => {
+      const hoverRule = css.indexOf('.table-selectable tbody tr:hover');
+      const nativeSelectedRule = css.indexOf(
+        '.table-selectable tbody tr.table-row-selected',
+      );
+      const classSelectedRule = css.indexOf(
+        '.table-selectable .table-row.table-row-selected',
+      );
+
+      expect(nativeSelectedRule).toBeGreaterThan(hoverRule);
+      expect(classSelectedRule).toBeGreaterThan(hoverRule);
+    });
+
+    it('should expose the surface background modifier', () => {
+      expect(css).toMatch(
+        /\.table-surface\s*\{[^}]*background-color:\s*var\(--color-surface\)/s,
+      );
+    });
+  });
+
   describe('Hover Effect', () => {
     it('should define .table-hover class', () => {
       expect(css).toContain('.table-hover');
