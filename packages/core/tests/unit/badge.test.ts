@@ -226,6 +226,60 @@ describe('Badge Component', () => {
     });
   });
 
+  describe('Legacy Tonal and Outlined Aliases', () => {
+    it('should expose the documented tonal and outlined aliases', () => {
+      expect(css).toContain('.badge-tonal');
+      expect(css).toContain('.badge-outlined');
+    });
+
+    for (const color of ['secondary', 'tertiary']) {
+      it(`should expose single-class tonal and outlined ${color} aliases`, () => {
+        expect(css).toMatch(
+          new RegExp(
+            `\\.badge-tonal-${color},\\s*\\.badge-soft\\.badge-${color}\\s*\\{[^}]*background-color:\\s*var\\(--color-${color}-container\\)[^}]*color:\\s*var\\(--color-on-${color}-container\\)`,
+            's',
+          ),
+        );
+        expect(css).toMatch(
+          new RegExp(
+            `\\.badge-outlined\\.badge-${color},\\s*\\.badge-outlined-${color},\\s*\\.badge-outline\\.badge-${color}\\s*\\{[^}]*color:\\s*var\\(--color-${color}\\)[^}]*border-color:\\s*var\\(--color-${color}\\)`,
+            's',
+          ),
+        );
+        expect(css).toMatch(
+          new RegExp(
+            `\\.badge-outlined-${color},[\\s\\S]*?\\.badge-outline\\s*\\{[^}]*background-color:\\s*transparent[^}]*border:\\s*1px solid currentColor`,
+            's',
+          ),
+        );
+      });
+    }
+
+    for (const color of [
+      'primary',
+      'secondary',
+      'tertiary',
+      'info',
+      'success',
+      'warning',
+      'error',
+    ]) {
+      it(`should compose tonal and outlined aliases with badge-${color}`, () => {
+        expect(css).toContain(`.badge-tonal.badge-${color}`);
+        expect(css).toContain(`.badge-outlined.badge-${color}`);
+      });
+    }
+
+    it('should share canonical declarations for composed semantic aliases', () => {
+      expect(css).toMatch(
+        /\.badge-tonal\.badge-success,\s*\.badge-soft\.badge-success\s*\{[^}]*background-color:\s*var\(--color-success-container\)[^}]*color:\s*var\(--color-on-success-container\)/s,
+      );
+      expect(css).toMatch(
+        /\.badge-outlined\.badge-warning,\s*\.badge-outline\.badge-warning\s*\{[^}]*color:\s*var\(--color-warning\)[^}]*border-color:\s*var\(--color-warning\)/s,
+      );
+    });
+  });
+
   describe('Size Variants', () => {
     it('should define .badge-sm class', () => {
       expect(css).toContain('.badge-sm');
