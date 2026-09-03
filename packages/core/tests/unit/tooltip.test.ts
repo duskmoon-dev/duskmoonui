@@ -97,6 +97,12 @@ describe('Tooltip Component', () => {
         /\.tooltip\[popover\]\s*\{[^}]*pointer-events:\s*none/s
       );
     });
+
+    it('should set overflow visible to suppress UA popover scrollbar', () => {
+      expect(css).toMatch(
+        /\.tooltip\[popover\]\s*\{[^}]*overflow:\s*visible/s
+      );
+    });
   });
 
   describe('Arrow', () => {
