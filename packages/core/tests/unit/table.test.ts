@@ -162,6 +162,12 @@ describe('Table Component', () => {
       expect(css).toMatch(
         /\.table-sticky thead[\s\S]*?position:\s*sticky[\s\S]*?top:\s*0/,
       );
+      expect(css).toMatch(
+        /\.table-sticky th[\s\S]*?position:\s*sticky[\s\S]*?top:\s*0/,
+      );
+      expect(css).toMatch(
+        /\.table-sticky th[\s\S]*?background-color:\s*var\(--color-surface-container\)/,
+      );
     });
 
     it('should expose selectable row states', () => {
