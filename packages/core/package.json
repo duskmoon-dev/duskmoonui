@@ -37,266 +37,319 @@
       "default": "./dist/components/index.css"
     },
     "./components/accordion": {
+      "types": "./dist/esm/components/accordion.d.ts",
       "style": "./dist/components/accordion.css",
       "import": "./dist/esm/components/accordion.js",
       "default": "./dist/esm/components/accordion.js"
     },
     "./components/alert": {
+      "types": "./dist/esm/components/alert.d.ts",
       "style": "./dist/components/alert.css",
       "import": "./dist/esm/components/alert.js",
       "default": "./dist/esm/components/alert.js"
     },
     "./components/appbar": {
+      "types": "./dist/esm/components/appbar.d.ts",
       "style": "./dist/components/appbar.css",
       "import": "./dist/esm/components/appbar.js",
       "default": "./dist/esm/components/appbar.js"
     },
     "./components/autocomplete": {
+      "types": "./dist/esm/components/autocomplete.d.ts",
       "style": "./dist/components/autocomplete.css",
       "import": "./dist/esm/components/autocomplete.js",
       "default": "./dist/esm/components/autocomplete.js"
     },
     "./components/avatar": {
+      "types": "./dist/esm/components/avatar.d.ts",
       "style": "./dist/components/avatar.css",
       "import": "./dist/esm/components/avatar.js",
       "default": "./dist/esm/components/avatar.js"
     },
     "./components/badge": {
+      "types": "./dist/esm/components/badge.d.ts",
       "style": "./dist/components/badge.css",
       "import": "./dist/esm/components/badge.js",
       "default": "./dist/esm/components/badge.js"
     },
     "./components/bottom-navigation": {
+      "types": "./dist/esm/components/bottom-navigation.d.ts",
       "style": "./dist/components/bottom-navigation.css",
       "import": "./dist/esm/components/bottom-navigation.js",
       "default": "./dist/esm/components/bottom-navigation.js"
     },
     "./components/bottomsheet": {
+      "types": "./dist/esm/components/bottomsheet.d.ts",
       "style": "./dist/components/bottomsheet.css",
       "import": "./dist/esm/components/bottomsheet.js",
       "default": "./dist/esm/components/bottomsheet.js"
     },
     "./components/button": {
+      "types": "./dist/esm/components/button.d.ts",
       "style": "./dist/components/button.css",
       "import": "./dist/esm/components/button.js",
       "default": "./dist/esm/components/button.js"
     },
     "./components/card": {
+      "types": "./dist/esm/components/card.d.ts",
       "style": "./dist/components/card.css",
       "import": "./dist/esm/components/card.js",
       "default": "./dist/esm/components/card.js"
     },
     "./components/cascader": {
+      "types": "./dist/esm/components/cascader.d.ts",
       "style": "./dist/components/cascader.css",
       "import": "./dist/esm/components/cascader.js",
       "default": "./dist/esm/components/cascader.js"
     },
     "./components/chat": {
+      "types": "./dist/esm/components/chat.d.ts",
       "style": "./dist/components/chat.css",
       "import": "./dist/esm/components/chat.js",
       "default": "./dist/esm/components/chat.js"
     },
     "./components/checkbox": {
+      "types": "./dist/esm/components/checkbox.d.ts",
       "style": "./dist/components/checkbox.css",
       "import": "./dist/esm/components/checkbox.js",
       "default": "./dist/esm/components/checkbox.js"
     },
     "./components/chip": {
+      "types": "./dist/esm/components/chip.d.ts",
       "style": "./dist/components/chip.css",
       "import": "./dist/esm/components/chip.js",
       "default": "./dist/esm/components/chip.js"
     },
     "./components/circle-menu": {
+      "types": "./dist/esm/components/circle-menu.d.ts",
       "style": "./dist/components/circle-menu.css",
       "import": "./dist/esm/components/circle-menu.js",
       "default": "./dist/esm/components/circle-menu.js"
     },
     "./components/code-block": {
+      "types": "./dist/esm/components/code-block.d.ts",
       "style": "./dist/components/code-block.css",
       "import": "./dist/esm/components/code-block.js",
       "default": "./dist/esm/components/code-block.js"
     },
     "./components/collapse": {
+      "types": "./dist/esm/components/collapse.d.ts",
       "style": "./dist/components/collapse.css",
       "import": "./dist/esm/components/collapse.js",
       "default": "./dist/esm/components/collapse.js"
     },
     "./components/datepicker": {
+      "types": "./dist/esm/components/datepicker.d.ts",
       "style": "./dist/components/datepicker.css",
       "import": "./dist/esm/components/datepicker.js",
       "default": "./dist/esm/components/datepicker.js"
     },
     "./components/dialog": {
+      "types": "./dist/esm/components/dialog.d.ts",
       "style": "./dist/components/dialog.css",
       "import": "./dist/esm/components/dialog.js",
       "default": "./dist/esm/components/dialog.js"
     },
     "./components/divider": {
+      "types": "./dist/esm/components/divider.d.ts",
       "style": "./dist/components/divider.css",
       "import": "./dist/esm/components/divider.js",
       "default": "./dist/esm/components/divider.js"
     },
     "./components/drawer": {
+      "types": "./dist/esm/components/drawer.d.ts",
       "style": "./dist/components/drawer.css",
       "import": "./dist/esm/components/drawer.js",
       "default": "./dist/esm/components/drawer.js"
     },
     "./components/file-upload": {
+      "types": "./dist/esm/components/file-upload.d.ts",
       "style": "./dist/components/file-upload.css",
       "import": "./dist/esm/components/file-upload.js",
       "default": "./dist/esm/components/file-upload.js"
     },
     "./components/form": {
+      "types": "./dist/esm/components/form.d.ts",
       "style": "./dist/components/form.css",
       "import": "./dist/esm/components/form.js",
       "default": "./dist/esm/components/form.js"
     },
     "./components/form-group": {
+      "types": "./dist/esm/components/form-group.d.ts",
       "style": "./dist/components/form-group.css",
       "import": "./dist/esm/components/form-group.js",
       "default": "./dist/esm/components/form-group.js"
     },
     "./components/input": {
+      "types": "./dist/esm/components/input.d.ts",
       "style": "./dist/components/input.css",
       "import": "./dist/esm/components/input.js",
       "default": "./dist/esm/components/input.js"
     },
     "./components/list": {
+      "types": "./dist/esm/components/list.d.ts",
       "style": "./dist/components/list.css",
       "import": "./dist/esm/components/list.js",
       "default": "./dist/esm/components/list.js"
     },
     "./components/markdown-body": {
+      "types": "./dist/esm/components/markdown-body.d.ts",
       "style": "./dist/components/markdown-body.css",
       "import": "./dist/esm/components/markdown-body.js",
       "default": "./dist/esm/components/markdown-body.js"
     },
     "./components/modal": {
+      "types": "./dist/esm/components/modal.d.ts",
       "style": "./dist/components/modal.css",
       "import": "./dist/esm/components/modal.js",
       "default": "./dist/esm/components/modal.js"
     },
     "./components/multi-select": {
+      "types": "./dist/esm/components/multi-select.d.ts",
       "style": "./dist/components/multi-select.css",
       "import": "./dist/esm/components/multi-select.js",
       "default": "./dist/esm/components/multi-select.js"
     },
     "./components/navigation": {
+      "types": "./dist/esm/components/navigation.d.ts",
       "style": "./dist/components/navigation.css",
       "import": "./dist/esm/components/navigation.js",
       "default": "./dist/esm/components/navigation.js"
     },
     "./components/nested-menu": {
+      "types": "./dist/esm/components/nested-menu.d.ts",
       "style": "./dist/components/nested-menu.css",
       "import": "./dist/esm/components/nested-menu.js",
       "default": "./dist/esm/components/nested-menu.js"
     },
     "./components/otp-input": {
+      "types": "./dist/esm/components/otp-input.d.ts",
       "style": "./dist/components/otp-input.css",
       "import": "./dist/esm/components/otp-input.js",
       "default": "./dist/esm/components/otp-input.js"
     },
     "./components/pin-input": {
+      "types": "./dist/esm/components/pin-input.d.ts",
       "style": "./dist/components/pin-input.css",
       "import": "./dist/esm/components/pin-input.js",
       "default": "./dist/esm/components/pin-input.js"
     },
     "./components/popover": {
+      "types": "./dist/esm/components/popover.d.ts",
       "style": "./dist/components/popover.css",
       "import": "./dist/esm/components/popover.js",
       "default": "./dist/esm/components/popover.js"
     },
     "./components/progress": {
+      "types": "./dist/esm/components/progress.d.ts",
       "style": "./dist/components/progress.css",
       "import": "./dist/esm/components/progress.js",
       "default": "./dist/esm/components/progress.js"
     },
     "./components/radio": {
+      "types": "./dist/esm/components/radio.d.ts",
       "style": "./dist/components/radio.css",
       "import": "./dist/esm/components/radio.js",
       "default": "./dist/esm/components/radio.js"
     },
     "./components/rating": {
+      "types": "./dist/esm/components/rating.d.ts",
       "style": "./dist/components/rating.css",
       "import": "./dist/esm/components/rating.js",
       "default": "./dist/esm/components/rating.js"
     },
     "./components/segment-control": {
+      "types": "./dist/esm/components/segment-control.d.ts",
       "style": "./dist/components/segment-control.css",
       "import": "./dist/esm/components/segment-control.js",
       "default": "./dist/esm/components/segment-control.js"
     },
     "./components/select": {
+      "types": "./dist/esm/components/select.d.ts",
       "style": "./dist/components/select.css",
       "import": "./dist/esm/components/select.js",
       "default": "./dist/esm/components/select.js"
     },
     "./components/skeleton": {
+      "types": "./dist/esm/components/skeleton.d.ts",
       "style": "./dist/components/skeleton.css",
       "import": "./dist/esm/components/skeleton.js",
       "default": "./dist/esm/components/skeleton.js"
     },
     "./components/slider": {
+      "types": "./dist/esm/components/slider.d.ts",
       "style": "./dist/components/slider.css",
       "import": "./dist/esm/components/slider.js",
       "default": "./dist/esm/components/slider.js"
     },
     "./components/snackbar": {
+      "types": "./dist/esm/components/snackbar.d.ts",
       "style": "./dist/components/snackbar.css",
       "import": "./dist/esm/components/snackbar.js",
       "default": "./dist/esm/components/snackbar.js"
     },
     "./components/stepper": {
+      "types": "./dist/esm/components/stepper.d.ts",
       "style": "./dist/components/stepper.css",
       "import": "./dist/esm/components/stepper.js",
       "default": "./dist/esm/components/stepper.js"
     },
     "./components/switch": {
+      "types": "./dist/esm/components/switch.d.ts",
       "style": "./dist/components/switch.css",
       "import": "./dist/esm/components/switch.js",
       "default": "./dist/esm/components/switch.js"
     },
     "./components/table": {
+      "types": "./dist/esm/components/table.d.ts",
       "style": "./dist/components/table.css",
       "import": "./dist/esm/components/table.js",
       "default": "./dist/esm/components/table.js"
     },
     "./components/textarea": {
+      "types": "./dist/esm/components/textarea.d.ts",
       "style": "./dist/components/textarea.css",
       "import": "./dist/esm/components/textarea.js",
       "default": "./dist/esm/components/textarea.js"
     },
     "./components/theme-controller": {
+      "types": "./dist/esm/components/theme-controller.d.ts",
       "style": "./dist/components/theme-controller.css",
       "import": "./dist/esm/components/theme-controller.js",
       "default": "./dist/esm/components/theme-controller.js"
     },
     "./components/time-input": {
+      "types": "./dist/esm/components/time-input.d.ts",
       "style": "./dist/components/time-input.css",
       "import": "./dist/esm/components/time-input.js",
       "default": "./dist/esm/components/time-input.js"
     },
     "./components/timeline": {
+      "types": "./dist/esm/components/timeline.d.ts",
       "style": "./dist/components/timeline.css",
       "import": "./dist/esm/components/timeline.js",
       "default": "./dist/esm/components/timeline.js"
     },
     "./components/toast": {
+      "types": "./dist/esm/components/toast.d.ts",
       "style": "./dist/components/toast.css",
       "import": "./dist/esm/components/toast.js",
       "default": "./dist/esm/components/toast.js"
     },
     "./components/toggle": {
+      "types": "./dist/esm/components/toggle.d.ts",
       "style": "./dist/components/toggle.css",
       "import": "./dist/esm/components/toggle.js",
       "default": "./dist/esm/components/toggle.js"
     },
     "./components/tooltip": {
+      "types": "./dist/esm/components/tooltip.d.ts",
       "style": "./dist/components/tooltip.css",
       "import": "./dist/esm/components/tooltip.js",
       "default": "./dist/esm/components/tooltip.js"
     },
     "./components/tree-select": {
+      "types": "./dist/esm/components/tree-select.d.ts",
       "style": "./dist/components/tree-select.css",
       "import": "./dist/esm/components/tree-select.js",
       "default": "./dist/esm/components/tree-select.js"

@@ -177,9 +177,23 @@ function generateEsmModule(componentName: string, cssContent: string): string {
   return `// Auto-generated from ${componentName}.css
 export const css = \`${escapedCss}\`;
 
-const sheet = new CSSStyleSheet();
-sheet.replaceSync(css);
+const sheet = typeof CSSStyleSheet !== 'undefined' ? new CSSStyleSheet() : null;
+if (sheet) {
+  sheet.replaceSync(css);
+}
 export const styles = sheet;
+export default sheet;
+`;
+}
+
+/**
+ * Generate TypeScript declaration module for component
+ */
+function generateDtsModule(componentName: string): string {
+  return `// Auto-generated type declaration for ${componentName}
+export declare const css: string;
+export declare const styles: CSSStyleSheet | null;
+declare const sheet: CSSStyleSheet | null;
 export default sheet;
 `;
 }
@@ -212,6 +226,9 @@ async function copyComponents(): Promise<void> {
       // Generate and write ESM module
       const esmContent = generateEsmModule(component, content);
       await writeFile(join(distEsmComponentsDir, `${component}.js`), esmContent);
+      // Generate and write DTS module
+      const dtsContent = generateDtsModule(component);
+      await writeFile(join(distEsmComponentsDir, `${component}.d.ts`), dtsContent);
     }
   }
   console.log(`✓ Built ${componentFiles.length} individual component files`);
