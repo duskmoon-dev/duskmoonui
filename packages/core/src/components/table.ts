@@ -87,6 +87,13 @@ export const tableStyles: Record<string, any> = {
     backgroundColor: 'var(--color-surface-container)',
     boxShadow: 'var(--shadow-xs)',
   },
+  '.table-sticky th, .table-sticky thead th, .table-sticky .table-header-cell': {
+    position: 'sticky',
+    top: '0',
+    zIndex: '10',
+    backgroundColor: 'var(--color-surface-container)',
+    boxShadow: 'var(--shadow-xs)',
+  },
 
   // Sortable column
   '.table-sort': {
