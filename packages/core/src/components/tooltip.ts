@@ -23,6 +23,7 @@ export const tooltipStyles: Record<string, any> = {
     pointerEvents: 'none',
     opacity: '0',
     transform: 'scale(0.95)',
+    overflow: 'visible',
     positionArea: 'top',
     positionTryFallbacks: 'flip-block, flip-inline, flip-block flip-inline',
   },
