@@ -1,6 +1,6 @@
 {
   "name": "@duskmoon-dev/css-art",
-  "version": "1.18.6",
+  "version": "1.19.0",
   "description": "Pure CSS art components - decorative illustrations built entirely with CSS",
   "type": "module",
   "main": "./dist/index.css",
