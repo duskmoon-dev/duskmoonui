@@ -21,7 +21,10 @@ const { Content } = await render(entry);
   title={entry.data.title}
   description={entry.data.description}
 >
-  <article class="max-w-4xl mx-auto">
+  <article class:list={[
+    'mx-auto',
+    entry.data.category === 'layout' ? 'max-w-7xl' : 'max-w-4xl',
+  ]}>
     <header class="mb-12">
       <h1 class="mt-0 break-words text-4xl font-bold sm:text-5xl">{entry.data.title}</h1>
       {entry.data.description && (

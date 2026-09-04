@@ -1,0 +1,163 @@
+---
+title: Sign Page
+description: Responsive authentication layouts for focused sign-in and sign-up experiences
+category: layout
+order: 2
+published: true
+tags: ['layout', 'authentication', 'sign-in', 'sign-up', 'responsive', 'container-query']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Sign Page
+
+The sign page layout gives authentication flows a stable, responsive frame. It uses container queries, so an embedded sign page responds to the space it receives instead of relying on the browser viewport.
+
+## Sign In
+
+Use the aside for brand context and the main region for the focused authentication task. The content slot constrains the form to a comfortable reading width.
+
+<ComponentShowcase
+  title="Split Sign-in Page"
+  description="The brand panel and form stack automatically when the layout container becomes narrow."
+  code={`<section class="sign-page" aria-labelledby="demo-sign-in-title">
+  <div class="sign-page-frame">
+    <aside class="sign-page-aside">
+      <div class="flex max-w-md flex-col gap-6">
+        <span class="badge badge-secondary w-fit">DuskMoon Cloud</span>
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-widest">One calm workspace</p>
+          <p class="m-0 text-4xl font-bold">Bring every project into orbit.</p>
+          <p class="mb-0 mt-4 text-lg">
+            Review releases, watch services, and collaborate with your team from one focused console.
+          </p>
+        </div>
+        <div class="card bg-surface-container-high p-5">
+          <p class="m-0 text-sm text-on-surface-variant">Trusted by product teams shipping around the clock.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <div class="avatar avatar-primary avatar-sm" aria-hidden="true">AO</div>
+            <div>
+              <p class="m-0 font-semibold">Avery Ortiz</p>
+              <p class="m-0 text-sm text-on-surface-variant">Platform lead at Northstar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="sign-page-main">
+      <div class="sign-page-content">
+        <a href="#" class="mb-8 inline-flex items-center gap-2 font-semibold text-primary no-underline">
+          <span aria-hidden="true">◐</span>
+          DuskMoon
+        </a>
+        <p class="mb-2 text-sm font-semibold text-primary">Welcome back</p>
+        <h1 id="demo-sign-in-title" class="m-0 text-3xl font-bold">Sign in to your account</h1>
+        <p class="mb-8 mt-3 text-on-surface-variant">Use your work email to continue.</p>
+
+        <form class="form" action="#" method="post">
+          <div class="form-group">
+            <label class="form-label" for="demo-sign-in-email">Email address</label>
+            <input class="input" id="demo-sign-in-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <div class="flex items-center justify-between gap-4">
+              <label class="form-label" for="demo-sign-in-password">Password</label>
+              <a href="#" class="text-sm text-primary">Forgot password?</a>
+            </div>
+            <input class="input" id="demo-sign-in-password" name="password" type="password" autocomplete="current-password" required />
+          </div>
+          <label class="flex items-center gap-3 text-sm">
+            <input class="checkbox checkbox-primary" type="checkbox" name="remember" />
+            Keep me signed in
+          </label>
+          <button class="btn btn-primary w-full" type="submit">Sign in</button>
+        </form>
+
+        <div class="divider my-6">or</div>
+        <button class="btn btn-outlined w-full" type="button">Continue with GitHub</button>
+        <p class="mb-0 mt-8 text-center text-sm text-on-surface-variant">
+          New to DuskMoon? <a href="#" class="font-semibold text-primary">Create an account</a>
+        </p>
+      </div>
+    </main>
+  </div>
+</section>`}
+/>
+
+## Sign Up
+
+The same slots support a longer registration flow without changing the surrounding page structure.
+
+<ComponentShowcase
+  title="Account Creation"
+  code={`<section class="sign-page" aria-labelledby="demo-sign-up-title">
+  <div class="sign-page-frame">
+    <aside class="sign-page-aside">
+      <div class="flex max-w-md flex-col gap-6">
+        <span class="badge badge-tertiary w-fit">Start in minutes</span>
+        <p class="m-0 text-4xl font-bold">A clearer path from idea to production.</p>
+        <ul class="m-0 grid list-none gap-4 p-0 text-on-surface-variant">
+          <li class="flex gap-3"><span class="text-success" aria-hidden="true">✓</span> One home for apps and environments</li>
+          <li class="flex gap-3"><span class="text-success" aria-hidden="true">✓</span> Sensible access controls from day one</li>
+          <li class="flex gap-3"><span class="text-success" aria-hidden="true">✓</span> No credit card required for your trial</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="sign-page-main">
+      <div class="sign-page-content">
+        <p class="mb-2 text-sm font-semibold text-primary">Create your workspace</p>
+        <h1 id="demo-sign-up-title" class="m-0 text-3xl font-bold">Start your free account</h1>
+        <p class="mb-8 mt-3 text-on-surface-variant">Invite your team after setup.</p>
+
+        <form class="form" action="#" method="post">
+          <div class="form-group">
+            <label class="form-label" for="demo-sign-up-name">Full name</label>
+            <input class="input" id="demo-sign-up-name" name="name" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="demo-sign-up-email">Work email</label>
+            <input class="input" id="demo-sign-up-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="demo-sign-up-password">Password</label>
+            <input class="input" id="demo-sign-up-password" name="password" type="password" autocomplete="new-password" minlength="8" aria-describedby="demo-password-help" required />
+            <p class="form-helper" id="demo-password-help">Use at least 8 characters.</p>
+          </div>
+          <label class="flex items-start gap-3 text-sm">
+            <input class="checkbox checkbox-primary mt-1" type="checkbox" name="terms" required />
+            <span>I agree to the <a href="#" class="text-primary">terms of service</a> and <a href="#" class="text-primary">privacy policy</a>.</span>
+          </label>
+          <button class="btn btn-primary w-full" type="submit">Create account</button>
+        </form>
+
+        <p class="mb-0 mt-8 text-center text-sm text-on-surface-variant">
+          Already have an account? <a href="#" class="font-semibold text-primary">Sign in</a>
+        </p>
+      </div>
+    </main>
+  </div>
+</section>`}
+/>
+
+## Anatomy
+
+| Class | Role |
+|-------|------|
+| `.sign-page` | Container-query root and page surface |
+| `.sign-page-frame` | Responsive split-page frame |
+| `.sign-page-aside` | Supporting brand, illustration, or product context |
+| `.sign-page-main` | Primary authentication region |
+| `.sign-page-content` | Readable-width form content |
+
+## Accessibility
+
+- Give the page's primary heading an ID and reference it with `aria-labelledby` on the root.
+- Use a real `form`, persistent labels, and appropriate `autocomplete` values.
+- Keep sign-in and sign-up links descriptive; do not rely on color alone to distinguish them.
+- Decorative content in the aside must not interrupt the form's heading and field order.
+
+## Container-aware behavior
+
+The sign page observes its own inline size. A narrow dashboard panel therefore receives the compact stacked layout even when the browser window itself is wide. Avoid viewport breakpoint classes on the five structural slots; let the layout's container queries control their placement.

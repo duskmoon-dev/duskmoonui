@@ -77,6 +77,19 @@ test.describe('Documentation Site Build', () => {
       }
     });
 
+    test('responsive page layout docs exist', async () => {
+      const layoutDocs = [
+        'src/content/docs/en/layout/sign-page.mdx',
+        'src/content/docs/en/layout/home-page.mdx',
+        'src/content/docs/en/layout/console-page.mdx',
+      ];
+
+      for (const docPath of layoutDocs) {
+        const fullPath = join(docsRoot, docPath);
+        expect(existsSync(fullPath)).toBe(true);
+      }
+    });
+
     test('getting started docs exist', async () => {
       const gettingStartedDocs = [
         'src/content/docs/en/getting-started/installation.mdx',

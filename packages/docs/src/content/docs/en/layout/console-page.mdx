@@ -1,0 +1,261 @@
+---
+title: Console Page
+description: Responsive application console layouts with an app bar, collapsible sidebar, mobile menu, and user controls
+category: layout
+order: 4
+published: true
+tags: ['layout', 'console', 'dashboard', 'appbar', 'sidebar', 'responsive', 'container-query']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Console Page
+
+The console page layout coordinates an app bar, persistent navigation, and a flexible workspace. Wide containers support expanded, compact, and hidden sidebar states; narrow containers replace the sidebar control with a native app-bar menu.
+
+## Interactive Console
+
+The sidebar button below cycles through expanded, compact, and hidden states. Resize the page to a compact width to see the app-bar menu replace the persistent sidebar.
+
+<ComponentShowcase
+  title="Responsive Operations Console"
+  description="Use the sidebar toggle on wide containers or the menu trigger on compact containers."
+  code={`<div class="console-page" id="demo-console-page" aria-labelledby="demo-console-title">
+  <div class="console-page-frame">
+    <header class="console-page-appbar appbar appbar-bordered">
+      <div class="appbar-leading">
+        <button
+          class="console-page-sidebar-toggle appbar-action"
+          type="button"
+          aria-label="Compact sidebar"
+          aria-controls="demo-console-sidebar"
+          onclick="
+            const page = this.closest('.console-page');
+            const compactClass = 'console-page-sidebar-compact';
+            const hiddenClass = 'console-page-sidebar-hidden';
+            if (page.classList.contains(hiddenClass)) {
+              page.classList.remove(hiddenClass, compactClass);
+              this.setAttribute('aria-label', 'Compact sidebar');
+            } else if (page.classList.contains(compactClass)) {
+              page.classList.remove(compactClass);
+              page.classList.add(hiddenClass);
+              this.setAttribute('aria-label', 'Show sidebar');
+            } else {
+              page.classList.add(compactClass);
+              this.setAttribute('aria-label', 'Hide sidebar');
+            }
+          "
+        >
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+          </svg>
+        </button>
+        <button
+          class="console-page-menu-trigger appbar-action"
+          type="button"
+          aria-label="Open console navigation"
+          popovertarget="demo-console-mobile-menu"
+          style="anchor-name: --demo-console-menu-anchor"
+        >
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+          </svg>
+        </button>
+        <a href="#" class="ml-2 font-bold text-on-surface no-underline">DuskMoon Console</a>
+      </div>
+
+      <div class="appbar-title">
+        <p class="appbar-subtitle">Northstar / Production</p>
+      </div>
+
+      <div class="appbar-trailing">
+        <button class="appbar-action" type="button" aria-label="View notifications">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-12 0v3.2a2 2 0 01-.6 1.4L4 17h5m6 0a3 3 0 01-6 0h6z" />
+          </svg>
+        </button>
+        <button
+          class="appbar-action"
+          type="button"
+          aria-label="Open user settings"
+          popovertarget="demo-console-user-menu"
+          style="anchor-name: --demo-console-user-anchor"
+        >
+          <span class="avatar avatar-primary avatar-sm" aria-hidden="true">AG</span>
+        </button>
+        <div
+          class="popover popover-end popover-no-arrow menu menu-vertical"
+          id="demo-console-user-menu"
+          popover
+          style="position-anchor: --demo-console-user-anchor"
+        >
+          <div class="menu-title">Alex Gao · Owner</div>
+          <a class="menu-item" href="#">Profile</a>
+          <a class="menu-item" href="#">Workspace settings</a>
+          <div class="divider my-1" aria-hidden="true"></div>
+          <button class="menu-item" type="button">Sign out</button>
+        </div>
+      </div>
+
+      <nav
+        class="console-page-mobile-menu menu menu-vertical popover popover-start popover-no-arrow"
+        id="demo-console-mobile-menu"
+        popover
+        aria-label="Console navigation"
+        style="position-anchor: --demo-console-menu-anchor"
+      >
+        <div class="menu-title">Workspace</div>
+        <a class="menu-item active" href="#" aria-current="page">Overview</a>
+        <a class="menu-item" href="#">Deployments</a>
+        <a class="menu-item" href="#">Services</a>
+        <a class="menu-item" href="#">Activity</a>
+        <div class="divider my-1" aria-hidden="true"></div>
+        <div class="menu-title">Manage</div>
+        <a class="menu-item" href="#">Team</a>
+        <a class="menu-item" href="#">Settings</a>
+      </nav>
+    </header>
+
+    <aside class="console-page-sidebar" id="demo-console-sidebar">
+      <div class="console-page-sidebar-header">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-content" aria-hidden="true">N</span>
+        <div class="console-page-nav-label">
+          <p class="m-0 font-semibold">Northstar</p>
+          <p class="m-0 text-xs text-on-surface-variant">Production</p>
+        </div>
+      </div>
+
+      <nav class="console-page-sidebar-body" aria-label="Console sections">
+        <p class="drawer-label console-page-nav-label">Workspace</p>
+        <a class="drawer-item drawer-item-active" href="#" aria-current="page">
+          <span class="drawer-item-icon" aria-hidden="true">◫</span>
+          <span class="console-page-nav-label">Overview</span>
+        </a>
+        <a class="drawer-item" href="#">
+          <span class="drawer-item-icon" aria-hidden="true">↗</span>
+          <span class="console-page-nav-label">Deployments</span>
+        </a>
+        <a class="drawer-item" href="#">
+          <span class="drawer-item-icon" aria-hidden="true">◇</span>
+          <span class="console-page-nav-label">Services</span>
+        </a>
+        <a class="drawer-item" href="#">
+          <span class="drawer-item-icon" aria-hidden="true">≋</span>
+          <span class="console-page-nav-label">Activity</span>
+        </a>
+
+        <p class="drawer-label console-page-nav-label">Manage</p>
+        <a class="drawer-item" href="#">
+          <span class="drawer-item-icon" aria-hidden="true">◎</span>
+          <span class="console-page-nav-label">Team</span>
+        </a>
+        <a class="drawer-item" href="#">
+          <span class="drawer-item-icon" aria-hidden="true">⚙</span>
+          <span class="console-page-nav-label">Settings</span>
+        </a>
+      </nav>
+
+      <div class="console-page-sidebar-footer">
+        <div class="flex items-center gap-3">
+          <span class="avatar avatar-secondary avatar-sm shrink-0" aria-hidden="true">AG</span>
+          <div class="console-page-nav-label">
+            <p class="m-0 text-sm font-semibold">Alex Gao</p>
+            <p class="m-0 text-xs text-on-surface-variant">alex@example.com</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="console-page-main">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="mb-2 text-sm font-semibold text-primary">Friday, September 4</p>
+          <h1 id="demo-console-title" class="m-0 text-3xl font-bold">Good evening, Alex.</h1>
+          <p class="mb-0 mt-2 text-on-surface-variant">Production is healthy and your latest release is stable.</p>
+        </div>
+        <button class="btn btn-primary" type="button">New deployment</button>
+      </div>
+
+      <section class="grid grid-cols-auto-fit-52 gap-4" aria-label="Workspace summary">
+        <article class="card p-5">
+          <p class="m-0 text-sm text-on-surface-variant">Active services</p>
+          <p class="mb-0 mt-2 text-3xl font-bold">12</p>
+          <span class="badge badge-success mt-4">All healthy</span>
+        </article>
+        <article class="card p-5">
+          <p class="m-0 text-sm text-on-surface-variant">Deployments today</p>
+          <p class="mb-0 mt-2 text-3xl font-bold">7</p>
+          <span class="badge badge-info mt-4">2 in progress</span>
+        </article>
+        <article class="card p-5">
+          <p class="m-0 text-sm text-on-surface-variant">Open incidents</p>
+          <p class="mb-0 mt-2 text-3xl font-bold">0</p>
+          <span class="badge badge-secondary mt-4">Quiet shift</span>
+        </article>
+      </section>
+
+      <section class="card mt-6 p-6" aria-labelledby="demo-recent-title">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="m-0 text-sm text-on-surface-variant">Release activity</p>
+            <h2 id="demo-recent-title" class="m-0 text-xl font-semibold">Recent deployments</h2>
+          </div>
+          <a href="#" class="btn btn-text btn-sm">View all</a>
+        </div>
+        <div class="mt-5 grid gap-3">
+          <div class="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-surface-container p-4">
+            <div><p class="m-0 font-semibold">api-gateway · v4.18.2</p><p class="m-0 text-sm text-on-surface-variant">8 minutes ago by Mina</p></div>
+            <span class="badge badge-success">Healthy</span>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-surface-container p-4">
+            <div><p class="m-0 font-semibold">web-console · v2.9.0</p><p class="m-0 text-sm text-on-surface-variant">31 minutes ago by Alex</p></div>
+            <span class="badge badge-info">Monitoring</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>`}
+/>
+
+## Sidebar states
+
+Apply state modifiers to the `.console-page` root. The layout owns the transition and keeps the content grid synchronized with the sidebar.
+
+| Class | Result |
+|-------|--------|
+| `.console-page-sidebar-compact` | Collapses the sidebar to an icon rail and hides labels |
+| `.console-page-sidebar-hidden` | Removes the persistent sidebar and lets main content fill the frame |
+
+Use `.console-page-sidebar-toggle` for the wide-container control. Update its accessible name or pressed state whenever application code changes the sidebar state.
+
+## Anatomy
+
+| Class | Role |
+|-------|------|
+| `.console-page` | Container-query root and state owner |
+| `.console-page-frame` | App bar, sidebar, and content grid |
+| `.console-page-appbar` | Top application bar |
+| `.console-page-sidebar` | Persistent wide-container navigation |
+| `.console-page-sidebar-header` | Workspace or product identity |
+| `.console-page-sidebar-body` | Scrollable navigation content |
+| `.console-page-sidebar-footer` | Account or secondary actions |
+| `.console-page-main` | Primary workspace content |
+| `.console-page-nav-label` | Sidebar section label |
+| `.console-page-sidebar-toggle` | Expanded/compact/hidden state control |
+| `.console-page-menu-trigger` | Compact-container menu trigger |
+| `.console-page-mobile-menu` | Compact-container navigation surface |
+
+## Compact containers
+
+On small containers, the persistent sidebar and its toggle are removed from the layout. The `.console-page-menu-trigger` becomes available in the app bar and opens `.console-page-mobile-menu`. The example uses native `popover`, `popovertarget`, and anchor positioning for light dismissal, Escape-key support, and predictable focus behavior.
+
+Repeat the same destinations and active state in desktop and compact navigation. Do not render two independently focusable navigation regions at the same time.
+
+## Accessibility
+
+- Label the persistent and compact navigation landmarks.
+- Point the sidebar toggle's `aria-controls` at the sidebar and keep its name synchronized with the next action.
+- Use `aria-current="page"` for the active destination.
+- Keep account actions in buttons or links; the avatar alone is not an accessible name.
+- Preserve logical focus when the sidebar is hidden and allow the native popover to close with Escape.

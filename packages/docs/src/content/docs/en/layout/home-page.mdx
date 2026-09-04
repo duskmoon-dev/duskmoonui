@@ -1,0 +1,175 @@
+---
+title: Home Page
+description: Responsive application home layouts with an app bar, navigation, content, and footer
+category: layout
+order: 3
+published: true
+tags: ['layout', 'home', 'appbar', 'navigation', 'responsive', 'container-query']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Home Page
+
+The home page layout composes an app bar with flexible navigation, a full-width main region, focused content, and a footer. Its navigation adapts to the page container, which makes the layout suitable for full pages, previews, and embedded application shells.
+
+## Application Home
+
+<ComponentShowcase
+  title="Product Home Page"
+  description="Primary navigation gives way to a native app-bar menu when the container becomes compact."
+  code={`<div class="home-page" aria-labelledby="demo-home-title">
+  <div class="home-page-frame">
+    <header class="home-page-header appbar appbar-bordered">
+      <div class="appbar-leading">
+        <a href="#" class="flex items-center gap-2 font-bold text-on-surface no-underline" aria-label="DuskMoon home">
+          <span class="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-content" aria-hidden="true">◐</span>
+          <span>DuskMoon</span>
+        </a>
+      </div>
+
+      <nav class="home-page-nav" aria-label="Primary navigation">
+        <a href="#" class="btn btn-text btn-sm" aria-current="page">Overview</a>
+        <a href="#features" class="btn btn-text btn-sm">Features</a>
+        <a href="#stories" class="btn btn-text btn-sm">Stories</a>
+        <a href="#pricing" class="btn btn-text btn-sm">Pricing</a>
+      </nav>
+
+      <div class="appbar-trailing">
+        <div class="home-page-actions">
+          <a href="#" class="btn btn-text btn-sm">Sign in</a>
+          <a href="#" class="btn btn-primary btn-sm">Start free</a>
+        </div>
+        <button
+          class="home-page-menu-trigger appbar-action"
+          type="button"
+          aria-label="Open navigation menu"
+          popovertarget="demo-home-menu"
+          style="anchor-name: --demo-home-menu-anchor"
+        >
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <nav
+        class="home-page-mobile-menu menu menu-vertical popover popover-end popover-no-arrow"
+        id="demo-home-menu"
+        popover
+        aria-label="Compact navigation"
+        style="position-anchor: --demo-home-menu-anchor"
+      >
+        <a href="#" class="menu-item" aria-current="page">Overview</a>
+        <a href="#features" class="menu-item">Features</a>
+        <a href="#stories" class="menu-item">Stories</a>
+        <a href="#pricing" class="menu-item">Pricing</a>
+      </nav>
+    </header>
+
+    <main class="home-page-main">
+      <div class="home-page-content">
+        <section class="home-page-hero py-12" aria-labelledby="demo-home-title">
+          <div>
+            <span class="badge badge-primary mb-5">Release confidence, built in</span>
+            <h1 id="demo-home-title" class="m-0 text-4xl font-bold leading-tight">Ship software with a quieter control room.</h1>
+            <p class="mb-8 mt-5 text-lg text-on-surface-variant">
+              DuskMoon brings deployments, service health, and team decisions into one legible workspace.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#" class="btn btn-primary">Create workspace</a>
+              <a href="#features" class="btn btn-outlined">Explore features</a>
+            </div>
+          </div>
+
+          <div class="card bg-surface-container-high p-6" aria-label="Service health preview">
+            <div class="mb-6 flex items-center justify-between gap-4">
+              <div>
+                <p class="m-0 text-sm text-on-surface-variant">Production</p>
+                <h2 class="m-0 text-xl font-semibold">Service health</h2>
+              </div>
+              <span class="badge badge-success">All systems operational</span>
+            </div>
+            <div class="grid grid-cols-auto-fit-40 gap-3">
+              <div class="card bg-surface-container p-4">
+                <p class="m-0 text-sm text-on-surface-variant">API latency</p>
+                <p class="mb-0 mt-2 text-2xl font-bold">84 ms</p>
+              </div>
+              <div class="card bg-surface-container p-4">
+                <p class="m-0 text-sm text-on-surface-variant">Deployments</p>
+                <p class="mb-0 mt-2 text-2xl font-bold">18</p>
+              </div>
+              <div class="card bg-surface-container p-4">
+                <p class="m-0 text-sm text-on-surface-variant">Availability</p>
+                <p class="mb-0 mt-2 text-2xl font-bold">99.99%</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="py-12" aria-labelledby="demo-features-title">
+          <p class="mb-2 text-sm font-semibold text-primary">Designed for momentum</p>
+          <h2 id="demo-features-title" class="m-0 text-3xl font-bold">Everything important, nothing noisy.</h2>
+          <div class="mt-8 grid grid-cols-auto-fit-64 gap-5">
+            <article class="card p-6">
+              <span class="badge badge-info mb-4">Observe</span>
+              <h3 class="m-0 text-xl font-semibold">A shared operating picture</h3>
+              <p class="mb-0 mt-3 text-on-surface-variant">See releases and incidents in the context your whole team understands.</p>
+            </article>
+            <article class="card p-6">
+              <span class="badge badge-tertiary mb-4">Decide</span>
+              <h3 class="m-0 text-xl font-semibold">Clear paths to action</h3>
+              <p class="mb-0 mt-3 text-on-surface-variant">Move from signal to owner without searching across disconnected tools.</p>
+            </article>
+            <article class="card p-6">
+              <span class="badge badge-success mb-4">Deliver</span>
+              <h3 class="m-0 text-xl font-semibold">Release with confidence</h3>
+              <p class="mb-0 mt-3 text-on-surface-variant">Keep every rollout visible from first commit through production health.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="home-page-footer">
+      <div class="home-page-content flex flex-wrap items-center justify-between gap-4 py-6 text-sm text-on-surface-variant">
+        <p class="m-0">© 2026 DuskMoon. Built for focused teams.</p>
+        <nav class="flex flex-wrap gap-5" aria-label="Footer navigation">
+          <a href="#" class="text-inherit">Privacy</a>
+          <a href="#" class="text-inherit">Status</a>
+          <a href="#" class="text-inherit">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</div>`}
+/>
+
+## Anatomy
+
+| Class | Role |
+|-------|------|
+| `.home-page` | Container-query root and page surface |
+| `.home-page-frame` | Full page frame |
+| `.home-page-header` | App-bar header slot |
+| `.home-page-nav` | Primary wide-container navigation |
+| `.home-page-actions` | Optional wide-container app-bar actions |
+| `.home-page-menu-trigger` | Compact-container navigation trigger |
+| `.home-page-mobile-menu` | Compact-container navigation surface |
+| `.home-page-main` | Main landmark and flexible content region |
+| `.home-page-content` | Centered readable content width |
+| `.home-page-hero` | One-column hero that becomes a two-column composition in wide containers |
+| `.home-page-footer` | Footer region |
+
+## Navigation behavior
+
+Include both `.home-page-nav` and `.home-page-menu-trigger`. Container queries choose the appropriate control for the available width. The compact menu can use the native Popover API, which provides light dismissal and Escape-key handling without application state.
+
+Keep identical destinations in both navigation surfaces, and use `aria-current="page"` for the active destination.
+
+## Accessibility
+
+- Give every navigation landmark a distinct label.
+- Preserve a single page-level `h1`; feature sections should begin with `h2`.
+- Use links for destinations and buttons only for actions or menu disclosure.
+- Ensure the menu remains reachable and operable at 200% zoom, where the compact container state may activate.
