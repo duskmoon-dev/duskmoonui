@@ -1,0 +1,80 @@
+/**
+ * Sign Page Layout
+ * Responsive authentication shell driven by its containing width.
+ */
+
+@layer components {
+  .sign-page {
+    container-type: inline-size;
+    container-name: sign-page;
+    width: 100%;
+    min-width: 0;
+    min-height: var(--sign-page-min-height, 100dvh);
+    overflow: hidden;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  .sign-page-frame {
+    display: grid;
+    min-height: inherit;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sign-page-aside {
+    display: none;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(2rem, 6cqi, 5rem);
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .sign-page-aside::before,
+  .sign-page-aside::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: var(--radius-full);
+    background: color-mix(in oklch, var(--color-tertiary) 24%, transparent);
+    filter: blur(1px);
+  }
+
+  .sign-page-aside::before {
+    width: 22rem;
+    height: 22rem;
+    inset: -8rem -6rem auto auto;
+  }
+
+  .sign-page-aside::after {
+    width: 15rem;
+    height: 15rem;
+    inset: auto auto -5rem -4rem;
+    background: color-mix(in oklch, var(--color-secondary) 22%, transparent);
+  }
+
+  .sign-page-main {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    padding: clamp(1rem, 6cqi, 4rem);
+    background-color: var(--color-surface);
+  }
+
+  .sign-page-content {
+    width: min(100%, 30rem);
+  }
+
+  @container sign-page (min-width: 48rem) {
+    .sign-page-frame {
+      grid-template-columns: minmax(20rem, 1.15fr) minmax(24rem, 0.85fr);
+    }
+
+    .sign-page-aside {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}

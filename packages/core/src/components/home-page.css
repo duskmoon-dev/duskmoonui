@@ -1,0 +1,94 @@
+/**
+ * Home Page Layout
+ * App-bar-led public application shell driven by its containing width.
+ */
+
+@layer components {
+  .home-page {
+    container-type: inline-size;
+    container-name: home-page;
+    width: 100%;
+    min-width: 0;
+    min-height: var(--home-page-min-height, 100dvh);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  .home-page-frame {
+    display: grid;
+    min-height: inherit;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  .home-page-header {
+    z-index: 10;
+  }
+
+  .home-page-nav {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .home-page-actions {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .home-page-menu-trigger {
+    display: inline-flex;
+  }
+
+  .home-page-mobile-menu {
+    max-width: min(20rem, calc(100cqi - 2rem));
+  }
+
+  .home-page-main {
+    min-width: 0;
+  }
+
+  .home-page-content {
+    width: min(100%, 80rem);
+    margin-inline: auto;
+    padding: clamp(1rem, 5cqi, 3rem);
+  }
+
+  .home-page-hero {
+    display: grid;
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(2rem, 5cqi, 4rem);
+  }
+
+  .home-page-footer {
+    border-top: 1px solid var(--color-outline-variant);
+    background-color: var(--color-surface-container-low);
+  }
+
+  @container home-page (min-width: 48rem) {
+    .home-page-nav {
+      display: flex;
+    }
+
+    .home-page-actions {
+      display: flex;
+    }
+
+    .home-page-menu-trigger {
+      display: none;
+    }
+
+    .home-page-mobile-menu {
+      display: none;
+    }
+
+    .home-page-content {
+      padding-inline: clamp(2rem, 5cqi, 5rem);
+    }
+
+    .home-page-hero {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr);
+    }
+  }
+}

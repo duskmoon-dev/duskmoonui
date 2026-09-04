@@ -138,6 +138,12 @@
       "import": "./dist/esm/components/collapse.js",
       "default": "./dist/esm/components/collapse.js"
     },
+    "./components/console-page": {
+      "types": "./dist/esm/components/console-page.d.ts",
+      "style": "./dist/components/console-page.css",
+      "import": "./dist/esm/components/console-page.js",
+      "default": "./dist/esm/components/console-page.js"
+    },
     "./components/datepicker": {
       "types": "./dist/esm/components/datepicker.d.ts",
       "style": "./dist/components/datepicker.css",
@@ -179,6 +185,12 @@
       "style": "./dist/components/form-group.css",
       "import": "./dist/esm/components/form-group.js",
       "default": "./dist/esm/components/form-group.js"
+    },
+    "./components/home-page": {
+      "types": "./dist/esm/components/home-page.d.ts",
+      "style": "./dist/components/home-page.css",
+      "import": "./dist/esm/components/home-page.js",
+      "default": "./dist/esm/components/home-page.js"
     },
     "./components/input": {
       "types": "./dist/esm/components/input.d.ts",
@@ -269,6 +281,12 @@
       "style": "./dist/components/select.css",
       "import": "./dist/esm/components/select.js",
       "default": "./dist/esm/components/select.js"
+    },
+    "./components/sign-page": {
+      "types": "./dist/esm/components/sign-page.d.ts",
+      "style": "./dist/components/sign-page.css",
+      "import": "./dist/esm/components/sign-page.js",
+      "default": "./dist/esm/components/sign-page.js"
     },
     "./components/skeleton": {
       "types": "./dist/esm/components/skeleton.d.ts",

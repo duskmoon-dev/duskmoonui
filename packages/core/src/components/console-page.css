@@ -1,0 +1,178 @@
+/**
+ * Console Page Layout
+ * Responsive application shell with expanded, icon-rail, and hidden sidebar states.
+ */
+
+@layer components {
+  .console-page {
+    --console-page-sidebar-width: 17.5rem;
+    --console-page-sidebar-compact-width: 5rem;
+    container-type: inline-size;
+    container-name: console-page;
+    width: 100%;
+    min-width: 0;
+    min-height: var(--console-page-min-height, 100dvh);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  .console-page-frame {
+    display: grid;
+    min-height: inherit;
+    grid-template-areas:
+      "appbar"
+      "main";
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    transition: grid-template-columns 240ms ease-out;
+  }
+
+  .console-page-appbar {
+    grid-area: appbar;
+    z-index: 20;
+  }
+
+  .console-page-sidebar {
+    display: none;
+    grid-area: sidebar;
+    min-width: 0;
+    overflow: hidden;
+    background-color: var(--color-surface-container-low);
+    border-inline-end: 1px solid var(--color-outline-variant);
+    transition:
+      opacity 160ms ease-out,
+      visibility 160ms ease-out;
+  }
+
+  .console-page-sidebar-header,
+  .console-page-sidebar-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 4rem;
+    padding: 0.75rem 1rem;
+    flex-shrink: 0;
+  }
+
+  .console-page-sidebar-header {
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .console-page-sidebar-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-block: 0.5rem;
+  }
+
+  .console-page-sidebar-footer {
+    border-top: 1px solid var(--color-outline-variant);
+  }
+
+  .console-page-main {
+    grid-area: main;
+    min-width: 0;
+    overflow: auto;
+    padding: clamp(1rem, 4cqi, 2.5rem);
+    background-color: var(--color-surface);
+  }
+
+  .console-page-nav-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .console-page-sidebar-toggle {
+    display: none;
+  }
+
+  .console-page-menu-trigger {
+    display: inline-flex;
+  }
+
+  .console-page-mobile-menu {
+    max-width: min(20rem, calc(100cqi - 2rem));
+  }
+
+  @container console-page (min-width: 48rem) {
+    .console-page-frame {
+      grid-template-areas:
+        "appbar appbar"
+        "sidebar main";
+      grid-template-columns: var(--console-page-sidebar-width) minmax(0, 1fr);
+    }
+
+    .console-page-sidebar {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .console-page-sidebar-toggle {
+      display: inline-flex;
+    }
+
+    .console-page-menu-trigger {
+      display: none;
+    }
+
+    .console-page-mobile-menu {
+      display: none;
+    }
+
+    .console-page-sidebar-compact .console-page-frame {
+      grid-template-columns: var(--console-page-sidebar-compact-width) minmax(0, 1fr);
+    }
+
+    .console-page-sidebar-compact .console-page-nav-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .console-page-sidebar-compact .console-page-sidebar-header,
+    .console-page-sidebar-compact .console-page-sidebar-footer {
+      justify-content: center;
+      padding-inline: 0.75rem;
+    }
+
+    .console-page-sidebar-compact .console-page-sidebar-body :is(.nested-menu li > a, .nested-menu li > button, .nested-menu summary) {
+      justify-content: center;
+      padding-inline: 0.75rem;
+    }
+
+    .console-page-sidebar-compact .console-page-sidebar-body .drawer-item {
+      justify-content: center;
+      padding-inline: 0.75rem;
+    }
+
+    .console-page-sidebar-compact .console-page-sidebar-body :is(.nested-menu-title, details > ul, summary::after) {
+      display: none;
+    }
+
+    .console-page-sidebar-hidden .console-page-frame {
+      grid-template-areas:
+        "appbar"
+        "main";
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .console-page-sidebar-hidden .console-page-sidebar {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .console-page-frame,
+    .console-page-sidebar {
+      transition: none;
+    }
+  }
+}
