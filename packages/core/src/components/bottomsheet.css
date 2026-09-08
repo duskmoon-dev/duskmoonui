@@ -20,6 +20,26 @@
     visibility: visible;
   }
 
+  /* Native surfaces keep the browser's closed state and reset UA dialog/popover geometry. */
+  :where(.bottomsheet[popover], dialog.bottomsheet) {
+    inset: auto;
+    margin: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 0;
+    color: var(--color-on-surface);
+    max-width: none;
+    max-height: none;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+  .bottomsheet[popover]:not(:popover-open),
+  dialog.bottomsheet:not([open]) {
+    display: none;
+  }
+
   /* Base Bottom Sheet */
   .bottomsheet {
     position: fixed;
@@ -321,8 +341,57 @@
     }
   }
 
+  /* Native state overrides legacy transforms without requiring class toggles. */
+  .bottomsheet[popover],
+  dialog.bottomsheet {
+    transition: transform 300ms ease-out, opacity 300ms ease-out,
+      display 300ms allow-discrete, overlay 300ms allow-discrete;
+    opacity: 0;
+  }
+
+  .bottomsheet[popover]:popover-open,
+  dialog.bottomsheet[open] {
+    display: flex;
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  dialog.bottomsheet::backdrop {
+    background-color: color-mix(in srgb, var(--color-scrim) 50%, transparent);
+    opacity: 0;
+    transition: opacity 300ms ease-out, display 300ms allow-discrete,
+      overlay 300ms allow-discrete;
+  }
+
+  dialog.bottomsheet[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    .bottomsheet[popover]:popover-open,
+    dialog.bottomsheet[open],
+    dialog.bottomsheet[open]::backdrop {
+      opacity: 0;
+    }
+
+    .bottomsheet[popover]:popover-open,
+    dialog.bottomsheet[open] {
+      transform: translateY(100%);
+    }
+
+    @media (min-width: 768px) {
+      .bottomsheet-responsive[popover]:popover-open,
+      dialog.bottomsheet-responsive[open] {
+        transform: translateX(100%);
+      }
+    }
+  }
+
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
+    .bottomsheet[popover],
+    dialog.bottomsheet,
+    dialog.bottomsheet::backdrop,
     .bottomsheet,
     .bottomsheet-backdrop,
     .bottomsheet-close,

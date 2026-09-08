@@ -13,6 +13,46 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 Navigation drawers provide access to destinations in your app. @duskmoon-dev/core provides a flexible drawer component with multiple variants and positions.
 
+## Native non-modal drawer
+
+Use `popover="auto"` for a non-modal surface in the browser's top layer. The browser handles Escape, outside-click dismissal, and focus restoration when dismissed with Escape. It does not make the rest of the page inert or trap focus.
+
+<ComponentShowcase title="Native non-modal Drawer" code={`<button type="button" class="btn" command="toggle-popover" commandfor="demo-drawer-popover">Open drawer</button>
+<aside id="demo-drawer-popover" class="drawer drawer-left" popover="auto" aria-labelledby="demo-drawer-title">
+  <div class="drawer-header">
+    <h2 id="demo-drawer-title" class="drawer-title">Quick actions</h2>
+    <button type="button" class="drawer-close" command="hide-popover" commandfor="demo-drawer-popover" aria-label="Close drawer" autofocus>×</button>
+  </div>
+  <div class="drawer-body">
+    <p>Choose an action, or keep working on the page.</p>
+  </div>
+</aside>`} />
+
+## Native modal drawer
+
+Use a native `dialog` with `show-modal` for modal interaction: the browser makes the background inert, keeps keyboard focus inside, and returns focus to the opener on close. `closedby="any"` enables outside-click dismissal in supporting browsers; Escape and the explicit close button remain available. Omit `closedby="any"` to require Escape or a close action. The scrim comes from `::backdrop`; no separate backdrop element is needed.
+
+<ComponentShowcase title="Native modal Drawer" code={`<button type="button" class="btn btn-primary" command="show-modal" commandfor="demo-drawer-modal">Open modal drawer</button>
+<dialog id="demo-drawer-modal" class="drawer drawer-left" closedby="any" aria-labelledby="demo-drawer-modal-title">
+  <div class="drawer-header">
+    <h2 id="demo-drawer-modal-title" class="drawer-title">Review changes</h2>
+    <button type="button" class="drawer-close" command="close" commandfor="demo-drawer-modal" aria-label="Close drawer" autofocus>×</button>
+  </div>
+  <div class="drawer-body">
+    <p>Review your changes before continuing.</p>
+  </div>
+</dialog>`} />
+
+### State, positioning, and motion
+
+Native surfaces use `:popover-open` or the dialog's `open` attribute. Do not add legacy visibility classes or toggle `open` directly for modal dialogs. Invoker commands require browser support; applications targeting older browsers can call `showPopover()` / `hidePopover()` and `showModal()` / `close()` as a compatibility fallback.
+
+These panels attach to viewport edges rather than their trigger, so they do not need an anchor name. Opening and closing transitions preserve the top layer with discrete `display` / `overlay` transitions. Reduced-motion preferences disable these transitions.
+
+## Legacy class-controlled examples
+
+The following examples retain the existing class API. Applications using it must manage focus, Escape, and dismissal themselves. Prefer the native examples above for overlays.
+
 ## Basic Usage
 
 <ComponentShowcase title="Basic Drawer" code={`<div class="drawer drawer-left drawer-open">
