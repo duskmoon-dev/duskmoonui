@@ -20,6 +20,26 @@
     visibility: visible;
   }
 
+  /* Native surfaces keep the browser's closed state and reset UA dialog/popover geometry. */
+  :where(.drawer[popover], dialog.drawer) {
+    inset: auto;
+    margin: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 0;
+    color: var(--color-on-surface);
+    max-width: none;
+    max-height: none;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+  .drawer[popover]:not(:popover-open),
+  dialog.drawer:not([open]) {
+    display: none;
+  }
+
   /* Base Drawer */
   .drawer {
     position: fixed;
@@ -358,8 +378,65 @@
     border-radius: 0;
   }
 
+  /* Native state overrides legacy transforms without requiring class toggles. */
+  .drawer[popover],
+  dialog.drawer {
+    transition: transform 300ms ease-out, opacity 300ms ease-out,
+      display 300ms allow-discrete, overlay 300ms allow-discrete;
+    opacity: 0;
+  }
+
+  .drawer[popover]:popover-open,
+  dialog.drawer[open] {
+    display: flex;
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  dialog.drawer::backdrop {
+    background-color: color-mix(in srgb, var(--color-scrim) 50%, transparent);
+    opacity: 0;
+    transition: opacity 300ms ease-out, display 300ms allow-discrete,
+      overlay 300ms allow-discrete;
+  }
+
+  dialog.drawer[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    .drawer[popover]:popover-open,
+    dialog.drawer[open],
+    dialog.drawer[open]::backdrop {
+      opacity: 0;
+    }
+
+    .drawer-left[popover]:popover-open,
+    dialog.drawer-left[open] {
+      transform: translateX(-100%);
+    }
+
+    .drawer-right[popover]:popover-open,
+    dialog.drawer-right[open] {
+      transform: translateX(100%);
+    }
+
+    .drawer-top[popover]:popover-open,
+    dialog.drawer-top[open] {
+      transform: translateY(-100%);
+    }
+
+    .drawer-bottom[popover]:popover-open,
+    dialog.drawer-bottom[open] {
+      transform: translateY(100%);
+    }
+  }
+
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
+    .drawer[popover],
+    dialog.drawer,
+    dialog.drawer::backdrop,
     .drawer,
     .drawer-backdrop,
     .drawer-close,

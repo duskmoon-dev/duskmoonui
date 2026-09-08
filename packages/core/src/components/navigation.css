@@ -103,6 +103,65 @@
     gap: 0.25rem;
   }
 
+  /* Native floating menu. Keep closed popovers hidden despite the base flex layout. */
+  .menu[popover] {
+    display: none;
+    position: absolute;
+    inset: auto;
+    margin: 0.5rem;
+    min-width: 12rem;
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+    overflow: auto;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface-container);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    position-area: bottom;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    opacity: 0;
+    transform: scale(0.95);
+    transition:
+      opacity 150ms ease-out,
+      transform 150ms ease-out,
+      overlay 150ms ease-out allow-discrete,
+      display 150ms ease-out allow-discrete;
+  }
+
+  .menu[popover]:popover-open {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @starting-style {
+    .menu[popover]:popover-open {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  .menu[popover]::backdrop {
+    background-color: transparent;
+  }
+
+  .menu-top[popover] {
+    position-area: top;
+  }
+
+  .menu-bottom[popover] {
+    position-area: bottom;
+  }
+
+  .menu-left[popover] {
+    position-area: left;
+  }
+
+  .menu-right[popover] {
+    position-area: right;
+  }
+
   .menu li {
     display: flex;
     flex-shrink: 0;
@@ -781,6 +840,10 @@
 
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
+    .menu li > a,
+    .menu li > button,
+    .menu-item,
+    .menu[popover],
     .pagination-item,
     .pagination-prev,
     .pagination-next {

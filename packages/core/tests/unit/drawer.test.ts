@@ -477,4 +477,27 @@ describe('Drawer Component', () => {
       );
     });
   });
+
+  describe('Native surfaces', () => {
+    it('keeps closed native surfaces out of layout and keyboard navigation', () => {
+      expect(css).toContain('.drawer[popover]:not(:popover-open),');
+      expect(css).toMatch(/dialog\.drawer:not\(\[open\]\)\s*\{[^}]*display:\s*none/s);
+    });
+
+    it('opens from native state without a legacy visibility class', () => {
+      expect(css).toContain('.drawer[popover]:popover-open,');
+      expect(css).toMatch(/dialog\.drawer\[open\]\s*\{[^}]*display:\s*flex;[^}]*transform:\s*translate\(0, 0\)/s);
+    });
+
+    it('resets native surface geometry and preserves top-layer exit transitions', () => {
+      expect(css).toContain(':where(.drawer[popover], dialog.drawer)');
+      expect(css).toContain('width: auto;');
+      expect(css).toContain('height: auto;');
+      expect(css).toContain('display 300ms allow-discrete');
+      expect(css).toContain('overlay 300ms allow-discrete');
+      expect(css).toContain('@starting-style');
+      expect(css).toContain('dialog.drawer::backdrop');
+    });
+  });
+
 });

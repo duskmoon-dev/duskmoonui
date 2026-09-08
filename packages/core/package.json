@@ -389,6 +389,7 @@
     "test:unit": "bun test tests/unit",
     "test:visual": "playwright test --config=playwright.visual.config.ts",
     "test:integration": "playwright test --config=playwright.integration.config.ts",
+    "test:native-overlays": "playwright test --config=playwright.native-overlays.config.ts",
     "test:a11y": "playwright test --config=playwright.integration.config.ts tests/accessibility/",
     "test:all": "bun run test:unit && bun run test:visual && bun run test:integration && bun run test:a11y"
   },
