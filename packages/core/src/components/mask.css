@@ -1,0 +1,38 @@
+/**
+ * Mask Composition Primitive
+ * Small, dependency-free catalog of reusable clipping shapes.
+ */
+
+@layer components {
+  .mask {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+
+  .mask-circle {
+    clip-path: circle(50% at 50% 50%);
+  }
+
+  .mask-squircle {
+    clip-path: inset(0 round 28%);
+  }
+
+  .mask-square {
+    clip-path: inset(0);
+  }
+
+  .mask-diamond {
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  }
+
+  .mask-hexagon {
+    clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%);
+  }
+
+  .mask-triangle {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+}

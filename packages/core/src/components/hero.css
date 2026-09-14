@@ -1,0 +1,57 @@
+/**
+ * Hero Composition Primitive
+ * Layers a content region and an optional presentation-neutral overlay.
+ */
+
+@layer components {
+  .hero {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .hero > * {
+    grid-area: 1 / 1;
+  }
+
+  .hero-content {
+    z-index: 1;
+    display: flex;
+    width: min(100%, var(--hero-content-max-width, 80rem));
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-overlay {
+    z-index: 0;
+    align-self: stretch;
+    justify-self: stretch;
+    pointer-events: none;
+  }
+
+  .hero-center {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-start {
+    justify-items: start;
+    text-align: start;
+  }
+
+  .hero-end {
+    justify-items: end;
+    text-align: end;
+  }
+
+  .hero-start > .hero-content {
+    justify-content: flex-start;
+  }
+
+  .hero-end > .hero-content {
+    justify-content: flex-end;
+  }
+}

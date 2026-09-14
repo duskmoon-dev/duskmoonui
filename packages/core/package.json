@@ -186,17 +186,41 @@
       "import": "./dist/esm/components/form-group.js",
       "default": "./dist/esm/components/form-group.js"
     },
+    "./components/footer": {
+      "types": "./dist/esm/components/footer.d.ts",
+      "style": "./dist/components/footer.css",
+      "import": "./dist/esm/components/footer.js",
+      "default": "./dist/esm/components/footer.js"
+    },
+    "./components/hero": {
+      "types": "./dist/esm/components/hero.d.ts",
+      "style": "./dist/components/hero.css",
+      "import": "./dist/esm/components/hero.js",
+      "default": "./dist/esm/components/hero.js"
+    },
     "./components/home-page": {
       "types": "./dist/esm/components/home-page.d.ts",
       "style": "./dist/components/home-page.css",
       "import": "./dist/esm/components/home-page.js",
       "default": "./dist/esm/components/home-page.js"
     },
+    "./components/indicator": {
+      "types": "./dist/esm/components/indicator.d.ts",
+      "style": "./dist/components/indicator.css",
+      "import": "./dist/esm/components/indicator.js",
+      "default": "./dist/esm/components/indicator.js"
+    },
     "./components/input": {
       "types": "./dist/esm/components/input.d.ts",
       "style": "./dist/components/input.css",
       "import": "./dist/esm/components/input.js",
       "default": "./dist/esm/components/input.js"
+    },
+    "./components/join": {
+      "types": "./dist/esm/components/join.d.ts",
+      "style": "./dist/components/join.css",
+      "import": "./dist/esm/components/join.js",
+      "default": "./dist/esm/components/join.js"
     },
     "./components/list": {
       "types": "./dist/esm/components/list.d.ts",
@@ -209,6 +233,12 @@
       "style": "./dist/components/markdown-body.css",
       "import": "./dist/esm/components/markdown-body.js",
       "default": "./dist/esm/components/markdown-body.js"
+    },
+    "./components/mask": {
+      "types": "./dist/esm/components/mask.d.ts",
+      "style": "./dist/components/mask.css",
+      "import": "./dist/esm/components/mask.js",
+      "default": "./dist/esm/components/mask.js"
     },
     "./components/modal": {
       "types": "./dist/esm/components/modal.d.ts",
@@ -282,6 +312,12 @@
       "import": "./dist/esm/components/select.js",
       "default": "./dist/esm/components/select.js"
     },
+    "./components/sidebar-layout": {
+      "types": "./dist/esm/components/sidebar-layout.d.ts",
+      "style": "./dist/components/sidebar-layout.css",
+      "import": "./dist/esm/components/sidebar-layout.js",
+      "default": "./dist/esm/components/sidebar-layout.js"
+    },
     "./components/sign-page": {
       "types": "./dist/esm/components/sign-page.d.ts",
       "style": "./dist/components/sign-page.css",
@@ -311,6 +347,12 @@
       "style": "./dist/components/stepper.css",
       "import": "./dist/esm/components/stepper.js",
       "default": "./dist/esm/components/stepper.js"
+    },
+    "./components/stack": {
+      "types": "./dist/esm/components/stack.d.ts",
+      "style": "./dist/components/stack.css",
+      "import": "./dist/esm/components/stack.js",
+      "default": "./dist/esm/components/stack.js"
     },
     "./components/switch": {
       "types": "./dist/esm/components/switch.d.ts",

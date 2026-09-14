@@ -83,6 +83,13 @@
 @import "./appbar.css";
 @import "./console-page.css";
 @import "./divider.css";
+@import "./footer.css";
+@import "./hero.css";
+@import "./indicator.css";
+@import "./join.css";
+@import "./mask.css";
+@import "./sidebar-layout.css";
+@import "./stack.css";
 @import "./home-page.css";
 @import "./sign-page.css";
 

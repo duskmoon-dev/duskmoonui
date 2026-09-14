@@ -1,0 +1,63 @@
+/**
+ * Indicator Composition Primitive
+ * Positions arbitrary content around an inline-sized anchor.
+ */
+
+@layer components {
+  .indicator {
+    position: relative;
+    display: inline-grid;
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .indicator-item {
+    --indicator-block: 0%;
+    --indicator-inline: 0%;
+    --indicator-x: 50%;
+    --indicator-y: -50%;
+    position: absolute;
+    z-index: 1;
+    inset-block-start: var(--indicator-block);
+    inset-inline-end: var(--indicator-inline);
+    translate: var(--indicator-x) var(--indicator-y);
+  }
+
+  .indicator-top {
+    --indicator-block: 0%;
+    --indicator-y: -50%;
+  }
+
+  .indicator-middle {
+    --indicator-block: 50%;
+    --indicator-y: -50%;
+  }
+
+  .indicator-bottom {
+    --indicator-block: 100%;
+    --indicator-y: -50%;
+  }
+
+  .indicator-start {
+    --indicator-inline: 100%;
+    --indicator-x: 50%;
+  }
+
+  .indicator-center {
+    --indicator-inline: 50%;
+    --indicator-x: 50%;
+  }
+
+  .indicator-end {
+    --indicator-inline: 0%;
+    --indicator-x: 50%;
+  }
+
+  :dir(rtl) .indicator-item {
+    --indicator-x: -50%;
+  }
+
+  :dir(rtl) .indicator-start {
+    --indicator-x: -50%;
+  }
+}

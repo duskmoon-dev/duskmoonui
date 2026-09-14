@@ -1,0 +1,66 @@
+/**
+ * Sidebar Layout Composition Primitive
+ * Persistent, responsive sidebar + content grid; application code owns state.
+ */
+
+@layer components {
+  .sidebar-layout {
+    --sidebar-layout-width: 17.5rem;
+    --sidebar-layout-compact-width: 5rem;
+    container-type: inline-size;
+    container-name: sidebar-layout;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "sidebar content";
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  .sidebar-layout-sidebar {
+    display: none;
+    grid-area: sidebar;
+    width: var(--sidebar-layout-width);
+    min-width: 0;
+    overflow: hidden;
+    background-color: var(--color-surface-container-low);
+    color: var(--color-on-surface);
+    border-inline-end: 1px solid var(--color-outline-variant);
+  }
+
+  .sidebar-layout-content {
+    grid-area: content;
+    min-width: 0;
+  }
+
+  .sidebar-layout-start {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "sidebar content";
+  }
+
+  .sidebar-layout-end {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "content sidebar";
+  }
+
+  .sidebar-layout-end > .sidebar-layout-sidebar {
+    border-inline-start: 1px solid var(--color-outline-variant);
+    border-inline-end: 0;
+  }
+
+  @container sidebar-layout (min-width: 48rem) {
+    .sidebar-layout-sidebar {
+      display: block;
+    }
+  }
+
+  .sidebar-layout-compact > .sidebar-layout-sidebar {
+    width: var(--sidebar-layout-compact-width);
+  }
+
+  .sidebar-layout-hidden > .sidebar-layout-sidebar {
+    display: none;
+  }
+}
