@@ -168,3 +168,14 @@ jobs:
             packages/core/dist/standalone/duskmoonui.mjs \
             packages/core/dist/standalone/duskmoonui.css \
             packages/core/dist/standalone/duskmoonui-themes.css
+
+  deploy-pages:
+    name: Deploy documentation
+    needs: release
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages.yml
+    with:
+      git_ref: ${{ format('v{0}', inputs.version) }}
