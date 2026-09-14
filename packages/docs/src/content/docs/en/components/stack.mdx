@@ -1,0 +1,47 @@
+---
+title: Stack
+description: Layer arbitrary content with predictable CSS Grid overlap
+category: components
+order: 14
+published: true
+tags: ['stack', 'composition', 'grid', 'rtl']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Stack
+
+Stack places direct children in the same CSS Grid area. The first child stays in front while later children form subtle layers behind it—no consumer-authored absolute positioning is required.
+
+## Cards
+
+<ComponentShowcase title="Stacked cards" code={`<div class="stack">
+  <article class="card card-bordered"><div class="card-body"><h3 class="card-title">Current review</h3><p>Three checks are ready.</p></div></article>
+  <div class="card bg-surface-container-high" aria-hidden="true"></div>
+  <div class="card bg-surface-container-highest" aria-hidden="true"></div>
+</div>`} />
+
+## Direction
+
+Use a directional class on the stack. Inline directions follow the document's writing direction.
+
+<ComponentShowcase title="Directional stacks" code={`<div class="flex flex-wrap gap-10">
+  <div class="stack stack-start">
+    <div class="card card-bordered"><div class="card-body">Start</div></div>
+    <div class="card bg-secondary-container" aria-hidden="true"></div>
+  </div>
+  <div class="stack stack-end">
+    <div class="card card-bordered"><div class="card-body">End</div></div>
+    <div class="card bg-tertiary-container" aria-hidden="true"></div>
+  </div>
+</div>`} />
+
+## API
+
+| Class | Purpose |
+|---|---|
+| `.stack` | Grid overlap with a subtle bottom offset |
+| `.stack-top`, `.stack-bottom` | Block-axis layer direction |
+| `.stack-start`, `.stack-end` | Logical inline-axis layer direction |
+
+All children contribute to intrinsic grid sizing. If decorative duplicate layers contain no meaningful content, mark them `aria-hidden="true"`.

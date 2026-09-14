@@ -1,0 +1,42 @@
+---
+title: Footer
+description: Responsive footer composition for sites and applications
+category: components
+order: 16
+published: true
+tags: ['footer', 'layout', 'composition', 'responsive']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Footer
+
+Footer arranges arbitrary groups in a responsive grid on a semantic DuskMoon surface. Use the native `<footer>` landmark and `<nav>` elements with accessible labels. Existing `.home-page-footer` remains supported separately.
+
+## Responsive groups
+
+<ComponentShowcase title="Site footer" code={`<footer class="footer rounded-3xl">
+  <nav aria-labelledby="demo-footer-product"><h2 id="demo-footer-product" class="footer-title">Product</h2><a href="#">Overview</a><a href="#">Changelog</a></nav>
+  <nav aria-labelledby="demo-footer-resources"><h2 id="demo-footer-resources" class="footer-title">Resources</h2><a href="#">Documentation</a><a href="#">Support</a></nav>
+  <nav aria-labelledby="demo-footer-company"><h2 id="demo-footer-company" class="footer-title">Company</h2><a href="#">About</a><a href="#">Privacy</a></nav>
+</footer>`} />
+
+## Centered
+
+<ComponentShowcase title="Centered footer" code={`<footer class="footer footer-center rounded-3xl">
+  <div><strong>DuskMoon</strong><p class="text-on-surface-variant">Calm tools for thoughtful work.</p><nav class="flex gap-4" aria-label="Legal"><a href="#">Privacy</a><a href="#">Terms</a></nav></div>
+</footer>`} />
+
+## Explicit orientation
+
+Use `.footer-horizontal` when the groups must remain in columns, and `.footer-vertical` when they must remain in a single column. The default auto-fit grid is responsive without relying on the viewport.
+
+## API
+
+| Class | Purpose |
+|---|---|
+| `.footer` | Responsive auto-fit grid with semantic surface colors |
+| `.footer-title` | Group heading treatment |
+| `.footer-center` | Centered placement and text |
+| `.footer-horizontal` | Explicit column flow |
+| `.footer-vertical` | Explicit single-column flow |

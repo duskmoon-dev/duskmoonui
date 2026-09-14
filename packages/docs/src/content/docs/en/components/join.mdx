@@ -1,0 +1,55 @@
+---
+title: Join
+description: Join arbitrary adjacent controls into one visual group
+category: components
+order: 13
+published: true
+tags: ['join', 'composition', 'forms', 'rtl']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Join
+
+Join collapses adjacent borders and preserves only the outer corners. It works with arbitrary compatible controls and does not replace the existing `btn-group` or `toggle-group` APIs.
+
+## Buttons
+
+<ComponentShowcase title="Joined buttons" code={`<div class="join" role="group" aria-label="View density">
+  <button class="join-item btn">Comfortable</button>
+  <button class="join-item btn btn-primary" aria-pressed="true">Compact</button>
+  <button class="join-item btn">List</button>
+</div>`} />
+
+## Mixed controls
+
+Keep every native control labelled. Hovered and focused items rise above adjacent borders so their state rings remain visible.
+
+<ComponentShowcase title="Search controls" code={`<form class="join" role="search">
+  <label class="sr-only" for="demo-join-query">Search documentation</label>
+  <input id="demo-join-query" class="join-item input" type="search" placeholder="Search docs" />
+  <label class="sr-only" for="demo-join-scope">Scope</label>
+  <select id="demo-join-scope" class="join-item select">
+    <option>All</option><option>Components</option>
+  </select>
+  <button class="join-item btn btn-primary" type="submit">Search</button>
+</form>`} />
+
+## Vertical
+
+<ComponentShowcase title="Vertical join" code={`<div class="join join-vertical" role="group" aria-label="Sort order">
+  <button class="join-item btn">Newest</button>
+  <button class="join-item btn">Popular</button>
+  <button class="join-item btn" disabled>Archived</button>
+</div>`} />
+
+## API
+
+| Class | Purpose |
+|---|---|
+| `.join` | Horizontal group and default orientation |
+| `.join-item` | Direct child participating in the joined shape |
+| `.join-horizontal` | Explicit horizontal orientation |
+| `.join-vertical` | Vertical orientation |
+
+In RTL documents, horizontal outer corners and overlap follow logical start/end automatically.

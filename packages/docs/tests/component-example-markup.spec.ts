@@ -8,6 +8,7 @@ const componentPages = [
   'form',
   'form-group',
   'input',
+  'join',
   'multi-select',
   'otp-input',
   'pin-input',

@@ -1,0 +1,52 @@
+---
+title: Indicator
+description: Position badges, status markers, and overlays around arbitrary content
+category: components
+order: 12
+published: true
+tags: ['indicator', 'badge', 'composition', 'rtl']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Indicator
+
+Indicator positions arbitrary content around another element without changing the wrapped content's intrinsic size. It uses logical inline positioning, so `start` and `end` follow the document direction.
+
+## Notification counter
+
+Decorative markers should use `aria-hidden="true"`. When the value conveys information, include it in the control's accessible name.
+
+<ComponentShowcase title="Button notification" code={`<div class="indicator">
+  <span class="indicator-item indicator-top indicator-end badge badge-error" aria-hidden="true">4</span>
+  <button class="btn btn-primary" aria-label="Inbox, 4 unread messages">Inbox</button>
+</div>`} />
+
+## Avatar status
+
+<ComponentShowcase title="Avatar status" code={`<div class="indicator">
+  <span class="indicator-item indicator-bottom indicator-end badge badge-success" aria-hidden="true"></span>
+  <div class="avatar"><span class="avatar-placeholder">LM</span></div>
+</div>`} />
+
+## Positions
+
+Combine one block-axis class with one inline-axis class. Without modifiers, an item appears at top/end.
+
+<ComponentShowcase title="Position matrix" code={`<div class="indicator">
+  <span class="indicator-item indicator-top indicator-start badge">Start</span>
+  <span class="indicator-item indicator-middle indicator-center badge badge-secondary">Center</span>
+  <span class="indicator-item indicator-bottom indicator-end badge badge-tertiary">End</span>
+  <div class="card card-bordered"><div class="card-body">Anchor content</div></div>
+</div>`} />
+
+## API
+
+| Class | Purpose |
+|---|---|
+| `.indicator` | Inline-sized positioning context |
+| `.indicator-item` | Positioned arbitrary child |
+| `.indicator-top`, `.indicator-middle`, `.indicator-bottom` | Block-axis position |
+| `.indicator-start`, `.indicator-center`, `.indicator-end` | Logical inline-axis position |
+
+The wrapper intentionally does not clip overflow. A surrounding container that uses `overflow: hidden` may clip an indicator placed beyond its edge.

@@ -1,0 +1,53 @@
+---
+title: Sidebar Layout
+description: Persistent and responsive sidebar plus content composition
+category: layout
+order: 4
+published: true
+tags: ['sidebar', 'layout', 'container-query', 'rtl']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Sidebar Layout
+
+Sidebar Layout is a state-free CSS Grid for persistent navigation beside main content. It is separate from Drawer: use Sidebar Layout for the wide persistent surface and the existing Drawer for temporary mobile navigation.
+
+## Basic layout
+
+The persistent sidebar appears when this component's own inline size reaches 48rem. At narrower sizes the sidebar's auto track collapses and content fills the grid.
+
+<ComponentShowcase title="Persistent sidebar" code={`<div class="sidebar-layout min-h-80 rounded-3xl overflow-hidden">
+  <aside class="sidebar-layout-sidebar" aria-label="Workspace navigation">
+    <nav class="p-3"><a class="drawer-item drawer-item-active" href="#">Overview</a><a class="drawer-item" href="#">Projects</a><a class="drawer-item" href="#">Settings</a></nav>
+  </aside>
+  <main class="sidebar-layout-content p-6"><h2 class="text-2xl font-bold">Overview</h2><p class="mt-2 text-on-surface-variant">Main content keeps a shrink-safe grid track.</p></main>
+</div>`} />
+
+## End sidebar
+
+Start and end are logical directions and therefore follow RTL writing direction.
+
+<ComponentShowcase title="End-aligned sidebar" code={`<div class="sidebar-layout sidebar-layout-end min-h-72 rounded-3xl overflow-hidden">
+  <aside class="sidebar-layout-sidebar" aria-label="Inspector"><div class="p-4"><h2 class="footer-title">Inspector</h2><p>Contextual details</p></div></aside>
+  <main class="sidebar-layout-content p-6">Canvas</main>
+</div>`} />
+
+## Application-owned states
+
+Apply `.sidebar-layout-compact` or `.sidebar-layout-hidden` to the root. The layout does not add a checkbox, event listener, or other runtime state.
+
+| Class | Purpose |
+|---|---|
+| `.sidebar-layout` | Named inline-size container and grid root |
+| `.sidebar-layout-sidebar` | Persistent sidebar region |
+| `.sidebar-layout-content` | Shrink-safe main content region |
+| `.sidebar-layout-start`, `.sidebar-layout-end` | Logical sidebar placement |
+| `.sidebar-layout-compact` | Uses `--sidebar-layout-compact-width` |
+| `.sidebar-layout-hidden` | Removes the persistent sidebar |
+
+Override `--sidebar-layout-width` and `--sidebar-layout-compact-width` on the root when needed.
+
+## Compose with Drawer on narrow containers
+
+Keep the persistent `<aside>` in Sidebar Layout and provide a separate native Drawer for the same navigation destinations. An application-controlled menu button can invoke a `popover` or `dialog` Drawer on narrow layouts. The two primitives are intentionally not coupled.

@@ -69,6 +69,12 @@ test.describe('Documentation Site Build', () => {
         'src/content/docs/en/components/card.mdx',
         'src/content/docs/en/components/input.mdx',
         'src/content/docs/en/components/modal.mdx',
+        'src/content/docs/en/components/indicator.mdx',
+        'src/content/docs/en/components/join.mdx',
+        'src/content/docs/en/components/stack.mdx',
+        'src/content/docs/en/components/hero.mdx',
+        'src/content/docs/en/components/footer.mdx',
+        'src/content/docs/en/components/mask.mdx',
       ];
 
       for (const docPath of componentDocs) {
@@ -82,6 +88,7 @@ test.describe('Documentation Site Build', () => {
         'src/content/docs/en/layout/sign-page.mdx',
         'src/content/docs/en/layout/home-page.mdx',
         'src/content/docs/en/layout/console-page.mdx',
+        'src/content/docs/en/layout/sidebar-layout.mdx',
       ];
 
       for (const docPath of layoutDocs) {

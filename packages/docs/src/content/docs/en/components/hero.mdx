@@ -1,0 +1,45 @@
+---
+title: Hero
+description: A composable foreground and overlay layout for prominent page content
+category: components
+order: 15
+published: true
+tags: ['hero', 'layout', 'composition', 'accessibility']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Hero
+
+Hero layers foreground content over an optional background or overlay. The primitive controls structure only; use theme utilities for height, spacing, imagery, color, and typography. Existing `.home-page-hero` layouts remain independent.
+
+## Text and actions
+
+<ComponentShowcase title="Product hero" code={`<section class="hero hero-start min-h-80 rounded-3xl overflow-hidden bg-primary-container" aria-labelledby="demo-hero-title">
+  <div class="hero-content p-8 md:p-12">
+    <div class="max-w-xl">
+      <p class="text-primary font-semibold">Workspace intelligence</p>
+      <h2 id="demo-hero-title" class="text-4xl font-bold text-on-primary-container">See the signal before the noise.</h2>
+      <p class="mt-4 text-on-primary-container">A focused overview of the work that needs your attention.</p>
+      <div class="mt-6 flex flex-wrap gap-3"><a class="btn btn-primary" href="#demo-hero-details">Explore</a><button class="btn btn-outline">Watch overview</button></div>
+    </div>
+  </div>
+</section>`} />
+
+## Overlay
+
+An overlay is decorative and should normally be hidden from assistive technology. Give meaningful background images equivalent text elsewhere when they convey content.
+
+<ComponentShowcase title="Hero overlay" code={`<section class="hero hero-center min-h-72 overflow-hidden rounded-3xl bg-surface-container-high" aria-labelledby="demo-overlay-title">
+  <div class="hero-overlay bg-gradient-to-br from-primary-container/80 to-tertiary-container/70" aria-hidden="true"></div>
+  <div class="hero-content p-8"><div><h2 id="demo-overlay-title" class="text-3xl font-bold">Made for moonlit focus</h2><p class="mt-2">Foreground content remains above the visual layer.</p></div></div>
+</section>`} />
+
+## API
+
+| Class | Purpose |
+|---|---|
+| `.hero` | Full-width single-area grid |
+| `.hero-content` | Readable foreground layer |
+| `.hero-overlay` | Non-interactive, presentation-neutral covering layer |
+| `.hero-center`, `.hero-start`, `.hero-end` | Logical content alignment |

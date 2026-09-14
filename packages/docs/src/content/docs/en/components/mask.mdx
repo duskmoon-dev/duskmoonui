@@ -1,0 +1,43 @@
+---
+title: Mask
+description: A focused set of reusable clipping shapes for images and backgrounds
+category: components
+order: 17
+published: true
+tags: ['mask', 'image', 'clip-path', 'composition']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Mask
+
+Mask clips images or background content into a small catalog of useful shapes. It is visual only: meaningful images still require useful alternative text. When `clip-path` is unavailable, content remains visible as a rectangular fallback.
+
+## Shapes
+
+<ComponentShowcase title="Mask catalog" code={`<div class="flex flex-wrap items-center gap-6">
+  <div class="mask mask-circle size-24 bg-primary-container" aria-label="Circle sample"></div>
+  <div class="mask mask-squircle size-24 bg-secondary-container" aria-label="Squircle sample"></div>
+  <div class="mask mask-square size-24 bg-tertiary-container" aria-label="Square sample"></div>
+  <div class="mask mask-diamond size-24 bg-info-container" aria-label="Diamond sample"></div>
+  <div class="mask mask-hexagon size-24 bg-success-container" aria-label="Hexagon sample"></div>
+  <div class="mask mask-triangle size-24 bg-warning-container" aria-label="Triangle sample"></div>
+</div>`} />
+
+## Image content
+
+Set both dimensions or an aspect ratio when you need a predictable silhouette. The base class uses `object-fit: cover` for replaced elements.
+
+<ComponentShowcase title="Masked image" code={`<img class="mask mask-hexagon size-40" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" alt="Misty evergreen mountains" />`} />
+
+## API
+
+| Class | Purpose |
+|---|---|
+| `.mask` | Base clipping and replaced-element behavior |
+| `.mask-circle` | Circular clip |
+| `.mask-squircle` | Soft continuous-looking rounded square |
+| `.mask-square` | Explicit square clip |
+| `.mask-diamond` | Diamond clip |
+| `.mask-hexagon` | Regular hexagonal clip |
+| `.mask-triangle` | Upward triangle clip |
