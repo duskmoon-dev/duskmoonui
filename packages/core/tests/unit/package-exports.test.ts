@@ -14,6 +14,13 @@ const layoutComponentExports = [
   './components/sign-page',
   './components/home-page',
   './components/console-page',
+  './components/indicator',
+  './components/join',
+  './components/stack',
+  './components/hero',
+  './components/footer',
+  './components/sidebar-layout',
+  './components/mask',
 ] as const;
 
 describe('CSS-only package exports', () => {

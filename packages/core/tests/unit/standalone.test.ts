@@ -111,6 +111,13 @@ describe('Standalone release bundles', () => {
       'sign-page',
       'home-page',
       'console-page',
+      'indicator',
+      'join',
+      'stack',
+      'hero',
+      'footer',
+      'sidebar-layout',
+      'mask',
       'art-moon',
       'art-plasma-ball',
       'art-circular-gallery',
@@ -131,6 +138,13 @@ describe('Standalone release bundles', () => {
       '.sign-page',
       '.home-page',
       '.console-page',
+      '.indicator',
+      '.join',
+      '.stack',
+      '.hero',
+      '.footer',
+      '.sidebar-layout',
+      '.mask',
       '.art-moon',
       '.art-plasma-ball',
       '.art-circular-gallery',
@@ -175,6 +189,8 @@ describe('Standalone release bundles', () => {
     expect(bundleCss).toContain('@duskmoon-dev/core');
     expect(bundleCss).toContain('@duskmoon-dev/css-art');
     expect(bundleCss).toContain('.btn {');
+    expect(bundleCss).toContain('.sidebar-layout {');
+    expect(bundleCss).toContain('.mask-circle {');
     expect(bundleCss).toContain('.art-moon {');
     expect(bundleCss).toContain('.art-atom {');
   });
