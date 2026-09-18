@@ -45,6 +45,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added proper reset of conflicting CSS properties for each position
   - Fixed color variant arrows for all positions (not just top)
 
+## [1.19.4] - 2026-09-18
+
+### Data Input Consolidation
+
+- Legacy `form.css` now reuses canonical controls and `form-group.css`. Checkbox
+  and Radio no longer draw both `::before` and `::after` marks in aggregate CSS.
+  Individual imports now match aggregate control styling.
+- Validation has one CSS authority. New `.validator` enables native
+  interaction-based errors; add `.validator-success` for native success.
+  Ordinary fields no longer automatically change color from native validity.
+  Existing `.validate` retains immediate invalid/valid colors.
+  Explicit `aria-invalid="true"` and wrapper errors win over native success,
+  semantic colors, focus and filled/outlined/ghost presentation.
+- Added preferred one-value `.otp-code` with native caret/selection/editing and
+  optional four-character length guides. Guides now align with the actual monospace
+  characters, and the input fits the code instead of stretching guides across a full
+  field width. Adjacent OTP validation errors reserve space, preventing blur-time
+  layout changes from interrupting native Reset clicks. Segmented OTP APIs remain
+  styling-only.
+  Added aliases for documented underline/separator/helper names; removed examples
+  suggesting undefined length, wrapper-disabled and simulated-focus classes work.
+- Native `.range` is recommended for basic sliders. Default thumb uses on-surface
+  (use `.range-primary` for the prior primary appearance); colors/sizes/focus and
+  disabled states are available. Advanced `.slider` APIs remain unchanged.
+- Added `.rating-native` radio-backed selection and `.filter-group` Chip
+  composition. Native checked state owns selection/submission/reset.
+  Native rating wraps for narrow/enlarged-text layouts; legacy rating display/half
+  styles remain available.
+- Preserved compact `.toggle`, MD3 `.switch` and action `.toggle-btn` APIs.
+  Explicit `aria-pressed` wins over legacy action active classes when provided.
+  Legacy Toggle now has a current-color border; compact track/thumb dimensions
+  remain, and `.toggle-ghost` removes that border.
+- File Input now has a dedicated public entry and remains available from Input/Form.
+  Its border/button inherit its palette; sizes, disabled and validation states are
+  supported. Calendar nested grids now span the full surface width.
+- Added public CSS/ESM/declaration exports for Validator, Range, Filter Group,
+  File Input and legacy Toggle control, plus `base.css` for individual imports.
+  Documentation clarifies native versus application behavior and genuine disabled
+  fieldsets. No mandatory runtime, date engine or framework adapter is added.
+- Repaired Autocomplete's input-relative suggestion button, RTL positioning and
+  native/ARIA option presentation. Retained documented dropdown, selection, group,
+  empty-state and tag aliases. The copyable docs example now supplies its local
+  filtering, keyboard/pointer selection and reset controller; Core remains CSS-only.
+  Its preview allows the popup to overflow without changing other showcase frames.
+- OTP state examples now keep each label/control/feedback together, stack on narrow
+  screens and scroll their compatibility table rather than overflowing the page.
+
 ## [1.0.0] - 2025-01-XX
 
 ### Breaking Changes
@@ -131,5 +178,6 @@ Modern browsers with CSS custom properties support:
 
 ---
 
+[1.19.4]: https://github.com/duskmoon-dev/duskmoonui/releases/tag/v1.19.4
 [1.0.0]: https://github.com/duskmoon-dev/duskmoonui/releases/tag/v1.0.0
 [0.1.0]: https://github.com/duskmoon-dev/duskmoonui/releases/tag/v0.1.0

@@ -11,6 +11,40 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Input
 
+## Native Contract And Imports
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/input.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Aggregate: `@duskmoon-dev/core` with Tailwind v4; no-Tailwind:
+`@duskmoon-dev/core/standalone.css`. Individual:
+`@duskmoon-dev/core/components/input.css` plus base/theme and
+`form-group.css` for associated labels/help. Extensionless `components/input`
+exports generated `css` and constructable `styles`, not a behavior runtime.
+
+Use native inputs for values, selection, constraints, submission and reset.
+Actual `disabled` or `fieldset disabled` owns semantic disabling.
+Use `.validator` for native interaction-based errors and add
+`.validator-success` for native success. Explicit `aria-invalid="true"`
+wins over those states and color modifiers, including focus.
+Supply described error text as well as color. See
+[Validator](/duskmoonui/docs/en/components/validator/) and
+[Field composition](/duskmoonui/docs/en/components/form-group/).
+
+Sizes: `.input-xs/sm/md/lg`. Appearance: default, `.input-outlined`,
+`.input-filled`, `.input-ghost`, legacy `.input-bordered`.
+Native `readonly` remains focusable/submitted; `disabled` does not.
+[File Input](/duskmoonui/docs/en/components/file-input/) remains included by this entry.
+
 Text input component. Apply color variant classes to match your semantic intent.
 
 ## Default

@@ -1,884 +1,209 @@
 ---
 title: Autocomplete
-description: Material Design 3 autocomplete/combobox component with single and multiple selection support
+description: CSS-first suggestion surfaces with a working local combobox example and native datalist alternative
 category: components
 order: 27
 published: true
 tags: ['autocomplete', 'combobox', 'components', 'material-design', 'input']
 ---
+
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Autocomplete
 
-Autocomplete provides suggestions as users type, helping them quickly find and select from a list of options. @duskmoon-dev/core offers a complete Material Design 3 autocomplete/combobox implementation with support for single selection, multiple selection, and async loading.
+Core styles the input, suggestion surface and selection states. Applications own filtering,
+opening, keyboard navigation, selection and asynchronous data. No Core runtime is installed.
+For simple browser-owned suggestions, use the native datalist alternative below.
+
+## Imports
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/autocomplete.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+@import "@duskmoon-dev/core/components/button.css";
+```
+
+Aggregate: `@duskmoon-dev/core`; no-Tailwind: `@duskmoon-dev/core/standalone.css`.
+The extensionless `components/autocomplete` entry exports generated `css` and constructable
+`styles`. Individual imports need `base.css` and a theme. Use Moonlight for dark forms.
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Autocomplete" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="basic-autocomplete"
-      class="autocomplete-input"
-      placeholder="Search..."
-      aria-label="Search options"
-      aria-autocomplete="list"
-      aria-controls="autocomplete-dropdown"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">
-      ▼
-    </button>
-  </div>
-  <div id="autocomplete-dropdown" class="autocomplete-dropdown autocomplete-dropdown-open">
-    <ul class="autocomplete-options" role="listbox">
-      <li role="option" class="autocomplete-option">Option 1</li>
-      <li role="option" class="autocomplete-option">Option 2</li>
-      <li role="option" class="autocomplete-option">Option 3</li>
-    </ul>
-  </div>
-</div>`} />
-
-## Variants
-
-### Filled Autocomplete (Default)
-
-The default autocomplete with a filled background:
-
-<ComponentShowcase title="Filled Autocomplete" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="country-autocomplete"
-      class="autocomplete-input"
-      placeholder="Choose a country..."
-      aria-label="Choose a country"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown">
-    <ul class="autocomplete-options" role="listbox">
-      <li role="option" class="autocomplete-option">United States</li>
-      <li role="option" class="autocomplete-option">Canada</li>
-      <li role="option" class="autocomplete-option">Mexico</li>
-      <li role="option" class="autocomplete-option">United Kingdom</li>
-    </ul>
-  </div>
-</div>`} />
-
-### Outlined Autocomplete
-
-Autocomplete with an outlined border:
-
-<ComponentShowcase title="Outlined Autocomplete" code={`<div class="autocomplete autocomplete-outlined">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="product-autocomplete"
-      class="autocomplete-input"
-      placeholder="Search products..."
-      aria-label="Search products"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown">
-    <ul class="autocomplete-options" role="listbox">
-      <li role="option" class="autocomplete-option">Product A</li>
-      <li role="option" class="autocomplete-option">Product B</li>
-      <li role="option" class="autocomplete-option">Product C</li>
-    </ul>
-  </div>
-</div>`} />
-
-## Selection States
-
-### Single Selection
-
-Standard autocomplete with a single selected option:
-
-<ComponentShowcase title="Single Selection" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="language-autocomplete"
-      class="autocomplete-input"
-      placeholder="Select a language..."
-      aria-label="Select a language"
-      value="JavaScript"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown">
-    <ul class="autocomplete-options" role="listbox">
-      <li role="option" class="autocomplete-option autocomplete-option-selected">JavaScript</li>
-      <li role="option" class="autocomplete-option">TypeScript</li>
-      <li role="option" class="autocomplete-option">Python</li>
-      <li role="option" class="autocomplete-option">Java</li>
-    </ul>
-  </div>
-</div>`} />
-
-### Multiple Selection with Chips
-
-Autocomplete supporting multiple selections displayed as chips:
-
-<ComponentShowcase title="Multiple Selection with Chips" code={`<div class="autocomplete">
-  <!-- Selected items as chips -->
-  <div class="autocomplete-chips">
-    <span class="autocomplete-chip">
-      JavaScript
-      <button class="autocomplete-chip-remove" aria-label="Remove JavaScript">×</button>
-    </span>
-    <span class="autocomplete-chip">
-      TypeScript
-      <button class="autocomplete-chip-remove" aria-label="Remove TypeScript">×</button>
-    </span>
-  </div>
-
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="additional-language-autocomplete"
-      class="autocomplete-input"
-      placeholder="Add more languages..."
-      aria-label="Add more languages"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-
-  <div class="autocomplete-dropdown">
-    <ul class="autocomplete-options" role="listbox" aria-multiselectable="true">
-      <li role="option" class="autocomplete-option autocomplete-option-selected">JavaScript</li>
-      <li role="option" class="autocomplete-option autocomplete-option-selected">TypeScript</li>
-      <li role="option" class="autocomplete-option">Python</li>
-      <li role="option" class="autocomplete-option">Java</li>
-    </ul>
-  </div>
-</div>`} />
-
-## Options with Icons
-
-Add icons to autocomplete options for better visual context:
-
-<ComponentShowcase title="Options with Icons" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="file-type-autocomplete"
-      class="autocomplete-input"
-      placeholder="Choose a file type..."
-      aria-label="Choose a file type"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown autocomplete-dropdown-open">
-    <ul class="autocomplete-options" role="listbox">
-      <li role="option" class="autocomplete-option">
-        <svg class="autocomplete-option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-        Document
-      </li>
-      <li role="option" class="autocomplete-option">
-        <svg class="autocomplete-option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        Image
-      </li>
-      <li role="option" class="autocomplete-option">
-        <svg class="autocomplete-option-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-        </svg>
-        Audio
-      </li>
-    </ul>
-  </div>
-</div>`} />
-
-## Grouped Options
-
-Organize options into labeled groups:
-
-<ComponentShowcase title="Grouped Options" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="app-autocomplete"
-      class="autocomplete-input"
-      placeholder="Search apps..."
-      aria-label="Search apps"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown autocomplete-dropdown-open">
-    <ul class="autocomplete-options" role="listbox">
-      <li class="autocomplete-group-label">Productivity</li>
-      <li role="option" class="autocomplete-option">Calendar</li>
-      <li role="option" class="autocomplete-option">Notes</li>
-      <li role="option" class="autocomplete-option">Tasks</li>
-
-      <li class="autocomplete-group-label">Communication</li>
-      <li role="option" class="autocomplete-option">Mail</li>
-      <li role="option" class="autocomplete-option">Chat</li>
-
-      <li class="autocomplete-group-label">Design</li>
-      <li role="option" class="autocomplete-option">Figma</li>
-      <li role="option" class="autocomplete-option">Sketch</li>
-    </ul>
-  </div>
-</div>`} />
-
-## States
-
-### Loading State
-
-Display a loading indicator while fetching async data:
-
-<ComponentShowcase title="Loading State" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="user-autocomplete"
-      class="autocomplete-input"
-      placeholder="Search users..."
-      aria-label="Search users"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown autocomplete-dropdown-open">
-    <div class="autocomplete-loading">
-      <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-      </svg>
-      Loading...
-    </div>
-  </div>
-</div>`} />
-
-### No Options
-
-Show a message when no matching options are found:
-
-<ComponentShowcase title="No Options State" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="empty-result-autocomplete"
-      class="autocomplete-input"
-      placeholder="Search..."
-      aria-label="Search options with no results"
-      value="xyz123"
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown autocomplete-dropdown-open">
-    <div class="autocomplete-no-options">
-      No results found
-    </div>
-  </div>
-</div>`} />
-
-### Focused Option
-
-Keyboard navigation highlights the focused option:
-
-<ComponentShowcase title="Focused Option" code={`<div class="autocomplete">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="focused-autocomplete"
-      class="autocomplete-input"
-      placeholder="Navigate with arrows..."
-      aria-label="Keyboard navigation example"
-      aria-autocomplete="list"
-      aria-activedescendant="focused-option-2"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown">▼</button>
-  </div>
-  <div class="autocomplete-dropdown autocomplete-dropdown-open">
-    <ul class="autocomplete-options" role="listbox">
-      <li role="option" id="focused-option-1" class="autocomplete-option">Option 1</li>
-      <li role="option" id="focused-option-2" class="autocomplete-option autocomplete-option-focused">Option 2</li>
-      <li role="option" id="focused-option-3" class="autocomplete-option">Option 3</li>
-    </ul>
-  </div>
-</div>`} />
-
-### Disabled State
-
-Non-interactive autocomplete:
-
-<ComponentShowcase title="Disabled State" code={`<div class="autocomplete autocomplete-disabled">
-  <div class="autocomplete-input-wrapper">
-    <input
-      type="text"
-      name="disabled-autocomplete"
-      class="autocomplete-input"
-      placeholder="Disabled..."
-      aria-label="Disabled autocomplete"
-      disabled
-      aria-autocomplete="list"
-    />
-    <button class="autocomplete-toggle" aria-label="Toggle dropdown" disabled>▼</button>
-  </div>
-</div>`} />
-
-## Dropdown Control
-
-The dropdown visibility is controlled by the `autocomplete-dropdown-open` class:
-
-<ComponentShowcase title="Dropdown Control" code={`<!-- Closed dropdown (hidden) -->
-<div class="autocomplete-dropdown">
-  <!-- options -->
-</div>
-
-<!-- Open dropdown (visible) -->
-<div class="autocomplete-dropdown autocomplete-dropdown-open">
-  <!-- options -->
-</div>`} />
-
-## Best Practices
-
-### Accessibility
-
-Autocomplete requires proper ARIA attributes for screen reader support:
-
-<ComponentShowcase title="Accessible Autocomplete" code={`<div class="autocomplete">
-  <label for="autocomplete-input" class="block text-sm font-medium mb-2">
-    Country
-  </label>
-  <div class="autocomplete-input-wrapper">
-    <input
-      id="autocomplete-input"
-      name="country"
-      autocomplete="country-name"
-      type="text"
-      class="autocomplete-input"
-      placeholder="Type to search..."
-      role="combobox"
-      aria-autocomplete="list"
-      aria-controls="autocomplete-listbox"
-      aria-expanded="false"
-      aria-activedescendant=""
-    />
-    <button
-      class="autocomplete-toggle"
-      aria-label="Toggle dropdown"
-      tabindex="-1"
-    >
-      ▼
-    </button>
-  </div>
-  <div
-    id="autocomplete-listbox"
-    class="autocomplete-dropdown"
-    role="listbox"
-  >
-    <ul class="autocomplete-options">
-      <li role="option" id="country-option-1" class="autocomplete-option">United States</li>
-      <li role="option" id="country-option-2" class="autocomplete-option">Canada</li>
-    </ul>
-  </div>
-</div>`} />
-
-Key accessibility requirements:
-- Use `role="combobox"` on the input
-- Add `aria-autocomplete="list"` to indicate filtering behavior
-- Use `aria-controls` to link input to dropdown
-- Update `aria-expanded` based on dropdown state
-- Set `aria-activedescendant` to the focused option ID
-- Use unique IDs for each option
-- Provide clear labels
-
-### Keyboard Navigation
-
-Implement keyboard controls for better usability:
-
-- **Arrow Down**: Open dropdown and navigate to next option
-- **Arrow Up**: Navigate to previous option
-- **Enter**: Select focused option and close dropdown
-- **Escape**: Close dropdown without selecting
-- **Tab**: Move focus away and close dropdown
-- **Home**: Focus first option
-- **End**: Focus last option
-
-### Performance
-
-For large datasets or async operations:
-
-1. **Debounce search input**: Wait for user to finish typing before filtering
-2. **Virtualize long lists**: Render only visible options
-3. **Cache results**: Store previously fetched data
-4. **Limit results**: Show only top N matches (e.g., 50 items)
-
-### User Experience
-
-- Show loading state for async operations
-- Display helpful "no results" messages
-- Pre-populate with recent or suggested items
-- Allow clearing selection easily
-- Support both keyboard and mouse interaction
-- Auto-highlight first matching option
-
-## Framework Examples
-
-### React
-
-```tsx
-import { useState, useRef, useEffect } from 'react';
-
-interface Option {
-  value: string;
-  label: string;
-  icon?: React.ReactNode;
-}
-
-interface AutocompleteProps {
-  options: Option[];
-  placeholder?: string;
-  variant?: 'filled' | 'outlined';
-  onChange?: (value: string) => void;
-}
-
-export function Autocomplete({
-  options,
-  placeholder = 'Search...',
-  variant = 'filled',
-  onChange
-}: AutocompleteProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState('');
-  const [focusedIndex, setFocusedIndex] = useState(-1);
-
-  const filtered = options.filter(opt =>
-    opt.label.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const handleSelect = (option: Option) => {
-    setSearch(option.label);
-    setIsOpen(false);
-    onChange?.(option.value);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setIsOpen(true);
-        setFocusedIndex(prev =>
-          prev < filtered.length - 1 ? prev + 1 : prev
-        );
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setFocusedIndex(prev => prev > 0 ? prev - 1 : 0);
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (focusedIndex >= 0) {
-          handleSelect(filtered[focusedIndex]);
-        }
-        break;
-      case 'Escape':
-        setIsOpen(false);
-        break;
-    }
-  };
-
-  return (
-    <div className={`autocomplete ${variant === 'outlined' ? 'autocomplete-outlined' : ''}`}>
-      <div className="autocomplete-input-wrapper">
-        <input
-          type="text"
-          className="autocomplete-input"
-          placeholder={placeholder}
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setIsOpen(true);
-          }}
-          onKeyDown={handleKeyDown}
-          onFocus={() => setIsOpen(true)}
-          aria-autocomplete="list"
-          aria-expanded={isOpen}
-        />
-        <button
-          className="autocomplete-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle dropdown"
-        >
-          ▼
-        </button>
+This runnable single-input example includes its local application controller in the copyable
+code. It accepts free text as well as suggestions and submits one `country` value. Suggestions
+are local: there is no network request or implicit async search engine.
+
+<ComponentShowcase title="Basic Autocomplete" allowOverflow code={`<form id="demo-autocomplete-form">
+  <div class="form-group">
+    <label for="demo-autocomplete-country" class="form-label">Country</label>
+    <div id="demo-autocomplete" class="autocomplete">
+      <div class="autocomplete-input-wrapper">
+        <input id="demo-autocomplete-country" name="country" type="text" class="autocomplete-input" placeholder="Search countries..." role="combobox" autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="demo-autocomplete-list">
+        <button type="button" class="autocomplete-toggle" aria-label="Show suggestions" title="Show suggestions" aria-controls="demo-autocomplete-list" aria-expanded="false"><span aria-hidden="true">&#9662;</span></button>
       </div>
-
-      <div className={`autocomplete-dropdown ${isOpen ? 'autocomplete-dropdown-open' : ''}`}>
-        {filtered.length > 0 ? (
-          <ul className="autocomplete-options" role="listbox">
-            {filtered.map((option, index) => (
-              <li
-                key={option.value}
-                role="option"
-                className={`autocomplete-option ${
-                  index === focusedIndex ? 'autocomplete-option-focused' : ''
-                }`}
-                onClick={() => handleSelect(option)}
-              >
-                {option.icon && (
-                  <span className="autocomplete-option-icon">{option.icon}</span>
-                )}
-                {option.label}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="autocomplete-no-options">No results found</div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// Usage
-const countries = [
-  { value: 'us', label: 'United States' },
-  { value: 'ca', label: 'Canada' },
-  { value: 'mx', label: 'Mexico' },
-];
-
-<Autocomplete
-  options={countries}
-  placeholder="Choose a country..."
-  onChange={(value) => console.log('Selected:', value)}
-/>
-```
-
-### Vue
-
-```vue
-<template>
-  <div :class="['autocomplete', { 'autocomplete-outlined': variant === 'outlined' }]">
-    <div class="autocomplete-input-wrapper">
-      <input
-        v-model="search"
-        type="text"
-        class="autocomplete-input"
-        :placeholder="placeholder"
-        @focus="isOpen = true"
-        @keydown="handleKeyDown"
-        aria-autocomplete="list"
-        :aria-expanded="isOpen"
-      />
-      <button
-        class="autocomplete-toggle"
-        @click="isOpen = !isOpen"
-        aria-label="Toggle dropdown"
-      >
-        ▼
-      </button>
-    </div>
-
-    <div :class="['autocomplete-dropdown', { 'autocomplete-dropdown-open': isOpen }]">
-      <ul v-if="filteredOptions.length > 0" class="autocomplete-options" role="listbox">
-        <li
-          v-for="(option, index) in filteredOptions"
-          :key="option.value"
-          role="option"
-          :class="[
-            'autocomplete-option',
-            { 'autocomplete-option-focused': index === focusedIndex }
-          ]"
-          @click="handleSelect(option)"
-        >
-          {{ option.label }}
-        </li>
-      </ul>
-      <div v-else class="autocomplete-no-options">
-        No results found
+      <div class="autocomplete-dropdown" hidden>
+        <ul id="demo-autocomplete-list" class="autocomplete-options" role="listbox" aria-label="Country suggestions">
+          <li id="demo-country-us" class="autocomplete-option" role="option" aria-selected="false">United States</li>
+          <li id="demo-country-ca" class="autocomplete-option" role="option" aria-selected="false">Canada</li>
+          <li id="demo-country-mx" class="autocomplete-option" role="option" aria-selected="false" aria-disabled="true">Mexico</li>
+          <li id="demo-country-uk" class="autocomplete-option" role="option" aria-selected="false">United Kingdom</li>
+        </ul>
+        <p class="autocomplete-no-results" role="status" hidden>No matching countries.</p>
       </div>
     </div>
   </div>
-</template>
-
-<script setup>
-import { ref, computed } from 'vue';
-
-const props = defineProps({
-  options: {
-    type: Array,
-    required: true
-  },
-  placeholder: {
-    type: String,
-    default: 'Search...'
-  },
-  variant: {
-    type: String,
-    default: 'filled'
+  <div class="form-actions"><button class="btn" type="reset">Reset country</button></div>
+</form>
+<script>
+(() => {
+  const root = document.getElementById('demo-autocomplete');
+  const input = root.querySelector('input');
+  const toggle = root.querySelector('button');
+  const dropdown = root.querySelector('.autocomplete-dropdown');
+  const options = [...root.querySelectorAll('[role="option"]')];
+  const status = root.querySelector('[role="status"]');
+  let active = -1;
+  const available = () => options.filter(option => !option.hidden && option.getAttribute('aria-disabled') !== 'true');
+  function highlight(index) {
+    const visible = available();
+    active = index;
+    options.forEach(option => option.setAttribute('aria-selected', String(option === visible[index])));
+    if (visible[index]) {
+      input.setAttribute('aria-activedescendant', visible[index].id);
+      visible[index].scrollIntoView({ block: 'nearest' });
+    } else input.removeAttribute('aria-activedescendant');
   }
-});
-
-const emit = defineEmits(['change']);
-
-const search = ref('');
-const isOpen = ref(false);
-const focusedIndex = ref(-1);
-
-const filteredOptions = computed(() =>
-  props.options.filter(opt =>
-    opt.label.toLowerCase().includes(search.value.toLowerCase())
-  )
-);
-
-const handleSelect = (option) => {
-  search.value = option.label;
-  isOpen.value = false;
-  emit('change', option.value);
-};
-
-const handleKeyDown = (e) => {
-  switch (e.key) {
-    case 'ArrowDown':
-      e.preventDefault();
-      isOpen.value = true;
-      focusedIndex.value = Math.min(
-        focusedIndex.value + 1,
-        filteredOptions.value.length - 1
-      );
-      break;
-    case 'ArrowUp':
-      e.preventDefault();
-      focusedIndex.value = Math.max(focusedIndex.value - 1, 0);
-      break;
-    case 'Enter':
-      e.preventDefault();
-      if (focusedIndex.value >= 0) {
-        handleSelect(filteredOptions.value[focusedIndex.value]);
-      }
-      break;
-    case 'Escape':
-      isOpen.value = false;
-      break;
+  function close() {
+    dropdown.hidden = true;
+    root.classList.remove('autocomplete-open');
+    input.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-expanded', 'false');
+    highlight(-1);
   }
-};
-</script>
-
-<!-- Usage -->
-<Autocomplete
-  :options="countries"
-  placeholder="Choose a country..."
-  @change="handleChange"
-/>
-```
-
-### Async Loading Example
-
-```typescript
-// React example with async data fetching
-import { useState, useEffect } from 'react';
-
-interface AsyncAutocompleteProps {
-  fetchOptions: (query: string) => Promise<Option[]>;
-  placeholder?: string;
-  debounceMs?: number;
-}
-
-export function AsyncAutocomplete({
-  fetchOptions,
-  placeholder = 'Search...',
-  debounceMs = 300
-}: AsyncAutocompleteProps) {
-  const [search, setSearch] = useState('');
-  const [options, setOptions] = useState<Option[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (!search) {
-      setOptions([]);
-      return;
+  function open(query) {
+    if (input.matches(':disabled')) return;
+    options.forEach(option => option.hidden = !option.textContent.toLowerCase().includes(query.toLowerCase()));
+    status.hidden = options.some(option => !option.hidden);
+    dropdown.hidden = false;
+    root.classList.add('autocomplete-open');
+    input.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-expanded', 'true');
+    highlight(-1);
+  }
+  function choose(option) {
+    if (option.hidden || option.getAttribute('aria-disabled') === 'true') return;
+    input.value = option.textContent.trim();
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    close();
+  }
+  input.addEventListener('input', () => open(input.value));
+  input.addEventListener('focus', () => open(input.value));
+  input.addEventListener('click', () => open(input.value));
+  toggle.addEventListener('click', () => {
+    const expand = dropdown.hidden;
+    input.focus();
+    if (expand) open(''); else close();
+  });
+  options.forEach(option => {
+    option.addEventListener('mousedown', event => event.preventDefault());
+    option.addEventListener('click', () => choose(option));
+  });
+  input.addEventListener('keydown', event => {
+    if (event.isComposing) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (dropdown.hidden) open(input.value);
+      const count = available().length;
+      if (count) highlight(event.key === 'ArrowDown' ? (active + 1) % count : (active < 0 ? count - 1 : (active - 1 + count) % count));
+    } else if (event.key === 'Enter' && !dropdown.hidden && available()[active]) {
+      event.preventDefault();
+      choose(available()[active]);
+    } else if (event.key === 'Escape') {
+      event.preventDefault();
+      close();
     }
+  });
+  root.addEventListener('focusout', event => {
+    if (!root.contains(event.relatedTarget)) close();
+  });
+  input.form.addEventListener('reset', () => requestAnimationFrame(close));
+  input.form.addEventListener('submit', event => event.preventDefault());
+})();
+</script>`} />
 
-    const timer = setTimeout(async () => {
-      setIsLoading(true);
-      try {
-        const results = await fetchOptions(search);
-        setOptions(results);
-      } catch (error) {
-        console.error('Failed to fetch options:', error);
-        setOptions([]);
-      } finally {
-        setIsLoading(false);
-      }
-    }, debounceMs);
+Focus stays on the input while arrows move the active suggestion; Enter accepts it,
+Escape dismisses the surface, and Tab leaves the field normally. Home/End retain native
+caret behavior. Disabled suggestions are not selectable. Reset restores the native default
+value and closes the surface after the browser's reset action. Without the example script,
+this remains an ordinary text field but has no custom suggestion interaction.
 
-    return () => clearTimeout(timer);
-  }, [search, fetchOptions, debounceMs]);
+## Native Suggestions
 
-  return (
-    <div className="autocomplete">
-      <div className="autocomplete-input-wrapper">
-        <input
-          type="text"
-          className="autocomplete-input"
-          placeholder={placeholder}
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setIsOpen(true);
-          }}
-        />
-        <button className="autocomplete-toggle" onClick={() => setIsOpen(!isOpen)}>
-          ▼
-        </button>
-      </div>
+A native `list`/`datalist` needs no controller. The browser owns filtering, popup positioning
+and keyboard behavior; the suggestion menu itself cannot be styled by Core. Suggestions do
+not restrict the submitted value. Use a native Select when values must come from a fixed list.
 
-      <div className={`autocomplete-dropdown ${isOpen ? 'autocomplete-dropdown-open' : ''}`}>
-        {isLoading ? (
-          <div className="autocomplete-loading">Loading...</div>
-        ) : options.length > 0 ? (
-          <ul className="autocomplete-options">
-            {options.map(option => (
-              <li key={option.value} className="autocomplete-option">
-                {option.label}
-              </li>
-            ))}
-          </ul>
-        ) : search ? (
-          <div className="autocomplete-no-options">No results found</div>
-        ) : null}
+<ComponentShowcase title="Native city suggestions" code={`<form>
+  <div class="form-group">
+    <label class="form-label" for="demo-autocomplete-city">City</label>
+    <div class="autocomplete">
+      <input id="demo-autocomplete-city" name="city" type="text" class="autocomplete-input" list="demo-city-suggestions" autocomplete="off">
+      <datalist id="demo-city-suggestions">
+        <option value="Beijing"></option>
+        <option value="Paris"></option>
+        <option value="Tokyo"></option>
+      </datalist>
+    </div>
+  </div>
+</form>`} />
+
+## Disabled Fields
+
+Use actual `disabled` attributes or a genuinely disabled fieldset. Visual classes alone do
+not disable interaction or submission. An application should close an open custom popup
+when disabling its control dynamically.
+
+<ComponentShowcase title="Disabled fieldset" code={`<fieldset id="demo-autocomplete-disabled" class="fieldset" disabled>
+  <legend class="fieldset-legend">Unavailable selection</legend>
+  <div class="form-group">
+    <label class="form-label" for="demo-disabled-country">Unavailable country</label>
+    <div class="autocomplete">
+      <div class="autocomplete-input-wrapper">
+        <input id="demo-disabled-country" name="unavailable-country" type="text" class="autocomplete-input" value="Canada">
+        <button type="button" class="autocomplete-toggle" aria-label="Show unavailable suggestions"><span aria-hidden="true">&#9662;</span></button>
       </div>
     </div>
-  );
-}
+  </div>
+</fieldset>`} />
 
-// Usage
-<AsyncAutocomplete
-  fetchOptions={async (query) => {
-    const response = await fetch(`/api/search?q=${query}`);
-    return response.json();
-  }}
-  placeholder="Search users..."
-/>
-```
+## Canonical Classes And Compatibility
 
-## API Reference
+<div style={{ overflowX: 'auto' }}>
 
-### Class Names
+| Canonical API | Retained aliases / presentation |
+| --- | --- |
+| `.autocomplete`, `.autocomplete-input` | Container and native text field |
+| `.autocomplete-input-wrapper`, `.autocomplete-toggle` | Input-relative suggestion button |
+| `.autocomplete-open` on root | `.autocomplete-dropdown-open` or `.show` on dropdown |
+| `.autocomplete-dropdown`, `.autocomplete-options` | Popup surface and reset list layout |
+| `.autocomplete-option[aria-selected="true"]` | `.selected`, `.autocomplete-option-selected` |
+| `.highlighted` | `.autocomplete-option-focused`; application owns active descendant |
+| `.autocomplete-option[aria-disabled="true"]` | `.disabled`; application prevents selection |
+| `.autocomplete-group-header` | `.autocomplete-group-label` |
+| `.autocomplete-no-results` | `.autocomplete-no-options` |
+| `.autocomplete-tags`, `.autocomplete-tag`, `.autocomplete-tag-remove` | `.autocomplete-chips`, `.autocomplete-chip`, `.autocomplete-chip-remove` |
+| `.autocomplete-clear`, `.autocomplete-clearable` | Appearance only; application clears value |
+| `.autocomplete-loading`, `.autocomplete-highlight` | Application loading and match presentation |
+| `.autocomplete-sm/lg`, `.autocomplete-outlined/ghost` | Size and appearance |
+| `.autocomplete-{color}` | primary, secondary, tertiary, info, success, warning, error, accent, neutral, base |
 
-| Class | Description |
-|-------|-------------|
-| `.autocomplete` | Base autocomplete container (required) |
-| `.autocomplete-outlined` | Outlined variant with border |
-| `.autocomplete-disabled` | Disabled state styling |
-| `.autocomplete-input-wrapper` | Container for input and toggle button |
-| `.autocomplete-input` | Text input field |
-| `.autocomplete-toggle` | Dropdown toggle button |
-| `.autocomplete-dropdown` | Dropdown container (hidden by default) |
-| `.autocomplete-dropdown-open` | Makes dropdown visible |
-| `.autocomplete-options` | List container for options |
-| `.autocomplete-option` | Individual option item |
-| `.autocomplete-option-selected` | Selected option state |
-| `.autocomplete-option-focused` | Keyboard-focused option state |
-| `.autocomplete-option-icon` | Icon within an option |
-| `.autocomplete-loading` | Loading state indicator |
-| `.autocomplete-no-options` | Empty state message |
-| `.autocomplete-group-label` | Group label for categorized options |
-| `.autocomplete-chips` | Container for selected chips (multi-select) |
-| `.autocomplete-chip` | Individual chip for selected item |
-| `.autocomplete-chip-remove` | Remove button within a chip |
-
-### HTML Attributes
-
-Key ARIA attributes for accessibility:
-
-| Attribute | Element | Description |
-|-----------|---------|-------------|
-| `role="combobox"` | Input | Identifies the autocomplete pattern |
-| `aria-autocomplete="list"` | Input | Indicates list-based autocomplete |
-| `aria-controls` | Input | Links to dropdown listbox ID |
-| `aria-expanded` | Input | Boolean indicating dropdown state |
-| `aria-activedescendant` | Input | ID of currently focused option |
-| `role="listbox"` | Dropdown | Identifies options container |
-| `role="option"` | Option | Identifies selectable option |
-| `aria-multiselectable` | Listbox | Allows multiple selections |
-
-## Color Variants
-
-<ComponentShowcase title="Color Variants" code={`<div class="autocomplete autocomplete-primary">
-  <input name="primary-autocomplete" class="autocomplete-input" placeholder="Primary autocomplete..." aria-label="Primary autocomplete" />
-  <ul class="autocomplete-dropdown">
-    <li class="autocomplete-item">Option 1</li>
-    <li class="autocomplete-item">Option 2</li>
-  </ul>
 </div>
-<div class="autocomplete autocomplete-secondary">
-  <input name="secondary-autocomplete" class="autocomplete-input" placeholder="Secondary autocomplete..." aria-label="Secondary autocomplete" />
-</div>
-<div class="autocomplete autocomplete-tertiary">
-  <input name="tertiary-autocomplete" class="autocomplete-input" placeholder="Tertiary autocomplete..." aria-label="Tertiary autocomplete" />
-</div>
-<div class="autocomplete autocomplete-info">
-  <input name="info-autocomplete" class="autocomplete-input" placeholder="Info autocomplete..." aria-label="Info autocomplete" />
-</div>
-<div class="autocomplete autocomplete-success">
-  <input name="success-autocomplete" class="autocomplete-input" placeholder="Success autocomplete..." aria-label="Success autocomplete" />
-</div>
-<div class="autocomplete autocomplete-warning">
-  <input name="warning-autocomplete" class="autocomplete-input" placeholder="Warning autocomplete..." aria-label="Warning autocomplete" />
-</div>
-<div class="autocomplete autocomplete-error">
-  <input name="error-autocomplete" class="autocomplete-input" placeholder="Error autocomplete..." aria-label="Error autocomplete" />
-</div>`}>
-  <div class="autocomplete autocomplete-primary">
-    <input name="primary-autocomplete" class="autocomplete-input" placeholder="Primary autocomplete..." aria-label="Primary autocomplete" />
-  </div>
-  <div class="autocomplete autocomplete-secondary">
-    <input name="secondary-autocomplete" class="autocomplete-input" placeholder="Secondary autocomplete..." aria-label="Secondary autocomplete" />
-  </div>
-  <div class="autocomplete autocomplete-tertiary">
-    <input name="tertiary-autocomplete" class="autocomplete-input" placeholder="Tertiary autocomplete..." aria-label="Tertiary autocomplete" />
-  </div>
-  <div class="autocomplete autocomplete-info">
-    <input name="info-autocomplete" class="autocomplete-input" placeholder="Info autocomplete..." aria-label="Info autocomplete" />
-  </div>
-  <div class="autocomplete autocomplete-success">
-    <input name="success-autocomplete" class="autocomplete-input" placeholder="Success autocomplete..." aria-label="Success autocomplete" />
-  </div>
-  <div class="autocomplete autocomplete-warning">
-    <input name="warning-autocomplete" class="autocomplete-input" placeholder="Warning autocomplete..." aria-label="Warning autocomplete" />
-  </div>
-  <div class="autocomplete autocomplete-error">
-    <input name="error-autocomplete" class="autocomplete-input" placeholder="Error autocomplete..." aria-label="Error autocomplete" />
-  </div>
-</ComponentShowcase>
 
-## Ghost Variant
-
-<ComponentShowcase title="Ghost Autocomplete" code={`<div class="autocomplete autocomplete-ghost">
-  <input name="ghost-autocomplete" class="autocomplete-input" placeholder="Ghost autocomplete (no border)..." aria-label="Ghost autocomplete" />
-</div>`}>
-  <div class="autocomplete autocomplete-ghost">
-    <input name="ghost-autocomplete" class="autocomplete-input" placeholder="Ghost autocomplete (no border)..." aria-label="Ghost autocomplete" />
-  </div>
-</ComponentShowcase>
-
-## Related Components
-
-- [Input](/duskmoonui/docs/en/components/input/) - Text input fields
-- [Select](/duskmoonui/docs/en/components/select/) - Dropdown selection
-- [Chip](/duskmoonui/docs/en/components/chip/) - Selected items display
-- [List](/duskmoonui/docs/en/components/list/) - List items
-
-## See Also
-
-- [Select Design Guidelines (Material Design 3)](https://m3.material.io/components/menus/overview)
-- [ARIA Combobox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)
-- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
+Multiple selection, removable tags, asynchronous requests, cancellation, debounce,
+virtualization and selection/value mapping need an application or framework adapter.
+Existing tag styles remain available; Core does not imply a multi-select or fetching engine.
+Use unique `demo-`-prefixed IDs in docs, and unique IDs per instance in an application.
+The inline script is scoped to this example, not a global initializer for every `.autocomplete`.

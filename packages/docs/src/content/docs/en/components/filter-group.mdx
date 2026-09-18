@@ -1,0 +1,95 @@
+---
+title: Filter Group
+description: Chip composition for native single-select and multi-select filters
+category: components
+order: 31
+published: true
+tags: ['filter', 'chip', 'form', 'components']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Filter Group
+
+Filter Group presents selection, not data fetching or query execution. Alternatives remain
+visible and keyboard-accessible. It reuses Chip visuals, with real radio or checkbox inputs.
+
+## Imports
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/filter-group.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+@import "@duskmoon-dev/core/components/button.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Aggregate: `@duskmoon-dev/core`; no-Tailwind: `@duskmoon-dev/core/standalone.css`.
+Individual: `@duskmoon-dev/core/components/filter-group.css` (includes Chip),
+plus a theme/reset and `form-group.css` for the fieldset. Extensionless
+`components/filter-group` exports generated `css` and `styles`.
+
+## Single Selection
+
+<ComponentShowcase title="Status filter" code={`<form>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">Status</legend>
+    <div class="filter-group">
+      <label class="chip"><input class="filter-group-input" type="radio" name="status" value="all" checked>All</label>
+      <label class="chip"><input class="filter-group-input" type="radio" name="status" value="open">Open</label>
+      <label class="chip"><input class="filter-group-input" type="radio" name="status" value="closed">Closed</label>
+      <label class="chip"><input class="filter-group-input" type="radio" name="status" value="archived" disabled>Archived</label>
+    </div>
+  </fieldset>
+  <button class="btn" type="reset">Reset to All</button>
+</form>`} />
+
+The shared `name` gives one submitted value and native arrow-key navigation.
+"All" is an explicit no-filter choice, not an unselected radio group.
+
+## Multiple Selection
+
+<ComponentShowcase title="Category filters" code={`<form id="demo-filter-form">
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">Categories</legend>
+    <div class="filter-group filter-group-secondary" id="demo-filter-categories">
+      <label class="chip"><input class="filter-group-input" type="checkbox" name="category" value="news" checked>News</label>
+      <label class="chip"><input class="filter-group-input" type="checkbox" name="category" value="events">Events</label>
+      <label class="chip"><input class="filter-group-input" type="checkbox" name="category" value="guides">Guides</label>
+    </div>
+  </fieldset>
+  <button class="btn" type="reset">Reset to News</button>
+  <button class="btn" type="button" id="demo-filter-clear">Clear categories</button>
+</form>
+<script>
+  document.getElementById('demo-filter-clear').addEventListener('click', () => {
+    const group = document.getElementById('demo-filter-categories');
+    group.querySelectorAll('input[type="checkbox"]').forEach(input => {
+      input.checked = false;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  });
+</script>`} />
+
+Read repeated values with `FormData.getAll('category')`.
+Clear removes selections only in this group; reset restores defaults. This demo's
+dedicated form contains only these filters. In a larger form, use a dedicated form
+owner or application-scoped default restoration rather than a parent-form reset button.
+
+## Classes And States
+
+| Class | Role |
+| --- | --- |
+| `.filter-group` | Wrapping selection layout |
+| `.chip` | Native input's label and visual surface |
+| `.filter-group-input` | Full-size operable native selection control |
+| `.filter-group-{color}` | primary/secondary/tertiary/info/success/warning/error selection palette |
+
+Checked state shows a mark and selected colors; keyboard focus outlines the label.
+Use actual `disabled` controls or `fieldset disabled`, not a disabled CSS class.
+No `.filter` alias is introduced because it could conflict with utility styling.

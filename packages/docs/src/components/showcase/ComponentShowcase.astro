@@ -7,15 +7,16 @@ interface Props {
   code: string;
   showCode?: boolean;
   defaultTab?: 'preview' | 'code';
+  allowOverflow?: boolean;
 }
 
-const { title, description, code, showCode = true, defaultTab = 'preview' } = Astro.props;
+const { title, description, code, showCode = true, defaultTab = 'preview', allowOverflow = false } = Astro.props;
 
 // Generate unique ID for ARIA linking
 const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
 ---
 
-<div class="component-showcase" data-showcase data-default-tab={defaultTab}>
+<div class="component-showcase" data-showcase data-default-tab={defaultTab} data-allow-overflow={allowOverflow || undefined}>
   <div class="showcase-header">
     <div class="showcase-header-content">
       <h3 class="showcase-title">{title}</h3>
@@ -82,6 +83,16 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
     border-radius: 0.5rem;
     overflow: hidden;
     background: var(--surface, #ffffff);
+  }
+
+  .component-showcase[data-allow-overflow] { overflow: visible; }
+  .component-showcase[data-allow-overflow] .showcase-header {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+  }
+  .component-showcase[data-allow-overflow] .showcase-preview {
+    border-end-start-radius: inherit;
+    border-end-end-radius: inherit;
   }
 
   .showcase-header {

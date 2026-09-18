@@ -11,13 +11,45 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Radio
 
+## Native Contract And Imports
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/radio.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Aggregate: `@duskmoon-dev/core` with Tailwind v4; no-Tailwind:
+`@duskmoon-dev/core/standalone.css`. Individual:
+`@duskmoon-dev/core/components/radio.css` plus base/theme and
+`form-group.css` for associated labels/help. Extensionless `components/radio`
+exports generated `css` and constructable `styles`, not a behavior runtime.
+
+Use native inputs for values, selection, constraints, submission and reset.
+Actual `disabled` or `fieldset disabled` owns semantic disabling.
+Use `.validator` for native interaction-based errors and add
+`.validator-success` for native success. Explicit `aria-invalid="true"`
+wins over those states and color modifiers, including focus.
+Supply described error text as well as color. See
+[Validator](/duskmoonui/docs/en/components/validator/) and
+[Field composition](/duskmoonui/docs/en/components/form-group/).
+
+Give choices one shared `name`, distinct `value` attributes and a native fieldset/legend.
+Native arrow keys change selection; reset restores the initially checked choice.
+
 Radio buttons allow users to select a single option from a set of mutually exclusive choices. @duskmoon-dev/core provides a complete set of Material Design 3 radio button variants.
 
 ## Basic Usage
 
 Simply add the `.radio` class to an `<input type="radio">`:
 
-<ComponentShowcase title="Basic Radio" code={`<input type="radio" name="demo" class="radio" />`} />
+<ComponentShowcase title="Basic Radio" code={`<input type="radio" name="demo" class="radio" value="option" aria-label="Basic radio option" />`} />
 
 ## With Label
 
@@ -39,7 +71,7 @@ Wrap the radio in a label for better UX:
 
 Five sizes are available:
 
-<ComponentShowcase title="Radio Sizes" code={`<div class="flex items-center gap-4">
+<ComponentShowcase title="Radio Sizes" code={`<div class="radio-group radio-group-horizontal">
   <label class="radio-label">
     <input type="radio" name="size" class="radio radio-xs" checked />
     <span>Extra Small</span>
@@ -119,21 +151,21 @@ Five sizes are available:
 
 ## All Colors Comparison
 
-<ComponentShowcase title="All Color Variants" code={`<div class="flex flex-wrap gap-4">
-  <input type="radio" name="all-colors" class="radio radio-primary" checked />
-  <input type="radio" name="all-colors-2" class="radio radio-secondary" checked />
-  <input type="radio" name="all-colors-3" class="radio radio-tertiary" checked />
-  <input type="radio" name="all-colors-4" class="radio radio-success" checked />
-  <input type="radio" name="all-colors-5" class="radio radio-warning" checked />
-  <input type="radio" name="all-colors-6" class="radio radio-error" checked />
-  <input type="radio" name="all-colors-7" class="radio radio-info" checked />
+<ComponentShowcase title="All Color Variants" code={`<div class="radio-group radio-group-horizontal">
+  <input type="radio" name="all-colors" class="radio radio-primary" checked aria-label="Primary radio option" />
+  <input type="radio" name="all-colors-2" class="radio radio-secondary" checked aria-label="Secondary radio option" />
+  <input type="radio" name="all-colors-3" class="radio radio-tertiary" checked aria-label="Tertiary radio option" />
+  <input type="radio" name="all-colors-4" class="radio radio-success" checked aria-label="Success radio option" />
+  <input type="radio" name="all-colors-5" class="radio radio-warning" checked aria-label="Warning radio option" />
+  <input type="radio" name="all-colors-6" class="radio radio-error" checked aria-label="Error radio option" />
+  <input type="radio" name="all-colors-7" class="radio radio-info" checked aria-label="Info radio option" />
 </div>`} />
 
 ## States
 
 ### Disabled
 
-<ComponentShowcase title="Disabled Radio" code={`<div class="flex gap-4">
+<ComponentShowcase title="Disabled Radio" code={`<div class="radio-group radio-group-horizontal">
   <label class="radio-label">
     <input type="radio" name="disabled" class="radio" disabled />
     <span>Disabled unchecked</span>
@@ -189,7 +221,7 @@ Five sizes are available:
 
 ## Form Integration
 
-<ComponentShowcase title="Radio in Form" code={`<form class="space-y-4 max-w-md">
+<ComponentShowcase title="Radio in Form" code={`<form>
   <div class="radio-group">
     <span class="radio-group-label">Shipping Method</span>
 
@@ -263,7 +295,7 @@ The radio provides adequate touch targets. For mobile-first designs, use larger 
 
 Simple radio:
 ```html
-<input type="radio" name="group" class="radio" />
+<input type="radio" name="group" class="radio" value="option" aria-label="Example option" />
 ```
 
 With label:
@@ -309,7 +341,7 @@ The ghost variant removes the visible border when not selected — useful for mi
   <input type="radio" name="demo-ghost-radio" class="radio radio-ghost" checked />
   <span>Ghost selected (color appears)</span>
 </label>`}>
-  <div class="flex flex-col gap-2">
+  <div class="radio-group">
     <label class="radio-label">
       <input type="radio" name="demo-ghost-radio" class="radio radio-ghost" />
       <span>Ghost (no border unselected)</span>

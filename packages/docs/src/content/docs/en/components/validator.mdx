@@ -1,0 +1,105 @@
+---
+title: Validator
+description: Opt-in native validation presentation and application error states
+category: components
+order: 29
+published: true
+tags: ['form', 'validation', 'components']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Validator
+
+CSS presents validation state; it does not validate remote data, create messages, or announce errors.
+Use native constraints on the actual control. Ordinary fields have no automatic native error or success colors.
+
+## Imports
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/input.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+@import "@duskmoon-dev/core/components/button.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Use `@import "@duskmoon-dev/core";` with Tailwind v4, or `@duskmoon-dev/core/standalone.css` without Tailwind.
+Individual controls already include `validator.css`. For composition, additionally import
+`@duskmoon-dev/core/components/form-group.css` and a theme such as `@duskmoon-dev/core/themes/sunshine`.
+The theme supplies color tokens; `base.css` supplies shared shape/spacing tokens.
+Provide your normal reset and typography.
+An extensionless `@duskmoon-dev/core/components/validator` import exports `css` and `styles`
+for constructable stylesheet adoption. It has no runtime behavior.
+
+## Native Constraints
+
+Add `.validator` to enable interaction-based `:user-invalid` styling.
+Add `.validator-success` as well to opt into `:user-valid` success styling.
+Focus alone does not necessarily mark a field interacted: browsers decide when these states apply.
+
+<ComponentShowcase title="Native email constraints" code={`<form>
+  <div class="form-group">
+    <label class="form-label form-label-required" for="demo-validator-email">Email (required)</label>
+    <input id="demo-validator-email" name="email" type="email" class="input validator validator-success" required aria-describedby="demo-validator-help demo-validator-error">
+    <p id="demo-validator-help" class="validator-hint">Use your work email address.</p>
+    <p id="demo-validator-error" class="validator-error">Error: enter a valid email address.</p>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+  <button type="reset" class="btn">Reset</button>
+</form>`} />
+
+## Server And Framework Errors
+
+Set `aria-invalid="true"` on the control and provide associated, visible error text.
+It wins over native success, semantic color modifiers, filled/outlined/ghost appearance and focus.
+Remove or set it to `false` when the application error is resolved. Native validity alone does not clear it.
+
+<ComponentShowcase title="Native-valid but server-invalid" code={`<div class="form-group form-group-success">
+  <label class="form-label" for="demo-validator-server">Username</label>
+  <input id="demo-validator-server" name="username" class="input input-filled input-success validator validator-success" value="valid-name" required aria-invalid="true" aria-describedby="demo-validator-server-error">
+  <p id="demo-validator-server-error" class="helper-text helper-text-error">Error: this username is already registered.</p>
+</div>`} />
+
+## Precedence And Compatibility
+
+| Priority | State | Owner |
+| --- | --- | --- |
+| 1 | `aria-invalid="true"`, `.form-group-error`, legacy `.form-control.error` | Application/server |
+| 2 | `.validator:user-invalid`, optional `.validator.validator-success:user-valid` | Native constraints after interaction |
+| 3 | Component color/appearance, explicit wrapper success/info/warning | Application presentation |
+
+Legacy `.validate` on a wrapper (or directly on a control) retains **immediate**
+`:invalid` error and `:valid` success styling, including on page load. This is an
+explicit opt-in compatibility mode, not the recommended default. Wrapper error/success,
+`.helper-text.error/success/warning/info`, and hyphenated helper variants remain available.
+The `*-error` and `*-success` color modifiers are presentation, not remote verification.
+
+Supported native controls: Input, Select, Textarea, Checkbox, Radio, Switch,
+legacy Toggle, File Input, single-input OTP and segmented OTP fields. Checkbox and Switch
+use `required`; radio groups share a `name`. Do not put `pattern` on Select or
+`readonly` on Checkbox, Radio or File Input: those native attributes are not supported.
+
+## Messages And Announcements
+
+`.validator-hint` is persistent help. A direct `.validator-error` child of
+`.form-group` or `.form-control` appears for native opt-in errors or explicit errors.
+For nested compositions use application-controlled visibility and ordinary helper classes.
+CSS cannot set `aria-invalid`, populate useful error messages, call `setCustomValidity()`,
+manage focus, or reliably announce changing text. Applications must do those tasks,
+using a suitable live region when needed. Do not mark help/error labels `aria-required`;
+use `required` on the control. Label asterisks are decorative compatibility styling.
+Keep error text visible as well as color.
+
+Native reset restores control defaults and native interaction states. It does not clear
+application ARIA errors or custom validity: applications synchronize those separately.
+Disabled controls and native disabled fieldsets are excluded from submission/constraint
+validation. Visual disabled wrapper classes do not disable descendants.
+
+[Field composition](/duskmoonui/docs/en/components/form-group/) ·
+[OTP](/duskmoonui/docs/en/components/otp-input/)

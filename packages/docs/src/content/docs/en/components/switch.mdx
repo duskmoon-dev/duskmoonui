@@ -10,13 +10,49 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Switch
 
+## Native Contract And Imports
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/switch.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Aggregate: `@duskmoon-dev/core` with Tailwind v4; no-Tailwind:
+`@duskmoon-dev/core/standalone.css`. Individual:
+`@duskmoon-dev/core/components/switch.css` plus base/theme and
+`form-group.css` for associated labels/help. Extensionless `components/switch`
+exports generated `css` and constructable `styles`, not a behavior runtime.
+
+Use native inputs for values, selection, constraints, submission and reset.
+Actual `disabled` or `fieldset disabled` owns semantic disabling.
+Use `.validator` for native interaction-based errors and add
+`.validator-success` for native success. Explicit `aria-invalid="true"`
+wins over those states and color modifiers, including focus.
+Supply described error text as well as color. See
+[Validator](/duskmoonui/docs/en/components/validator/) and
+[Field composition](/duskmoonui/docs/en/components/form-group/).
+
+Switch / Toggle is an on/off form control. `.switch` is the MD3 control;
+legacy `input[type="checkbox"].toggle` retains its compact appearance through
+`components/toggle-switch.css`, `form.css` or `toggle.css`.
+`.toggle-btn` is a separate pressed action button, documented under
+[Toggle Button](/duskmoonui/docs/en/components/toggle/).
+All use native checked state except actions, whose `aria-pressed` updates belong to applications.
+
 Switches toggle the state of a single item on or off. @duskmoon-dev/core provides a Material Design 3 switch component with smooth animations and multiple variants.
 
 ## Basic Usage
 
 Simply add the `.switch` class to an `<input type="checkbox">`:
 
-<ComponentShowcase title="Basic Switch" code={`<input type="checkbox" class="switch" />`} />
+<ComponentShowcase title="Basic Switch" code={`<input type="checkbox" class="switch" aria-label="Basic switch" />`} />
 
 ## With Label
 
@@ -38,7 +74,7 @@ Wrap the switch in a label for better UX:
 
 Five sizes are available:
 
-<ComponentShowcase title="Switch Sizes" code={`<div class="flex items-center gap-4">
+<ComponentShowcase title="Switch Sizes" code={`<div class="switch-group switch-group-horizontal">
   <label class="switch-label">
     <input type="checkbox" class="switch switch-xs" checked />
     <span>Extra Small</span>
@@ -118,21 +154,21 @@ Five sizes are available:
 
 ## All Colors Comparison
 
-<ComponentShowcase title="All Color Variants" code={`<div class="flex flex-wrap gap-4">
-  <input type="checkbox" class="switch switch-primary" checked />
-  <input type="checkbox" class="switch switch-secondary" checked />
-  <input type="checkbox" class="switch switch-tertiary" checked />
-  <input type="checkbox" class="switch switch-success" checked />
-  <input type="checkbox" class="switch switch-warning" checked />
-  <input type="checkbox" class="switch switch-error" checked />
-  <input type="checkbox" class="switch switch-info" checked />
+<ComponentShowcase title="All Color Variants" code={`<div class="switch-group switch-group-horizontal">
+  <input type="checkbox" class="switch switch-primary" checked aria-label="Primary switch" />
+  <input type="checkbox" class="switch switch-secondary" checked aria-label="Secondary switch" />
+  <input type="checkbox" class="switch switch-tertiary" checked aria-label="Tertiary switch" />
+  <input type="checkbox" class="switch switch-success" checked aria-label="Success switch" />
+  <input type="checkbox" class="switch switch-warning" checked aria-label="Warning switch" />
+  <input type="checkbox" class="switch switch-error" checked aria-label="Error switch" />
+  <input type="checkbox" class="switch switch-info" checked aria-label="Info switch" />
 </div>`} />
 
 ## States
 
 ### Disabled
 
-<ComponentShowcase title="Disabled Switches" code={`<div class="flex gap-4">
+<ComponentShowcase title="Disabled Switches" code={`<div class="switch-group switch-group-horizontal">
   <label class="switch-label">
     <input type="checkbox" class="switch" disabled />
     <span>Disabled unchecked</span>
@@ -186,9 +222,9 @@ Five sizes are available:
 
 ## Form Integration
 
-<ComponentShowcase title="Switch in Form" code={`<form class="space-y-4 max-w-md">
-  <fieldset>
-    <legend class="text-lg font-semibold mb-4">Privacy Settings</legend>
+<ComponentShowcase title="Switch in Form" code={`<form>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">Privacy Settings</legend>
 
     <div class="switch-group">
       <label class="switch-label">
@@ -270,7 +306,7 @@ The switch provides adequate touch targets. For mobile-first designs, use larger
 
 Simple switch:
 ```html
-<input type="checkbox" class="switch" />
+<input type="checkbox" class="switch" aria-label="Example switch" />
 ```
 
 With label:
@@ -315,7 +351,7 @@ The ghost variant removes the visible track border and background when off — c
   <input type="checkbox" class="switch switch-ghost" checked />
   <span>Ghost on</span>
 </label>`}>
-  <div class="flex flex-col gap-2">
+  <div class="switch-group">
     <label class="switch-label">
       <input type="checkbox" class="switch switch-ghost" />
       <span>Ghost off (no track)</span>

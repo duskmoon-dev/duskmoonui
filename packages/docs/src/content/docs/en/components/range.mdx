@@ -1,0 +1,69 @@
+---
+title: Range
+description: Native range input with browser-owned value, keyboard interaction and reset
+category: components
+order: 30
+published: true
+tags: ['range', 'form', 'components']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Range
+
+Use native `input[type="range"]` for a basic slider. The browser owns pointer and
+keyboard interaction, bounds, stepping, submission and reset. No JavaScript is required.
+
+## Imports
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/range.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+@import "@duskmoon-dev/core/components/button.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Aggregate: `@duskmoon-dev/core` with Tailwind v4; without Tailwind use
+`@duskmoon-dev/core/standalone.css`. Individual: `@duskmoon-dev/core/components/range.css`
+plus a theme and your normal reset/typography. Legacy `components/form.css` includes Range.
+Extensionless `components/range` exports generated `css` and `styles`.
+
+## Native Range
+
+<ComponentShowcase title="Stepped volume" code={`<form>
+  <div class="form-group">
+    <label class="form-label" for="demo-range-volume">Volume</label>
+    <input id="demo-range-volume" name="volume" type="range" class="range range-primary" min="0" max="100" step="5" value="50" aria-describedby="demo-range-help">
+    <p id="demo-range-help" class="helper-text">0 to 100, in steps of 5.</p>
+  </div>
+  <button type="reset" class="btn">Reset to 50</button>
+</form>`} />
+
+Do not add static `aria-valuenow`: native Range exposes its current value itself.
+Do not overlay a decorative fill or value label unless an application updates it.
+An optional `output` must synchronize on `input` and after form `reset`; CSS cannot
+read a changing input value to update text or a percentage.
+
+## Sizes And States
+
+Sizes: `.range-xs`, `.range-sm`, default/medium, `.range-lg`.
+Colors: `.range-primary`, `secondary`, `tertiary`, `info`, `success`,
+`warning`, `error`. Default uses on-surface; modifiers color the thumb.
+Visible keyboard focus uses an outline and remains visible in forced colors.
+
+<ComponentShowcase title="Small and disabled ranges" code={`<label class="form-label" for="demo-range-small">Temperature</label>
+<input id="demo-range-small" type="range" name="temperature" class="range range-sm range-secondary" min="-10" max="40" step="1" value="20">
+<label class="form-label" for="demo-range-disabled">Unavailable adjustment</label>
+<input id="demo-range-disabled" type="range" name="unavailable" class="range range-lg" min="0" max="10" value="5" disabled>`} />
+
+## Advanced Slider
+
+The custom `.slider` track/thumb API is retained separately. It does not belong on a
+native range input and needs an interaction controller for values, keyboard, dragging,
+ARIA, labels and reset. See [Slider](/duskmoonui/docs/en/components/slider/).

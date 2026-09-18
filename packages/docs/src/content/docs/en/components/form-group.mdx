@@ -1,379 +1,108 @@
 ---
-title: Form Group
-description: Material Design 3 form layout utilities including labels, helper text, and fieldsets
+title: Form Group, Fieldset and Label
+description: Canonical native field composition, labels, helper text and grouping
 category: components
-order: 47
+order: 27
 published: true
-tags: ['form-group', 'components', 'material-design', 'forms', 'layout', 'label']
+tags: ['form', 'label', 'fieldset', 'components']
 ---
+
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
-# Form Group
+# Form Group, Fieldset and Label
 
-Form Group provides layout utilities for organizing form elements with labels, helper text, and fieldsets. It creates consistent spacing and alignment across your forms.
+Prefer one associated label, a native control and described helper/error text.
+Form Group styles composition, not values or validation logic.
 
-## Basic Usage
+## Imports
 
-<ComponentShowcase title="Basic Form Group" code={`<div class="form-group">
-  <label class="form-label" for="form-group-email-address">Email Address</label>
-  <input id="form-group-email-address" name="form-group-email-address" autocomplete="email" type="email" class="input" placeholder="you@example.com" />
-</div>`} />
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/form.css";
+@import "@duskmoon-dev/core/components/button.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Aggregate: `@duskmoon-dev/core`; no-Tailwind: `@duskmoon-dev/core/standalone.css`.
+Individual: `@duskmoon-dev/core/components/form-group.css` plus theme/reset and the
+desired control's CSS. Legacy `form.css` includes this composition.
+Extensionless `components/form-group` exports generated `css` and `styles`.
 
 ## Labels
 
-### Basic Label
-
-<ComponentShowcase title="Form Label" code={`<div class="form-group">
-  <label class="form-label" for="form-group-username">Username</label>
-  <input id="form-group-username" name="form-group-username" autocomplete="username" type="text" class="input" />
+<ComponentShowcase title="Associated label and help" code={`<div class="form-group">
+  <label class="form-label form-label-required" for="demo-field-email">Email (required)</label>
+  <input class="input validator" id="demo-field-email" name="email" type="email" required aria-describedby="demo-field-help demo-field-error">
+  <p class="helper-text" id="demo-field-help">Use your account email.</p>
+  <p class="validator-error" id="demo-field-error">Error: enter a valid email address.</p>
 </div>`} />
 
-### Required Label
+Put `required` on the control. An asterisk, `.form-label-required` or
+legacy label `aria-required` styling is not a substitute for native semantics.
+Use unique IDs, especially in repeated fields. Nesting a control in its label is also valid.
 
-<ComponentShowcase title="Required Label" code={`<div class="form-group">
-  <label class="form-label form-label-required" for="form-group-email-address-2">Email Address</label>
-  <input id="form-group-email-address-2" name="form-group-email-address-2" autocomplete="email" type="email" class="input" required />
-</div>`} />
+`.form-label` is the preferred block field label. Legacy `.label` is a flexible
+label-row layout; `.label-text` styles its caption and `.label-text-alt` its ancillary text.
 
-### Optional Label
-
-<ComponentShowcase title="Optional Label" code={`<div class="form-group">
-  <label class="form-label" for="form-group-phone-number">
-    Phone Number
-    <span class="form-label-optional">(optional)</span>
-  </label>
-  <input id="form-group-phone-number" name="form-group-phone-number" autocomplete="tel" type="tel" class="input" />
-</div>`} />
-
-### Label Sizes
-
-<ComponentShowcase title="Label Sizes" code={`<div class="space-y-4">
-  <div class="form-group">
-    <label class="form-label form-label-sm" for="form-group-small-label">Small Label</label>
-    <input id="form-group-small-label" name="form-group-small-label" type="text" class="input input-sm" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-medium-label">Medium Label (Default)</label>
-    <input id="form-group-medium-label" name="form-group-medium-label" type="text" class="input" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label form-label-lg" for="form-group-large-label">Large Label</label>
-    <input id="form-group-large-label" name="form-group-large-label" type="text" class="input input-lg" />
-  </div>
-</div>`} />
-
-## Helper Text
-
-### Basic Helper Text
-
-<ComponentShowcase title="Helper Text" code={`<div class="form-group">
-  <label class="form-label" for="form-group-password">Password</label>
-  <input id="form-group-password" name="form-group-password" autocomplete="current-password" type="password" class="input" />
-  <span class="helper-text">Must be at least 8 characters</span>
-</div>`} />
-
-### Error Helper Text
-
-<ComponentShowcase title="Error Helper Text" code={`<div class="form-group form-group-error">
-  <label class="form-label" for="form-group-password-2">Password</label>
-  <input id="form-group-password-2" name="form-group-password-2" autocomplete="current-password" type="password" class="input input-error" />
-  <span class="helper-text helper-text-error">Password is too short</span>
-</div>`} />
-
-### Success Helper Text
-
-<ComponentShowcase title="Success Helper Text" code={`<div class="form-group form-group-success">
-  <label class="form-label" for="form-group-username-2">Username</label>
-  <input id="form-group-username-2" name="form-group-username-2" autocomplete="username" type="text" class="input input-success" value="johndoe" />
-  <span class="helper-text helper-text-success">Username is available</span>
-</div>`} />
-
-### Warning Helper Text
-
-<ComponentShowcase title="Warning Helper Text" code={`<div class="form-group form-group-warning">
-  <label class="form-label" for="form-group-display-name">Display Name</label>
-  <input id="form-group-display-name" name="form-group-display-name" autocomplete="name" type="text" class="input input-warning" value="admin" />
-  <span class="helper-text helper-text-warning">This name might be mistaken for a system account</span>
-</div>`} />
-
-### Helper Text with Icon
-
-<ComponentShowcase title="Helper Text with Icon" code={`<div class="form-group">
-  <label class="form-label" for="form-group-email">Email</label>
-  <input id="form-group-email" name="form-group-email" autocomplete="email" type="email" class="input" />
-  <span class="helper-text helper-text-icon">
-    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-    We'll never share your email with anyone
-  </span>
-</div>`} />
-
-## Character Counter
-
-<ComponentShowcase title="Character Counter" code={`<div class="form-group">
-  <label class="form-label" for="form-group-bio">Bio</label>
-  <textarea id="form-group-bio" name="form-group-bio" class="textarea" maxlength="150" placeholder="Tell us about yourself..."></textarea>
-  <div class="helper-text-row">
-    <span class="helper-text">Brief description for your profile</span>
-    <span class="character-counter">0/150</span>
-  </div>
+<ComponentShowcase title="Legacy label row" code={`<div class="form-control">
+  <label class="label" for="demo-legacy-name"><span class="label-text">Name</span><span class="label-text-alt">Optional</span></label>
+  <input class="input" id="demo-legacy-name" name="name" aria-describedby="demo-legacy-help">
+  <p class="helper-text" id="demo-legacy-help">Displayed with your account.</p>
 </div>`} />
 
 ## Fieldset
 
-### Basic Fieldset
+Use native `fieldset` and `legend` to give a meaningful group name, especially
+for radio and checkbox choices. Fieldset does not add behavior to custom controls.
 
-<ComponentShowcase title="Basic Fieldset" code={`<fieldset class="fieldset">
-  <legend class="fieldset-legend">Personal Information</legend>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-first-name">First Name</label>
-    <input id="form-group-first-name" name="form-group-first-name" autocomplete="given-name" type="text" class="input" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-last-name">Last Name</label>
-    <input id="form-group-last-name" name="form-group-last-name" autocomplete="family-name" type="text" class="input" />
-  </div>
-</fieldset>`} />
-
-### Fieldset with Description
-
-<ComponentShowcase title="Fieldset with Description" code={`<fieldset class="fieldset">
-  <legend class="fieldset-legend">Account Settings</legend>
-  <p class="form-section-description">Configure your account preferences</p>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-username-3">Username</label>
-    <input id="form-group-username-3" name="form-group-username-3" autocomplete="username" type="text" class="input" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-email-2">Email</label>
-    <input id="form-group-email-2" name="form-group-email-2" autocomplete="email" type="email" class="input" />
-  </div>
-</fieldset>`} />
-
-### Fieldset Variants
-
-<ComponentShowcase title="Filled Fieldset" code={`<fieldset class="fieldset fieldset-filled">
-  <legend class="fieldset-legend">Shipping Address</legend>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-street-address">Street Address</label>
-    <input id="form-group-street-address" name="form-group-street-address" autocomplete="street-address" type="text" class="input" />
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label class="form-label" for="form-group-city">City</label>
-      <input id="form-group-city" name="form-group-city" autocomplete="address-level2" type="text" class="input" />
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="form-group-zip-code">ZIP Code</label>
-      <input id="form-group-zip-code" name="form-group-zip-code" autocomplete="postal-code" type="text" class="input" />
-    </div>
-  </div>
-</fieldset>`} />
-
-<ComponentShowcase title="Borderless Fieldset" code={`<fieldset class="fieldset fieldset-borderless">
-  <legend class="fieldset-legend">Shipping Address</legend>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-borderless-street">Street Address</label>
-    <input id="form-group-borderless-street" name="form-group-borderless-street" autocomplete="street-address" type="text" class="input" />
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label class="form-label" for="form-group-borderless-city">City</label>
-      <input id="form-group-borderless-city" name="form-group-borderless-city" autocomplete="address-level2" type="text" class="input" />
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="form-group-borderless-zip">ZIP Code</label>
-      <input id="form-group-borderless-zip" name="form-group-borderless-zip" autocomplete="postal-code" type="text" class="input" />
-    </div>
-  </div>
-</fieldset>`} />
-
-<ComponentShowcase title="Card Fieldset" code={`<fieldset class="fieldset fieldset-card">
-  <legend class="fieldset-legend">Shipping Address</legend>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-card-street">Street Address</label>
-    <input id="form-group-card-street" name="form-group-card-street" autocomplete="street-address" type="text" class="input" />
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label class="form-label" for="form-group-card-city">City</label>
-      <input id="form-group-card-city" name="form-group-card-city" autocomplete="address-level2" type="text" class="input" />
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="form-group-card-zip">ZIP Code</label>
-      <input id="form-group-card-zip" name="form-group-card-zip" autocomplete="postal-code" type="text" class="input" />
-    </div>
-  </div>
-</fieldset>`} />
-
-## Form Layouts
-
-### Vertical Layout (Default)
-
-<ComponentShowcase title="Vertical Layout" code={`<form class="form form-vertical">
-  <div class="form-group">
-    <label class="form-label" for="form-group-email-3">Email</label>
-    <input id="form-group-email-3" name="form-group-email-3" autocomplete="email" type="email" class="input" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-password-3">Password</label>
-    <input id="form-group-password-3" name="form-group-password-3" autocomplete="current-password" type="password" class="input" />
-  </div>
-</form>`} />
-
-### Horizontal Layout
-
-<ComponentShowcase title="Horizontal Layout" code={`<form class="form form-horizontal">
-  <div class="form-group">
-    <label class="form-label" for="form-group-email-4">Email</label>
-    <input id="form-group-email-4" name="form-group-email-4" autocomplete="email" type="email" class="input" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label" for="form-group-password-4">Password</label>
-    <input id="form-group-password-4" name="form-group-password-4" autocomplete="current-password" type="password" class="input" />
-  </div>
-</form>`} />
-
-### Inline Layout
-
-<ComponentShowcase title="Inline Layout" code={`<form class="form form-inline">
-  <div class="form-group">
-    <label class="form-label" for="form-group-search">Search</label>
-    <input id="form-group-search" name="form-group-search" type="text" class="input" placeholder="Search..." />
-  </div>
-
-  <button type="submit" class="btn btn-primary">Search</button>
-</form>`} />
-
-## Form Row
-
-<ComponentShowcase title="Form Row" code={`<div class="form-row">
-  <div class="form-group form-group-half">
-    <label class="form-label" for="form-group-first-name-2">First Name</label>
-    <input id="form-group-first-name-2" name="form-group-first-name-2" autocomplete="given-name" type="text" class="input" />
-  </div>
-  <div class="form-group form-group-half">
-    <label class="form-label" for="form-group-last-name-2">Last Name</label>
-    <input id="form-group-last-name-2" name="form-group-last-name-2" autocomplete="family-name" type="text" class="input" />
-  </div>
-</div>`} />
-
-### Three Column Row
-
-<ComponentShowcase title="Three Column Row" code={`<div class="form-row">
-  <div class="form-group form-group-third">
-    <label class="form-label" for="form-group-city-2">City</label>
-    <input id="form-group-city-2" name="form-group-city-2" autocomplete="address-level2" type="text" class="input" />
-  </div>
-  <div class="form-group form-group-third">
-    <label class="form-label" for="form-group-state">State</label>
-    <input id="form-group-state" name="form-group-state" autocomplete="address-level1" type="text" class="input" />
-  </div>
-  <div class="form-group form-group-third">
-    <label class="form-label" for="form-group-zip">ZIP</label>
-    <input id="form-group-zip" name="form-group-zip" autocomplete="postal-code" type="text" class="input" />
-  </div>
-</div>`} />
-
-## Complete Form Example
-
-<ComponentShowcase title="Complete Form" code={`<form class="form">
+<ComponentShowcase title="Native radio group" code={`<form>
   <fieldset class="fieldset">
-    <legend class="fieldset-legend">Create Account</legend>
-    <p class="form-section-description">Fill in your details to create a new account</p>
-
-    <div class="form-row">
-      <div class="form-group form-group-half">
-        <label class="form-label form-label-required" for="form-group-first-name-3">First Name</label>
-        <input id="form-group-first-name-3" name="form-group-first-name-3" autocomplete="given-name" type="text" class="input" required />
-      </div>
-      <div class="form-group form-group-half">
-        <label class="form-label form-label-required" for="form-group-last-name-3">Last Name</label>
-        <input id="form-group-last-name-3" name="form-group-last-name-3" autocomplete="family-name" type="text" class="input" required />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label form-label-required" for="form-group-email-5">Email</label>
-      <input id="form-group-email-5" name="form-group-email-5" autocomplete="email" type="email" class="input" required />
-      <span class="helper-text">We'll send a verification link to this email</span>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label form-label-required" for="form-group-password-5">Password</label>
-      <input id="form-group-password-5" name="form-group-password-5" autocomplete="current-password" type="password" class="input" required />
-      <span class="helper-text">Must be at least 8 characters with a number</span>
-    </div>
-
-    <div class="form-group">
-      <label class="checkbox-label">
-        <input type="checkbox" name="terms-accepted" class="checkbox" required />
-        <span>I agree to the terms and conditions</span>
-      </label>
-    </div>
-
-    <div class="form-actions">
-      <button type="submit" class="btn btn-primary">Create Account</button>
-      <button type="button" class="btn btn-text">Cancel</button>
-    </div>
+    <legend class="fieldset-legend">Delivery method</legend>
+    <label class="radio-label"><input class="radio" type="radio" name="delivery" value="email" checked>Email</label>
+    <label class="radio-label"><input class="radio" type="radio" name="delivery" value="sms">SMS</label>
   </fieldset>
+  <button class="btn" type="reset">Reset to Email</button>
 </form>`} />
 
-## API Reference
+<ComponentShowcase title="Genuinely disabled fieldset" code={`<fieldset class="fieldset fieldset-filled" disabled>
+  <legend class="fieldset-legend">Unavailable preferences</legend>
+  <label class="checkbox-label"><input type="checkbox" name="newsletter" class="checkbox" checked>Newsletter</label>
+  <label class="form-label" for="demo-fieldset-disabled-input">Account name</label>
+  <input id="demo-fieldset-disabled-input" name="account-name" class="input" value="Disabled">
+</fieldset>`} />
 
-### Class Names
+Native `fieldset disabled` prevents editing, focus and submission of descendants,
+except controls in the first legend as defined by HTML. Avoid putting editable controls in
+that legend unless the exception is intended. Visual `.form-group-disabled` is retained
+only for compatibility and does not prevent keyboard editing or submission.
 
-| Class | Description |
-|-------|-------------|
-| `.form-group` | Form field container (required) |
-| `.form-label` | Label element |
-| `.form-label-required` | Required field indicator |
-| `.form-label-optional` | Optional field text |
-| `.form-label-sm` | Small label |
-| `.form-label-lg` | Large label |
-| `.helper-text` | Helper text below field |
-| `.helper-text-error` | Error helper text |
-| `.helper-text-success` | Success helper text |
-| `.helper-text-warning` | Warning helper text |
-| `.helper-text-icon` | Helper text with icon |
-| `.helper-text-row` | Row for helper + counter |
-| `.character-counter` | Character count display |
-| `.fieldset` | Fieldset container |
-| `.fieldset-legend` | Fieldset legend/title |
-| `.fieldset-filled` | Filled fieldset variant |
-| `.fieldset-borderless` | Borderless fieldset variant |
-| `.fieldset-card` | Card-style fieldset variant |
-| `.form-section-description` | Section/fieldset description text |
-| `.form` | Form container |
-| `.form-vertical` | Vertical form layout |
-| `.form-horizontal` | Horizontal form layout |
-| `.form-inline` | Inline form layout |
-| `.form-row` | Row for multiple fields |
-| `.form-group-half` | Half-width field |
-| `.form-group-third` | Third-width field |
-| `.form-group-error` | Error state group |
-| `.form-group-success` | Success state group |
-| `.form-group-warning` | Warning state group |
-| `.form-actions` | Form action buttons container |
+## Help, Errors And Layout
 
-## Related Components
+Associate persistent help and errors with `aria-describedby`. Explicit errors use
+`aria-invalid="true"` and useful text, not color alone. See the
+[Validator contract](/duskmoonui/docs/en/components/validator/) for precedence and opt-in native states.
 
-- [Input](/duskmoonui/docs/en/components/input/) - Text inputs
-- [Checkbox](/duskmoonui/docs/en/components/checkbox/) - Checkboxes
-- [Radio](/duskmoonui/docs/en/components/radio/) - Radio buttons
-- [Select](/duskmoonui/docs/en/components/select/) - Dropdown selection
+| Classes | Role |
+| --- | --- |
+| `.form-group`, `.form-control` | Vertical field composition; legacy control retains margin |
+| `.form-group-horizontal` | Label/control row; stacks on narrow layouts |
+| `.form-label-sm/lg`, `.form-label-optional` | Label presentation |
+| `.helper-text`, `.helper-text-error/success/warning/info` | Helper presentation |
+| `.helper-text.error/success/warning/info` | Retained legacy aliases |
+| `.helper-text-icon`, `.form-hint` | Associated hint layouts |
+| `.fieldset-filled/borderless/card` | Existing group presentation |
+| `.form-row`, `.form-grid`, `.form-grid-2/3/4` | Responsive grouped field layouts |
+| `.form-inline`, `.form-section/title/description` | Form composition |
+| `.form-actions`, `form-actions-right/center/between` | Action placement |
+| `.form-divider`, `.form-divider-text` | Section separation |
+| `.form-counter`, `.form-counter-error` | Application-updated counter presentation |
+| `.form-group-error/success/warning/info`, `.form-control.error/success/warning/info` | Retained explicit wrapper presentation |
+
+CSS does not count characters or disable native controls through a wrapper class.
+Counters and dynamic messages require application updates; native values/reset remain
+the browser's responsibility.

@@ -1,623 +1,73 @@
 ---
 title: Slider
-description: Material Design 3 slider component for value selection with support for ranges, steps, and marks
+description: Native Range for basic controls; preserved custom track/thumb presentation for adapters
 category: components
-order: 26
+order: 19
 published: true
-tags: ['slider', 'components', 'material-design', 'input', 'range']
+tags: ['slider', 'range', 'form', 'components']
 ---
+
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Slider
 
-Sliders allow users to make selections from a range of values. @duskmoon-dev/core provides a complete set of Material Design 3 slider variants with support for single values, ranges, discrete steps, and visual marks.
-
-## Basic Usage
-
-A basic slider with default styling:
-
-<ComponentShowcase title="Basic Slider" code={`<div class="slider">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 50%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 50%;">
-    <div class="slider-thumb-label">50</div>
-  </div>
-</div>`} />
-
-## Color Variants
-
-### Primary (Default)
-
-The default primary color variant:
-
-<ComponentShowcase title="Primary Slider" code={`<div class="slider">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 60%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 60%;">
-    <div class="slider-thumb-label">60</div>
-  </div>
-</div>`} />
-
-### Secondary
-
-Secondary color variant for different emphasis:
-
-<ComponentShowcase title="Secondary Slider" code={`<div class="slider slider-secondary">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 40%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 40%;">
-    <div class="slider-thumb-label">40</div>
-  </div>
-</div>`} />
-
-### Tertiary
-
-Tertiary color variant:
-
-<ComponentShowcase title="Tertiary Slider" code={`<div class="slider slider-tertiary">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 75%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 75%;">
-    <div class="slider-thumb-label">75</div>
-  </div>
-</div>`} />
-
-### Info
-<ComponentShowcase title="Info Slider" code={`<div class="slider slider-info">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 50%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 50%;"></div>
-</div>`}>
-  <div class="slider slider-info">
-    <div class="slider-track">
-      <div class="slider-track-filled" style="width: 50%;"></div>
-    </div>
-    <div class="slider-thumb" style="left: 50%;"></div>
-  </div>
-</ComponentShowcase>
-
-### Success
-<ComponentShowcase title="Success Slider" code={`<div class="slider slider-success">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 80%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 80%;"></div>
-</div>`}>
-  <div class="slider slider-success">
-    <div class="slider-track">
-      <div class="slider-track-filled" style="width: 80%;"></div>
-    </div>
-    <div class="slider-thumb" style="left: 80%;"></div>
-  </div>
-</ComponentShowcase>
-
-### Warning
-<ComponentShowcase title="Warning Slider" code={`<div class="slider slider-warning">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 65%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 65%;"></div>
-</div>`}>
-  <div class="slider slider-warning">
-    <div class="slider-track">
-      <div class="slider-track-filled" style="width: 65%;"></div>
-    </div>
-    <div class="slider-thumb" style="left: 65%;"></div>
-  </div>
-</ComponentShowcase>
-
-### Error
-<ComponentShowcase title="Error Slider" code={`<div class="slider slider-error">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 30%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 30%;"></div>
-</div>`}>
-  <div class="slider slider-error">
-    <div class="slider-track">
-      <div class="slider-track-filled" style="width: 30%;"></div>
-    </div>
-    <div class="slider-thumb" style="left: 30%;"></div>
-  </div>
-</ComponentShowcase>
-
-## Sizes
-
-Sliders come in three sizes to fit different use cases:
-
-### Small
-
-Compact slider for space-constrained interfaces:
-
-<ComponentShowcase title="Small Slider" code={`<div class="slider slider-sm">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 30%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 30%;">
-    <div class="slider-thumb-label">30</div>
-  </div>
-</div>`} />
-
-### Medium (Default)
-
-Standard size for most use cases:
-
-<ComponentShowcase title="Medium Slider" code={`<div class="slider">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 50%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 50%;">
-    <div class="slider-thumb-label">50</div>
-  </div>
-</div>`} />
-
-### Large
-
-Larger slider for emphasis or better touch targets:
-
-<ComponentShowcase title="Large Slider" code={`<div class="slider slider-lg">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 70%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 70%;">
-    <div class="slider-thumb-label">70</div>
-  </div>
-</div>`} />
-
-## Range Slider
-
-Range sliders allow users to select a range of values using two thumbs:
-
-<ComponentShowcase title="Range Slider" code={`<div class="slider slider-range">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="left: 20%; width: 60%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 20%;">
-    <div class="slider-thumb-label">20</div>
-  </div>
-  <div class="slider-thumb" style="left: 80%;">
-    <div class="slider-thumb-label">80</div>
-  </div>
-</div>`} />
-
-## Discrete Slider with Steps
-
-Sliders can snap to discrete values using marks:
-
-<ComponentShowcase title="Discrete Slider with Steps" code={`<div class="slider">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 50%;"></div>
-  </div>
-  <div class="slider-marks">
-    <div class="slider-mark slider-mark-active"></div>
-    <div class="slider-mark slider-mark-active"></div>
-    <div class="slider-mark slider-mark-active"></div>
-    <div class="slider-mark"></div>
-    <div class="slider-mark"></div>
-    <div class="slider-mark"></div>
-  </div>
-  <div class="slider-thumb" style="left: 50%;">
-    <div class="slider-thumb-label">50</div>
-  </div>
-</div>`} />
-
-## Marks with Labels
-
-Add labels to marks for better context:
-
-<ComponentShowcase title="Marks with Labels" code={`<div class="slider" style="margin-bottom: 2rem;">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 25%;"></div>
-  </div>
-  <div class="slider-marks">
-    <div class="slider-mark slider-mark-active">
-      <div class="slider-mark-label">0</div>
-    </div>
-    <div class="slider-mark">
-      <div class="slider-mark-label">25</div>
-    </div>
-    <div class="slider-mark">
-      <div class="slider-mark-label">50</div>
-    </div>
-    <div class="slider-mark">
-      <div class="slider-mark-label">75</div>
-    </div>
-    <div class="slider-mark">
-      <div class="slider-mark-label">100</div>
-    </div>
-  </div>
-  <div class="slider-thumb" style="left: 25%;">
-    <div class="slider-thumb-label">25</div>
-  </div>
-</div>`} />
-
-## Min/Max Labels
-
-Display minimum and maximum values:
-
-<ComponentShowcase title="Slider with Min/Max Labels" code={`<div class="slider">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 60%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 60%;">
-    <div class="slider-thumb-label">60</div>
-  </div>
-</div>
-<div class="slider-labels">
-  <span>0</span>
-  <span>100</span>
-</div>`} />
-
-## Always Show Labels
-
-Show value labels permanently instead of only on hover/active:
-
-<ComponentShowcase title="Slider with Always-Visible Labels" code={`<div class="slider slider-labels-always">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 45%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 45%;">
-    <div class="slider-thumb-label">45</div>
-  </div>
-</div>`} />
-
-## Vertical Slider
-
-Vertical orientation for space-constrained layouts:
-
-<ComponentShowcase title="Vertical Slider" code={`<div class="slider slider-vertical">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="height: 40%; bottom: 0;"></div>
-  </div>
-  <div class="slider-thumb" style="bottom: 40%;">
-    <div class="slider-thumb-label">40</div>
-  </div>
-</div>`} />
-
-## Disabled State
-
-Disabled sliders are non-interactive:
-
-<ComponentShowcase title="Disabled Slider" code={`<div class="slider slider-disabled">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 50%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 50%;">
-    <div class="slider-thumb-label">50</div>
-  </div>
-</div>`} />
-
-## Interactive Examples
-
-### Volume Control
-
-<ComponentShowcase title="Volume Control Slider" code={`<div class="slider slider-secondary">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 70%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 70%;">
-    <div class="slider-thumb-label">70%</div>
-  </div>
-</div>
-<div class="slider-labels">
-  <span>🔇 Mute</span>
-  <span>🔊 Max</span>
-</div>`} />
-
-### Temperature Range
-
-<ComponentShowcase title="Temperature Range Slider" code={`<div class="slider slider-range slider-tertiary" style="margin-bottom: 2rem;">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="left: 20%; width: 50%;"></div>
-  </div>
-  <div class="slider-marks">
-    <div class="slider-mark"></div>
-    <div class="slider-mark slider-mark-active">
-      <div class="slider-mark-label">18°C</div>
-    </div>
-    <div class="slider-mark slider-mark-active">
-      <div class="slider-mark-label">22°C</div>
-    </div>
-    <div class="slider-mark"></div>
-  </div>
-  <div class="slider-thumb" style="left: 20%;">
-    <div class="slider-thumb-label">18°C</div>
-  </div>
-  <div class="slider-thumb" style="left: 70%;">
-    <div class="slider-thumb-label">22°C</div>
-  </div>
-</div>`} />
-
-### Price Range Filter
-
-<ComponentShowcase title="Price Range Filter" code={`<div class="slider slider-range" style="margin-bottom: 2rem;">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="left: 15%; width: 70%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 15%;">
-    <div class="slider-thumb-label">$15</div>
-  </div>
-  <div class="slider-thumb" style="left: 85%;">
-    <div class="slider-thumb-label">$85</div>
-  </div>
-</div>
-<div class="slider-labels">
-  <span>$0</span>
-  <span>$100</span>
-</div>`} />
-
-## Best Practices
-
-### Accessibility
-
-- Always provide clear labels indicating the purpose of the slider
-- Include min/max labels when the range is not obvious
-- Ensure keyboard navigation support (arrow keys for adjustment)
-- Use `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-label` attributes
-- Consider always showing value labels for better accessibility
-
-<ComponentShowcase title="Accessible Slider" code={`<span id="volume-slider-label">Volume</span>
-<div
-  id="volume-slider"
-  class="slider"
-  role="slider"
-  aria-valuenow="50"
-  aria-valuemin="0"
-  aria-valuemax="100"
-  aria-labelledby="volume-slider-label"
-  tabindex="0"
->
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 50%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 50%;">
-    <div class="slider-thumb-label">50</div>
-  </div>
-</div>`} />
-
-### Value Feedback
-
-Provide immediate visual feedback when values change:
-
-- Use value labels to show current selection
-- Consider always showing labels for critical values
-- Update labels in real-time as users drag
-- For ranges, clearly indicate both min and max values
-
-### Touch Targets
-
-Ensure thumb controls are large enough for touch interfaces:
-
-<ComponentShowcase title="Responsive Touch Target" code={`<!-- Use default or large size for mobile -->
-<div class="slider slider-lg md:slider">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 50%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 50%;">
-    <div class="slider-thumb-label">50</div>
-  </div>
-</div>`} />
-
-### Step Granularity
-
-Choose appropriate step sizes:
-
-- **Continuous**: For precise control (no marks)
-- **Coarse steps**: For quick selection (few marks, e.g., 0, 25, 50, 75, 100)
-- **Fine steps**: For balanced control (many marks, e.g., every 5 or 10)
-
-## Framework Examples
-
-### React
-
-```tsx
-import { useState } from 'react';
-
-interface SliderProps {
-  min?: number;
-  max?: number;
-  value?: number;
-  onChange?: (value: number) => void;
-  color?: 'primary' | 'secondary' | 'tertiary';
-  size?: 'sm' | 'md' | 'lg';
-  showLabels?: boolean;
-}
-
-export function Slider({
-  min = 0,
-  max = 100,
-  value = 50,
-  onChange,
-  color = 'primary',
-  size = 'md',
-  showLabels = false
-}: SliderProps) {
-  const [currentValue, setCurrentValue] = useState(value);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(e.target.value);
-    setCurrentValue(newValue);
-    onChange?.(newValue);
-  };
-
-  const percentage = ((currentValue - min) / (max - min)) * 100;
-
-  return (
-    <div>
-      <div className={`slider slider-${color} ${size !== 'md' ? `slider-${size}` : ''} ${showLabels ? 'slider-labels-always' : ''}`}>
-        <div className="slider-track">
-          <div className="slider-track-filled" style={{ width: `${percentage}%` }}></div>
-        </div>
-        <div className="slider-thumb" style={{ left: `${percentage}%` }}>
-          <div className="slider-thumb-label">{currentValue}</div>
-        </div>
-        <input
-          type="range"
-          min={min}
-          max={max}
-          value={currentValue}
-          onChange={handleChange}
-          className="absolute inset-0 opacity-0 cursor-pointer"
-        />
-      </div>
-      {showLabels && (
-        <div className="slider-labels">
-          <span>{min}</span>
-          <span>{max}</span>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Usage
-<Slider
-  min={0}
-  max={100}
-  value={50}
-  onChange={(value) => console.log(value)}
-  color="secondary"
-  showLabels
-/>
+For a basic slider, use [native Range](/duskmoonui/docs/en/components/range/).
+Apply `.range`, not `.slider`, to `input[type="range"]`. Native controls already
+handle keyboard, pointer, min/max/step, submission and reset.
+
+## Recommended Native Control
+
+<ComponentShowcase title="Native range" code={`<form>
+  <label class="form-label" for="demo-slider-native">Brightness</label>
+  <input id="demo-slider-native" name="brightness" type="range" class="range range-primary" min="0" max="100" step="10" value="50">
+  <button type="reset" class="btn">Reset brightness</button>
+</form>`} />
+
+Use `components/range.css` plus theme/reset and `form-group.css` for individual
+imports. No static fill, output text or ARIA current value is needed.
+
+## Custom Slider Boundary
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/slider.css";
+@import "@duskmoon-dev/core/components/range.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+@import "@duskmoon-dev/core/components/button.css";
 ```
 
-### Vue
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
 
-```vue
-<template>
-  <div>
-    <div
-      :class="[
-        'slider',
-        `slider-${color}`,
-        size !== 'md' && `slider-${size}`,
-        showLabels && 'slider-labels-always'
-      ]"
-    >
-      <div class="slider-track">
-        <div class="slider-track-filled" :style="{ width: `${percentage}%` }"></div>
-      </div>
-      <div class="slider-thumb" :style="{ left: `${percentage}%` }">
-        <div class="slider-thumb-label">{{ modelValue }}</div>
-      </div>
-      <input
-        type="range"
-        :min="min"
-        :max="max"
-        :value="modelValue"
-        @input="handleInput"
-        class="absolute inset-0 opacity-0 cursor-pointer"
-      />
-    </div>
-    <div v-if="showLabels" class="slider-labels">
-      <span>{{ min }}</span>
-      <span>{{ max }}</span>
-    </div>
-  </div>
-</template>
+The advanced `.slider` structure is retained. Core styles the tracks/thumbs;
+it does not create a slider engine. Import `@duskmoon-dev/core/components/slider.css`
+plus a theme/reset, or the aggregate/standalone package. Extensionless
+`components/slider` exports generated `css` and `styles`.
 
-<script setup>
-import { computed } from 'vue';
+This is explicitly a **styling sample**, not an accessible interactive slider:
 
-const props = defineProps({
-  min: { type: Number, default: 0 },
-  max: { type: Number, default: 100 },
-  modelValue: { type: Number, default: 50 },
-  color: { type: String, default: 'primary' },
-  size: { type: String, default: 'md' },
-  showLabels: { type: Boolean, default: false }
-});
-
-const emit = defineEmits(['update:modelValue']);
-
-const percentage = computed(() => {
-  return ((props.modelValue - props.min) / (props.max - props.min)) * 100;
-});
-
-const handleInput = (e) => {
-  emit('update:modelValue', Number(e.target.value));
-};
-</script>
-
-<!-- Usage -->
-<Slider
-  v-model="volume"
-  :min="0"
-  :max="100"
-  color="secondary"
-  :show-labels="true"
-/>
-```
-
-## API Reference
-
-### Class Names
-
-| Class | Description |
-|-------|-------------|
-| `.slider` | Base slider container (required) |
-| `.slider-track` | Background track element |
-| `.slider-track-filled` | Filled portion of track |
-| `.slider-thumb` | Draggable thumb control |
-| `.slider-thumb-label` | Value label on thumb |
-| `.slider-primary` | Primary color (default) |
-| `.slider-secondary` | Secondary color variant |
-| `.slider-tertiary` | Tertiary color variant |
-| `.slider-sm` | Small size (2rem height, 1rem thumb) |
-| `.slider-md` | Medium size (2.5rem height, 1.25rem thumb, default) |
-| `.slider-lg` | Large size (3rem height, 1.5rem thumb) |
-| `.slider-range` | Range slider with two thumbs |
-| `.slider-marks` | Container for step marks |
-| `.slider-mark` | Individual step mark |
-| `.slider-mark-active` | Active/filled step mark |
-| `.slider-mark-label` | Label for step mark |
-| `.slider-labels` | Container for min/max labels |
-| `.slider-labels-always` | Always show value labels |
-| `.slider-vertical` | Vertical orientation |
-| `.slider-disabled` | Disabled state |
-
-### Combinations
-
-You can combine classes for different effects:
-
-<ComponentShowcase title="Large Secondary Slider with Always-Visible Labels" code={`<!-- Large secondary slider with always-visible labels -->
-<div class="slider slider-secondary slider-lg slider-labels-always">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="width: 60%;"></div>
-  </div>
-  <div class="slider-thumb" style="left: 60%;">
-    <div class="slider-thumb-label">60</div>
-  </div>
+<ComponentShowcase title="Custom track/thumb styling only" code={`<div class="slider slider-primary" role="img" aria-label="Custom slider styling at a fixed midpoint">
+  <div class="slider-track"><div class="slider-track-filled" style="width:50%"></div></div>
+  <div class="slider-thumb" style="left:50%" aria-hidden="true"></div>
 </div>`} />
 
-<ComponentShowcase title="Small Vertical Tertiary Slider with Marks" code={`<!-- Small vertical tertiary slider with marks -->
-<div class="slider slider-vertical slider-tertiary slider-sm">
-  <div class="slider-track">
-    <div class="slider-track-filled" style="height: 40%;"></div>
-  </div>
-  <div class="slider-marks">
-    <div class="slider-mark slider-mark-active"></div>
-    <div class="slider-mark slider-mark-active"></div>
-    <div class="slider-mark"></div>
-    <div class="slider-mark"></div>
-  </div>
-  <div class="slider-thumb" style="bottom: 40%;">
-    <div class="slider-thumb-label">40</div>
-  </div>
-</div>`} />
+An application controller must implement dragging, keyboard navigation, bounds, stepping,
+thumb values/positions, orientation, focus, `role="slider"` and its ARIA attributes,
+submitted values and reset synchronization. Range selection, vertical/custom thumbs,
+value labels and number-input integration remain adapter-owned. Do not present a static
+fill/value label next to an editable native input.
 
-## Related Components
+## Retained Presentation APIs
 
-- [Input](/duskmoonui/docs/en/components/input/) - Text and number inputs
-- [Select](/duskmoonui/docs/en/components/select/) - Dropdown selections
-- [Switch](/duskmoonui/docs/en/components/switch/) - Toggle controls
+Base: `.slider`, `.slider-track`, `.slider-track-filled`, `.slider-thumb`.
+Sizes: `.slider-sm/lg`; colors: primary/secondary/tertiary/info/success/warning/error,
+accent/neutral/base. Existing outlined/filled, thumb labels, tick marks, range, vertical,
+disabled and input-integration classes remain supported by their existing CSS.
+Visual `.slider-disabled` does not set native disabled or prevent keyboard interaction
+in a controller. See the source `slider.css` for the full advanced presentation API.
 
-## See Also
-
-- [Slider Design Guidelines (Material Design 3)](https://m3.material.io/components/sliders/overview)
-- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
+[Range](/duskmoonui/docs/en/components/range/) ·
+[Form composition](/duskmoonui/docs/en/components/form-group/)

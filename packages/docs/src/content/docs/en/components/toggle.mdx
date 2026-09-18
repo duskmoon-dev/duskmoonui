@@ -1,632 +1,71 @@
 ---
-title: Toggle
-description: Material Design 3 toggle button component for selecting between multiple options or toggling states
+title: Toggle Button
+description: ARIA pressed action buttons, distinct from native on/off Switch and legacy Toggle
 category: components
-order: 42
+order: 18
 published: true
-tags: ['toggle', 'components', 'material-design', 'button-group']
+tags: ['toggle', 'button', 'components']
 ---
+
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
-# Toggle
+# Toggle Button
 
-Toggle buttons allow users to select one or more options from a set of choices. Unlike switches, toggle buttons are used for selecting between multiple options or toggling states in a group context.
+`.toggle-btn` is a pressed/unpressed **action button**, not a form control.
+For an on/off submitted value use [Switch](/duskmoonui/docs/en/components/switch/)
+or the retained compact `input[type="checkbox"].toggle` API.
 
-## Basic Usage
+## Imports
 
-<ComponentShowcase title="Basic Toggle" code={`<button class="toggle-btn">Toggle Button</button>
-<button class="toggle-btn toggle-btn-active">Active Toggle</button>`} />
+Individual example prerequisites (including composition and demo actions):
 
-## States
-
-### Default State
-
-The default toggle button has an outlined appearance:
-
-<ComponentShowcase title="Default State" code={`<button class="toggle-btn">Unselected</button>`} />
-
-### Active State
-
-Use `toggle-btn-active` or `active` class to show the selected state:
-
-<ComponentShowcase title="Active State" code={`<button class="toggle-btn toggle-btn-active">Selected</button>
-<button class="toggle-btn active">Also Selected</button>`} />
-
-### Disabled State
-
-Disabled toggles are non-interactive:
-
-<ComponentShowcase title="Disabled State" code={`<button class="toggle-btn" disabled>Disabled</button>
-<button class="toggle-btn toggle-btn-active" disabled>Disabled Active</button>`} />
-
-### Loading State
-
-Show a loading indicator for asynchronous operations:
-
-<ComponentShowcase title="Loading State" code={`<button class="toggle-btn toggle-loading">Loading</button>`} />
-
-## Variants
-
-### Color Variants
-
-Toggle buttons support primary, secondary, and tertiary colors when active:
-
-<ComponentShowcase title="Color Variants" code={`<button class="toggle-btn toggle-btn-active">Primary (default)</button>
-<button class="toggle-btn toggle-btn-secondary toggle-btn-active">Secondary</button>
-<button class="toggle-btn toggle-btn-tertiary toggle-btn-active">Tertiary</button>`} />
-
-### Status Variants
-<ComponentShowcase title="Status Color Variants" code={`<button class="toggle-btn toggle-btn-info toggle-btn-active">Info Active</button>
-<button class="toggle-btn toggle-btn-success toggle-btn-active">Success Active</button>
-<button class="toggle-btn toggle-btn-warning toggle-btn-active">Warning Active</button>
-<button class="toggle-btn toggle-btn-error toggle-btn-active">Error Active</button>`}>
-  <div class="flex gap-2 flex-wrap">
-    <button class="toggle-btn toggle-btn-info toggle-btn-active">Info Active</button>
-    <button class="toggle-btn toggle-btn-success toggle-btn-active">Success Active</button>
-    <button class="toggle-btn toggle-btn-warning toggle-btn-active">Warning Active</button>
-    <button class="toggle-btn toggle-btn-error toggle-btn-active">Error Active</button>
-  </div>
-</ComponentShowcase>
-
-### Outlined Variant
-
-The default style with transparent background:
-
-<ComponentShowcase title="Outlined Variant" code={`<button class="toggle-btn toggle-outlined">Outlined</button>
-<button class="toggle-btn toggle-outlined toggle-btn-active">Outlined Active</button>`} />
-
-### Filled Variant
-
-Toggle with filled background:
-
-<ComponentShowcase title="Filled Variant" code={`<button class="toggle-btn toggle-filled">Filled</button>
-<button class="toggle-btn toggle-filled toggle-btn-active">Filled Active</button>`} />
-
-### Chip Style
-
-Rounded chip-like toggle buttons:
-
-<ComponentShowcase title="Chip Style" code={`<button class="toggle-btn toggle-chip">Chip</button>
-<button class="toggle-btn toggle-chip toggle-btn-active">Chip Active</button>`} />
-
-### Segmented Control
-
-iOS-style segmented control appearance:
-
-<ComponentShowcase title="Segmented Control" code={`<div class="toggle-segmented">
-  <button class="toggle-btn toggle-btn-active">Option 1</button>
-  <button class="toggle-btn">Option 2</button>
-  <button class="toggle-btn">Option 3</button>
-</div>`} />
-
-## Sizes
-
-Three sizes are available:
-
-<ComponentShowcase title="Toggle Sizes" code={`<button class="toggle-btn toggle-btn-sm">Small</button>
-<button class="toggle-btn">Medium (default)</button>
-<button class="toggle-btn toggle-btn-lg">Large</button>`} />
-
-## Toggle with Icons
-
-### Icon and Text
-
-Combine icons with text labels:
-
-<ComponentShowcase title="Icon and Text" code={`<button class="toggle-btn">
-  <svg class="toggle-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-  </svg>
-  Favorite
-</button>
-
-<button class="toggle-btn toggle-btn-active">
-  <svg class="toggle-icon w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-  Favorited
-</button>`} />
-
-### Icon-Only Toggle
-
-Compact icon-only toggles:
-
-<ComponentShowcase title="Icon-Only Toggle" code={`<button class="toggle-btn toggle-btn-icon-only">
-  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-</button>
-
-<!-- Icon-only sizes -->
-<button class="toggle-btn toggle-btn-icon-only toggle-btn-sm">
-  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-  </svg>
-</button>
-
-<button class="toggle-btn toggle-btn-icon-only toggle-btn-lg">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-</button>`} />
-
-## Toggle Groups
-
-### Horizontal Group
-
-Group multiple toggle buttons:
-
-<ComponentShowcase title="Horizontal Group" code={`<div class="toggle-group">
-  <button class="toggle-btn toggle-btn-active">Left</button>
-  <button class="toggle-btn">Center</button>
-  <button class="toggle-btn">Right</button>
-</div>`} />
-
-### Vertical Group
-
-Stack toggles vertically:
-
-<ComponentShowcase title="Vertical Group" code={`<div class="toggle-group toggle-group-vertical">
-  <button class="toggle-btn toggle-btn-active">Top</button>
-  <button class="toggle-btn">Middle</button>
-  <button class="toggle-btn">Bottom</button>
-</div>`} />
-
-### Exclusive Selection
-
-Radio-like behavior where only one option can be selected:
-
-<ComponentShowcase title="Exclusive Selection" code={`<div class="toggle-group toggle-group-exclusive">
-  <button class="toggle-btn toggle-btn-active">Option 1</button>
-  <button class="toggle-btn">Option 2</button>
-  <button class="toggle-btn">Option 3</button>
-</div>`} />
-
-### Icon Group
-
-Group of icon-only toggles:
-
-<ComponentShowcase title="Icon Group" code={`<div class="toggle-group">
-  <button class="toggle-btn toggle-btn-icon-only toggle-btn-active">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-    </svg>
-  </button>
-  <button class="toggle-btn toggle-btn-icon-only">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </button>
-  <button class="toggle-btn toggle-btn-icon-only">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16" />
-    </svg>
-  </button>
-</div>`} />
-
-## Full Width
-
-### Single Toggle
-
-<ComponentShowcase title="Full Width Single Toggle" code={`<button class="toggle-btn toggle-full">Full Width Toggle</button>`} />
-
-### Full Width Group
-
-<ComponentShowcase title="Full Width Group" code={`<div class="toggle-group toggle-group-full">
-  <button class="toggle-btn toggle-btn-active">Option 1</button>
-  <button class="toggle-btn">Option 2</button>
-  <button class="toggle-btn">Option 3</button>
-</div>`} />
-
-## Badge Indicator
-
-Toggle with a badge indicator (e.g., for notifications):
-
-<ComponentShowcase title="Badge Indicator" code={`<button class="toggle-btn toggle-badge">
-  Messages
-</button>`} />
-
-## Common Patterns
-
-### Text Formatting Toolbar
-
-<ComponentShowcase title="Text Formatting Toolbar" code={`<div class="toggle-group">
-  <button class="toggle-btn toggle-btn-icon-only toggle-btn-active" aria-label="Bold">
-    <strong class="text-base">B</strong>
-  </button>
-  <button class="toggle-btn toggle-btn-icon-only" aria-label="Italic">
-    <em class="text-base">I</em>
-  </button>
-  <button class="toggle-btn toggle-btn-icon-only" aria-label="Underline">
-    <span class="text-base underline">U</span>
-  </button>
-</div>`} />
-
-### View Switcher
-
-<ComponentShowcase title="View Switcher" code={`<div class="toggle-group">
-  <button class="toggle-btn toggle-btn-icon-only toggle-btn-active" aria-label="Grid view">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-    </svg>
-  </button>
-  <button class="toggle-btn toggle-btn-icon-only" aria-label="List view">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </button>
-</div>`} />
-
-### Filter Chips
-
-<ComponentShowcase title="Filter Chips" code={`<div class="flex gap-2 flex-wrap">
-  <button class="toggle-btn toggle-chip toggle-btn-active">All</button>
-  <button class="toggle-btn toggle-chip">Active</button>
-  <button class="toggle-btn toggle-chip">Archived</button>
-  <button class="toggle-btn toggle-chip">Drafts</button>
-</div>`} />
-
-### Tab-like Navigation
-
-<ComponentShowcase title="Tab-like Navigation" code={`<div class="toggle-segmented">
-  <button class="toggle-btn toggle-btn-active">Overview</button>
-  <button class="toggle-btn">Details</button>
-  <button class="toggle-btn">Settings</button>
-</div>`} />
-
-## Best Practices
-
-### Selection Behavior
-
-- **Multi-select**: Allow multiple toggles to be active simultaneously for independent options
-- **Single-select**: Use exclusive groups for mutually exclusive options
-- **Toggle**: Use for simple on/off states
-
-<ComponentShowcase title="Selection Behavior" code={`<!-- Multi-select: Independent options -->
-<div class="toggle-group">
-  <button class="toggle-btn toggle-btn-active">Bold</button>
-  <button class="toggle-btn toggle-btn-active">Italic</button>
-  <button class="toggle-btn">Underline</button>
-</div>
-
-<!-- Single-select: Mutually exclusive -->
-<div class="toggle-group toggle-group-exclusive">
-  <button class="toggle-btn toggle-btn-active">Left</button>
-  <button class="toggle-btn">Center</button>
-  <button class="toggle-btn">Right</button>
-</div>`} />
-
-### Accessibility
-
-- Provide `aria-label` for icon-only toggles
-- Use `aria-pressed="true"` or `aria-pressed="false"` to indicate state
-- Ensure keyboard navigation works properly
-- Use sufficient color contrast
-
-<ComponentShowcase title="Accessibility Example" code={`<!-- Good: Icon button with aria attributes -->
-<button
-  class="toggle-btn toggle-btn-icon-only toggle-btn-active"
-  aria-label="Bold text"
-  aria-pressed="true"
->
-  <strong class="text-base">B</strong>
-</button>`} />
-
-### Visual Feedback
-
-Always provide clear visual feedback for:
-- Hover state (automatic)
-- Active/selected state (use `toggle-btn-active`)
-- Focus state (automatic)
-- Disabled state (use `disabled` attribute)
-
-### Touch Targets
-
-Ensure toggle buttons meet minimum touch target sizes (44×44px):
-
-<ComponentShowcase title="Touch Targets" code={`<!-- Default size is touch-friendly -->
-<button class="toggle-btn">Touch Friendly</button>
-
-<!-- Use larger sizes for mobile-first designs -->
-<button class="toggle-btn toggle-btn-lg md:toggle-btn">
-  Responsive Size
-</button>`} />
-
-## Framework Examples
-
-### React
-
-```tsx
-interface ToggleProps {
-  active?: boolean;
-  variant?: 'outlined' | 'filled' | 'chip';
-  color?: 'primary' | 'secondary' | 'tertiary';
-  size?: 'sm' | 'md' | 'lg';
-  children: React.ReactNode;
-  onChange?: (active: boolean) => void;
-}
-
-export function Toggle({
-  active = false,
-  variant = 'outlined',
-  color = 'primary',
-  size = 'md',
-  children,
-  onChange,
-  ...props
-}: ToggleProps) {
-  return (
-    <button
-      className={`toggle-btn ${variant ? `toggle-${variant}` : ''} ${active ? 'toggle-btn-active' : ''} ${color && color !== 'primary' ? `toggle-btn-${color}` : ''} ${size !== 'md' ? `toggle-btn-${size}` : ''}`}
-      onClick={() => onChange?.(!active)}
-      aria-pressed={active}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-}
-
-// Toggle Group Component
-interface ToggleGroupProps {
-  value: string[];
-  onChange: (value: string[]) => void;
-  exclusive?: boolean;
-  children: React.ReactNode;
-}
-
-export function ToggleGroup({
-  value,
-  onChange,
-  exclusive = false,
-  children
-}: ToggleGroupProps) {
-  return (
-    <div className={`toggle-group ${exclusive ? 'toggle-group-exclusive' : ''}`}>
-      {children}
-    </div>
-  );
-}
-
-// Usage
-function App() {
-  const [formatting, setFormatting] = React.useState(['bold']);
-  const [alignment, setAlignment] = React.useState('left');
-
-  return (
-    <>
-      {/* Multi-select */}
-      <ToggleGroup value={formatting} onChange={setFormatting}>
-        <Toggle active={formatting.includes('bold')}>Bold</Toggle>
-        <Toggle active={formatting.includes('italic')}>Italic</Toggle>
-        <Toggle active={formatting.includes('underline')}>Underline</Toggle>
-      </ToggleGroup>
-
-      {/* Exclusive selection */}
-      <ToggleGroup value={[alignment]} onChange={v => setAlignment(v[0])} exclusive>
-        <Toggle active={alignment === 'left'}>Left</Toggle>
-        <Toggle active={alignment === 'center'}>Center</Toggle>
-        <Toggle active={alignment === 'right'}>Right</Toggle>
-      </ToggleGroup>
-    </>
-  );
-}
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/toggle.css";
 ```
 
-### Vue
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
 
-```vue
-<template>
-  <button
-    :class="classes"
-    :aria-pressed="active"
-    @click="$emit('change', !active)"
-    v-bind="$attrs"
-  >
-    <slot />
-  </button>
-</template>
+Aggregate: `@duskmoon-dev/core`; no-Tailwind: `@duskmoon-dev/core/standalone.css`.
+Individual: `@duskmoon-dev/core/components/toggle.css` plus theme/reset.
+This includes the legacy `.toggle` control for compatibility. Extensionless
+`components/toggle` exports generated `css` and constructable `styles`.
 
-<script setup>
-import { computed } from 'vue';
+## Pressed Action
 
-const props = defineProps({
-  active: {
-    type: Boolean,
-    default: false
-  },
-  variant: {
-    type: String,
-    default: 'outlined'
-  },
-  color: {
-    type: String,
-    default: 'primary'
-  },
-  size: {
-    type: String,
-    default: 'md'
-  }
-});
+Core derives presentation from `aria-pressed`; applications still update the attribute.
+This runnable demo contains explicit local application code, not a Core runtime.
 
-defineEmits(['change']);
-
-const classes = computed(() => {
-  const baseClass = 'toggle-btn';
-  const variantClass = props.variant !== 'outlined' ? `toggle-${props.variant}` : '';
-  const activeClass = props.active ? 'toggle-btn-active' : '';
-  const colorClass = props.active && props.color !== 'primary' ? `toggle-btn-${props.color}` : '';
-  const sizeClass = props.size !== 'md' ? `toggle-btn-${props.size}` : '';
-
-  return [baseClass, variantClass, activeClass, colorClass, sizeClass].filter(Boolean).join(' ');
-});
-</script>
-
-<!-- ToggleGroup.vue -->
-<template>
-  <div :class="groupClasses">
-    <slot />
-  </div>
-</template>
-
-<script setup>
-import { computed } from 'vue';
-
-const props = defineProps({
-  exclusive: {
-    type: Boolean,
-    default: false
-  },
-  vertical: {
-    type: Boolean,
-    default: false
-  }
-});
-
-const groupClasses = computed(() => {
-  return [
-    'toggle-group',
-    props.exclusive && 'toggle-group-exclusive',
-    props.vertical && 'toggle-group-vertical'
-  ].filter(Boolean).join(' ');
-});
-</script>
-
-<!-- Usage -->
-<template>
-  <ToggleGroup :exclusive="true">
-    <Toggle :active="alignment === 'left'" @change="alignment = 'left'">
-      Left
-    </Toggle>
-    <Toggle :active="alignment === 'center'" @change="alignment = 'center'">
-      Center
-    </Toggle>
-    <Toggle :active="alignment === 'right'" @change="alignment = 'right'">
-      Right
-    </Toggle>
-  </ToggleGroup>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-const alignment = ref('left');
-</script>
-```
-
-## JavaScript Interaction
-
-### Basic Toggle State
-
-```javascript
-// Single toggle
-const toggle = document.querySelector('.toggle-btn');
-toggle.addEventListener('click', function() {
-  this.classList.toggle('toggle-btn-active');
-  const isActive = this.classList.contains('toggle-btn-active');
-  this.setAttribute('aria-pressed', isActive);
-});
-
-// Toggle group with exclusive selection
-const group = document.querySelector('.toggle-group-exclusive');
-const buttons = group.querySelectorAll('.toggle-btn');
-
-buttons.forEach(button => {
-  button.addEventListener('click', function() {
-    // Remove active from all buttons
-    buttons.forEach(btn => {
-      btn.classList.remove('toggle-btn-active');
-      btn.setAttribute('aria-pressed', 'false');
-    });
-
-    // Add active to clicked button
-    this.classList.add('toggle-btn-active');
-    this.setAttribute('aria-pressed', 'true');
+<ComponentShowcase title="Pressed action" code={`<button id="demo-toggle-bold" type="button" class="toggle-btn toggle-btn-primary" aria-pressed="false" aria-label="Bold" title="Bold"><strong>B</strong></button>
+<button type="button" class="toggle-btn" aria-pressed="true" disabled>Unavailable option</button>
+<script>
+  const button = document.getElementById('demo-toggle-bold');
+  button.addEventListener('click', () => {
+    button.setAttribute('aria-pressed', String(button.getAttribute('aria-pressed') !== 'true'));
   });
-});
+</script>`} />
 
-// Multi-select toggle group
-const multiGroup = document.querySelector('.toggle-group:not(.toggle-group-exclusive)');
-const multiButtons = multiGroup.querySelectorAll('.toggle-btn');
+Use a stable accessible name: do not change "Bold" to "Unbold" when pressed.
+Native button Enter/Space activates it. `disabled` actually disables it;
+`.toggle-btn-disabled` alone is legacy visual presentation.
+Buttons do not submit a persistent on/off value unless an application integrates one.
 
-multiButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    const isActive = this.classList.toggle('toggle-btn-active');
-    this.setAttribute('aria-pressed', isActive);
-  });
-});
-```
+## Compatibility And Variants
 
-## API Reference
+When `aria-pressed` is present, it wins over stale `.toggle-btn-active` or
+`.active`. Those aliases still work for integrations without the ARIA attribute.
+Do not maintain both semantic and duplicate visual state in new code.
 
-### Class Names
+Sizes: default, `.toggle-btn-sm/lg`; colors:
+`toggle-btn-primary/secondary/tertiary/info/success/warning/error/accent/neutral/base`.
+`.toggle-btn-ghost`, `.toggle-outlined`, `.toggle-filled` and
+`.toggle-chip` retain appearance contracts.
+`.toggle-btn-icon-only`, `.toggle-icon`, `.toggle-badge` and `.toggle-loading`
+are presentation; loading does not announce state or disable a native button.
 
-| Class | Description |
-|-------|-------------|
-| `.toggle-btn` | Base toggle button styles (required) |
-| `.toggle-btn-active` | Active/selected state |
-| `.toggle-btn-secondary` | Secondary color variant (when active) |
-| `.toggle-btn-tertiary` | Tertiary color variant (when active) |
-| `.toggle-btn-sm` | Small size |
-| `.toggle-btn-lg` | Large size |
-| `.toggle-btn-icon-only` | Icon-only toggle |
-| `.toggle-outlined` | Outlined variant (default) |
-| `.toggle-filled` | Filled variant |
-| `.toggle-chip` | Chip-style variant |
-| `.toggle-segmented` | Segmented control container |
-| `.toggle-badge` | Toggle with badge indicator |
-| `.toggle-full` | Full-width toggle |
-| `.toggle-loading` | Loading state |
-| `.toggle-group` | Toggle group container |
-| `.toggle-group-vertical` | Vertical toggle group |
-| `.toggle-group-exclusive` | Exclusive selection group |
-| `.toggle-group-full` | Full-width toggle group |
-| `.toggle-icon` | Icon element styling |
-
-### States
-
-| State | Implementation |
-|-------|---------------|
-| Default | Base `.toggle-btn` class |
-| Hover | Automatic hover styles |
-| Active | Add `.toggle-btn-active` or `.active` class |
-| Focus | Automatic focus-visible styles |
-| Disabled | Add `disabled` attribute or `.toggle-btn-disabled` class |
-| Loading | Add `.toggle-loading` class |
-
-### Combinations
-
-You can combine classes for different effects:
-
-<ComponentShowcase title="Class Combinations" code={`<!-- Large secondary chip-style toggle -->
-<button class="toggle-btn toggle-chip toggle-btn-secondary toggle-btn-lg toggle-btn-active">
-  Large Secondary Chip
-</button>
-
-<!-- Small filled toggle in a group -->
-<div class="toggle-group">
-  <button class="toggle-btn toggle-filled toggle-btn-sm toggle-btn-active">Option 1</button>
-  <button class="toggle-btn toggle-filled toggle-btn-sm">Option 2</button>
-</div>
-
-<!-- Icon-only toggles in vertical exclusive group -->
-<div class="toggle-group toggle-group-vertical toggle-group-exclusive">
-  <button class="toggle-btn toggle-btn-icon-only toggle-btn-active">
-    <svg class="w-5 h-5">...</svg>
-  </button>
-  <button class="toggle-btn toggle-btn-icon-only">
-    <svg class="w-5 h-5">...</svg>
-  </button>
-</div>`} />
-
-## Related Components
-
-- [Button](/duskmoonui/docs/en/components/button/) - Action buttons
-- [Checkbox](/duskmoonui/docs/en/components/checkbox/) - Multi-select form inputs
-- [Radio](/duskmoonui/docs/en/components/radio/) - Single-select form inputs
-- [Switch](/duskmoonui/docs/en/components/switch/) - Binary on/off toggle
-
-## See Also
-
-- [Toggle Button Design Guidelines (Material Design 3)](https://m3.material.io/components/icon-buttons/overview)
-- [Segmented Buttons (Material Design 3)](https://m3.material.io/components/segmented-buttons/overview)
-- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
+Existing `.toggle-group`, `toggle-group-vertical/full/exclusive`,
+`.toggle-full` and `.toggle-segmented` styles remain. Exclusive selection,
+toolbar roving focus and reset synchronization require application code.
+A group class does not implement radio behavior; use native radios when that is the intent.

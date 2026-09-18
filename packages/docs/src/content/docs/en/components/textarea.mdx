@@ -1,579 +1,79 @@
 ---
 title: Textarea
-description: Material Design 3 textarea component with multiple variants, sizes, and auto-resize functionality
+description: Native multiline text with consistent variants, constraints and field composition
 category: components
-order: 36
+order: 4
 published: true
-tags: ['textarea', 'components', 'material-design', 'forms', 'input']
+tags: ['textarea', 'input', 'form', 'components']
 ---
+
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Textarea
 
-Textareas allow users to enter multi-line text input. @duskmoon-dev/core provides a complete set of Material Design 3 textarea variants with features like auto-resize, character counting, and validation states.
+Native Textarea owns multiline editing, selection, constraints, submission and reset.
+Core presents its state without a mandatory runtime.
 
-## Basic Usage
+## Imports
 
-<ComponentShowcase title="Basic Textarea" code={`<textarea name="message" class="textarea" placeholder="Enter your message..." aria-label="Message"></textarea>`} />
+Individual example prerequisites (including composition and demo actions):
 
-## Variants
-
-### Outlined Textarea (Default)
-
-Outlined textareas have a transparent background with a visible border, making them stand out on any surface.
-
-<ComponentShowcase title="Outlined Textarea" code={`<textarea name="outlined-textarea" class="textarea textarea-outlined" placeholder="Outlined textarea..." aria-label="Outlined textarea"></textarea>`} />
-
-### Filled Textarea
-
-Filled textareas have a solid background with a bottom border, providing a more subtle appearance.
-
-<ComponentShowcase title="Filled Textarea" code={`<textarea name="filled-textarea" class="textarea textarea-filled" placeholder="Filled textarea..." aria-label="Filled textarea"></textarea>`} />
-
-## Color Variants
-
-Focus colors can be customized using color variants:
-
-<ComponentShowcase title="Color Variants" code={`<textarea name="primary-textarea" class="textarea textarea-primary" placeholder="Primary focus color..." aria-label="Primary textarea"></textarea>
-<textarea name="secondary-textarea" class="textarea textarea-secondary" placeholder="Secondary focus color..." aria-label="Secondary textarea"></textarea>
-<textarea name="tertiary-textarea" class="textarea textarea-tertiary" placeholder="Tertiary focus color..." aria-label="Tertiary textarea"></textarea>`} />
-
-### Status Variants
-<ComponentShowcase title="Status Variants" code={`<textarea name="info-textarea" class="textarea textarea-info" placeholder="Info focus color..." aria-label="Info textarea"></textarea>
-<textarea name="success-textarea" class="textarea textarea-success" placeholder="Success focus color..." aria-label="Success textarea"></textarea>
-<textarea name="warning-textarea" class="textarea textarea-warning" placeholder="Warning focus color..." aria-label="Warning textarea"></textarea>
-<textarea name="error-textarea" class="textarea textarea-error" placeholder="Error focus color..." aria-label="Error textarea"></textarea>`}>
-  <textarea name="info-textarea" class="textarea textarea-info" placeholder="Info focus color..." aria-label="Info textarea"></textarea>
-  <textarea name="success-textarea" class="textarea textarea-success" placeholder="Success focus color..." aria-label="Success textarea"></textarea>
-  <textarea name="warning-textarea" class="textarea textarea-warning" placeholder="Warning focus color..." aria-label="Warning textarea"></textarea>
-  <textarea name="error-textarea" class="textarea textarea-error" placeholder="Error focus color..." aria-label="Error textarea"></textarea>
-</ComponentShowcase>
-
-## Sizes
-
-Three sizes are available:
-
-<ComponentShowcase title="Textarea Sizes" code={`<textarea name="small-textarea" class="textarea textarea-sm" placeholder="Small textarea..." aria-label="Small textarea"></textarea>
-<textarea name="medium-textarea" class="textarea" placeholder="Medium textarea (default)..." aria-label="Medium textarea"></textarea>
-<textarea name="large-textarea" class="textarea textarea-lg" placeholder="Large textarea..." aria-label="Large textarea"></textarea>`} />
-
-## Resize Options
-
-Control how users can resize the textarea:
-
-<ComponentShowcase title="Resize Options" code={`<!-- Vertical resize (default) -->
-<textarea name="vertical-resize-textarea" class="textarea textarea-resize-vertical" placeholder="Resize vertically..." aria-label="Vertically resizable textarea"></textarea>
-
-<!-- No resize -->
-<textarea name="fixed-textarea" class="textarea textarea-resize-none" placeholder="Cannot be resized..." aria-label="Fixed size textarea"></textarea>
-
-<!-- Horizontal resize -->
-<textarea name="horizontal-resize-textarea" class="textarea textarea-resize-horizontal" placeholder="Resize horizontally..." aria-label="Horizontally resizable textarea"></textarea>
-
-<!-- Both directions -->
-<textarea name="both-resize-textarea" class="textarea textarea-resize-both" placeholder="Resize in any direction..." aria-label="Resizable textarea"></textarea>`} />
-
-## Auto-Resize
-
-All `.textarea` elements use native `field-sizing: content` by default, so supporting browsers automatically adjust their height based on content. Add `.textarea-auto-resize` for a compact textarea without a manual resize handle or visible overflow:
-
-<ComponentShowcase title="Auto-Resize Textarea" code={`<textarea name="auto-resize-textarea" class="textarea textarea-auto-resize" placeholder="Grows with content..." aria-label="Auto-resizing textarea"></textarea>`} />
-
-For browsers without `field-sizing` support, use JavaScript as a fallback:
-
-```html
-<textarea class="textarea textarea-auto-resize" placeholder="Auto-growing textarea..."></textarea>
-
-<script>
-  const textarea = document.querySelector('.textarea-auto-resize');
-
-  function autoResize() {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-  }
-
-  textarea.addEventListener('input', autoResize);
-  // Initialize on load
-  autoResize();
-</script>
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/textarea.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+@import "@duskmoon-dev/core/components/button.css";
 ```
 
-## With Label
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
 
-### Standard Label
+Aggregate: `@duskmoon-dev/core`; no-Tailwind: `@duskmoon-dev/core/standalone.css`.
+Individual: `@duskmoon-dev/core/components/textarea.css` plus base/theme and
+`form-group.css`. Legacy `form.css` includes Textarea.
+Extensionless `components/textarea` exports generated `css` and `styles`.
 
-<ComponentShowcase title="Textarea with Label" code={`<div class="textarea-container">
-  <label class="textarea-label" for="message">Message</label>
-  <textarea id="message" class="textarea" placeholder="Enter your message..."></textarea>
-</div>`} />
+## Native Field
 
-### Floating Label
-
-For filled variant with animated label:
-
-<ComponentShowcase title="Floating Label" code={`<div class="textarea-container">
-  <textarea class="textarea textarea-filled" placeholder=" " id="floating-message"></textarea>
-  <label class="textarea-label-floating" for="floating-message">Message</label>
-</div>`} />
-
-## Helper Text
-
-Add helpful information below the textarea:
-
-<ComponentShowcase title="Textarea with Helper Text" code={`<div class="textarea-container">
-  <label class="textarea-label" for="description">Description</label>
-  <textarea id="description" class="textarea" placeholder="Enter description..."></textarea>
-  <span class="textarea-helper">Provide a detailed description of your project</span>
-</div>`} />
-
-## Character Counter
-
-Display character count with optional maximum limit:
-
-<ComponentShowcase title="Character Counter" code={`<div class="textarea-container">
-  <label class="textarea-label" for="bio">Bio</label>
-  <textarea id="bio" class="textarea" maxlength="200" placeholder="Tell us about yourself..."></textarea>
-  <div class="textarea-counter">0 / 200</div>
-</div>`} />
-
-**JavaScript for live counting:**
-
-```js
-const bioTextarea = document.getElementById('bio');
-const charCount = document.querySelector('.textarea-counter');
-
-bioTextarea.addEventListener('input', () => {
-  const count = bioTextarea.value.length;
-  charCount.textContent = `${count} / 200`;
-  charCount.classList.toggle('textarea-counter-exceeded', count > 200);
-});
-```
-
-## Validation States
-
-### Error State
-
-Indicate validation errors:
-
-<ComponentShowcase title="Error State" code={`<div class="textarea-container textarea-container-error">
-  <label class="textarea-label" for="error-example">Comments</label>
-  <textarea id="error-example" class="textarea textarea-error" placeholder="Enter comments..."></textarea>
-  <span class="textarea-helper">This field is required</span>
-</div>`} />
-
-### Success State
-
-Indicate successful validation:
-
-<ComponentShowcase title="Success State" code={`<div class="textarea-container textarea-container-success">
-  <label class="textarea-label" for="success-example">Feedback</label>
-  <textarea id="success-example" class="textarea textarea-success" placeholder="Your feedback...">Great work!</textarea>
-  <span class="textarea-helper">Thank you for your feedback!</span>
-</div>`} />
-
-## States
-
-### Disabled State
-
-Non-interactive textarea:
-
-<ComponentShowcase title="Disabled State" code={`<textarea name="disabled-textarea" class="textarea" disabled placeholder="Disabled textarea..." aria-label="Disabled textarea"></textarea>`} />
-
-### Read-only State
-
-Display-only content:
-
-<ComponentShowcase title="Read-only State" code={`<textarea name="readonly-textarea" class="textarea" readonly aria-label="Read-only textarea">This content cannot be edited</textarea>`} />
-
-## Full Width
-
-Ensure textarea spans the full container width:
-
-<ComponentShowcase title="Full Width Textarea" code={`<textarea name="full-width-textarea" class="textarea textarea-full" placeholder="Full width textarea..." aria-label="Full width textarea"></textarea>`} />
-
-## Complete Examples
-
-### Contact Form
-
-<ComponentShowcase title="Contact Form" code={`<div class="space-y-4">
-  <div class="textarea-container">
-    <label class="textarea-label" for="contact-message">Your Message</label>
-    <textarea
-      id="contact-message"
-      class="textarea"
-      rows="6"
-      placeholder="How can we help you?"
-      required
-    ></textarea>
-    <span class="textarea-helper">We'll get back to you within 24 hours</span>
+<ComponentShowcase title="Multiline notes" code={`<form>
+  <div class="form-group">
+    <label class="form-label" for="demo-textarea-notes">Notes (required)</label>
+    <textarea id="demo-textarea-notes" name="notes" class="textarea textarea-filled textarea-secondary validator" rows="4" minlength="5" maxlength="200" required aria-describedby="demo-textarea-help demo-textarea-error">Default notes</textarea>
+    <p id="demo-textarea-help" class="helper-text">5 to 200 characters.</p>
+    <p id="demo-textarea-error" class="validator-error">Error: enter at least five characters.</p>
   </div>
-</div>`} />
+  <button class="btn" type="reset">Reset notes</button>
+</form>`} />
 
-### Feedback Form with Character Limit
+Do not use `pattern` on Textarea: HTML does not support it. An application can use
+`setCustomValidity()` for additional constraints and must clear it when resolved.
+Reset restores the initial text content, not a stale application counter.
 
-<ComponentShowcase title="Feedback Form" code={`<div class="textarea-container">
-  <label class="textarea-label" for="feedback">Feedback</label>
-  <textarea
-    id="feedback"
-    class="textarea textarea-primary"
-    maxlength="500"
-    placeholder="Share your thoughts..."
-  ></textarea>
-  <div class="flex justify-between items-center mt-1">
-    <span class="textarea-helper">Your opinion matters to us</span>
-    <div class="textarea-counter">0 / 500</div>
-  </div>
-</div>`} />
+## API And States
 
-**JavaScript for live counting:**
+Sizes: `.textarea-xs/sm/md/lg`. Appearance: default, `.textarea-outlined`,
+`.textarea-filled`, `.textarea-ghost`, legacy `.textarea-bordered`.
+Colors: `.textarea-primary/secondary/tertiary/info/success/warning/error/accent/neutral/base`.
+`disabled` excludes a control from focus/editing/submission; `readonly` keeps it
+focusable and submitted but prevents editing. Both are native attributes.
+Use [Validator](/duskmoonui/docs/en/components/validator/) for explicit ARIA errors
+or opt-in native colors.
 
-```js
-const feedbackTextarea = document.getElementById('feedback');
-const feedbackCount = document.querySelector('.textarea-counter');
+Existing `.textarea-container/label/helper`, `.textarea-label-floating`,
+`textarea-container-error/success`, `.textarea-full`,
+`textarea-resize-none/vertical/horizontal/both` and
+`textarea-counter/error/exceeded` remain presentation APIs.
+Floating labels still require proper native association and a placeholder for
+`:placeholder-shown`; they do not replace an accessible label.
 
-feedbackTextarea.addEventListener('input', () => {
-  const count = feedbackTextarea.value.length;
-  feedbackCount.textContent = `${count} / 500`;
-  feedbackCount.classList.toggle('textarea-counter-exceeded', count > 500);
-});
-```
+## Automatic Size And Counters
 
-### Auto-Resize Comment Box
+The base uses `field-sizing: content`; explicit `.textarea-auto-resize` and
+legacy alias `.textarea-autosize` also support content sizing. Browser support varies.
+Unsupported browsers retain the minimum height and native rows; keep a usable resize
+strategy or provide application-owned auto-sizing if necessary.
 
-<ComponentShowcase title="Auto-Resize Comment Box" code={`<div class="textarea-container">
-  <label class="textarea-label" for="comment">Add a comment</label>
-  <textarea
-    id="comment"
-    class="textarea textarea-auto-resize"
-    placeholder="Write a comment..."
-    rows="2"
-  ></textarea>
-</div>`} />
-
-**Note:** Modern browsers support `field-sizing: content` for native auto-grow. For older browsers, use JavaScript:
-
-```js
-const commentBox = document.getElementById('comment');
-
-function autoResize() {
-  commentBox.style.height = 'auto';
-  commentBox.style.height = commentBox.scrollHeight + 'px';
-}
-
-commentBox.addEventListener('input', autoResize);
-autoResize();
-```
-
-## Best Practices
-
-### Placeholder Text
-
-- Use placeholders to provide examples, not labels
-- Keep placeholder text concise
-- Don't rely solely on placeholders for critical information
-
-<ComponentShowcase title="Placeholder Best Practices" code={`<!-- Good: Clear example -->
-<textarea name="interest" class="textarea" placeholder="e.g., I'm interested in learning more about..." aria-label="Interest"></textarea>
-
-<!-- Bad: Using placeholder as label -->
-<textarea name="comments" class="textarea" placeholder="Comments*" aria-label="Comments"></textarea>`} />
-
-### Labels and Helper Text
-
-- Always provide visible labels for accessibility
-- Use helper text for formatting requirements or examples
-- Place error messages in helper text
-
-<ComponentShowcase title="Labels and Helper Text" code={`<div class="textarea-container">
-  <label class="textarea-label" for="project-description">Project Description</label>
-  <textarea id="project-description" name="project-description" class="textarea" placeholder="Describe your project..."></textarea>
-  <span class="textarea-helper">Include key features and goals (minimum 50 characters)</span>
-</div>`} />
-
-### Sizing
-
-- Set appropriate `rows` attribute for expected content length
-- Use `textarea-sm` for compact interfaces
-- Use `textarea-lg` for primary content input
-- Consider auto-resize for variable-length content
-
-<ComponentShowcase title="Sizing Best Practices" code={`<!-- Short feedback -->
-<textarea name="quick-feedback" class="textarea textarea-sm" rows="2" placeholder="Quick feedback..." aria-label="Quick feedback"></textarea>
-
-<!-- Long-form content -->
-<textarea name="article" class="textarea textarea-lg" rows="8" placeholder="Write your article..." aria-label="Article"></textarea>`} />
-
-### Accessibility
-
-- Always provide a `<label>` element
-- Use `aria-describedby` for helper text
-- Mark required fields clearly
-- Ensure sufficient color contrast
-
-<ComponentShowcase title="Accessible Textarea" code={`<div class="textarea-container">
-  <label class="textarea-label" for="accessible-textarea">
-    Comments <span class="text-error">*</span>
-  </label>
-  <textarea
-    id="accessible-textarea"
-    class="textarea"
-    aria-describedby="textarea-help"
-    required
-    placeholder="Enter your comments..."
-  ></textarea>
-  <span id="textarea-help" class="textarea-helper">
-    This field is required. Please provide detailed comments.
-  </span>
-</div>`} />
-
-## Framework Examples
-
-### React
-
-```tsx
-import { useState } from 'react';
-
-interface TextareaProps {
-  label?: string;
-  helperText?: string;
-  maxLength?: number;
-  variant?: 'outlined' | 'filled';
-  size?: 'sm' | 'md' | 'lg';
-  error?: boolean;
-  success?: boolean;
-  autoResize?: boolean;
-  placeholder?: string;
-  onChange?: (value: string) => void;
-}
-
-export function Textarea({
-  label,
-  helperText,
-  maxLength,
-  variant = 'outlined',
-  size = 'md',
-  error = false,
-  success = false,
-  autoResize = false,
-  placeholder,
-  onChange,
-  ...props
-}: TextareaProps) {
-  const [value, setValue] = useState('');
-  const [height, setHeight] = useState('auto');
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-    onChange?.(newValue);
-
-    if (autoResize) {
-      e.target.style.height = 'auto';
-      e.target.style.height = `${e.target.scrollHeight}px`;
-    }
-  };
-
-  const textareaClasses = [
-    'textarea',
-    variant === 'filled' && 'textarea-filled',
-    variant === 'outlined' && 'textarea-outlined',
-    size === 'sm' && 'textarea-sm',
-    size === 'lg' && 'textarea-lg',
-    error && 'textarea-error',
-    success && 'textarea-success',
-    autoResize && 'textarea-auto-resize'
-  ].filter(Boolean).join(' ');
-
-  return (
-    <div className="textarea-container">
-      {label && (
-        <label className="textarea-label">
-          {label}
-        </label>
-      )}
-      <textarea
-        className={textareaClasses}
-        value={value}
-        onChange={handleChange}
-        maxLength={maxLength}
-        placeholder={placeholder}
-        {...props}
-      />
-      <div className="flex justify-between items-center mt-1">
-        {helperText && (
-          <span className="textarea-helper">{helperText}</span>
-        )}
-        {maxLength && (
-          <div className={`textarea-counter ${value.length > maxLength ? 'textarea-counter-exceeded' : ''}`}>
-            {value.length} / {maxLength}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// Usage
-<Textarea
-  label="Message"
-  placeholder="Enter your message..."
-  maxLength={200}
-  helperText="Provide a detailed message"
-  autoResize
-/>
-```
-
-### Vue
-
-```vue
-<template>
-  <div class="textarea-container">
-    <label v-if="label" class="textarea-label">
-      {{ label }}
-    </label>
-    <textarea
-      :class="textareaClasses"
-      :value="modelValue"
-      :placeholder="placeholder"
-      :maxlength="maxLength"
-      @input="handleInput"
-      v-bind="$attrs"
-    />
-    <div v-if="helperText || maxLength" class="flex justify-between items-center mt-1">
-      <span v-if="helperText" class="textarea-helper">{{ helperText }}</span>
-      <div
-        v-if="maxLength"
-        :class="['textarea-counter', { 'textarea-counter-exceeded': charCount > maxLength }]"
-      >
-        {{ charCount }} / {{ maxLength }}
-      </div>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { ref, computed } from 'vue';
-
-const props = defineProps({
-  modelValue: String,
-  label: String,
-  helperText: String,
-  maxLength: Number,
-  variant: {
-    type: String,
-    default: 'outlined'
-  },
-  size: {
-    type: String,
-    default: 'md'
-  },
-  error: Boolean,
-  success: Boolean,
-  autoResize: Boolean,
-  placeholder: String
-});
-
-const emit = defineEmits(['update:modelValue']);
-
-const charCount = computed(() => props.modelValue?.length || 0);
-
-const textareaClasses = computed(() => [
-  'textarea',
-  props.variant === 'filled' && 'textarea-filled',
-  props.variant === 'outlined' && 'textarea-outlined',
-  props.size === 'sm' && 'textarea-sm',
-  props.size === 'lg' && 'textarea-lg',
-  props.error && 'textarea-error',
-  props.success && 'textarea-success',
-  props.autoResize && 'textarea-auto-resize'
-].filter(Boolean).join(' '));
-
-const handleInput = (e) => {
-  emit('update:modelValue', e.target.value);
-
-  if (props.autoResize) {
-    e.target.style.height = 'auto';
-    e.target.style.height = `${e.target.scrollHeight}px`;
-  }
-};
-</script>
-
-<!-- Usage -->
-<Textarea
-  v-model="message"
-  label="Message"
-  placeholder="Enter your message..."
-  :max-length="200"
-  helper-text="Provide a detailed message"
-  auto-resize
-/>
-```
-
-## API Reference
-
-### Class Names
-
-| Class | Description |
-|-------|-------------|
-| `.textarea` | Base textarea styles (required) |
-| `.textarea-outlined` | Outlined variant with transparent background |
-| `.textarea-filled` | Filled variant with solid background |
-| `.textarea-primary` | Primary focus color |
-| `.textarea-secondary` | Secondary focus color |
-| `.textarea-tertiary` | Tertiary focus color |
-| `.textarea-sm` | Small size (4rem min-height) |
-| `.textarea-lg` | Large size (8rem min-height) |
-| `.textarea-error` | Error state styling |
-| `.textarea-success` | Success state styling |
-| `.textarea-resize-none` | Disable resizing |
-| `.textarea-resize-vertical` | Allow vertical resize (default) |
-| `.textarea-resize-horizontal` | Allow horizontal resize |
-| `.textarea-resize-both` | Allow resizing in both directions |
-| `.textarea-auto-resize` | Compact auto-resize styling; use a JS fallback in browsers without `field-sizing` support |
-| `.textarea-full` | Full width |
-| `.textarea-container` | Wrapper for label and helper text |
-| `.textarea-label` | Label styling |
-| `.textarea-label-floating` | Floating label for filled variant |
-| `.textarea-helper` | Helper text styling |
-| `.textarea-counter` | Character counter styling |
-| `.textarea-counter-exceeded` | Exceeded character limit styling |
-
-### Container Classes
-
-| Class | Description |
-|-------|-------------|
-| `.textarea-container-error` | Error state for container |
-| `.textarea-container-success` | Success state for container |
-
-### Combinations
-
-You can combine classes for different effects:
-
-<ComponentShowcase title="Class Combinations" code={`<!-- Filled tertiary textarea, large size with error -->
-<textarea name="combined-textarea" class="textarea textarea-filled textarea-tertiary textarea-lg textarea-error" aria-label="Combined textarea styles">
-</textarea>
-
-<!-- Small outlined textarea with no resize -->
-<textarea name="compact-textarea" class="textarea textarea-outlined textarea-sm textarea-resize-none" aria-label="Compact textarea">
-</textarea>
-
-<!-- Auto-resize primary textarea with success state -->
-<textarea name="auto-resize-success-textarea" class="textarea textarea-primary textarea-auto-resize textarea-success" aria-label="Successful auto-resizing textarea">
-</textarea>`} />
-
-## Ghost Variant
-
-<ComponentShowcase title="Ghost Textarea" code={`<textarea name="ghost-textarea" class="textarea textarea-ghost" placeholder="Ghost textarea (no border)..." aria-label="Ghost textarea"></textarea>`}>
-  <textarea name="ghost-textarea" class="textarea textarea-ghost" placeholder="Ghost textarea (no border)..." aria-label="Ghost textarea"></textarea>
-</ComponentShowcase>
-
-## Related Components
-
-- [Input](/duskmoonui/docs/en/components/input/) - Single-line text input
-- [Select](/duskmoonui/docs/en/components/select/) - Dropdown selection
-- [Form](/duskmoonui/docs/en/components/form/) - Form containers and validation
-
-## See Also
-
-- [Text Fields Design Guidelines (Material Design 3)](https://m3.material.io/components/text-fields/)
-- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
+CSS cannot count characters or update output text. A live counter must synchronize
+on `input` and after native `reset`, including programmatic application changes.
+No static counter is shown next to an editable field.

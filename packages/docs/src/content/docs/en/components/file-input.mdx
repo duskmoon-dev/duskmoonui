@@ -1,0 +1,74 @@
+---
+title: File Input
+description: Native file selection, labels, validation and disabled presentation
+category: components
+order: 32
+published: true
+tags: ['file', 'input', 'form', 'components']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# File Input
+
+Use a real file input for browser-owned file selection. Files are submitted under
+the input's name. CSS cannot read files, upload them, generate previews or implement drag/drop.
+
+## Imports
+
+Individual example prerequisites (including composition and demo actions):
+
+```css
+@import "@duskmoon-dev/core/base.css";
+@import "@duskmoon-dev/core/themes/sunshine";
+@import "@duskmoon-dev/core/components/file-input.css";
+@import "@duskmoon-dev/core/components/form-group.css";
+@import "@duskmoon-dev/core/components/button.css";
+```
+
+`base.css` supplies global focus/utility definitions and shared spacing/shape tokens;
+use your framework reset when appropriate. Substitute the Moonlight theme for dark forms.
+
+Aggregate: `@duskmoon-dev/core`; no-Tailwind: `@duskmoon-dev/core/standalone.css`.
+Individual: `@duskmoon-dev/core/components/file-input.css`, a theme/reset,
+and `form-group.css` for composition. Existing `input.css` and `form.css`
+imports continue to include File Input. Extensionless `components/file-input`
+exports generated `css` and `styles`.
+
+## Native Selection
+
+<ComponentShowcase title="Required attachment" code={`<form enctype="multipart/form-data">
+  <div class="form-group">
+    <label class="form-label" for="demo-file-attachment">Attachment (required)</label>
+    <input id="demo-file-attachment" name="attachment" type="file" class="file-input validator" accept=".pdf,image/*" required aria-describedby="demo-file-help demo-file-error">
+    <p id="demo-file-help" class="helper-text">PDF or image. The application checks file size and content.</p>
+    <p id="demo-file-error" class="validator-error">Error: select an attachment.</p>
+  </div>
+  <button type="reset" class="btn">Clear file</button>
+</form>`} />
+
+`accept` is a picker hint, not security validation. Validate files again on the server.
+Use `multiple` for multiple files; read `files` or `FormData.getAll()`.
+Reset clears the native selection. Applications must separately clear previews and upload state.
+
+## Error And Disabled States
+
+<ComponentShowcase title="Server error and disabled file picker" code={`<div class="form-group">
+  <label class="form-label" for="demo-file-invalid">Replacement attachment</label>
+  <input id="demo-file-invalid" name="replacement" type="file" class="file-input file-input-success" aria-invalid="true" aria-describedby="demo-file-server-error">
+  <p id="demo-file-server-error" class="helper-text helper-text-error">Error: the uploaded file exceeded the size limit.</p>
+</div>
+<label class="form-label" for="demo-file-disabled">Unavailable upload</label>
+<input id="demo-file-disabled" name="unavailable" type="file" class="file-input" disabled>`} />
+
+## API
+
+Sizes: `.file-input-xs`, `sm`, default/medium, `lg`.
+Colors: `.file-input-primary`, `secondary`, `tertiary`, `info`, `success`,
+`warning`, `error`; `.file-input-ghost` hides the ordinary border.
+The file-selector button inherits the control palette; native focus is visible.
+Use the [Validator contract](/duskmoonui/docs/en/components/validator/) for native
+opt-in or explicit ARIA invalid state.
+
+[File Upload](/duskmoonui/docs/en/components/file-upload/) is the richer,
+application-controlled dropzone, preview and progress composition, not this basic input.
