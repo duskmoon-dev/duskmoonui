@@ -13,7 +13,7 @@
     width: 3rem;
     height: 3rem;
     border-radius: var(--radius-full);
-    overflow: hidden;
+    overflow: visible;
     background-color: var(--color-surface-container);
     color: var(--color-on-surface);
     font-weight: 500;
@@ -24,6 +24,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: inherit;
   }
 
   /* Avatar Placeholder */
@@ -33,7 +34,9 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    font-size: 1.25rem;
+    font-size: inherit;
+    border-radius: inherit;
+    overflow: hidden;
     text-transform: uppercase;
   }
 
@@ -135,24 +138,28 @@
   }
 
   .avatar-ring-primary {
-    outline-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary);
   }
 
   .avatar-ring-secondary {
-    outline-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px var(--color-secondary);
   }
 
   .avatar-ring-tertiary {
-    outline-color: var(--color-tertiary);
+    box-shadow: 0 0 0 3px var(--color-tertiary);
   }
 
   /* Online/Offline Indicator */
   .avatar-online::after,
-  .avatar-offline::after {
+  .avatar-offline::after,
+  .avatar-status-online::after,
+  .avatar-status-offline::after,
+  .avatar-status-busy::after,
+  .avatar-status-away::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    right: 0;
+    inset-block-end: 0;
+    inset-inline-end: 0;
     width: 25%;
     height: 25%;
     min-width: 0.5rem;
@@ -161,13 +168,18 @@
     border: 2px solid var(--color-surface);
   }
 
-  .avatar-online::after {
+  .avatar-online::after,
+  .avatar-status-online::after {
     background-color: var(--color-success);
   }
 
-  .avatar-offline::after {
+  .avatar-offline::after,
+  .avatar-status-offline::after {
     background-color: var(--color-outline);
   }
+
+  .avatar-status-busy::after { background-color: var(--color-error); }
+  .avatar-status-away::after { background-color: var(--color-warning); }
 
   /* Avatar Group */
   .avatar-group {
@@ -178,21 +190,33 @@
 
   .avatar-group .avatar {
     border: 2px solid var(--color-surface);
-    margin-left: -0.75rem;
+    margin-inline-start: -0.75rem;
   }
 
   .avatar-group .avatar:last-child {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   /* Avatar Group Sizes */
   .avatar-group-sm .avatar {
-    margin-left: -0.5rem;
+    margin-inline-start: -0.5rem;
   }
 
   .avatar-group-lg .avatar {
-    margin-left: -1rem;
+    margin-inline-start: -1rem;
   }
+
+  /* Historical documented composition classes. */
+  .avatar-image { inline-size: 100%; block-size: 100%; border-radius: inherit; overflow: hidden; }
+  .avatar-icon { display: inline-flex; align-items: center; justify-content: center; inline-size: 100%; block-size: 100%; }
+  .avatar-circle { border-radius: var(--radius-full); }
+  .avatar-bordered { border: 2px solid currentColor; }
+  .avatar-clickable { cursor: pointer; }
+  .avatar-overflow { font-size: 0.875rem; }
+  .avatar-group-dense > .avatar { margin-inline-start: -1rem; }
+  .avatar-group-xs > .avatar { inline-size: 1.5rem; block-size: 1.5rem; font-size: 0.625rem; }
+  .avatar-group-xl > .avatar { inline-size: 6rem; block-size: 6rem; font-size: 2rem; }
+  .avatar-group-dense > .avatar:last-child { margin-inline-start: 0; }
 
   /* Focus State for Interactive Avatars */
   .avatar:focus-visible {

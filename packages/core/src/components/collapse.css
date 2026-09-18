@@ -28,7 +28,7 @@
     border: none;
     cursor: pointer;
     transition: background-color 150ms ease-in-out;
-    text-align: left;
+    text-align: start;
   }
 
   .collapse-trigger:hover {
@@ -65,33 +65,36 @@
   }
 
   /* Open State */
-  .collapse-open .collapse-content {
+  .collapse:not(details):not(.collapse-closed).collapse-open > .collapse-content,
+  details.collapse[open] > .collapse-content {
     grid-template-rows: 1fr;
   }
 
-  .collapse-open .collapse-content > * {
+  .collapse:not(details):not(.collapse-closed).collapse-open > .collapse-content > *,
+  details.collapse[open] > .collapse-content > * {
     padding: 0 1rem 1rem;
   }
 
-  .collapse-open .collapse-icon {
+  .collapse:not(details):not(.collapse-closed).collapse-open > .collapse-trigger > .collapse-icon,
+  details.collapse[open] > .collapse-trigger > .collapse-icon {
     transform: rotate(180deg);
   }
 
   /* Closed State (explicit) */
-  .collapse-closed .collapse-content {
+  .collapse:not(details).collapse-closed > .collapse-content {
     grid-template-rows: 0fr;
   }
 
   /* Legacy show class for backwards compatibility */
-  .collapse.show .collapse-content {
+  .collapse:not(details):not(.collapse-closed).show > .collapse-content {
     grid-template-rows: 1fr;
   }
 
-  .collapse.show .collapse-content > * {
+  .collapse:not(details):not(.collapse-closed).show > .collapse-content > * {
     padding: 0 1rem 1rem;
   }
 
-  .collapse.show .collapse-icon {
+  .collapse:not(details):not(.collapse-closed).show > .collapse-trigger > .collapse-icon {
     transform: rotate(180deg);
   }
 
@@ -178,10 +181,8 @@
     color: var(--color-on-surface-variant);
   }
 
-  .collapse-card.collapse-open .collapse-inner,
-  .collapse-card.collapse-open .collapse-content > *,
-  .collapse-card.show .collapse-inner,
-  .collapse-card.show .collapse-content > * {
+  .collapse-card:not(details):not(.collapse-closed):is(.collapse-open, .show) > .collapse-content > *,
+  details.collapse-card[open] > .collapse-content > * {
     padding: 0 1rem 1rem;
   }
 
@@ -291,7 +292,8 @@
     padding: 0 0.75rem;
   }
 
-  .collapse-sm.collapse-open .collapse-content > * {
+  .collapse-sm:not(details):not(.collapse-closed):is(.collapse-open, .show) > .collapse-content > *,
+  details.collapse-sm[open] > .collapse-content > * {
     padding: 0 0.75rem 0.75rem;
   }
 
@@ -304,7 +306,8 @@
     padding: 0 1.25rem;
   }
 
-  .collapse-lg.collapse-open .collapse-content > * {
+  .collapse-lg:not(details):not(.collapse-closed):is(.collapse-open, .show) > .collapse-content > *,
+  details.collapse-lg[open] > .collapse-content > * {
     padding: 0 1.25rem 1.25rem;
   }
 
@@ -345,13 +348,13 @@
   }
 
   /* Slide Animation */
-  .collapse-slide .collapse-content > * {
+  .collapse-slide > .collapse-content > * {
     transform: translateY(-0.5rem);
     opacity: 0;
     transition: transform 300ms ease-in-out, opacity 200ms ease-in-out;
   }
 
-  .collapse-slide.collapse-open .collapse-content > * {
+  .collapse-slide:not(details):not(.collapse-closed):is(.collapse-open, .show) > .collapse-content > * {
     transform: translateY(0);
     opacity: 1;
   }
@@ -493,6 +496,54 @@
   .collapse-animating {
     overflow: hidden;
     transition: height 300ms ease-in-out;
+  }
+
+  /* Native state is authoritative; controlled aliases never select native items. */
+  details.collapse { display: block; }
+  details.collapse > summary { list-style: none; }
+  details.collapse > summary::-webkit-details-marker { display: none; }
+  .collapse:not(details):not(.collapse-open):not(.show) > .collapse-content,
+  .collapse:not(details).collapse-closed > .collapse-content,
+  .collapse-content[hidden] { display: none; }
+  .collapse-content > * { min-block-size: 0; min-inline-size: 0; overflow-wrap: anywhere; }
+  .collapse.collapse-fade { opacity: 1; }
+  .collapse.collapse-fade > .collapse-content { opacity: 0; }
+  .collapse.collapse-fade:not(details):not(.collapse-closed):is(.show, .collapse-open) > .collapse-content,
+  details.collapse.collapse-fade[open] > .collapse-content { opacity: 1; }
+  .collapse.collapse-slide:not(details):not(.collapse-closed):is(.show, .collapse-open) > .collapse-content > *,
+  details.collapse.collapse-slide[open] > .collapse-content > * { transform: none; opacity: 1; }
+  .collapse.collapse-horizontal { display: block; }
+  .collapse.collapse-horizontal > .collapse-content { grid-template-rows: 1fr; grid-template-columns: 0fr; white-space: normal; }
+  .collapse.collapse-horizontal:not(details):not(.collapse-closed):is(.show, .collapse-open) > .collapse-content,
+  details.collapse.collapse-horizontal[open] > .collapse-content { grid-template-columns: 1fr; }
+  .collapse.collapse-horizontal-fixed { width: auto; }
+  .collapse.collapse-horizontal-fixed > .collapse-content { inline-size: 0; }
+  .collapse.collapse-horizontal-fixed:not(details):not(.collapse-closed):is(.show, .collapse-open) > .collapse-content,
+  details.collapse.collapse-horizontal-fixed[open] > .collapse-content { inline-size: min(100%, var(--collapse-width, 20rem)); }
+  details.collapse.collapse-maxheight { max-height: none; }
+  .collapse.collapse-maxheight:not(details):not(.collapse-closed):is(.show, .collapse-open) { max-height: var(--collapse-max-height, 100rem); }
+  .collapse.collapse-maxheight:not(details).collapse-closed { max-height: 0; }
+
+  /* Native disclosure animation; older browsers retain immediate native behavior. */
+  @supports (interpolate-size: allow-keywords) {
+    @media (prefers-reduced-motion: no-preference) {
+      details.collapse::details-content {
+        interpolate-size: allow-keywords;
+        block-size: 0;
+        overflow: clip;
+        transition: block-size 300ms ease-in-out, content-visibility 300ms allow-discrete;
+      }
+      details.collapse[open]::details-content { block-size: auto; }
+      .collapse:not(details) > .collapse-content {
+        interpolate-size: allow-keywords;
+        block-size: 0;
+        transition: block-size 300ms ease-in-out, display 300ms allow-discrete;
+      }
+      .collapse:not(details):not(.collapse-closed):is(.show, .collapse-open) > .collapse-content:not([hidden]) { block-size: auto; }
+      @starting-style {
+        .collapse:not(details):not(.collapse-closed):is(.show, .collapse-open) > .collapse-content:not([hidden]) { block-size: 0; }
+      }
+    }
   }
 
   /* Reduce Motion */

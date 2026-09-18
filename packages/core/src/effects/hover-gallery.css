@@ -1,0 +1,14 @@
+@layer components {
+  .hover-gallery { display: grid; gap: 0.5rem; min-inline-size: 0; color: var(--color-on-surface); }
+  .hover-gallery-stage { aspect-ratio: var(--hover-gallery-ratio, 4 / 3); overflow: hidden; border-radius: var(--radius-md); }
+  .hover-gallery-stage img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+  .hover-gallery-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .hover-gallery-controls > button { border: 1px solid currentColor; color: inherit; background: var(--color-surface-container); padding: 0.25rem; border-radius: var(--radius-sm); cursor: pointer; }
+  .hover-gallery-controls img { display: block; inline-size: 3rem; block-size: 3rem; object-fit: cover; }
+  .hover-gallery-controls > button[aria-pressed="true"] { color: var(--color-primary); outline: 2px solid currentColor; }
+  .hover-gallery-controls > button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .hover-gallery-controls > button:hover { background: var(--color-primary-container); }
+  }
+  @media print { .hover-gallery-controls { display: none; } }
+}

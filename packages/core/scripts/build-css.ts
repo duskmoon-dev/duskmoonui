@@ -29,7 +29,7 @@ async function readAndInlineCss(filePath: string, visited = new Set<string>()): 
     const dir = dirname(absolutePath);
 
     // Find all @import statements
-    const importRegex = /@import\s+["']([^"']+)["']\s*;?/g;
+    const importRegex = /^\s*@import\s+["']([^"']+)["']\s*;?/gm;
     const imports: { match: string; path: string }[] = [];
 
     let match;
@@ -172,6 +172,11 @@ const componentFiles = [
   'toggle',
   'tooltip',
   'tree-select',
+  'stat',
+  'kbd',
+  'carousel',
+  'countdown',
+  'diff',
 ];
 
 /**
@@ -230,7 +235,7 @@ async function copyComponents(): Promise<void> {
   for (const component of componentFiles) {
     const srcPath = join(componentsDir, `${component}.css`);
     if (existsSync(srcPath)) {
-      const content = await readFile(srcPath, 'utf-8');
+      const content = await readAndInlineCss(srcPath);
       // Write CSS file
       await writeFile(join(distComponentsDir, `${component}.css`), content);
       // Generate and write ESM module
@@ -243,6 +248,17 @@ async function copyComponents(): Promise<void> {
   }
   console.log(`✓ Built ${componentFiles.length} individual component files`);
   console.log(`✓ Built ${componentFiles.length} ESM component modules`);
+  // Effects use an explicit list, never component discovery or the default bundle.
+  const effectsDir = join(DIST_DIR, 'effects');
+  const effectsEsmDir = join(DIST_DIR, 'esm', 'effects');
+  await ensureDir(effectsDir);
+  await ensureDir(effectsEsmDir);
+  for (const effect of ['index', 'aura', 'hover-3d', 'hover-gallery', 'text-rotate']) {
+    const content = await readAndInlineCss(join(SRC_DIR, 'effects', `${effect}.css`));
+    await writeFile(join(effectsDir, `${effect}.css`), content);
+    await writeFile(join(effectsEsmDir, `${effect}.js`), generateEsmModule(effect, content));
+    await writeFile(join(effectsEsmDir, `${effect}.d.ts`), generateDtsModule(effect));
+  }
 }
 
 async function buildPlugin(): Promise<void> {

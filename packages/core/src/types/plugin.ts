@@ -63,7 +63,10 @@ export type ComponentName =
   | 'input'
   | 'form'
   | 'navigation'
-  | 'modal';
+  | 'modal'
+  | 'accordion' | 'avatar' | 'badge' | 'chat' | 'collapse' | 'list'
+  | 'table' | 'timeline' | 'stat' | 'indicator' | 'kbd' | 'carousel'
+  | 'countdown' | 'diff';
 
 /**
  * Component size variants

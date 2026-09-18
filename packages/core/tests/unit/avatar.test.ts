@@ -44,8 +44,9 @@ describe('Avatar Component', () => {
       expect(css).toMatch(/\.avatar\s*\{[^}]*border-radius:\s*var\(--radius-full\)/s);
     });
 
-    it('should hide overflow', () => {
-      expect(css).toMatch(/\.avatar\s*\{[^}]*overflow:\s*hidden/s);
+    it('should mask images without clipping status indicators', () => {
+      expect(css).toMatch(/\.avatar\s*\{[^}]*overflow:\s*visible/s);
+      expect(css).toMatch(/\.avatar img\s*\{[^}]*border-radius:\s*inherit/s);
     });
 
     it('should use surface-container background', () => {
@@ -235,13 +236,13 @@ describe('Avatar Component', () => {
 
     it('should use success color for online indicator', () => {
       expect(css).toMatch(
-        /\.avatar-online::after\s*\{[^}]*background-color:\s*var\(--color-success\)/s,
+        /\.avatar-online::after,\s*\.avatar-status-online::after\s*\{[^}]*background-color:\s*var\(--color-success\)/s,
       );
     });
 
     it('should use outline color for offline indicator', () => {
       expect(css).toMatch(
-        /\.avatar-offline::after\s*\{[^}]*background-color:\s*var\(--color-outline\)/s,
+        /\.avatar-offline::after,\s*\.avatar-status-offline::after\s*\{[^}]*background-color:\s*var\(--color-outline\)/s,
       );
     });
 
@@ -263,7 +264,7 @@ describe('Avatar Component', () => {
 
     it('should apply negative margin for overlap', () => {
       expect(css).toMatch(
-        /\.avatar-group\s+\.avatar\s*\{[^}]*margin-left:\s*-0\.75rem/s,
+        /\.avatar-group\s+\.avatar\s*\{[^}]*margin-inline-start:\s*-0\.75rem/s,
       );
     });
 

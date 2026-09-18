@@ -1,0 +1,22 @@
+@layer components {
+  .countdown { display: inline-flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; color: var(--color-on-surface); font-variant-numeric: tabular-nums; }
+  .countdown-value { display: inline-block; min-inline-size: 2ch; text-align: center; font-size: 2rem; line-height: 1.2; overflow-wrap: anywhere; }
+  .countdown-sm .countdown-value { font-size: 1rem; }
+  .countdown-lg .countdown-value { font-size: 3rem; }
+  @media (prefers-reduced-motion: no-preference) { .countdown-transition .countdown-value { transition: color 150ms ease; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .countdown-animated .countdown-value.countdown-tick { animation: countdown-tick 240ms ease-out; }
+  }
+  @keyframes countdown-tick {
+    from { transform: translateY(-0.2em); opacity: 0.35; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @media print { .countdown-value.countdown-tick { animation: none; } }
+  .countdown-primary { color: var(--color-primary); }
+  .countdown-secondary { color: var(--color-secondary); }
+  .countdown-tertiary { color: var(--color-tertiary); }
+  .countdown-info { color: var(--color-info); }
+  .countdown-success { color: var(--color-success); }
+  .countdown-warning { color: var(--color-warning); }
+  .countdown-error { color: var(--color-error); }
+}

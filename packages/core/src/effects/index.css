@@ -1,0 +1,5 @@
+/* Explicitly opt-in. Not imported by core or components/index.css. */
+@import "./aura.css";
+@import "./hover-3d.css";
+@import "./hover-gallery.css";
+@import "./text-rotate.css";

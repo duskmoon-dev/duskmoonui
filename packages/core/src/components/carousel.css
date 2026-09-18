@@ -1,0 +1,28 @@
+@layer components {
+  .carousel {
+    display: flex;
+    gap: 1rem;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    overflow: auto;
+    scroll-snap-type: inline mandatory;
+    scroll-behavior: smooth;
+    color: var(--color-on-surface);
+  }
+  .carousel-item { flex: none; min-inline-size: 0; max-inline-size: 100%; scroll-snap-align: start; overflow-wrap: anywhere; }
+  .carousel-horizontal { flex-direction: row; scroll-snap-type: inline mandatory; }
+  .carousel-center > .carousel-item { scroll-snap-align: center; }
+  .carousel-end > .carousel-item { scroll-snap-align: end; }
+  .carousel-start > .carousel-item { scroll-snap-align: start; }
+  .carousel-vertical { flex-direction: column; max-block-size: var(--carousel-height, 24rem); scroll-snap-type: block mandatory; }
+  .carousel:focus-visible, .carousel-item:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
+  @media (prefers-reduced-motion: reduce) { .carousel { scroll-behavior: auto; } }
+  @media print { .carousel { flex-wrap: wrap; overflow: visible; max-block-size: none; } }
+  .carousel-primary { color: var(--color-primary); }
+  .carousel-secondary { color: var(--color-secondary); }
+  .carousel-tertiary { color: var(--color-tertiary); }
+  .carousel-info { color: var(--color-info); }
+  .carousel-success { color: var(--color-success); }
+  .carousel-warning { color: var(--color-warning); }
+  .carousel-error { color: var(--color-error); }
+}

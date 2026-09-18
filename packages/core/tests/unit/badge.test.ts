@@ -47,8 +47,9 @@ describe('Badge Component', () => {
       expect(css).toMatch(/font-weight:\s*500/);
     });
 
-    it('should prevent text wrapping', () => {
-      expect(css).toMatch(/white-space:\s*nowrap/);
+    it('should keep long labels readable in narrow containers', () => {
+      expect(css).toMatch(/\.badge\s*\{[^}]*white-space:\s*normal/s);
+      expect(css).toMatch(/\.badge\s*\{[^}]*overflow-wrap:\s*anywhere/s);
     });
 
     it('should use surface-container background by default', () => {
@@ -325,9 +326,9 @@ describe('Badge Component', () => {
       );
     });
 
-    it('should add left padding for indicator dot space', () => {
+    it('should add logical start padding for indicator dot space', () => {
       expect(css).toMatch(
-        /\.badge-indicator\s*\{[^}]*padding-left:\s*1rem/s,
+        /\.badge-indicator\s*\{[^}]*padding-inline-start:\s*1rem/s,
       );
     });
 

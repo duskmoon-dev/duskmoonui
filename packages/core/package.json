@@ -11,11 +11,75 @@
       "style": "./dist/index.css",
       "types": "./dist/types/types/index.d.ts"
     },
+    "./components/stat": {
+      "types": "./dist/esm/components/stat.d.ts",
+      "style": "./dist/components/stat.css",
+      "import": "./dist/esm/components/stat.js",
+      "default": "./dist/esm/components/stat.js"
+    },
+    "./components/kbd": {
+      "types": "./dist/esm/components/kbd.d.ts",
+      "style": "./dist/components/kbd.css",
+      "import": "./dist/esm/components/kbd.js",
+      "default": "./dist/esm/components/kbd.js"
+    },
+    "./components/carousel": {
+      "types": "./dist/esm/components/carousel.d.ts",
+      "style": "./dist/components/carousel.css",
+      "import": "./dist/esm/components/carousel.js",
+      "default": "./dist/esm/components/carousel.js"
+    },
+    "./components/countdown": {
+      "types": "./dist/esm/components/countdown.d.ts",
+      "style": "./dist/components/countdown.css",
+      "import": "./dist/esm/components/countdown.js",
+      "default": "./dist/esm/components/countdown.js"
+    },
+    "./components/diff": {
+      "types": "./dist/esm/components/diff.d.ts",
+      "style": "./dist/components/diff.css",
+      "import": "./dist/esm/components/diff.js",
+      "default": "./dist/esm/components/diff.js"
+    },
+    "./effects/aura": {
+      "types": "./dist/esm/effects/aura.d.ts",
+      "style": "./dist/effects/aura.css",
+      "import": "./dist/esm/effects/aura.js",
+      "default": "./dist/esm/effects/aura.js"
+    },
+    "./effects/hover-3d": {
+      "types": "./dist/esm/effects/hover-3d.d.ts",
+      "style": "./dist/effects/hover-3d.css",
+      "import": "./dist/esm/effects/hover-3d.js",
+      "default": "./dist/esm/effects/hover-3d.js"
+    },
+    "./effects/hover-gallery": {
+      "types": "./dist/esm/effects/hover-gallery.d.ts",
+      "style": "./dist/effects/hover-gallery.css",
+      "import": "./dist/esm/effects/hover-gallery.js",
+      "default": "./dist/esm/effects/hover-gallery.js"
+    },
+    "./effects/text-rotate": {
+      "types": "./dist/esm/effects/text-rotate.d.ts",
+      "style": "./dist/effects/text-rotate.css",
+      "import": "./dist/esm/effects/text-rotate.js",
+      "default": "./dist/esm/effects/text-rotate.js"
+    },
+    "./effects": {
+      "types": "./dist/esm/effects/index.d.ts",
+      "style": "./dist/effects/index.css",
+      "import": "./dist/esm/effects/index.js",
+      "default": "./dist/esm/effects/index.js"
+    },
     "./plugin": {
       "import": "./dist/esm/tailwind-plugin.js",
       "require": "./dist/cjs/tailwind-plugin.cjs",
       "types": "./dist/types/tailwind-plugin.d.ts"
     },
+    "./components/*.css": "./dist/components/*.css",
+    "./effects/*.css": "./dist/effects/*.css",
+    "./effects.css": "./dist/effects/index.css",
+    "./standalone.css": "./dist/standalone/duskmoonui.css",
     "./themes/sunshine": {
       "style": "./dist/themes/generated/sunshine.css",
       "default": "./dist/themes/generated/sunshine.css"
@@ -432,6 +496,7 @@
     "test:visual": "playwright test --config=playwright.visual.config.ts",
     "test:integration": "playwright test --config=playwright.integration.config.ts",
     "test:native-overlays": "playwright test --config=playwright.native-overlays.config.ts",
+    "test:data-display": "playwright test --config=playwright.data-display.config.ts",
     "test:a11y": "playwright test --config=playwright.integration.config.ts tests/accessibility/",
     "test:all": "bun run test:unit && bun run test:visual && bun run test:integration && bun run test:a11y"
   },

@@ -49,7 +49,7 @@ describe('Collapse Component', () => {
       /\.collapse-card \.collapse-content > \*\s*\{[^}]*padding:[^}]*\}/s,
     );
     expect(css).toMatch(
-      /\.collapse-card\.collapse-open \.collapse-content > \*[\s\S]*?\.collapse-card\.show \.collapse-content > \*\s*\{[^}]*padding:\s*0 1rem 1rem/s,
+      /\.collapse-card:not\(details\):not\(\.collapse-closed\):is\(\.collapse-open, \.show\) > \.collapse-content > \*,\s*details\.collapse-card\[open\] > \.collapse-content > \*\s*\{[^}]*padding:\s*0 1rem 1rem/s,
     );
   });
 });

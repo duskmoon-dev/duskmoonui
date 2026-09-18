@@ -1,0 +1,33 @@
+@layer components {
+  .diff {
+    --diff-position: 50%;
+    display: grid;
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: var(--diff-ratio, 16 / 9);
+    max-inline-size: 100%;
+    overflow: hidden;
+    color: var(--color-on-surface);
+    background: var(--color-surface-container);
+    border-radius: var(--radius-md);
+  }
+  .diff-before, .diff-after { grid-area: 1 / 1; min-inline-size: 0; min-block-size: 0; overflow: hidden; }
+  .diff-before { z-index: 1; clip-path: inset(0 calc(100% - clamp(0%, var(--diff-position), 100%)) 0 0); }
+  .diff:dir(rtl) > .diff-before { clip-path: inset(0 0 0 calc(100% - clamp(0%, var(--diff-position), 100%))); }
+  .diff img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+  .diff-label { position: absolute; inset-block-start: 0.5rem; inset-inline-start: 0.5rem; padding: 0.25rem 0.5rem; background: var(--color-surface); color: var(--color-on-surface); border-radius: var(--radius-sm); }
+  .diff-after .diff-label { inset-inline-start: auto; inset-inline-end: 0.5rem; }
+  .diff-static { aspect-ratio: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .diff.diff-static > .diff-before, .diff-static > .diff-after { grid-area: auto; clip-path: none; position: relative; }
+  @media print {
+    .diff { aspect-ratio: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; }
+    .diff > .diff-before, .diff:dir(rtl) > .diff-before, .diff > .diff-after { grid-area: auto; clip-path: none; position: relative; }
+  }
+  .diff-primary { color: var(--color-primary); }
+  .diff-secondary { color: var(--color-secondary); }
+  .diff-tertiary { color: var(--color-tertiary); }
+  .diff-info { color: var(--color-info); }
+  .diff-success { color: var(--color-success); }
+  .diff-warning { color: var(--color-warning); }
+  .diff-error { color: var(--color-error); }
+}

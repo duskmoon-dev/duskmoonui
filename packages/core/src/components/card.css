@@ -36,6 +36,8 @@
 
   /* Card Body */
   .card-body {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
     --card-p: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -100,6 +102,16 @@
     border: 1px solid var(--color-outline);
     box-shadow: none;
   }
+  .card-outlined { border: 1px solid var(--color-outline); box-shadow: none; }
+  .card-outlined:hover { box-shadow: none; }
+  .card-filled { background: var(--color-surface-container-highest); box-shadow: none; }
+  .card-lowest { background: var(--color-surface-container-lowest); box-shadow: none; }
+  .card-low { background: var(--color-surface-container-low); box-shadow: var(--shadow-sm); }
+  .card-default { background: var(--color-surface-container); box-shadow: var(--shadow-md); }
+  .card-high { background: var(--color-surface-container-high); box-shadow: var(--shadow-lg); }
+  .card-highest { background: var(--color-surface-container-highest); box-shadow: var(--shadow-xl); }
+  .card-subtitle { color: var(--color-on-surface-variant); font-size: 0.875rem; }
+  .card-comfortable .card-body { --card-p: 2rem; }
 
   .card-bordered:hover {
     box-shadow: none;

@@ -171,6 +171,8 @@
   /* Selected Row */
   .table-row-selected,
   .table tr.selected,
+  .table-hover tbody tr:is(.selected, .table-row-selected),
+  .table-hover .table-row:is(.selected, .table-row-selected),
   .table-selectable tbody tr.table-row-selected,
   .table-selectable .table-row.table-row-selected,
   .table-selectable tbody tr.selected,
@@ -178,6 +180,12 @@
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
   }
+
+  .table-numeric { text-align: end; font-variant-numeric: tabular-nums; }
+  .table-center { text-align: center; }
+  .table-actions { white-space: nowrap; text-align: end; }
+  .table-checkbox { inline-size: 1%; }
+  .table-sort-icon { display: inline-block; margin-inline-start: 0.25rem; }
 
   /* Clickable Row */
   .table-row-clickable,

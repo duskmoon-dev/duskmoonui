@@ -1,0 +1,28 @@
+@layer components {
+  .kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 1.5rem;
+    padding: 0.125rem 0.375rem;
+    font: 0.875rem ui-monospace, monospace;
+    line-height: 1.5;
+    color: var(--color-on-surface);
+    background: var(--color-surface-container);
+    border: 1px solid currentColor;
+    border-block-end-width: 2px;
+    border-radius: var(--radius-sm);
+    vertical-align: middle;
+  }
+  .kbd-xs { font-size: 0.625rem; }
+  .kbd-sm { font-size: 0.75rem; }
+  .kbd-lg { font-size: 1rem; padding: 0.25rem 0.5rem; }
+  .kbd-primary { color: var(--color-primary); }
+  .kbd-secondary { color: var(--color-secondary); }
+  .kbd-tertiary { color: var(--color-tertiary); }
+  .kbd-info { color: var(--color-info); }
+  .kbd-success { color: var(--color-success); }
+  .kbd-warning { color: var(--color-warning); }
+  .kbd-error { color: var(--color-error); }
+  .kbd-ghost { border-color: transparent; }
+}

@@ -18,7 +18,7 @@ describe('Component Exports', () => {
 
   it('exports every component with CSS, JS, and DTS entries', () => {
     const componentExports = Object.entries(packageJson.exports).filter(
-      ([key]) => key.startsWith('./components/'),
+      ([key, entry]) => key.startsWith('./components/') && typeof entry === 'object',
     );
 
     expect(componentExports.length).toBeGreaterThanOrEqual(50);

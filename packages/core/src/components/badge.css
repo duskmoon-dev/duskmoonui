@@ -6,6 +6,7 @@
 @layer components {
   /* Base Badge */
   .badge {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +14,10 @@
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1rem;
-    white-space: nowrap;
+    white-space: normal;
+    max-inline-size: 100%;
+    overflow-wrap: anywhere;
+    min-inline-size: 0;
     border-radius: var(--radius-full);
     background-color: var(--color-surface-container);
     color: var(--color-on-surface);
@@ -227,13 +231,13 @@
   /* Badge with Indicator Dot */
   .badge-indicator {
     position: relative;
-    padding-left: 1rem;
+    padding-inline-start: 1rem;
   }
 
   .badge-indicator::before {
     content: '';
     position: absolute;
-    left: 0.375rem;
+    inset-inline-start: 0.375rem;
     top: 50%;
     transform: translateY(-50%);
     width: 0.375rem;
@@ -241,6 +245,14 @@
     border-radius: var(--radius-full);
     background-color: currentColor;
   }
+
+  .badge-filled { font-weight: 500; }
+  .badge-md { padding: 0.125rem 0.5rem; font-size: 0.75rem; line-height: 1rem; }
+  .badge-notification { position: absolute; inset-block-start: 0; inset-inline-end: 0; transform: translate(50%, -50%); }
+  .badge-notification:dir(rtl) { transform: translate(-50%, -50%); }
+  .badge-removable { gap: 0.25rem; }
+  .badge-removable > button { display: inline-flex; padding: 0; border: 0; color: inherit; background: transparent; cursor: pointer; }
+  .badge-removable > button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 
   /* Empty Badge (just a dot) */
   .badge-dot {
