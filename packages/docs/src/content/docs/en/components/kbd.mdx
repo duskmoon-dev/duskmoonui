@@ -1,0 +1,34 @@
+---
+title: Kbd
+description: Standalone native keyboard key presentation
+category: components
+order: 40
+published: true
+tags: ['data-display', 'kbd']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Kbd
+
+
+
+## Import
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+Individual CSS: `@duskmoon-dev/core/components/kbd.css` (also available via the `style` export condition on `@duskmoon-dev/core/components/kbd`).
+JavaScript `import { css, styles } from "@duskmoon-dev/core/components/kbd"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
+
+## Example
+
+<ComponentShowcase title="Kbd composition" code={"<p>Search commands: <kbd class=\"kbd\"><kbd class=\"kbd kbd-sm\">Ctrl</kbd> + <kbd class=\"kbd kbd-sm\">K</kbd></kbd></p><p><kbd class=\"kbd kbd-lg\">Enter</kbd> confirms; <kbd class=\"kbd kbd-xs\">Esc</kbd> cancels.</p>"} />
+
+## API And Accessibility
+
+Apply `kbd` only to styled keys. Sizes: `kbd-xs`, `kbd-sm`, default, `kbd-lg`; colors: `kbd-primary`, `kbd-secondary`, `kbd-tertiary`, `kbd-info`, `kbd-success`, `kbd-warning`, `kbd-error`; `kbd-ghost` removes the border.
+
+Use native `kbd` for user input, with readable key names and separators for combinations. This is presentation, not shortcut registration. The application handles platform-specific names and actual key events. Existing unclassed `.markdown-body kbd` styling is preserved, and neither individual export imports the other. No global unclassed `kbd` styling is introduced.

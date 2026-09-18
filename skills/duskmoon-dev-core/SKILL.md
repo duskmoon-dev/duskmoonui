@@ -80,6 +80,11 @@ Apply theme via `data-theme` attribute on HTML element:
 - `theme-controller` - Theme switching: `theme-controller` (inline switch), `theme-controller-dropdown`, `theme-controller-item`, `theme-controller-label`
 
 ### Data Display
+- `stats` / `stat` - Statistics group and title/value/desc/figure/actions slots; `stats-responsive` is container-responsive.
+- `kbd` - Native keys, xs/sm/lg and semantic colors; does not register shortcuts or change unclassed keys globally.
+- `carousel` - Native scroll-snap, horizontal/vertical and start/center/end; label and focus the scroll container. Optional navigation is application-owned.
+- `countdown` - DOM numeric presentation only; application owns deadline and updates. No per-second live announcements by default.
+- `diff` - Visual before/after, `--diff-position`, range-input controller; `diff-static` and print expose both sides.
 - `card` - Content containers: `card-body`, `card-title`
 - `badge` - Status indicators: `badge-primary`, `badge-dot`
 - `avatar` - User images: `avatar-lg`, `avatar-status-online`
@@ -369,6 +374,24 @@ document.documentElement.dataset.theme = 'sunshine';
 ```
 
 ## Importing Component Styles
+
+Data Display additions expose CSS directly at `@duskmoon-dev/core/components/{name}.css`
+and CSS text / nullable CSSStyleSheet at `@duskmoon-dev/core/components/{name}`.
+The token-only Tailwind plugin does not inject component styles: import core CSS too.
+Standalone CSS is available at `@duskmoon-dev/core/standalone.css`.
+
+Optional effects are excluded from core and standalone defaults. Import
+`@duskmoon-dev/core/effects.css` or `@duskmoon-dev/core/effects/{name}.css` for
+`aura`, `hover-3d`, `hover-gallery`, `text-rotate`. Stylesheet modules use
+`@duskmoon-dev/core/effects` and `/effects/{name}` (SSR returns null styles).
+Gallery selection and Text Rotate pause buttons require application controllers.
+Effects do not add mandatory JavaScript.
+
+Disclosure: `details[open]` wins over all class aliases. Controlled Accordion
+accepts `.open` / `.accordion-item-open`; Collapse `.collapse-closed` wins over
+`.collapse-open` / `.show`. Applications synchronize ARIA, hidden/inert and focus.
+Never use CSS clipping alone to hide focusable controls. Native exclusive details
+use `name` where supported; otherwise use an application controller.
 
 ### Full Library Import
 

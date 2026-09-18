@@ -48,11 +48,12 @@ export default defineConfig({
     resolve: {
       alias: isProduction
         ? {}
-        : {
+        : [
             // In dev mode, use source files for hot reload
-            "@duskmoon-dev/core": resolve(coreSourceDir, "index.css"),
-            "@duskmoon-dev/css-art": resolve(cssArtSourceDir, "index.css"),
-          },
+            { find: /^@duskmoon-dev\/core$/, replacement: resolve(coreSourceDir, "index.css") },
+            { find: /^@duskmoon-dev\/core\/effects\/(.+)\.css$/, replacement: `${coreSourceDir}/effects/$1.css` },
+            { find: /^@duskmoon-dev\/css-art$/, replacement: resolve(cssArtSourceDir, "index.css") },
+          ],
     },
     optimizeDeps: {
       // Exclude core package from pre-bundling to enable hot reload

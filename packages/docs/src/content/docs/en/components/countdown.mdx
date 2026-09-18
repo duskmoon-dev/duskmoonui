@@ -1,0 +1,79 @@
+---
+title: Countdown
+description: Readable numeric presentation with application-owned timekeeping
+category: components
+order: 40
+published: true
+tags: ['data-display', 'countdown']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
+
+# Countdown
+
+
+
+## Import
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+Individual CSS: `@duskmoon-dev/core/components/countdown.css` (also available via the `style` export condition on `@duskmoon-dev/core/components/countdown`).
+JavaScript `import { css, styles } from "@duskmoon-dev/core/components/countdown"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
+
+## Example
+
+<DataDisplayDemo kind="countdown" />
+
+```html
+<div data-countdown-demo>
+  <p class="countdown countdown-animated" aria-label="Time remaining">
+    <span><span class="countdown-value" data-unit="days">00</span> days</span>
+    <span><span class="countdown-value" data-unit="hours">00</span> hours</span>
+    <span><span class="countdown-value" data-unit="minutes">02</span> minutes</span>
+    <span><span class="countdown-value" data-unit="seconds">00</span> seconds</span>
+  </p>
+  <p data-expiry role="status"></p>
+</div>
+```
+
+## API And Accessibility
+
+Semantic text variants: `countdown-primary`, `countdown-secondary`,
+`countdown-tertiary`, `countdown-info`, `countdown-success`,
+`countdown-warning`, `countdown-error`. Keep meaningful labels and values;
+color alone is not an accessible distinction.
+
+Classes: `countdown`, `countdown-value`, `countdown-sm`, `countdown-lg`, `countdown-transition`, `countdown-animated`. The live example animates changed values with a short slide/fade: the application restarts `countdown-tick` after updating the DOM. Reduced motion and print remain static. `countdown-transition` affects color only. Neither animation runs the timer. Values are ordinary DOM text with tabular numerals; any digit count remains readable without wrapping a finite digit strip.
+
+This example has a two-minute application deadline. CSS variables do not run a timer. Calculate remaining time from an absolute deadline, clamp at zero, update readable DOM values, and stop the interval at expiry. There is no per-second live region. Only the expiry message uses a dedicated live region. Stop intervals when unmounting.
+
+```js
+const root = document.querySelector('[data-countdown-demo]');
+const expiry = root.querySelector('[data-expiry]');
+const deadline = Date.now() + 120000;
+const tick = () => {
+  const total = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+  const units = { days: Math.floor(total / 86400), hours: Math.floor(total / 3600) % 24,
+    minutes: Math.floor(total / 60) % 60, seconds: total % 60 };
+  for (const [unit, value] of Object.entries(units)) {
+    const element = root.querySelector(`[data-unit="${unit}"]`);
+    const text = String(value).padStart(2, "0");
+    if (element.textContent !== text) {
+      element.textContent = text;
+      element.classList.remove('countdown-tick');
+      void element.offsetWidth;
+      element.classList.add('countdown-tick');
+    }
+  }
+  if (!total) { expiry.textContent = "Time expired"; clearInterval(timer); }
+};
+const timer = setInterval(tick, 1000);
+tick();
+// On unmount: clearInterval(timer).
+```
+
+Use visible unit labels so visual and accessible values stay synchronized. Time zones, server clock skew, deadline persistence and formatting remain application responsibilities.

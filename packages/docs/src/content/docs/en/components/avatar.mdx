@@ -8,6 +8,22 @@ tags: ['avatar', 'components', 'material-design', 'user', 'profile']
 ---
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
+## Status Contract
+
+Canonical status classes are `avatar-status-online`, `avatar-status-offline`,
+`avatar-status-busy`, `avatar-status-away`. `avatar-status` is a compatibility
+composition marker; `avatar-online` / `avatar-offline` remain supported aliases.
+Image/initials masking happens inside the Avatar; status remains unclipped.
+Use visible labels, not color alone. A pseudo-element has no accessible name.
+
+<ComponentShowcase title="Indicator composition" code={`<div class="avatar indicator avatar-lg avatar-ring avatar-ring-primary">
+  <span class="avatar-placeholder">LM</span>
+  <span class="indicator-item indicator-bottom badge badge-success badge-xs">Online</span>
+</div><span>Luna Moon - Online</span>`} />
+
+Use an `indicator-item` child OR the legacy pseudo-status class, not both. Indicator is in
+the core aggregate; individual Avatar consumers must also import Indicator and Badge CSS.
+
 # Avatar
 
 Avatars are visual representations of users or entities. @duskmoon-dev/core provides a complete set of Material Design 3-inspired avatar styles with support for images, initials, icons, and status indicators.
@@ -18,7 +34,7 @@ Avatars are visual representations of users or entities. @duskmoon-dev/core prov
 
 <ComponentShowcase
   title="Avatar with Initials"
-  code={`<div class="avatar">
+  code={`<div class="avatar indicator">
   JD
 </div>`}
 />

@@ -1,0 +1,119 @@
+---
+interface Props { kind: string; }
+const { kind } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const before = `${base}images/data-display-before.jpg`;
+const after = `${base}images/data-display-after.jpg`;
+---
+
+{kind === 'disclosure' && <div class="accordion" data-disclosure-demo>
+  <div class="accordion-item">
+    <button class="accordion-header" aria-expanded="false" aria-controls="demo-controlled-panel">Delivery details</button>
+    <div class="accordion-content" id="demo-controlled-panel" hidden inert>
+      <div class="accordion-body"><div class="accordion-body-inner"><a href="#native-disclosure">Native alternative</a></div></div>
+    </div>
+  </div>
+</div>}
+
+{kind === 'collapse' && <div class="collapse collapse-bordered collapse-closed" data-disclosure-demo data-collapse-demo>
+  <button class="collapse-trigger" aria-expanded="false" aria-controls="demo-collapse-controlled-panel">Toggle controlled Collapse</button>
+  <div class="collapse-content" id="demo-collapse-controlled-panel" hidden inert>
+    <div class="collapse-inner"><p>This panel is synchronized by an application controller.</p><a href="#native-and-controlled-state">Controller contract</a></div>
+  </div>
+</div>}
+
+{kind === 'diff' && <div data-diff-demo>
+  <figure class="diff" id="demo-diff" aria-label="Mountain landscape comparison">
+    <div class="diff-before"><img src={before} alt="Mountain lake in daylight" /><span class="diff-label">Before</span></div>
+    <div class="diff-after"><img src={after} alt="Mountain landscape under a different sky" /><span class="diff-label">After</span></div>
+  </figure>
+  <label for="demo-diff-position">Before reveal</label>
+  <input class="range" id="demo-diff-position" aria-controls="demo-diff" type="range" min="0" max="100" value="50" />
+</div>}
+
+{kind === 'countdown' && <div data-countdown-demo>
+  <p class="countdown countdown-animated" aria-label="Time remaining">
+    <span><span class="countdown-value" data-unit="days">00</span> days</span>
+    <span><span class="countdown-value" data-unit="hours">00</span> hours</span>
+    <span><span class="countdown-value" data-unit="minutes">02</span> minutes</span>
+    <span><span class="countdown-value" data-unit="seconds">00</span> seconds</span>
+  </p>
+  <p data-expiry role="status"></p>
+</div>}
+
+{kind === 'hover-gallery' && <div class="hover-gallery" data-gallery-demo>
+  <div class="hover-gallery-stage"><img src={before} alt="Mountain lake in daylight" /></div>
+  <div class="hover-gallery-controls" aria-label="Choose landscape">
+    <button type="button" aria-pressed="true" aria-label="Mountain lake" data-src={before} data-alt="Mountain lake in daylight"><img src={before} alt="" /></button>
+    <button type="button" aria-pressed="false" aria-label="Mountain sky" data-src={after} data-alt="Mountain landscape under a different sky"><img src={after} alt="" /></button>
+  </div>
+</div>}
+
+{kind === 'text-rotate' && <div data-text-rotate-demo>
+  <p aria-label="Build accessible, resilient, thoughtful interfaces">Build <span aria-hidden="true" class="text-rotate text-rotate-animated"><span>accessible</span><span>resilient</span><span>thoughtful</span></span> interfaces</p>
+  <button class="btn btn-sm" type="button" aria-pressed="false">Pause animation</button>
+</div>}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-disclosure-demo]').forEach(root => {
+    const trigger = root.querySelector<HTMLButtonElement>('button')!;
+    const panel = root.querySelector<HTMLElement>('.accordion-content, .collapse-content')!;
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') !== 'true';
+      if (!expanded && panel.contains(document.activeElement)) trigger.focus();
+      trigger.setAttribute('aria-expanded', String(expanded));
+      if (root.matches('.collapse')) {
+        root.classList.toggle('collapse-open', expanded);
+        root.classList.toggle('collapse-closed', !expanded);
+      } else trigger.parentElement!.classList.toggle('open', expanded);
+      panel.hidden = !expanded;
+      panel.inert = !expanded;
+    });
+  });
+  document.querySelectorAll<HTMLElement>('[data-diff-demo]').forEach(root => {
+    const input = root.querySelector<HTMLInputElement>('input')!;
+    const figure = root.querySelector<HTMLElement>('.diff')!;
+    const update = () => figure.style.setProperty('--diff-position', `${input.value}%`);
+    input.addEventListener('input', update);
+    update();
+  });
+  document.querySelectorAll<HTMLElement>('[data-countdown-demo]').forEach(root => {
+    const deadline = Date.now() + 120000;
+    const tick = () => {
+      const total = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      const units = { days: Math.floor(total / 86400), hours: Math.floor(total / 3600) % 24, minutes: Math.floor(total / 60) % 60, seconds: total % 60 };
+      for (const [unit, value] of Object.entries(units)) {
+        const element = root.querySelector<HTMLElement>(`[data-unit="${unit}"]`)!;
+        const text = String(value).padStart(2, '0');
+        if (element.textContent !== text) {
+          element.textContent = text;
+          element.classList.remove('countdown-tick');
+          void element.offsetWidth;
+          element.classList.add('countdown-tick');
+        }
+      }
+      if (total === 0) { root.querySelector('[data-expiry]')!.textContent = 'Time expired'; clearInterval(timer); }
+    };
+    const timer = setInterval(tick, 1000);
+    tick();
+    document.addEventListener('astro:before-swap', () => clearInterval(timer), { once: true });
+  });
+  document.querySelectorAll<HTMLElement>('[data-gallery-demo]').forEach(root => {
+    root.querySelectorAll<HTMLButtonElement>('button').forEach(button => {
+      button.addEventListener('click', () => {
+        const image = root.querySelector<HTMLImageElement>('.hover-gallery-stage img')!;
+        image.src = button.dataset.src!;
+        image.alt = button.dataset.alt!;
+        root.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      });
+    });
+  });
+  document.querySelectorAll<HTMLElement>('[data-text-rotate-demo]').forEach(root => {
+    const button = root.querySelector('button')!;
+    button.addEventListener('click', () => {
+      const paused = root.querySelector('.text-rotate')!.classList.toggle('text-rotate-paused');
+      button.setAttribute('aria-pressed', String(paused));
+      button.textContent = paused ? 'Resume animation' : 'Pause animation';
+    });
+  });
+</script>

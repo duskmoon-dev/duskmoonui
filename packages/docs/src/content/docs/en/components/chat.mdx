@@ -9,6 +9,17 @@ tags: ['chat', 'components', 'conversation', 'llm', 'messages']
 
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
+## Long Messages And Links
+
+Messages wrap long text and links; `pre` blocks scroll within the bubble instead
+of widening the transcript. Keep readable link text and native keyboard focus.
+Scrollable code blocks should use `tabindex="0"` and a descriptive accessible
+label so Safari keyboard users can reach and scroll them.
+Transcript height, message updates, announcement policy and scroll-indicator
+navigation belong to the application. Existing `chat-scroll` / `data-chat-tl`
+contracts remain unchanged. Do not treat timeline styling as automatic message
+loading or scroll-position management.
+
 # Chat
 
 Chat provides CSS-only primitives for conversational interfaces. It supports user and assistant rows, avatars, message bubbles, reasoning traces, tool calls, and live streaming states without requiring JavaScript.

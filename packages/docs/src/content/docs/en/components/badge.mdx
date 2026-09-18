@@ -8,6 +8,17 @@ tags: ['badge', 'components', 'material-design', 'indicator']
 ---
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
+## Compatibility And Long Labels
+
+`badge-outlined` is canonical; `badge-outline` and the existing secondary/tertiary
+outlined shortcuts remain supported. `badge-soft` keeps its semantic container
+colors. `badge-filled` and `badge-md` explicitly represent the default style/size.
+Long labels now wrap inside bounded containers. `badge-notification` positions
+against an application-provided positioned wrapper and mirrors in RTL.
+`badge-removable` styles a named native button; the application handles removal
+and restores focus after removing an item. See [Indicator](/duskmoonui/docs/en/components/indicator/)
+for standalone dots with visible text, rather than color-only meaning.
+
 # Badge
 
 Badges are small status descriptors for UI elements. They can display notification counts, status indicators, or labels.

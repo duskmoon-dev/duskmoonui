@@ -78,17 +78,17 @@
   margin: 3rem 0;
 }
 
-.stat {
+.hero-stats > .stat {
   text-align: center;
 }
 
-.stat-value {
+.hero-stats .stat-value {
   font-size: 3rem;
   font-weight: 800;
   color: var(--primary);
 }
 
-.stat-title {
+.hero-stats .stat-title {
   font-size: 1rem;
   color: var(--foreground-muted);
   text-transform: uppercase;

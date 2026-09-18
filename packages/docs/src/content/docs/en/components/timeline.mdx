@@ -8,6 +8,21 @@ tags: ['timeline', 'components', 'material-design', 'chronological']
 ---
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
+## Layout And State Contract
+
+Default, `timeline-right` (inline-end), `timeline-horizontal`, and
+`timeline-alternate` layouts follow document direction. Alternate timelines
+become one column below 640px. Horizontal timelines scroll within their container;
+give overflowing containers a name and `tabindex="0"` for keyboard access.
+`timeline-compact`, `timeline-content-card`, documented marker colors and
+`timeline-item-active` / `timeline-item-pending` are shipped. Existing item-color
+and `.active` state classes remain supported.
+
+Use an ordered list for chronological events and native `time` values.
+`timeline-collapsible` / `.expanded` are visual hooks only: applications must
+provide semantic buttons, synchronized ARIA and hidden/inert panels, restoring
+focus before hiding an active descendant. CSS does not provide a controller.
+
 # Timeline
 
 Timelines display a list of events in chronological order, helping users understand the sequence of events and milestones. @duskmoon-dev/core provides a flexible Material Design 3-inspired timeline component.

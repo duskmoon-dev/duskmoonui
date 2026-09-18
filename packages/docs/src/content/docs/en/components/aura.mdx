@@ -1,0 +1,34 @@
+---
+title: Aura
+description: Opt-in token-based decorative glow
+category: components
+order: 40
+published: true
+tags: ['data-display', 'aura', 'optional-effects']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import '@duskmoon-dev/core/effects/aura.css';
+
+# Aura
+
+Optional effect: excluded from the default core and standalone bundles.
+
+## Import
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+@import "@duskmoon-dev/core/effects/aura";
+```
+
+Individual CSS: `@duskmoon-dev/core/effects/aura.css` (also available via the `style` export condition on `@duskmoon-dev/core/effects/aura`).
+JavaScript `import { css, styles } from "@duskmoon-dev/core/effects/aura"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
+
+## Example
+
+<ComponentShowcase title="Aura composition" code={"<div class=\"aura\"><div class=\"card\"><div class=\"card-body\"><h2 class=\"card-title\">Featured report</h2><a class=\"btn btn-primary\" href=\"#api\">Read report</a></div></div></div>"} />
+
+## API And Accessibility
+
+Classes: `aura`, `aura-animated`. Default is a static token-colored border light. The pseudo-element captures no pointer input, does not contribute to layout and does not cover focus. Keep surrounding space for glow; an ancestor with overflow clipping can crop it. Motion is enabled only by `aura-animated`, disabled by reduced motion and removed in print. Basic outline remains usable without color-mix support. No controller is required. Decoration needs no additional ARIA.

@@ -1,0 +1,59 @@
+---
+title: Text Rotate
+description: Opt-in three-phrase decorative text with stable accessible copy
+category: components
+order: 40
+published: true
+tags: ['data-display', 'text-rotate', 'optional-effects']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
+import '@duskmoon-dev/core/effects/text-rotate.css';
+
+# Text Rotate
+
+Optional effect: excluded from the default core and standalone bundles.
+
+## Import
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+@import "@duskmoon-dev/core/effects/text-rotate";
+```
+
+Individual CSS: `@duskmoon-dev/core/effects/text-rotate.css` (also available via the `style` export condition on `@duskmoon-dev/core/effects/text-rotate`).
+JavaScript `import { css, styles } from "@duskmoon-dev/core/effects/text-rotate"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
+
+## Example
+
+<DataDisplayDemo kind="text-rotate" />
+
+```html
+<div data-text-rotate-demo>
+  <p aria-label="Build accessible, resilient, thoughtful interfaces">Build
+    <span class="text-rotate text-rotate-animated" aria-hidden="true"><span>accessible</span><span>resilient</span><span>thoughtful</span></span> interfaces
+  </p>
+  <button class="btn" type="button" aria-pressed="false">Pause animation</button>
+</div>
+```
+
+## API And Accessibility
+
+Classes: `text-rotate`, `text-rotate-animated`, `text-rotate-paused`. Exactly three direct spans are supported by animated mode; arbitrary counts use static mode or an application controller. Set `--text-rotate-duration` (6s default). Overlaid grid spans reserve the largest phrase size. The first phrase remains meaningful without animation, with reduced motion and in print.
+
+Give the decorative rotating spans `aria-hidden="true"` and the containing phrase a stable accessible label containing the intended meaning. Do not announce every transition. Hover pauses motion; a persistent explicit pause button works for keyboard/touch:
+
+```js
+const root = document.querySelector('[data-text-rotate-demo]');
+const button = root.querySelector('button');
+const text = root.querySelector('.text-rotate');
+button.addEventListener("click", () => {
+  const paused = text.classList.toggle("text-rotate-paused");
+  button.setAttribute("aria-pressed", String(paused));
+  button.textContent = paused ? "Resume animation" : "Pause animation";
+});
+```
+
+CSS does not synchronize that button. Avoid embedding controls in rotating spans. Unsupported animation displays the first phrase.

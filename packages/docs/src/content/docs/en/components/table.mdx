@@ -8,6 +8,19 @@ tags: ['table', 'data', 'components', 'material-design']
 ---
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
+## Compatibility And Responsive Composition
+
+Both `table-striped` and `table-zebra` are shipped. Selected rows support
+`table-row-selected` and `selected`; selection remains visible under hover.
+`table-numeric` aligns to inline-end with tabular numerals; `table-center`,
+`table-actions`, `table-checkbox`, `table-sort-icon` are shipped composition hooks.
+Wrap wide native tables in `table-responsive`; do not turn cells into arbitrary
+non-table elements without preserving table semantics. Label scrollable wrappers
+and provide keyboard access where they overflow. Sorting, row selection and
+navigation are application-owned, not automatic CSS behavior. Use native controls
+inside cells and meaningful captions/header scopes. See [Indicator](/duskmoonui/docs/en/components/indicator/)
+for label-plus-indicator cells.
+
 # Table
 
 Tables display information in a grid-like format of rows and columns. @duskmoon-dev/core provides a complete set of Material Design 3 table variants with support for different layouts, interactions, and data presentations.

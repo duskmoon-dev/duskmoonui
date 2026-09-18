@@ -1,0 +1,58 @@
+---
+title: Hover Gallery
+description: Opt-in gallery presentation with deliberate image selection
+category: components
+order: 40
+published: true
+tags: ['data-display', 'hover-gallery', 'optional-effects']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
+import '@duskmoon-dev/core/effects/hover-gallery.css';
+
+# Hover Gallery
+
+Optional effect: excluded from the default core and standalone bundles.
+
+## Import
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+@import "@duskmoon-dev/core/effects/hover-gallery";
+```
+
+Individual CSS: `@duskmoon-dev/core/effects/hover-gallery.css` (also available via the `style` export condition on `@duskmoon-dev/core/effects/hover-gallery`).
+JavaScript `import { css, styles } from "@duskmoon-dev/core/effects/hover-gallery"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
+
+## Example
+
+<DataDisplayDemo kind="hover-gallery" />
+
+```html
+<div class="hover-gallery" data-gallery-demo>
+  <div class="hover-gallery-stage"><img src="lake.jpg" alt="Mountain lake in daylight"></div>
+  <div class="hover-gallery-controls" aria-label="Choose landscape">
+    <button type="button" aria-label="Mountain lake" aria-pressed="true" data-src="lake.jpg" data-alt="Mountain lake in daylight">Lake</button>
+    <button type="button" aria-label="Mountain sky" aria-pressed="false" data-src="sky.jpg" data-alt="Mountain sky">Sky</button>
+  </div>
+</div>
+```
+
+## API And Accessibility
+
+Classes: `hover-gallery`, `hover-gallery-stage`, `hover-gallery-controls`. Stage uses `--hover-gallery-ratio` (4/3 default). Initial image is available without JavaScript. Native thumbnail buttons work by keyboard/touch/click with an application controller; hover only highlights the available selection, never hides important content.
+
+```js
+const root = document.querySelector('[data-gallery-demo]');
+root.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
+  const image = root.querySelector(".hover-gallery-stage img");
+  image.src = button.dataset.src;
+  image.alt = button.dataset.alt;
+  root.querySelectorAll("button").forEach(item =>
+    item.setAttribute("aria-pressed", String(item === button)));
+}));
+```
+
+Give each button an accessible name and keep `aria-pressed` synchronized. Thumbnails are decorative when the button is named. Preserve meaningful alternatives on the main image. Selection is explicit, not a hover-only gallery. No animation or unsupported advanced selector is needed for its static fallback. Print shows the selected image.

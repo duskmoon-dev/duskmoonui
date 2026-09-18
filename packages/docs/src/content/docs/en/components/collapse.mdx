@@ -8,8 +8,71 @@ tags: ['collapse', 'accordion', 'expandable', 'components', 'material-design']
 ---
 
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
 
 # Collapse
+
+## Expand And Collapse Animation
+
+Native `details.collapse` animates its content height in browsers supporting
+`::details-content` and `interpolate-size: allow-keywords`. Controlled panels
+animate when the application synchronizes `.collapse-open`/`.show`, `hidden`,
+`inert`, and ARIA. Set `inert` immediately on closing and return focus to the
+trigger if focus was inside. Discrete display transitions retain the closing
+visual until the height transition finishes, without retaining keyboard access.
+Reduced motion and older browsers use immediate disclosure. CSS does not update
+ARIA or manage focus.
+
+<ComponentShowcase title="Animated native disclosure" code={'<details class="collapse collapse-bordered"><summary class="collapse-trigger">Delivery details</summary><div class="collapse-content"><div class="collapse-inner"><p>Track your delivery and review its destination.</p><a href="#">Review delivery</a></div></div></details>'} />
+
+## Native And Controlled State
+
+<ComponentShowcase title="Native Collapse" code={`<details class="collapse collapse-card">
+  <summary class="collapse-trigger">Shipping information</summary>
+  <div class="collapse-content"><p>Ships in two days.</p></div>
+</details>`} />
+
+`details[open]` is the native authority, even when compatibility classes conflict.
+Native exclusive groups can share `name`; unsupported browsers remain independent.
+Applications own any required exclusive-group fallback. Independent items omit `name`.
+
+For non-details markup, `.collapse-closed` wins over `.collapse-open` and legacy
+`.show`. Remove contradictory classes in your controller. Fade, slide and
+horizontal variants use the same state contract; no outer item opens a nested
+item. CSS does not synchronize accessibility or focus.
+
+```html
+<div class="collapse collapse-closed" id="demo-controlled-collapse">
+  <button class="collapse-trigger" aria-expanded="false" aria-controls="demo-collapse-panel">Shipping</button>
+  <div class="collapse-content" id="demo-collapse-panel" hidden inert><p>Ships in two days.</p></div>
+</div>
+```
+
+```js
+function setExpanded(item, expanded) {
+  const trigger = item.querySelector(':scope > .collapse-trigger');
+  const panel = item.querySelector(':scope > .collapse-content');
+  if (!expanded && panel.contains(document.activeElement)) trigger.focus();
+  trigger.setAttribute('aria-expanded', String(expanded));
+  item.classList.toggle('collapse-open', expanded);
+  item.classList.toggle('collapse-closed', !expanded);
+  item.classList.remove('show');
+  panel.hidden = !expanded;
+  panel.inert = !expanded;
+}
+const item = document.getElementById('demo-controlled-collapse');
+item.querySelector(':scope > .collapse-trigger').addEventListener('click', () => {
+  const expanded = item.querySelector(':scope > .collapse-trigger').getAttribute('aria-expanded') !== 'true';
+  setExpanded(item, expanded);
+});
+```
+
+Bind semantic button clicks to this setter. Controlled exclusive groups close
+direct siblings through the same setter. Initialize closed panels hidden/inert
+and restore focus before hiding an active descendant; CSS clipping alone is not
+sufficient. The style demos below use native disclosure; framework examples
+implement the controlled contract.
+
 
 The Collapse component allows users to show and hide content sections with smooth animations. It's perfect for FAQs, navigation menus, and content-heavy interfaces where space management is crucial.
 
@@ -17,51 +80,51 @@ The Collapse component allows users to show and hide content sections with smoot
 
 <ComponentShowcase
   title="Basic Collapse"
-  code={`<div class="collapse collapse-open">
-  <button class="collapse-trigger">
+  code={`<details class="collapse" open="">
+  <summary class="collapse-trigger">
     <span>Click to toggle</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>This is the collapsible content that can be shown or hidden.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## States
 
 ### Open State
 
-Add `collapse-open` class to show the content:
+Native disclosure uses the `open` attribute. Controlled markup uses `collapse-open` with the controller contract above:
 
 <ComponentShowcase
   title="Open State"
-  code={`<div class="collapse collapse-open">
-  <button class="collapse-trigger">
+  code={`<details class="collapse" open="">
+  <summary class="collapse-trigger">
     <span>Expanded Section</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>This content is visible by default.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Closed State
 
-Add `collapse-closed` class to hide the content:
+Omit `open` for a closed native disclosure. Controlled markup uses `collapse-closed` and hidden/inert:
 
 <ComponentShowcase
   title="Closed State"
-  code={`<div class="collapse collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse">
+  <summary class="collapse-trigger">
     <span>Collapsed Section</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>This content is hidden by default.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## Variants
@@ -72,15 +135,15 @@ Add a border to the collapse component:
 
 <ComponentShowcase
   title="Bordered Variant"
-  code={`<div class="collapse collapse-bordered collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-bordered">
+  <summary class="collapse-trigger">
     <span>Bordered Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content with a border around it.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Card Variant
@@ -89,15 +152,15 @@ Card variant with shadow and border:
 
 <ComponentShowcase
   title="Card Variant"
-  code={`<div class="collapse collapse-card collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-card">
+  <summary class="collapse-trigger">
     <span>Card Style Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>This collapse has a card appearance with shadow.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Ghost Variant
@@ -106,15 +169,15 @@ Minimal styling for a clean look:
 
 <ComponentShowcase
   title="Ghost Variant"
-  code={`<div class="collapse collapse-ghost collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-ghost">
+  <summary class="collapse-trigger">
     <span>Ghost Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Minimal styling with transparent background.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## Color Variants
@@ -123,45 +186,45 @@ Minimal styling for a clean look:
 
 <ComponentShowcase
   title="Primary Color"
-  code={`<div class="collapse collapse-primary collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-primary">
+  <summary class="collapse-trigger">
     <span>Primary Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content with primary color theme.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Secondary
 
 <ComponentShowcase
   title="Secondary Color"
-  code={`<div class="collapse collapse-secondary collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-secondary">
+  <summary class="collapse-trigger">
     <span>Secondary Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content with secondary color theme.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Tertiary
 
 <ComponentShowcase
   title="Tertiary Color"
-  code={`<div class="collapse collapse-tertiary collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-tertiary">
+  <summary class="collapse-trigger">
     <span>Tertiary Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content with tertiary color theme.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## Sizes
@@ -170,83 +233,83 @@ Minimal styling for a clean look:
 
 <ComponentShowcase
   title="Small Size"
-  code={`<div class="collapse collapse-sm collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-sm">
+  <summary class="collapse-trigger">
     <span>Small Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Compact size for space-constrained layouts.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Medium (Default)
 
 <ComponentShowcase
   title="Medium Size (Default)"
-  code={`<div class="collapse collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse">
+  <summary class="collapse-trigger">
     <span>Medium Collapse (Default)</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Standard size for most use cases.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Large
 
 <ComponentShowcase
   title="Large Size"
-  code={`<div class="collapse collapse-lg collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-lg">
+  <summary class="collapse-trigger">
     <span>Large Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Larger size for emphasis and better touch targets.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## Accordion Groups
 
-Create an accordion by grouping multiple collapse components:
+Create an exclusive native group with a shared `name`. Older browsers without grouped-details support remain independent; an application can provide the fallback:
 
 <ComponentShowcase
   title="Accordion Group"
   code={`<div class="collapse-group">
-  <div class="collapse collapse-open">
-    <button class="collapse-trigger">
+  <details class="collapse" open="" name="demo-collapse-exclusive">
+    <summary class="collapse-trigger">
       <span>Section 1</span>
       <span class="collapse-icon">▼</span>
-    </button>
+    </summary>
     <div class="collapse-content">
       <p>First section content is expanded by default.</p>
     </div>
-  </div>
+  </details>
 
-  <div class="collapse collapse-closed">
-    <button class="collapse-trigger">
+  <details class="collapse" name="demo-collapse-exclusive">
+    <summary class="collapse-trigger">
       <span>Section 2</span>
       <span class="collapse-icon">▼</span>
-    </button>
+    </summary>
     <div class="collapse-content">
       <p>Second section content is collapsed.</p>
     </div>
-  </div>
+  </details>
 
-  <div class="collapse collapse-closed">
-    <button class="collapse-trigger">
+  <details class="collapse" name="demo-collapse-exclusive">
+    <summary class="collapse-trigger">
       <span>Section 3</span>
       <span class="collapse-icon">▼</span>
-    </button>
+    </summary>
     <div class="collapse-content">
       <p>Third section content is collapsed.</p>
     </div>
-  </div>
+  </details>
 </div>`}
 />
 
@@ -258,15 +321,15 @@ Smooth fade in/out effect:
 
 <ComponentShowcase
   title="Fade Animation"
-  code={`<div class="collapse collapse-fade collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-fade">
+  <summary class="collapse-trigger">
     <span>Fade Animation</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content fades in and out smoothly.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Slide Animation
@@ -275,15 +338,15 @@ Slide with transform effect:
 
 <ComponentShowcase
   title="Slide Animation"
-  code={`<div class="collapse collapse-slide collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-slide">
+  <summary class="collapse-trigger">
     <span>Slide Animation</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content slides in from above with a transform.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## Additional Features
@@ -294,15 +357,15 @@ Add a divider between trigger and content:
 
 <ComponentShowcase
   title="With Divider"
-  code={`<div class="collapse collapse-divider collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-divider">
+  <summary class="collapse-trigger">
     <span>With Divider</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content separated by a divider line.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Disabled State
@@ -312,11 +375,11 @@ Prevent interaction with the collapse:
 <ComponentShowcase
   title="Disabled State"
   code={`<div class="collapse collapse-disabled collapse-closed">
-  <button class="collapse-trigger">
+  <button class="collapse-trigger" disabled="" aria-expanded="false">
     <span>Disabled Collapse</span>
     <span class="collapse-icon">▼</span>
   </button>
-  <div class="collapse-content">
+  <div class="collapse-content" hidden="" inert="">
     <p>This collapse cannot be toggled.</p>
   </div>
 </div>`}
@@ -328,15 +391,15 @@ Show a loading indicator:
 
 <ComponentShowcase
   title="Loading State"
-  code={`<div class="collapse collapse-loading collapse-closed">
-  <button class="collapse-trigger">
+  code={`<details class="collapse collapse-loading">
+  <summary class="collapse-trigger">
     <span>Loading Content</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Content is being loaded...</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## Nested Collapse
@@ -345,76 +408,55 @@ Collapse components can be nested within each other:
 
 <ComponentShowcase
   title="Nested Collapse"
-  code={`<div class="collapse collapse-open">
-  <button class="collapse-trigger">
+  code={`<details class="collapse" open="">
+  <summary class="collapse-trigger">
     <span>Parent Section</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Parent content with nested collapse below:</p>
 
-    <div class="collapse collapse-closed">
-      <button class="collapse-trigger">
+    <details class="collapse">
+      <summary class="collapse-trigger">
         <span>Nested Section</span>
         <span class="collapse-icon">▼</span>
-      </button>
+      </summary>
       <div class="collapse-content">
         <p>Nested collapse content with reduced padding.</p>
       </div>
-    </div>
+    </details>
   </div>
-</div>`}
+</details>`}
 />
 
 ## JavaScript Integration
 
-Add interactivity with JavaScript to toggle the collapse state:
+This controlled example runs an application controller. The complete setter in
+[Native And Controlled State](#native-and-controlled-state) synchronizes classes,
+ARIA, hidden/inert and focus; importing Collapse CSS does not attach handlers.
 
-<ComponentShowcase
-  title="JavaScript Integration"
-  code={`<div class="collapse collapse-closed" id="myCollapse">
-  <button class="collapse-trigger" onclick="toggleCollapse('myCollapse')">
-    <span>Toggle Me</span>
-    <span class="collapse-icon">▼</span>
-  </button>
-  <div class="collapse-content">
-    <p>This content can be toggled with JavaScript.</p>
-  </div>
-</div>
-
-<script>
-function toggleCollapse(id) {
-  const collapse = document.getElementById(id);
-  collapse.classList.toggle('collapse-open');
-  collapse.classList.toggle('collapse-closed');
-}
-</script>`}
-/>
+<DataDisplayDemo kind="collapse" />
 
 ## Best Practices
 
 ### Accessibility
 
-- Always use semantic `<button>` elements for triggers
+- Use native `<summary>` triggers, or semantic `<button>` triggers with an application controller
 - Provide clear, descriptive labels
 - Ensure keyboard navigation support (Enter/Space to toggle)
-- Use ARIA attributes for better screen reader support
+- Native details supplies disclosure semantics; controlled triggers must synchronize ARIA
 
 <ComponentShowcase
   title="Accessible Collapse"
-  code={`<div class="collapse collapse-closed">
-  <button
-    class="collapse-trigger"
-    aria-expanded="false"
-    aria-controls="collapse-content-1"
-  >
+  code={`<details class="collapse">
+  <summary class="collapse-trigger">
     <span>Accessible Collapse</span>
     <span class="collapse-icon" aria-hidden="true">▼</span>
-  </button>
-  <div class="collapse-content" id="collapse-content-1" role="region">
+  </summary>
+  <div class="collapse-content" id="collapse-content-1">
     <p>Content with proper ARIA attributes.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ### Performance
@@ -427,7 +469,7 @@ function toggleCollapse(id) {
 ### UX Guidelines
 
 1. **Clear Visual Feedback**: Use icons to indicate expanded/collapsed state
-2. **Smooth Animations**: Default 300ms cubic-bezier provides good balance
+2. **Smooth Animations**: Default 300ms ease-in-out provides good balance
 3. **Touch Targets**: Ensure triggers are at least 44×44px for mobile
 4. **Context Preservation**: Consider scroll position when toggling
 
@@ -436,7 +478,7 @@ function toggleCollapse(id) {
 ### React
 
 ```tsx
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 interface CollapseProps {
   title: string;
@@ -456,6 +498,7 @@ export function Collapse({
   size = 'md'
 }: CollapseProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const panelId = useId();
 
   const classes = [
     'collapse',
@@ -471,11 +514,12 @@ export function Collapse({
         className="collapse-trigger"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
+        aria-controls={panelId}
       >
         <span>{title}</span>
         <span className="collapse-icon">▼</span>
       </button>
-      <div className="collapse-content">
+      <div className="collapse-content" id={panelId} hidden={!isOpen} inert={!isOpen}>
         {children}
       </div>
     </div>
@@ -497,18 +541,19 @@ export function Collapse({
       class="collapse-trigger"
       @click="toggle"
       :aria-expanded="isOpen"
+      :aria-controls="panelId"
     >
       <span>{{ title }}</span>
       <span class="collapse-icon">▼</span>
     </button>
-    <div class="collapse-content">
+    <div class="collapse-content" :id="panelId" :hidden="!isOpen" :inert="!isOpen">
       <slot />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, useId } from 'vue';
 
 interface Props {
   title: string;
@@ -526,6 +571,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const isOpen = ref(props.defaultOpen);
+const panelId = useId(); // Vue 3.5+; older applications must supply a unique ID.
 
 const collapseClasses = computed(() => [
   'collapse',
@@ -551,6 +597,7 @@ const toggle = () => {
 ```svelte
 <script lang="ts">
   export let title: string;
+  export let panelId: string; // Supply a unique ID per instance.
   export let defaultOpen = false;
   export let variant: 'default' | 'bordered' | 'card' | 'ghost' = 'default';
   export let color: 'default' | 'primary' | 'secondary' | 'tertiary' = 'default';
@@ -572,17 +619,18 @@ const toggle = () => {
     class="collapse-trigger"
     on:click={() => isOpen = !isOpen}
     aria-expanded={isOpen}
+    aria-controls={panelId}
   >
     <span>{title}</span>
     <span class="collapse-icon">▼</span>
   </button>
-  <div class="collapse-content">
+  <div class="collapse-content" id={panelId} hidden={!isOpen} inert={!isOpen}>
     <slot />
   </div>
 </div>
 
 <!-- Usage -->
-<Collapse title="FAQ Item" variant="bordered" color="primary">
+<Collapse panelId="demo-svelte-faq-panel" title="FAQ Item" variant="bordered" color="primary">
   <p>Answer to the frequently asked question.</p>
 </Collapse>
 ```
@@ -619,10 +667,10 @@ const toggle = () => {
 The collapse component uses the following animation timing:
 
 - **Duration**: 300ms
-- **Easing**: cubic-bezier(0.4, 0, 0.2, 1) - Material Design standard easing
+- **Easing**: ease-in-out
 - **Icon Rotation**: 180deg on expand
 - **Fade Transition**: Opacity changes over 200ms
-- **Slide Transform**: translateY(-10px) when collapsed
+- **Slide Transform**: translateY(-0.5rem) when collapsed
 
 ### Combinations
 
@@ -631,26 +679,26 @@ Combine classes for customized appearance:
 <ComponentShowcase
   title="Combined Variants"
   code={`<!-- Bordered primary collapse, large size -->
-<div class="collapse collapse-bordered collapse-primary collapse-lg collapse-closed">
-  <button class="collapse-trigger">
+<details class="collapse collapse-bordered collapse-primary collapse-lg">
+  <summary class="collapse-trigger">
     <span>Custom Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Combined styling options.</p>
   </div>
-</div>
+</details>
 
 <!-- Card with fade animation and divider -->
-<div class="collapse collapse-card collapse-fade collapse-divider collapse-closed">
-  <button class="collapse-trigger">
+<details class="collapse collapse-card collapse-fade collapse-divider">
+  <summary class="collapse-trigger">
     <span>Enhanced Collapse</span>
     <span class="collapse-icon">▼</span>
-  </button>
+  </summary>
   <div class="collapse-content">
     <p>Multiple variant combinations.</p>
   </div>
-</div>`}
+</details>`}
 />
 
 ## Related Components

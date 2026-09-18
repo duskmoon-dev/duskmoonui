@@ -1,0 +1,34 @@
+---
+title: Stat
+description: Statistics with responsive groups and composable slots
+category: components
+order: 40
+published: true
+tags: ['data-display', 'stat']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Stat
+
+
+
+## Import
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+Individual CSS: `@duskmoon-dev/core/components/stat.css` (also available via the `style` export condition on `@duskmoon-dev/core/components/stat`).
+JavaScript `import { css, styles } from "@duskmoon-dev/core/components/stat"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
+
+## Example
+
+<ComponentShowcase title="Stat composition" code={"<section class=\"card\"><div class=\"card-body\"><h2 class=\"card-title\">Service health</h2><dl class=\"stats stats-responsive\"><div class=\"stat stat-success\"><dt class=\"stat-title\">Successful requests</dt><dd class=\"stat-value\">98.4%</dd><dd class=\"stat-desc\">Last 24 hours</dd><dd class=\"stat-actions\"><a class=\"btn btn-sm\" href=\"#api\">View report</a></dd></div><div class=\"stat\"><dt class=\"stat-title\">Requests</dt><dd class=\"stat-value\">24,800</dd><dd class=\"stat-desc\">Across all regions</dd></div></dl></div></section>"} />
+
+## API And Accessibility
+
+Use `stats` for the group and `stat` for each item. Slots: `stat-title`, `stat-value`, `stat-desc`, `stat-figure`, `stat-actions`. Groups support `stats-horizontal` (default), `stats-vertical`, and container-responsive `stats-responsive` (vertical below 32rem). Semantic variants: `stat-primary`, `stat-secondary`, `stat-tertiary`, `stat-info`, `stat-success`, `stat-warning`, `stat-error`.
+
+Use a labeled section or definition list; include units and the measurement period. Formatting, localization, aggregation and trend calculations belong to the application. Large values wrap rather than truncate. No JavaScript is required.

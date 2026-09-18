@@ -9,6 +9,19 @@ tags: ['list', 'components', 'material-design']
 
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
+## Canonical Composition And Compatibility
+
+Use `list-item-content`, `list-item-title`, `list-item-subtitle`, `list-item-icon`
+and `list-item-action`. Historical `list-item-text` / `list-item-secondary` map
+to title/subtitle. `list-item-leading` / `list-item-trailing` remain composable
+slots; two/three-line items, surface variants, comfortable spacing and nested
+indentation are shipped. Text wraps in narrow containers and indentation follows RTL.
+
+Use native links/buttons for interactive items. `list-item-interactive` and
+`list-item-clickable` only style a hook: they do not make a `li` into a keyboard
+control. Selection, ARIA and callbacks belong to the application. Status can be
+composed with visible labels; see [Indicator](/duskmoonui/docs/en/components/indicator/).
+
 # List
 
 Lists are continuous, vertical indexes of text or images. They present multiple line items in a vertical arrangement as a single connected element.

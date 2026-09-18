@@ -1,0 +1,59 @@
+---
+title: Diff
+description: Visual before-and-after comparison with a range controller
+category: components
+order: 40
+published: true
+tags: ['data-display', 'diff']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
+
+# Diff
+
+
+
+## Import
+
+```css
+@import "tailwindcss";
+@import "@duskmoon-dev/core";
+```
+
+Individual CSS: `@duskmoon-dev/core/components/diff.css` (also available via the `style` export condition on `@duskmoon-dev/core/components/diff`).
+JavaScript `import { css, styles } from "@duskmoon-dev/core/components/diff"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
+
+## Example
+
+<DataDisplayDemo kind="diff" />
+
+```html
+<figure class="diff" id="demo-diff" aria-label="Landscape comparison">
+  <div class="diff-before"><img src="before.jpg" alt="Mountain lake in daylight"><span class="diff-label">Before</span></div>
+  <div class="diff-after"><img src="after.jpg" alt="Mountain landscape under a different sky"><span class="diff-label">After</span></div>
+</figure>
+<label for="demo-diff-position">Before reveal</label>
+<input class="range" id="demo-diff-position" aria-controls="demo-diff" type="range" min="0" max="100" value="50">
+```
+
+## API And Accessibility
+
+Semantic text variants: `diff-primary`, `diff-secondary`,
+`diff-tertiary`, `diff-info`, `diff-success`,
+`diff-warning`, `diff-error`. Keep meaningful labels and values;
+color alone is not an accessible distinction.
+
+This is an image/content comparison, not a source-code diff editor. Classes: `diff`, `diff-before`, `diff-after`, `diff-label`, `diff-static`. Set `--diff-position` to 0%–100% (clamped), and `--diff-ratio` for stable sizing (16/9 default). Reveal follows inline direction in RTL. At 0% only After is visible; at 100% Before covers the full layer.
+
+The range input supports pointer, touch and keyboard. It needs application wiring; CSS does not bind its value automatically:
+
+```js
+const input = document.querySelector("#demo-diff-position");
+const figure = document.querySelector("#demo-diff");
+const update = () => figure.style.setProperty("--diff-position", `${input.value}%`);
+input.addEventListener("input", update);
+update();
+```
+
+Provide a label for the range, descriptive image alternatives and visible Before/After labels. Use `diff-static` for a side-by-side fallback without a controller. Print exposes both layers. Browsers without clip-path still display content but cannot reveal interactively; prefer the static variant. Keep layers noninteractive: visually clipped controls would remain focusable. Put actions outside the comparison.

@@ -7,6 +7,57 @@ published: true
 tags: ['accordion', 'components', 'material-design', 'expandable', 'collapse']
 ---
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
+
+## Native Disclosure
+
+Native `details[open]` is authoritative: `.open` and `.accordion-item-open` do
+not override native open/closed state. Each item can expand independently.
+
+<ComponentShowcase title="Native disclosure" code={`<div class="accordion">
+  <details class="accordion-item" name="demo-delivery">
+    <summary class="accordion-header">Delivery</summary>
+    <div class="accordion-content"><div class="accordion-body"><div class="accordion-body-inner">Ships in two days.</div></div></div>
+  </details>
+  <details class="accordion-item" name="demo-delivery">
+    <summary class="accordion-header">Returns</summary>
+    <div class="accordion-content"><div class="accordion-body"><div class="accordion-body-inner">Returns within 30 days.</div></div></div>
+  </details>
+</div>`} />
+
+Shared `name` makes an exclusive native group in browsers supporting grouped
+details. Without that support items remain independent; if exclusivity is
+required, provide an application controller. Omit `name` for independent items.
+
+## Controlled Disclosure
+
+<DataDisplayDemo kind="disclosure" />
+
+For controlled markup, `.open` is canonical and `.accordion-item-open` remains
+a compatibility alias. Classes only style the owning item's direct panel.
+CSS does not update ARIA or move focus. Initialize closed panels with `hidden`
+and `inert`; keep the trigger outside the panel. Use a unique panel ID.
+
+```js
+function setExpanded(item, expanded) {
+  const trigger = item.querySelector(':scope > .accordion-header');
+  const panel = item.querySelector(':scope > .accordion-content');
+  if (!expanded && panel.contains(document.activeElement)) trigger.focus();
+  trigger.setAttribute('aria-expanded', String(expanded));
+  trigger.setAttribute('aria-controls', panel.id);
+  item.classList.toggle('open', expanded);
+  item.classList.remove('accordion-item-open');
+  panel.hidden = !expanded;
+  panel.inert = !expanded;
+}
+// Bind trigger clicks. For exclusive groups, close direct sibling items using
+// the same setter before opening this item. Do not select nested items.
+```
+
+Restore focus to the trigger before hiding a panel containing focus. Preserve
+normal Tab navigation rather than trapping focus. The older framework/class
+examples below illustrate composition; controllers must implement this complete
+state contract, including `hidden`/`inert` on initial render.
 
 # Accordion
 
@@ -398,18 +449,23 @@ function toggleAccordion(button) {
   const accordion = button.closest('.accordion');
   const item = button.closest('.accordion-item');
   const isSingle = accordion.dataset.accordion === 'single';
-
-  if (isSingle) {
-    // Close all items
-    accordion.querySelectorAll('.accordion-item').forEach(i => {
-      if (i !== item) {
-        i.classList.remove('accordion-item-open');
-      }
-    });
-  }
-
-  // Toggle current item
-  item.classList.toggle('accordion-item-open');
+  const expanded = !item.classList.contains('open') && !item.classList.contains('accordion-item-open');
+  const set = (target, open) => {
+    const trigger = target.querySelector(':scope > .accordion-header');
+    const panel = target.querySelector(':scope > .accordion-content');
+    if (!open && panel.contains(document.activeElement)) trigger.focus();
+    panel.id ||= 'demo-panel-' + crypto.randomUUID();
+    trigger.setAttribute('aria-controls', panel.id);
+    trigger.setAttribute('aria-expanded', String(open));
+    target.classList.toggle('open', open);
+    target.classList.remove('accordion-item-open');
+    panel.hidden = !open;
+    panel.inert = !open;
+  };
+  if (isSingle && expanded) accordion.querySelectorAll(':scope > .accordion-item:not(details)').forEach(other => {
+    if (other !== item) set(other, false);
+  });
+  set(item, expanded);
 }
 </script>`} />
 
@@ -588,7 +644,7 @@ Use accordions to progressively reveal complex information:
 ### React
 
 ```tsx
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 interface AccordionItemProps {
   title: string;
@@ -598,6 +654,7 @@ interface AccordionItemProps {
 
 function AccordionItem({ title, children, icon }: AccordionItemProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const panelId = useId();
 
   return (
     <div className={`accordion-item ${isOpen ? 'accordion-item-open' : ''}`}>
@@ -605,12 +662,13 @@ function AccordionItem({ title, children, icon }: AccordionItemProps) {
         className="accordion-header"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
+        aria-controls={panelId}
       >
         {icon && <span className="accordion-header-icon-leading">{icon}</span>}
         <span className="accordion-title">{title}</span>
         <span className="accordion-icon">▼</span>
       </button>
-      <div className="accordion-content">
+      <div className="accordion-content" id={panelId} hidden={!isOpen} inert={!isOpen}>
         <div className="accordion-body">
           {children}
         </div>
@@ -702,6 +760,7 @@ const accordionClasses = computed(() => {
       class="accordion-header"
       @click="toggle"
       :aria-expanded="isOpen"
+      :aria-controls="panelId"
     >
       <span v-if="$slots.icon" class="accordion-header-icon-leading">
         <slot name="icon" />
@@ -709,7 +768,7 @@ const accordionClasses = computed(() => {
       <span class="accordion-title">{{ title }}</span>
       <span class="accordion-icon">▼</span>
     </button>
-    <div class="accordion-content">
+    <div class="accordion-content" :id="panelId" :hidden="!isOpen" :inert="!isOpen">
       <div class="accordion-body">
         <slot />
       </div>
@@ -718,7 +777,7 @@ const accordionClasses = computed(() => {
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, useId } from 'vue';
 
 const props = defineProps({
   title: {
@@ -732,6 +791,7 @@ const props = defineProps({
 });
 
 const isOpen = ref(props.defaultOpen);
+const panelId = useId(); // Vue 3.5+; older applications must supply a unique ID.
 
 const itemClasses = computed(() => {
   return isOpen.value ? 'accordion-item accordion-item-open' : 'accordion-item';
