@@ -1,0 +1,99 @@
+@import "./validator.css";
+
+@layer components {
+  /* Toggle/Switch */
+  .toggle {
+    --toggle-color: var(--color-primary);
+    box-sizing: border-box;
+    color: var(--color-on-surface);
+    border: 1px solid currentColor;
+    appearance: none;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface-container-highest);
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+    position: relative;
+  }
+
+  .toggle::after {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-on-surface-variant);
+    border-radius: var(--radius-full);
+    transition: all 150ms ease-in-out;
+  }
+
+  .toggle:checked {
+    background-color: var(--toggle-color);
+  }
+
+  .toggle:checked::after {
+    inset-inline-start: calc(100% - 1.25rem);
+    background-color: var(--dm-validation-content, var(--color-primary-content));
+  }
+
+  .toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
+  }
+
+  .toggle:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  /* Toggle Sizes */
+  .toggle-xs {
+    width: 2rem;
+    height: 1rem;
+  }
+
+  .toggle-xs::after {
+    width: 0.625rem;
+    height: 0.625rem;
+    inset-inline-start: 0.1875rem;
+  }
+
+  .toggle-xs:checked::after {
+    inset-inline-start: calc(100% - 0.8125rem);
+  }
+
+  .toggle-sm {
+    width: 2.5rem;
+    height: 1.25rem;
+  }
+
+  .toggle-sm::after {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .toggle-lg {
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .toggle-lg::after {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .toggle-sm:checked::after { inset-inline-start: calc(100% - 1rem); }
+  .toggle-lg:checked::after { inset-inline-start: calc(100% - 1.75rem); }
+  .toggle-primary { --toggle-color: var(--color-primary); }
+  .toggle-secondary { --toggle-color: var(--color-secondary); }
+  .toggle-tertiary { --toggle-color: var(--color-tertiary); }
+  .toggle-info { --toggle-color: var(--color-info); }
+  .toggle-success { --toggle-color: var(--color-success); }
+  .toggle-warning { --toggle-color: var(--color-warning); }
+  .toggle-error { --toggle-color: var(--color-error); }
+  .toggle-ghost { border-color: transparent; }
+  @media (prefers-reduced-motion: reduce) { .toggle, .toggle::after { transition: none; } }
+}

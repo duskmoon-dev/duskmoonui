@@ -19,7 +19,7 @@
 /* Input Component */
 @import "./input.css";
 
-/* Form Component - includes checkbox, radio, toggle, select, textarea, range */
+/* Compatibility form entry reuses canonical native controls and composition. */
 @import "./form.css";
 
 /* Navigation Component - includes navbar, menu, breadcrumbs, tabs, pagination, dropdown */
@@ -53,6 +53,7 @@
 @import "./checkbox.css";
 @import "./datepicker.css";
 @import "./file-upload.css";
+@import "./filter-group.css";
 @import "./form-group.css";
 @import "./multi-select.css";
 @import "./otp-input.css";

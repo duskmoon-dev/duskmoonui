@@ -1,3 +1,5 @@
+@import "./validator.css";
+
 /**
  * Checkbox Component Styles
  * DuskMoonUI - Material Design 3 inspired checkbox
@@ -7,6 +9,8 @@
  */
 
 @layer components {
+  :where(.checkbox) { box-sizing: border-box; }
+
   /* Base Checkbox - applied directly to input[type="checkbox"] */
   .checkbox {
     --checkbox-size: 1.25rem;
@@ -35,8 +39,8 @@
     height: 0.35em;
     transform: scale(0) rotate(-45deg);
     transform-origin: center;
-    border-bottom: 2px solid var(--color-primary-content);
-    border-left: 2px solid var(--color-primary-content);
+    border-bottom: 2px solid var(--dm-validation-content, var(--color-primary-content));
+    border-left: 2px solid var(--dm-validation-content, var(--color-primary-content));
     transition: transform 150ms ease-in-out;
   }
 
@@ -59,7 +63,7 @@
   .checkbox:indeterminate::before {
     width: 0.5em;
     height: 0;
-    border-bottom: 2px solid var(--color-primary-content);
+    border-bottom: 2px solid var(--dm-validation-content, var(--color-primary-content));
     border-left: 0;
     transform: scale(1) rotate(0deg);
   }
@@ -121,7 +125,7 @@
 
   .checkbox-primary:checked::before,
   .checkbox-primary:indeterminate::before {
-    border-color: var(--color-primary-content);
+    border-color: var(--dm-validation-content, var(--color-primary-content));
   }
 
   .checkbox-secondary {
@@ -130,7 +134,7 @@
 
   .checkbox-secondary:checked::before,
   .checkbox-secondary:indeterminate::before {
-    border-color: var(--color-secondary-content);
+    border-color: var(--dm-validation-content, var(--color-secondary-content));
   }
 
   .checkbox-tertiary {
@@ -139,7 +143,7 @@
 
   .checkbox-tertiary:checked::before,
   .checkbox-tertiary:indeterminate::before {
-    border-color: var(--color-tertiary-content);
+    border-color: var(--dm-validation-content, var(--color-tertiary-content));
   }
 
   .checkbox-success {
@@ -148,7 +152,7 @@
 
   .checkbox-success:checked::before,
   .checkbox-success:indeterminate::before {
-    border-color: var(--color-success-content);
+    border-color: var(--dm-validation-content, var(--color-success-content));
   }
 
   .checkbox-warning {
@@ -157,7 +161,7 @@
 
   .checkbox-warning:checked::before,
   .checkbox-warning:indeterminate::before {
-    border-color: var(--color-warning-content);
+    border-color: var(--dm-validation-content, var(--color-warning-content));
   }
 
   .checkbox-error {
@@ -166,7 +170,7 @@
 
   .checkbox-error:checked::before,
   .checkbox-error:indeterminate::before {
-    border-color: var(--color-error-content);
+    border-color: var(--dm-validation-content, var(--color-error-content));
   }
 
   .checkbox-info {
@@ -175,7 +179,7 @@
 
   .checkbox-info:checked::before,
   .checkbox-info:indeterminate::before {
-    border-color: var(--color-info-content);
+    border-color: var(--dm-validation-content, var(--color-info-content));
   }
 
   .checkbox-accent {
@@ -184,7 +188,7 @@
 
   .checkbox-accent:checked::before,
   .checkbox-accent:indeterminate::before {
-    border-color: var(--color-accent-content);
+    border-color: var(--dm-validation-content, var(--color-accent-content));
   }
 
   .checkbox-neutral {
@@ -193,7 +197,7 @@
 
   .checkbox-neutral:checked::before,
   .checkbox-neutral:indeterminate::before {
-    border-color: var(--color-neutral-content);
+    border-color: var(--dm-validation-content, var(--color-neutral-content));
   }
 
   .checkbox-base {
@@ -202,7 +206,7 @@
 
   .checkbox-base:checked::before,
   .checkbox-base:indeterminate::before {
-    border-color: var(--color-base-content);
+    border-color: var(--dm-validation-content, var(--color-base-content));
   }
 
   /* Ghost Variant — borderless unchecked state */

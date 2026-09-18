@@ -81,6 +81,7 @@ ${mainCss}
 
   await ensureDir(DIST_DIR);
   await writeFile(join(DIST_DIR, 'index.css'), output);
+  await writeFile(join(DIST_DIR, 'base.css'), await readAndInlineCss(join(SRC_DIR, 'base.css')));
   console.log('✓ Built dist/index.css');
 }
 
@@ -132,6 +133,8 @@ const componentFiles = [
   'divider',
   'drawer',
   'file-upload',
+  'file-input',
+  'filter-group',
   'form',
   'form-group',
   'footer',
@@ -152,6 +155,7 @@ const componentFiles = [
   'popover',
   'progress',
   'radio',
+  'range',
   'rating',
   'segment-control',
   'select',
@@ -170,6 +174,8 @@ const componentFiles = [
   'timeline',
   'toast',
   'toggle',
+  'toggle-switch',
+  'validator',
   'tooltip',
   'tree-select',
   'stat',

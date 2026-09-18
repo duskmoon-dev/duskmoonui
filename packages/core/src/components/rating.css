@@ -175,23 +175,23 @@
   }
 
   /* Hover Preview */
-  .rating:not(.rating-readonly) .rating-item:hover ~ .rating-item {
+  .rating:not(.rating-readonly):not(.rating-native) .rating-item:hover ~ .rating-item {
     color: var(--color-outline);
   }
 
-  .rating:not(.rating-readonly):hover .rating-item {
+  .rating:not(.rating-readonly):not(.rating-native):hover .rating-item {
     color: var(--color-warning);
   }
 
-  .rating-primary:not(.rating-readonly):hover .rating-item   { color: var(--color-primary); }
-  .rating-secondary:not(.rating-readonly):hover .rating-item { color: var(--color-secondary); }
-  .rating-tertiary:not(.rating-readonly):hover .rating-item  { color: var(--color-tertiary); }
-  .rating-info:not(.rating-readonly):hover .rating-item      { color: var(--color-info); }
-  .rating-success:not(.rating-readonly):hover .rating-item   { color: var(--color-success); }
-  .rating-error:not(.rating-readonly):hover .rating-item     { color: var(--color-error); }
-  .rating-accent:not(.rating-readonly):hover .rating-item    { color: var(--color-accent); }
-  .rating-neutral:not(.rating-readonly):hover .rating-item   { color: var(--color-neutral); }
-  .rating-base:not(.rating-readonly):hover .rating-item      { color: var(--color-base-content); }
+  .rating-primary:not(.rating-readonly):not(.rating-native):hover .rating-item   { color: var(--color-primary); }
+  .rating-secondary:not(.rating-readonly):not(.rating-native):hover .rating-item { color: var(--color-secondary); }
+  .rating-tertiary:not(.rating-readonly):not(.rating-native):hover .rating-item  { color: var(--color-tertiary); }
+  .rating-info:not(.rating-readonly):not(.rating-native):hover .rating-item      { color: var(--color-info); }
+  .rating-success:not(.rating-readonly):not(.rating-native):hover .rating-item   { color: var(--color-success); }
+  .rating-error:not(.rating-readonly):not(.rating-native):hover .rating-item     { color: var(--color-error); }
+  .rating-accent:not(.rating-readonly):not(.rating-native):hover .rating-item    { color: var(--color-accent); }
+  .rating-neutral:not(.rating-readonly):not(.rating-native):hover .rating-item   { color: var(--color-neutral); }
+  .rating-base:not(.rating-readonly):not(.rating-native):hover .rating-item      { color: var(--color-base-content); }
 
   /* Focus Visible — use warning (the default fill color) for the base ring;
      per-variant overrides below match the active fill color for each variant. */
@@ -266,7 +266,34 @@
     }
   }
 
-  /* Reduce Motion */
+  /* Native radio pattern: selection is authoritative, not .filled/.active. */
+  .rating-native { --rating-color: var(--color-warning); flex-wrap: wrap; max-inline-size: 100%; }
+  .rating-native.rating-primary { --rating-color: var(--color-primary); }
+  .rating-native.rating-secondary { --rating-color: var(--color-secondary); }
+  .rating-native.rating-tertiary { --rating-color: var(--color-tertiary); }
+  .rating-native.rating-info { --rating-color: var(--color-info); }
+  .rating-native.rating-success { --rating-color: var(--color-success); }
+  .rating-native.rating-warning { --rating-color: var(--color-warning); }
+  .rating-native.rating-error { --rating-color: var(--color-error); }
+  .rating-native .rating-item { position: relative; padding: 0.25rem; }
+  .rating-native .rating-input {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: inherit;
+  }
+  .rating-native .rating-item:is(.filled, .active, :hover),
+  .rating-native .rating-item { color: var(--color-outline); transform: none; }
+  .rating-native .rating-item:has(.rating-input:checked),
+  .rating-native .rating-item:not(.rating-none):has(~ .rating-item .rating-input:checked) { color: var(--rating-color); }
+  .rating-native .rating-item:has(.rating-input:focus-visible) { outline: 2px solid currentColor; outline-offset: 2px; border-radius: var(--radius-xs); }
+  .rating-native .rating-item:has(.rating-input:disabled) { opacity: 0.38; cursor: not-allowed; }
+  .rating-native .rating-none { color: var(--color-on-surface); font-size: 0.875rem; }
+  @media (forced-colors: active) {
+    .rating-native .rating-item:has(.rating-input:checked) { outline: 2px solid Highlight; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .rating-item,
     .rating-animated .rating-item {

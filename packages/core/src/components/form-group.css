@@ -1,3 +1,5 @@
+@import "./validator.css";
+
 /**
  * Form Group Component Styles
  * DuskMoonUI - Form layout utilities including label, helper text, fieldset
@@ -278,224 +280,47 @@
     color: var(--color-error);
   }
 
-  /* Error State on Form Group */
-  .form-group-error .form-label {
-    color: var(--color-error);
+  /* Legacy label and helper APIs share the composition implementation. */
+  /* Label */
+  .label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
   }
 
-  .form-group-error .input,
-  .form-group-error .select,
-  .form-group-error .textarea {
-    border-color: var(--color-error);
+  .label-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-on-surface);
+    padding-bottom: 0.25rem;
   }
 
-  .form-group-error .input:focus-visible,
-  .form-group-error .select:focus-visible,
-  .form-group-error .textarea:focus-visible {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
+  .label-text-alt {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
   }
 
-  /* Success State on Form Group */
-  .form-group-success .form-label {
-    color: var(--color-success);
-  }
 
-  .form-group-success .input,
-  .form-group-success .select,
-  .form-group-success .textarea {
-    border-color: var(--color-success);
-  }
-
-  .form-group-success .input:focus-visible,
-  .form-group-success .select:focus-visible,
-  .form-group-success .textarea:focus-visible {
-    border-color: var(--color-success);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
-  }
-
-  /* Warning State on Form Group */
-  .form-group-warning .form-label {
-    color: var(--color-warning);
-  }
-
-  .form-group-warning .input,
-  .form-group-warning .select,
-  .form-group-warning .textarea {
-    border-color: var(--color-warning);
-  }
-
-  .form-group-warning .input:focus-visible,
-  .form-group-warning .select:focus-visible,
-  .form-group-warning .textarea:focus-visible {
-    border-color: var(--color-warning);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
-  }
-
-  /* Info State on Form Group */
-  .form-group-info .form-label {
-    color: var(--color-info);
-  }
-
-  .form-group-info .input,
-  .form-group-info .select,
-  .form-group-info .textarea {
-    border-color: var(--color-info);
-  }
-
-  .form-group-info .input:focus-visible,
-  .form-group-info .select:focus-visible,
-  .form-group-info .textarea:focus-visible {
-    border-color: var(--color-info);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
-  }
-
-  /* Disabled Form Group */
-  .form-group-disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  /* ARIA-based validation states — mirrors class-based states for native form validation */
-  .input[aria-invalid="true"],
-  .select[aria-invalid="true"],
-  .textarea[aria-invalid="true"] {
-    border-color: var(--color-error);
-    color: var(--color-error);
-  }
-
-  .input[aria-invalid="true"]:focus-visible,
-  .select[aria-invalid="true"]:focus-visible,
-  .textarea[aria-invalid="true"]:focus-visible {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
-  }
-
-  /* ARIA-based validation for checkbox, radio, switch, file-input
-     (frameworks like React Hook Form / Angular set aria-invalid programmatically) */
-  .checkbox[aria-invalid="true"],
-  .radio[aria-invalid="true"],
-  .file-input[aria-invalid="true"] {
-    border-color: var(--color-error);
-  }
-
-  .checkbox[aria-invalid="true"]:focus-visible,
-  .radio[aria-invalid="true"]:focus-visible,
-  .file-input[aria-invalid="true"]:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
-  }
-
-  .switch[aria-invalid="true"] {
-    border-color: var(--color-error);
-  }
-
-  .switch[aria-invalid="true"]:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
-  }
-
-  /* ARIA required indicator for labels */
+  .label-text.required::after,
   .form-label[aria-required="true"]::after,
   label[aria-required="true"]::after {
     content: ' *';
     color: var(--color-error);
   }
 
-  /* Native :invalid pseudo-class (opt-in with .validate class to avoid red on page load) */
-  .validate .input:invalid,
-  .validate .select:invalid,
-  .validate .textarea:invalid {
-    border-color: var(--color-error);
-  }
+  .helper-text.error { color: var(--color-error); }
+  .helper-text.success { color: var(--color-success); }
+  .helper-text.warning { color: var(--color-warning); }
+  .helper-text.info { color: var(--color-info); }
 
-  .validate .input:valid,
-  .validate .select:valid,
-  .validate .textarea:valid {
-    border-color: var(--color-success);
-  }
+  .form-group-disabled { opacity: 0.5; pointer-events: none; }
+  .fieldset { min-inline-size: 0; }
+  .form-group, .form-control { min-inline-size: 0; }
+  .form-control { width: 100%; margin-bottom: 1rem; color: var(--color-on-surface); }
 
-  /* :user-invalid — fires only after user interaction (no .validate wrapper needed) */
-  .input:user-invalid,
-  .select:user-invalid,
-  .textarea:user-invalid {
-    border-color: var(--color-error);
-  }
-
-  .input:user-invalid:focus-visible,
-  .select:user-invalid:focus-visible,
-  .textarea:user-invalid:focus-visible {
-    border-color: var(--color-error);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
-  }
-
-  .input:user-valid,
-  .select:user-valid,
-  .textarea:user-valid {
-    border-color: var(--color-success);
-  }
-
-  .input:user-valid:focus-visible,
-  .select:user-valid:focus-visible,
-  .textarea:user-valid:focus-visible {
-    border-color: var(--color-success);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
-  }
-
-  /* Checkbox & Radio — validation pseudo-classes */
-  .checkbox:user-invalid,
-  .radio:user-invalid {
-    border-color: var(--color-error);
-  }
-
-  .checkbox:user-invalid:focus-visible,
-  .radio:user-invalid:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
-  }
-
-  .checkbox:user-valid:checked,
-  .radio:user-valid:checked {
-    border-color: var(--color-success);
-    background-color: var(--color-success);
-  }
-
-  /* Switch — validation pseudo-classes (required but unchecked) */
-  .switch:user-invalid {
-    border-color: var(--color-error);
-  }
-
-  .switch:user-invalid:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
-  }
-
-  .switch:user-valid:checked {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
-  }
-
-  /* File Input — validation pseudo-classes */
-  .file-input:user-invalid {
-    border-color: var(--color-error);
-  }
-
-  .file-input:user-invalid:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 20%, transparent);
-  }
-
-  /* Filled Input — validation with bottom border */
-  .input-filled:user-invalid {
-    border-bottom-color: var(--color-error);
-  }
-
-  .input-filled:user-invalid:focus-visible {
-    border-bottom-color: var(--color-error);
-    box-shadow: none;
-  }
-
-  .input-filled:user-valid {
-    border-bottom-color: var(--color-success);
-  }
-
-  .input-filled:user-valid:focus-visible {
-    border-bottom-color: var(--color-success);
-    box-shadow: none;
+  @media (max-width: 640px) {
+    .form-group-horizontal { flex-direction: column; }
+    .form-row > .form-group { min-width: 0; flex-basis: 100%; }
   }
 }

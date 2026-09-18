@@ -6,6 +6,36 @@
   "main": "./dist/index.css",
   "types": "./dist/types/types/index.d.ts",
   "exports": {
+    "./components/validator": {
+      "types": "./dist/esm/components/validator.d.ts",
+      "style": "./dist/components/validator.css",
+      "import": "./dist/esm/components/validator.js",
+      "default": "./dist/esm/components/validator.js"
+    },
+    "./components/range": {
+      "types": "./dist/esm/components/range.d.ts",
+      "style": "./dist/components/range.css",
+      "import": "./dist/esm/components/range.js",
+      "default": "./dist/esm/components/range.js"
+    },
+    "./components/file-input": {
+      "types": "./dist/esm/components/file-input.d.ts",
+      "style": "./dist/components/file-input.css",
+      "import": "./dist/esm/components/file-input.js",
+      "default": "./dist/esm/components/file-input.js"
+    },
+    "./components/filter-group": {
+      "types": "./dist/esm/components/filter-group.d.ts",
+      "style": "./dist/components/filter-group.css",
+      "import": "./dist/esm/components/filter-group.js",
+      "default": "./dist/esm/components/filter-group.js"
+    },
+    "./components/toggle-switch": {
+      "types": "./dist/esm/components/toggle-switch.d.ts",
+      "style": "./dist/components/toggle-switch.css",
+      "import": "./dist/esm/components/toggle-switch.js",
+      "default": "./dist/esm/components/toggle-switch.js"
+    },
     ".": {
       "default": "./dist/index.css",
       "style": "./dist/index.css",
@@ -76,6 +106,7 @@
       "require": "./dist/cjs/tailwind-plugin.cjs",
       "types": "./dist/types/tailwind-plugin.d.ts"
     },
+    "./base.css": "./dist/base.css",
     "./components/*.css": "./dist/components/*.css",
     "./effects/*.css": "./dist/effects/*.css",
     "./effects.css": "./dist/effects/index.css",
@@ -497,6 +528,7 @@
     "test:integration": "playwright test --config=playwright.integration.config.ts",
     "test:native-overlays": "playwright test --config=playwright.native-overlays.config.ts",
     "test:data-display": "playwright test --config=playwright.data-display.config.ts",
+    "test:data-input": "playwright test --config=playwright.data-input.config.ts",
     "test:a11y": "playwright test --config=playwright.integration.config.ts tests/accessibility/",
     "test:all": "bun run test:unit && bun run test:visual && bun run test:integration && bun run test:a11y"
   },

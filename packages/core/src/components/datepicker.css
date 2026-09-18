@@ -1,9 +1,13 @@
+@import "./validator.css";
+
 /**
  * Datepicker Component Styles
  * DuskMoonUI - Material Design 3 inspired datepicker system
  */
 
 @layer components {
+  :where(.datepicker, .datepicker-input) { box-sizing: border-box; }
+
   /* Datepicker Container */
   .datepicker {
     position: relative;
@@ -195,6 +199,9 @@
     gap: 0.125rem;
     padding: 0.5rem;
   }
+
+  .datepicker-calendar > :is(.datepicker-weekdays, .datepicker-days) { grid-column: 1 / -1; }
+  .datepicker-trigger:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 
   /* Weekday Headers */
   .datepicker-weekdays {
@@ -678,6 +685,7 @@
   /* Inline Datepicker (always visible) */
   .datepicker-inline {
     position: static;
+    max-inline-size: 22rem;
   }
 
   .datepicker-inline .datepicker-dropdown,
@@ -689,6 +697,8 @@
     transform: none;
     margin-top: 0;
     box-shadow: none;
+    min-inline-size: 0;
+    max-inline-size: 100%;
   }
 
   /* Input Color Variants */

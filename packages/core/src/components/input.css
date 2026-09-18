@@ -1,3 +1,6 @@
+@import "./validator.css";
+@import "./file-input.css";
+
 /**
  * Input Component Styles
  * DuskMoonUI - Material Design 3 inspired input system
@@ -6,6 +9,8 @@
 @layer components {
   /* Base Input */
   .input {
+    box-sizing: border-box;
+    min-width: 0;
     display: flex;
     width: 100%;
     padding: 0.75rem 1rem;
@@ -39,6 +44,7 @@
   }
 
   /* Bordered Input */
+  .input-outlined { background-color: transparent; border-color: var(--color-outline); }
   .input-bordered {
     border-color: var(--color-outline);
     background-color: var(--color-surface);
@@ -89,6 +95,7 @@
   }
 
   /* Ghost Input */
+  .input-md { height: 3rem; }
   .input-ghost {
     background-color: transparent;
     border-color: transparent;
@@ -165,37 +172,6 @@
     border-top-right-radius: var(--radius-sm);
     border-bottom-right-radius: var(--radius-sm);
     border-left: none;
-  }
-
-  /* File Input */
-  .file-input {
-    display: flex;
-    width: 100%;
-    padding: 0;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-outline);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .file-input::file-selector-button {
-    padding: 0.75rem 1rem;
-    background-color: var(--color-surface-container);
-    color: var(--color-on-surface);
-    border: none;
-    border-right: 1px solid var(--color-outline);
-    cursor: pointer;
-    transition: background-color 150ms ease-in-out;
-  }
-
-  .file-input::file-selector-button:hover {
-    background-color: var(--color-surface-container-high);
-  }
-
-  .file-input:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
-    outline: none;
   }
 
   /* Reduce Motion */

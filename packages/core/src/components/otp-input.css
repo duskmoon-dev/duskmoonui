@@ -1,11 +1,16 @@
+@import "./validator.css";
+
 /**
  * OTP Input Component Styles
  * DuskMoonUI - One-Time Password input for verification codes
  */
 
 @layer components {
+  :where(.otp-input, .otp-input-field) { box-sizing: border-box; }
+
   /* Base OTP Container */
   .otp-input {
+    flex-wrap: wrap;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -54,7 +59,8 @@
   }
 
   /* Separator */
-  .otp-separator {
+  .otp-separator,
+  .otp-input-separator {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,14 +114,16 @@
   }
 
   /* Underline Variant */
-  .otp-input-underline .otp-input-field {
+  .otp-input-underline .otp-input-field,
+  .otp-input-underlined .otp-input-field {
     background-color: transparent;
     border: none;
     border-bottom: 2px solid var(--color-outline);
     border-radius: 0;
   }
 
-  .otp-input-underline .otp-input-field:focus {
+  .otp-input-underline .otp-input-field:focus,
+  .otp-input-underlined .otp-input-field:focus {
     border-bottom-color: var(--color-primary);
     box-shadow: none;
   }
@@ -232,17 +240,61 @@
     color: var(--color-on-surface);
   }
 
-  .otp-helper {
+  .otp-helper,
+  .otp-input-helper {
     font-size: 0.75rem;
     color: var(--color-on-surface-variant);
   }
 
-  .otp-error-message {
+  .otp-error-message,
+  .otp-input-helper-error {
     font-size: 0.75rem;
     color: var(--color-error);
   }
 
-  /* Reduce Motion */
+  /* One complete native code. Length guides never create separate fields. */
+  .otp-code {
+    --otp-length: 6;
+    display: block;
+    box-sizing: border-box;
+    /* The extra two content pixels keep the trailing native caret in view. */
+    inline-size: calc(var(--otp-length) * 1ch + 1.5rem + 4px);
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    padding: 0.75rem;
+    font: 1.5rem / 1.5 ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    text-align: start;
+    color: var(--color-on-surface);
+    caret-color: currentColor;
+    background-color: var(--color-surface);
+    border: 1px solid currentColor;
+    border-radius: var(--radius-sm);
+  }
+  .otp-code-4 { --otp-length: 4; }
+  .otp-code:focus { outline: 2px solid currentColor; outline-offset: 3px; }
+  .otp-code:disabled { opacity: 0.38; cursor: not-allowed; }
+  .otp-code-primary { color: var(--color-primary); }
+  .otp-code-secondary { color: var(--color-secondary); }
+  .otp-code-tertiary { color: var(--color-tertiary); }
+  .otp-code-info { color: var(--color-info); }
+  .otp-code-success { color: var(--color-success); }
+  .otp-code-warning { color: var(--color-warning); }
+  .otp-code-error { color: var(--color-error); }
+  .otp-input-helper-success { font-size: 0.75rem; color: var(--color-success); }
+
+  @supports (background-image: repeating-linear-gradient(to right, transparent 0 1ch)) {
+    .otp-code {
+      background-image: repeating-linear-gradient(to right, transparent 0 0.125ch, var(--color-outline-variant) 0.125ch 0.875ch, transparent 0.875ch 1ch);
+      background-size: calc(var(--otp-length) * 1ch) 3px;
+      background-repeat: no-repeat;
+      background-origin: content-box;
+      background-position: left bottom;
+    }
+  }
+  @media (forced-colors: active) { .otp-code { background-image: none; } }
+
   @media (prefers-reduced-motion: reduce) {
     .otp-input-field {
       transition: none;

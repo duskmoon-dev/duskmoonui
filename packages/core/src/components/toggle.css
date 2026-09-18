@@ -4,6 +4,8 @@
  * Used for selecting between multiple options or toggling states
  */
 
+@import "./toggle-switch.css";
+
 @layer components {
   /* Base toggle button */
   .toggle-btn {
@@ -30,93 +32,93 @@
   }
 
   /* Active/Selected state */
-  .toggle-btn-active,
-  .toggle-btn.active {
+  :is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn.active:not([aria-pressed]) {
     color: var(--color-on-primary-container);
     background-color: var(--color-primary-container);
     border-color: var(--color-primary);
   }
 
-  .toggle-btn-active:hover:not(:disabled),
-  .toggle-btn.active:hover:not(:disabled) {
+  :is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]):hover:not(:disabled),
+  .toggle-btn.active:not([aria-pressed]):hover:not(:disabled) {
     background-color: color-mix(in oklch, var(--color-primary-container) 90%, transparent);
   }
 
   /* Primary variant */
-  .toggle-btn-primary.toggle-btn-active,
-  .toggle-btn-primary.active {
+  .toggle-btn-primary:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-primary.active:not([aria-pressed]) {
     color: var(--color-on-primary-container);
     background-color: var(--color-primary-container);
     border-color: var(--color-primary);
   }
 
   /* Secondary variant */
-  .toggle-btn-secondary.toggle-btn-active,
-  .toggle-btn-secondary.active {
+  .toggle-btn-secondary:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-secondary.active:not([aria-pressed]) {
     color: var(--color-on-secondary-container);
     background-color: var(--color-secondary-container);
     border-color: var(--color-secondary);
   }
 
   /* Tertiary variant */
-  .toggle-btn-tertiary.toggle-btn-active,
-  .toggle-btn-tertiary.active {
+  .toggle-btn-tertiary:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-tertiary.active:not([aria-pressed]) {
     color: var(--color-on-tertiary-container);
     background-color: var(--color-tertiary-container);
     border-color: var(--color-tertiary);
   }
 
   /* Info variant */
-  .toggle-btn-info.toggle-btn-active,
-  .toggle-btn-info.active {
+  .toggle-btn-info:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-info.active:not([aria-pressed]) {
     color: var(--color-on-info-container);
     background-color: var(--color-info-container);
     border-color: var(--color-info);
   }
 
   /* Success variant */
-  .toggle-btn-success.toggle-btn-active,
-  .toggle-btn-success.active {
+  .toggle-btn-success:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-success.active:not([aria-pressed]) {
     color: var(--color-on-success-container);
     background-color: var(--color-success-container);
     border-color: var(--color-success);
   }
 
   /* Warning variant */
-  .toggle-btn-warning.toggle-btn-active,
-  .toggle-btn-warning.active {
+  .toggle-btn-warning:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-warning.active:not([aria-pressed]) {
     color: var(--color-on-warning-container);
     background-color: var(--color-warning-container);
     border-color: var(--color-warning);
   }
 
   /* Error variant */
-  .toggle-btn-error.toggle-btn-active,
-  .toggle-btn-error.active {
+  .toggle-btn-error:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-error.active:not([aria-pressed]) {
     color: var(--color-on-error-container);
     background-color: var(--color-error-container);
     border-color: var(--color-error);
   }
 
   /* Accent variant */
-  .toggle-btn-accent.toggle-btn-active,
-  .toggle-btn-accent.active {
+  .toggle-btn-accent:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-accent.active:not([aria-pressed]) {
     color: var(--color-on-surface);
     background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
     border-color: var(--color-accent);
   }
 
   /* Neutral variant */
-  .toggle-btn-neutral.toggle-btn-active,
-  .toggle-btn-neutral.active {
+  .toggle-btn-neutral:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-neutral.active:not([aria-pressed]) {
     color: var(--color-on-surface);
     background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
     border-color: var(--color-neutral);
   }
 
   /* Base variant */
-  .toggle-btn-base.toggle-btn-active,
-  .toggle-btn-base.active {
+  .toggle-btn-base:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-btn-base.active:not([aria-pressed]) {
     color: var(--color-base-content);
     background-color: var(--color-base-200);
     border-color: var(--color-base-content);
@@ -245,8 +247,8 @@
     border-radius: var(--radius-xs);
   }
 
-  .toggle-segmented .toggle-btn.toggle-btn-active,
-  .toggle-segmented .toggle-btn.active {
+  .toggle-segmented .toggle-btn:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-segmented .toggle-btn.active:not([aria-pressed]) {
     background-color: var(--color-surface-variant);
     border-color: transparent;
     box-shadow: var(--shadow-sm);
@@ -258,8 +260,8 @@
     padding: 0.5rem 1rem;
   }
 
-  .toggle-chip.toggle-btn-active,
-  .toggle-chip.active {
+  .toggle-chip:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-chip.active:not([aria-pressed]) {
     background-color: var(--color-primary-container);
     border-color: var(--color-primary-container);
   }
@@ -269,8 +271,8 @@
     background-color: transparent;
   }
 
-  .toggle-outlined.toggle-btn-active,
-  .toggle-outlined.active {
+  .toggle-outlined:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-outlined.active:not([aria-pressed]) {
     background-color: color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
@@ -280,8 +282,8 @@
     border: none;
   }
 
-  .toggle-filled.toggle-btn-active,
-  .toggle-filled.active {
+  .toggle-filled:is(.toggle-btn-active:not([aria-pressed]), .toggle-btn[aria-pressed="true"]),
+  .toggle-filled.active:not([aria-pressed]) {
     background-color: var(--color-primary);
     color: var(--color-primary-content);
   }

@@ -1,3 +1,5 @@
+@import "./validator.css";
+
 /**
  * Switch Component Styles
  * DuskMoonUI - Material Design 3 inspired switch/toggle
@@ -7,6 +9,8 @@
  */
 
 @layer components {
+  :where(.switch) { box-sizing: border-box; }
+
   /* Base Switch - applied directly to input[type="checkbox"] */
   .switch {
     --switch-width: 3.25rem;

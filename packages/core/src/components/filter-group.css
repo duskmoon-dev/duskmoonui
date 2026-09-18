@@ -1,0 +1,44 @@
+@import "./chip.css";
+
+@layer components {
+  .filter-group { display: flex; flex-wrap: wrap; gap: 0.5rem; color: var(--color-on-surface); }
+  .filter-group > .chip { position: relative; cursor: pointer; }
+  .filter-group-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: inherit;
+  }
+  .filter-group > .chip:has(.filter-group-input:checked) {
+    background-color: var(--filter-background, var(--color-primary-container));
+    color: var(--filter-content, var(--color-on-primary-container));
+    border-color: var(--filter-color, var(--color-primary));
+  }
+  .filter-group > .chip::before {
+    content: "";
+    display: inline-block;
+    inline-size: 0.5rem;
+    block-size: 0.75rem;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    visibility: hidden;
+    flex-shrink: 0;
+  }
+  .filter-group > .chip:has(.filter-group-input:checked)::before { visibility: visible; }
+  .filter-group > .chip:has(.filter-group-input:focus-visible) { outline: 2px solid currentColor; outline-offset: 2px; }
+  .filter-group > .chip:has(.filter-group-input:disabled) { opacity: 0.38; cursor: not-allowed; }
+  .filter-group-primary { --filter-color: var(--color-primary); --filter-background: var(--color-primary-container); --filter-content: var(--color-on-primary-container); }
+  .filter-group-secondary { --filter-color: var(--color-secondary); --filter-background: var(--color-secondary-container); --filter-content: var(--color-on-secondary-container); }
+  .filter-group-tertiary { --filter-color: var(--color-tertiary); --filter-background: var(--color-tertiary-container); --filter-content: var(--color-on-tertiary-container); }
+  .filter-group-info { --filter-color: var(--color-info); --filter-background: var(--color-info-container); --filter-content: var(--color-on-info-container); }
+  .filter-group-success { --filter-color: var(--color-success); --filter-background: var(--color-success-container); --filter-content: var(--color-on-success-container); }
+  .filter-group-warning { --filter-color: var(--color-warning); --filter-background: var(--color-warning-container); --filter-content: var(--color-on-warning-container); }
+  .filter-group-error { --filter-color: var(--color-error); --filter-background: var(--color-error-container); --filter-content: var(--color-on-error-container); }
+  @media (forced-colors: active) {
+    .filter-group > .chip:has(.filter-group-input:checked) { border-color: Highlight; outline: 1px solid Highlight; }
+  }
+}

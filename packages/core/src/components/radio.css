@@ -1,3 +1,5 @@
+@import "./validator.css";
+
 /**
  * Radio Component Styles
  * DuskMoonUI - Material Design 3 inspired radio button
@@ -7,6 +9,8 @@
  */
 
 @layer components {
+  :where(.radio) { box-sizing: border-box; }
+
   /* Base Radio - applied directly to input[type="radio"] */
   .radio {
     --radio-size: 1.25rem;

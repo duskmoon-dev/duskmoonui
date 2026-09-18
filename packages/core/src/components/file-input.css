@@ -1,0 +1,41 @@
+@import "./validator.css";
+
+@layer components {
+  .file-input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid currentColor;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .file-input::file-selector-button {
+    padding: 0.75rem 1rem;
+    margin-inline-end: 0.75rem;
+    font: inherit;
+    color: inherit;
+    background-color: var(--color-surface-container);
+    border: none;
+    border-inline-end: 1px solid currentColor;
+    cursor: inherit;
+  }
+  .file-input:hover:not(:disabled)::file-selector-button { background-color: var(--color-surface-container-high); }
+  .file-input:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent); }
+  .file-input:disabled { opacity: 0.5; cursor: not-allowed; }
+  .file-input-xs::file-selector-button { padding: 0.375rem 0.625rem; }
+  .file-input-sm::file-selector-button { padding: 0.5rem 0.75rem; }
+  .file-input-lg::file-selector-button { padding: 1rem 1.25rem; }
+  .file-input-primary { color: var(--color-primary); }
+  .file-input-secondary { color: var(--color-secondary); }
+  .file-input-tertiary { color: var(--color-tertiary); }
+  .file-input-info { color: var(--color-info); }
+  .file-input-success { color: var(--color-success); }
+  .file-input-warning { color: var(--color-warning); }
+  .file-input-error { color: var(--color-error); }
+  .file-input-ghost { border-color: transparent; }
+}

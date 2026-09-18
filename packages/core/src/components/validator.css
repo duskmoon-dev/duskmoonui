@@ -1,0 +1,66 @@
+/** Opt-in native presentation. Applications own errors, messages and announcements. */
+@layer components {
+  /* Compatibility wrapper states are intentionally immediate. */
+  :is(.form-group-info, .form-control.info) { --dm-validation-color: var(--color-info); }
+  :is(.form-group-warning, .form-control.warning) { --dm-validation-color: var(--color-warning); }
+  :is(.form-group-success, .form-control.success) { --dm-validation-color: var(--color-success); }
+
+  :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is(.validate :valid, .validate:valid, .validator.validator-success:user-valid):not([aria-invalid="true"]):not(:where(.form-group-error *, .form-control.error *)):not(:disabled) {
+    --dm-validation-color: var(--color-success);
+    --dm-validation-content: var(--color-success-content);
+  }
+
+  :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is(.validate :invalid, .validate:invalid, .validator:user-invalid):not(:disabled) {
+    --dm-validation-color: var(--color-error);
+    --dm-validation-content: var(--color-error-content);
+  }
+
+  :is(.form-group-error, .form-control.error) {
+    --dm-validation-color: var(--color-error);
+    --dm-validation-content: var(--color-error-content);
+  }
+
+  /* Higher specificity than native states, including server-invalid + user-valid. */
+  :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is([aria-invalid="true"], .form-group-error *, .form-control.error *):not(:disabled):is(:focus, :not(:focus)) {
+    --dm-validation-color: var(--color-error);
+    --dm-validation-content: var(--color-error-content);
+  }
+
+  /* This shared selector wins over filled/ghost focus and semantic modifiers. */
+  :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is([aria-invalid="true"], .validator:user-invalid, .validator.validator-success:user-valid, .validate :invalid, .validate :valid, .validate:invalid, .validate:valid, .form-group-error *, .form-group-success *, .form-group-warning *, .form-group-info *, .form-control.error *, .form-control.success *, .form-control.warning *, .form-control.info *):not(:disabled) {
+    color: var(--dm-validation-color);
+    border-color: var(--dm-validation-color);
+    --checkbox-color: var(--dm-validation-color);
+    --radio-color: var(--dm-validation-color);
+    --switch-color: var(--dm-validation-color);
+    --switch-content-color: var(--dm-validation-content, var(--color-primary-content));
+    --toggle-color: var(--dm-validation-color);
+  }
+
+  :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is([aria-invalid="true"], .validator:user-invalid, .validator.validator-success:user-valid, .validate :invalid, .validate :valid, .validate:invalid, .validate:valid, .form-group-error *, .form-group-success *, .form-group-warning *, .form-group-info *, .form-control.error *, .form-control.success *, .form-control.warning *, .form-control.info *):not(:disabled):focus {
+    border-color: var(--dm-validation-color);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--dm-validation-color) 20%, transparent);
+  }
+
+  :is(.form-group-error, .form-control.error) :is(.form-label, .label-text) { color: var(--color-error); }
+  :is(.form-group-success, .form-control.success) :is(.form-label, .label-text) { color: var(--color-success); }
+  :is(.form-group-warning, .form-control.warning) :is(.form-label, .label-text) { color: var(--color-warning); }
+  :is(.form-group-info, .form-control.info) :is(.form-label, .label-text) { color: var(--color-info); }
+
+  .validator-hint { font-size: 0.75rem; color: var(--color-on-surface-variant); }
+  .validator-error { display: none; font-size: 0.75rem; color: var(--color-error); }
+  /* Keep OTP actions stationary when blur reveals an error during a click. */
+  .otp-code ~ .validator-error { display: block; visibility: hidden; }
+  :is(.form-group, .form-control):has(:is([aria-invalid="true"], .validator:user-invalid, .validate :invalid, .validate:invalid):not(:disabled)) > .validator-error,
+  :is(.form-group-error, .form-control.error) > .validator-error { display: block; visibility: visible; }
+
+  @media (forced-colors: active) {
+    :is(input, select, textarea):is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
+    }
+    input:is(.checkbox, .radio, .switch, .toggle) { appearance: auto; }
+    input:is(.checkbox, .radio, .switch, .toggle)::before,
+    input:is(.checkbox, .radio, .switch, .toggle)::after { content: none; }
+  }
+}

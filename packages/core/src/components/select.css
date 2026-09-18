@@ -1,9 +1,13 @@
+@import "./validator.css";
+
 /**
  * Select Component Styles
  * DuskMoonUI - Material Design 3 inspired select/dropdown system
  */
 
 @layer components {
+  :where(.select) { box-sizing: border-box; }
+
   /* Base Select */
   .select {
     display: block;
@@ -93,6 +97,10 @@
   .select-accent  { color: var(--color-accent); }
   .select-neutral { color: var(--color-neutral); }
   .select-base    { color: var(--color-base-content); }
+
+  .select-bordered { border-color: var(--color-outline); }
+  .select-md { font-size: 1rem; }
+  .select:dir(rtl) { padding-inline: 1rem 2.5rem; background-position: left 0.75rem center; }
 
   /* Size Variants */
   .select-xs {

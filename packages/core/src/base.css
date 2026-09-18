@@ -1,0 +1,3 @@
+/* Individual-control prerequisite, matching the generated base.css export. */
+@import "./base/index.css";
+@import "./themes/generated/spacing.css";

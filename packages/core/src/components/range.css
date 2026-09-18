@@ -1,0 +1,41 @@
+@layer components {
+  .range {
+    --range-thumb-size: 1.25rem;
+    appearance: none;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: var(--range-thumb-size);
+    margin: 0;
+    color: var(--color-on-surface);
+    accent-color: currentColor;
+    background: transparent;
+    cursor: pointer;
+  }
+  .range::-webkit-slider-runnable-track { height: 0.5rem; background: var(--color-surface-container-highest); border-radius: var(--radius-xs); }
+  .range::-moz-range-track { height: 0.5rem; background: var(--color-surface-container-highest); border-radius: var(--radius-xs); }
+  .range::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--range-thumb-size);
+    height: var(--range-thumb-size);
+    margin-top: calc((0.5rem - var(--range-thumb-size)) / 2);
+    background: currentColor;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-full);
+  }
+  .range::-moz-range-thumb { width: var(--range-thumb-size); height: var(--range-thumb-size); background: currentColor; border: 1px solid currentColor; border-radius: var(--radius-full); }
+  .range:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .range:disabled { opacity: 0.5; cursor: not-allowed; }
+  .range-xs { --range-thumb-size: 0.875rem; }
+  .range-sm { --range-thumb-size: 1rem; }
+  .range-lg { --range-thumb-size: 1.5rem; }
+  .range-primary { color: var(--color-primary); }
+  .range-secondary { color: var(--color-secondary); }
+  .range-tertiary { color: var(--color-tertiary); }
+  .range-info { color: var(--color-info); }
+  .range-success { color: var(--color-success); }
+  .range-warning { color: var(--color-warning); }
+  .range-error { color: var(--color-error); }
+  @media (forced-colors: active) { .range { appearance: auto; } .range:focus-visible { outline-color: Highlight; } }
+}

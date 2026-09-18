@@ -66,7 +66,10 @@ export type ComponentName =
   | 'modal'
   | 'accordion' | 'avatar' | 'badge' | 'chat' | 'collapse' | 'list'
   | 'table' | 'timeline' | 'stat' | 'indicator' | 'kbd' | 'carousel'
-  | 'countdown' | 'diff';
+  | 'countdown' | 'diff'
+  | 'checkbox' | 'radio' | 'switch' | 'toggle' | 'toggle-switch'
+  | 'select' | 'textarea' | 'form-group' | 'file-input' | 'file-upload'
+  | 'range' | 'slider' | 'rating' | 'otp-input' | 'validator' | 'filter-group' | 'datepicker' | 'autocomplete';
 
 /**
  * Component size variants
