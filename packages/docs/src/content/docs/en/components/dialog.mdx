@@ -9,17 +9,19 @@ tags: ['dialog', 'modal', 'components', 'material-design']
 
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
-# Dialog
+# Modal / Dialog
 
-Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks. @duskmoon-dev/core provides Material Design 3 dialog styles built on the **native HTML `<dialog>` element** for excellent accessibility and built-in functionality.
+Dialog is the recommended modal path for new work. It styles the native HTML `<dialog>` element and relies on `showModal()` semantics for background inertness, focus containment, Escape dismissal, and focus restoration. The separate [Modal](/duskmoonui/docs/en/components/modal/) page documents DuskMoon's legacy CSS presentation API.
 
 ## Why Native Dialog?
 
-The native `<dialog>` element provides:
-- **Built-in accessibility** - Focus trapping, Escape key handling, and ARIA attributes
+Opening native `<dialog>` with `showModal()` provides:
+- **Modal focus behavior** - The browser moves focus into the dialog, contains sequential focus, and restores focus when appropriate
 - **Native backdrop** - Via `::backdrop` pseudo-element
-- **Modal behavior** - Overlay and focus are handled by the browser
-- **No JavaScript for open/close** - Use the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) (`command` + `commandfor`) on buttons
+- **Background inertness** - Content outside the modal is not interactive
+- **Escape dismissal** - The browser handles the dialog cancel action
+
+Use the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) (`command` + `commandfor`) where supported, or call `showModal()` and `close()` from application code. Setting the `open` attribute, changing CSS visibility, or adding `aria-modal` does **not** create equivalent modal behavior.
 
 ## Basic Usage
 
@@ -43,7 +45,7 @@ A basic dialog consists of a `<dialog>` element with inner structure for header,
     </div>
     <div class="dialog-footer">
       <button class="btn btn-ghost" command="close" commandfor="demo-dialog-basic">Cancel</button>
-      <button class="btn btn-primary" command="close" commandfor="demo-dialog-basic">Confirm</button>
+      <button class="btn btn-primary" command="close" commandfor="demo-dialog-basic" autofocus>Confirm</button>
     </div>
   </div>
 </dialog>`} />
@@ -342,13 +344,13 @@ For dialogs with long content, add the `dialog-scrollable` class:
 
 ## JavaScript Integration
 
-Open and close buttons should use the Invoker Commands API (`command` / `commandfor`). Use JavaScript for programmatic control, events, and behaviors the Command API does not cover — such as closing on backdrop click.
+Open and close buttons may use the Invoker Commands API (`command` / `commandfor`). Use `showModal()` as the application fallback and for programmatic control. Do not substitute `dialog.open = true` or `setAttribute('open', '')`: those open a non-modal surface without modal focus or inertness.
 
 ```javascript
 // Get dialog reference
 const dialog = document.querySelector('dialog');
 
-// Open as modal (with backdrop) — prefer command="show-modal" on buttons
+// Open as a real modal (with backdrop and background inertness)
 dialog.showModal();
 
 // Open as non-modal (no backdrop)
@@ -367,7 +369,7 @@ dialog.addEventListener('close', () => {
   console.log('Dialog was closed');
 });
 
-// Close on backdrop click (not covered by Command API)
+// Optional policy: close on backdrop click (not a native default)
 dialog.addEventListener('click', (e) => {
   if (e.target === dialog) {
     dialog.close();
@@ -377,7 +379,7 @@ dialog.addEventListener('click', (e) => {
 
 ### Backdrop Click Example
 
-Open and close use Command API. A little JavaScript is used only for backdrop click.
+Backdrop click dismissal is opt-in. Some destructive or multi-step dialogs should require an explicit action instead; do not attach this handler globally.
 
 <ComponentShowcase title="Backdrop Click Example" code={`<button class="btn btn-primary" command="show-modal" commandfor="demo-dialog-js">Open Dialog</button>
 <dialog class="dialog" id="demo-dialog-js">
@@ -481,12 +483,13 @@ defineProps({ title: String });
 
 ### Accessibility
 
-The native `<dialog>` element handles most accessibility concerns automatically:
+Native modal opening handles much of the interaction model, while authors still own content and initial-focus choices:
 
 - **Focus trapping** - Focus is trapped within the modal when open
 - **Escape key** - Pressing Escape closes the dialog
 - **Focus restoration** - Focus returns to the trigger element when closed
-- **ARIA attributes** - The dialog has implicit `role="dialog"` and `aria-modal="true"`
+- **Accessible name** - Supply `aria-labelledby` or `aria-label`
+- **Initial focus** - Use `autofocus` on the most suitable control when the browser's default first-focusable choice is not appropriate
 
 Add descriptive labels for additional accessibility:
 
@@ -510,6 +513,14 @@ Add descriptive labels for additional accessibility:
 3. **Provide clear actions** - Use descriptive button labels
 4. **Enable easy dismissal** - Escape is built in; add a small script if you want backdrop click to close
 5. **Consider mobile** - Use fullscreen variant on small screens
+
+### Background inertness and scroll locking
+
+`showModal()` makes the rest of the document inert; that is the modal interaction boundary. Page scroll locking is a separate application policy. Dialog CSS constrains and scrolls long `.dialog-body` content but does not add a global body overflow class. If your product requires the page itself not to scroll, add and remove that state in the same application lifecycle that calls `showModal()` and handles `close`/`cancel`.
+
+### Browser requirements
+
+Native `<dialog>` and `showModal()` are the baseline. Invoker Commands are progressive enhancement: when `command="show-modal"` is unavailable, attach a click handler that calls the target dialog's `showModal()`. Never fall back to only setting `open` for a modal task.
 
 ## API Reference
 
@@ -566,6 +577,8 @@ Use these for programmatic control. Prefer Invoker Commands on buttons.
 ## Related Components
 
 - [Button](/duskmoonui/docs/en/components/button/) - Dialog action buttons
+- [Modal](/duskmoonui/docs/en/components/modal/) - Legacy CSS visibility API retained for compatibility
+- [Actions overview](/duskmoonui/docs/en/components/actions/) - Choosing among action primitives
 - [Card](/duskmoonui/docs/en/components/card/) - Similar container component
 - [Alert](/duskmoonui/docs/en/components/alert/) - For inline notifications
 

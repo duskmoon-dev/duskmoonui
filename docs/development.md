@@ -31,15 +31,15 @@ This modular approach allows duskmoon-elements to bundle only the CSS needed for
 
 ## Component Overview
 
-DuskMoonUI includes **58 components** and **layout utilities** organized by category.
+DuskMoonUI includes **60+ components** and layout utilities organized by category.
 
 ### Included Components
 
 | Category | Components |
 |----------|------------|
-| **Actions** | Button, Circle Menu, File Upload, Toggle |
+| **Actions** | Button, Dropdown, FAB / Speed Dial, Swap, Theme Controller, Toggle |
 | **Data Display** | Avatar, Badge, Card, Chat, Chip, Code Block, Collapse, List, Table, Timeline, Skeleton |
-| **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Theme Controller, Time Input, Tree Select |
+| **Data Entry** | Autocomplete, Cascader, Checkbox, Datepicker, Form Group, Input, Multi-Select, OTP Input, PIN Input, Radio, Rating, Segment Control, Select, Slider, Switch, Textarea, Time Input, Tree Select |
 | **Feedback** | Alert, Dialog, Modal, Progress, Snackbar, Toast, Tooltip |
 | **Layout** | App Bar, Divider, Form, Grid Utilities, Markdown Body |
 | **Navigation** | Bottom Navigation, Breadcrumbs, Drawer, Menu, Navbar, Navigation (combined), Nested Menu, Pagination, Stepper, Tabs |
@@ -94,7 +94,9 @@ packages/core/src/components/
 ├── datepicker.css      # Calendar date selection
 ├── dialog.css          # Modal dialogs
 ├── divider.css         # Visual separators
+├── dropdown.css        # Native, controlled, and legacy disclosure containers
 ├── drawer.css          # Side navigation panel
+├── fab.css             # Floating actions and vertical Speed Dials
 ├── file-upload.css     # Drag-and-drop file uploader
 ├── form.css            # Form layout utilities
 ├── form-group.css      # Form field grouping with labels
@@ -121,6 +123,7 @@ packages/core/src/components/
 ├── snackbar.css        # Toast notifications
 ├── stepper.css         # Multi-step process guide
 ├── switch.css          # Toggle on/off control
+├── swap.css            # Visual state indicator replacement
 ├── table.css           # Data tables
 ├── tabs.css            # Tab navigation (standalone)
 ├── textarea.css        # Multi-line text input
@@ -141,7 +144,6 @@ The following Material Design 3 components could be added:
 
 | Component | Description | Priority |
 |-----------|-------------|----------|
-| **FAB** | Floating Action Button | Medium |
 | **Search Bar** | Dedicated search input | Low |
 | **Navigation Rail** | Compact side navigation | Low |
 

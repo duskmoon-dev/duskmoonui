@@ -200,6 +200,11 @@ describe('Modal Component', () => {
     it('should handle mobile viewport', () => {
       expect(modalCSS).toMatch(/@media/);
     });
+
+    it('should use dynamic viewport sizing and allow actions to wrap', () => {
+      expect(modalCSS).toContain('100dvh');
+      expect(modalCSS).toMatch(/\.modal-action,[\s\S]*?flex-wrap:\s*wrap/);
+    });
   });
 
   describe('Accessibility', () => {

@@ -89,7 +89,9 @@ Or use the color utilities directly:
 
 DuskMoonUI includes 50+ components organized by category:
 
-**Forms:** Button, Input, Checkbox, Radio, Select, Textarea, Switch, Slider, Autocomplete, Datepicker, File Upload, Rating
+**Actions:** Button, Dropdown, FAB / Speed Dial, Swap, Theme Controller
+
+**Forms:** Input, Checkbox, Radio, Select, Textarea, Switch, Slider, Autocomplete, Datepicker, File Upload, Rating
 
 **Data Display:** Card, Badge, Avatar, Chip, Table, List, Timeline
 

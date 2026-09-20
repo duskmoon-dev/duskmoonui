@@ -1,0 +1,116 @@
+/**
+ * Swap Component Styles
+ * Displays one of two non-interactive state indicators.
+ */
+
+@layer components {
+  .swap {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .swap-input {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .swap-on,
+  .swap-off {
+    grid-area: 1 / 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: max-content;
+    max-inline-size: 100%;
+    transition: opacity 150ms ease-out, transform 150ms ease-out;
+  }
+
+  .swap-on {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .swap-off {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+  }
+
+  .swap-input:checked ~ .swap-on,
+  .swap[aria-pressed="true"] > .swap-on {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .swap-input:checked ~ .swap-off,
+  .swap[aria-pressed="true"] > .swap-off {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .swap:focus-visible,
+  .swap:has(.swap-input:focus-visible) {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
+    border-radius: var(--radius-sm);
+  }
+
+  .swap:disabled,
+  .swap:has(.swap-input:disabled) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .swap-input:disabled {
+    cursor: not-allowed;
+  }
+
+  .swap-rotate .swap-on {
+    transform: rotate(-90deg) scale(0.8);
+  }
+
+  .swap-rotate .swap-off {
+    transform: rotate(0deg) scale(1);
+  }
+
+  .swap-rotate .swap-input:checked ~ .swap-on,
+  .swap-rotate[aria-pressed="true"] > .swap-on {
+    transform: rotate(0deg) scale(1);
+  }
+
+  .swap-rotate .swap-input:checked ~ .swap-off,
+  .swap-rotate[aria-pressed="true"] > .swap-off {
+    transform: rotate(90deg) scale(0.8);
+  }
+
+  /* Presentation-only override. It intentionally wins over semantic state. */
+  .swap.swap-active > .swap-on {
+    opacity: 1;
+    visibility: visible;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .swap.swap-active > .swap-off {
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(90deg) scale(0.8);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .swap-on,
+    .swap-off {
+      transition: none;
+    }
+  }
+}

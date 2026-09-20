@@ -1,0 +1,91 @@
+/**
+ * Dropdown Component Styles
+ * Native Popover disclosure with logical CSS anchor positioning.
+ */
+
+@layer components {
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown > .dropdown-content[popover] {
+    display: none;
+    position: fixed;
+    inset-block-start: auto;
+    inset-block-end: max(0.5rem, env(safe-area-inset-bottom, 0px));
+    inset-inline-start: auto;
+    inset-inline-end: max(
+      0.5rem,
+      env(safe-area-inset-left, 0px),
+      env(safe-area-inset-right, 0px)
+    );
+    z-index: 50;
+    min-inline-size: 12rem;
+    max-inline-size: min(24rem, calc(100dvw - 1rem));
+    max-block-size: calc(100dvh - 1rem);
+    margin: 0;
+    padding: 0.5rem;
+    overflow: auto;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-0.5rem);
+    transition:
+      opacity 150ms ease-out,
+      transform 150ms ease-out,
+      overlay 150ms ease-out allow-discrete,
+      display 150ms ease-out allow-discrete;
+  }
+
+  .dropdown > .dropdown-content[popover]:popover-open {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  @starting-style {
+    .dropdown > .dropdown-content[popover]:popover-open {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+  }
+
+  @supports (position-area: block-end) {
+    .dropdown > .dropdown-content[popover] {
+      inset: auto;
+      margin: 0.25rem;
+      position-area: block-end span-inline-end;
+      position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    }
+
+    .dropdown.dropdown-block-start > .dropdown-content[popover] {
+      position-area: block-start span-inline-end;
+    }
+
+    .dropdown.dropdown-block-end > .dropdown-content[popover] {
+      position-area: block-end span-inline-end;
+    }
+
+    .dropdown.dropdown-inline-start > .dropdown-content[popover] {
+      position-area: inline-start span-block-end;
+    }
+
+    .dropdown.dropdown-inline-end > .dropdown-content[popover] {
+      position-area: inline-end span-block-end;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown > .dropdown-content[popover] {
+      transition: none;
+    }
+  }
+}

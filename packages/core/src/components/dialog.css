@@ -11,9 +11,10 @@
     margin: auto;
     padding: 0;
     border: none;
-    width: 100%;
+    width: calc(100% - 2rem);
     max-width: 28rem;
-    max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 2rem);
+    box-sizing: border-box;
     background-color: var(--color-surface);
     color: var(--color-on-surface);
     border-radius: var(--radius-2xl);
@@ -30,7 +31,7 @@
   .dialog-box {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 2rem);
     overflow: hidden;
   }
 
@@ -89,6 +90,7 @@
   /* Dialog Footer */
   .dialog-footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     gap: 0.5rem;
     padding: 1rem 1.5rem 1.5rem;
@@ -126,6 +128,30 @@
     height: 100%;
     border-radius: 0;
     margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    dialog.dialog {
+      width: calc(100% - 1rem);
+      max-height: calc(100dvh - 1rem);
+      border-radius: var(--radius-lg);
+    }
+
+    .dialog-box {
+      max-height: calc(100dvh - 1rem);
+    }
+
+    .dialog-header {
+      padding: 1rem 1rem 0;
+    }
+
+    .dialog-body {
+      padding: 1rem;
+    }
+
+    .dialog-footer {
+      padding: 0.75rem 1rem 1rem;
+    }
   }
 
   dialog.dialog.dialog-fullscreen .dialog-box {

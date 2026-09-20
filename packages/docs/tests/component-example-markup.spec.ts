@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test';
 
 const componentPages = [
+  'actions',
+  'dropdown',
+  'fab',
+  'swap',
+  'theme-controller',
   'file-upload',
   'autocomplete',
   'cascader',

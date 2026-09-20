@@ -1,0 +1,45 @@
+---
+title: Actions
+description: Choose and compose DuskMoonUI controls with explicit state and accessibility contracts
+category: components
+order: 0
+published: true
+tags: ['actions', 'button', 'dropdown', 'fab', 'swap', 'theme-controller']
+---
+
+# Actions
+
+DuskMoonUI action components share the same theme tokens and CSS-first architecture, but they do not share one interaction model. Choose the primitive whose state contract matches the task; Core supplies presentation while native HTML or your application supplies behavior.
+
+| Component | Use it for | State authority |
+| --- | --- | --- |
+| [Button](/duskmoonui/docs/en/components/button/) | Starting one immediate action | Native button or link semantics |
+| [Dropdown](/duskmoonui/docs/en/components/dropdown/) | Disclosing links, filters, forms, or a Menu | Native Popover state |
+| [FAB / Speed Dial](/duskmoonui/docs/en/components/fab/) | A prominent floating action or related action group | Popover state or application state |
+| [Swap](/duskmoonui/docs/en/components/swap/) | Replacing one state indicator with another | Checkbox state or application-owned `aria-pressed` |
+| [Theme Controller](/duskmoonui/docs/en/components/theme-controller/) | Choosing a theme preference | Application preference, resolved to `data-theme` |
+
+## Composition rules
+
+- FAB triggers and actions reuse [Button](/duskmoonui/docs/en/components/button/) classes. Import both components when using individual imports.
+- A Dropdown is a disclosure container. Its content may be a [Menu](/duskmoonui/docs/en/components/menu/), ordinary links, a filter, or a form.
+- Swap changes a visual indicator; it does not replace [Switch](/duskmoonui/docs/en/components/switch/), Toggle Button, or Theme Controller state management.
+- [Circle Menu](/duskmoonui/docs/en/components/circle-menu/) is a radial navigation pattern, not a Speed Dial replacement.
+
+## State ownership
+
+Use one authoritative state source per instance. Dropdown follows browser-managed `:popover-open`; controlled components follow the state maintained by their application. Do not add an open class that contradicts native closed state.
+
+CSS does not provide persistence, focus restoration, dismissal logic, or ARIA updates. Those responsibilities remain native browser behavior where documented or application behavior where the component is controlled.
+
+## Individual imports
+
+```css
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/dropdown";
+@import "@duskmoon-dev/core/components/fab";
+@import "@duskmoon-dev/core/components/swap";
+@import "@duskmoon-dev/core/components/theme-controller";
+```
+
+The full `@duskmoon-dev/core` stylesheet already includes every component.

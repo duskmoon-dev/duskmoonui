@@ -49,11 +49,15 @@ Import specific components as needed:
 ```css
 /* Core components */
 @import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/dropdown";
+@import "@duskmoon-dev/core/components/fab";
 @import "@duskmoon-dev/core/components/card";
 @import "@duskmoon-dev/core/components/input";
 @import "@duskmoon-dev/core/components/form";
 @import "@duskmoon-dev/core/components/navigation";
 @import "@duskmoon-dev/core/components/modal";
+@import "@duskmoon-dev/core/components/swap";
+@import "@duskmoon-dev/core/components/theme-controller";
 
 /* Data display */
 @import "@duskmoon-dev/core/components/avatar";
@@ -124,7 +128,9 @@ Import specific components as needed:
 | Datepicker | `@duskmoon-dev/core/components/datepicker` | ~8KB |
 | Dialog | `@duskmoon-dev/core/components/dialog` | ~4KB |
 | Divider | `@duskmoon-dev/core/components/divider` | ~5KB |
+| Dropdown | `@duskmoon-dev/core/components/dropdown` | under 4KB |
 | Drawer | `@duskmoon-dev/core/components/drawer` | ~8KB |
+| FAB / Speed Dial | `@duskmoon-dev/core/components/fab` | under 4KB |
 | File Upload | `@duskmoon-dev/core/components/file-upload` | ~7KB |
 | Footer | `@duskmoon-dev/core/components/footer` | under 2KB |
 | Form | `@duskmoon-dev/core/components/form` | ~9KB |
@@ -146,10 +152,19 @@ Import specific components as needed:
 | Stack | `@duskmoon-dev/core/components/stack` | under 2KB |
 | Stepper | `@duskmoon-dev/core/components/stepper` | ~7KB |
 | Switch | `@duskmoon-dev/core/components/switch` | ~7KB |
+| Swap | `@duskmoon-dev/core/components/swap` | under 3KB |
 | Table | `@duskmoon-dev/core/components/table` | ~4KB |
+| Theme Controller | `@duskmoon-dev/core/components/theme-controller` | under 6KB |
 | Timeline | `@duskmoon-dev/core/components/timeline` | ~7KB |
 | Toast | `@duskmoon-dev/core/components/toast` | ~5KB |
 | Tooltip | `@duskmoon-dev/core/components/tooltip` | ~7KB |
+
+FAB provides placement and action-group layout but deliberately reuses Button appearance. Import both standalone styles for FAB examples:
+
+```css
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/fab";
+```
 
 ## Usage with Custom Elements
 

@@ -22,6 +22,11 @@ const layoutComponentExports = [
   './components/sidebar-layout',
   './components/mask',
 ] as const;
+const actionsComponentExports = [
+  './components/dropdown',
+  './components/fab',
+  './components/swap',
+] as const;
 
 describe('CSS-only package exports', () => {
   let exportsMap: Record<string, { default?: string; style?: string }>;
@@ -52,6 +57,23 @@ describe('CSS-only package exports', () => {
       expect(exportEntry.import).toBe(`./dist/esm/components/${exportName.split('/').at(-1)}.js`);
       expect(exportEntry.default).toBe(exportEntry.import);
       expect(exportEntry.types).toBe(`./dist/esm/components/${exportName.split('/').at(-1)}.d.ts`);
+    });
+  }
+
+  for (const exportName of actionsComponentExports) {
+    it(`${exportName} exposes CSS and constructable stylesheet entries`, () => {
+      const exportEntry = exportsMap[exportName] as {
+        default?: string;
+        import?: string;
+        style?: string;
+        types?: string;
+      };
+      const name = exportName.split('/').at(-1);
+
+      expect(exportEntry.style).toBe(`./dist/components/${name}.css`);
+      expect(exportEntry.import).toBe(`./dist/esm/components/${name}.js`);
+      expect(exportEntry.default).toBe(exportEntry.import);
+      expect(exportEntry.types).toBe(`./dist/esm/components/${name}.d.ts`);
     });
   }
 });

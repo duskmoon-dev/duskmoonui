@@ -1,0 +1,61 @@
+---
+title: Dropdown
+description: Native Popover disclosure positioned relative to its trigger
+category: components
+order: 3
+published: true
+tags: ['dropdown', 'popover', 'actions', 'navigation']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Dropdown
+
+Dropdown positions Popover content relative to its trigger. It is a container, not a keyboard-menu implementation: place ordinary links, a form, filters, or a [Menu](/duskmoonui/docs/en/components/menu/) inside it according to the content's semantics.
+
+```css
+@import "@duskmoon-dev/core/components/dropdown";
+```
+
+## Popover Dropdown
+
+Use a real button with `popovertarget` and a matching `.dropdown-content[popover]`. Native Popover state owns visibility, light dismissal, Escape handling, and focus restoration. No JavaScript or open-state class is needed.
+
+<ComponentShowcase title="Popover Dropdown" allowOverflow code={`<div class="dropdown dropdown-block-end">
+  <button class="btn btn-outlined" type="button" popovertarget="demo-dropdown-popover">
+    Project actions
+  </button>
+  <div class="dropdown-content" id="demo-dropdown-popover" popover="auto">
+    <a href="#demo-open">Open project</a>
+    <a href="#demo-duplicate">Duplicate</a>
+    <button type="button">Archive</button>
+  </div>
+</div>`} />
+
+Supporting browsers use CSS Anchor Positioning and automatically try alternate block and inline placements when space is constrained. A safe fixed viewport position keeps the content usable where anchor positioning is unavailable.
+
+## Placement API
+
+| Class | Placement |
+| --- | --- |
+| `.dropdown-block-start` | Before the trigger in the block direction |
+| `.dropdown-block-end` | After the trigger in the block direction |
+| `.dropdown-inline-start` | Before the trigger in the inline direction |
+| `.dropdown-inline-end` | After the trigger in the inline direction |
+
+Placement uses logical classes so the same markup adapts to writing direction. Test long content at narrow viewport widths; Dropdown limits the surface to the viewport and provides CSS anchor fallbacks.
+
+## API
+
+| Class or attribute | Purpose |
+| --- | --- |
+| `.dropdown` | Base container |
+| `popovertarget="id"` | Connects the trigger to the Popover |
+| `.dropdown-content` | Disclosed surface |
+| `popover="auto"` | Enables browser-managed disclosure and light dismissal |
+| `.dropdown-block-start` | Places content before the trigger in the block direction |
+| `.dropdown-block-end` | Places content after the trigger in the block direction |
+| `.dropdown-inline-start` | Places content before the trigger in the inline direction |
+| `.dropdown-inline-end` | Places content after the trigger in the inline direction |
+
+Do not add `role="menu"` or `role="menuitem"` unless the application also implements the complete menu keyboard model. Ordinary links and buttons are usually the correct semantics.

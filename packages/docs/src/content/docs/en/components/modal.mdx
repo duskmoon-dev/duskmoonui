@@ -15,6 +15,8 @@ Modal is DuskMoon's legacy CSS overlay API. It uses a regular element with `.mod
 
 The legacy API remains available for existing applications that already own visibility, focus management, Escape handling, background inertness, and focus restoration.
 
+> Adding `.modal-open`, `aria-modal="true"`, or visible CSS does not create native modal behavior. Keep existing Modal integrations working, but start new modal tasks with `<dialog class="dialog">` opened through `showModal()`.
+
 ## Basic usage
 
 The complete structure places `.modal-box` and `.modal-backdrop` inside `.modal`. This CSS-only example uses `:target` so the preview works without documentation-side JavaScript.
@@ -190,7 +192,7 @@ Modal retains three legacy state mechanisms:
 </div>
 ```
 
-Use `body.modal-open` when your controller must prevent background scrolling. The CSS class does not manage application state by itself.
+Use `body.modal-open` when your controller's scroll-lock policy must prevent background scrolling. Scroll locking is separate from background inertness: the body class does not make background controls inert, contain focus, or create modal semantics. The CSS class does not manage application state by itself.
 
 ## Accessibility responsibilities
 
@@ -203,6 +205,8 @@ Legacy Modal supplies styling, not modal behavior. Consumers must:
 - Add `aria-modal="true"` only after the implementation actually prevents interaction with background content.
 
 The CSS-only `:target` and checkbox examples demonstrate appearance and state changes; they are not complete accessible modal implementations. Prefer [Dialog](/duskmoonui/docs/en/components/dialog/) when native browser behavior is available to the application.
+
+Backdrop dismissal is also an application decision. `.modal-backdrop` supplies the visual/click target used by existing markup, but the controller must decide whether backdrop activation closes a particular task. Destructive and multi-step flows may require an explicit close or cancel action.
 
 ## API reference
 

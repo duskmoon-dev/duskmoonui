@@ -44,4 +44,14 @@ describe('Dialog Component', () => {
   it('should have border-radius for rounded corners', () => {
     expect(css).toMatch(/border-radius:\s*var\(--radius-2xl\)/);
   });
+
+  it('should constrain content to the dynamic viewport and wrap actions', () => {
+    expect(css).toContain('100dvh');
+    expect(css).toMatch(/\.dialog-footer\s*\{[^}]*flex-wrap:\s*wrap/s);
+  });
+
+  it('should provide compact mobile spacing without changing native state', () => {
+    expect(css).toMatch(/@media\s*\(max-width:\s*640px\)/);
+    expect(css).not.toMatch(/dialog\.dialog(?:\[[^\]]+\])?\s*\{[^}]*(?:display|visibility):/s);
+  });
 });

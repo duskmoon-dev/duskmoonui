@@ -34,23 +34,41 @@ use your framework reset when appropriate. Substitute the Moonlight theme for da
 Aggregate: `@duskmoon-dev/core`; no-Tailwind: `@duskmoon-dev/core/standalone.css`.
 Individual: `@duskmoon-dev/core/components/file-upload.css` plus theme/reset.
 Extensionless `components/file-upload` exports generated `css` and `styles`.
-Use `file-input.css` for the native input in this example and `form-group.css`
+Use `file-input.css` for the separate native input view and `form-group.css`
 for its label/help.
 
-## Operable Native Input Inside The Surface
+## Drop Section View
 
-This example opens the native file picker; it does not promise drag/drop or upload.
-The input is deliberately visible and focusable instead of a zero-sized hidden target.
+The drop section is a presentation surface for an application-owned drag-and-drop
+interaction. It intentionally contains no file input and does not claim to accept
+drops by itself.
 
-<ComponentShowcase title="File selection surface" code={`<form enctype="multipart/form-data">
-  <div class="file-upload">
-    <div class="file-upload-dropzone">
-      <label class="form-label" for="demo-upload-native">Select attachments</label>
-      <input id="demo-upload-native" name="attachments" type="file" class="file-input" multiple aria-describedby="demo-upload-help">
-      <p id="demo-upload-help" class="file-upload-subtitle">Selected files remain local until an application uploads them.</p>
+<ComponentShowcase title="Drop section presentation" code={`<div class="file-upload">
+  <div class="file-upload-dropzone" role="img" aria-label="Document drop section presentation">
+    <span class="file-upload-icon" aria-hidden="true">⇧</span>
+    <div class="file-upload-text" aria-hidden="true">
+      <p class="file-upload-title">Drop documents here</p>
+      <p class="file-upload-subtitle">PDF, DOCX, or TXT up to 10 MB</p>
     </div>
   </div>
-  <button type="reset" class="btn">Clear selected files</button>
+</div>`} />
+
+An application may add drag listeners and toggle `.dragging`, but it must also
+provide an equivalent keyboard-operable file selection path. Do not make the
+drop section a focusable `div` that pretends to be a native control.
+
+## Input View
+
+Use a visible native file input when the browser file picker is the interaction.
+This view is independent of the drop section.
+
+<ComponentShowcase title="Native file input" code={`<form class="file-upload" enctype="multipart/form-data">
+  <div class="form-group">
+    <label class="form-label" for="demo-upload-native">Select attachments</label>
+    <input id="demo-upload-native" name="attachments" type="file" class="file-input" multiple aria-describedby="demo-upload-help">
+    <p id="demo-upload-help" class="helper-text">Selected files remain local until an application uploads them.</p>
+  </div>
+  <button type="reset" class="btn btn-ghost">Clear selected files</button>
 </form>`} />
 
 ## Progress Styling Sample

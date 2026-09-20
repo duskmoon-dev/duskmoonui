@@ -1,0 +1,223 @@
+---
+title: Theme Controller
+description: Styled theme preference controls with application-owned resolution and persistence
+category: components
+order: 6
+published: true
+tags: ['theme-controller', 'theming', 'radio', 'dropdown', 'swap', 'actions']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Theme Controller
+
+Theme Controller styles preference controls. Core does not select a theme, read storage, listen for system changes, or mutate `data-theme`; those are application responsibilities.
+
+Keep three values distinct:
+
+1. **Preference** — what the user chose, including `system`.
+2. **Resolved theme** — the concrete theme applied to `data-theme`, such as `sunshine` or `moonlight`.
+3. **Controller state** — which radio or button is visually active.
+
+Selecting a styled radio does not apply a theme unless application code handles the change.
+
+```css
+@import "@duskmoon-dev/core/components/theme-controller";
+```
+
+## Segmented controller
+
+Use a unique radio `name` and IDs for every controller instance to avoid coupling otherwise independent groups.
+
+<ComponentShowcase title="Segmented Theme Controller" code={`<fieldset>
+  <legend class="sr-only">Theme preference</legend>
+  <div class="theme-controller">
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-segmented" id="demo-theme-system" value="system" checked />
+      <label class="theme-controller-label" for="demo-theme-system">System</label>
+    </span>
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-segmented" id="demo-theme-light" value="sunshine" />
+      <label class="theme-controller-label" for="demo-theme-light">Light</label>
+    </span>
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-segmented" id="demo-theme-dark" value="moonlight" />
+      <label class="theme-controller-label" for="demo-theme-dark">Dark</label>
+    </span>
+  </div>
+</fieldset>`} />
+
+Size modifiers are `.theme-controller-sm` and `.theme-controller-lg`. `.theme-controller-icon` reduces label padding for icon-only options; keep an accessible label on every option.
+
+## Dropdown controller
+
+The dropdown presentation uses native details/summary state. Its radio selection remains application-owned.
+
+<ComponentShowcase title="Dropdown Theme Controller" allowOverflow code={`<details class="theme-controller-dropdown theme-controller-dropdown-end">
+  <summary class="theme-controller-trigger">Appearance</summary>
+  <fieldset class="theme-controller-menu">
+    <legend class="sr-only">Theme preference</legend>
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-dropdown" id="demo-theme-dropdown-system" value="system" checked />
+      <label class="theme-controller-label" for="demo-theme-dropdown-system">System</label>
+    </span>
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-dropdown" id="demo-theme-dropdown-light" value="sunshine" />
+      <label class="theme-controller-label" for="demo-theme-dropdown-light">Sunshine</label>
+    </span>
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-dropdown" id="demo-theme-dropdown-dark" value="moonlight" />
+      <label class="theme-controller-label" for="demo-theme-dropdown-dark">Moonlight</label>
+    </span>
+  </fieldset>
+</details>`} />
+
+Use `.theme-controller-dropdown-sm` or `.theme-controller-dropdown-lg` for sizing, `.theme-controller-dropdown-icon` for an icon trigger, and `.theme-controller-dropdown-end` for end alignment.
+
+## System, light, and dark preference
+
+The example below preserves `system` as the stored preference and resolves it separately. Storage failures leave the control usable, system listeners are cleaned up, and browser globals are accessed only after the environment check.
+
+<ComponentShowcase title="Working Preference Controller" code={`<fieldset id="demo-theme-preference-root">
+  <legend>Theme preference</legend>
+  <div class="theme-controller theme-controller-sm">
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-preference" id="demo-theme-preference-system" value="system" />
+      <label class="theme-controller-label" for="demo-theme-preference-system">System</label>
+    </span>
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-preference" id="demo-theme-preference-light" value="sunshine" />
+      <label class="theme-controller-label" for="demo-theme-preference-light">Light</label>
+    </span>
+    <span>
+      <input class="theme-controller-item" type="radio" name="demo-theme-preference" id="demo-theme-preference-dark" value="moonlight" />
+      <label class="theme-controller-label" for="demo-theme-preference-dark">Dark</label>
+    </span>
+  </div>
+</fieldset>
+
+<script>
+  (() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    const root = document.getElementById('demo-theme-preference-root');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = 'true';
+
+    const key = 'demo-theme-preference';
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const valid = new Set(['system', 'sunshine', 'moonlight']);
+    const read = () => {
+      try {
+        const saved = window.localStorage.getItem(key);
+        return valid.has(saved) ? saved : 'system';
+      } catch {
+        return 'system';
+      }
+    };
+    const write = value => {
+      try { window.localStorage.setItem(key, value); } catch { /* optional storage */ }
+    };
+    const resolve = preference => preference === 'system'
+      ? (media.matches ? 'moonlight' : 'sunshine')
+      : preference;
+    let preference = read();
+    const apply = () => {
+      document.documentElement.dataset.theme = resolve(preference);
+      const input = root.querySelector('input[value="' + preference + '"]');
+      if (input) input.checked = true;
+    };
+    const onChange = event => {
+      if (!event.target.matches('.theme-controller-item')) return;
+      preference = event.target.value;
+      write(preference);
+      apply();
+    };
+    const onSystemChange = () => {
+      if (preference === 'system') apply();
+    };
+    const cleanup = () => media.removeEventListener('change', onSystemChange);
+
+    root.addEventListener('change', onChange);
+    media.addEventListener('change', onSystemChange);
+    document.addEventListener('astro:before-swap', cleanup, { once: true });
+    apply();
+  })();
+</script>`} />
+
+## Light/dark control composed with Swap
+
+Swap supplies only the changing icon. The button and application still own theme state and `aria-pressed`.
+
+<ComponentShowcase title="Light and Dark Swap" code={`<button
+  class="btn btn-icon swap swap-rotate"
+  id="demo-theme-swap"
+  type="button"
+  aria-label="Use dark theme"
+  aria-pressed="false"
+>
+  <span class="swap-off" aria-hidden="true">☀️</span>
+  <span class="swap-on" aria-hidden="true">🌙</span>
+</button>
+
+<script>
+  (() => {
+    if (typeof document === 'undefined') return;
+    const button = document.getElementById('demo-theme-swap');
+    if (!button || button.dataset.ready) return;
+    button.dataset.ready = 'true';
+    button.addEventListener('click', () => {
+      const dark = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(dark));
+      button.setAttribute('aria-label', dark ? 'Use light theme' : 'Use dark theme');
+      document.documentElement.dataset.theme = dark ? 'moonlight' : 'sunshine';
+    });
+  })();
+</script>`} />
+
+Import Button and Swap as well when using individual component imports:
+
+```css
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/swap";
+@import "@duskmoon-dev/core/components/theme-controller";
+```
+
+## Initialize before first paint
+
+To avoid a flash of the wrong theme, resolve the stored preference in a small inline script in the document `<head>`. Keep the fallback usable when storage is unavailable.
+
+```html
+<script>
+  (() => {
+    try {
+      const preference = localStorage.getItem('theme-preference') || 'system';
+      const resolved = preference === 'system'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'moonlight' : 'sunshine')
+        : preference;
+      document.documentElement.dataset.theme = resolved;
+    } catch {
+      document.documentElement.dataset.theme = 'sunshine';
+    }
+  })();
+</script>
+```
+
+After hydration, initialize controller state from the preference, not from the resolved `data-theme`. Server-rendered applications may instead emit the resolved attribute and preference through their own request or cookie pipeline; Core does not prescribe persistence.
+
+## API
+
+| Class | Purpose |
+| --- | --- |
+| `.theme-controller` | Inline segmented radio group |
+| `.theme-controller-item` | Visually hidden native radio |
+| `.theme-controller-label` | Visible option label |
+| `.theme-controller-sm`, `.theme-controller-lg` | Segmented sizes |
+| `.theme-controller-icon` | Icon-only segmented spacing |
+| `.theme-controller-dropdown` | Native details dropdown root |
+| `.theme-controller-trigger` | Summary trigger |
+| `.theme-controller-menu` | Dropdown radio group surface |
+| `.theme-controller-dropdown-sm`, `.theme-controller-dropdown-lg` | Dropdown sizes |
+| `.theme-controller-dropdown-icon` | Icon-only trigger spacing |
+| `.theme-controller-dropdown-end` | End-aligned dropdown menu |
+
+The current built-in concrete themes are `sunshine`, `moonlight`, `ocean`, and `forest`. “System” is a preference, not a theme token set; map it to an appropriate light/dark pair such as `sunshine` and `moonlight`.

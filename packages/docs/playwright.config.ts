@@ -14,7 +14,11 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+          ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH } : {},
+      },
     },
     {
       name: 'firefox',
@@ -27,7 +31,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'bun run dev',
-    url: 'http://localhost:4321',
+    url: 'http://localhost:4321/duskmoonui/',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
   },

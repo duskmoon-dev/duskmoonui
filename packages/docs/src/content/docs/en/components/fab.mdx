@@ -1,0 +1,155 @@
+---
+title: FAB / Speed Dial
+description: Floating action buttons and vertical Speed Dials composed with Button
+category: components
+order: 2
+published: true
+tags: ['fab', 'speed-dial', 'button', 'actions', 'popover']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# FAB / Speed Dial
+
+A floating action button highlights a primary action. FAB owns placement, geometry, and action-group layout; [Button](/duskmoonui/docs/en/components/button/) owns color, focus, disabled, loading, and interaction styling.
+
+When importing components individually, include both styles:
+
+```css
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/fab";
+```
+
+## Single and extended FABs
+
+Use `.fab-contained` inside a positioned layout. Omit it for the default fixed bottom-end placement.
+
+<ComponentShowcase title="Contained FABs" code={`<div style="position: relative; min-height: 12rem; width: 100%;">
+  <div class="fab fab-contained">
+    <button class="btn btn-primary btn-icon fab-trigger" type="button" aria-label="Create note">
+      <span aria-hidden="true">＋</span>
+    </button>
+  </div>
+
+  <div class="fab fab-contained fab-start">
+    <button class="btn btn-secondary fab-trigger fab-extended" type="button">
+      <span aria-hidden="true">✎</span>
+      <span>Compose</span>
+    </button>
+  </div>
+</div>`} />
+
+`.fab-start` moves either placement mode to the logical inline start. Customize placement with `--fab-offset-block` and `--fab-offset-inline`; safe-area insets are added automatically. `.fab-extended` provides the icon-and-label geometry without copying Button colors.
+
+## Native Popover Speed Dial
+
+Popover state is the only open-state authority in this mode. Light dismissal and Escape behavior are browser-managed, and closed actions are removed from interaction by the browser.
+
+<ComponentShowcase title="Native Speed Dial" allowOverflow code={`<div style="position: relative; min-height: 14rem; width: 100%;">
+  <div class="fab fab-contained fab-speed-dial">
+    <button
+      class="btn btn-primary btn-icon fab-trigger"
+      type="button"
+      aria-label="Create"
+      popovertarget="demo-fab-native-actions"
+    >
+      <span aria-hidden="true">＋</span>
+    </button>
+
+    <div class="fab-actions" id="demo-fab-native-actions" popover="auto">
+      <div class="fab-action">
+        <span class="fab-label">New message</span>
+        <button class="btn btn-secondary btn-icon" type="button" aria-label="New message">
+          <span aria-hidden="true">✉</span>
+        </button>
+      </div>
+      <div class="fab-action">
+        <span class="fab-label">Upload file</span>
+        <button class="btn btn-secondary btn-icon" type="button" aria-label="Upload file">
+          <span aria-hidden="true">↑</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>`} />
+
+Keep the trigger first in DOM order; CSS places the action group above it visually. Labels may wrap on narrow viewports. Use native buttons for actions and links for navigation.
+
+## Application-controlled Speed Dial
+
+Use `.fab-controlled` with `.fab-open` only when the application owns the interaction. The application must synchronize `aria-expanded`, implement outside/Escape dismissal, and restore focus. Do not add `[popover]` to the controlled action group.
+
+<ComponentShowcase title="Controlled Speed Dial" allowOverflow code={`<div style="position: relative; min-height: 14rem; width: 100%;">
+  <div class="fab fab-contained fab-speed-dial fab-controlled" id="demo-fab-controlled">
+    <button
+      class="btn btn-primary btn-icon fab-trigger"
+      id="demo-fab-controlled-trigger"
+      type="button"
+      aria-label="Create"
+      aria-expanded="false"
+      aria-controls="demo-fab-controlled-actions"
+    ><span aria-hidden="true">＋</span></button>
+
+    <div class="fab-actions" id="demo-fab-controlled-actions">
+      <div class="fab-action">
+        <span class="fab-label">Add event</span>
+        <button class="btn btn-tertiary btn-icon" type="button" aria-label="Add event">＋</button>
+      </div>
+      <div class="fab-action">
+        <span class="fab-label">Add task</span>
+        <button class="btn btn-tertiary btn-icon" type="button" aria-label="Add task">✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const root = document.getElementById('demo-fab-controlled');
+    const trigger = document.getElementById('demo-fab-controlled-trigger');
+    if (!root || !trigger || root.dataset.ready) return;
+    root.dataset.ready = 'true';
+
+    const close = (restoreFocus = false) => {
+      root.classList.remove('fab-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) trigger.focus();
+    };
+
+    trigger.addEventListener('click', () => {
+      const open = root.classList.toggle('fab-open');
+      trigger.setAttribute('aria-expanded', String(open));
+      if (open) root.querySelector('.fab-action button, .fab-action a')?.focus();
+    });
+    document.addEventListener('pointerdown', event => {
+      if (!root.contains(event.target)) close();
+    });
+    root.addEventListener('keydown', event => {
+      if (event.key === 'Escape') close(true);
+    });
+  })();
+</script>`} />
+
+## API
+
+| Class or variable | Purpose |
+| --- | --- |
+| `.fab` | Fixed bottom-end placement container |
+| `.fab-contained` | Absolute placement within a positioned ancestor |
+| `.fab-start` | Logical bottom-start placement |
+| `.fab-extended` | Extended icon-and-label button geometry |
+| `.fab-speed-dial` | Vertical Speed Dial composition |
+| `.fab-trigger` | Speed Dial trigger part |
+| `.fab-actions` | Native Popover or controlled action group |
+| `.fab-action` | One action and its optional label |
+| `.fab-label` | Visible label for an icon-only action |
+| `.fab-controlled`, `.fab-open` | Application-controlled state contract |
+| `--fab-offset-block` | Logical viewport/container edge offset |
+| `--fab-offset-inline` | Logical inline edge offset |
+| `--fab-gap` | Spacing between actions |
+
+Motion is disabled when `prefers-reduced-motion: reduce` is active. All actionable children still need native semantics and accessible names.
+
+## FAB is not Circle Menu
+
+Speed Dial is a vertical action group designed for predictable visual and keyboard order. [Circle Menu](/duskmoonui/docs/en/components/circle-menu/) is the existing radial navigation pattern; neither component replaces the other.

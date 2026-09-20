@@ -13,6 +13,10 @@
 /* Button Component */
 @import "./button.css";
 
+/* Action composition components */
+@import "./fab.css";
+@import "./swap.css";
+
 /* Card Component */
 @import "./card.css";
 
@@ -22,7 +26,7 @@
 /* Compatibility form entry reuses canonical native controls and composition. */
 @import "./form.css";
 
-/* Navigation Component - includes navbar, menu, breadcrumbs, tabs, pagination, dropdown */
+/* Navigation Component - retains the legacy Dropdown import contract */
 @import "./navigation.css";
 
 /* Modal Component */

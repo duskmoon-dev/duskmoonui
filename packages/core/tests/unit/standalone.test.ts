@@ -108,6 +108,9 @@ describe('Standalone release bundles', () => {
       'tree-select',
       'markdown-body',
       'circle-menu',
+      'dropdown',
+      'fab',
+      'swap',
       'sign-page',
       'home-page',
       'console-page',
@@ -135,6 +138,9 @@ describe('Standalone release bundles', () => {
       '.tree-select',
       '.markdown-body',
       '.circle-menu',
+      '.dropdown',
+      '.fab',
+      '.swap',
       '.sign-page',
       '.home-page',
       '.console-page',
@@ -189,6 +195,9 @@ describe('Standalone release bundles', () => {
     expect(bundleCss).toContain('@duskmoon-dev/core');
     expect(bundleCss).toContain('@duskmoon-dev/css-art');
     expect(bundleCss).toContain('.btn {');
+    expect(bundleCss).toContain('.dropdown {');
+    expect(bundleCss).toContain('.fab {');
+    expect(bundleCss).toContain('.swap {');
     expect(bundleCss).toContain('.sidebar-layout {');
     expect(bundleCss).toContain('.mask-circle {');
     expect(bundleCss).toContain('.art-moon {');

@@ -178,8 +178,8 @@ describe('Navigation Component', () => {
   });
 
   describe('Responsive', () => {
-    it('should support dropdown for mobile', () => {
-      expect(navCSS).toContain('.dropdown');
+    it('should preserve Dropdown coverage through the canonical component import', () => {
+      expect(navCSS).toContain('@import "./dropdown.css"');
     });
   });
 

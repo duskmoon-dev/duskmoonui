@@ -167,9 +167,9 @@ test.describe('Visual Regression - Navigation Components', () => {
         container.id = 'nav-test';
         container.className = 'p-8 bg-base-100 h-64';
         container.innerHTML = `
-          <div class="dropdown dropdown-open">
-            <div tabindex="0" role="button" class="btn">Dropdown</div>
-            <ul tabindex="0" class="dropdown-content menu bg-surface rounded-box shadow-lg w-52">
+          <div class="dropdown dropdown-block-end">
+            <button type="button" class="btn" popovertarget="visual-dropdown">Dropdown</button>
+            <ul id="visual-dropdown" popover="manual" class="dropdown-content menu bg-surface rounded-box shadow-lg w-52">
               <li><a>Item 1</a></li>
               <li><a>Item 2</a></li>
               <li><a>Item 3</a></li>
@@ -178,6 +178,8 @@ test.describe('Visual Regression - Navigation Components', () => {
         `;
         document.body.appendChild(container);
       });
+
+      await page.locator('#visual-dropdown').evaluate((popover: HTMLElement) => popover.showPopover());
 
       const nav = page.locator('#nav-test');
       await expect(nav).toHaveScreenshot('sunshine-dropdown.png');

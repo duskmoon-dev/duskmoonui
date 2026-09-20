@@ -6,6 +6,24 @@
   "main": "./dist/index.css",
   "types": "./dist/types/types/index.d.ts",
   "exports": {
+    "./components/dropdown": {
+      "types": "./dist/esm/components/dropdown.d.ts",
+      "style": "./dist/components/dropdown.css",
+      "import": "./dist/esm/components/dropdown.js",
+      "default": "./dist/esm/components/dropdown.js"
+    },
+    "./components/fab": {
+      "types": "./dist/esm/components/fab.d.ts",
+      "style": "./dist/components/fab.css",
+      "import": "./dist/esm/components/fab.js",
+      "default": "./dist/esm/components/fab.js"
+    },
+    "./components/swap": {
+      "types": "./dist/esm/components/swap.d.ts",
+      "style": "./dist/components/swap.css",
+      "import": "./dist/esm/components/swap.js",
+      "default": "./dist/esm/components/swap.js"
+    },
     "./components/validator": {
       "types": "./dist/esm/components/validator.d.ts",
       "style": "./dist/components/validator.css",

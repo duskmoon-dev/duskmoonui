@@ -204,6 +204,17 @@ Group related buttons together:
 </div>`}
 />
 
+## Composing action components
+
+Button remains the visual foundation for action triggers. [Dropdown](/duskmoonui/docs/en/components/dropdown/) triggers and [FAB / Speed Dial](/duskmoonui/docs/en/components/fab/) actions compose `.btn` with their component-specific classes rather than copying button colors, focus, loading, or disabled behavior.
+
+When using individual imports for a FAB, import both styles:
+
+```css
+@import "@duskmoon-dev/core/components/button";
+@import "@duskmoon-dev/core/components/fab";
+```
+
 ## Best Practices
 
 ### Visual Hierarchy
@@ -354,6 +365,9 @@ You can combine classes for different effects:
 
 ## Related Components
 
+- [Dropdown](/duskmoonui/docs/en/components/dropdown/) - Button-triggered disclosures
+- [FAB / Speed Dial](/duskmoonui/docs/en/components/fab/) - Floating actions composed with Button
+- [Swap](/duskmoonui/docs/en/components/swap/) - State indicators that can compose with a button
 - [Badge](/duskmoonui/docs/en/components/badge/) - Notification indicators
 - [Card](/duskmoonui/docs/en/components/card/) - Container with actions
 - [Input](/duskmoonui/docs/en/components/input/) - Form inputs
