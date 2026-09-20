@@ -62,7 +62,8 @@
   }
 
   /* Modal Action */
-  .modal-action {
+  .modal-action,
+  .modal-footer {
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
@@ -93,8 +94,16 @@
     max-width: 20rem;
   }
 
+  .modal-md .modal-box {
+    max-width: 32rem;
+  }
+
   .modal-lg .modal-box {
     max-width: 48rem;
+  }
+
+  .modal-xl .modal-box {
+    max-width: 64rem;
   }
 
   .modal-full .modal-box {
@@ -117,6 +126,38 @@
 
   .modal-middle {
     align-items: center;
+  }
+
+  /* Animation Variants */
+  .modal-slide-up .modal-box {
+    transform: translateY(6rem) scale(0.95);
+  }
+
+  .modal-slide-down .modal-box {
+    transform: translateY(-6rem) scale(0.95);
+  }
+
+  .modal-zoom .modal-box {
+    transform: scale(0.75);
+  }
+
+  :is(.modal-slide-up, .modal-slide-down, .modal-zoom).modal-open .modal-box,
+  :is(.modal-slide-up, .modal-slide-down, .modal-zoom):target .modal-box {
+    transform: translateY(0) scale(1);
+  }
+
+  /* Backdrop Variants */
+  .modal-backdrop-light {
+    background-color: color-mix(in srgb, white 80%, transparent);
+  }
+
+  .modal-backdrop-blur {
+    background-color: color-mix(in srgb, var(--color-scrim) 30%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-no-backdrop {
+    background-color: transparent;
   }
 
   /* Modal Close Button */
@@ -165,6 +206,22 @@
   .modal-body {
     color: var(--color-on-surface-variant);
     line-height: 1.5;
+  }
+
+  .modal-scrollable .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .modal-no-padding .modal-body {
+    padding: 0;
+  }
+
+  .modal-centered .modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   /* Responsive Modal */
@@ -287,5 +344,9 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  body.modal-open {
+    overflow: hidden;
   }
 }

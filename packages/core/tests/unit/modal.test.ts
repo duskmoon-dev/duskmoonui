@@ -139,6 +139,10 @@ describe('Modal Component', () => {
     it('should support :target for pure CSS modal', () => {
       expect(modalCSS).toMatch(/\.modal:target/);
     });
+
+    it('should remain a legacy class API rather than styling native dialog', () => {
+      expect(modalCSS).not.toMatch(/dialog\.modal/);
+    });
   });
 
   describe('Modal Toggle', () => {
@@ -173,6 +177,17 @@ describe('Modal Component', () => {
 
     it('should define .modal-lg for large modals', () => {
       expect(modalCSS).toContain('.modal-lg');
+    });
+
+    it('should retain medium, extra-large, animation, and content modifiers', () => {
+      expect(modalCSS).toContain('.modal-md');
+      expect(modalCSS).toContain('.modal-xl');
+      expect(modalCSS).toContain('.modal-slide-up');
+      expect(modalCSS).toContain('.modal-slide-down');
+      expect(modalCSS).toContain('.modal-zoom');
+      expect(modalCSS).toContain('.modal-scrollable');
+      expect(modalCSS).toContain('.modal-no-padding');
+      expect(modalCSS).toContain('.modal-centered');
     });
 
     it('should have different max-width for sizes', () => {
