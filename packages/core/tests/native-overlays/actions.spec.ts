@@ -3,7 +3,7 @@ import { expect, test, type Page } from '@playwright/test';
 
 const theme = readFileSync(new URL('../../src/themes/generated/sunshine.css', import.meta.url), 'utf8');
 const css = ['button', 'fab', 'dropdown']
-  .map(name => readFileSync(new URL(`../../src/components/${name}.css`, import.meta.url), 'utf8'))
+  .map(name => readFileSync(new URL(`../../dist/components/${name}.css`, import.meta.url), 'utf8'))
   .join('\n');
 
 async function setFixture(page: Page, body: string) {

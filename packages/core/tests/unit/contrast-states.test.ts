@@ -3,7 +3,10 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
 const componentCss = (name: string) =>
-  readFileSync(resolve(__dirname, `../../src/components/${name}.css`), 'utf-8');
+  readFileSync(
+    resolve(__dirname, `../../${name === 'navigation' ? 'dist' : 'src'}/components/${name}.css`),
+    'utf-8',
+  );
 
 describe('Component contrast states', () => {
   it('keeps colored navbar links on the navbar content color', () => {

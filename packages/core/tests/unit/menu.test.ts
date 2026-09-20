@@ -6,7 +6,8 @@ describe.each(['menu', 'navigation'])('Menu Component (%s)', (component) => {
   let css: string;
 
   beforeAll(async () => {
-    css = await readFile(resolve(__dirname, `../../src/components/${component}.css`), 'utf-8');
+    const directory = component === 'navigation' ? 'dist' : 'src';
+    css = await readFile(resolve(__dirname, `../../${directory}/components/${component}.css`), 'utf-8');
   });
 
   it('should include @layer components directive', () => {

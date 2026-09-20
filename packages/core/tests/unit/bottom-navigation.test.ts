@@ -125,7 +125,7 @@ describe('Bottom Navigation Component', () => {
     });
 
     it('should use primary-container for active indicator', () => {
-      expect(css).toMatch(/\.bottom-nav-primary .bottom-nav-item\.active .bottom-nav-indicator[^}]*var\(--color-primary-container\)/s);
+      expect(css).toMatch(/\.bottom-nav-primary .bottom-nav-item(?::is\([^}]+\.active[^}]+\)|\.active) .bottom-nav-indicator[^}]*var\(--color-primary-container\)/s);
     });
   });
 

@@ -14,7 +14,7 @@ describe('Navbar Component', () => {
   beforeAll(async () => {
     [css, bundledCSS] = await Promise.all([
       readFile(resolve(__dirname, '../../src/components/navbar.css'), 'utf-8'),
-      readFile(resolve(__dirname, '../../src/components/navigation.css'), 'utf-8'),
+      readFile(resolve(__dirname, '../../dist/components/navigation.css'), 'utf-8'),
     ]);
   });
 

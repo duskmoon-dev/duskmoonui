@@ -34,7 +34,7 @@ const colorableComponents = [
   ['file-upload', 'file-upload'],
   ['input', 'input'],
   ['multi-select', 'multi-select'],
-  ['navigation', 'navbar'],
+  ['navbar', 'navbar'],
   ['otp-input', 'otp-input'],
   ['pin-input', 'pin-input'],
   ['progress', 'progress'],
