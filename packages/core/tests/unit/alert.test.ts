@@ -26,12 +26,23 @@ describe('Alert Component', () => {
       expect(css).toContain('@layer components');
     });
 
-    it('should use flex layout', () => {
-      expect(css).toMatch(/\.alert\s*\{[^}]*display:\s*flex/s);
+    it('should use grid layout', () => {
+      expect(css).toMatch(/\.alert\s*\{[^}]*display:\s*grid/s);
     });
 
-    it('should align items to flex-start', () => {
-      expect(css).toMatch(/\.alert\s*\{[^}]*align-items:\s*flex-start/s);
+    it('should place icon, content, close, and actions in stable rows', () => {
+      expect(css).toContain('"icon content close"');
+      expect(css).toContain('"icon content actions close"');
+      expect(css).toContain('". actions actions"');
+      expect(css).toContain('.alert-actions-end');
+      expect(css).toContain('.alert-actions-bottom');
+      expect(css).toContain('". actions ."');
+      expect(css).toMatch(/\.alert-icon\s*\{[^}]*grid-area:\s*icon/s);
+      expect(css).toMatch(/\.alert-actions\s*\{[^}]*grid-area:\s*actions/s);
+    });
+
+    it('should center items for equal vertical spacing', () => {
+      expect(css).toMatch(/\.alert\s*\{[^}]*align-items:\s*center/s);
     });
 
     it('should set gap between children', () => {
@@ -40,6 +51,11 @@ describe('Alert Component', () => {
 
     it('should set padding', () => {
       expect(css).toMatch(/\.alert\s*\{[^}]*padding:\s*1rem/s);
+    });
+
+    it('should reset direct message paragraph margins', () => {
+      expect(css).toMatch(/\.alert\s*>\s*p\s*\{[^}]*margin:\s*0/s);
+      expect(css).toMatch(/\.alert-content\s*>\s*p\s*\{[^}]*margin:\s*0/s);
     });
 
     it('should set border-radius', () => {
@@ -251,6 +267,10 @@ describe('Alert Component', () => {
       expect(css).toMatch(/\.alert-icon\s*\{[^}]*flex-shrink:\s*0/s);
     });
 
+    it('should keep the icon aligned with the content start', () => {
+      expect(css).toMatch(/\.alert-icon\s*\{[^}]*align-self:\s*start/s);
+    });
+
     it('should define .alert-content class', () => {
       expect(css).toContain('.alert-content');
     });
@@ -291,8 +311,8 @@ describe('Alert Component', () => {
       expect(css).toMatch(/\.alert-actions\s*\{[^}]*gap:\s*0\.5rem/s);
     });
 
-    it('should set alert-actions margin-top', () => {
-      expect(css).toMatch(/\.alert-actions\s*\{[^}]*margin-top:\s*0\.5rem/s);
+    it('should align alert-actions with the content row', () => {
+      expect(css).toMatch(/\.alert-actions\s*\{[^}]*align-self:\s*center/s);
     });
 
     it('should keep text actions readable on filled alerts', () => {
@@ -395,6 +415,11 @@ describe('Alert Component', () => {
       expect(css).toMatch(
         /\.alert-compact\s+\.alert-title[\s\S]*?font-size:\s*0\.8125rem/,
       );
+    });
+
+    it('should define comfortable spacing', () => {
+      expect(css).toMatch(/\.alert-comfortable\s*\{[^}]*padding:\s*1\.25rem/s);
+      expect(css).toMatch(/\.alert-comfortable\s*\{[^}]*gap:\s*1rem/s);
     });
   });
 

@@ -105,9 +105,10 @@ describe('Tooltip Component', () => {
     });
   });
 
-  describe('Arrow', () => {
-    it('should define arrow via ::before', () => {
-      expect(css).toContain('.tooltip[popover]::before');
+  describe('Placement', () => {
+    it('does not draw a misleading arrow when placement can flip', () => {
+      expect(css).not.toContain('.tooltip[popover]::before');
+      expect(css).toContain('arrowless');
     });
   });
 

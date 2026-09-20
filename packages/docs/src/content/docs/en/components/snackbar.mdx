@@ -138,6 +138,8 @@ Add an icon for visual emphasis.
 
 ## Semantic Colors
 
+Color variants use the selected role color as the background and its matching content color for readable text and controls.
+
 ### Success
 
 <ComponentShowcase title="Success Snackbar" code={`<button class="btn btn-success" onclick="
@@ -187,6 +189,8 @@ Add an icon for visual emphasis.
 </div>`} />
 
 ## Brand Colors
+
+Brand variants follow the active theme tokens. In the `moonlight` theme, primary is intentionally neutral while secondary carries the warm gold role; the trigger and Snackbar therefore use the same role color.
 
 <ComponentShowcase title="Primary Snackbar" code={`<button class="btn btn-primary" onclick="
   const snackbar = this.nextElementSibling;

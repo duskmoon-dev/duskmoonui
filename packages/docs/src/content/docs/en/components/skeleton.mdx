@@ -10,11 +10,15 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Skeleton
 
+Skeletons reserve space while a loading region is being populated. Put `aria-busy="true"` on the loading region and hide decorative skeleton shapes with `aria-hidden="true"`; the CSS does not infer application loading state.
+
 Skeleton loaders provide a visual placeholder for content that is loading. They help improve perceived performance and reduce layout shifts by showing users where content will appear.
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Skeleton" code={`<div class="skeleton" style="width: 200px; height: 20px;"></div>`} />
+<ComponentShowcase title="Basic Skeleton" code={`<section aria-busy="true" aria-label="Loading profile">
+  <div class="skeleton" aria-hidden="true" style="width: 200px; height: 20px;"></div>
+</section>`} />
 
 ## Animation Types
 

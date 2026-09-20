@@ -383,6 +383,18 @@
       "import": "./dist/esm/components/progress.js",
       "default": "./dist/esm/components/progress.js"
     },
+    "./components/loading": {
+      "types": "./dist/esm/components/loading.d.ts",
+      "style": "./dist/components/loading.css",
+      "import": "./dist/esm/components/loading.js",
+      "default": "./dist/esm/components/loading.js"
+    },
+    "./components/radial-progress": {
+      "types": "./dist/esm/components/radial-progress.d.ts",
+      "style": "./dist/components/radial-progress.css",
+      "import": "./dist/esm/components/radial-progress.js",
+      "default": "./dist/esm/components/radial-progress.js"
+    },
     "./components/radio": {
       "types": "./dist/esm/components/radio.d.ts",
       "style": "./dist/components/radio.css",

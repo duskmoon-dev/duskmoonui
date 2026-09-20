@@ -11,6 +11,10 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Tooltip
 
+Tooltips are brief, non-interactive descriptions. The core contract uses native `popover="hint"`, `interestfor`, and CSS anchor positioning; it does not polyfill missing browser capabilities. Keep critical information inline, and move links, buttons, and other actions to [Popover](/duskmoonui/docs/en/components/popover/).
+
+The core intentionally has no arrow: automatic placement may flip at viewport edges, and an arrow tied only to the preferred side would be misleading. Keyboard focus, Escape dismissal, pointer persistence for `.tooltip-interactive`, and viewport fallback are browser-managed when the relevant features are available. On unsupported browsers, use inline help or an explicit disclosure owned by the consumer; a `title` attribute is only a limited fallback, not a complete accessible equivalent.
+
 Tooltips display brief, helpful text when users show interest in an element (hover, focus, or long-press).
 
 > **Breaking change**: Tooltips now use the native Popover API (`popover="hint"`) with Interest Invokers (`interestfor`) and CSS Anchor Positioning. The old wrapper + `.tooltip-content` markup is no longer supported.
@@ -91,7 +95,7 @@ Use `.tooltip-interactive` so the surface accepts pointer events. Increase `inte
 <div id="demo-tip-interactive" popover="hint" class="tooltip tooltip-interactive tooltip-rich" style="position-anchor: --demo-tip-interactive">
   <div class="tooltip-rich-title">Learn More</div>
   <div class="tooltip-rich-description">
-    Visit our <a href="#" style="color: var(--color-primary-container); text-decoration: underline;">documentation</a> for details.
+    Documentation is available inline in the surrounding page.
   </div>
 </div>`} />
 
@@ -104,13 +108,13 @@ Call `showPopover()` once to keep a tooltip open for screenshots/demos:
 
 ## Browser Support
 
-| Feature | Support |
-|---------|---------|
-| Popover API (`popover="hint"`) | Chrome 133+, Edge 133+ |
-| Interest Invokers (`interestfor`) | Chrome 135+, Edge 135+ |
-| CSS Anchor + `position-area` | Chrome 125+ (HiDPI fixes in Chrome 130+) |
+| Capability | Core requirement | Verification |
+|---|---|---|
+| Popover API and `popover="hint"` | Browser support for the Popover API | Chromium, Firefox, and WebKit are configured in the integration suite; this checkout's system Chromium supports Popover but not Interest Invokers |
+| Interest Invokers (`interestfor`) | Browser support for the experimental Interest Invokers feature | Skip when feature detection fails; no runtime polyfill is included |
+| CSS anchor positioning and `position-area` | Browser support for the relevant CSS Anchor Positioning features | Use `@supports` or an application fallback when unavailable |
 
-On unsupported browsers, keep a `title` attribute on the trigger as a progressive-enhancement fallback.
+See [MDN Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API), [Using interest invokers](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using_interest_invokers), and [CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning) for current compatibility tables. On unsupported browsers, use inline help or an explicit consumer-owned disclosure; `title` alone is not a complete accessible fallback.
 
 ## React Example
 

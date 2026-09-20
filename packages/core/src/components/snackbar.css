@@ -210,54 +210,84 @@
 
   /* Color Variants */
   .snackbar-info {
-    background-color: var(--color-info-container);
-    color: var(--color-on-info-container);
+    background-color: var(--color-info);
+    color: var(--color-info-content);
   }
 
   .snackbar-success {
-    background-color: var(--color-success-container);
-    color: var(--color-on-success-container);
+    background-color: var(--color-success);
+    color: var(--color-success-content);
   }
 
   .snackbar-warning {
-    background-color: var(--color-warning-container);
-    color: var(--color-on-warning-container);
+    background-color: var(--color-warning);
+    color: var(--color-warning-content);
   }
 
   .snackbar-error {
-    background-color: var(--color-error-container);
-    color: var(--color-on-error-container);
+    background-color: var(--color-error);
+    color: var(--color-error-content);
   }
 
   /* Brand Color Variants */
   .snackbar-primary {
-    background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
   }
 
   .snackbar-secondary {
-    background-color: var(--color-secondary-container);
-    color: var(--color-on-secondary-container);
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-content);
   }
 
   .snackbar-tertiary {
-    background-color: var(--color-tertiary-container);
-    color: var(--color-on-tertiary-container);
+    background-color: var(--color-tertiary);
+    color: var(--color-tertiary-content);
   }
 
   .snackbar-accent {
-    background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
-    color: var(--color-on-surface);
+    background-color: var(--color-accent);
+    color: var(--color-accent-content);
   }
 
   .snackbar-neutral {
-    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
-    color: var(--color-on-surface);
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
   }
 
   .snackbar-base {
     background-color: var(--color-base-200);
     color: var(--color-base-content);
+  }
+
+  :is(
+    .snackbar-info,
+    .snackbar-success,
+    .snackbar-warning,
+    .snackbar-error,
+    .snackbar-primary,
+    .snackbar-secondary,
+    .snackbar-tertiary,
+    .snackbar-accent,
+    .snackbar-neutral,
+    .snackbar-base
+  ) :is(.snackbar-action, .snackbar-close) {
+    color: inherit;
+  }
+
+  :is(
+    .snackbar-info,
+    .snackbar-success,
+    .snackbar-warning,
+    .snackbar-error,
+    .snackbar-primary,
+    .snackbar-secondary,
+    .snackbar-tertiary,
+    .snackbar-accent,
+    .snackbar-neutral,
+    .snackbar-base
+  ) :is(.snackbar-action, .snackbar-close):hover {
+    background-color: color-mix(in oklch, currentColor 12%, transparent);
   }
 
   /* Dark Snackbar (default MD3 style) */

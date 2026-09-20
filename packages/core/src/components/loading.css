@@ -1,0 +1,105 @@
+/**
+ * Loading Component Styles
+ * CSS-only activity indicators. State, aria-busy, and disabling remain consumer-owned.
+ */
+
+@layer components {
+  .loading {
+    --loading-size: 1.25rem;
+    display: inline-flex;
+    width: var(--loading-size);
+    height: var(--loading-size);
+    flex: 0 0 var(--loading-size);
+    color: currentColor;
+    vertical-align: middle;
+  }
+
+  .loading-spinner {
+    border: max(2px, calc(var(--loading-size) / 8)) solid color-mix(in oklch, currentColor 25%, transparent);
+    border-top-color: currentColor;
+    border-radius: var(--radius-full);
+    animation: loading-spin 800ms linear infinite;
+  }
+
+  .loading-dots,
+  .loading-bars {
+    align-items: center;
+    justify-content: center;
+    gap: max(2px, calc(var(--loading-size) / 8));
+  }
+
+  .loading-dots::before,
+  .loading-dots::after,
+  .loading-bars::before,
+  .loading-bars::after {
+    content: "";
+    display: block;
+    background: currentColor;
+  }
+
+  .loading-dots::before,
+  .loading-dots::after {
+    width: 25%;
+    height: 25%;
+    border-radius: var(--radius-full);
+    box-shadow: calc(var(--loading-size) / 3) 0 currentColor;
+    animation: loading-dots 900ms ease-in-out infinite;
+  }
+
+  .loading-dots::after {
+    display: none;
+  }
+
+  .loading-bars {
+    padding-inline: 10%;
+  }
+
+  .loading-bars::before,
+  .loading-bars::after {
+    width: 18%;
+    height: 65%;
+    border-radius: var(--radius-xs);
+    box-shadow: calc(var(--loading-size) / 3) 0 currentColor, calc(var(--loading-size) * 2 / 3) 0 currentColor;
+    animation: loading-bars 900ms ease-in-out infinite;
+  }
+
+  .loading-bars::after {
+    display: none;
+  }
+
+  .loading-xs { --loading-size: 0.75rem; }
+  .loading-sm { --loading-size: 1rem; }
+  .loading-md { --loading-size: 1.25rem; }
+  .loading-lg { --loading-size: 1.75rem; }
+  .loading-xl { --loading-size: 2.5rem; }
+
+  .loading-primary { color: var(--color-primary); }
+  .loading-secondary { color: var(--color-secondary); }
+  .loading-tertiary { color: var(--color-tertiary); }
+  .loading-info { color: var(--color-info); }
+  .loading-success { color: var(--color-success); }
+  .loading-warning { color: var(--color-warning); }
+  .loading-error { color: var(--color-error); }
+
+  @keyframes loading-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes loading-dots {
+    0%, 100% { opacity: 0.35; transform: scale(0.75); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes loading-bars {
+    0%, 100% { opacity: 0.35; transform: scaleY(0.65); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loading-spinner,
+    .loading-dots::before,
+    .loading-bars::before {
+      animation: none;
+    }
+  }
+}

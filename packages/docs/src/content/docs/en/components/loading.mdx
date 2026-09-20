@@ -1,0 +1,42 @@
+---
+title: Loading
+description: CSS-only activity indicators for work with an unknown duration
+category: components
+order: 15
+published: true
+tags: ['loading', 'spinner', 'components', 'accessibility']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Loading
+
+`loading` is a small CSS-only activity indicator for work whose duration is not known. It does not manage request state, `aria-busy`, disabling, or announcements.
+
+## Standalone status
+
+Give a standalone indicator an accessible name through a nearby label or `aria-label`:
+
+<ComponentShowcase title="Named loading status" code={`<span class="loading loading-spinner loading-primary" role="status" aria-label="Saving changes"></span>`} />
+
+## Embedded decorative loader
+
+When text already describes the state, hide the decorative indicator to avoid duplicate announcements:
+
+<ComponentShowcase title="Loader beside status text" code={`<span role="status">Saving changes <span class="loading loading-dots" aria-hidden="true"></span></span>`} />
+
+## Shapes, sizes, and colors
+
+Use `.loading-spinner` (default), `.loading-dots`, or `.loading-bars`. Sizes are `.loading-xs`, `.loading-sm`, `.loading-md`, `.loading-lg`, and `.loading-xl`; `--loading-size` can set a component-scoped custom size. The seven color modifiers are `.loading-primary`, `.loading-secondary`, `.loading-tertiary`, `.loading-info`, `.loading-success`, `.loading-warning`, and `.loading-error`. Indicators render with `currentColor`, so they inherit a host color.
+
+<ComponentShowcase title="Loading shapes" code={`<span class="loading loading-spinner loading-sm"></span>
+<span class="loading loading-dots loading-md loading-secondary"></span>
+<span class="loading loading-bars loading-lg loading-tertiary"></span>`} />
+
+Respect reduced motion automatically. A static, still-visible shape remains available when users request less motion.
+
+Loading does not disable a button or set `aria-busy`; consumers own those state changes. Preserve `.btn-loading` when using the existing button API and do not combine it with a visible `.loading` child unless two indicators are intentional.
+
+## Compatibility
+
+The component uses CSS animations only and has no runtime or browser-managed state. Use a text status or an application-specific adapter when the consumer needs broader announcement or request-state behavior.

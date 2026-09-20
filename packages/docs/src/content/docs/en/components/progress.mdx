@@ -11,7 +11,7 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Progress
 
-Progress indicators inform users about the status of ongoing processes, such as loading data, submitting a form, or saving updates. @duskmoon-dev/core provides both linear and circular progress indicators following Material Design 3 guidelines.
+Progress indicators inform users about the status of ongoing processes, such as loading data, submitting a form, or saving updates. @duskmoon-dev/core provides native linear progress, custom linear markup, and legacy SVG circular progress following Material Design 3 guidelines. For a simpler determinate circle, see [Radial Progress](/duskmoonui/docs/en/components/radial-progress/).
 
 ## Basic Usage
 
@@ -20,6 +20,11 @@ Progress indicators inform users about the status of ongoing processes, such as 
 <ComponentShowcase title="Linear Progress (Determinate)" code={`<div class="progress">
   <div class="progress-bar" style="width: 60%;"></div>
 </div>`} />
+
+Native progress is also supported. Omit `value` for an indeterminate indicator; `value="0"` is determinate zero:
+
+<ComponentShowcase title="Native progress" code={`<progress class="progress progress-primary" value="3" max="10" aria-label="Upload progress">30%</progress>
+<progress class="progress progress-secondary" max="10" aria-label="Preparing upload"></progress>`} />
 
 ### Circular Progress (Determinate)
 

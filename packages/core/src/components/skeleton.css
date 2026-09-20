@@ -31,6 +31,10 @@
     border-radius: var(--radius-sm);
   }
 
+  .skeleton-static {
+    animation: none;
+  }
+
   /* Size Variants */
   .skeleton-xs {
     height: 0.5rem;
@@ -133,7 +137,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.3),
+      color-mix(in oklch, var(--color-surface-bright) 35%, transparent),
       transparent
     );
     animation: skeleton-wave 1.5s infinite;
@@ -211,6 +215,14 @@
 
     .skeleton-wave::after {
       animation: none;
+      transform: translateX(0);
+      opacity: 0.35;
+    }
+
+    .skeleton-static::after {
+      animation: none;
+      transform: translateX(0);
+      opacity: 0.35;
     }
   }
 }

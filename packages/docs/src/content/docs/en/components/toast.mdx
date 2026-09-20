@@ -1,6 +1,6 @@
 ---
 title: Toast
-description: Material Design 3 toast notification component with multiple variants, positions, and actions
+description: Material Design 3 toast notification component with native command triggers, positions, variants, and actions
 category: components
 order: 41
 published: true
@@ -11,774 +11,310 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Toast
 
-Toast notifications provide brief messages about app processes at the bottom or top of the screen. They appear temporarily and shouldn't interrupt the user experience. @duskmoon-dev/core provides a complete set of Material Design 3-inspired toast variants.
+Toasts provide brief, non-blocking feedback about an application process. In DuskMoonUI, `.toast-container` owns fixed positioning and stacking while `.toast` is the individual notification. This meaning is intentionally different from daisyUI and remains backward compatible.
+
+For static HTML, make the container a manual popover and connect buttons with native `command` and `commandfor`. The browser owns open/closed rendering; DuskMoonUI supplies presentation only. Timers, queues, action execution, request state, and auto-dismiss policy remain consumer-owned.
 
 ## Basic Usage
 
-<ComponentShowcase
-  title="Basic Toast"
-  code={`<!-- Toast container (required wrapper) -->
-<div class="toast-container toast-container-top-right">
-  <div class="toast toast-show">
+Every example on this page starts closed and is opened by a button click.
+
+<ComponentShowcase title="Basic Toast" code={`<button type="button" class="btn btn-primary"
+  command="show-popover" commandfor="demo-toast-basic">
+  Show toast
+</button>
+
+<div id="demo-toast-basic"
+  class="toast-container toast-container-top-end"
+  popover="manual">
+  <div class="toast" role="status" aria-live="polite">
     <div class="toast-content">
       <div class="toast-message">This is a simple toast notification</div>
     </div>
+    <button type="button" class="toast-close" aria-label="Dismiss notification"
+      command="hide-popover" commandfor="demo-toast-basic">×</button>
   </div>
-</div>`}
-/>
+</div>`} />
+
+`popover="manual"` avoids unrelated outside clicks dismissing a notification. Always provide an explicit close command, or use `command="toggle-popover"` on the trigger when the same control should both open and close it.
 
 ## Container Positions
 
-Toast containers can be positioned in six different locations on the screen:
+Physical left/right classes preserve their existing meaning. Prefer logical start/end classes when placement should follow text direction.
 
 ### Top Positions
 
-<ComponentShowcase
-  title="Top Positions"
-  code={`<!-- Top Right (most common) -->
-<div class="toast-container toast-container-top-right">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Top right notification</div>
-    </div>
+<ComponentShowcase title="Top Positions" code={`<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-top-start">Top start</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-top-center">Top center</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-top-end">Top end</button>
+
+<div id="demo-toast-top-start" class="toast-container toast-container-top-start" popover="manual">
+  <div class="toast toast-info" role="status">
+    <div class="toast-content"><div class="toast-message">Top start notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-top-start">×</button>
   </div>
 </div>
-
-<!-- Top Left -->
-<div class="toast-container toast-container-top-left">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Top left notification</div>
-    </div>
+<div id="demo-toast-top-center" class="toast-container toast-container-top-center" popover="manual">
+  <div class="toast toast-info" role="status">
+    <div class="toast-content"><div class="toast-message">Top center notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-top-center">×</button>
   </div>
 </div>
-
-<!-- Top Center -->
-<div class="toast-container toast-container-top-center">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Top center notification</div>
-    </div>
+<div id="demo-toast-top-end" class="toast-container toast-container-top-end" popover="manual">
+  <div class="toast toast-info" role="status">
+    <div class="toast-content"><div class="toast-message">Top end notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-top-end">×</button>
   </div>
-</div>`}
-/>
+</div>`} />
 
 ### Bottom Positions
 
-<ComponentShowcase
-  title="Bottom Positions"
-  code={`<!-- Bottom Right -->
-<div class="toast-container toast-container-bottom-right">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Bottom right notification</div>
-    </div>
+<ComponentShowcase title="Bottom Positions" code={`<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-bottom-start">Bottom start</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-bottom-center">Bottom center</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-bottom-end">Bottom end</button>
+
+<div id="demo-toast-bottom-start" class="toast-container toast-container-bottom-start" popover="manual">
+  <div class="toast toast-success" role="status">
+    <div class="toast-content"><div class="toast-message">Bottom start notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-bottom-start">×</button>
   </div>
 </div>
-
-<!-- Bottom Left -->
-<div class="toast-container toast-container-bottom-left">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Bottom left notification</div>
-    </div>
+<div id="demo-toast-bottom-center" class="toast-container toast-container-bottom-center" popover="manual">
+  <div class="toast toast-success" role="status">
+    <div class="toast-content"><div class="toast-message">Bottom center notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-bottom-center">×</button>
   </div>
 </div>
-
-<!-- Bottom Center -->
-<div class="toast-container toast-container-bottom-center">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Bottom center notification</div>
-    </div>
+<div id="demo-toast-bottom-end" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast toast-success" role="status">
+    <div class="toast-content"><div class="toast-message">Bottom end notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-bottom-end">×</button>
   </div>
-</div>`}
-/>
+</div>`} />
 
-## Toast Variants
+## Semantic Variants
 
-### Default Toast
+Use semantic color together with clear text or an icon; color must not be the only indicator.
 
-Basic toast with surface colors:
+<ComponentShowcase title="Toast Variants" code={`<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-info">Info</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-success">Success</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-warning">Warning</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-error">Error</button>
 
-<ComponentShowcase
-  title="Default Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Default notification</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-### Info Toast
-
-For informational messages:
-
-<ComponentShowcase
-  title="Info Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-info toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Information</div>
-      <div class="toast-message">Your changes have been saved</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-### Success Toast
-
-For successful operations:
-
-<ComponentShowcase
-  title="Success Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-success toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Success</div>
-      <div class="toast-message">Profile updated successfully</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-### Warning Toast
-
-For warning messages:
-
-<ComponentShowcase
-  title="Warning Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-warning toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Warning</div>
-      <div class="toast-message">Your session will expire in 5 minutes</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-### Error Toast
-
-For error messages:
-
-<ComponentShowcase
-  title="Error Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-error toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Error</div>
-      <div class="toast-message">Failed to save changes. Please try again.</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-## Toast with Icons
-
-Add icons to enhance visual communication:
-
-<ComponentShowcase
-  title="Toast with Icons"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-success toast-show">
-    <span class="toast-icon">✓</span>
-    <div class="toast-content">
-      <div class="toast-title">Success</div>
-      <div class="toast-message">Your changes have been saved</div>
-    </div>
+<div id="demo-toast-info" class="toast-container toast-container-top-end" popover="manual">
+  <div class="toast toast-info" role="status">
+    <span class="toast-icon" aria-hidden="true">ℹ</span>
+    <div class="toast-content"><div class="toast-title">Information</div><div class="toast-message">New features are available</div></div>
+    <button class="toast-close" aria-label="Dismiss information" command="hide-popover" commandfor="demo-toast-info">×</button>
   </div>
 </div>
-
-<div class="toast toast-error toast-show">
-  <span class="toast-icon">✕</span>
-  <div class="toast-content">
-    <div class="toast-title">Error</div>
-    <div class="toast-message">Something went wrong</div>
+<div id="demo-toast-success" class="toast-container toast-container-top-end" popover="manual">
+  <div class="toast toast-success" role="status">
+    <span class="toast-icon" aria-hidden="true">✓</span>
+    <div class="toast-content"><div class="toast-title">Success</div><div class="toast-message">Profile updated successfully</div></div>
+    <button class="toast-close" aria-label="Dismiss success" command="hide-popover" commandfor="demo-toast-success">×</button>
   </div>
 </div>
-
-<div class="toast toast-warning toast-show">
-  <span class="toast-icon">⚠</span>
-  <div class="toast-content">
-    <div class="toast-title">Warning</div>
-    <div class="toast-message">Please review your input</div>
+<div id="demo-toast-warning" class="toast-container toast-container-top-end" popover="manual">
+  <div class="toast toast-warning" role="status">
+    <span class="toast-icon" aria-hidden="true">⚠</span>
+    <div class="toast-content"><div class="toast-title">Warning</div><div class="toast-message">Your session will expire soon</div></div>
+    <button class="toast-close" aria-label="Dismiss warning" command="hide-popover" commandfor="demo-toast-warning">×</button>
   </div>
 </div>
-
-<div class="toast toast-info toast-show">
-  <span class="toast-icon">ℹ</span>
-  <div class="toast-content">
-    <div class="toast-title">Info</div>
-    <div class="toast-message">New features available</div>
+<div id="demo-toast-error" class="toast-container toast-container-top-end" popover="manual">
+  <div class="toast toast-error" role="alert">
+    <span class="toast-icon" aria-hidden="true">✕</span>
+    <div class="toast-content"><div class="toast-title">Error</div><div class="toast-message">Failed to save changes</div></div>
+    <button class="toast-close" aria-label="Dismiss error" command="hide-popover" commandfor="demo-toast-error">×</button>
   </div>
-</div>`}
-/>
+</div>`} />
 
-### Using SVG Icons
+Filled variants use the selected DuskMoon role color as the background with its matching content color. For example, `.toast-filled.toast-primary` uses `--color-primary` and `--color-primary-content`.
 
-<ComponentShowcase
-  title="Toast with SVG Icons"
-  code={`<div class="toast toast-success toast-show">
-  <svg class="toast-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-  </svg>
-  <div class="toast-content">
-    <div class="toast-title">Success</div>
-    <div class="toast-message">Operation completed</div>
+<ComponentShowcase title="Filled Toast" code={`<button type="button" class="btn btn-primary"
+  command="show-popover" commandfor="demo-toast-filled">Show filled toast</button>
+
+<div id="demo-toast-filled" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast toast-filled toast-primary" role="status">
+    <div class="toast-content"><div class="toast-title">Published</div><div class="toast-message">Your changes are now live</div></div>
+    <button class="toast-close" aria-label="Dismiss notification" command="hide-popover" commandfor="demo-toast-filled">×</button>
   </div>
-</div>`}
-/>
+</div>`} />
 
-## Toast with Close Button
+## Actions
 
-Allow users to dismiss toasts manually:
+Application code still owns the action. The native hide command below only closes the popover after the user chooses the documented action.
 
-<ComponentShowcase
-  title="Toast with Close Button"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-show">
+<ComponentShowcase title="Toast with Action" code={`<button type="button" class="btn btn-primary"
+  command="show-popover" commandfor="demo-toast-action">Show update</button>
+
+<div id="demo-toast-action" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast toast-info" role="status">
     <div class="toast-content">
-      <div class="toast-title">Notification</div>
-      <div class="toast-message">This is a dismissible notification</div>
-    </div>
-    <button class="toast-close" aria-label="Close">×</button>
-  </div>
-</div>`}
-/>
-
-## Toast with Actions
-
-Add action buttons for user interaction:
-
-<ComponentShowcase
-  title="Toast with Actions"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-info toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Update Available</div>
-      <div class="toast-message">A new version is available. Would you like to update?</div>
-      <button class="toast-action">Update Now</button>
-    </div>
-    <button class="toast-close" aria-label="Close">×</button>
-  </div>
-</div>`}
-/>
-
-## Toast with Progress Bar
-
-Show auto-dismiss timing with a progress bar:
-
-<ComponentShowcase
-  title="Toast with Progress Bar"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">This toast will auto-dismiss</div>
-    </div>
-    <button class="toast-close" aria-label="Close">×</button>
-    <div class="toast-progress" style="width: 100%; transition-duration: 5s;"></div>
-  </div>
-</div>`}
-/>
-
-## Size Variants
-
-### Small Toast
-
-Compact toast for minimal information:
-
-<ComponentShowcase
-  title="Small Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-sm toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Small notification</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-### Default Toast
-
-Standard size (default):
-
-<ComponentShowcase
-  title="Default Size Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Default size notification</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-### Large Toast
-
-For more prominent messages:
-
-<ComponentShowcase
-  title="Large Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-lg toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Large Notification</div>
-      <div class="toast-message">This is a larger toast for important messages</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-## Compact Variant
-
-More condensed spacing for dense layouts:
-
-<ComponentShowcase
-  title="Compact Toast"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-compact toast-show">
-    <span class="toast-icon">✓</span>
-    <div class="toast-content">
-      <div class="toast-title">Compact</div>
-      <div class="toast-message">Compact notification style</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-## Accent Border
-
-Add a colored accent border to the left side:
-
-<ComponentShowcase
-  title="Toast with Accent Border"
-  code={`<div class="toast-container toast-container-top-right">
-  <div class="toast toast-success toast-accent toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Success with Accent</div>
-      <div class="toast-message">Notice the colored border on the left</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-## Stacked Toasts
-
-Multiple toasts with stacked appearance:
-
-<ComponentShowcase
-  title="Stacked Toasts"
-  code={`<div class="toast-container toast-container-stacked toast-container-top-right">
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">First notification</div>
-    </div>
-  </div>
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Second notification</div>
-    </div>
-  </div>
-  <div class="toast toast-show">
-    <div class="toast-content">
-      <div class="toast-message">Third notification</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-## Animation
-
-Toasts use the `toast-show` class to trigger entrance animations. Remove this class or remove the toast element to trigger exit animations.
-
-<ComponentShowcase
-  title="Toast Animation States"
-  code={`<!-- Hidden toast (initial state) -->
-<div class="toast">
-  <div class="toast-content">
-    <div class="toast-message">Hidden notification</div>
-  </div>
-</div>
-
-<!-- Visible toast (add toast-show class) -->
-<div class="toast toast-show">
-  <div class="toast-content">
-    <div class="toast-message">Visible notification</div>
-  </div>
-</div>`}
-/>
-
-## Best Practices
-
-### Message Content
-
-- Keep messages brief and actionable
-- Use title for context, message for details
-- Avoid technical jargon in user-facing messages
-
-<ComponentShowcase
-  title="Good vs Bad Message Content"
-  code={`<!-- Good: Clear and concise -->
-<div class="toast toast-success toast-show">
-  <div class="toast-content">
-    <div class="toast-title">Saved</div>
-    <div class="toast-message">Your changes have been saved</div>
-  </div>
-</div>
-
-<!-- Avoid: Too verbose -->
-<div class="toast toast-success toast-show">
-  <div class="toast-content">
-    <div class="toast-title">Save Operation Successful</div>
-    <div class="toast-message">The system has successfully persisted all of your modifications to the database</div>
-  </div>
-</div>`}
-/>
-
-### Timing
-
-- Brief messages: 3-4 seconds
-- Messages with actions: 5-7 seconds or user-dismissible
-- Error messages: User-dismissible (don't auto-hide)
-
-### Positioning
-
-- Use top-right for most notifications
-- Use bottom positions for less important updates
-- Use center positions sparingly for critical messages
-
-### Visual Hierarchy
-
-<ComponentShowcase
-  title="Semantic Colors for Visual Hierarchy"
-  code={`<!-- Use semantic colors appropriately -->
-<div class="toast-container toast-container-top-right">
-  <!-- Error: High priority, requires attention -->
-  <div class="toast toast-error toast-show">
-    <div class="toast-content">
-      <div class="toast-title">Error</div>
-      <div class="toast-message">Payment failed</div>
-    </div>
-    <button class="toast-close">×</button>
-  </div>
-
-  <!-- Success: Positive feedback -->
-  <div class="toast toast-success toast-show">
-    <div class="toast-content">
-      <div class="toast-message">File uploaded</div>
-    </div>
-  </div>
-
-  <!-- Info: Neutral information -->
-  <div class="toast toast-info toast-show">
-    <div class="toast-content">
-      <div class="toast-message">New messages available</div>
-    </div>
-  </div>
-</div>`}
-/>
-
-### Accessibility
-
-- Include close buttons for important messages
-- Use `aria-label` on close buttons
-- Ensure color isn't the only indicator (use icons)
-- Consider `role="alert"` for important notifications
-
-<ComponentShowcase
-  title="Accessible Toast Example"
-  code={`<div class="toast toast-error toast-show" role="alert" aria-live="assertive">
-  <span class="toast-icon">✕</span>
-  <div class="toast-content">
-    <div class="toast-title">Error</div>
-    <div class="toast-message">Failed to process payment</div>
-  </div>
-  <button class="toast-close" aria-label="Dismiss error notification">×</button>
-</div>`}
-/>
-
-## Framework Examples
-
-### React Toast System
-
-```tsx
-import { useState, useEffect } from 'react';
-
-interface Toast {
-  id: string;
-  type: 'info' | 'success' | 'warning' | 'error';
-  title?: string;
-  message: string;
-  duration?: number;
-}
-
-export function ToastContainer() {
-  const [toasts, setToasts] = useState<Toast[]>([]);
-
-  const addToast = (toast: Omit<Toast, 'id'>) => {
-    const id = Math.random().toString(36).substr(2, 9);
-    setToasts((prev) => [...prev, { ...toast, id }]);
-
-    if (toast.duration !== 0) {
-      setTimeout(() => {
-        removeToast(id);
-      }, toast.duration || 5000);
-    }
-  };
-
-  const removeToast = (id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
-  };
-
-  return (
-    <div className="toast-container toast-container-top-right">
-      {toasts.map((toast) => (
-        <div key={toast.id} className={`toast toast-${toast.type} toast-show`}>
-          <div className="toast-content">
-            {toast.title && <div className="toast-title">{toast.title}</div>}
-            <div className="toast-message">{toast.message}</div>
-          </div>
-          <button
-            className="toast-close"
-            onClick={() => removeToast(toast.id)}
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// Usage
-function App() {
-  return (
-    <div>
-      <button onClick={() => addToast({ type: 'success', message: 'Saved!' })}>
-        Show Toast
-      </button>
-      <ToastContainer />
-    </div>
-  );
-}
-```
-
-### Vue Toast System
-
-```vue
-<template>
-  <div class="toast-container toast-container-top-right">
-    <div
-      v-for="toast in toasts"
-      :key="toast.id"
-      :class="['toast', `toast-${toast.type}`, 'toast-show']"
-    >
-      <div class="toast-content">
-        <div v-if="toast.title" class="toast-title">{{ toast.title }}</div>
-        <div class="toast-message">{{ toast.message }}</div>
+      <div class="toast-title">Update available</div>
+      <div class="toast-message">A new version is ready to install.</div>
+      <div class="toast-actions">
+        <button type="button" class="toast-action"
+          command="hide-popover" commandfor="demo-toast-action">Update now</button>
       </div>
-      <button class="toast-close" @click="removeToast(toast.id)" aria-label="Close">
-        ×
-      </button>
     </div>
+    <button type="button" class="toast-close" aria-label="Dismiss update"
+      command="hide-popover" commandfor="demo-toast-action">×</button>
   </div>
-</template>
+</div>`} />
 
-<script setup>
-import { ref } from 'vue';
+## Size and Density
 
-const toasts = ref([]);
+<ComponentShowcase title="Toast Sizes" code={`<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-small">Small</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-default-size">Default</button>
+<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-large">Large</button>
 
-function addToast({ type, title, message, duration = 5000 }) {
-  const id = Math.random().toString(36).substr(2, 9);
-  toasts.value.push({ id, type, title, message });
-
-  if (duration > 0) {
-    setTimeout(() => {
-      removeToast(id);
-    }, duration);
-  }
-}
-
-function removeToast(id) {
-  toasts.value = toasts.value.filter((t) => t.id !== id);
-}
-
-// Expose for parent components
-defineExpose({ addToast });
-</script>
-
-<!-- Usage -->
-<template>
-  <div>
-    <button @click="showToast">Show Toast</button>
-    <ToastContainer ref="toastContainer" />
+<div id="demo-toast-small" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast toast-sm" role="status">
+    <div class="toast-content"><div class="toast-message">Small notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-small">×</button>
   </div>
-</template>
+</div>
+<div id="demo-toast-default-size" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast" role="status">
+    <div class="toast-content"><div class="toast-message">Default notification</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-default-size">×</button>
+  </div>
+</div>
+<div id="demo-toast-large" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast toast-lg" role="status">
+    <div class="toast-content"><div class="toast-title">Large notification</div><div class="toast-message">More room for important context</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-large">×</button>
+  </div>
+</div>`} />
 
-<script setup>
-import { ref } from 'vue';
+<ComponentShowcase title="Compact Toast" code={`<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-compact">Show compact toast</button>
 
-const toastContainer = ref(null);
+<div id="demo-toast-compact" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast toast-compact toast-success" role="status">
+    <span class="toast-icon" aria-hidden="true">✓</span>
+    <div class="toast-content"><div class="toast-title">Saved</div><div class="toast-message">Compact notification style</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-compact">×</button>
+  </div>
+</div>`} />
 
-function showToast() {
-  toastContainer.value?.addToast({
-    type: 'success',
-    message: 'Operation successful!'
-  });
-}
-</script>
-```
+## Accent and Stacking
 
-### Vanilla JavaScript
+Combine `.toast-accent` with a semantic or brand color to add a thicker logical-start edge in that color. The semantic or brand class takes precedence, so the example remains a success toast instead of switching to the standalone accent color role.
 
-```javascript
-class ToastManager {
-  constructor(position = 'top-right') {
-    this.container = document.createElement('div');
-    this.container.className = `toast-container toast-container-${position}`;
-    document.body.appendChild(this.container);
-  }
+<ComponentShowcase title="Accent Toast" code={`<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-accent">Show accent toast</button>
 
-  show({ type = 'info', title, message, duration = 5000, closable = true }) {
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
+<div id="demo-toast-accent" class="toast-container toast-container-top-end" popover="manual">
+  <div class="toast toast-success toast-accent" role="status">
+    <div class="toast-content"><div class="toast-title">Success</div><div class="toast-message">The logical start edge carries the accent</div></div>
+    <button class="toast-close" aria-label="Dismiss" command="hide-popover" commandfor="demo-toast-accent">×</button>
+  </div>
+</div>`} />
 
-    let html = '<div class="toast-content">';
-    if (title) html += `<div class="toast-title">${title}</div>`;
-    html += `<div class="toast-message">${message}</div>`;
-    html += '</div>';
+<ComponentShowcase title="Stacked Toasts" code={`<button type="button" class="btn btn-primary"
+  command="show-popover" commandfor="demo-toast-stack">Show notification stack</button>
 
-    if (closable) {
-      html += '<button class="toast-close" aria-label="Close">×</button>';
-    }
+<div id="demo-toast-stack"
+  class="toast-container toast-container-stacked toast-container-top-end"
+  popover="manual">
+  <div class="toast"><div class="toast-content"><div class="toast-message">First notification</div></div></div>
+  <div class="toast"><div class="toast-content"><div class="toast-message">Second notification</div></div></div>
+  <div class="toast">
+    <div class="toast-content"><div class="toast-message">Third notification</div></div>
+    <button class="toast-close" aria-label="Dismiss notification stack"
+      command="hide-popover" commandfor="demo-toast-stack">×</button>
+  </div>
+</div>`} />
 
-    toast.innerHTML = html;
-    this.container.appendChild(toast);
+## Progress Indicator
 
-    // Trigger show animation
-    setTimeout(() => toast.classList.add('toast-show'), 10);
+The progress bar is visual only. CSS cannot update ARIA values or dismiss the toast when the animation ends. Consumers must keep timing, announcements, and removal synchronized.
 
-    // Add close handler
-    if (closable) {
-      const closeBtn = toast.querySelector('.toast-close');
-      closeBtn.addEventListener('click', () => this.remove(toast));
-    }
+<ComponentShowcase title="Toast with Progress" code={`<button type="button" class="btn btn-outlined"
+  command="show-popover" commandfor="demo-toast-progress">Show timed toast</button>
 
-    // Auto-dismiss
-    if (duration > 0) {
-      setTimeout(() => this.remove(toast), duration);
-    }
+<div id="demo-toast-progress" class="toast-container toast-container-bottom-end" popover="manual">
+  <div class="toast" role="status">
+    <div class="toast-content"><div class="toast-message">Syncing your changes</div></div>
+    <button class="toast-close" aria-label="Dismiss"
+      command="hide-popover" commandfor="demo-toast-progress">×</button>
+    <div class="toast-progress" style="animation-duration: 5s;"></div>
+  </div>
+</div>`} />
 
-    return toast;
-  }
+## Accessibility and Lifecycle
 
-  remove(toast) {
-    toast.classList.remove('toast-show');
-    setTimeout(() => toast.remove(), 300);
-  }
+- Use `role="status"` or `aria-live="polite"` for ordinary confirmations and background updates.
+- Reserve `role="alert"` for urgent failures that require immediate attention.
+- Give every close button an accessible name.
+- Showing a pre-rendered live region may vary by assistive technology. For critical application flows, insert or update the message when the event occurs and test with the supported screen readers.
+- Native popover commands control visibility only. They do not manage queues, timers, asynchronous state, or action execution.
+- When using the legacy class API, remove closed notifications from the DOM or apply `hidden`/`inert`; opacity and transforms alone are not complete dismissal.
+- Command Invokers require browser support for `command` and `commandfor`. Consumers supporting older browsers can call `showPopover()`/`hidePopover()` from an explicit adapter without changing the markup structure.
 
-  success(message, options = {}) {
-    return this.show({ ...options, type: 'success', message });
-  }
+## Legacy Open-State API
 
-  error(message, options = {}) {
-    return this.show({ ...options, type: 'error', message, duration: 0 });
-  }
+Existing `.toast-open`, `.show`, and `.toast-show` classes remain supported for framework-managed state. Native command examples do not need these classes because `.toast-container[popover]:popover-open` supplies the visible state.
 
-  warning(message, options = {}) {
-    return this.show({ ...options, type: 'warning', message });
-  }
-
-  info(message, options = {}) {
-    return this.show({ ...options, type: 'info', message });
-  }
-}
-
-// Usage
-const toast = new ToastManager('top-right');
-
-toast.success('Changes saved successfully!');
-toast.error('Failed to load data', { title: 'Error' });
-toast.warning('Your session will expire soon', { duration: 7000 });
-toast.info('New features available', { title: 'Update' });
+```html
+<div class="toast-container toast-container-top-end">
+  <div class="toast toast-show" role="status">Framework-managed notification</div>
+</div>
 ```
 
 ## API Reference
 
+### Native Attributes
+
+| Attribute | Element | Purpose |
+|---|---|---|
+| `popover="manual"` | `.toast-container` | Keeps the fixed notification surface closed until invoked |
+| `command="show-popover"` | Trigger button | Opens the target container |
+| `command="hide-popover"` | Close or action button | Closes the target container |
+| `commandfor="demo-toast-*"` | Button | References the unique container ID |
+
 ### Container Classes
 
 | Class | Description |
-|-------|-------------|
-| `.toast-container` | Base container for toasts (required) |
-| `.toast-container-top-right` | Position: top right corner |
-| `.toast-container-top-left` | Position: top left corner |
-| `.toast-container-top-center` | Position: top center |
-| `.toast-container-bottom-right` | Position: bottom right corner |
-| `.toast-container-bottom-left` | Position: bottom left corner |
-| `.toast-container-bottom-center` | Position: bottom center |
-| `.toast-container-stacked` | Apply stacked appearance to multiple toasts |
+|---|---|
+| `.toast-container` | Fixed positioning and stacking container |
+| `.toast-container-top-right`, `.toast-container-top-left` | Preserved physical positioning |
+| `.toast-container-bottom-right`, `.toast-container-bottom-left` | Preserved physical positioning |
+| `.toast-container-top-start`, `.toast-container-top-end` | RTL-aware top positioning |
+| `.toast-container-bottom-start`, `.toast-container-bottom-end` | RTL-aware bottom positioning |
+| `.toast-container-top-center`, `.toast-container-bottom-center` | Center positioning |
+| `.toast-container-stacked` | Layered presentation for multiple notifications |
 
 ### Toast Classes
 
 | Class | Description |
-|-------|-------------|
-| `.toast` | Base toast styles (required) |
-| `.toast-show` | Apply to show the toast with animation |
-| `.toast-info` | Info variant (primary colors) |
-| `.toast-success` | Success variant (success colors) |
-| `.toast-warning` | Warning variant (warning colors) |
-| `.toast-error` | Error variant (error colors) |
-| `.toast-sm` | Small size variant |
-| `.toast-lg` | Large size variant |
-| `.toast-compact` | Compact spacing variant |
-| `.toast-accent` | Add colored accent border on left |
-
-### Content Classes
-
-| Class | Description |
-|-------|-------------|
-| `.toast-icon` | Icon container |
-| `.toast-content` | Main content wrapper |
-| `.toast-title` | Toast title/heading |
-| `.toast-message` | Toast message text |
-| `.toast-close` | Close/dismiss button |
-| `.toast-action` | Action button |
-| `.toast-progress` | Progress bar for auto-dismiss timing |
-
-### Combinations
-
-<ComponentShowcase
-  title="Toast Class Combinations"
-  code={`<!-- Small success toast with accent -->
-<div class="toast toast-success toast-sm toast-accent toast-show">
-  <div class="toast-content">
-    <div class="toast-message">Quick success message</div>
-  </div>
-</div>
-
-<!-- Large error toast with icon and close button -->
-<div class="toast toast-error toast-lg toast-show">
-  <span class="toast-icon">✕</span>
-  <div class="toast-content">
-    <div class="toast-title">Critical Error</div>
-    <div class="toast-message">This is a detailed error message</div>
-  </div>
-  <button class="toast-close">×</button>
-</div>`}
-/>
+|---|---|
+| `.toast` | Individual notification item |
+| `.toast-open`, `.show`, `.toast-show` | Preserved framework-managed visible states |
+| `.toast-primary`, `.toast-secondary`, `.toast-tertiary` | DuskMoon brand colors |
+| `.toast-info`, `.toast-success`, `.toast-warning`, `.toast-error` | Semantic colors |
+| `.toast-filled`, `.toast-ghost` | Surface variants |
+| `.toast-sm`, `.toast-lg`, `.toast-compact` | Size and density variants |
+| `.toast-accent` | Logical-start accent edge |
 
 ## Related Components
 
-- [Alert](/duskmoonui/docs/en/components/alert/) - Prominent messages and announcements
-- [Badge](/duskmoonui/docs/en/components/badge/) - Notification indicators
-- [Dialog](/duskmoonui/docs/en/components/dialog/) - Modal dialogs
-
-## See Also
-
-- [Snackbar Design Guidelines (Material Design 3)](https://m3.material.io/components/snackbar/)
-- [Quick Start Guide](/duskmoonui/docs/en/getting-started/quick-start/)
+- [Alert](/duskmoonui/docs/en/components/alert/) — persistent inline feedback
+- [Snackbar](/duskmoonui/docs/en/components/snackbar/) — action-oriented transient messaging with its existing API
+- [Popover](/duskmoonui/docs/en/components/popover/) — general-purpose interactive overlay content

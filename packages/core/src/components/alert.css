@@ -6,8 +6,11 @@
 @layer components {
   /* Base Alert */
   .alert {
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      "icon content actions close";
+    align-items: center;
     gap: 0.75rem;
     padding: 1rem;
     border-radius: var(--radius-sm);
@@ -18,6 +21,7 @@
 
   /* Alert Icon */
   .alert-icon {
+    grid-area: icon;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,10 +29,12 @@
     height: 1.5rem;
     font-size: 1.25rem;
     flex-shrink: 0;
+    align-self: start;
   }
 
   /* Alert Content */
   .alert-content {
+    grid-area: content;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -36,13 +42,42 @@
     min-width: 0;
   }
 
+  .alert-content > p {
+    margin: 0;
+  }
+
+  /* Keep the compact single-message form vertically balanced against global typography margins. */
+  .alert > p {
+    margin: 0;
+  }
+
+  .alert-horizontal { display: grid; }
+  .alert-actions-end { grid-template-areas: "icon content actions close"; }
+  .alert-actions-bottom {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "icon content close"
+      ". actions .";
+  }
+
+  .alert-actions-bottom .alert-actions {
+    justify-self: start;
+    margin-top: 0.5rem;
+  }
+  .alert-vertical {
+    display: flex;
+    flex-direction: column;
+  }
+
   .alert-title {
+    margin: 0;
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.25rem;
   }
 
   .alert-description {
+    margin: 0;
     font-size: 0.875rem;
     line-height: 1.25rem;
     opacity: 0.9;
@@ -50,6 +85,7 @@
 
   /* Alert Close Button */
   .alert-close {
+    grid-area: close;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -263,6 +299,7 @@
   /* Dismissible */
   .alert-dismissible {
     padding-right: 2.5rem;
+    padding-inline-end: 2.5rem;
     position: relative;
   }
 
@@ -270,6 +307,7 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    inset-inline-end: 0.75rem;
   }
 
   /* Compact */
@@ -289,11 +327,25 @@
     font-size: 0.8125rem;
   }
 
+  .alert-comfortable {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
   /* Alert Actions */
   .alert-actions {
+    grid-area: actions;
     display: flex;
     gap: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-self: end;
+  }
+
+  .alert-vertical .alert-actions {
+    align-self: stretch;
+    width: 100%;
   }
 
   .alert-filled .alert-actions .btn-text {
@@ -315,6 +367,32 @@
   @media (prefers-reduced-motion: reduce) {
     .alert-close {
       transition: none;
+    }
+  }
+
+  @media (max-width: 32rem) {
+    .alert:not(.alert-vertical) .alert-content,
+    .alert-horizontal .alert-content {
+      flex-basis: min(100%, 18rem);
+    }
+    .alert:not(.alert-vertical),
+    .alert-horizontal {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas:
+        "icon content close"
+        ". actions actions";
+    }
+    .alert:not(.alert-vertical).alert-actions-end,
+    .alert-horizontal.alert-actions-end {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas:
+        "icon content close"
+        ". actions actions";
+    }
+    .alert:not(.alert-vertical) .alert-actions,
+    .alert-horizontal .alert-actions {
+      justify-self: start;
+      margin-top: 0.5rem;
     }
   }
 }

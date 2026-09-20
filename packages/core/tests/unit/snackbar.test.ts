@@ -44,4 +44,10 @@ describe('Snackbar Component', () => {
   it('should use surface color token', () => {
     expect(css).toContain('var(--color-');
   });
+
+  it('should use solid role and content colors for color variants', () => {
+    expect(css).toMatch(/\.snackbar-primary\s*\{[^}]*background-color:\s*var\(--color-primary\)[^}]*color:\s*var\(--color-primary-content\)/s);
+    expect(css).toMatch(/\.snackbar-success\s*\{[^}]*background-color:\s*var\(--color-success\)[^}]*color:\s*var\(--color-success-content\)/s);
+    expect(css).toContain(') :is(.snackbar-action, .snackbar-close)');
+  });
 });

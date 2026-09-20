@@ -1,0 +1,36 @@
+---
+title: Radial Progress
+description: Determinate circular progress with a percentage custom property
+category: components
+order: 16
+published: true
+tags: ['radial-progress', 'progress', 'components', 'accessibility']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Radial Progress
+
+Use `.radial-progress` when a known percentage should be shown in a compact circular form. Set `--radial-progress-value` from `0` to `100`; CSS clamps out-of-range numeric values for rendering and defaults to zero.
+
+<ComponentShowcase title="Named radial progress" code={`<div class="radial-progress radial-progress-primary"
+  style="--radial-progress-value: 68"
+  role="progressbar"
+  aria-label="Upload progress"
+  aria-valuemin="0" aria-valuemax="100" aria-valuenow="68">68%</div>`} />
+
+The visual value, text, and `aria-valuenow` must come from the same normalized application state. CSS custom properties do not update ARIA attributes. Use `aria-label` or `aria-labelledby` for a progressbar name.
+
+## Size, thickness, and colors
+
+Use `.radial-progress-sm`, `.radial-progress-lg`, or `.radial-progress-xl`, or set `--radial-progress-size` and `--radial-progress-thickness`. Color modifiers include primary, secondary, tertiary, info, success, warning, and error.
+
+<ComponentShowcase title="Custom radial geometry" code={`<div class="radial-progress radial-progress-success"
+  style="--radial-progress-value: 100; --radial-progress-size: 7rem; --radial-progress-thickness: 0.75rem"
+  role="progressbar" aria-label="Complete" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">Done</div>`} />
+
+This is determinate progress. Use `.loading` for indeterminate activity. Reduced motion disables transitions.
+
+## Legacy circular progress
+
+`.progress-circular` and its SVG markup remain supported for consumers that need direct stroke control or indeterminate circular activity. New determinate use cases can use this simpler interface without calculating circumference, dash arrays, or dash offsets.

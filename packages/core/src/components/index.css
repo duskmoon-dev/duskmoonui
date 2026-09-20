@@ -76,7 +76,9 @@
 
 @import "./alert.css";
 @import "./dialog.css";
+@import "./loading.css";
 @import "./progress.css";
+@import "./radial-progress.css";
 @import "./skeleton.css";
 @import "./snackbar.css";
 @import "./toast.css";

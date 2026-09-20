@@ -11,6 +11,10 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Alert
 
+Alerts communicate important inline information. They do not announce or dismiss themselves; use an appropriate live-region policy and an accessible button when application state requires it.
+
+The default layout keeps the icon and title/content row together, with `.alert-actions` aligned at the end of that row. Add `.alert-actions-bottom` to place actions below the content instead; `.alert-actions-end` explicitly selects the end-aligned layout. On narrow screens, actions move below the content automatically. Use `.alert-horizontal` or `.alert-vertical` when layout should be explicit. Prefer logical layout and action content so the same markup works in RTL.
+
 Alerts provide important messages to users in a visually prominent way. They communicate information about system status, user actions, or other contextual messages.
 
 ## Basic Usage
@@ -112,7 +116,7 @@ A full-featured alert with all components:
   </div>
 
   <div class="alert-actions">
-    <button class="btn btn-sm btn-text">Learn More</button>
+    <button class="btn btn-sm btn-outlined">Learn More</button>
   </div>
 
   <button class="alert-close" aria-label="Close">
@@ -166,8 +170,22 @@ A full-featured alert with all components:
     </p>
   </div>
   <div class="alert-actions">
-    <button class="btn btn-sm btn-text">Dismiss</button>
-    <button class="btn btn-sm btn-tonal">Update Payment</button>
+    <button class="btn btn-sm btn-outlined">Dismiss</button>
+    <button class="btn btn-sm btn-primary">Update Payment</button>
+  </div>
+</div>`} />
+
+Use `.alert-actions-bottom` when actions should always occupy a separate row:
+
+<ComponentShowcase title="Alert with Bottom Actions" code={`<div class="alert alert-info alert-actions-bottom">
+  <div class="alert-icon" aria-hidden="true">ⓘ</div>
+  <div class="alert-content">
+    <h4 class="alert-title">Review required</h4>
+    <p class="alert-description">Please review the latest account changes.</p>
+  </div>
+  <div class="alert-actions">
+    <button class="btn btn-sm btn-outlined">Dismiss</button>
+    <button class="btn btn-sm btn-primary">Review</button>
   </div>
 </div>`} />
 
@@ -307,7 +325,7 @@ A full-featured alert with all components:
     </p>
   </div>
   <div class="alert-actions">
-    <button class="btn btn-sm btn-text">Try It Now</button>
+    <button class="btn btn-sm btn-outlined">Try It Now</button>
   </div>
 </div>`} />
 
@@ -351,7 +369,7 @@ When possible, offer next steps:
     <p class="alert-description">Your session will expire in 5 minutes.</p>
   </div>
   <div class="alert-actions">
-    <button class="btn btn-sm btn-tonal">Stay Logged In</button>
+    <button class="btn btn-sm btn-outlined">Stay Logged In</button>
   </div>
 </div>`} />
 
