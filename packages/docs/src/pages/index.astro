@@ -8,145 +8,196 @@ const version = `v${pkg.version}`;
 const currentYear = new Date().getFullYear();
 ---
 
-<BaseLayout title="Home">
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container">
-      <nav class="header-nav">
-        <a href={base} class="logo">
-          <span class="logo-text">@duskmoon-dev/core</span>
-          <span class="badge badge-secondary">{version}</span>
-        </a>
-        <div class="nav-links">
-          <a href={`${base}docs/en/getting-started/installation/`}>Docs</a>
-          <a href={`${base}components/`}>Components</a>
-          <a href={`${base}css-art/`}>CSS Art</a>
-          <a href={`${base}docs/en/theming/themes/`}>Themes</a>
-          <a href="https://github.com/duskmoon-dev/duskmoonui" target="_blank">GitHub</a>
-          <ThemeToggle client:load />
+<BaseLayout
+  title="Home"
+  description="DuskMoonUI is a CSS-first Tailwind CSS v4 component library with accessible components, semantic color roles, and adaptive layouts."
+>
+  <div class="home-page">
+    <div class="home-page-frame">
+      <header class="home-page-header appbar appbar-fixed appbar-bordered bg-surface/95 backdrop-blur">
+        <div class="appbar-leading">
+          <a href={base} class="flex min-w-0 items-center gap-3 font-bold text-on-surface no-underline" aria-label="DuskMoonUI home">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-xl text-primary-content" aria-hidden="true">◒</span>
+            <span class="hidden sm:inline">DuskMoonUI</span>
+            <span class="badge badge-secondary badge-sm">{version}</span>
+          </a>
         </div>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">@duskmoon-dev/core</h1>
-        <p class="hero-subtitle">
-          The most popular Tailwind CSS component library with enhanced tertiary colors
-        </p>
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-value">50+</div>
-            <div class="stat-title">Components</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">3</div>
-            <div class="stat-title">Color Systems</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">2</div>
-            <div class="stat-title">Themes</div>
-          </div>
+        <nav class="home-page-nav" aria-label="Primary navigation">
+          <a href={`${base}components/`} class="btn btn-text btn-sm">Components</a>
+          <a href={`${base}docs/en/getting-started/installation/`} class="btn btn-text btn-sm">Docs</a>
+          <a href={`${base}css-art/`} class="btn btn-text btn-sm">CSS Art</a>
+          <a href={`${base}docs/en/theming/themes/`} class="btn btn-text btn-sm">Themes</a>
+        </nav>
+
+        <div class="appbar-trailing">
+          <ThemeToggle client:load />
+          <a href="https://github.com/duskmoon-dev/duskmoonui" class="home-page-actions btn btn-outlined btn-sm" target="_blank" rel="noreferrer">GitHub</a>
+          <button
+            class="home-page-menu-trigger appbar-action"
+            type="button"
+            aria-label="Open navigation menu"
+            popovertarget="home-mobile-menu"
+            style="anchor-name: --home-mobile-menu-anchor"
+          >
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-        <div class="hero-buttons">
-          <a href={`${base}components/`} class="btn btn-primary btn-lg">
-            Browse Components
-          </a>
-          <a href={`${base}docs/en/getting-started/installation/`} class="btn btn-secondary btn-lg">
-            Get Started
-          </a>
+
+        <nav
+          class="home-page-mobile-menu menu menu-vertical popover popover-end popover-no-arrow"
+          id="home-mobile-menu"
+          popover
+          aria-label="Compact navigation"
+          style="position-anchor: --home-mobile-menu-anchor"
+        >
+          <a href={`${base}components/`} class="menu-item">Components</a>
+          <a href={`${base}docs/en/getting-started/installation/`} class="menu-item">Documentation</a>
+          <a href={`${base}css-art/`} class="menu-item">CSS Art</a>
+          <a href={`${base}docs/en/theming/themes/`} class="menu-item">Themes</a>
+          <a href="https://github.com/duskmoon-dev/duskmoonui" class="menu-item" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </header>
+
+      <main class="home-page-main pt-16">
+        <div class="home-page-content">
+          <section class="home-page-hero py-12 lg:py-20" aria-labelledby="home-title">
+            <div>
+              <span class="badge badge-primary mb-6">CSS-first · Tailwind CSS v4</span>
+              <p class="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-tertiary">Design in the open</p>
+              <h1 id="home-title" class="m-0 max-w-3xl text-5xl font-black leading-none tracking-tight sm:text-6xl lg:text-7xl">
+                A component library with a visible point of view.
+              </h1>
+              <p class="mb-8 mt-6 max-w-2xl text-lg leading-relaxed text-on-surface-variant sm:text-xl">
+                Build expressive, accessible interfaces from semantic color roles, native browser behavior, and composable CSS primitives.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <a href={`${base}docs/en/getting-started/installation/`} class="btn btn-primary btn-lg">Get started</a>
+                <a href={`${base}components/`} class="btn btn-outlined btn-lg">Browse components</a>
+              </div>
+            </div>
+
+            <div class="card card-high overflow-hidden" aria-label="DuskMoonUI component preview">
+              <div class="flex items-center justify-between gap-4 border-b border-outline-variant px-5 py-4">
+                <div class="flex items-center gap-2" aria-hidden="true">
+                  <span class="h-3 w-3 rounded-full bg-error"></span>
+                  <span class="h-3 w-3 rounded-full bg-warning"></span>
+                  <span class="h-3 w-3 rounded-full bg-success"></span>
+                </div>
+                <span class="font-mono text-xs text-on-surface-variant">component.preview</span>
+              </div>
+              <div class="card-body gap-6 p-6 sm:p-8">
+                <div>
+                  <p class="m-0 text-sm text-on-surface-variant">Semantic color roles</p>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-secondary">Secondary</span>
+                    <span class="badge badge-tertiary">Tertiary</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-3" aria-label="Theme colors">
+                  <div class="h-20 rounded-lg bg-primary-container"></div>
+                  <div class="h-20 rounded-lg bg-secondary-container"></div>
+                  <div class="h-20 rounded-lg bg-tertiary-container"></div>
+                </div>
+                <div class="card card-outlined card-compact">
+                  <div class="card-body">
+                    <div class="flex items-start justify-between gap-4">
+                      <div>
+                        <h2 class="card-title m-0">Native by default</h2>
+                        <p class="mb-0 mt-1 text-sm text-on-surface-variant">Popover, dialog, focus, and responsive layout.</p>
+                      </div>
+                      <span class="badge badge-success shrink-0 whitespace-nowrap">Ready</span>
+                    </div>
+                    <div class="card-actions">
+                      <button class="btn btn-primary btn-sm" type="button">Primary</button>
+                      <button class="btn btn-text btn-sm" type="button">Text action</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="border-y border-outline-variant py-8" aria-label="Library summary">
+            <div class="stats stats-responsive w-full bg-transparent shadow-none">
+              <div class="stat stat-primary">
+                <div class="stat-value">50+</div>
+                <div class="stat-title">Components</div>
+                <div class="stat-desc">Built to compose</div>
+              </div>
+              <div class="stat stat-secondary">
+                <div class="stat-value">65+</div>
+                <div class="stat-title">Color tokens</div>
+                <div class="stat-desc">Semantic OKLCH roles</div>
+              </div>
+              <div class="stat stat-tertiary">
+                <div class="stat-value">4</div>
+                <div class="stat-title">Themes</div>
+                <div class="stat-desc">One consistent system</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="py-16 lg:py-24" aria-labelledby="principles-title">
+            <div class="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+              <div>
+                <p class="mb-2 font-mono text-sm font-semibold uppercase tracking-widest text-primary">Built differently</p>
+                <h2 id="principles-title" class="m-0 text-4xl font-bold leading-tight sm:text-5xl">Less runtime.<br />More system.</h2>
+              </div>
+              <div class="grid grid-cols-auto-fit-64 gap-4">
+                <article class="card card-outlined p-6">
+                  <span class="mb-8 font-mono text-sm text-primary">01 / CSS</span>
+                  <h3 class="m-0 text-xl font-semibold">CSS is the API</h3>
+                  <p class="mb-0 mt-3 text-on-surface-variant">Readable classes, theme tokens, and portable styles without a component runtime.</p>
+                </article>
+                <article class="card card-outlined p-6">
+                  <span class="mb-8 font-mono text-sm text-secondary">02 / NATIVE</span>
+                  <h3 class="m-0 text-xl font-semibold">The platform participates</h3>
+                  <p class="mb-0 mt-3 text-on-surface-variant">Modern browser primitives handle interaction, focus, overlays, and responsive behavior.</p>
+                </article>
+                <article class="card card-outlined p-6">
+                  <span class="mb-8 font-mono text-sm text-tertiary">03 / COLOR</span>
+                  <h3 class="m-0 text-xl font-semibold">Hierarchy has more range</h3>
+                  <p class="mb-0 mt-3 text-on-surface-variant">Primary, secondary, and tertiary roles create richer interfaces without arbitrary color choices.</p>
+                </article>
+                <article class="card card-outlined p-6">
+                  <span class="mb-8 font-mono text-sm text-success">04 / ACCESS</span>
+                  <h3 class="m-0 text-xl font-semibold">Accessibility is structural</h3>
+                  <p class="mb-0 mt-3 text-on-surface-variant">Semantic markup, visible focus, logical properties, and keyboard behavior are part of the foundation.</p>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="card card-primary mb-16 overflow-hidden lg:mb-24" aria-labelledby="install-title">
+            <div class="grid items-center gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_auto] lg:p-12">
+              <div>
+                <p class="mb-2 font-mono text-sm font-semibold uppercase tracking-widest">Start in one command</p>
+                <h2 id="install-title" class="m-0 text-3xl font-bold sm:text-4xl">Bring DuskMoonUI into your build.</h2>
+                <p class="mb-0 mt-4 max-w-2xl text-on-primary-container">Install the package, import the plugin, and compose directly in your markup.</p>
+              </div>
+              <div class="flex flex-col gap-3">
+                <code class="rounded-lg bg-surface-container-lowest px-5 py-4 font-mono text-sm text-on-surface sm:text-base">bun add @duskmoon-dev/core</code>
+                <a href={`${base}docs/en/getting-started/installation/`} class="btn btn-secondary">Read installation guide →</a>
+              </div>
+            </div>
+          </section>
         </div>
-      </div>
+      </main>
+
+      <footer class="home-page-footer">
+        <div class="home-page-content flex flex-wrap items-center justify-between gap-5 py-7 text-sm text-on-surface-variant">
+          <p class="m-0">© {currentYear} DuskMoonUI · MIT licensed</p>
+          <nav class="flex flex-wrap gap-5" aria-label="Footer navigation">
+            <a href={`${base}docs/en/getting-started/installation/`} class="text-inherit">Documentation</a>
+            <a href={`${base}components/`} class="text-inherit">Components</a>
+            <a href="https://github.com/duskmoon-dev/duskmoonui" class="text-inherit">GitHub</a>
+          </nav>
+        </div>
+      </footer>
     </div>
   </div>
-
-  <!-- Features Section -->
-  <section class="features">
-    <div class="container">
-      <h2>Why @duskmoon-dev/core?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <h3>Tertiary Colors</h3>
-          <p>Extended color system with primary, secondary, and tertiary colors for richer visual hierarchy.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Dual Themes</h3>
-          <p>Beautiful "sunshine" and "moonlight" themes with smooth transitions.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Accessible</h3>
-          <p>WCAG 2.1 AA compliant with focus on semantic HTML and keyboard navigation.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Tailwind 4.0</h3>
-          <p>Built for Tailwind CSS 4.0+ with modern CSS-first configuration.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Material Design 3</h3>
-          <p>Integrates Material Design 3 color system with 65+ color tokens.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Customizable</h3>
-          <p>Easy to customize with CSS variables and Tailwind configuration.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Component Preview Section -->
-  <section class="component-preview">
-    <div class="container">
-      <h2>Get Started</h2>
-      <p class="section-subtitle">Install @duskmoon-dev/core and start building beautiful UIs</p>
-
-      <div class="install-section">
-        <pre><code>bun add @duskmoon-dev/core</code></pre>
-        <p class="install-note">Then add the plugin to your Tailwind CSS configuration</p>
-      </div>
-
-      <div class="view-all">
-        <a href={`${base}components/`} class="btn btn-primary btn-lg">
-          Explore Components →
-        </a>
-        <a href={`${base}docs/en/getting-started/installation/`} class="btn btn-outline btn-lg">
-          Read the Docs
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>@duskmoon-dev/core</h4>
-          <p>Modern Tailwind CSS component library with enhanced tertiary colors</p>
-        </div>
-        <div class="footer-section">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href={`${base}docs/en/getting-started/installation/`}>Documentation</a></li>
-            <li><a href={`${base}components/`}>Components</a></li>
-            <li><a href="https://github.com/duskmoon-dev/duskmoonui">GitHub</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Community</h4>
-          <ul>
-            <li><a href="https://github.com/duskmoon-dev/duskmoonui/discussions">Discussions</a></li>
-            <li><a href="https://github.com/duskmoon-dev/duskmoonui/issues">Issues</a></li>
-            <li><a href="https://twitter.com/duskmoonui">Twitter</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; {currentYear} @duskmoon-dev/core. MIT License.</p>
-      </div>
-    </div>
-  </footer>
 </BaseLayout>
-
