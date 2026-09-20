@@ -371,6 +371,48 @@
       "import": "./dist/esm/components/navigation.js",
       "default": "./dist/esm/components/navigation.js"
     },
+    "./components/navbar": {
+      "types": "./dist/esm/components/navbar.d.ts",
+      "style": "./dist/components/navbar.css",
+      "import": "./dist/esm/components/navbar.js",
+      "default": "./dist/esm/components/navbar.js"
+    },
+    "./components/menu": {
+      "types": "./dist/esm/components/menu.d.ts",
+      "style": "./dist/components/menu.css",
+      "import": "./dist/esm/components/menu.js",
+      "default": "./dist/esm/components/menu.js"
+    },
+    "./components/breadcrumbs": {
+      "types": "./dist/esm/components/breadcrumbs.d.ts",
+      "style": "./dist/components/breadcrumbs.css",
+      "import": "./dist/esm/components/breadcrumbs.js",
+      "default": "./dist/esm/components/breadcrumbs.js"
+    },
+    "./components/pagination": {
+      "types": "./dist/esm/components/pagination.d.ts",
+      "style": "./dist/components/pagination.css",
+      "import": "./dist/esm/components/pagination.js",
+      "default": "./dist/esm/components/pagination.js"
+    },
+    "./components/tabs": {
+      "types": "./dist/esm/components/tabs.d.ts",
+      "style": "./dist/components/tabs.css",
+      "import": "./dist/esm/components/tabs.js",
+      "default": "./dist/esm/components/tabs.js"
+    },
+    "./components/link": {
+      "types": "./dist/esm/components/link.d.ts",
+      "style": "./dist/components/link.css",
+      "import": "./dist/esm/components/link.js",
+      "default": "./dist/esm/components/link.js"
+    },
+    "./components/megamenu": {
+      "types": "./dist/esm/components/megamenu.d.ts",
+      "style": "./dist/components/megamenu.css",
+      "import": "./dist/esm/components/megamenu.js",
+      "default": "./dist/esm/components/megamenu.js"
+    },
     "./components/nested-menu": {
       "types": "./dist/esm/components/nested-menu.d.ts",
       "style": "./dist/components/nested-menu.css",

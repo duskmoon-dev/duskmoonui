@@ -72,13 +72,13 @@
     position-area: right;
   }
 
-  .menu li {
+  .menu > li {
     display: flex;
     flex-shrink: 0;
   }
 
-  .menu li > a,
-  .menu li > button,
+  .menu > li > a,
+  .menu > li > button,
   .menu-item {
     display: flex;
     align-items: center;
@@ -93,33 +93,40 @@
     white-space: nowrap;
   }
 
-  .menu li > a:hover,
-  .menu li > button:hover,
+  .menu > li > a:hover,
+  .menu > li > button:hover,
   .menu-item:hover {
     background-color: var(--color-surface-container);
   }
 
-  .menu li > a:focus-visible,
-  .menu li > button:focus-visible,
+  .menu > li > a:focus-visible,
+  .menu > li > button:focus-visible,
   .menu-item:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
   }
 
-  .menu li > a.active,
-  .menu li > button.active,
+  .menu > li > a.active,
+  .menu > li > button.active,
   .menu-item.active,
-  .menu li > a[aria-current="page"],
-  .menu li > button[aria-current="page"] {
+  .menu > li > a[aria-current="page"],
+  .menu > li > button[aria-current="page"] {
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
   }
 
-  .menu li.disabled > a,
-  .menu li.disabled > button,
-  .menu-item:disabled {
+  .menu-item[aria-current="page"] {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  .menu > li.disabled > a,
+  .menu > li.disabled > button,
+  .menu-item:disabled,
+  .menu > li > button:disabled,
+  .menu-item[aria-disabled="true"] {
     opacity: 0.5;
-    pointer-events: none;
+    cursor: not-allowed;
   }
 
   .menu-horizontal {
@@ -158,8 +165,8 @@
 
   /* Reduce Motion */
   @media (prefers-reduced-motion: reduce) {
-    .menu li > a,
-    .menu li > button,
+    .menu > li > a,
+    .menu > li > button,
     .menu-item,
     .menu[popover] {
       transition: none;

@@ -10,9 +10,7 @@ export { inputStyles } from "./input";
 export { badgeStyles } from "./badge";
 export { alertStyles } from "./alert";
 
-// Phase 1: Navigation components
-export { navbarStyles } from "./navbar";
-export { tabsStyles } from "./tabs";
+// Navigation presentation is CSS-only. Use the package component entrypoints.
 export { drawerStyles } from "./drawer";
 
 // Phase 1: Layout components
@@ -32,15 +30,6 @@ export { chatStyles } from "./chat";
 
 // Phase 1: Forms components
 export { switchStyles } from "./switch";
-
-// Phase 1: Overlay components
-export { menuStyles } from "./menu";
-
-// Phase 2: Navigation components
-export { breadcrumbsStyles } from "./breadcrumbs";
-export { bottomNavigationStyles } from "./bottom-navigation";
-export { paginationStyles } from "./pagination";
-export { stepperStyles } from "./stepper";
 
 // Phase 2: Feedback components
 export { skeletonStyles } from "./skeleton";
@@ -79,8 +68,6 @@ import { cardStyles } from "./card";
 import { inputStyles } from "./input";
 import { badgeStyles } from "./badge";
 import { alertStyles } from "./alert";
-import { navbarStyles } from "./navbar";
-import { tabsStyles } from "./tabs";
 import { drawerStyles } from "./drawer";
 import { dividerStyles } from "./divider";
 import { appBarStyles } from "./appbar";
@@ -92,11 +79,6 @@ import { tableStyles } from "./table";
 import { listStyles } from "./list";
 import { chatStyles } from "./chat";
 import { switchStyles } from "./switch";
-import { menuStyles } from "./menu";
-import { breadcrumbsStyles } from "./breadcrumbs";
-import { bottomNavigationStyles } from "./bottom-navigation";
-import { paginationStyles } from "./pagination";
-import { stepperStyles } from "./stepper";
 import { skeletonStyles } from "./skeleton";
 import { chipStyles } from "./chip";
 import { avatarStyles } from "./avatar";
@@ -128,8 +110,6 @@ export function getAllComponentStyles(): Record<string, any> {
     ...inputStyles,
     ...badgeStyles,
     ...alertStyles,
-    ...navbarStyles,
-    ...tabsStyles,
     ...drawerStyles,
     ...dividerStyles,
     ...appBarStyles,
@@ -141,11 +121,6 @@ export function getAllComponentStyles(): Record<string, any> {
     ...listStyles,
     ...chatStyles,
     ...switchStyles,
-    ...menuStyles,
-    ...breadcrumbsStyles,
-    ...bottomNavigationStyles,
-    ...paginationStyles,
-    ...stepperStyles,
     ...skeletonStyles,
     ...chipStyles,
     ...avatarStyles,
@@ -185,8 +160,6 @@ export function getComponentStyles(
     input: inputStyles,
     badge: badgeStyles,
     alert: alertStyles,
-    navbar: navbarStyles,
-    tabs: tabsStyles,
     drawer: drawerStyles,
     divider: dividerStyles,
     appbar: appBarStyles,
@@ -198,11 +171,6 @@ export function getComponentStyles(
     list: listStyles,
     chat: chatStyles,
     switch: switchStyles,
-    menu: menuStyles,
-    breadcrumbs: breadcrumbsStyles,
-    "bottom-navigation": bottomNavigationStyles,
-    pagination: paginationStyles,
-    stepper: stepperStyles,
     skeleton: skeletonStyles,
     chip: chipStyles,
     avatar: avatarStyles,
@@ -243,8 +211,6 @@ export const componentsList = [
   "input",
   "badge",
   "alert",
-  "navbar",
-  "tabs",
   "drawer",
   "divider",
   "appbar",
@@ -256,11 +222,6 @@ export const componentsList = [
   "list",
   "chat",
   "switch",
-  "menu",
-  "breadcrumbs",
-  "bottom-navigation",
-  "pagination",
-  "stepper",
   "skeleton",
   "chip",
   "avatar",

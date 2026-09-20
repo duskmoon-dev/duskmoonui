@@ -218,12 +218,26 @@
   .breadcrumbs-nowrap {
     flex-wrap: nowrap;
     overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .breadcrumbs-nowrap > * {
+    flex: 0 0 auto;
   }
 
   .breadcrumb-item-disabled {
     opacity: 1;
     pointer-events: none;
     cursor: not-allowed;
+  }
+
+  .breadcrumb-ellipsis:focus-visible,
+  .breadcrumb-home:focus-visible,
+  .breadcrumbs li > a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
   }
 
   /* Reduce Motion */

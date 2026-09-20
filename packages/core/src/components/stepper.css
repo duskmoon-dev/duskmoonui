@@ -24,7 +24,7 @@
   .stepper-step-connector {
     position: absolute;
     top: 1.25rem;
-    left: calc(50% + 1.25rem);
+    inset-inline-start: calc(50% + 1.25rem);
     width: calc(100% - 2.5rem);
     height: 2px;
     background-color: var(--color-outline-variant);
@@ -49,10 +49,13 @@
     background: none;
     border: none;
     padding: 0;
+    color: inherit;
   }
 
   .stepper-step-button:focus-visible {
-    outline: none;
+    outline: 2px solid currentColor;
+    outline-offset: 0.25rem;
+    border-radius: var(--radius-sm);
   }
 
   .stepper-step-button:focus-visible .stepper-step-icon {
@@ -76,7 +79,8 @@
     transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out, color 150ms ease-in-out;
   }
 
-  .stepper-step-active .stepper-step-icon {
+  .stepper-step-active .stepper-step-icon,
+  .stepper-step[aria-current="step"] .stepper-step-icon {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-primary-content);
@@ -107,7 +111,8 @@
     text-align: center;
   }
 
-  .stepper-step-active .stepper-step-label {
+  .stepper-step-active .stepper-step-label,
+  .stepper-step[aria-current="step"] .stepper-step-label {
     color: var(--color-primary);
   }
 
@@ -118,14 +123,14 @@
   .stepper-step-description {
     font-size: 0.75rem;
     color: var(--color-on-surface-variant);
-    margin-top: 0.125rem;
+    margin-block-start: 0.125rem;
     text-align: center;
   }
 
   /* Step Content (for vertical stepper) */
   .stepper-step-content {
-    margin-top: 1.5rem;
-    padding: 0 1rem;
+    margin-block-start: 1.5rem;
+    padding-inline: 1rem;
     width: 100%;
   }
 
@@ -135,7 +140,7 @@
     display: block;
     font-size: 0.6875rem;
     color: var(--color-on-surface-variant);
-    margin-top: 0.125rem;
+    margin-block-start: 0.125rem;
   }
 
   /* Vertical Stepper */
@@ -152,7 +157,7 @@
 
   .stepper-vertical .stepper-step-connector {
     top: 2.5rem;
-    left: 1.25rem;
+    inset-inline-start: 1.25rem;
     width: 2px;
     height: calc(100% - 2.5rem);
     transform: translateX(-50%);
@@ -165,18 +170,19 @@
 
   .stepper-vertical .stepper-step-label,
   .stepper-vertical .stepper-step-description {
-    text-align: left;
-    margin-left: 1rem;
+    text-align: start;
+    margin-inline-start: 1rem;
   }
 
   .stepper-vertical .stepper-step-content {
-    margin-top: 0;
-    margin-left: 3.5rem;
-    padding: 1rem 0 1.5rem;
+    margin-block-start: 0;
+    margin-inline-start: 3.5rem;
+    padding-block: 1rem 1.5rem;
   }
 
   /* Color Variants */
   .stepper-secondary .stepper-step-active .stepper-step-icon,
+  .stepper-secondary .stepper-step[aria-current="step"] .stepper-step-icon,
   .stepper-secondary .stepper-step-completed .stepper-step-icon {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
@@ -187,11 +193,13 @@
     background-color: var(--color-secondary);
   }
 
-  .stepper-secondary .stepper-step-active .stepper-step-label {
+  .stepper-secondary .stepper-step-active .stepper-step-label,
+  .stepper-secondary .stepper-step[aria-current="step"] .stepper-step-label {
     color: var(--color-secondary);
   }
 
   .stepper-tertiary .stepper-step-active .stepper-step-icon,
+  .stepper-tertiary .stepper-step[aria-current="step"] .stepper-step-icon,
   .stepper-tertiary .stepper-step-completed .stepper-step-icon {
     background-color: var(--color-tertiary);
     border-color: var(--color-tertiary);
@@ -202,7 +210,8 @@
     background-color: var(--color-tertiary);
   }
 
-  .stepper-tertiary .stepper-step-active .stepper-step-label {
+  .stepper-tertiary .stepper-step-active .stepper-step-label,
+  .stepper-tertiary .stepper-step[aria-current="step"] .stepper-step-label {
     color: var(--color-tertiary);
   }
 
@@ -215,7 +224,7 @@
 
   .stepper-sm .stepper-step-connector {
     top: 1rem;
-    left: calc(50% + 1rem);
+    inset-inline-start: calc(50% + 1rem);
     width: calc(100% - 2rem);
   }
 
@@ -236,14 +245,14 @@
 
   .stepper-lg .stepper-step-connector {
     top: 1.5rem;
-    left: calc(50% + 1.5rem);
+    inset-inline-start: calc(50% + 1.5rem);
     width: calc(100% - 3rem);
   }
 
   /* Alternative Label Positioning */
   .stepper-alt-labels .stepper-step-connector {
     top: 1.25rem;
-    left: calc(50% + 2rem);
+    inset-inline-start: calc(50% + 2rem);
     width: calc(100% - 4rem);
   }
 
@@ -294,6 +303,11 @@
 
   /* Disabled State */
   .stepper-step-disabled .stepper-step-button {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .stepper-step-button:disabled {
     cursor: not-allowed;
     opacity: 0.7;
   }

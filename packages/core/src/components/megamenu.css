@@ -1,0 +1,80 @@
+/**
+ * Megamenu is a CSS composition layer over native popovers, Menu, and Link.
+ * Give each trigger/panel pair a unique --megamenu-anchor custom identifier.
+ */
+@import "./menu.css";
+@import "./link.css";
+
+@layer components {
+  .megamenu { position: relative; display: flex; align-items: center; max-width: 100%; }
+  .megamenu-bar {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0.25rem;
+    margin: 0; padding: 0; list-style: none;
+  }
+  .megamenu-trigger {
+    anchor-name: var(--megamenu-anchor);
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    padding: 0.625rem 0.875rem; color: var(--color-on-surface);
+    background: transparent; border: 0; border-radius: var(--radius-sm);
+    font: inherit; cursor: pointer;
+  }
+  .megamenu-trigger:hover,
+  .megamenu-trigger[aria-expanded="true"],
+  .megamenu:has(.megamenu-panel:popover-open) .megamenu-trigger {
+    color: var(--color-on-primary-container);
+    background-color: var(--color-primary-container);
+  }
+  .megamenu-trigger:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .megamenu-panel[popover] {
+    position-anchor: var(--megamenu-anchor);
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    display: none; box-sizing: border-box;
+    width: min(48rem, calc(100vw - 2rem)); max-width: calc(100vw - 2rem);
+    max-height: min(36rem, calc(100dvh - 2rem)); margin: 0.5rem; padding: 1rem;
+    overflow: auto; color: var(--color-on-surface);
+    background-color: var(--color-surface-container);
+    border: 1px solid var(--color-outline-variant); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg); opacity: 0;
+    transform: translateY(-0.25rem) scale(0.98);
+    transition: opacity 150ms ease-out, transform 150ms ease-out,
+      overlay 150ms ease-out allow-discrete, display 150ms ease-out allow-discrete;
+  }
+  .megamenu-panel[popover]:popover-open { display: block; opacity: 1; transform: translateY(0) scale(1); }
+  .megamenu-panel-full[popover] { width: calc(100vw - 2rem); }
+  .megamenu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+    gap: 1.25rem;
+  }
+  .megamenu-group { min-width: 0; }
+  .megamenu-heading {
+    margin: 0 0 0.5rem; color: var(--color-on-surface); font-size: 0.75rem;
+    font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .megamenu-panel .menu { flex-direction: column; padding: 0; }
+  .megamenu-panel .menu > li,
+  .megamenu-panel .menu > li > .link { width: 100%; }
+  .megamenu-supporting { color: var(--color-on-surface-variant); font-size: 0.875rem; }
+
+  @starting-style {
+    .megamenu-panel[popover]:popover-open { opacity: 0; transform: translateY(-0.25rem) scale(0.98); }
+  }
+  @supports not (position-area: bottom) {
+    .megamenu-panel[popover] { position: fixed; inset: 4.5rem 1rem auto; margin-inline: auto; }
+  }
+  /* Baseline fallback: without Popover API support, links remain visible and reachable. */
+  @supports not selector(:popover-open) {
+    .megamenu { display: block; }
+    .megamenu-panel[popover] {
+      position: static; display: block; width: 100%; max-width: 100%; max-height: none;
+      margin: 0.5rem 0 0; opacity: 1; transform: none;
+    }
+  }
+  @media (max-width: 47.999rem) {
+    .megamenu-desktop { display: none; }
+    .megamenu-mobile { display: block; }
+  }
+  @media (min-width: 48rem) { .megamenu-mobile { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .megamenu-panel[popover] { transition: none; } }
+}

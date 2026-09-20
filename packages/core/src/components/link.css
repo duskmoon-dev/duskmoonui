@@ -1,0 +1,43 @@
+/** DuskMoonUI text-link primitive. */
+@layer components {
+  .link {
+    color: var(--color-primary);
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    transition: color 150ms ease-in-out, text-decoration-color 150ms ease-in-out,
+      background-color 150ms ease-in-out;
+  }
+
+  .link:hover {
+    color: color-mix(in oklch, var(--color-primary), var(--color-on-surface) 18%);
+    text-decoration-thickness: 0.12em;
+  }
+
+  .link:active {
+    color: color-mix(in oklch, var(--color-primary), var(--color-on-surface) 30%);
+  }
+
+  .link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  .link-hover { text-decoration-color: transparent; }
+  .link-hover:hover,
+  .link-hover:focus-visible { text-decoration-color: currentColor; }
+  .link-primary { color: var(--color-primary); }
+  .link-secondary { color: var(--color-secondary); }
+  .link-tertiary { color: var(--color-tertiary); }
+  .link-neutral,
+  .link-inherit { color: inherit; }
+  .link-neutral:hover,
+  .link-inherit:hover { color: color-mix(in oklch, currentColor, var(--color-on-surface) 18%); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link { transition: none; }
+  }
+}

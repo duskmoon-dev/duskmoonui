@@ -45,6 +45,7 @@
 
   .pagination-item-active,
   .pagination-item-active-primary,
+  .pagination-item[aria-current="page"],
   .pagination li > a.active,
   .pagination li > button.active,
   .pagination li > a[aria-current="page"],
@@ -66,6 +67,14 @@
     border-color: var(--color-tertiary);
   }
 
+  .pagination-item-active:hover,
+  .pagination-item-active-primary:hover,
+  .pagination-item[aria-current="page"]:hover,
+  .pagination li > a[aria-current="page"]:hover,
+  .pagination li > button[aria-current="page"]:hover {
+    background-color: color-mix(in oklch, var(--color-primary), black 10%);
+  }
+
   .pagination-item:focus-visible,
   .pagination-prev:focus-visible,
   .pagination-next:focus-visible,
@@ -80,10 +89,10 @@
   .pagination-prev:disabled,
   .pagination-next:disabled,
   .pagination li > a:disabled,
-  .pagination li > button:disabled {
+  .pagination li > button:disabled,
+  .pagination a[aria-disabled="true"] {
     opacity: 0.5;
     cursor: not-allowed;
-    pointer-events: none;
   }
 
   .pagination-ellipsis {
@@ -182,12 +191,14 @@
 
   .pagination-compact .pagination-item:first-child,
   .pagination-compact .pagination-prev {
-    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    border-start-start-radius: var(--radius-sm);
+    border-end-start-radius: var(--radius-sm);
   }
 
   .pagination-compact .pagination-item:last-child,
   .pagination-compact .pagination-next {
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    border-start-end-radius: var(--radius-sm);
+    border-end-end-radius: var(--radius-sm);
   }
 
   .pagination-responsive {
