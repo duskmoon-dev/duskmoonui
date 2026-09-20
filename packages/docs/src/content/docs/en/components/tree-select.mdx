@@ -14,27 +14,78 @@ Tree Select is a hierarchical dropdown component that allows users to select fro
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Tree Select" code={`<div class="tree-select">
-  <button class="tree-select-trigger" popovertarget="tree-select-1">
+<ComponentShowcase title="Basic Tree Select" code={`<div id="demo-tree-select" class="tree-select">
+  <button class="tree-select-trigger" popovertarget="demo-tree-select-options" aria-haspopup="tree" aria-expanded="false">
     <span class="tree-select-value">Select a category</span>
-    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg class="tree-select-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
   </button>
-  <div class="tree-select-dropdown" id="tree-select-1" popover="auto">
+  <div class="tree-select-dropdown" id="demo-tree-select-options" popover="auto" role="tree" aria-label="Categories">
     <div class="tree-select-options">
-      <div class="tree-select-node tree-select-node-leaf">
+      <div class="tree-select-node tree-select-node-leaf" role="treeitem" aria-selected="false" tabindex="0">
         <span class="tree-select-node-label">Category 1</span>
       </div>
-      <div class="tree-select-node tree-select-node-leaf">
+      <div class="tree-select-node tree-select-node-leaf" role="treeitem" aria-selected="false" tabindex="-1">
         <span class="tree-select-node-label">Category 2</span>
       </div>
-      <div class="tree-select-node tree-select-node-leaf">
+      <div class="tree-select-node tree-select-node-leaf" role="treeitem" aria-selected="false" tabindex="-1">
         <span class="tree-select-node-label">Category 3</span>
       </div>
     </div>
   </div>
-</div>`} />
+</div>
+<script>
+(() => {
+  const root = document.getElementById('demo-tree-select');
+  if (!root || root.dataset.enhanced) return;
+  root.dataset.enhanced = 'true';
+
+  const trigger = root.querySelector('.tree-select-trigger');
+  const value = root.querySelector('.tree-select-value');
+  const dropdown = root.querySelector('.tree-select-dropdown');
+  const items = [...root.querySelectorAll('[role="treeitem"]')];
+
+  function selectItem(item) {
+    items.forEach(candidate => {
+      const selected = candidate === item;
+      candidate.setAttribute('aria-selected', String(selected));
+      candidate.classList.toggle('tree-select-node-selected', selected);
+    });
+    value.textContent = item.textContent.trim();
+    value.classList.add('tree-select-value-selected');
+    dropdown.hidePopover();
+    trigger.focus();
+  }
+
+  items.forEach((item, index) => {
+    item.addEventListener('click', () => selectItem(item));
+    item.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectItem(item);
+      } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        const offset = event.key === 'ArrowDown' ? 1 : -1;
+        const next = (index + offset + items.length) % items.length;
+        items[index].tabIndex = -1;
+        items[next].tabIndex = 0;
+        items[next].focus();
+      }
+    });
+  });
+
+  dropdown.addEventListener('toggle', event => {
+    const open = event.newState === 'open';
+    root.classList.toggle('tree-select-open', open);
+    trigger.setAttribute('aria-expanded', String(open));
+    if (open) {
+      const selected = items.find(item => item.getAttribute('aria-selected') === 'true');
+      (selected || items[0]).focus();
+    }
+  });
+})();
+</script>`} />
 
 ## With Dropdown Open
 

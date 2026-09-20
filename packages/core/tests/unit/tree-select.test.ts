@@ -40,4 +40,10 @@ describe('Tree Select Component', () => {
   it('should have transition for interactions', () => {
     expect(css).toContain('transition');
   });
+
+  it('should position each native popover from its invoking trigger', () => {
+    expect(css).toContain('position-area: block-end span-inline-end');
+    expect(css).toContain('inline-size: anchor-size(width)');
+    expect(css).not.toContain('position-anchor: --tree-select');
+  });
 });

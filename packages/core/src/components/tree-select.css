@@ -145,8 +145,10 @@
   /* Popover API Support */
   .tree-select-dropdown[popover] {
     /* Reset browser defaults for proper positioning */
-    position: absolute;
-    inset: unset;
+    position: fixed;
+    inset: auto 0.5rem 0.5rem auto;
+    max-inline-size: calc(100dvw - 1rem);
+    max-block-size: min(20rem, calc(100dvh - 1rem));
     margin: 0;
     border: 1px solid var(--color-outline-variant);
   }
@@ -155,18 +157,15 @@
     display: block;
   }
 
-  /* CSS Anchor Positioning for modern browsers */
-  @supports (anchor-name: --tree-select) {
-    .tree-select {
-      anchor-name: --tree-select;
-    }
-
+  /* The popovertarget invoker is the implicit anchor for its own dropdown. */
+  @supports (position-area: block-end) {
     .tree-select-dropdown[popover] {
-      position-anchor: --tree-select;
-      top: anchor(bottom);
-      left: anchor(left);
-      right: anchor(right);
-      position-try-fallbacks: flip-block;
+      inset: auto;
+      inline-size: anchor-size(width);
+      margin-block: 0.25rem;
+      margin-inline: 0;
+      position-area: block-end span-inline-end;
+      position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
     }
   }
 

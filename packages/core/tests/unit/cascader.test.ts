@@ -40,4 +40,17 @@ describe('Cascader Component', () => {
   it('should have transition for interactions', () => {
     expect(css).toContain('transition');
   });
+
+  it('should position each popover from its own invoking trigger', () => {
+    expect(css).toContain('@supports (position-area: block-end)');
+    expect(css).toContain('position-area: block-end span-inline-end');
+    expect(css).not.toContain('anchor-name: --cascader-anchor');
+    expect(css).not.toContain('position-anchor: --cascader-anchor');
+  });
+
+  it('should position a sibling clear button inside the trigger area', () => {
+    expect(css).toMatch(/\.cascader:has\(> \.cascader-clear\) \.cascader-value[^}]*padding-inline-end/s);
+    expect(css).toMatch(/\.cascader > \.cascader-clear[^}]*position:\s*absolute/s);
+    expect(css).toMatch(/\.cascader > \.cascader-clear[^}]*inset-inline-end/s);
+  });
 });
