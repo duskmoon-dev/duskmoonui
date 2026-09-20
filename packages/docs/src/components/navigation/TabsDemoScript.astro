@@ -1,0 +1,56 @@
+<script>
+  document.querySelectorAll<HTMLElement>('[data-dm-tabs]').forEach((root) => {
+    const list = root.querySelector<HTMLElement>(':scope > [role="tablist"]');
+    if (!list) return;
+
+    const tabs = () => [...list.querySelectorAll<HTMLButtonElement>(':scope > [role="tab"]')];
+    const enabled = () => tabs().filter((tab) => !tab.disabled && tab.getAttribute('aria-disabled') !== 'true');
+    const panelFor = (tab: HTMLButtonElement) => {
+      const id = tab.getAttribute('aria-controls');
+      const panel = id ? document.getElementById(id) : null;
+      return panel && root.contains(panel) ? panel : null;
+    };
+    const activate = (next: HTMLButtonElement | null, focus = true) => {
+      if (!next || next.disabled || next.getAttribute('aria-disabled') === 'true') return;
+      tabs().forEach((tab) => {
+        const selected = tab === next;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        const panel = panelFor(tab);
+        if (panel) {
+          panel.hidden = !selected;
+          panel.classList.toggle('tab-panel-show', selected);
+        }
+      });
+      if (focus) next.focus();
+    };
+
+    list.addEventListener('click', (event) => {
+      const target = event.target as Element;
+      if (target.closest('[role="tablist"]') === list) {
+        activate(target.closest<HTMLButtonElement>('[role="tab"]'), false);
+      }
+    });
+
+    list.addEventListener('keydown', (event) => {
+      if (!(event instanceof KeyboardEvent)) return;
+      const target = event.target as Element;
+      if (target.closest('[role="tablist"]') !== list) return;
+      const available = enabled();
+      const index = available.indexOf(target.closest<HTMLButtonElement>('[role="tab"]')!);
+      const vertical = list.getAttribute('aria-orientation') === 'vertical';
+      const rtl = getComputedStyle(list).direction === 'rtl';
+      let delta = 0;
+      if (vertical && event.key === 'ArrowDown') delta = 1;
+      if (vertical && event.key === 'ArrowUp') delta = -1;
+      if (!vertical && event.key === 'ArrowRight') delta = rtl ? -1 : 1;
+      if (!vertical && event.key === 'ArrowLeft') delta = rtl ? 1 : -1;
+      let next = event.key === 'Home' ? available[0] : event.key === 'End' ? available.at(-1) : null;
+      if (delta) next = available[(index + delta + available.length) % available.length];
+      if (next) {
+        event.preventDefault();
+        activate(next);
+      }
+    });
+  });
+</script>

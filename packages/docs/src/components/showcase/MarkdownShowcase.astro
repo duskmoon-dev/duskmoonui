@@ -218,8 +218,8 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
 
 <script>
   function initMarkdownShowcase(showcase: HTMLElement) {
-    const tabs = showcase.querySelectorAll<HTMLButtonElement>('[data-tab]');
-    const panels = showcase.querySelectorAll<HTMLElement>('[data-panel]');
+    const tabs = showcase.querySelectorAll<HTMLButtonElement>(':scope > .showcase-header [data-tab]');
+    const panels = showcase.querySelectorAll<HTMLElement>(':scope > [data-panel]');
 
     if (tabs.length === 0) return;
 
@@ -231,7 +231,7 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
       });
     });
 
-    const tablist = showcase.querySelector('[role="tablist"]');
+    const tablist = showcase.querySelector(':scope > .showcase-header [role="tablist"]');
     if (tablist) {
       tablist.addEventListener('keydown', (e: Event) => {
         const event = e as KeyboardEvent;

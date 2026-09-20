@@ -1,17 +1,17 @@
 ---
 title: Stepper
-description: Material Design 3 stepper component for multi-step processes
+description: Stepper and steps patterns for static progress or interactive multi-step navigation
 category: components
 order: 22
 published: true
-tags: ['stepper', 'components', 'material-design', 'navigation']
+tags: ['stepper', 'steps', 'components', 'material-design', 'navigation']
 ---
 
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
-# Stepper
+# Stepper (Steps)
 
-Steppers display progress through a sequence of logical and numbered steps. They guide users through multi-step processes like forms, checkouts, or wizards.
+Steppers—also called **steps**—display progress through a sequence. For static progress, use non-interactive content inside each `.stepper-step`. Use `.stepper-step-button` only when the application actually supports navigating to that step; CSS does not own workflow state.
 
 ## Basic Usage
 
@@ -24,7 +24,7 @@ Steppers display progress through a sequence of logical and numbered steps. They
     <div class="stepper-step-connector"></div>
   </div>
 
-  <div class="stepper-step stepper-step-active">
+  <div class="stepper-step stepper-step-active" aria-current="step">
     <button class="stepper-step-button">
       <div class="stepper-step-icon">2</div>
       <span class="stepper-step-label">Profile</span>
@@ -160,7 +160,7 @@ Steps with validation errors or issues:
 Steps that cannot be accessed yet:
 
 <ComponentShowcase title="Disabled Step" code={`<div class="stepper-step stepper-step-disabled">
-  <button class="stepper-step-button">
+  <button class="stepper-step-button" disabled>
     <div class="stepper-step-icon">4</div>
     <span class="stepper-step-label">Disabled</span>
   </button>
@@ -375,7 +375,7 @@ Here's a complete example with step content:
   </div>
 
   <div class="stepper-step">
-    <button class="stepper-step-button" aria-label="Step 2 of 3: Profile" aria-disabled="true">
+    <button class="stepper-step-button" aria-label="Step 2 of 3: Profile" disabled>
       <div class="stepper-step-icon">2</div>
       <span class="stepper-step-label">Profile</span>
     </button>
@@ -383,7 +383,7 @@ Here's a complete example with step content:
   </div>
 
   <div class="stepper-step">
-    <button class="stepper-step-button" aria-label="Step 3 of 3: Confirm" aria-disabled="true">
+    <button class="stepper-step-button" aria-label="Step 3 of 3: Confirm" disabled>
       <div class="stepper-step-icon">3</div>
       <span class="stepper-step-label">Confirm</span>
     </button>

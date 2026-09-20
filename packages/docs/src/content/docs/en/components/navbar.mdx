@@ -267,25 +267,33 @@ Remove the bottom border:
 
 Responsive navbar with hamburger menu:
 
-<ComponentShowcase title="Mobile Menu" code={`<nav class="navbar">
+<ComponentShowcase title="Responsive Navbar with Native Menu" code={`<nav class="navbar navbar-responsive" aria-label="Main navigation">
   <div class="navbar-start">
     <a href="/" class="navbar-brand">Brand</a>
   </div>
+  <div class="navbar-center">
+    <a href="/" class="navbar-item" aria-current="page">Home</a>
+    <a href="/about" class="navbar-item">About</a>
+    <a href="/services" class="navbar-item">Services and consulting</a>
+  </div>
   <div class="navbar-end">
-    <!-- Desktop menu -->
-    <div class="hidden md:flex md:gap-2">
-      <a href="#" class="navbar-item">Home</a>
-      <a href="#" class="navbar-item">About</a>
-      <a href="#" class="navbar-item">Services</a>
-    </div>
-    <!-- Mobile hamburger -->
-    <button class="navbar-hamburger md:hidden" aria-label="Open menu">
+    <button type="button" class="navbar-hamburger" aria-label="Open navigation"
+      popovertarget="demo-navbar-mobile-menu"
+      style="anchor-name: --demo-navbar-mobile-menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
-</nav>`} />
+</nav>
+<ul id="demo-navbar-mobile-menu" class="menu menu-vertical" popover="auto"
+  aria-label="Mobile navigation" style="position-anchor: --demo-navbar-mobile-menu">
+  <li><a href="/" aria-current="page">Home</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/services">Services and consulting</a></li>
+</ul>`} />
+
+The center region is hidden below 48rem only when `.navbar-responsive` is present. The native popover owns open state, Escape handling, and light dismissal. `popovertarget` is the broad native trigger form; outside the supported Popover baseline, use a `details` disclosure or Drawer containing the same ordinary navigation links.
 
 ## With Icons
 
@@ -461,6 +469,7 @@ defineProps({
 | `.navbar-compact` | Compact size with less padding |
 | `.navbar-comfortable` | Comfortable size with more padding |
 | `.navbar-borderless` | Remove bottom border |
+| `.navbar-responsive` | Hide the center region below 48rem and show the mobile trigger |
 
 ### Layout Classes
 

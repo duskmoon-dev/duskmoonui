@@ -15,10 +15,10 @@ Pagination allows users to navigate through pages of content. @duskmoon-dev/core
 
 ## Basic Usage
 
-<ComponentShowcase title="Basic Pagination" code={`<nav class="pagination">
+<ComponentShowcase title="Basic Pagination" code={`<nav class="pagination" aria-label="Pagination">
   <button class="pagination-prev" disabled>Previous</button>
   <a href="#" class="pagination-item">1</a>
-  <a href="#" class="pagination-item pagination-item-active">2</a>
+  <a href="#" class="pagination-item pagination-item-active" aria-current="page">2</a>
   <a href="#" class="pagination-item">3</a>
   <a href="#" class="pagination-item">4</a>
   <a href="#" class="pagination-item">5</a>
@@ -184,8 +184,24 @@ You can also disable individual page items:
 <ComponentShowcase title="Disabled Page Item" code={`<nav class="pagination">
   <a href="#" class="pagination-item">1</a>
   <a href="#" class="pagination-item pagination-item-active">2</a>
-  <a href="#" class="pagination-item pagination-item-disabled">3</a>
+  <span class="pagination-item pagination-item-disabled" aria-disabled="true">3</span>
   <a href="#" class="pagination-item">4</a>
+</nav>`} />
+
+For controls that submit an application-owned page change, use real buttons and `disabled`. For link pagination, omit `href` or render non-actionable text at an unavailable boundary; `pointer-events` styling alone is not a disabled behavior.
+
+## Join Composition
+
+Use the independent Join primitive when pagination should read as one connected control. This is additive and does not replace `.pagination`:
+
+<ComponentShowcase title="Pagination composed with Join" code={`<nav aria-label="Pagination">
+  <div class="join">
+    <a class="join-item pagination-prev" href="?page=1">Previous</a>
+    <a class="join-item pagination-item" href="?page=1">1</a>
+    <a class="join-item pagination-item" href="?page=2" aria-current="page">2</a>
+    <a class="join-item pagination-item" href="?page=3">3</a>
+    <a class="join-item pagination-next" href="?page=3">Next</a>
+  </div>
 </nav>`} />
 
 ## With Page Info

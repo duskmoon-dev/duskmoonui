@@ -96,7 +96,7 @@ Theme switching is instant and uses pure CSS custom properties.
 
 ## Components
 
-@duskmoon-dev/core includes **49 components** organized into 7 categories:
+@duskmoon-dev/core includes **50+ components** organized by category:
 
 ### Core Components (6)
 
@@ -106,7 +106,7 @@ Theme switching is instant and uses pure CSS custom properties.
 | Card | `.card`, `.card-body`, `.card-title`, `.card-bordered` | Content containers with headers and actions |
 | Input | `.input`, `.input-bordered`, `.input-primary` | Text inputs with sizes and states |
 | Form | `.form-control`, `.label`, `.checkbox`, `.radio`, `.toggle`, `.select`, `.textarea` | Form elements and layouts |
-| Navigation | `.navbar`, `.menu`, `.breadcrumbs`, `.tabs`, `.pagination`, `.dropdown` | Navigation patterns |
+| Navigation | `.navbar`, `.megamenu`, `.menu`, `.link`, `.breadcrumbs`, `.tabs`, `.pagination`, `.dropdown` | Navigation patterns |
 | Modal | `.modal`, `.modal-box`, `.modal-action` | Dialog overlays |
 
 ### Data Display (5)
@@ -149,13 +149,15 @@ Theme switching is instant and uses pure CSS custom properties.
 | App Bar | `.appbar`, `.appbar-title`, `.appbar-nav`, `.appbar-actions` | Top app bars |
 | Divider | `.divider`, `.divider-vertical`, `.divider-text` | Content separators |
 
-### Navigation (3)
+### Navigation (5)
 
 | Component | Classes | Description |
 |-----------|---------|-------------|
-| Bottom Navigation | `.bottom-nav`, `.bottom-nav-item`, `.bottom-nav-indicator` | Mobile navigation |
+| Bottom Navigation (Dock) | `.bottom-nav`, `.bottom-nav-item`, `.bottom-nav-indicator` | Mobile navigation |
 | Drawer | `.drawer`, `.drawer-content`, `.drawer-nav-item` | Side navigation |
-| Stepper | `.stepper`, `.stepper-step`, `.stepper-indicator` | Multi-step processes |
+| Link | `.link`, `.link-hover`, `.link-primary`, `.link-neutral` | Native text links |
+| Megamenu | `.megamenu`, `.megamenu-trigger`, `.megamenu-panel`, `.megamenu-grid` | Grouped site navigation |
+| Stepper (Steps) | `.stepper`, `.stepper-step`, `.stepper-indicator` | Multi-step processes |
 
 ### Surfaces (4)
 

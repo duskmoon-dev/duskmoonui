@@ -1,0 +1,147 @@
+---
+title: Megamenu
+description: Responsive grouped site navigation composed from native Popover, Menu, and Link
+category: components
+order: 18
+published: true
+tags: ['megamenu', 'mega-menu', 'navigation', 'popover', 'menu', 'responsive', 'rtl']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Megamenu
+
+Megamenu is a small composition layer for grouped site navigation. It supplies the responsive panel and grid while [Menu](/duskmoonui/docs/en/components/menu/) and [Link](/duskmoonui/docs/en/components/link/) supply link presentation. It is not an application-style ARIA menu and does not add a JavaScript runtime.
+
+```css
+@import "@duskmoon-dev/core/components/megamenu";
+```
+
+The standalone import resolves its Menu and Link dependencies. The main library, components aggregate, and navigation aggregate also include these rules.
+
+## Constrained panel
+
+Use semantic navigation and list markup. Every trigger/panel pair needs a unique DOM ID and a unique dashed custom identifier in `--megamenu-anchor`. `popover="auto"` makes the browser's native open state authoritative and provides Escape and light-dismiss behavior.
+
+<ComponentShowcase title="Grouped product navigation" allowOverflow code={`<nav class="megamenu" aria-label="Product navigation">
+  <ul class="megamenu-bar megamenu-desktop">
+    <li><a class="link link-neutral link-hover" href="#products">All products</a></li>
+    <li>
+      <button type="button" class="megamenu-trigger"
+        popovertarget="demo-megamenu-products"
+        style="--megamenu-anchor: --demo-megamenu-products-anchor">
+        Products <span aria-hidden="true">⌄</span>
+      </button>
+      <div id="demo-megamenu-products" class="megamenu-panel" popover="auto"
+        aria-labelledby="demo-megamenu-products-heading"
+        style="--megamenu-anchor: --demo-megamenu-products-anchor">
+        <h2 id="demo-megamenu-products-heading" class="megamenu-heading">Products</h2>
+        <div class="megamenu-grid">
+          <section class="megamenu-group" aria-labelledby="demo-megamenu-build-heading">
+            <h3 id="demo-megamenu-build-heading" class="megamenu-heading">Build</h3>
+            <ul class="menu menu-vertical">
+              <li><a class="link" href="#components" autofocus>Components</a></li>
+              <li><a class="link" href="#themes">Themes</a></li>
+              <li><a class="link" href="#examples">Examples</a></li>
+            </ul>
+          </section>
+          <section class="megamenu-group" aria-labelledby="demo-megamenu-learn-heading">
+            <h3 id="demo-megamenu-learn-heading" class="megamenu-heading">Learn</h3>
+            <p class="megamenu-supporting">Start with a focused path, then compose only what the page needs.</p>
+            <ul class="menu menu-vertical">
+              <li><a class="link" href="#quick-start">Quick start</a></li>
+              <li><a class="link" href="#accessibility">Accessibility</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <details class="megamenu-mobile">
+    <summary>Browse products</summary>
+    <ul class="menu menu-vertical">
+      <li><a href="#products">All products</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#themes">Themes</a></li>
+      <li><a href="#quick-start">Quick start</a></li>
+    </ul>
+  </details>
+</nav>`} />
+
+The ordinary “All products” link is a durable route to the same destinations when Popover is unavailable. On narrow screens the disclosure is shown instead of the desktop bar. A mobile [Drawer](/duskmoonui/docs/en/components/drawer/) containing `.menu` is another suitable composition when the site already uses a Drawer.
+
+## Full-width panel
+
+Add `.megamenu-panel-full` when a larger information architecture needs the available viewport width. Content remains constrained to the viewport and scrolls within the panel when it is taller than the available space.
+
+<ComponentShowcase title="Full-width resources" allowOverflow code={`<nav class="megamenu megamenu-desktop" aria-label="Resource navigation">
+  <ul class="megamenu-bar">
+    <li><a class="link link-neutral link-hover" href="#resources">All resources</a></li>
+    <li>
+      <button type="button" class="megamenu-trigger"
+        popovertarget="demo-megamenu-resources"
+        style="--megamenu-anchor: --demo-megamenu-resources-anchor">
+        Resources <span aria-hidden="true">⌄</span>
+      </button>
+      <div id="demo-megamenu-resources" class="megamenu-panel megamenu-panel-full"
+        popover="auto" aria-labelledby="demo-megamenu-resources-heading"
+        style="--megamenu-anchor: --demo-megamenu-resources-anchor">
+        <h2 id="demo-megamenu-resources-heading" class="megamenu-heading">Resources</h2>
+        <div class="megamenu-grid">
+          <section class="megamenu-group"><h3 class="megamenu-heading">Design</h3><ul class="menu menu-vertical"><li><a class="link" href="#tokens" autofocus>Tokens</a></li><li><a class="link" href="#themes">Themes</a></li></ul></section>
+          <section class="megamenu-group"><h3 class="megamenu-heading">Develop</h3><ul class="menu menu-vertical"><li><a class="link" href="#imports">Imports</a></li><li><a class="link" href="#api">API</a></li></ul></section>
+          <section class="megamenu-group"><h3 class="megamenu-heading">Support</h3><ul class="menu menu-vertical"><li><a class="link" href="#guides">Guides</a></li><li><a class="link" href="#issues">Issue tracker</a></li></ul></section>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>`} />
+
+Logical layout and auto-fit columns adapt to right-to-left documents without alternate class names. Test the real content in both `dir="ltr"` and `dir="rtl"`; do not encode direction into IDs or anchor names.
+
+## State ownership and focus
+
+CSS owns presentation. The browser owns `:popover-open`, Escape dismissal, light dismissal, and focus restoration. The application owns routing, optional analytics, and any state exposed outside the native surface.
+
+- `autofocus` can move focus to the first useful link when the panel opens. Without it, focus normally remains on the invoking button and users Tab into the panel.
+- Popovers are non-modal and do not trap focus.
+- Following a normal link usually navigates away. Client-side routers that keep the document loaded should call `panel.hidePopover()` after a successful selection if they want the panel closed.
+- Do not add a parallel `megamenu-open` class. If application UI needs the expanded value, derive it from the panel's `toggle` event and `:popover-open` state.
+- Multiple instances share no state. Keep IDs and `--megamenu-anchor` identifiers unique per trigger/panel pair.
+
+## Semantics and keyboard behavior
+
+Megamenu uses `nav`, lists, headings, links, and disclosure buttons. Do not add `role="menu"` or `role="menuitem"`: native Popover does not provide the ARIA menu arrow-key, typeahead, or roving-focus model. Ordinary Tab and Shift+Tab navigation is appropriate for site destinations.
+
+Hover and focus styles are presentation only; hover is never required to open a panel. The button remains the explicit keyboard and pointer trigger. Give every navigation landmark a useful label when a page contains more than one.
+
+## Browser fallback
+
+Popover is progressive enhancement. `popovertarget` is the broad native trigger form; applications may use `command="toggle-popover"` and `commandfor` where Invoker Commands are supported. When native Popover is outside the application's browser policy, use the top-level landing link plus a `details` disclosure, or attach a small application adapter that calls `showPopover()` / `hidePopover()` where those methods exist. The core does not require or ship a polyfill.
+
+CSS Anchor Positioning places the panel relative to its unique anchor in supporting browsers. The component includes a fixed, viewport-constrained positioning fallback when `position-area` is unavailable, so the panel stays reachable and scrollable.
+
+## API reference
+
+| Class or attribute | Purpose |
+|---|---|
+| `.megamenu` | Navigation composition container |
+| `.megamenu-bar` | Wrapping top-level trigger list |
+| `.megamenu-trigger` | Native disclosure button and anchor |
+| `.megamenu-panel[popover]` | Browser-managed constrained panel |
+| `.megamenu-panel-full` | Viewport-width panel variant |
+| `.megamenu-grid` | Responsive auto-fit content columns |
+| `.megamenu-group` | A grouped set of destinations |
+| `.megamenu-heading` | Group or panel heading |
+| `.megamenu-supporting` | Supporting text inside a group |
+| `.megamenu-desktop` | Content shown at the desktop breakpoint |
+| `.megamenu-mobile` | Small-screen Menu, Drawer, or disclosure composition |
+| `--megamenu-anchor` | Unique dashed identifier shared by one trigger and panel |
+
+## Related components
+
+- [Menu](/duskmoonui/docs/en/components/menu/) — link-list and popover item composition
+- [Link](/duskmoonui/docs/en/components/link/) — native text-link presentation
+- [Navbar](/duskmoonui/docs/en/components/navbar/) — primary navigation regions
+- [Drawer](/duskmoonui/docs/en/components/drawer/) — small-screen navigation surface

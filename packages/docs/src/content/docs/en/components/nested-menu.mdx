@@ -118,8 +118,8 @@ Use the `disabled` class on `<li>` elements to disable navigation items:
   <li class="nested-menu-title">Account</li>
   <li><a href="#demo-profile">Profile</a></li>
   <li><a href="#demo-settings">Settings</a></li>
-  <li class="disabled"><a href="#demo-billing">Billing (coming soon)</a></li>
-  <li class="disabled"><a href="#demo-api">API Keys (coming soon)</a></li>
+  <li class="disabled"><button type="button" disabled>Billing (coming soon)</button></li>
+  <li class="disabled"><button type="button" disabled>API Keys (coming soon)</button></li>
 </ul>`} />
 
 ## Size Variants
@@ -309,14 +309,14 @@ Menu items can also be `<button>` elements for non-navigation actions:
 - Use `aria-current="page"` to indicate the current page for screen readers
 - The `<details>/<summary>` pattern is natively keyboard accessible (Enter/Space to toggle)
 - Add `aria-label="Navigation"` to the wrapping `<nav>` element
-- Disabled items still appear in the DOM — use `aria-disabled="true"` alongside the `.disabled` class
+- Use a disabled `button` for unavailable actions. For an unavailable destination, render non-actionable text; `aria-disabled` on a link does not prevent navigation by itself.
 
 <ComponentShowcase title="Accessible Navigation" code={`<nav aria-label="Documentation sidebar">
   <ul class="nested-menu">
     <li class="nested-menu-title">Docs</li>
     <li><a href="#demo-intro" aria-current="page">Introduction</a></li>
     <li><a href="#demo-start">Quick Start</a></li>
-    <li class="disabled"><a href="#demo-adv" aria-disabled="true">Advanced (coming soon)</a></li>
+    <li class="disabled"><button type="button" disabled>Advanced (coming soon)</button></li>
   </ul>
 </nav>`} />
 

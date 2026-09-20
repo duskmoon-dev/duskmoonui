@@ -1,21 +1,23 @@
 ---
 title: Bottom Navigation
-description: Material Design 3 bottom navigation component for mobile-first navigation
+description: Mobile bottom navigation, also known as a dock, with semantic current-page states
 category: components
 order: 20
 published: true
-tags: ['bottom-navigation', 'navigation', 'components', 'material-design', 'mobile']
+tags: ['bottom-navigation', 'dock', 'navigation', 'components', 'material-design', 'mobile']
 ---
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
-# Bottom Navigation
+# Bottom Navigation (Dock)
 
-Bottom navigation bars allow users to navigate between primary destinations in an app. @duskmoon-dev/core provides a complete Material Design 3 bottom navigation implementation with support for icons, labels, badges, and multiple display modes.
+Bottom navigation bars, often called **docks**, let users move between an app's primary destinations. Use anchors for destinations and mark the current one with `aria-current="page"`. The legacy `active` and `bottom-nav-item-active` classes remain supported for compatibility.
+
+The component is fixed by default. Reserve at least its height plus `env(safe-area-inset-bottom)` as padding at the end of the application's scrollable content so the dock does not cover the final controls.
 
 ## Basic Usage
 
 <ComponentShowcase title="Basic Bottom Navigation" code={`<nav class="bottom-nav">
-  <a href="#" class="bottom-nav-item bottom-nav-item-active">
+  <a href="#" class="bottom-nav-item" aria-current="page">
     <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
     </svg>
@@ -259,14 +261,14 @@ Remove the top border:
 
 ### Disabled Items
 
-Disable specific navigation items:
+Unavailable destinations should not be links. Render a disabled button for an unavailable action, or plain text for a destination that cannot be visited:
 
-<ComponentShowcase title="Disabled Item" code={`<a href="#" class="bottom-nav-item bottom-nav-item-disabled">
+<ComponentShowcase title="Disabled Item" code={`<button type="button" class="bottom-nav-item bottom-nav-item-disabled" disabled>
   <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
   </svg>
   <span class="bottom-nav-label">Disabled</span>
-</a>`} />
+</button>`} />
 
 ## Best Practices
 
@@ -306,10 +308,10 @@ Bottom navigation is best for:
 Always ensure proper accessibility:
 
 <ComponentShowcase title="Accessibility Example" code={`<!-- Good: Semantic HTML with proper ARIA attributes -->
-<nav class="bottom-nav" role="navigation" aria-label="Primary navigation">
+<nav class="bottom-nav" aria-label="Primary navigation">
   <a
     href="#home"
-    class="bottom-nav-item bottom-nav-item-active"
+    class="bottom-nav-item"
     aria-current="page"
   >
     <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -621,6 +623,7 @@ const badgeLabel = computed(() => {
 | `.bottom-nav-badge-dot` | Dot-style badge indicator |
 | `.bottom-nav-labels-only` | Show only labels without icons |
 | `.bottom-nav-shift` | Labels only show on active item |
+| `.bottom-nav-shifting` | Animated shifting layout; preferred spelling for new code |
 | `.bottom-nav-surface` | Base surface background |
 | `.bottom-nav-surface-container-low` | Low elevation surface |
 | `.bottom-nav-surface-container-high` | High elevation surface with shadow |
@@ -629,6 +632,8 @@ const badgeLabel = computed(() => {
 | `.bottom-nav-borderless` | Remove top border |
 
 ### Combinations
+
+`.bottom-nav-shift` is retained as the legacy spelling. Prefer `.bottom-nav-shifting` for new animated shifting layouts.
 
 You can combine classes for different effects:
 

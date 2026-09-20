@@ -10,6 +10,16 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Breadcrumbs
 
+Breadcrumbs represent an ordered hierarchy. Put the list inside a labeled `nav`, mark the current page with `aria-current="page"`, and hide visual separators from assistive technology. Long paths can use `.breadcrumbs-nowrap` for horizontal scrolling; a collapsed-path button must open an application-owned list of the omitted ancestors and remain keyboard operable.
+
+<ComponentShowcase title="Semantic hierarchy" code={`<nav aria-label="Breadcrumb">
+  <ol class="breadcrumbs breadcrumbs-nowrap">
+    <li><a href="/" class="breadcrumb-link">Home</a></li>
+    <li><a href="/docs" class="breadcrumb-link">Documentation</a></li>
+    <li><span class="breadcrumb-item breadcrumb-item-active" aria-current="page">Breadcrumbs</span></li>
+  </ol>
+</nav>`} />
+
 Breadcrumbs show the current location within a navigational hierarchy. They help users understand where they are and provide quick access to parent pages.
 
 ## Basic Usage

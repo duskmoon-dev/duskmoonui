@@ -223,8 +223,8 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
   let preferredTab: 'preview' | 'code' = 'preview';
 
   function initShowcase(showcase: HTMLElement) {
-    const tabs = showcase.querySelectorAll<HTMLButtonElement>('[data-tab]');
-    const panels = showcase.querySelectorAll<HTMLElement>('[data-panel]');
+    const tabs = showcase.querySelectorAll<HTMLButtonElement>(':scope > .showcase-header [data-tab]');
+    const panels = showcase.querySelectorAll<HTMLElement>(':scope > [data-panel]');
 
     if (tabs.length === 0) return; // No tabs (showCode=false)
 
@@ -234,7 +234,7 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
     // Apply user's preferred tab if different from default
     const defaultTab = showcase.dataset.defaultTab || 'preview';
     if (preferredTab !== defaultTab) {
-      const targetTab = showcase.querySelector<HTMLButtonElement>(`[data-tab="${preferredTab}"]`);
+      const targetTab = showcase.querySelector<HTMLButtonElement>(`:scope > .showcase-header [data-tab="${preferredTab}"]`);
       if (targetTab) {
         activateTab(targetTab, tabs, panels);
       }
@@ -249,7 +249,7 @@ const showcaseId = `showcase-${Math.random().toString(36).substring(2, 9)}`;
     });
 
     // Keyboard navigation
-    const tablist = showcase.querySelector('[role="tablist"]');
+    const tablist = showcase.querySelector(':scope > .showcase-header [role="tablist"]');
     if (tablist) {
       tablist.addEventListener('keydown', (e: Event) => {
         const event = e as KeyboardEvent;

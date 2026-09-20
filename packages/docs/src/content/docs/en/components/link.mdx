@@ -1,0 +1,90 @@
+---
+title: Link
+description: Theme-aware text links for navigation in content, tables, cards, and menus
+category: components
+order: 17
+published: true
+tags: ['link', 'anchor', 'navigation', 'text-link', 'accessibility']
+---
+
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+
+# Link
+
+Link is a lightweight presentation primitive for native `<a>` elements. It keeps navigation semantic, wraps long text safely, and uses the active DuskMoon theme. Use a [Button](/duskmoonui/docs/en/components/button/) for actions such as saving or submitting.
+
+```css
+@import "@duskmoon-dev/core/components/link";
+```
+
+## Basic link
+
+The base class is underlined so links remain recognizable without relying on color alone.
+
+<ComponentShowcase title="Text link" code={`<p>
+  Read the <a class="link" href="#api-reference">Link API reference</a>
+  before choosing a variant.
+</p>`} />
+
+## Hover underline
+
+`.link-hover` starts without a visible underline, then restores it for both pointer hover and keyboard focus. Reserve it for contexts where surrounding navigation structure already makes the link affordance clear.
+
+<ComponentShowcase title="Underline on interaction" code={`<a class="link link-hover" href="#composition">
+  Explore composition patterns
+</a>`} />
+
+## Colors
+
+Primary is the default. Secondary and tertiary can distinguish nearby navigation choices. Neutral inherits the surrounding text color for restrained inline links; `.link-inherit` remains an equivalent spelling.
+
+<ComponentShowcase title="Theme colors" code={`<div class="flex flex-wrap gap-4">
+  <a class="link link-primary" href="#primary">Primary</a>
+  <a class="link link-secondary" href="#secondary">Secondary</a>
+  <a class="link link-tertiary" href="#tertiary">Tertiary</a>
+  <a class="link link-neutral" href="#neutral">Neutral</a>
+</div>`} />
+
+## Composition
+
+Link does not impose layout, so it composes with ordinary prose and existing components.
+
+<ComponentShowcase title="Card and long text" code={`<article class="card card-bordered max-w-md">
+  <div class="card-body">
+    <h3 class="card-title">Release notes</h3>
+    <p>
+      <a class="link" href="#release-notes">
+        Read the complete navigation-component-packaging-and-accessibility release notes
+      </a>
+    </p>
+    <a class="link link-hover link-tertiary" href="#archive">Browse the archive</a>
+  </div>
+</article>`} />
+
+The same classes can be used on anchors in table cells, body copy, cards, Navbar, and Megamenu. Menu has its own item layout; add `.link` only when the text-link treatment is intentional.
+
+## States and accessibility
+
+- Hover, active, and `:focus-visible` states are supplied by CSS. Reduced-motion preferences remove the transition.
+- Keep meaningful link text. For icon-only links, provide an accessible name with `aria-label` or visually hidden text.
+- Do not use an anchor without `href` as a fake disabled link. Render non-actionable text, omit the unavailable destination, or let the application prevent navigation and expose an explanation. `pointer-events: none` alone does not prevent keyboard activation.
+- Navigation uses anchors. Actions use buttons.
+- The component does not announce external destinations automatically. Add clear text when opening another site or a new browsing context.
+
+## API reference
+
+| Class | Purpose |
+|---|---|
+| `.link` | Base underlined, wrapping text-link style |
+| `.link-hover` | Reveal the underline on hover and keyboard focus |
+| `.link-primary` | Primary theme color; also the base default |
+| `.link-secondary` | Secondary theme color |
+| `.link-tertiary` | Tertiary theme color |
+| `.link-neutral` | Inherit the surrounding text color |
+| `.link-inherit` | Compatibility alias for inherited color |
+
+## Related components
+
+- [Megamenu](/duskmoonui/docs/en/components/megamenu/) — grouped site navigation
+- [Menu](/duskmoonui/docs/en/components/menu/) — inline lists and temporary popover surfaces
+- [Button](/duskmoonui/docs/en/components/button/) — actions rather than navigation

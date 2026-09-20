@@ -97,7 +97,7 @@ DuskMoonUI includes 50+ components organized by category:
 
 **Feedback:** Alert, Dialog, Modal, Toast, Snackbar, Progress, Skeleton, Tooltip
 
-**Navigation:** Navbar, Tabs, Drawer, Breadcrumbs, Pagination, Stepper, Bottom Navigation
+**Navigation:** Navbar, Megamenu, Link, Tabs, Drawer, Breadcrumbs, Pagination, Stepper (Steps), Bottom Navigation (Dock)
 
 **Layout:** Divider, App Bar
 
