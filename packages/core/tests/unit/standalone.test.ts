@@ -172,7 +172,7 @@ describe('Standalone release bundles', () => {
       '@keyframes btn-spin',
       '@keyframes art-moon-pulse',
       '@keyframes art-gemini-input-rotate',
-      '@supports (anchor-name:',
+      'anchor-name: --art-circular-gallery-center',
       '@starting-style',
     ]) {
       expect(css).toContain(expected);
