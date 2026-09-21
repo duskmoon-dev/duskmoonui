@@ -40,6 +40,23 @@ Other public CSS entries:
 - `@duskmoon-dev/core/effects.css` — all optional effects
 - `@duskmoon-dev/core/effects/{name}.css` — one optional effect
 
+### Available Component Exports
+
+| Import path | Format | Purpose |
+| --- | --- | --- |
+| `@duskmoon-dev/core` | CSS | Complete Core bundle |
+| `@duskmoon-dev/core/base.css` | CSS | Base tokens and utilities |
+| `@duskmoon-dev/core/components` | CSS | Aggregate component barrel from `components/index.css` |
+| `@duskmoon-dev/core/components/{name}.css` | CSS | One of the 85 component styles |
+| `@duskmoon-dev/core/components/{name}` | JavaScript + types | One component's `css`, `styles`, and default exports |
+| `@duskmoon-dev/core/plugin` | ESM/CJS + types | Tailwind CSS v4 plugin |
+| `@duskmoon-dev/core/standalone.css` | CSS | Prebuilt standalone stylesheet |
+| `@duskmoon-dev/core/themes/{name}` | CSS | One built-in theme |
+| `@duskmoon-dev/core/effects.css` | CSS | Aggregate optional effects |
+| `@duskmoon-dev/core/effects/{name}.css` | CSS | One optional effect stylesheet |
+| `@duskmoon-dev/core/effects` | JavaScript + types | Aggregate optional-effect stylesheet module |
+| `@duskmoon-dev/core/effects/{name}` | JavaScript + types | One optional-effect stylesheet module |
+
 ## Themes
 
 Set a theme on the document root:
@@ -49,6 +66,8 @@ Set a theme on the document root:
 ```
 
 Available themes are `sunshine`, `moonlight`, `ocean`, and `forest`. Theme-only imports use `@duskmoon-dev/core/themes/{name}`.
+
+Theme authors edit YAML under `packages/design/tokens/`; generated CSS under Core is shipped output, not an authoring surface. `packages/core/src/themes/defaults.css` supplies the root `sunshine` fallback and preferred-dark `moonlight` fallback separately from the generated `[data-theme]` blocks.
 
 ```javascript
 document.documentElement.dataset.theme = "moonlight";
@@ -75,6 +94,7 @@ The token contract includes primary, secondary, tertiary, info, success, warning
 ## Component Inventory and Key Classes
 
 Every name in backticks is an actual individual export. Import its CSS as `@duskmoon-dev/core/components/{name}.css`, or its stylesheet module as `@duskmoon-dev/core/components/{name}`.
+The source `components/index.css` file is the aggregate barrel behind `@duskmoon-dev/core/components`, not an additional component.
 
 ### Actions
 
@@ -107,7 +127,7 @@ Every name in backticks is an actual individual export. Import its CSS as `@dusk
 - `segment-control` — `.segment-control`, `.segment-item`, `.segment-item-active`; sizes and semantic variants.
 - `select` — `.select`; `.select-filled`, `.select-outlined`, sizes, semantic variants, and `.select-ghost`.
 - `slider` — composite `.slider`, `.slider-track`, `.slider-track-filled`, `.slider-thumb`, `.slider-mark`; the application owns its value model.
-- `switch` — `.switch`; sizes, semantic variants, labels, and icons around a native checkbox.
+- `switch` — `.switch`; sizes, semantic variants, `.switch-ghost`, `.switch-label`, and `.switch-group` around a native checkbox.
 - `textarea` — `.textarea`; container/label/helper classes, semantic variants, fill and resize modifiers.
 - `time-input` — `.time-input`, `.time-input-segments`, `.time-input-segment`, `.time-input-period`; use native time inputs when sufficient.
 - `toggle-switch` — `.toggle`; compact native-checkbox switch with sizes, semantic variants, and `.toggle-ghost`.
@@ -117,7 +137,7 @@ Every name in backticks is an actual individual export. Import its CSS as `@dusk
 ### Data Display
 
 - `avatar` — `.avatar`, `.avatar-placeholder`; sizes, shapes, semantic variants, groups, and status indicators.
-- `badge` — `.badge`; semantic, outline, tonal, ghost, dot, and size variants.
+- `badge` — `.badge`; semantic, outline, tonal, dot, indicator, and size variants.
 - `card` — `.card`, `.card-body`, `.card-header`, `.card-footer`, `.card-title`, `.card-actions`; surface and interaction variants.
 - `carousel` — `.carousel`, `.carousel-item`; horizontal/vertical scroll snap and start/center/end alignment.
 - `chat` — `.chat`, `.chat-start`, `.chat-end`, `.chat-bubble`, `.chat-reasoning`, `.chat-tool`, `.chat-typing`, plus optional scroll indicators.
@@ -134,12 +154,12 @@ Every name in backticks is an actual individual export. Import its CSS as `@dusk
 - `radial-progress` — `.radial-progress`; set `--radial-progress-value`, with size and semantic modifiers.
 - `skeleton` — `.skeleton`; text, circle, rect, rounded, avatar, button, image, card, group, size, and static variants.
 - `stat` — `.stats`, `.stat`, `.stat-title`, `.stat-value`, `.stat-desc`, `.stat-figure`, `.stat-actions`; responsive and semantic variants.
-- `table` — `.table`; surface, zebra/striped, hover, border, density, sticky-header, responsive, and semantic variants.
+- `table` — `.table`; surface, zebra/striped, hover, border, density, sticky-header, sortable, selectable, pinned-column, and responsive variants.
 - `timeline` — `.timeline`, `.timeline-item`, `.timeline-marker`, `.timeline-content`; semantic and layout variants.
 
 ### Feedback and Overlays
 
-- `alert` — `.alert`, `.alert-icon`, `.alert-content`, `.alert-title`, `.alert-actions`; semantic, layout, outline, filled, and soft variants.
+- `alert` — `.alert`, `.alert-icon`, `.alert-content`, `.alert-title`, `.alert-actions`; semantic, layout, outline, filled, and ghost variants.
 - `bottomsheet` — `.bottomsheet`, `.bottomsheet-backdrop`, `.bottomsheet-header`, `.bottomsheet-content`, `.bottomsheet-footer`; supports native and controlled open states.
 - `collapse` — `.collapse`, `.collapse-trigger`, `.collapse-content`; native `details[open]` or controlled `.collapse-open` / `.collapse-closed`.
 - `dialog` — style a native `<dialog class="dialog">`; `.dialog-box`, `.dialog-header`, `.dialog-body`, `.dialog-footer`, sizes and placement modifiers.

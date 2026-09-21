@@ -6,6 +6,7 @@
 
 - `@duskmoon-dev/core` provides tokens, four themes, utilities, 85 component styles, optional effects, and the Tailwind plugin.
 - `@duskmoon-dev/css-art` provides 15 CSS illustrations and animated scenes.
+- `@duskmoon-dev/design` provides the YAML token source and multi-target code generator used by Core.
 - `@duskmoon-dev/docs` is the Astro documentation site and consumes the published package contracts.
 
 The core component modules are also consumed by [duskmoon-elements](https://github.com/duskmoon-dev/duskmoon-elements). Each component has a source stylesheet in `packages/core/src/components/`, a built CSS file, and a JavaScript module whose named `css` export contains the stylesheet text.
@@ -24,6 +25,7 @@ The filename in parentheses is also the individual export name: `@duskmoon-dev/c
 | Layout and pages | Accordion (`accordion`), App Bar (`appbar`), Console Page (`console-page`), Divider (`divider`), Footer (`footer`), Hero (`hero`), Home Page (`home-page`), Join (`join`), Markdown Body (`markdown-body`), Sidebar Layout (`sidebar-layout`), Sign Page (`sign-page`), Stack (`stack`) |
 
 `form` and `navigation` are compatibility aggregates which import their canonical component styles. New code may import the narrower component entry points.
+`packages/core/src/components/index.css` is the aggregate source barrel and is published as `@duskmoon-dev/core/components`; it is not counted as a separate component.
 
 ## Installation and Setup
 
@@ -84,7 +86,7 @@ Use `sr-only` for visually hidden accessible text and `not-sr-only` to restore n
 
 ## Themes and Tokens
 
-The browser source of truth is the CSS under `packages/core/src/themes/`. The generated themes are:
+Theme authors edit the YAML tokens under `packages/design/tokens/`. Core copies their generated browser CSS into `packages/core/src/themes/generated/`. The published themes are:
 
 - `sunshine` — light default
 - `moonlight` — dark default
@@ -101,7 +103,7 @@ The base color contract currently contains 61 `--color-*` tokens, including prim
 }
 ```
 
-Theme source files contain both their `[data-theme]` block and the required root/default behavior. Keep paired values synchronized when editing a theme.
+Each generated theme file contains its `[data-theme]` block and must not be edited directly. `packages/core/src/themes/defaults.css` separately provides the root `sunshine` fallback and the preferred-dark `moonlight` fallback. Regenerate theme output from the design-token source instead of hand-editing either copy.
 
 ## Native Interaction Contracts
 
@@ -156,11 +158,12 @@ duskmoonui/
 │   │   ├── src/base/          # tokens and utilities
 │   │   ├── src/components/    # 85 component CSS entry points
 │   │   ├── src/effects/       # optional effects
-│   │   ├── src/themes/        # defaults and four generated themes
+│   │   ├── src/themes/        # defaults and generated CSS copied from design
 │   │   ├── scripts/           # build pipeline
 │   │   └── tests/             # unit, browser, visual, and a11y tests
 │   ├── css-art/
 │   │   └── src/art/           # 15 CSS Art entry points
+│   ├── design/                 # YAML tokens, codegen, and generated targets
 │   └── docs/                  # Astro documentation site
 ├── skills/                    # package-consumer skills
 ├── examples/

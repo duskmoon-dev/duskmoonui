@@ -36,6 +36,8 @@ All art rules are wrapped in `@layer css-art`. To import only the art barrel or 
 @import "@duskmoon-dev/css-art/dist/art/moon.css";
 ```
 
+The source `art/index.css` file is the aggregate barrel behind `@duskmoon-dev/css-art/art`, not an additional art piece.
+
 ## Art Inventory
 
 The package contains 15 art entry points under `packages/css-art/src/art/`.
@@ -44,7 +46,7 @@ The package contains 15 art entry points under `packages/css-art/src/art/`.
 
 - `moon.css` — `.art-moon`; `.art-moon-crescent`, `.art-moon-glow`, and `sm`/`lg`/`xl` sizes. Customize `--art-moon-size`, `--art-moon-color`, `--art-moon-shadow`, and `--art-moon-glow`.
 - `sun.css` — `.art-sun`; `.art-sun-rays`, `.art-sun-sunset`, `.art-sun-pulse`, and `sm`/`lg`/`xl` sizes. Customize `--art-sun-size`, `--art-sun-color`, `--art-sun-corona`, and `--art-sun-glow`.
-- `atom.css` — `.art-atom` with `.electron`, `.electron-alpha`, and `.electron-omega`; `sm`/`lg` sizes. Its `--art-atom-*` properties control size, colors, orbit geometry, and speed.
+- `atom.css` — `.art-atom` with `.electron`, `.electron-alpha`, and `.electron-omega`; `sm`/`lg` sizes. Customize `--art-atom-size`, `--art-atom-color`, `--art-atom-nucleus-size`, `--art-atom-electron-color`, `--art-atom-electron-size`, `--art-atom-orbit-size`, `--art-atom-speed`, `--art-atom-speed-alpha`, and `--art-atom-speed-omega`.
 - `eclipse.css` — `.art-eclipse` with `.layer.layer-1` through `.layer-6`; `sm`/`lg` sizes. Customize `--art-eclipse-size` and `--art-eclipse-bg`.
 - `snow.css` — `.art-snowflake`; optional `.art-snowflake-unicode` and `.art-snowflake-fall`. Customize `--art-snowflake-size`, `--art-snowflake-color`, and `--art-snowflake-duration`.
 
@@ -53,14 +55,14 @@ The package contains 15 art entry points under `packages/css-art/src/art/`.
 - `mountain.css` — `.art-mountain` night landscape composed from `.mountain`, `.tree`, `.lights`, and `.borealis` children; `sm`/`lg` sizes. Customize `--art-mountain-size`.
 - `cat-stargazer.css` — `.art-cat-stargazer` with `.moon` and a `.cat` assembled from `.bubble`, `.backpack`, `.tail`, `.body`, `.leg`, `.paw`, `.ear`, `.head`, `.whisker`, `.nose`, and `.eye`; `sm`/`lg` sizes. Customize `--art-cat-stargazer-size`.
 - `flower-animation.css` — `.art-flower-animation` with `.night`, `.flowers`, `.flower`, leaf/line elements, and optional `.bubbles`; `sm`/`lg` sizes. Customize `--art-flower-animation-size` and `--art-flower-animation-bg`.
-- `synthwave-starfield.css` — `.art-synthwave-starfield` with side, top/bottom, and star layers; `sm`/`lg` sizes and `.art-synthwave-starfield-paused`. Customize `--art-synthwave-starfield-size` and `--art-synthwave-starfield-line-color`.
+- `synthwave-starfield.css` — `.art-synthwave-starfield` with `.art-synthwave-starfield-sides`, `.art-synthwave-starfield-lefrig`, `.art-synthwave-starfield-topbot`, and `.art-synthwave-starfield-stars`; `sm`/`lg` sizes and `.art-synthwave-starfield-paused`. Customize `--art-synthwave-starfield-size` and `--art-synthwave-starfield-line-color`.
 
 ### Interactive and UI
 
-- `plasma-ball.css` — `.art-plasma-ball` composed from `.switcher`, `.glassball`, `.electrode`, `.rays`, `.ray`, `.base`, and `.switch`; `sm`/`lg` sizes and `.art-plasma-ball-no-base`. A checked input drives its CSS-only toggle. Customize its `--art-plasma-ball-*` properties.
-- `circular-gallery.css` — `.art-circular-gallery` containing a title and indexed card elements with linked images; `sm`/`lg` sizes. It uses motion paths, anchor positioning, and `:target`. Its `--art-circular-gallery-*` properties control geometry, rotation, and timing.
-- `gemini-input.css` — `.art-gemini-input`, `.art-gemini-input-border`, `.art-gemini-input-inner`, `.art-gemini-input-btn`, and `.art-gemini-input-field`; `sm`/`lg` sizes. Customize width, border size, rotation, and gradient through `--art-gemini-input-*`.
-- `csswitch.css` — `.art-csswitch` game-controller scene with its documented controller, frame, screen, Joy-Con, button, and logo children; `sm`/`lg` sizes. Customize `--art-csswitch-size`, Joy-Con colors, and shared color properties.
+- `plasma-ball.css` — `.art-plasma-ball` composed from `.switcher`, `.glassball`, `.electrode`, `.rays`, `.ray`, `.bigwave`, `.hide-electrode`, `.base`, and `.switch`; `sm`/`lg` sizes and `.art-plasma-ball-no-base`. A checked input drives its CSS-only toggle. Customize `--art-plasma-ball-size`, `--art-plasma-ball-base-color`, and `--art-plasma-ball-switch-size`.
+- `circular-gallery.css` — `.art-circular-gallery` containing a title and indexed card elements with linked images; `sm`/`lg` sizes. It uses motion paths, anchor positioning, and `:target`. Customize `--art-circular-gallery-size`, `--art-circular-gallery-radius`, `--art-circular-gallery-card-width`, `--art-circular-gallery-card-border-radius`, `--art-circular-gallery-arc-size`, `--art-circular-gallery-arc-center`, `--art-circular-gallery-arc-start`, `--art-circular-gallery-arc-shift-delta`, `--art-circular-gallery-card-trans-duration`, `--art-circular-gallery-card-trans-easing`, and `--art-circular-gallery-rotation`; each card supplies `--i`.
+- `gemini-input.css` — `.art-gemini-input`, `.art-gemini-input-border`, `.art-gemini-input-inner`, `.art-gemini-input-btn`, and `.art-gemini-input-field`; `sm`/`lg` sizes. Customize `--art-gemini-input-width`, `--art-gemini-input-border-size`, `--art-gemini-input-gradient`, and `--art-gemini-input-rotation`.
+- `csswitch.css` — `.art-csswitch` game-controller scene with its documented controller, frame, screen, Joy-Con, button, and logo children; `sm`/`lg` sizes. Customize `--art-csswitch-size`, `--joycon-left`, `--joycon-left-shadow`, `--joycon-right`, and `--joycon-right-shadow`; descendant color variables are internal to the composition.
 
 ### Abstract and Loading
 
