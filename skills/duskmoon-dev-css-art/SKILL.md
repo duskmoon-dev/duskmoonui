@@ -1,38 +1,27 @@
 ---
 name: duskmoon-dev-css-art
-description: When using npm package `@duskmoon-dev/css-art`, this skill shows how to install, configure, and use the pure CSS art component library
+description: Install and use the @duskmoon-dev/css-art package, including its 15 CSS art pieces, required child markup, modifiers, custom properties, and individual imports.
 ---
 
-# @duskmoon-dev/css-art Skill
+# @duskmoon-dev/css-art
 
-## Overview
+Use this skill when a project consumes `@duskmoon-dev/css-art`. The package renders illustrations and animations with CSS. It has no JavaScript runtime; some pieces accept normal HTML content such as gallery images or input controls.
 
-`@duskmoon-dev/css-art` is a pure CSS art component library — decorative illustrations built entirely with CSS. No images, no SVGs, no JavaScript. Each art piece is a self-contained CSS class with customizable properties.
-
-## Installation
+## Install and Import
 
 ```bash
-# Bun
 bun add @duskmoon-dev/css-art
-
-# npm
-npm install @duskmoon-dev/css-art
-
-# pnpm
-pnpm add @duskmoon-dev/css-art
+# npm install @duskmoon-dev/css-art
+# pnpm add @duskmoon-dev/css-art
 ```
 
-## Setup
-
-### CSS Import
+Import the complete bundle:
 
 ```css
 @import "@duskmoon-dev/css-art";
 ```
 
-All art styles are wrapped in `@layer css-art { }`, so they won't conflict with `@duskmoon-dev/core`'s `@layer components { }`.
-
-### Using with @duskmoon-dev/core
+It can follow core and Tailwind imports:
 
 ```css
 @import "tailwindcss";
@@ -40,147 +29,55 @@ All art styles are wrapped in `@layer css-art { }`, so they won't conflict with 
 @import "@duskmoon-dev/css-art";
 ```
 
-## Available Art Components
+All art rules are wrapped in `@layer css-art`. To import only the art barrel or one generated stylesheet, use an exported path:
 
-### Celestial
+```css
+@import "@duskmoon-dev/css-art/art";
+@import "@duskmoon-dev/css-art/dist/art/moon.css";
+```
 
-- `art-moon` — Moon with craters, crescent variant, and animated glow
-  - Variants: `art-moon-crescent`, `art-moon-glow`
-  - Sizes: `art-moon-sm` (4rem), default (8rem), `art-moon-lg` (12rem), `art-moon-xl` (16rem)
-  - Custom properties: `--art-moon-size`, `--art-moon-color`, `--art-moon-shadow`, `--art-moon-glow`
+## Art Inventory
 
-- `art-sun` — Sun with radial gradient, spinning rays, and pulse animation
-  - Variants: `art-sun-rays`, `art-sun-sunset`, `art-sun-pulse`
-  - Sizes: `art-sun-sm` (4rem), default (8rem), `art-sun-lg` (12rem), `art-sun-xl` (16rem)
-  - Custom properties: `--art-sun-size`, `--art-sun-color`, `--art-sun-corona`, `--art-sun-glow`
+The package contains 15 art entry points under `packages/css-art/src/art/`.
 
-- `art-atom` — Animated atom with three orbiting electrons and pulsing nucleus
-  - Sizes: `art-atom-sm` (180px), default (360px), `art-atom-lg` (480px)
-  - Children: `.electron`, `.electron-alpha`, `.electron-omega` — three electron orbits
-  - Custom properties: `--art-atom-size`, `--art-atom-color`, `--art-atom-electron-color`, `--art-atom-speed`
+### Celestial and Weather
 
-- `art-eclipse` — Solar eclipse with six animated corona layers
-  - Sizes: `art-eclipse-sm` (300px), default (600px), `art-eclipse-lg` (800px)
-  - Children: `.layer.layer-1` through `.layer.layer-6` — six corona layers
-  - Custom properties: `--art-eclipse-size`, `--art-eclipse-bg`
-
-### Landscape
-
-- `art-mountain` — Mountain peak with snow cap, range variant with multiple peaks
-  - Variants: `art-mountain-range`, `art-mountain-sunset`, `art-mountain-forest`
-  - Sizes: `art-mountain-sm` (10rem×6rem), default (16rem×10rem), `art-mountain-lg` (24rem×15rem)
-  - Children (range): `.art-peak` — individual peaks within a range
-  - Custom properties: `--art-mountain-width`, `--art-mountain-height`, `--art-mountain-color`, `--art-mountain-shadow`, `--art-mountain-snow`
-
-### Weather
-
-- `art-snowflake` — Snowflake dot with optional Unicode character variant
-  - Variants: `art-snowflake-unicode` (❆ character), `art-snowflake-fall` (falling animation)
-  - Custom properties: `--art-snowflake-size`, `--art-snowflake-color`, `--art-snowflake-duration`
-
-### Interactive
-
-- `art-plasma-ball` — Interactive plasma ball with glass sphere, electrode, electric rays, and toggle switch
-  - Sizes: `art-plasma-ball-sm` (200px), default (350px), `art-plasma-ball-lg` (500px)
-  - Uses `input:checked` CSS selectors for toggle behavior (no JS required)
-  - Children: `input.switcher`, `.glassball`, `.electrode`, `.rays`, `.ray`, `.base`, `.switch`
-  - Custom properties: `--art-plasma-ball-size`, `--art-plasma-ball-base-color`
-
-- `art-circular-gallery` — CSS anchor-positioned circular gallery with 20 rotating card thumbnails
-  - Sizes: `art-circular-gallery-sm` (400px), default (600px), `art-circular-gallery-lg` (800px)
-  - Children: `h1` (center title), `div` elements (one per card) with `data-title` attribute, `a > img` (card thumbnail)
-  - Uses CSS `offset-path`, `position-anchor`, and `:target` for hover/selection behavior — no JS
-  - Custom properties: `--art-circular-gallery-size`, `--art-circular-gallery-radius`, `--art-circular-gallery-card-width`
+- `moon.css` — `.art-moon`; `.art-moon-crescent`, `.art-moon-glow`, and `sm`/`lg`/`xl` sizes. Customize `--art-moon-size`, `--art-moon-color`, `--art-moon-shadow`, and `--art-moon-glow`.
+- `sun.css` — `.art-sun`; `.art-sun-rays`, `.art-sun-sunset`, `.art-sun-pulse`, and `sm`/`lg`/`xl` sizes. Customize `--art-sun-size`, `--art-sun-color`, `--art-sun-corona`, and `--art-sun-glow`.
+- `atom.css` — `.art-atom` with `.electron`, `.electron-alpha`, and `.electron-omega`; `sm`/`lg` sizes. Its `--art-atom-*` properties control size, colors, orbit geometry, and speed.
+- `eclipse.css` — `.art-eclipse` with `.layer.layer-1` through `.layer-6`; `sm`/`lg` sizes. Customize `--art-eclipse-size` and `--art-eclipse-bg`.
+- `snow.css` — `.art-snowflake`; optional `.art-snowflake-unicode` and `.art-snowflake-fall`. Customize `--art-snowflake-size`, `--art-snowflake-color`, and `--art-snowflake-duration`.
 
 ### Scenes
 
-- `art-cat-stargazer` — A cat in a spacesuit gazing at the night sky with stars and a glowing moon
-  - Sizes: `art-cat-stargazer-sm` (300px), default (500px), `art-cat-stargazer-lg` (700px)
-  - Children: `.moon`, `.cat`, `.cat .bubble`, `.cat .backpack`, `.cat .tail`, `.cat .body`, `.cat .ear`, `.cat .head`
-  - Custom properties: `--art-cat-stargazer-size`
+- `mountain.css` — `.art-mountain` night landscape composed from `.mountain`, `.tree`, `.lights`, and `.borealis` children; `sm`/`lg` sizes. Customize `--art-mountain-size`.
+- `cat-stargazer.css` — `.art-cat-stargazer` with `.moon` and a `.cat` assembled from `.bubble`, `.backpack`, `.tail`, `.body`, `.leg`, `.paw`, `.ear`, `.head`, `.whisker`, `.nose`, and `.eye`; `sm`/`lg` sizes. Customize `--art-cat-stargazer-size`.
+- `flower-animation.css` — `.art-flower-animation` with `.night`, `.flowers`, `.flower`, leaf/line elements, and optional `.bubbles`; `sm`/`lg` sizes. Customize `--art-flower-animation-size` and `--art-flower-animation-bg`.
+- `synthwave-starfield.css` — `.art-synthwave-starfield` with side, top/bottom, and star layers; `sm`/`lg` sizes and `.art-synthwave-starfield-paused`. Customize `--art-synthwave-starfield-size` and `--art-synthwave-starfield-line-color`.
 
-- `art-flower-animation` — Blooming flowers with grass, light particles, and floating heart bubbles against a night sky
-  - Sizes: `art-flower-animation-sm` (300px), default (600px), `art-flower-animation-lg` (900px)
-  - Children: `.night`, `.flowers`, `.flower.flower--1` through `.flower--4`, `.bubbles`, `.bubble`
-  - Custom properties: `--art-flower-animation-size`, `--art-flower-animation-bg`
+### Interactive and UI
 
-### Abstract / Generative
+- `plasma-ball.css` — `.art-plasma-ball` composed from `.switcher`, `.glassball`, `.electrode`, `.rays`, `.ray`, `.base`, and `.switch`; `sm`/`lg` sizes and `.art-plasma-ball-no-base`. A checked input drives its CSS-only toggle. Customize its `--art-plasma-ball-*` properties.
+- `circular-gallery.css` — `.art-circular-gallery` containing a title and indexed card elements with linked images; `sm`/`lg` sizes. It uses motion paths, anchor positioning, and `:target`. Its `--art-circular-gallery-*` properties control geometry, rotation, and timing.
+- `gemini-input.css` — `.art-gemini-input`, `.art-gemini-input-border`, `.art-gemini-input-inner`, `.art-gemini-input-btn`, and `.art-gemini-input-field`; `sm`/`lg` sizes. Customize width, border size, rotation, and gradient through `--art-gemini-input-*`.
+- `csswitch.css` — `.art-csswitch` game-controller scene with its documented controller, frame, screen, Joy-Con, button, and logo children; `sm`/`lg` sizes. Customize `--art-csswitch-size`, Joy-Con colors, and shared color properties.
 
-- `art-color-spin` — 3D spinning Olympic-style color rings with reflections and perspective
-  - Sizes: `art-color-spin-sm` (385px), default (770px), `art-color-spin-lg` (1000px)
-  - Children: `ul` (required container), `ul > li` × 4 (one per ring)
-  - Custom properties: `--art-color-spin-size`, `--art-color-spin-color1` through `--art-color-spin-color4`
+### Abstract and Loading
 
-- `art-synthwave-starfield` — Synthwave-aesthetic 3D starfield tunnel with neon grid walls and animated stars
-  - Sizes: `art-synthwave-starfield-sm` (300px), default (600px), `art-synthwave-starfield-lg` (900px)
-  - Modifier: `art-synthwave-starfield-paused` — pauses all animations
-  - Children: `.art-synthwave-starfield-sides.art-synthwave-starfield-lefrig`, `.art-synthwave-starfield-sides.art-synthwave-starfield-topbot`, `.art-synthwave-starfield-stars` (×2)
-  - Custom properties: `--art-synthwave-starfield-size`, `--art-synthwave-starfield-line-color`
+- `color-spin.css` — `.art-color-spin` with a required `ul` and four `li` rings; `sm`/`lg` sizes. Customize `--art-color-spin-size`, `--art-color-spin-color1` through `--art-color-spin-color4`, and each ring's `--i`.
+- `snowball-preloader.css` — `.art-snowball-preloader` with outer/inner rings, track cover, ball, texture, and shadow children; `sm`/`lg` sizes. Customize `--art-snowball-preloader-size` and `--art-snowball-preloader-bg`.
 
-### Gaming
+## Examples
 
-- `art-csswitch` — CSS-only game controller switch (Nintendo Switch inspired)
-  - Sizes: `art-csswitch-sm`, default, `art-csswitch-lg`
-  - Children: complex controller structure with `.controller`, `.joycon-left`, `.joycon-right`, `.frame`, `.main-frame`, `.mushroom`, `.direction`, `.bar`, `.logo`, `.light`
-  - Custom properties: `--art-csswitch-size`, `--color`, `--color-shadow`, `--joycon-left`, `--joycon-left-shadow`, `--joycon-right`, `--joycon-right-shadow`
-
-### Loading
-
-- `art-snowball-preloader` — Animated snowball loading spinner with orbital rings
-  - Sizes: `art-snowball-preloader-sm`, default, `art-snowball-preloader-lg`
-  - Children: `.art-snowball-preloader-ball`, `.art-snowball-preloader-ball-texture`, `.art-snowball-preloader-ball-inner-shadow`, `.art-snowball-preloader-ball-outer-shadow`, `.art-snowball-preloader-ball-side-shadows`, `.art-snowball-preloader-inner-ring`, `.art-snowball-preloader-outer-ring`, `.art-snowball-preloader-track-cover`
-  - Custom properties: `--art-snowball-preloader-size`, `--art-snowball-preloader-bg`
-
-### UI Components
-
-- `art-gemini-input` — Gemini-style animated conic-gradient border with glow halo on a textarea input
-  - Sizes: `art-gemini-input-sm` (280px), default (450px), `art-gemini-input-lg` (640px)
-  - Children: `.art-gemini-input-border`, `.art-gemini-input-inner`, `.art-gemini-input-btn`, `.art-gemini-input-field` (textarea)
-  - Custom properties: `--art-gemini-input-width`, `--art-gemini-input-border-size`, `--art-gemini-input-gradient`
-
-## Usage Examples
-
-### Basic Moon
-
-```html
-<div class="art-moon"></div>
-```
-
-### Crescent Moon with Glow
+Simple art pieces need only the root class:
 
 ```html
 <div class="art-moon art-moon-crescent art-moon-glow"></div>
+<div class="art-sun art-sun-rays art-sun-pulse"></div>
+<div class="art-snowflake art-snowflake-unicode art-snowflake-fall"></div>
 ```
 
-### Sun with Animated Rays
-
-```html
-<div class="art-sun art-sun-rays"></div>
-```
-
-### Sunset Sun
-
-```html
-<div class="art-sun art-sun-sunset art-sun-rays"></div>
-```
-
-### Single Mountain
-
-```html
-<div class="art-mountain"></div>
-```
-
-### Mountain Range
-
-```html
-<div class="art-mountain-range">
-  <div class="art-peak"></div>
-  <div class="art-peak"></div>
-  <div class="art-peak"></div>
-</div>
-```
-
-### Atom
+Structured pieces require the documented children because selectors use their order and relationships:
 
 ```html
 <div class="art-atom">
@@ -189,8 +86,6 @@ All art styles are wrapped in `@layer css-art { }`, so they won't conflict with 
   <div class="electron-omega"></div>
 </div>
 ```
-
-### Eclipse
 
 ```html
 <div class="art-eclipse">
@@ -203,224 +98,56 @@ All art styles are wrapped in `@layer css-art { }`, so they won't conflict with 
 </div>
 ```
 
-### Snowflakes
-
-```html
-<!-- Simple dot snowflake -->
-<div class="art-snowflake art-snowflake-fall"></div>
-
-<!-- Unicode snowflake character -->
-<div class="art-snowflake art-snowflake-unicode art-snowflake-fall"></div>
-```
-
-### Plasma Ball (Interactive)
-
-```html
-<div class="art-plasma-ball">
-  <input class="switcher" type="checkbox" />
-  <div class="glassball">
-    <div class="electrode"></div>
-    <div class="rays">
-      <div class="ray"><span></span><span></span><span></span></div>
-      <div class="ray bigwave"><span></span><span></span></div>
-      <div class="ray"><span></span><span></span><span></span></div>
-      <div class="ray bigwave"><span></span><span></span></div>
-      <div class="ray"><span></span><span></span><span></span></div>
-    </div>
-    <!-- repeat .rays block 5 more times for full coverage -->
-  </div>
-  <div class="base"><div></div><div></div><span></span></div>
-  <div class="switch"></div>
-</div>
-```
-
-### Cat Stargazer
-
-```html
-<div class="art-cat-stargazer">
-  <div class="moon"></div>
-  <div class="cat">
-    <div class="bubble"></div>
-    <div class="backpack"></div>
-    <div class="tail"></div>
-    <div class="body">
-      <div class="leg"></div>
-      <div class="paw"></div><div class="paw"></div>
-    </div>
-    <div class="ear"></div><div class="ear"></div>
-    <div class="head">
-      <div class="whisker"></div><div class="whisker"></div>
-      <div class="whisker"></div><div class="whisker"></div>
-      <div class="nose"></div>
-      <div class="eye"></div><div class="eye"></div>
-    </div>
-  </div>
-</div>
-```
-
-### Color Spin
-
 ```html
 <div class="art-color-spin">
   <ul>
-    <li style="--i:1"></li>
-    <li style="--i:2"></li>
-    <li style="--i:3"></li>
-    <li style="--i:4"></li>
+    <li style="--i: 1"></li>
+    <li style="--i: 2"></li>
+    <li style="--i: 3"></li>
+    <li style="--i: 4"></li>
   </ul>
 </div>
 ```
 
-### Synthwave Starfield
-
-```html
-<div class="art-synthwave-starfield">
-  <div class="art-synthwave-starfield-sides art-synthwave-starfield-lefrig"></div>
-  <div class="art-synthwave-starfield-sides art-synthwave-starfield-topbot"></div>
-  <div class="art-synthwave-starfield-stars"></div>
-  <div class="art-synthwave-starfield-stars"></div>
-</div>
-```
-
-### Circular Gallery
+The gallery uses consumer-provided images. Keep links and alternative text meaningful:
 
 ```html
 <div class="art-circular-gallery">
-  <h1>Gallery</h1>
-  <div style="--i:1" data-title="Photo 1"><a href="#item1"><img src="photo1.jpg" alt="Photo 1" /></a></div>
-  <div style="--i:2" data-title="Photo 2"><a href="#item2"><img src="photo2.jpg" alt="Photo 2" /></a></div>
-  <!-- repeat for up to 20 items -->
-</div>
-```
-
-### Flower Animation
-
-```html
-<div class="art-flower-animation">
-  <div class="night"></div>
-  <div class="flowers">
-    <div class="flower flower--1">
-      <div class="flower__leafs flower__leafs--1">
-        <div class="flower__leaf flower__leaf--1"></div>
-        <div class="flower__leaf flower__leaf--2"></div>
-        <div class="flower__leaf flower__leaf--3"></div>
-        <div class="flower__leaf flower__leaf--4"></div>
-        <div class="flower__white-circle"></div>
-      </div>
-      <div class="flower__line">
-        <div class="flower__line__leaf flower__line__leaf--1"></div>
-        <div class="flower__line__leaf flower__line__leaf--2"></div>
-      </div>
-    </div>
+  <h1>Field notes</h1>
+  <div style="--i: 1" data-title="Dawn">
+    <a href="#dawn"><img src="dawn.jpg" alt="Dawn over the ridge" /></a>
+  </div>
+  <div style="--i: 2" data-title="Dusk">
+    <a href="#dusk"><img src="dusk.jpg" alt="Dusk over the lake" /></a>
   </div>
 </div>
 ```
 
-### Gemini Input
+Customize only the public custom properties:
 
 ```html
-<div class="art-gemini-input">
-  <div class="art-gemini-input-border"></div>
-  <div class="art-gemini-input-inner">
-    <button class="art-gemini-input-btn">+</button>
-    <textarea class="art-gemini-input-field" placeholder="Ask Gemini..."></textarea>
-    <button class="art-gemini-input-btn">▶</button>
-  </div>
-</div>
+<div
+  class="art-moon art-moon-glow"
+  style="--art-moon-size: 6rem; --art-moon-color: oklch(88% 0.06 240)"
+></div>
 ```
 
-### CSSwitch (Game Controller)
+## Accessibility and Motion
 
-```html
-<div class="art-csswitch">
-  <div class="controller">
-    <div class="frame">
-      <div class="main-frame"><!-- controller frame --></div>
-    </div>
-  </div>
-</div>
-```
-
-### Snowball Preloader
-
-```html
-<div class="art-snowball-preloader">
-  <div class="art-snowball-preloader-outer-ring"></div>
-  <div class="art-snowball-preloader-inner-ring"></div>
-  <div class="art-snowball-preloader-track-cover"></div>
-  <div class="art-snowball-preloader-ball">
-    <div class="art-snowball-preloader-ball-texture"></div>
-    <div class="art-snowball-preloader-ball-outer-shadow"></div>
-    <div class="art-snowball-preloader-ball-inner-shadow"></div>
-    <div class="art-snowball-preloader-ball-side-shadows"></div>
-  </div>
-</div>
-```
-
-### Custom Colors
-
-Override CSS custom properties to customize any art piece:
-
-```html
-<!-- Blue moon -->
-<div class="art-moon" style="--art-moon-color: oklch(80% 0.08 240);"></div>
-
-<!-- Custom-sized sun -->
-<div class="art-sun" style="--art-sun-size: 6rem;"></div>
-
-<!-- Green atom -->
-<div class="art-atom" style="--art-atom-color: #00ff88;">
-  <div class="electron"></div>
-  <div class="electron-alpha"></div>
-  <div class="electron-omega"></div>
-</div>
-```
-
-### Composing a Night Scene
-
-```html
-<div style="background: oklch(15% 0.02 260); padding: 3rem; position: relative; overflow: hidden;">
-  <div class="art-moon art-moon-crescent art-moon-glow" style="position: absolute; top: 1rem; right: 2rem;"></div>
-  <div class="art-snowflake art-snowflake-fall" style="left: 20%; --art-snowflake-duration: 6s;"></div>
-  <div class="art-snowflake art-snowflake-fall" style="left: 50%; --art-snowflake-duration: 4s; animation-delay: 1s;"></div>
-  <div class="art-snowflake art-snowflake-fall" style="left: 80%; --art-snowflake-duration: 5s; animation-delay: 2s;"></div>
-  <div class="art-mountain-range" style="position: absolute; bottom: 0;">
-    <div class="art-peak"></div>
-    <div class="art-peak"></div>
-    <div class="art-peak"></div>
-  </div>
-</div>
-```
-
-## CSS Architecture
-
-- All classes prefixed with `.art-` to avoid collisions
-- All custom properties prefixed with `--art-` for namespacing
-- Uses `@layer css-art` to avoid cascade conflicts with other libraries
-- Colors use OKLCH format for perceptual uniformity
-- Animations use `@keyframes` with `art-` prefixed names
-
-## Importing Individual Art Pieces
-
-```css
-/* Import only what you need */
-@import "@duskmoon-dev/css-art/art";
-```
+- Treat purely decorative art as hidden from assistive technology with `aria-hidden="true"`.
+- Give meaningful art an accessible name through surrounding text or an appropriate `aria-label`.
+- Preserve real semantics for interactive inputs, links, images, and buttons inside an art piece.
+- Do not remove the package's reduced-motion fallbacks. Application-level pause controls must update their accessible state.
+- CSS-only does not mean every browser supports every effect. Circular Gallery relies on newer CSS motion/anchor features, Gemini Input uses `field-sizing`, and Snowball Preloader uses relative color syntax. Use the component documentation to choose a fallback for the supported browser matrix.
 
 ## Development Commands
 
+From the repository root:
+
 ```bash
-# Build css-art package
-bun run build:css-art
-
-# Watch mode
 bun run dev:css-art
-
-# Unit tests
-cd packages/css-art && bun test tests/unit
+bun run build:css-art
+cd packages/css-art && bun run test:unit
 ```
 
-## Bundle Size
-
-- Unminified: ~50 KB
-- Minified: ~36 KB
+The current built bundle is approximately 143 KB unminified and 108 KB minified (decimal units). Rebuild before reporting exact package sizes because generated output changes with the source.
