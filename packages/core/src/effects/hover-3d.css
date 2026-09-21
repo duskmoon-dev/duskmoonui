@@ -1,8 +1,97 @@
 @layer components {
-  .hover-3d { border-radius: var(--radius-md); }
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .hover-3d { transition: transform 200ms ease; }
-    .hover-3d:hover:not(:focus-within) { transform: perspective(60rem) rotateX(var(--hover-3d-x, 2deg)) rotateY(var(--hover-3d-y, -2deg)); }
+  .hover-3d {
+    --hover-3d-axis: 0, 0, 0;
+    --hover-3d-angle: 0deg;
+    --hover-3d-shadow-x: 0rem;
+    --hover-3d-shadow-y: 0rem;
+    --hover-3d-shine: 100% 100%;
+    --hover-3d-ease: linear(0, 0.931 13.8%, 1.196 21.4%, 1.343 29.8%, 1.378 36%, 1.365 43.2%, 1.059 78%, 1);
+    display: inline-grid;
+    perspective: 75rem;
+    filter: drop-shadow(var(--hover-3d-shadow-x) var(--hover-3d-shadow-y) 0.6rem color-mix(in oklch, var(--color-shadow) 18%, transparent));
   }
-  @media print { .hover-3d { transform: none; } }
+
+  .hover-3d > :first-child {
+    position: relative;
+    grid-area: 1 / 1 / 4 / 4;
+    overflow: hidden;
+    transform: rotate3d(var(--hover-3d-axis), var(--hover-3d-angle));
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    scale: 1;
+    outline: 0.5px solid transparent;
+    outline-offset: -1px;
+  }
+
+  .hover-3d > :first-child::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    inline-size: 33.333%;
+    block-size: 33.333%;
+    scale: 500%;
+    translate: var(--hover-3d-shine);
+    opacity: 0;
+    filter: blur(0.75rem);
+    background: radial-gradient(circle at 50%, rgb(255 255 255 / 0.28) 10%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hover-3d > :nth-child(n + 2) {
+    z-index: 2;
+    min-inline-size: 0;
+    min-block-size: 0;
+    scale: 1.2;
+  }
+
+  .hover-3d > :nth-child(2) { grid-area: 1 / 1; }
+  .hover-3d > :nth-child(3) { grid-area: 1 / 2; }
+  .hover-3d > :nth-child(4) { grid-area: 1 / 3; }
+  .hover-3d > :nth-child(5) { grid-area: 2 / 1; }
+  .hover-3d > :nth-child(6) { grid-area: 2 / 3; }
+  .hover-3d > :nth-child(7) { grid-area: 3 / 1; }
+  .hover-3d > :nth-child(8) { grid-area: 3 / 2; }
+  .hover-3d > :nth-child(9) { grid-area: 3 / 3; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hover-3d { transition: filter 400ms ease-out; }
+
+    .hover-3d > :first-child {
+      transition:
+        transform 500ms var(--hover-3d-ease),
+        scale 500ms var(--hover-3d-ease),
+        outline-color 500ms ease-out;
+    }
+
+    .hover-3d > :first-child::before {
+      transition: translate 400ms ease-out, opacity 400ms ease-out;
+    }
+
+    .hover-3d:hover {
+      --hover-3d-ease: linear(0, 0.708 15.2%, 0.927 23.6%, 1.067 33%, 1.12 41%, 1.13 50.2%, 1.019 83.2%, 1);
+    }
+
+    .hover-3d:hover > :first-child { scale: 1.05; outline-color: rgb(255 255 255 / 0.07); }
+    .hover-3d:hover > :first-child::before { opacity: 1; }
+
+    .hover-3d:has(> :nth-child(2):hover) { --hover-3d-axis: -1, 1, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-x: -0.5rem; --hover-3d-shadow-y: -0.5rem; --hover-3d-shine: 0% 0%; }
+    .hover-3d:has(> :nth-child(3):hover) { --hover-3d-axis: -1, 0, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-y: -0.5rem; --hover-3d-shine: 100% 0%; }
+    .hover-3d:has(> :nth-child(4):hover) { --hover-3d-axis: -1, -1, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-x: 0.5rem; --hover-3d-shadow-y: -0.5rem; --hover-3d-shine: 200% 0%; }
+    .hover-3d:has(> :nth-child(5):hover) { --hover-3d-axis: 0, 1, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-x: -0.5rem; --hover-3d-shine: 0% 100%; }
+    .hover-3d:has(> :nth-child(6):hover) { --hover-3d-axis: 0, -1, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-x: 0.5rem; --hover-3d-shine: 200% 100%; }
+    .hover-3d:has(> :nth-child(7):hover) { --hover-3d-axis: 1, 1, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-x: -0.5rem; --hover-3d-shadow-y: 0.5rem; --hover-3d-shine: 0% 200%; }
+    .hover-3d:has(> :nth-child(8):hover) { --hover-3d-axis: 1, 0, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-y: 0.5rem; --hover-3d-shine: 100% 200%; }
+    .hover-3d:has(> :nth-child(9):hover) { --hover-3d-axis: 1, -1, 0; --hover-3d-angle: 10deg; --hover-3d-shadow-x: 0.5rem; --hover-3d-shadow-y: 0.5rem; --hover-3d-shine: 200% 200%; }
+  }
+
+  @media (prefers-reduced-motion: reduce), print {
+    .hover-3d { filter: none; transition: none; }
+    .hover-3d > :first-child { transform: none; scale: 1; transition: none; }
+    .hover-3d > :first-child::before { display: none; }
+  }
+
+  @media print {
+    .hover-3d > :nth-child(n + 2) { display: none; }
+  }
 }

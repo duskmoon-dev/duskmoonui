@@ -41,16 +41,15 @@ const after = `${base}images/data-display-after.jpg`;
   <p data-expiry role="status"></p>
 </div>}
 
-{kind === 'hover-gallery' && <div class="hover-gallery" data-gallery-demo>
-  <div class="hover-gallery-stage"><img src={before} alt="Mountain lake in daylight" /></div>
-  <div class="hover-gallery-controls" aria-label="Choose landscape">
-    <button type="button" aria-pressed="true" aria-label="Mountain lake" data-src={before} data-alt="Mountain lake in daylight"><img src={before} alt="" /></button>
-    <button type="button" aria-pressed="false" aria-label="Mountain sky" data-src={after} data-alt="Mountain landscape under a different sky"><img src={after} alt="" /></button>
-  </div>
-</div>}
+{kind === 'hover-gallery' && <figure class="hover-gallery" aria-label="Mountain light studies">
+  <img src={before} alt="Mountain lake in clear daylight" />
+  <img src={after} alt="Mountain ridge beneath a blue sky" />
+  <img src={before} alt="Mountain lake with a muted color treatment" style="filter: saturate(.45) contrast(1.1)" />
+  <img src={after} alt="Mountain ridge with a warm color treatment" style="filter: sepia(.35) saturate(1.25)" />
+</figure>}
 
 {kind === 'text-rotate' && <div data-text-rotate-demo>
-  <p aria-label="Build accessible, resilient, thoughtful interfaces">Build <span aria-hidden="true" class="text-rotate text-rotate-animated"><span>accessible</span><span>resilient</span><span>thoughtful</span></span> interfaces</p>
+  <p aria-label="Build accessible, resilient, thoughtful interfaces">Build <span aria-hidden="true" class="text-rotate"><span><span>accessible</span><span>resilient</span><span>thoughtful</span></span></span> interfaces</p>
   <button class="btn btn-sm" type="button" aria-pressed="false">Pause animation</button>
 </div>}
 
@@ -97,16 +96,6 @@ const after = `${base}images/data-display-after.jpg`;
     const timer = setInterval(tick, 1000);
     tick();
     document.addEventListener('astro:before-swap', () => clearInterval(timer), { once: true });
-  });
-  document.querySelectorAll<HTMLElement>('[data-gallery-demo]').forEach(root => {
-    root.querySelectorAll<HTMLButtonElement>('button').forEach(button => {
-      button.addEventListener('click', () => {
-        const image = root.querySelector<HTMLImageElement>('.hover-gallery-stage img')!;
-        image.src = button.dataset.src!;
-        image.alt = button.dataset.alt!;
-        root.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      });
-    });
   });
   document.querySelectorAll<HTMLElement>('[data-text-rotate-demo]').forEach(root => {
     const button = root.querySelector('button')!;

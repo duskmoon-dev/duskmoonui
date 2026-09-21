@@ -1,22 +1,103 @@
+@property --dm-aura-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
 @layer components {
   .aura {
+    --aura-padding: 0.125rem;
+    --aura-radius: var(--radius-box);
     position: relative;
     isolation: isolate;
-    border-radius: var(--radius-md);
-    outline: 1px solid var(--color-primary);
+    display: inline-block;
+    padding: var(--aura-padding);
+    border-radius: calc(var(--aura-radius) + var(--aura-padding));
+    color: var(--color-primary);
   }
-  .aura::before {
+
+  .aura:has(> :is(.btn, .input, .select, .textarea)) { --aura-radius: var(--radius-field); }
+  .aura:has(> :is(.badge, .checkbox, .toggle, .chip)) { --aura-radius: var(--radius-selector); }
+
+  .aura::before,
+  .aura::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
     border-radius: inherit;
-    box-shadow: 0 0 1rem color-mix(in oklch, var(--color-primary) 35%, transparent);
+    background-image: conic-gradient(from var(--dm-aura-angle), transparent 0deg 220deg, currentColor 300deg, transparent 360deg);
     pointer-events: none;
   }
-  @media (prefers-reduced-motion: no-preference) {
-    .aura-animated::before { animation: dm-aura 4s ease-in-out infinite; }
+
+  .aura::before {
+    opacity: 0.75;
+    filter: blur(0.2rem);
   }
-  @keyframes dm-aura { 50% { opacity: 0.4; } }
-  @media print { .aura::before { display: none; } }
+
+  .aura::after {
+    opacity: 0.35;
+    filter: blur(0.9rem);
+  }
+
+  .aura > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .aura-dual::before,
+  .aura-dual::after {
+    background-image: repeating-conic-gradient(from var(--dm-aura-angle), transparent 0deg 70deg, currentColor 90deg 110deg, transparent 130deg 250deg, currentColor 270deg 290deg, transparent 310deg 360deg);
+  }
+
+  .aura-rainbow::before,
+  .aura-rainbow::after {
+    background-image: conic-gradient(from var(--dm-aura-angle) in oklch longer hue, transparent, oklch(78% 0.18 20), oklch(82% 0.16 140), oklch(76% 0.17 260), oklch(80% 0.18 350), transparent);
+  }
+
+  .aura-holo::before,
+  .aura-holo::after {
+    background-image: repeating-conic-gradient(from var(--dm-aura-angle), oklch(82% 0.17 327), oklch(75% 0.12 274), oklch(82% 0.11 191), oklch(91% 0.11 105), oklch(88% 0.08 68), oklch(82% 0.17 327) 12.5%);
+  }
+
+  .aura-gold::before,
+  .aura-gold::after {
+    background-image: repeating-conic-gradient(from var(--dm-aura-angle), oklch(66% 0.19 72), oklch(96% 0.08 103), oklch(72% 0.17 82), oklch(61% 0.12 76) 25%);
+  }
+
+  .aura-silver::before,
+  .aura-silver::after {
+    background-image: repeating-conic-gradient(from var(--dm-aura-angle), oklch(35% 0 0), oklch(92% 0 0), oklch(62% 0 0), oklch(82% 0 0), oklch(35% 0 0) 25%);
+  }
+
+  .aura-glow::before,
+  .aura-glow::after {
+    background-image: radial-gradient(closest-side, currentColor, transparent);
+  }
+
+  .aura-xs { --aura-padding: 0; }
+  .aura-sm { --aura-padding: 0.0625rem; }
+  .aura-md { --aura-padding: 0.125rem; }
+  .aura-lg { --aura-padding: 0.1875rem; }
+  .aura-xl { --aura-padding: 0.25rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .aura:not(.aura-glow)::before,
+    .aura:not(.aura-glow)::after {
+      animation: dm-aura-spin var(--aura-duration, var(--tw-duration, 6s)) linear infinite;
+    }
+
+    .aura-glow::before,
+    .aura-glow::after {
+      animation: dm-aura-glow var(--aura-duration, var(--tw-duration, 6s)) ease-in-out infinite;
+    }
+  }
+
+  @keyframes dm-aura-spin { to { --dm-aura-angle: 360deg; } }
+  @keyframes dm-aura-glow { 50% { opacity: 0.8; filter: blur(1.3rem); } }
+
+  @media print {
+    .aura { padding: 0; }
+    .aura::before,
+    .aura::after { display: none; }
+  }
 }

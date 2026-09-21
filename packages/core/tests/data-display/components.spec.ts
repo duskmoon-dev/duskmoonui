@@ -201,29 +201,61 @@ test('Diff range updates reveal, endpoints, RTL and print expose both layers', a
   expect(left!.x).not.toBe(right!.x);
 });
 
-test('effects preserve nested controls, deliberate selection and static motion fallbacks', async ({ page }) => {
-  await fixture(page, `<article class="card hover-3d aura aura-animated"><div class="card-body"><a href="#target" id="link">Open target</a><button id="button">Press</button><label>Value <input id="input"></label></div></article>
-    <div class="hover-gallery"><div class="hover-gallery-stage"><img alt="First mountain" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></div><div class="hover-gallery-controls"><button aria-pressed="true" id="first">First</button><button aria-pressed="false" id="second">Second</button></div></div>
-    <p aria-label="Build accessible resilient thoughtful interfaces">Build <span class="text-rotate text-rotate-animated" aria-hidden="true"><span>accessible</span><span>resilient</span><span>thoughtful</span></span> interfaces</p>`);
-  await page.evaluate(()=>{
-    document.getElementById('button')!.addEventListener('click', e => (e.target as HTMLElement).textContent = 'Pressed');
-    document.getElementById('second')!.addEventListener('click', ()=>{
-      document.getElementById('first')!.setAttribute('aria-pressed','false');
-      document.getElementById('second')!.setAttribute('aria-pressed','true');
-      document.querySelector('img')!.alt='Second mountain';
-    });
+test('optional effects provide rotating aura, directional tilt, hover gallery and 2-6 item text rotation', async ({ page }) => {
+  await fixture(page, `<div class="aura aura-rainbow aura-lg" id="aura"><button class="btn">Highlighted action</button></div>
+    <a class="hover-3d" id="tilt" href="#target"><div class="card">Directional card</div>${'<span></span>'.repeat(8)}</a>
+    <figure class="hover-gallery" id="gallery"><img alt="Lake" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><img alt="Sky" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><img alt="Forest" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><img alt="Sunset" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></figure>
+    <p aria-label="Build accessible resilient thoughtful interfaces">Build <span class="text-rotate" aria-hidden="true"><span id="rotator"><span>accessible</span><span>resilient</span><span>thoughtful</span></span></span> interfaces</p>
+    <span class="text-rotate" id="six" aria-hidden="true"><span><span>Design</span><span>Develop</span><span>Deploy</span><span>Scale</span><span>Maintain</span><span>Repeat</span></span></span>`);
+
+  expect(await page.locator('#aura').evaluate(el => getComputedStyle(el).paddingTop)).not.toBe('0px');
+  expect(await page.locator('#aura').evaluate(el => getComputedStyle(el, '::before').backgroundImage)).toContain('conic-gradient');
+  expect(await page.locator('#aura').evaluate(el => getComputedStyle(el, '::before').animationName)).toBe('dm-aura-spin');
+
+  const tiltMotion = await page.locator('#tilt').evaluate(el => {
+    const content = el.firstElementChild!;
+    const contentStyle = getComputedStyle(content);
+    const shineStyle = getComputedStyle(content, '::before');
+    return {
+      rootProperty: getComputedStyle(el).transitionProperty,
+      rootDuration: getComputedStyle(el).transitionDuration,
+      contentProperty: contentStyle.transitionProperty,
+      contentDuration: contentStyle.transitionDuration,
+      shineProperty: shineStyle.transitionProperty,
+      shineDuration: shineStyle.transitionDuration,
+    };
   });
-  await page.locator('#button').click(); await expect(page.locator('#button')).toHaveText('Pressed');
-  await page.locator('#input').fill('editable'); await expect(page.locator('#input')).toHaveValue('editable');
-  await page.locator('#link').click(); expect(await page.evaluate(()=>location.hash)).toBe('#target');
-  await page.locator('#second').focus(); await page.keyboard.press('Space');
-  await expect(page.locator('#second')).toHaveAttribute('aria-pressed','true'); await expect(page.locator('img')).toHaveAttribute('alt','Second mountain');
+  expect(tiltMotion.rootProperty).toContain('filter');
+  expect(tiltMotion.rootDuration).toContain('0.4s');
+  expect(tiltMotion.contentProperty).toContain('scale');
+  expect(tiltMotion.contentDuration).toContain('0.5s');
+  expect(tiltMotion.shineProperty).toContain('translate');
+  expect(tiltMotion.shineDuration).toContain('0.4s');
+
+  await page.locator('#tilt > :nth-child(2)').hover();
+  const firstTransform = await page.locator('#tilt > :first-child').evaluate(el => getComputedStyle(el).transform);
+  expect(firstTransform).not.toBe('none');
+  await page.locator('#tilt > :nth-child(9)').hover();
+  const oppositeTransform = await page.locator('#tilt > :first-child').evaluate(el => getComputedStyle(el).transform);
+  expect(oppositeTransform).not.toBe(firstTransform);
+  await page.locator('#tilt').click();
+  expect(await page.evaluate(() => location.hash)).toBe('#target');
+
+  await page.locator('#gallery > :nth-child(2)').hover();
+  await expect.poll(() => page.locator('#gallery > :nth-child(2)').evaluate(el => getComputedStyle(el).opacity)).toBe('1');
+  expect(await page.locator('#gallery > :first-child').evaluate(el => getComputedStyle(el).opacity)).toBe('0');
+  await page.locator('#gallery > :nth-child(4)').hover();
+  await expect.poll(() => page.locator('#gallery > :nth-child(4)').evaluate(el => getComputedStyle(el).opacity)).toBe('1');
+
+  expect(await page.locator('#rotator').evaluate(el => getComputedStyle(el).animationName)).toBe('dm-text-rotate-3');
+  expect(await page.locator('#six > span').evaluate(el => getComputedStyle(el).animationName)).toBe('dm-text-rotate-6');
+  await page.locator('#rotator').hover();
+  expect(await page.locator('#rotator').evaluate(el => getComputedStyle(el).animationPlayState)).toBe('paused');
+
   await page.emulateMedia({ reducedMotion:'reduce' });
-  await page.locator('.hover-3d').hover(); expect(await page.locator('.hover-3d').evaluate(el=>getComputedStyle(el).transform)).toBe('none');
-  expect(await page.locator('.aura').evaluate(el=>getComputedStyle(el,'::before').animationName)).toBe('none');
-  expect(await page.locator('.text-rotate > span').first().evaluate(el=>getComputedStyle(el).visibility)).toBe('visible');
-  await page.emulateMedia({ media:'print', reducedMotion:'no-preference' });
-  expect(await page.locator('.text-rotate > span').first().evaluate(el=>getComputedStyle(el).visibility)).toBe('visible');
+  expect(await page.locator('#aura').evaluate(el => getComputedStyle(el, '::before').animationName)).toBe('none');
+  expect(await page.locator('#tilt > :first-child').evaluate(el => getComputedStyle(el).transform)).toBe('none');
+  expect(await page.locator('#rotator').evaluate(el => getComputedStyle(el).animationName)).toBe('none');
 });
 
 for (const theme of ['sunshine','moonlight','ocean','forest']) {

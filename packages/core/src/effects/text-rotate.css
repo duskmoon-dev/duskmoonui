@@ -1,16 +1,71 @@
 @layer components {
-  .text-rotate { display: inline-grid; color: var(--color-on-surface); vertical-align: baseline; }
-  .text-rotate > span { grid-area: 1 / 1; visibility: hidden; }
-  .text-rotate > span:first-child { visibility: visible; }
-  @media (prefers-reduced-motion: no-preference) {
-    .text-rotate-animated > span { animation: dm-text-rotate var(--text-rotate-duration, 6s) steps(1, end) infinite; }
-    .text-rotate-animated > span:nth-child(2) { animation-delay: calc(var(--text-rotate-duration, 6s) / -3); }
-    .text-rotate-animated > span:nth-child(3) { animation-delay: calc(var(--text-rotate-duration, 6s) / -3 * 2); }
-    .text-rotate-animated:is(:hover, :focus-within, .text-rotate-paused) > span { animation-play-state: paused; }
+  .text-rotate {
+    display: inline-block;
+    block-size: 1lh;
+    overflow: hidden;
+    vertical-align: bottom;
+    white-space: nowrap;
+    color: var(--color-on-surface);
   }
-  @keyframes dm-text-rotate { 0%, 33.32% { visibility: visible; } 33.33%, 100% { visibility: hidden; } }
+
+  .text-rotate > * {
+    display: grid;
+    justify-items: start;
+    will-change: transform;
+  }
+
+  .text-rotate > * > * {
+    block-size: 1lh;
+    align-content: baseline;
+    clip-path: inset(0.5px 0);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .text-rotate > :has(> :nth-child(2)):not(:has(> :nth-child(3))) { animation: dm-text-rotate-2 var(--text-rotate-duration, var(--tw-duration, 10s)) linear infinite; animation-play-state: var(--text-rotate-play-state, running); }
+    .text-rotate > :has(> :nth-child(3)):not(:has(> :nth-child(4))) { animation: dm-text-rotate-3 var(--text-rotate-duration, var(--tw-duration, 10s)) linear infinite; animation-play-state: var(--text-rotate-play-state, running); }
+    .text-rotate > :has(> :nth-child(4)):not(:has(> :nth-child(5))) { animation: dm-text-rotate-4 var(--text-rotate-duration, var(--tw-duration, 10s)) linear infinite; animation-play-state: var(--text-rotate-play-state, running); }
+    .text-rotate > :has(> :nth-child(5)):not(:has(> :nth-child(6))) { animation: dm-text-rotate-5 var(--text-rotate-duration, var(--tw-duration, 10s)) linear infinite; animation-play-state: var(--text-rotate-play-state, running); }
+    .text-rotate > :has(> :nth-child(6)):not(:has(> :nth-child(7))) { animation: dm-text-rotate-6 var(--text-rotate-duration, var(--tw-duration, 10s)) linear infinite; animation-play-state: var(--text-rotate-play-state, running); }
+    .text-rotate:is(:hover, :focus-within, .text-rotate-paused) { --text-rotate-play-state: paused; }
+  }
+
+  @keyframes dm-text-rotate-2 {
+    0%, 45% { transform: translateY(0); }
+    50%, 95% { transform: translateY(-1lh); }
+    100% { transform: translateY(-2lh); }
+  }
+  @keyframes dm-text-rotate-3 {
+    0%, 28% { transform: translateY(0); }
+    33%, 61% { transform: translateY(-1lh); }
+    66%, 94% { transform: translateY(-2lh); }
+    100% { transform: translateY(-3lh); }
+  }
+  @keyframes dm-text-rotate-4 {
+    0%, 20% { transform: translateY(0); }
+    25%, 45% { transform: translateY(-1lh); }
+    50%, 70% { transform: translateY(-2lh); }
+    75%, 95% { transform: translateY(-3lh); }
+    100% { transform: translateY(-4lh); }
+  }
+  @keyframes dm-text-rotate-5 {
+    0%, 15% { transform: translateY(0); }
+    20%, 35% { transform: translateY(-1lh); }
+    40%, 55% { transform: translateY(-2lh); }
+    60%, 75% { transform: translateY(-3lh); }
+    80%, 95% { transform: translateY(-4lh); }
+    100% { transform: translateY(-5lh); }
+  }
+  @keyframes dm-text-rotate-6 {
+    0%, 12% { transform: translateY(0); }
+    16.67%, 28.67% { transform: translateY(-1lh); }
+    33.33%, 45.33% { transform: translateY(-2lh); }
+    50%, 62% { transform: translateY(-3lh); }
+    66.67%, 78.67% { transform: translateY(-4lh); }
+    83.33%, 95% { transform: translateY(-5lh); }
+    100% { transform: translateY(-6lh); }
+  }
+
   @media print {
-    .text-rotate > span { animation: none; visibility: hidden; }
-    .text-rotate > span:first-child { visibility: visible; }
+    .text-rotate > * { animation: none; transform: none; }
   }
 }

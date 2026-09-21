@@ -1,19 +1,18 @@
 ---
 title: Hover Gallery
-description: Opt-in gallery presentation with deliberate image selection
+description: Opt-in image gallery with horizontal hover zones
 category: components
 order: 40
 published: true
 tags: ['data-display', 'hover-gallery', 'optional-effects']
 ---
 
-import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
 import '@duskmoon-dev/core/effects/hover-gallery.css';
 
 # Hover Gallery
 
-Optional effect: excluded from the default core and standalone bundles.
+Hover Gallery reveals a different image as the pointer crosses horizontal zones. It is a CSS-only optional effect and is excluded from the default bundles.
 
 ## Import
 
@@ -31,28 +30,16 @@ JavaScript `import { css, styles } from "@duskmoon-dev/core/effects/hover-galler
 <DataDisplayDemo kind="hover-gallery" />
 
 ```html
-<div class="hover-gallery" data-gallery-demo>
-  <div class="hover-gallery-stage"><img src="lake.jpg" alt="Mountain lake in daylight"></div>
-  <div class="hover-gallery-controls" aria-label="Choose landscape">
-    <button type="button" aria-label="Mountain lake" aria-pressed="true" data-src="lake.jpg" data-alt="Mountain lake in daylight">Lake</button>
-    <button type="button" aria-label="Mountain sky" aria-pressed="false" data-src="sky.jpg" data-alt="Mountain sky">Sky</button>
-  </div>
-</div>
+<figure class="hover-gallery" aria-label="Mountain light studies">
+  <img src="daylight.jpg" alt="Mountain lake in clear daylight">
+  <img src="blue-sky.jpg" alt="Mountain ridge beneath a blue sky">
+  <img src="muted-lake.jpg" alt="Mountain lake with muted color">
+  <img src="warm-ridge.jpg" alt="Mountain ridge with warm color">
+</figure>
 ```
 
-## API And Accessibility
+## API and accessibility
 
-Classes: `hover-gallery`, `hover-gallery-stage`, `hover-gallery-controls`. Stage uses `--hover-gallery-ratio` (4/3 default). Initial image is available without JavaScript. Native thumbnail buttons work by keyboard/touch/click with an application controller; hover only highlights the available selection, never hides important content.
+Add two to ten images as direct children. The first image is the default and remains visible on touch devices, with reduced input capability, and in print. Each later image owns an equal-width hover zone; hovering it expands that image across the gallery.
 
-```js
-const root = document.querySelector('[data-gallery-demo]');
-root.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
-  const image = root.querySelector(".hover-gallery-stage img");
-  image.src = button.dataset.src;
-  image.alt = button.dataset.alt;
-  root.querySelectorAll("button").forEach(item =>
-    item.setAttribute("aria-pressed", String(item === button)));
-}));
-```
-
-Give each button an accessible name and keep `aria-pressed` synchronized. Thumbnails are decorative when the button is named. Preserve meaningful alternatives on the main image. Selection is explicit, not a hover-only gallery. No animation or unsupported advanced selector is needed for its static fallback. Print shows the selected image.
+This effect is best for decorative or supplementary imagery because touch users see only the first image. Use a conventional gallery with visible controls when every image is important. Give the figure a useful label and retain meaningful `alt` text on each image. No JavaScript controller is installed or required.

@@ -1,19 +1,19 @@
 ---
 title: Text Rotate
-description: Opt-in three-phrase decorative text with stable accessible copy
+description: Opt-in rotating phrases with stable accessible copy
 category: components
 order: 40
 published: true
 tags: ['data-display', 'text-rotate', 'optional-effects']
 ---
 
-import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 import DataDisplayDemo from '../../../../components/showcase/DataDisplayDemo.astro';
+import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 import '@duskmoon-dev/core/effects/text-rotate.css';
 
 # Text Rotate
 
-Optional effect: excluded from the default core and standalone bundles.
+Text Rotate cycles vertically through two to six phrases. It is a CSS-only optional effect and is excluded from the default bundles.
 
 ## Import
 
@@ -26,34 +26,69 @@ Optional effect: excluded from the default core and standalone bundles.
 Individual CSS: `@duskmoon-dev/core/effects/text-rotate.css` (also available via the `style` export condition on `@duskmoon-dev/core/effects/text-rotate`).
 JavaScript `import { css, styles } from "@duskmoon-dev/core/effects/text-rotate"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
 
-## Example
+## Three phrases
+
+The default cycle shows three phrases over 10 seconds.
+
+<ComponentShowcase title="Three rotating phrases" code={'<div data-text-rotate-example style="font-size:2rem"><span class="text-rotate" aria-label="Observe, interpret, refine"><span aria-hidden="true"><span>OBSERVE</span><span>INTERPRET</span><span>REFINE</span></span></span></div>'} />
+
+## Six phrases
+
+The same structure supports up to six items and inherits the surrounding font size.
+
+<ComponentShowcase title="Six centered phrases" code={'<div data-text-rotate-example style="font-size:3rem;text-align:center"><span class="text-rotate" aria-label="Plan, design, build, test, release, repeat"><span aria-hidden="true" style="justify-items:center"><span>PLAN</span><span>DESIGN</span><span>BUILD</span><span>TEST</span><span>RELEASE</span><span>REPEAT</span></span></span></div>'} />
+
+## Inside a sentence
+
+Each phrase can carry its own semantic color while the surrounding sentence remains stable.
+
+<ComponentShowcase title="Rotating role in a sentence" code={'<p data-text-rotate-example aria-label="Tools for designers, developers, and operators">Tools for <span class="text-rotate" aria-hidden="true"><span><span class="text-primary">designers</span><span class="text-secondary">developers</span><span class="text-tertiary">operators</span></span></span></p>'} />
+
+## Custom duration
+
+Set `--text-rotate-duration` on the wrapper to override the 10-second default.
+
+<ComponentShowcase title="Six-second cycle" code={'<div data-text-rotate-example style="font-size:3rem"><span class="text-rotate" style="--text-rotate-duration:6s" aria-label="Calm, then quick"><span aria-hidden="true"><span>CALM</span><span><strong><em>QUICK →</em></strong></span></span></span></div>'} />
+
+## Custom line height
+
+The one-line viewport follows `1lh`, so tall type and emoji retain their intended spacing.
+
+<ComponentShowcase title="Tall rotating phrases" code={'<div data-text-rotate-example style="font-size:2rem"><span class="text-rotate" style="line-height:48px" aria-label="Sketch, compose, connect, nurture, tune, renew"><span aria-hidden="true" style="justify-items:center"><span>✏️ SKETCH</span><span>🧩 COMPOSE</span><span>🔗 CONNECT</span><span>🌱 NURTURE</span><span>🔧 TUNE</span><span>♻️ RENEW</span></span></span></div>'} />
+
+## Pause control
+
+For a persistent pause control, toggle `.text-rotate-paused` and keep the button state synchronized.
 
 <DataDisplayDemo kind="text-rotate" />
 
 ```html
-<div data-text-rotate-demo>
-  <p aria-label="Build accessible, resilient, thoughtful interfaces">Build
-    <span class="text-rotate text-rotate-animated" aria-hidden="true"><span>accessible</span><span>resilient</span><span>thoughtful</span></span> interfaces
-  </p>
-  <button class="btn" type="button" aria-pressed="false">Pause animation</button>
-</div>
+<p aria-label="Build accessible, resilient, thoughtful interfaces">
+  Build
+  <span class="text-rotate" aria-hidden="true">
+    <span>
+      <span>accessible</span>
+      <span>resilient</span>
+      <span>thoughtful</span>
+    </span>
+  </span>
+  interfaces
+</p>
 ```
 
-## API And Accessibility
+## API and accessibility
 
-Classes: `text-rotate`, `text-rotate-animated`, `text-rotate-paused`. Exactly three direct spans are supported by animated mode; arbitrary counts use static mode or an application controller. Set `--text-rotate-duration` (6s default). Overlaid grid spans reserve the largest phrase size. The first phrase remains meaningful without animation, with reduced motion and in print.
+The `.text-rotate` viewport contains one track, and that track contains two to six phrases. Rotation starts automatically, lasts 10 seconds by default, and pauses while hovered or while focus is inside. Set `--text-rotate-duration` to change the cycle length. Add `.text-rotate-paused` for a persistent paused state.
 
-Give the decorative rotating spans `aria-hidden="true"` and the containing phrase a stable accessible label containing the intended meaning. Do not announce every transition. Hover pauses motion; a persistent explicit pause button works for keyboard/touch:
+Give the changing visual words `aria-hidden="true"` and put stable wording in the surrounding element's accessible name. Reduced-motion mode and print show the first phrase without animation. A persistent pause button is optional; if provided, application code must toggle `.text-rotate-paused`, `aria-pressed`, and the button label. Do not put interactive controls inside the rotating phrases.
 
 ```js
-const root = document.querySelector('[data-text-rotate-demo]');
-const button = root.querySelector('button');
-const text = root.querySelector('.text-rotate');
-button.addEventListener("click", () => {
-  const paused = text.classList.toggle("text-rotate-paused");
-  button.setAttribute("aria-pressed", String(paused));
-  button.textContent = paused ? "Resume animation" : "Pause animation";
+const button = document.querySelector('[data-text-rotate-demo] button');
+const text = document.querySelector('[data-text-rotate-demo] .text-rotate');
+
+button.addEventListener('click', () => {
+  const paused = text.classList.toggle('text-rotate-paused');
+  button.setAttribute('aria-pressed', String(paused));
+  button.textContent = paused ? 'Resume animation' : 'Pause animation';
 });
 ```
-
-CSS does not synchronize that button. Avoid embedding controls in rotating spans. Unsupported animation displays the first phrase.

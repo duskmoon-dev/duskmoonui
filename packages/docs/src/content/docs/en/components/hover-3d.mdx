@@ -1,6 +1,6 @@
 ---
 title: Hover 3D
-description: Opt-in restrained tilt without hit-testing overlays
+description: Opt-in directional card tilt
 category: components
 order: 40
 published: true
@@ -12,7 +12,7 @@ import '@duskmoon-dev/core/effects/hover-3d.css';
 
 # Hover 3D
 
-Optional effect: excluded from the default core and standalone bundles.
+Hover 3D divides a surface into eight invisible pointer zones. Moving across them changes the direction of the tilt, highlight, and shadow. It is excluded from the default bundles.
 
 ## Import
 
@@ -27,8 +27,18 @@ JavaScript `import { css, styles } from "@duskmoon-dev/core/effects/hover-3d"` e
 
 ## Example
 
-<ComponentShowcase title="Hover 3D composition" code={"<article class=\"card hover-3d\"><div class=\"card-body\"><h2 class=\"card-title\">Observation log</h2><a class=\"btn btn-primary\" href=\"#api\">Open log</a><label>Search <input class=\"input\" type=\"search\" /></label></div></article>"} />
+The rendered content must be the first child, followed by exactly eight empty elements that form the hover zones.
 
-## API And Accessibility
+<ComponentShowcase title="Directional tilt" allowOverflow={true} code={'<a class="hover-3d" href="#api" aria-label="Open orbital field notes"><article class="card"><div class="card-body"><h2 class="card-title">Orbital field notes</h2><p>Move across the card to steer its perspective.</p><span class="btn btn-primary">Open notes</span></div></article><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></a>'} />
 
-Class: `hover-3d`. Set `--hover-3d-x`/`--hover-3d-y` to small angles (defaults 2deg/-2deg). No overlay intercepts links, buttons or inputs. Tilt is disabled while a nested control has focus, on coarse/no-hover input, under reduced motion and in print. Default Card remains unchanged. Without transforms the original content is usable. No pointer-tracking controller is required or installed.
+## Markup contract
+
+```html
+<a class="hover-3d" href="/field-notes">
+  <article class="card">...</article>
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</a>
+```
+
+Do not put links, buttons, or form controls inside the first child: the eight zones intentionally sit above it. When the surface is actionable, make the `.hover-3d` wrapper itself a link as shown. Coarse pointers receive the normal, untilted content. Reduced-motion mode and print also remove the transform. No JavaScript controller is required.

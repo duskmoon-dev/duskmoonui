@@ -1,6 +1,6 @@
 ---
 title: Aura
-description: Opt-in token-based decorative glow
+description: Opt-in animated border light
 category: components
 order: 40
 published: true
@@ -12,7 +12,7 @@ import '@duskmoon-dev/core/effects/aura.css';
 
 # Aura
 
-Optional effect: excluded from the default core and standalone bundles.
+Aura wraps content with a rotating border light. It is an optional effect, so it is excluded from the default core and standalone bundles.
 
 ## Import
 
@@ -25,10 +25,31 @@ Optional effect: excluded from the default core and standalone bundles.
 Individual CSS: `@duskmoon-dev/core/effects/aura.css` (also available via the `style` export condition on `@duskmoon-dev/core/effects/aura`).
 JavaScript `import { css, styles } from "@duskmoon-dev/core/effects/aura"` exposes CSS text and a nullable CSSStyleSheet (null during SSR). It is not an interaction runtime.
 
-## Example
+## Basic Aura
 
-<ComponentShowcase title="Aura composition" code={"<div class=\"aura\"><div class=\"card\"><div class=\"card-body\"><h2 class=\"card-title\">Featured report</h2><a class=\"btn btn-primary\" href=\"#api\">Read report</a></div></div></div>"} />
+Wrap one component in `.aura`. The effect follows the current theme color and starts rotating automatically.
 
-## API And Accessibility
+<ComponentShowcase title="Card with Aura" allowOverflow={true} code={'<div class="aura"><article class="card"><div class="card-body"><h2 class="card-title">Signal report</h2><p>Fresh observations are ready for review.</p><a class="btn btn-primary" href="#api">Open report</a></div></article></div>'} />
 
-Classes: `aura`, `aura-animated`. Default is a static token-colored border light. The pseudo-element captures no pointer input, does not contribute to layout and does not cover focus. Keep surrounding space for glow; an ancestor with overflow clipping can crop it. Motion is enabled only by `aura-animated`, disabled by reduced motion and removed in print. Basic outline remains usable without color-mix support. No controller is required. Decoration needs no additional ARIA.
+## Styles
+
+Use a style modifier to change the light composition.
+
+<ComponentShowcase title="Aura styles" allowOverflow={true} code={'<div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center"><div class="aura aura-dual"><button class="btn">Dual</button></div><div class="aura aura-rainbow"><button class="btn">Rainbow</button></div><div class="aura aura-holo"><button class="btn">Holographic</button></div><div class="aura aura-gold"><button class="btn">Gold</button></div><div class="aura aura-silver"><button class="btn">Silver</button></div><div class="aura aura-glow"><button class="btn">Glow</button></div></div>'} />
+
+## Sizes
+
+Sizes change the illuminated border and surrounding glow, not the wrapped component.
+
+<ComponentShowcase title="Aura sizes" allowOverflow={true} code={'<div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center"><div class="aura aura-xs"><button class="btn btn-sm">Extra small</button></div><div class="aura aura-sm"><button class="btn btn-sm">Small</button></div><div class="aura aura-md"><button class="btn">Medium</button></div><div class="aura aura-lg"><button class="btn">Large</button></div><div class="aura aura-xl"><button class="btn">Extra large</button></div></div>'} />
+
+## API and accessibility
+
+| Class | Purpose |
+| --- | --- |
+| `aura` | Rotating current-color border light |
+| `aura-dual`, `aura-rainbow`, `aura-holo` | Multicolor styles |
+| `aura-gold`, `aura-silver`, `aura-glow` | Material and soft-glow styles |
+| `aura-xs` through `aura-xl` | Border and glow sizes |
+
+Set `color` to customize the default Aura, and set `--aura-duration` to change the rotation speed. Keep space around the wrapper because an ancestor with `overflow: hidden` can crop its glow. Reduced-motion mode freezes the light, and print removes the decoration. Aura is decorative and needs no extra ARIA.

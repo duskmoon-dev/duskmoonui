@@ -75,32 +75,74 @@ test('built Countdown synchronizes readable units, clamps expiry and announces o
   await expect(root.locator('[data-expiry]')).toHaveText('Time expired');
 });
 
-test('built Gallery buttons select by keyboard and preserve pressed/name state', async ({page}) => {
+test('built Aura rotates and documents its complete style and size sets', async ({page}) => {
+  await page.goto('http://docs.test/duskmoonui/docs/en/components/aura/');
+  const basic=page.locator('.aura').first();
+  expect(await basic.evaluate(el=>getComputedStyle(el,'::before').animationName)).toBe('dm-aura-spin');
+  for(const modifier of ['dual','rainbow','holo','gold','silver','glow'])
+    await expect(page.locator(`.aura-${modifier}`).first()).toBeVisible();
+  for(const size of ['xs','sm','md','lg','xl'])
+    await expect(page.locator(`.aura-${size}`).first()).toBeVisible();
+});
+
+test('built Hover 3D uses eight directional zones and keeps the wrapper actionable', async ({page}) => {
+  await page.goto('http://docs.test/duskmoonui/docs/en/components/hover-3d/');
+  const root=page.locator('.hover-3d').first();
+  await expect(root.locator(':scope > *')).toHaveCount(9);
+  const motion=await root.evaluate(el=>({
+    root:getComputedStyle(el).transition,
+    content:getComputedStyle(el.firstElementChild!).transition,
+    shine:getComputedStyle(el.firstElementChild!,'::before').transition,
+  }));
+  expect(motion.root).toContain('filter 0.4s');
+  expect(motion.content).toContain('transform 0.5s');
+  expect(motion.content).toContain('scale 0.5s');
+  expect(motion.shine).toContain('translate 0.4s');
+  await root.locator(':scope > :nth-child(2)').hover();
+  const first=await root.locator(':scope > :first-child').evaluate(el=>getComputedStyle(el).transform);
+  await root.locator(':scope > :nth-child(9)').hover();
+  expect(await root.locator(':scope > :first-child').evaluate(el=>getComputedStyle(el).transform)).not.toBe(first);
+  await root.click();
+  expect(await page.evaluate(()=>location.hash)).toBe('#api');
+});
+
+test('built Hover Gallery reveals direct-child images without a controller', async ({page}) => {
   await page.goto('http://docs.test/duskmoonui/docs/en/components/hover-gallery/');
-  const button=page.getByRole('button',{name:'Mountain sky',exact:true});
-  await button.focus(); await page.keyboard.press('Space');
-  await expect(button).toHaveAttribute('aria-pressed','true');
-  await expect(page.locator('.hover-gallery-stage img')).toHaveAttribute('alt','Mountain landscape under a different sky');
-  await expect(page.getByRole('button',{name:'Mountain lake',exact:true})).toHaveAttribute('aria-pressed','false');
+  const gallery=page.locator('.hover-gallery').first();
+  await expect(gallery.locator(':scope > img')).toHaveCount(4);
+  await gallery.locator(':scope > :nth-child(2)').hover();
+  await expect.poll(()=>gallery.locator(':scope > :nth-child(2)').evaluate(el=>getComputedStyle(el).opacity)).toBe('1');
+  expect(await gallery.locator(':scope > :first-child').evaluate(el=>getComputedStyle(el).opacity)).toBe('0');
 });
 
 test('built Text Rotate explicit pause does not change accessible representation', async ({page}) => {
   await page.goto('http://docs.test/duskmoonui/docs/en/components/text-rotate/');
+  const examples=page.locator('[data-text-rotate-example]');
+  await expect(examples).toHaveCount(5);
+  expect(await examples.nth(0).locator('.text-rotate > *').evaluate(el=>getComputedStyle(el).animationName)).toBe('dm-text-rotate-3');
+  expect(await examples.nth(1).locator('.text-rotate > *').evaluate(el=>getComputedStyle(el).animationName)).toBe('dm-text-rotate-6');
+  expect(await examples.nth(3).locator('.text-rotate > *').evaluate(el=>getComputedStyle(el).animationDuration)).toBe('6s');
+  expect(await examples.nth(4).locator('.text-rotate').evaluate(el=>getComputedStyle(el).lineHeight)).toBe('48px');
   const button=page.locator('[data-text-rotate-demo] button');
   await expect(button).toHaveAccessibleName('Pause animation');
   await button.click(); await expect(button).toHaveAttribute('aria-pressed','true');
   await expect(button).toHaveAccessibleName('Resume animation');
-  expect(await page.locator('.text-rotate > span').first().evaluate(el=>getComputedStyle(el).animationPlayState)).toBe('paused');
+  expect(await page.locator('[data-text-rotate-demo] .text-rotate > span').evaluate(el=>getComputedStyle(el).animationPlayState)).toBe('paused');
   await expect(page.locator('[data-text-rotate-demo] p')).toHaveAttribute('aria-label','Build accessible, resilient, thoughtful interfaces');
   await button.click(); await expect(button).toHaveAttribute('aria-pressed','false');
 });
 
 test.describe('touch input', () => {
   test.use({hasTouch:true});
-  test('built Gallery deliberately selects and Diff reveal responds to touch', async ({page}) => {
+  test('built Gallery preserves its fallback but does not media-gate synthetic hover', async ({page}) => {
     await page.goto('http://docs.test/duskmoonui/docs/en/components/hover-gallery/');
-    const button=page.getByRole('button',{name:'Mountain sky',exact:true});
-    await button.tap(); await expect(button).toHaveAttribute('aria-pressed','true');
+    const gallery=page.locator('.hover-gallery').first();
+    expect(await gallery.locator(':scope > :first-child').evaluate(el=>getComputedStyle(el).opacity)).toBe('1');
+    const second=gallery.locator(':scope > :nth-child(2)');
+    expect(await second.evaluate(el=>getComputedStyle(el).opacity)).toBe('0');
+    await second.hover();
+    await expect.poll(()=>second.evaluate(el=>getComputedStyle(el).opacity)).toBe('1');
+    expect(await gallery.locator(':scope > :first-child').evaluate(el=>getComputedStyle(el).opacity)).toBe('0');
     await page.goto('http://docs.test/duskmoonui/docs/en/components/diff/');
     const input=page.locator('#demo-diff-position');
     await input.scrollIntoViewIfNeeded();
