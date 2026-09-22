@@ -43,6 +43,34 @@ test.describe('Composition primitives', () => {
     await expect(page.locator('#last')).not.toHaveCSS('border-top-left-radius', '0px');
   });
 
+  for (const direction of ['ltr', 'rtl'] as const) {
+    for (const orientation of ['horizontal', 'vertical'] as const) {
+      test(`${orientation} join keeps outer corners in ${direction.toUpperCase()}`, async ({ page }) => {
+        await page.setContent(`
+          <style>@layer components { button { border-radius: 10px; border: 1px solid; } }</style>
+          <link rel="stylesheet" href="/dist/components/join.css">
+          <div class="join join-${orientation}" dir="${direction}">
+            <button class="join-item">First</button>
+            <button class="join-item">Middle</button>
+            <button class="join-item">Last</button>
+          </div>
+        `);
+        const corners = await page.locator('.join-item').evaluateAll((items) =>
+          items.map((item) => {
+            const style = getComputedStyle(item);
+            return [style.borderTopLeftRadius, style.borderTopRightRadius,
+              style.borderBottomLeftRadius, style.borderBottomRightRadius];
+          }),
+        );
+        const first = orientation === 'vertical' ? ['10px', '10px', '0px', '0px']
+          : direction === 'ltr' ? ['10px', '0px', '10px', '0px'] : ['0px', '10px', '0px', '10px'];
+        const last = orientation === 'vertical' ? ['0px', '0px', '10px', '10px']
+          : direction === 'ltr' ? ['0px', '10px', '0px', '10px'] : ['10px', '0px', '10px', '0px'];
+        expect(corners).toEqual([first, ['0px', '0px', '0px', '0px'], last]);
+      });
+    }
+  }
+
   test('stack overlaps items without absolute positioning', async ({ page }) => {
     await page.setContent(`
       <link rel="stylesheet" href="/dist/index.css">
