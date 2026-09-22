@@ -24,20 +24,20 @@
     z-index: 1;
   }
 
-  :is(.join, .join-horizontal) > .join-item:not(:first-child) {
+  :is(.join, .join-horizontal):not(.join-vertical) > .join-item:not(:first-child) {
     margin-inline-start: -1px;
   }
 
-  :is(.join, .join-horizontal) > .join-item:not(:first-child):not(:last-child) {
+  :is(.join, .join-horizontal):not(.join-vertical) > .join-item:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
 
-  :is(.join, .join-horizontal) > .join-item:first-child:not(:last-child) {
+  :is(.join, .join-horizontal):not(.join-vertical) > .join-item:first-child:not(:last-child) {
     border-start-end-radius: 0;
     border-end-end-radius: 0;
   }
 
-  :is(.join, .join-horizontal) > .join-item:last-child:not(:first-child) {
+  :is(.join, .join-horizontal):not(.join-vertical) > .join-item:last-child:not(:first-child) {
     border-start-start-radius: 0;
     border-end-start-radius: 0;
   }
