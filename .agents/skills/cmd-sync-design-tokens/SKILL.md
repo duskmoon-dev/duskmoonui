@@ -1,6 +1,7 @@
 ---
 name: cmd-sync-design-tokens
 description: Pull the latest DuskMoon design tokens, regenerate core theme outputs, update integrations, and validate the result.
+disable-model-invocation: true
 ---
 
 # Sync Design Tokens

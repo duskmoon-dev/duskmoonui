@@ -1,6 +1,7 @@
 ---
 name: cmd-audit-duskmoon-style
 description: Audit DuskmoonUI component styles with Chrome DevTools and optionally fix issues in isolated worktrees.
+disable-model-invocation: true
 ---
 
 # Audit Duskmoon Styles
