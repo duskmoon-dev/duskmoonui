@@ -38,11 +38,11 @@ describe('Theme Switching Logic', () => {
 
     it('should define light-appropriate base colors', () => {
       // Light themes should have bright base-100 (high lightness)
-      const base100Match = sunshineCSS.match(/--color-base-100:\s*hsl\((\d+)\s+(\d+)%\s+(\d+)%\)/);
-      if (base100Match) {
-        const lightness = parseInt(base100Match[3], 10);
-        expect(lightness).toBeGreaterThanOrEqual(90);
-      }
+      const base100Match = sunshineCSS.match(/--color-base-100:\s*oklch\(([\d.]+)%\s+[^)]+\)/);
+      expect(base100Match).not.toBeNull();
+      const lightness = Number(base100Match![1]);
+      expect(lightness).toBeGreaterThanOrEqual(90);
+      expect(lightness).toBeLessThanOrEqual(100);
     });
   });
 
@@ -73,11 +73,11 @@ describe('Theme Switching Logic', () => {
 
     it('should define dark-appropriate base colors', () => {
       // Dark themes should have dark base-100 (low lightness)
-      const base100Match = moonlightCSS.match(/--color-base-100:\s*hsl\((\d+)\s+(\d+)%\s+(\d+)%\)/);
-      if (base100Match) {
-        const lightness = parseInt(base100Match[3], 10);
-        expect(lightness).toBeLessThanOrEqual(20);
-      }
+      const base100Match = moonlightCSS.match(/--color-base-100:\s*oklch\(([\d.]+)%\s+[^)]+\)/);
+      expect(base100Match).not.toBeNull();
+      const lightness = Number(base100Match![1]);
+      expect(lightness).toBeGreaterThanOrEqual(0);
+      expect(lightness).toBeLessThanOrEqual(30);
     });
   });
 
@@ -216,5 +216,23 @@ describe('Theme Switching Logic', () => {
       expect(defaultsCSS).toContain('--theme-pair: "sunshine"');
       expect(defaultsCSS).toContain('--theme-name: "moonlight"');
     });
+
+    for (const [name, blockPattern] of [
+      ['sunshine', /:root\s*\{([^}]+)\}/],
+      ['moonlight', /@media\s*\(prefers-color-scheme:\s*dark\)\s*\{\s*:root:not\(\[data-theme\]\)\s*\{([^}]+)\}/],
+    ] as const) {
+      it(`${name} default should match every generated theme custom property`, async () => {
+        const generatedCSS = await readFile(join(GENERATED_DIR, `${name}.css`), 'utf-8');
+        const defaultBlock = defaultsCSS.match(blockPattern);
+        expect(defaultBlock).not.toBeNull();
+
+        const customProperties = (css: string) => Object.fromEntries(
+          [...css.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map((match) => [match[1], match[2].trim()])
+        );
+        const expectedProperties = customProperties(generatedCSS);
+        expect(Object.keys(expectedProperties).length).toBeGreaterThan(0);
+        expect(customProperties(defaultBlock![1])).toEqual(expectedProperties);
+      });
+    }
   });
 });
