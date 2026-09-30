@@ -224,39 +224,40 @@ test('OTP native editing, length/pattern, FormData and reset from actual docs ex
   }
 });
 
-test('OTP guides align with native characters instead of spanning an unrelated field width', async ({ page }, testInfo) => {
+test('OTP slots align with every native character and preserve selection in LTR and RTL', async ({ page }, testInfo) => {
   for (const index of [0, 1]) {
     for (const dir of ['ltr', 'rtl']) {
       await fixture(page, example('otp-input', index), core, 'moonlight', dir);
       const control = page.locator('.otp-code');
-      await control.fill(index ? '0012' : '001234');
-      const geometry = await control.evaluate(el => {
-        const input = el as HTMLInputElement;
+      const root = page.locator('.otp-input');
+      const value = index ? '0012' : '001234';
+      await control.fill(value);
+      await expect(root.locator('input')).toHaveCount(1);
+      await expect(root.locator('span[aria-hidden="true"]')).toHaveCount(value.length);
+      const geometry = await root.evaluate(el => {
+        const input = el.querySelector('input')!;
         const style = getComputedStyle(input);
         const glyph = document.createElement('span');
-        glyph.style.fontFamily = style.fontFamily;
-        glyph.style.fontSize = style.fontSize;
-        glyph.textContent = input.value;
+        glyph.style.font = style.font;
+        glyph.textContent = '0';
         document.body.append(glyph);
-        const textWidth = glyph.getBoundingClientRect().width;
+        const ch = glyph.getBoundingClientRect().width;
         glyph.remove();
-        const inset = ['paddingLeft', 'paddingRight', 'borderLeftWidth', 'borderRightWidth']
-          .reduce((sum, property) => sum + parseFloat(style[property as keyof CSSStyleDeclaration] as string), 0);
+        const start = input.getBoundingClientRect().left + parseFloat(style.paddingLeft);
+        const stride = ch + parseFloat(style.letterSpacing);
         return {
-          textWidth,
-          contentWidth: input.getBoundingClientRect().width - inset,
-          guideWidth: parseFloat(style.backgroundSize),
-          origin: style.backgroundOrigin,
-          repeat: style.backgroundRepeat,
+          supports: CSS.supports('field-sizing', 'content'),
+          offsets: [...el.querySelectorAll('span')].map((slot, index) =>
+            Math.abs(slot.getBoundingClientRect().left + slot.getBoundingClientRect().width / 2 - (start + index * stride + ch / 2))),
           scrollLeft: input.scrollLeft,
+          direction: getComputedStyle(el).direction,
         };
       });
-      expect(geometry.guideWidth).toBeCloseTo(geometry.textWidth, 0);
-      expect(geometry.contentWidth).toBeGreaterThanOrEqual(geometry.textWidth);
-      expect(geometry.contentWidth - geometry.textWidth).toBeLessThanOrEqual(3);
-      expect(geometry.origin).toBe('content-box');
-      expect(geometry.repeat).toBe('no-repeat');
-      expect(geometry.scrollLeft).toBe(0);
+      expect(geometry.direction).toBe('ltr');
+      if (geometry.supports) {
+        for (const offset of geometry.offsets) expect(offset).toBeLessThan(1);
+        expect(geometry.scrollLeft).toBe(0);
+      }
       await page.screenshot({ path: testInfo.outputPath(`otp-complete-${index}-${dir}.png`), fullPage: false, caret: 'initial' });
       await control.evaluate(el => (el as HTMLInputElement).setSelectionRange(1, 3));
       await page.keyboard.insertText('99');
@@ -264,22 +265,105 @@ test('OTP guides align with native characters instead of spanning an unrelated f
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('Delete');
       await expect(control).toHaveValue(index ? '092' : '09234');
-      await page.screenshot({ path: testInfo.outputPath(`otp-${index}-${dir}.png`), fullPage: false, caret: 'initial' });
       await page.getByRole('button', { name: /Reset/ }).click();
       await expect(control).toHaveValue(index ? '0012' : '');
     }
   }
-  await page.setViewportSize({ width: 360, height: 800 });
-  await fixture(page, '<div style="width:140px">' + example('otp-input') + '</div>');
-  await page.locator('html').evaluate(el => el.style.fontSize = '32px');
-  const control = page.locator('.otp-code');
-  await control.fill('001234');
-  expect(await control.evaluate(el => el.getBoundingClientRect().width)).toBeLessThanOrEqual(140);
-  await page.keyboard.press('ArrowLeft');
-  await page.keyboard.press('Backspace');
-  await expect(control).toHaveValue('00124');
-  await page.getByRole('button', { name: /Reset/ }).click();
-  await expect(control).toHaveValue('');
+});
+
+test('OTP partial code focus follows the next slot and clicking a slot focuses one input', async ({ page }) => {
+  await fixture(page, example('otp-input'));
+  const root = page.locator('.otp-input');
+  const input = root.locator('input');
+  for (let length = 0; length < 6; length++) {
+    await input.fill('001234'.slice(0, length));
+    const offset = await root.evaluate((el, length) => {
+      const input = el.querySelector('input')!;
+      if (!CSS.supports('field-sizing', 'content')) return 0;
+      const after = getComputedStyle(el, '::after');
+      const expected = el.querySelectorAll('span')[length].getBoundingClientRect().left;
+      const actual = input.getBoundingClientRect().right + parseFloat(getComputedStyle(el).columnGap) + parseFloat(after.marginLeft);
+      return Math.abs(actual - expected);
+    }, length);
+    expect(offset).toBeLessThan(2);
+  }
+  await root.click({ position: { x: 190, y: 20 } });
+  await expect(input).toBeFocused();
+  await page.keyboard.press('Control+A');
+  await page.keyboard.insertText('001234');
+  await expect(input).toHaveValue('001234');
+});
+
+test('OTP joined, colors, errors and masked PIN use the same single-input contract', async ({ page }) => {
+  await fixture(page, example('otp-input', 2));
+  const boxes = await page.locator('.otp-input > span').evaluateAll(elements => elements.map(el => ({ left: el.getBoundingClientRect().left, right: el.getBoundingClientRect().right })));
+  for (let i = 1; i < boxes.length; i++) expect(Math.abs(boxes[i].left - boxes[i - 1].right)).toBeLessThan(1);
+  const source = readFileSync(join(docsRoot, 'otp-input.mdx'), 'utf8');
+  const pinExample = [...source.matchAll(/code=\{\x60([\s\S]*?)\x60\}/g)].find(match => match[1].includes('type="password"'))![1];
+  await fixture(page, pinExample);
+  const pin = page.getByLabel('Security PIN', { exact: true });
+  await expect(pin).toHaveAttribute('type', 'password');
+  await pin.fill('0042');
+  expect(await page.locator('form').evaluate(el => [...new FormData(el as HTMLFormElement).values()])).toEqual(['0042']);
+  await page.getByRole('button', { name: 'Reset PIN' }).click();
+  await expect(pin).toHaveValue('0012');
+  for (const color of ['primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'error']) {
+    await fixture(page, example('otp-input'));
+    const root = page.locator('.otp-input');
+    await root.evaluate((el, color) => el.classList.add('otp-input-' + color, 'otp-input-ghost'), color);
+    const control = root.locator('input');
+    await control.fill('001234');
+    await control.evaluate(el => el.setAttribute('aria-invalid', 'true'));
+    const errorColor = await page.evaluate(() => { const probe = document.createElement('span'); probe.style.color = 'var(--color-error)'; document.body.append(probe); const color = getComputedStyle(probe).color; probe.remove(); return color; });
+    expect(await root.evaluate(el => getComputedStyle(el).color)).toBe(errorColor);
+    await expect.poll(() => root.locator('span').first().evaluate(el => getComputedStyle(el).borderColor)).toBe(await root.evaluate(el => getComputedStyle(el).color));
+  }
+});
+
+test('OTP has one accessible field in light/dark, RTL and forced colors', async ({ page }) => {
+  for (const theme of ['sunshine', 'moonlight']) {
+    for (const dir of ['ltr', 'rtl']) {
+      await page.setViewportSize({ width: 360, height: 800 });
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await fixture(page, example('otp-input'), core, theme, dir);
+      await expect(page.getByRole('textbox')).toHaveCount(1);
+      await expect(page.getByRole('textbox')).toHaveAccessibleName('Verification code (6 digits)');
+      const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+      expect(results.violations).toEqual([]);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  }
+  await page.emulateMedia({ forcedColors: 'active' });
+  await page.getByRole('textbox').focus();
+  expect(await page.locator('.otp-input').evaluate(el => getComputedStyle(el).outlineStyle)).not.toBe('none');
+});
+
+test('OTP keeps all digits, the end caret and full invalid focus visible in narrow forms', async ({ page }) => {
+  for (const width of [140, 360]) {
+    for (const zoom of ['100%', '200%']) {
+      await fixture(page, `<div style="width:${width}px">${example('otp-input')}</div>`);
+      await page.locator('html').evaluate((el, size) => el.style.fontSize = size, zoom);
+      const input = page.locator('.otp-code');
+      await input.fill('001234');
+      await page.keyboard.press('End');
+      const geometry = await page.locator('.otp-input').evaluate(el => {
+        const input = el.querySelector('input')!;
+        const wrapper = el.getBoundingClientRect();
+        const field = input.getBoundingClientRect();
+        const last = el.querySelectorAll('span')[5].getBoundingClientRect();
+        return { wrapperRight: wrapper.right, fieldRight: field.right, lastRight: last.right, scrollLeft: input.scrollLeft };
+      });
+      expect(geometry.lastRight).toBeLessThanOrEqual(geometry.wrapperRight);
+      expect(geometry.fieldRight).toBeLessThanOrEqual(geometry.wrapperRight);
+      expect(geometry.scrollLeft).toBe(0);
+      await input.fill('abcdef');
+      expect(await input.evaluate(el => (el as HTMLInputElement).validity.patternMismatch)).toBe(true);
+      expect(await page.locator('.otp-input > span').first().evaluate(el => getComputedStyle(el).outlineStyle)).not.toBe('none');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('Backspace');
+      await expect(input).toHaveValue('abcdf');
+    }
+  }
 });
 
 test('OTP clipboard paste uses the native input, not a segmented handler', async ({ page, context, browserName }) => {
@@ -454,6 +538,6 @@ test('actual examples: light/dark, RTL, narrow, zoom, reduced motion, forced-col
   }
   await page.emulateMedia({ forcedColors: 'active' });
   await page.locator('.otp-code').first().focus();
-  expect(await page.locator('.otp-code').first().evaluate(el => getComputedStyle(el).outlineStyle)).not.toBe('none');
+  expect(await page.locator('.otp-input').first().evaluate(el => getComputedStyle(el).outlineStyle)).not.toBe('none');
   expect(await page.locator('.otp-code').first().evaluate(el => getComputedStyle(el).backgroundImage)).toBe('none');
 });

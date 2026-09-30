@@ -96,7 +96,7 @@ test('OTP state examples keep each label, control and feedback in one responsive
           const control = el as HTMLInputElement;
           const group = control.closest('.form-group');
           const label = control.labels![0];
-          const field = control.getBoundingClientRect();
+          const field = (control.closest('.otp-input') || control).getBoundingClientRect();
           const heading = label.getBoundingClientRect();
           const rtl = document.documentElement.dir === 'rtl';
           return {

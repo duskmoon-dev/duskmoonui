@@ -159,7 +159,6 @@ const componentFiles = [
   'navbar',
   'nested-menu',
   'otp-input',
-  'pin-input',
   'popover',
   'pagination',
   'progress',

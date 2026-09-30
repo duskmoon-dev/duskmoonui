@@ -425,12 +425,6 @@
       "import": "./dist/esm/components/otp-input.js",
       "default": "./dist/esm/components/otp-input.js"
     },
-    "./components/pin-input": {
-      "types": "./dist/esm/components/pin-input.d.ts",
-      "style": "./dist/components/pin-input.css",
-      "import": "./dist/esm/components/pin-input.js",
-      "default": "./dist/esm/components/pin-input.js"
-    },
     "./components/popover": {
       "types": "./dist/esm/components/popover.d.ts",
       "style": "./dist/components/popover.css",

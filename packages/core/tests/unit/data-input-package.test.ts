@@ -24,6 +24,9 @@ describe('Packed Data Input public API', () => {
   it('resolves packed CSS, SSR modules, declarations and the shared base export', () => {
     const pkg = JSON.parse(readFileSync(join(packed, 'package.json'), 'utf8'));
     expect(existsSync(join(packed, pkg.exports['./base.css']))).toBe(true);
+    expect(pkg.exports['./components/pin-input']).toBeUndefined();
+    expect(existsSync(join(packed, 'dist/components/pin-input.css'))).toBe(false);
+    expect(existsSync(join(packed, 'dist/esm/components/pin-input.js'))).toBe(false);
     for (const name of components) {
       const entry = pkg.exports['./components/' + name];
       for (const field of ['style', 'import', 'types']) expect(existsSync(join(packed, entry[field]))).toBe(true);

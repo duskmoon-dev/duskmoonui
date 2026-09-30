@@ -35,7 +35,7 @@ reuse existing implementations, not duplicate stylesheets.
 | Textarea | `textarea.css`, `.textarea` | `textarea`, `form` | Textarea; Form | Canonical definition, XS/MD, invalid | Native text/reset; autosize fallback application-owned |
 | Toggle | `switch.css`, legacy `toggle-switch.css` | `switch`, `toggle-switch`, `toggle`, `form` | Switch; Toggle Button | Legacy dimensions retained; native/ARIA state | Native on/off; application updates action `aria-pressed` |
 | Validator | `validator.css`, `.validator`, `.validator-success` | `validator` (included by controls) | Validator | Error precedence, hints, explicit success, `.validate` compatibility | Native constraint status; application messages/announcements |
-| OTP | `otp-input.css`, `.otp-code`, `.otp-input-field` | `otp-input` | OTP Input | Single editable value; aligned length guides; stationary Reset; reconciled aliases | Native single-input behavior; segmented controller deliberately deferred |
+| OTP / PIN | `otp-input.css`, `.otp-input`, `.otp-code` | `otp-input` | OTP Input | Decorative character slots over one native input; joined/sizes/colors; masked PIN | Native editing, selection, paste, constraints, submission and reset |
 
 ## Reference and Compatibility
 
@@ -43,12 +43,14 @@ Reviewed DaisyUI's upstream OTP, Filter and Calendar CSS and linked component do
 Adopted the native-input/composition boundaries, not upstream source code. No license
 notice was removed, and no upstream code or CSS dependency was copied.
 
-Canonical segmented OTP names remain `.otp-input-underline`, `.otp-separator`,
-`.otp-helper`, `.otp-error-message`. Retained doc spellings as aliases:
-`.otp-input-underlined`, `.otp-input-separator`, `.otp-input-helper`,
-`.otp-input-helper-error`; added `.otp-input-helper-success` presentation.
-Undefined `otp-input-4/6`, `otp-input-disabled`, and simulated-focus classes are
-removed from examples: actual constraints, `disabled`, and focus belong to controls.
+Current OTP contract (2026-10-01): `.otp-input` is a label with 1–8 empty
+`aria-hidden="true"` spans followed by one `.otp-code` input. Span count controls
+visual slots; native length/pattern attributes control validity. Joined, XS–XL,
+seven semantic colors and ghost/filled/underline styles use wrapper modifiers.
+PIN is the same component with `type="password"`; the separate PIN public entry,
+docs page and per-character inputs are removed. Historical checks below describe
+the earlier presentation and do not verify this revision. SMS/device autofill remains
+unverified; the browser owns paste, selection, reset and the complete form value.
 
 ## Migration Notes
 
@@ -68,11 +70,10 @@ removed from examples: actual constraints, `disabled`, and focus belong to contr
 - `.rating-native` derives selection from radios, wraps enlarged/narrow layouts,
   and ignores stale `.filled/.active` colors. Legacy half/static APIs remain.
   On `.toggle-btn`, explicit `aria-pressed` wins over active aliases, including hover.
-- Prefer `.otp-code` for one real code value. `.otp-code-4` changes only the guide;
-  native length/pattern attributes remain required. Existing segmented integrations
-  retain their API and must supply their own interaction/reset controller.
-  The field now fits the code, with guides aligned to character metrics rather than
-  stretched across a full field width. Adjacent OTP `.validator-error` elements reserve
+- Migrate per-character OTP/PIN groups to `.otp-input` with decorative spans and one
+  `.otp-code` input. Set the input's name, label, native constraints and disabled/error
+  state once. Use `type="password"` for masked PIN entry. The standalone `.otp-code`
+  presentation remains available. Adjacent OTP `.validator-error` elements reserve
   layout space while hidden, preventing blur-time feedback from interrupting Reset clicks.
 
 See `packages/core/CHANGELOG.md`, Data Input Consolidation for `1.19.4`.
@@ -267,7 +268,7 @@ screenshots and axe checks rather than claiming those suites passed.
 
 ### Deliberate Adapter Boundaries
 
-Segmented OTP focus/paste/value/reset coordination, custom Slider controllers, custom
+Custom Slider controllers, custom
 Calendar date/locale/keyboard/focus/popup engines, searchable/multi-select adapters,
 remote validation and upload previews/drag-drop/progress/transport remain application-owned.
 No new global runtime or required third-party dependency is introduced. Custom widgets

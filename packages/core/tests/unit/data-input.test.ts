@@ -23,7 +23,8 @@ describe('Data Input CSS contracts', () => {
       'otp-input-helper-error', 'otp-input-helper-success', 'otp-code', 'otp-code-4'])
       expect(css).toContain('.' + name);
     expect(css).not.toContain('caret-transparent');
-    expect(css).not.toContain('letter-spacing');
+    expect(css).toContain('field-sizing: content');
+    expect(css).toContain('letter-spacing: calc(var(--otp-stride) - 1ch)');
     expect(css).not.toContain('otp-input-field-focused');
   });
   it('composes native filters from Chip and preserves semantic Rating and Toggle ownership', () => {

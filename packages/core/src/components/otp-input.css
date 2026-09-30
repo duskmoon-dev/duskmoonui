@@ -295,8 +295,166 @@
   }
   @media (forced-colors: active) { .otp-code { background-image: none; } }
 
+  /* One native input over decorative cells, following the daisyUI OTP layout.
+     The spans must precede the input; their count matches maxlength/pattern. */
+  .otp-input:has(> .otp-code) {
+    --otp-count: 6;
+    --otp-cell: 2ch;
+    --otp-gap-ratio: 0.25;
+    --otp-gap: calc(var(--otp-cell) * var(--otp-gap-ratio));
+    --otp-stride: calc(var(--otp-cell) + var(--otp-gap));
+    --otp-width-units: calc(var(--otp-count) * (1 + var(--otp-gap-ratio)) + 0.25);
+    --otp-height: 3rem;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0;
+    inline-size: calc(var(--otp-cell) * var(--otp-width-units) + 2px);
+    max-inline-size: 100%;
+    container-type: inline-size;
+    block-size: var(--otp-height);
+    font: 1.5rem / 1 ui-monospace, monospace;
+    direction: ltr;
+    color: var(--dm-validation-color, var(--color-on-surface));
+    border-radius: var(--radius-sm);
+    /* Reserve space for the trailing native caret and cell focus rings. */
+    clip-path: inset(-4px -4px -4px -4px);
+  }
+
+  /* Scale cells to the actual wrapper width, including inside narrow forms. */
+  .otp-input > :is(span, .otp-code), .otp-input:has(> .otp-code)::after {
+    --otp-cell: calc((100cqi - 2px) / var(--otp-width-units));
+    --otp-gap: calc(var(--otp-cell) * var(--otp-gap-ratio));
+    --otp-stride: calc(var(--otp-cell) + var(--otp-gap));
+  }
+
+  .otp-input:has(> span:nth-child(1)) { --otp-count: 1; }
+  .otp-input:has(> span:nth-child(2)) { --otp-count: 2; }
+  .otp-input:has(> span:nth-child(3)) { --otp-count: 3; }
+  .otp-input:has(> span:nth-child(4)) { --otp-count: 4; }
+  .otp-input:has(> span:nth-child(5)) { --otp-count: 5; }
+  .otp-input:has(> span:nth-child(6)) { --otp-count: 6; }
+  .otp-input:has(> span:nth-child(7)) { --otp-count: 7; }
+  .otp-input:has(> span:nth-child(8)) { --otp-count: 8; }
+
+  .otp-input > span[aria-hidden="true"] {
+    position: absolute;
+    inset-block: 0;
+    inline-size: var(--otp-cell);
+    box-sizing: border-box;
+    background-color: var(--color-surface);
+    border: 1px solid currentColor;
+    border-radius: inherit;
+    pointer-events: none;
+    transition: background-color 150ms ease-in-out;
+  }
+  .otp-input > span:nth-child(1) { left: 0; }
+  .otp-input > span:nth-child(2) { left: var(--otp-stride); }
+  .otp-input > span:nth-child(3) { left: calc(var(--otp-stride) * 2); }
+  .otp-input > span:nth-child(4) { left: calc(var(--otp-stride) * 3); }
+  .otp-input > span:nth-child(5) { left: calc(var(--otp-stride) * 4); }
+  .otp-input > span:nth-child(6) { left: calc(var(--otp-stride) * 5); }
+  .otp-input > span:nth-child(7) { left: calc(var(--otp-stride) * 6); }
+  .otp-input > span:nth-child(8) { left: calc(var(--otp-stride) * 7); }
+
+  .otp-input > .otp-code {
+    position: relative;
+    z-index: 1;
+    field-sizing: content;
+    flex-shrink: 0;
+    inline-size: auto;
+    min-inline-size: 0;
+    max-inline-size: none;
+    block-size: 100%;
+    margin: 0;
+    padding: 0 0 0 calc((var(--otp-cell) - 1ch) / 2);
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+    font-size: min(1em, var(--otp-cell));
+    letter-spacing: calc(var(--otp-stride) - 1ch);
+    color: inherit;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+  }
+
+  /* Intrinsic input width follows the entered characters, positioning the next cell. */
+  .otp-input:has(> .otp-code)::after {
+    content: "";
+    flex-shrink: 0;
+    inline-size: var(--otp-cell);
+    block-size: var(--otp-height);
+    margin-inline-start: calc(-0.25 * var(--otp-cell));
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .otp-input:focus-within::after,
+  .otp-input:has(> .otp-code:focus) > span {
+    box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent);
+    outline: 1px solid currentColor;
+  }
+  .otp-input:has(> .otp-code:valid:focus)::after { visibility: hidden; }
+  /* Cell indicators replace the reset's unlayered native focus outline. */
+  .otp-input > .otp-code:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .otp-input-xs:has(> .otp-code) { font-size: 1rem; --otp-height: 2rem; }
+  .otp-input-sm:has(> .otp-code) { font-size: 1.25rem; --otp-height: 2.5rem; }
+  .otp-input-md:has(> .otp-code) { font-size: 1.5rem; --otp-height: 3rem; }
+  .otp-input-lg:has(> .otp-code) { font-size: 1.75rem; --otp-height: 3.5rem; }
+  .otp-input-xl:has(> .otp-code) { font-size: 2rem; --otp-height: 4rem; }
+  .otp-input-joined:has(> .otp-code) { --otp-gap-ratio: 0; }
+  .otp-input-joined > span:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+  .otp-input-joined > span:not(:nth-last-child(2)) { border-top-right-radius: 0; border-bottom-right-radius: 0; border-right: 0; }
+  .otp-input-ghost > span { border-color: transparent; }
+  .otp-input-filled > span { background-color: var(--color-surface-container); }
+  .otp-input-underline > span { border-width: 0 0 1px; border-radius: 0; background-color: transparent; }
+
+  .otp-input-primary:has(> .otp-code) { color: var(--dm-validation-color, var(--color-primary)); }
+  .otp-input-secondary:has(> .otp-code) { color: var(--dm-validation-color, var(--color-secondary)); }
+  .otp-input-tertiary:has(> .otp-code) { color: var(--dm-validation-color, var(--color-tertiary)); }
+  .otp-input-info:has(> .otp-code) { color: var(--dm-validation-color, var(--color-info)); }
+  .otp-input-success:has(> .otp-code) { color: var(--dm-validation-color, var(--color-success)); }
+  .otp-input-warning:has(> .otp-code) { color: var(--dm-validation-color, var(--color-warning)); }
+  .otp-input-error:has(> .otp-code) { color: var(--dm-validation-color, var(--color-error)); }
+  .otp-input-accent:has(> .otp-code) { color: var(--dm-validation-color, var(--color-accent)); }
+  .otp-input-neutral:has(> .otp-code) { color: var(--dm-validation-color, var(--color-neutral)); }
+  .otp-input-base:has(> .otp-code) { color: var(--dm-validation-color, var(--color-base-content)); }
+
+  .otp-input:has(> .otp-code:is(.validate :valid, .validate:valid, .validator.validator-success:user-valid):not([aria-invalid="true"]):not(:disabled)):not(:where(.form-group-error *, .form-control.error *)) {
+    --dm-validation-color: var(--color-success);
+  }
+  .otp-input:has(> .otp-code:is([aria-invalid="true"], .validator:user-invalid, .validate :invalid, .validate:invalid):not(:disabled)),
+  :is(.form-group-error, .form-control.error) .otp-input {
+    --dm-validation-color: var(--color-error);
+  }
+  .otp-input:has(> .otp-code:is([aria-invalid="true"], .validator:user-invalid, .validate :invalid, .validate:invalid):not(:disabled)) > span,
+  :is(.form-group-error, .form-control.error) .otp-input > span {
+    border-color: currentColor;
+  }
+  .otp-input:has(> .otp-code:disabled) {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+  .otp-input > .otp-code:disabled { opacity: 1; }
+
+  /* Engines without content sizing retain a usable single native input. */
+  @supports not (field-sizing: content) {
+    .otp-input > .otp-code { inline-size: 100%; letter-spacing: normal; padding: 0.75rem; background-color: var(--color-surface); border: 1px solid currentColor; border-radius: inherit; }
+    .otp-input > span, .otp-input:has(> .otp-code)::after { display: none; }
+    .otp-input > .otp-code:focus { outline: 2px solid currentColor !important; outline-offset: 2px; }
+  }
+  @media (forced-colors: active) {
+    .otp-input:focus-within { outline: 2px solid Highlight; outline-offset: 2px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .otp-input-field {
+    .otp-input-field, .otp-input > span {
       transition: none;
     }
   }

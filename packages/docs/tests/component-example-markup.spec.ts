@@ -16,7 +16,6 @@ const componentPages = [
   'join',
   'multi-select',
   'otp-input',
-  'pin-input',
   'select',
   'slider',
   'textarea',

@@ -36,7 +36,6 @@ const colorableComponents = [
   ['multi-select', 'multi-select'],
   ['navbar', 'navbar'],
   ['otp-input', 'otp-input'],
-  ['pin-input', 'pin-input'],
   ['progress', 'progress'],
   ['radio', 'radio'],
   ['rating', 'rating'],

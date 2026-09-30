@@ -119,8 +119,7 @@ The source `components/index.css` file is the aggregate barrel behind `@duskmoon
 - `form-group` — `.form-group`, `.form-label`, `.form-control`, `.helper-text`, `.fieldset`, `.fieldset-legend`.
 - `input` — `.input`; semantic, size, `.input-outlined`, `.input-filled`, and `.input-ghost` modifiers.
 - `multi-select` — `.multi-select`, `.multi-select-trigger`, `.multi-select-tags`, `.multi-select-tag`, `.multi-select-dropdown`, `.multi-select-option`.
-- `otp-input` — `.otp-input`, `.otp-input-field`, `.otp-separator`; layout, fill, size, and semantic modifiers.
-- `pin-input` — `.pin-input`, `.pin-input-field`; `.pin-input-visible`, `.pin-input-circle`, `.pin-input-dots`, sizes and semantic modifiers.
+- `otp-input` — `.otp-input` label with 1–8 empty `aria-hidden="true"` spans followed by one `.otp-code` input; match native length/pattern constraints. `.otp-input-joined`, XS–XL sizes, seven semantic colors, ghost/filled/underline variants. Use `type="password"` for masked PIN entry; one native value owns editing, paste, selection and reset.
 - `radio` — `.radio`; sizes and semantic variants; use native radio grouping.
 - `range` — `.range`; size and semantic variants for a native range input.
 - `rating` — `.rating`, `.rating-input`, `.rating-icon`; `.rating-half`, size, semantic, and read-only modifiers.

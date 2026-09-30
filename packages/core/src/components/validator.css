@@ -50,7 +50,7 @@
   .validator-hint { font-size: 0.75rem; color: var(--color-on-surface-variant); }
   .validator-error { display: none; font-size: 0.75rem; color: var(--color-error); }
   /* Keep OTP actions stationary when blur reveals an error during a click. */
-  .otp-code ~ .validator-error { display: block; visibility: hidden; }
+  :is(.otp-code, .otp-input) ~ .validator-error { display: block; visibility: hidden; }
   :is(.form-group, .form-control):has(:is([aria-invalid="true"], .validator:user-invalid, .validate :invalid, .validate:invalid):not(:disabled)) > .validator-error,
   :is(.form-group-error, .form-control.error) > .validator-error { display: block; visibility: visible; }
 
