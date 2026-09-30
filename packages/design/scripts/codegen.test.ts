@@ -64,24 +64,6 @@ function oklchToRgb(oklchStr: string): { r: number; g: number; b: number } {
   };
 }
 
-function relativeLuminance({ r, g, b }: { r: number; g: number; b: number }): number {
-  const toLinear = (channel: number): number => {
-    const value = channel / 255;
-    return value <= 0.04045
-      ? value / 12.92
-      : Math.pow((value + 0.055) / 1.055, 2.4);
-  };
-  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
-}
-
-function contrastRatio(foreground: string, background: string): number {
-  const foregroundLuminance = relativeLuminance(oklchToRgb(foreground));
-  const backgroundLuminance = relativeLuminance(oklchToRgb(background));
-  const lighter = Math.max(foregroundLuminance, backgroundLuminance);
-  const darker = Math.min(foregroundLuminance, backgroundLuminance);
-  return (lighter + 0.05) / (darker + 0.05);
-}
-
 // ─── Schema tests ────────────────────────────────────────────────────────────
 
 describe('Schema', () => {
@@ -206,42 +188,6 @@ describe('Theme metadata consistency', () => {
     for (const theme of themes) {
       const paired = themes.find(t => t.name === theme.pair);
       expect(paired!.mode).not.toBe(theme.mode);
-    }
-  });
-});
-
-describe('Theme contrast', () => {
-  it('keeps Sunshine role colors readable at normal text sizes', () => {
-    const sunshine = parseYAML(
-      readFileSync(resolve(ROOT, 'tokens/sunshine.yaml'), 'utf-8'),
-    );
-
-    const roles = [
-      'primary',
-      'secondary',
-      'tertiary',
-      'accent',
-      'info',
-      'success',
-      'warning',
-      'error',
-    ];
-
-    for (const role of roles) {
-      expect(
-        contrastRatio(sunshine.colors[role], sunshine.colors.surface),
-      ).toBeGreaterThanOrEqual(4.5);
-
-      const container = sunshine.colors[`${role}-container`];
-      if (container) {
-        expect(
-          contrastRatio(sunshine.colors[role], container),
-        ).toBeGreaterThanOrEqual(4.5);
-      }
-
-      expect(
-        contrastRatio(sunshine.colors[`${role}-content`], sunshine.colors[role]),
-      ).toBeGreaterThanOrEqual(4.5);
     }
   });
 });

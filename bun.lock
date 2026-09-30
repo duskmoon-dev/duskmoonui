@@ -60,7 +60,7 @@
     },
     "packages/core": {
       "name": "@duskmoon-dev/core",
-      "version": "1.18.3",
+      "version": "1.19.10",
       "devDependencies": {
         "@axe-core/playwright": "4.13.0",
         "@playwright/test": "1.62.1",
@@ -77,7 +77,7 @@
     },
     "packages/css-art": {
       "name": "@duskmoon-dev/css-art",
-      "version": "1.18.3",
+      "version": "1.19.10",
       "devDependencies": {
         "@types/bun": "latest",
         "lightningcss": "1.33.0",
@@ -88,7 +88,7 @@
       "name": "@duskmoon-dev/design",
       "version": "1.0.0",
       "devDependencies": {
-        "yaml": "2.9.0",
+        "yaml": "^2.7.0",
       },
     },
     "packages/docs": {
