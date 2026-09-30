@@ -27,9 +27,9 @@
       display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
       padding: 1rem 0;
     }
-    .theme-bar label { font-weight: 500; margin-right: 0.5rem; }
+    .theme-bar .theme-label { font-weight: 500; margin-right: 0.5rem; }
     .theme-btn {
-      border: 2px solid var(--color-outline-variant, #ccc);
+      border: 2px solid var(--color-outline, #ccc);
       background: var(--color-surface-container, #f0f0f0);
       color: var(--color-on-surface, #1a1a1a);
       padding: 0.4rem 1rem; border-radius: 2rem; cursor: pointer;
@@ -46,13 +46,13 @@
       font-size: 0.85rem; color: var(--color-on-surface-variant, #666);
       margin-top: 0.25rem;
     }
-    .theme-meta a { color: var(--color-primary, #4a90d9); text-decoration: none; }
+    a { color: var(--color-on-primary-container); text-decoration: underline; }
     .theme-meta a:hover { text-decoration: underline; }
-    .theme-btn:hover { border-color: var(--color-primary, #666); }
+    .theme-btn:hover { border-color: var(--color-on-primary-container); }
     .theme-btn.active {
       background: var(--color-primary, #333);
       color: var(--color-primary-content, #fff);
-      border-color: var(--color-primary, #333);
+      border-color: var(--color-on-primary-container);
     }
 
     /* Section */
@@ -199,6 +199,59 @@
       text-align: center; padding: 4rem;
       color: var(--color-on-surface-variant, #888);
     }
+    :is(button, input, select, a, summary):focus-visible {
+      outline: 3px solid var(--color-on-primary-container);
+      outline-offset: 3px;
+    }
+    button, input, select { font: inherit; }
+    .workspace { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 1rem; }
+    .workspace-nav { background: var(--color-surface-container-low); border-radius: 1rem; padding: 1rem; }
+    .workspace-nav button {
+      display: block; width: 100%; text-align: left; margin: 0.5rem 0;
+      background: transparent; color: var(--color-on-surface); border: 0;
+      border-left: 4px solid transparent; padding: 0.65rem; cursor: pointer;
+    }
+    .workspace-nav button[aria-pressed="true"] {
+      background: var(--color-primary-container); color: var(--color-on-primary-container);
+      border-left-color: var(--color-on-primary-container); font-weight: 700;
+    }
+    .workspace-card { background: var(--color-surface-bright); padding: 1.5rem; border-radius: 1rem; min-width: 0; }
+    .workspace-card h3 { font-family: Georgia, serif; font-size: 1.75rem; }
+    .muted { color: var(--color-on-surface-variant); }
+    .tonal-panel { background: var(--color-surface-container); padding: 1rem; margin: 1rem 0; border-radius: 0.75rem; }
+    .preview-input { display: block; margin: 0.4rem 0 1rem; width: 100%; max-width: 30rem;
+      background: var(--color-surface-bright); color: var(--color-on-surface);
+      border: 2px solid var(--color-outline); padding: 0.6rem 0.75rem; border-radius: var(--radius-field); }
+    .preview-actions, .preview-toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin: 1rem 0; }
+    .preview-button { background: var(--fill); color: var(--ink); border: 2px solid var(--color-outline);
+      border-radius: var(--radius-field); padding: 0.55rem 1rem; cursor: pointer; }
+    .preview-button[data-action="primary"], .preview-button[data-role="secondary"], .preview-button[data-role="tertiary"] {
+      border-color: var(--color-on-primary-container);
+    }
+    .preview-button[data-action="error"] { border-color: var(--color-error); }
+    .preview-button:hover { text-decoration: underline; }
+    .status-grid, .role-grid, .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+    .status-panel { background: var(--fill); color: var(--ink); padding: 0.75rem 1rem; border-radius: 0.75rem; }
+    .status-panel strong { display: block; }
+    .role-pair { padding: 0.8rem; border: 1px solid var(--color-outline-variant); border-radius: 0.75rem; }
+    .role-sample { background: var(--fill); color: var(--ink); padding: 0.75rem; margin: 0.4rem 0; border-radius: 0.5rem; }
+    .role-sample small { display: block; }
+    .preview-message { min-height: 1.6em; }
+    .table-scroll { overflow-x: auto; }
+    .preview-toolbar select { background: var(--color-surface-bright); color: var(--color-on-surface);
+      border: 2px solid var(--color-outline); padding: 0.5rem; border-radius: 0.5rem; }
+    .spacing-bar { max-width: 100%; }
+    .theme-meta { margin-bottom: 1.5rem; }
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      header { padding: 1rem 0; }
+      .workspace, .status-grid, .role-grid { grid-template-columns: 1fr; }
+      .workspace-card { padding: 1rem; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .workspace-nav { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+      .workspace-nav button { width: auto; margin: 0; }
+      .type-table th, .type-table td { padding: 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -209,6 +262,7 @@
   <!-- Inline generated data at build time (populated by build script) -->
   <script id="theme-data" type="application/json">__THEME_DATA__</script>
   <script id="shared-data" type="application/json">__SHARED_DATA__</script>
+  <script id="contrast-data" type="application/json">__CONTRAST_DATA__</script>
   <!-- CSS is linked dynamically -->
 
   <script>
@@ -223,7 +277,9 @@
     }
 
     const themeNames = Object.keys(themes);
-    let activeTheme = themeNames[0];
+    let activeTheme = themes.sunshine ? 'sunshine' : themeNames[0];
+    let previewMode = 'oklch';
+    const contrastData = JSON.parse(document.getElementById('contrast-data').textContent);
 
     // Group themes by family using metadata
     const families = {};
@@ -253,16 +309,93 @@
     // ── Helpers ──
     const h = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 
-    function contrastText(hex) {
-      const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
-      const lum = (0.299*r + 0.587*g + 0.114*b) / 255;
-      return lum > 0.5 ? '#000' : '#fff';
-    }
-
     function oklchStr(c) {
       let s = `${c.l*100}% ${c.c} ${c.h}`;
       if (c.alpha != null) s += ` / ${c.alpha*100}%`;
       return s;
+    }
+
+    function roleStyle(fill, ink) {
+      return `--fill:var(--color-${fill});--ink:var(--color-${ink})`;
+    }
+
+    function previewColor(color) {
+      if (previewMode === 'oklch') return `oklch(${oklchStr(color)})`;
+      if (color.alpha == null) return color.hex;
+      const channels = [1, 3, 5].map(offset => parseInt(color.hex.slice(offset, offset + 2), 16));
+      return `rgb(${channels.join(' ')} / ${color.alpha})`;
+    }
+
+    function pairedComparison() {
+      const paired = themes[themes[activeTheme].meta.pair];
+      return `<details id="paired-comparison"><summary>Compare paired themes: ${h(activeTheme)} / ${h(paired.meta.name)}</summary>
+        <p class="muted">Semantic roles remain consistent; hues need not match. Moonlight is unchanged and needs its own contrast and gamut review.</p>
+        <div class="comparison-grid">${[themes[activeTheme], paired].map(theme => `<article class="role-pair" data-paired-theme="${theme.meta.name}" style="background:${previewColor(theme.colors.surface)};color:${previewColor(theme.colors['on-surface'])}">
+          <h3>${h(theme.meta.name)}</h3><div class="role-grid">${[['primary', 'Primary'], ['secondary', 'Supporting'], ['tertiary', 'Complementary'], ['error', 'Destructive']].map(([role, label]) => `<div class="role-sample" style="--fill:${previewColor(theme.colors[role])};--ink:${previewColor(theme.colors[`${role}-content`])}">${label}<small>${role} + ${role}-content</small></div>`).join('')}</div>
+        </article>`).join('')}</div></details>`;
+    }
+
+    function pairPreview(role) {
+      const report = contrastData[activeTheme];
+      return `<div class="role-pair"><strong>${h(role)}</strong>${['fill', 'container'].map(kind => {
+        const fill = kind === 'fill' ? role : `${role}-container`;
+        const ink = kind === 'fill' ? `${role}-content` : `on-${role}-container`;
+        if (!themes[activeTheme].colors[fill]) return '';
+        const check = report.checks.find(entry => entry.foreground === ink && entry.background === fill);
+        return `<div class="role-sample" data-fill="${fill}" data-ink="${ink}" style="${roleStyle(fill, ink)}">
+          ${h(fill)} + ${h(ink)}<small>Native ${check.ratio.toFixed(2)}:1 ${check.ratio >= check.minimum ? 'PASS' : 'FAIL'} · sRGB ${check.srgbRatio.toFixed(2)}:1 ${check.srgbRatio >= check.minimum ? 'PASS' : 'FAIL'} normal text (4.5:1)</small></div>`;
+      }).join('')}</div>`;
+    }
+
+    function workspacePreview() {
+      const report = contrastData[activeTheme];
+      const isSunshine = activeTheme === 'sunshine';
+      const failed = report.checks.filter(check => (previewMode === 'oklch' ? check.ratio : check.srgbRatio) < check.minimum);
+      return `<section id="role-preview" aria-labelledby="workspace-heading">
+        <h2 id="workspace-heading">${isSunshine ? 'A workspace lit by sunshine' : `${h(activeTheme)} workspace role preview`}</h2>
+        <p class="section-desc">${isSunshine ? 'Gold leads; lavender supports; sky blue complements. Action priority does not assign brand color: Save is gold, Cancel is neutral, Delete is destructive red.' : 'The same role contract in the paired/alternative theme: primary Save, neutral Cancel and error Delete. Existing palette concerns are shown without substituting different content colors.'}</p>
+        <div class="preview-toolbar"><label for="preview-mode">Color rendering</label>
+          <select id="preview-mode" onchange="setPreviewMode(this.value)">
+            <option value="oklch" ${previewMode === 'oklch' ? 'selected' : ''}>Native OKLCH (CSS / TypeScript)</option>
+            <option value="srgb" ${previewMode === 'srgb' ? 'selected' : ''}>Generated sRGB (JSON / Dart)</option>
+          </select><a href="#role-contrast">Inspect calculated contrast</a></div>
+        <div class="workspace">
+          <nav class="workspace-nav" aria-label="Workspace preview">
+            ${['Overview', 'Projects', 'Activity'].map((label, index) => `<button type="button" aria-pressed="${index === 0}" onclick="selectPanel(this)">${index === 0 ? '◈' : '◇'} ${label}</button>`).join('')}
+          </nav>
+          <article class="workspace-card">
+            <h3>Room to do your best work</h3><p class="muted">${isSunshine ? 'Warm canvas · white card · readable warm charcoal' : 'Surface canvas · bright surface card · normal and muted text'}</p>
+            <div class="tonal-panel"><strong>Today's workspace</strong><p class="muted">${isSunshine ? 'Cream layers provide hierarchy without painting the interface yellow.' : 'Surface-container layers provide hierarchy using the authored theme tokens.'}</p></div>
+            <label for="workspace-title">Project name</label><input class="preview-input" id="workspace-title" value="Sunlit studio">
+            <div class="preview-actions">
+              ${[['primary', 'Save'], ['neutral', 'Cancel'], ['error', 'Delete project']].map(([role, label]) => `<button type="button" class="preview-button" data-action="${role}" style="${roleStyle(role, `${role}-content`)}" onclick="previewAction('${label}')">${label}</button>`).join('')}
+            </div>
+            <div class="preview-actions">
+              <button type="button" class="preview-button" data-role="secondary" style="${roleStyle('secondary', 'secondary-content')}" onclick="previewAction('Explore templates')">◇ Explore templates</button>
+              <button type="button" class="preview-button" data-role="tertiary" style="${roleStyle('tertiary', 'tertiary-content')}" onclick="previewAction('View insights')">↗ View insights</button>
+            </div>
+            <p class="preview-message muted" id="preview-message" aria-live="polite">Preview only. Tab through the controls to inspect keyboard focus.</p>
+            <div class="status-grid">
+              ${[['info', 'ⓘ', 'Information', 'Updates are available.'], ['success', '✓', 'Success', 'Your work is saved.'], ['warning', '⚠', 'Warning', 'Check before continuing.'], ['error', '!', 'Error', 'The project could not be deleted.']].map(([role, icon, label, message]) => `<div class="status-panel" data-fill="${role}-container" data-ink="on-${role}-container" style="${roleStyle(`${role}-container`, `on-${role}-container`)}"><strong><span aria-hidden="true">${icon}</span> ${label}</strong>${message}</div>`).join('')}
+            </div>
+          </article>
+        </div>
+        <div class="comparison-grid" id="role-comparisons">
+          <div><h3>Supporting brand versus destructive</h3><p class="muted">${isSunshine ? 'Lavender is not an error.' : 'A supporting brand role is not an error.'} Use labels, icons and explicit destructive wording, not hue alone.</p><div class="role-grid">${pairPreview('secondary')}${pairPreview('error')}</div></div>
+          <div><h3>Primary versus warning</h3><p class="muted">${isSunshine ? 'Gold action versus deeper orange warning.' : 'Primary action versus a semantic warning.'} Their semantic cues remain necessary.</p><div class="role-grid">${pairPreview('primary')}${pairPreview('warning')}</div></div>
+        </div>
+        ${pairedComparison()}
+        <details id="role-contrast"><summary id="pair-results">Filled/container contrast and actual gallery cues</summary>
+          <div class="role-grid">${['primary', 'secondary', 'tertiary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'].map(pairPreview).join('')}</div>
+          <div class="table-scroll"><table class="type-table"><thead><tr><th>Context</th><th>Foreground / adjacent background</th><th>Ratio / threshold</th></tr></thead><tbody>
+            ${report.checks.filter(check => check.minimum === 3 || check.label === 'gallery link text').map(check => {
+              const ratio = previewMode === 'oklch' ? check.ratio : check.srgbRatio;
+              return `<tr><td>${h(check.label)}</td><td>${h(check.foreground)} / ${h(check.background)}</td><td>${ratio.toFixed(2)}:1 / ${check.minimum}:1 ${ratio >= check.minimum ? 'PASS' : 'FAIL'}</td></tr>`;
+            }).join('')}</tbody></table></div>
+        </details>
+        <p class="muted">${failed.length} failing checks in these preview contexts; ${report.outOfGamut.length} authored out-of-sRGB tokens${report.outOfGamut.length ? `: ${report.outOfGamut.map(h).join(', ')}` : ''}. Other-theme failures are reported, not recolored.${report.outOfGamut.length ? ' Out-of-gamut contrast is a clipped-sRGB diagnostic, not a wide-gamut guarantee.' : ''}</p>
+        <p class="muted">Bright fills are not text ink or sole selection cues. Links and focus use on-primary-container; neutral control borders use outline, brand boundaries use on-primary-container and destructive boundaries use error. Decorative dividers use outline-variant. No demo-only hover/pressed palette is supplied; downstream state roles still need migration and verification.</p>
+      </section>`;
     }
 
     // ── Render ──
@@ -277,9 +410,9 @@
       const themeSwitcher = familyNames.length > 0
         ? familyNames.map(fam => `
             <span class="family-label">${h(fam)}</span>
-            ${families[fam].map(t => `<button class="theme-btn ${t === activeTheme ? 'active' : ''}" onclick="switchTheme('${t}')">${t}</button>`).join('')}
+            ${families[fam].map(t => `<button class="theme-btn ${t === activeTheme ? 'active' : ''}" data-theme-choice="${t}" aria-pressed="${t === activeTheme}" onclick="switchTheme('${t}')">${t}</button>`).join('')}
           `).join('<span class="family-sep"></span>')
-        : themeNames.map(t => `<button class="theme-btn ${t === activeTheme ? 'active' : ''}" onclick="switchTheme('${t}')">${t}</button>`).join('');
+        : themeNames.map(t => `<button class="theme-btn ${t === activeTheme ? 'active' : ''}" data-theme-choice="${t}" aria-pressed="${t === activeTheme}" onclick="switchTheme('${t}')">${t}</button>`).join('');
 
       document.getElementById('app').innerHTML = `
         <header>
@@ -287,11 +420,13 @@
           <p>OKLCH color system &middot; ${themeNames.length} themes in ${familyNames.length} families &middot; Material Design 3 type scale</p>
         </header>
 
-        <div class="theme-bar">
-          <label>Theme:</label>
+        <div class="theme-bar" role="group" aria-label="Theme">
+          <span class="theme-label">Theme:</span>
           ${themeSwitcher}
         </div>
         ${meta.description ? `<p class="theme-meta">${h(meta.description)} &middot; ${h(meta.mode)} mode &middot; pair: <a href="#" onclick="event.preventDefault();switchTheme('${meta.pair}')">${h(meta.pair)}</a></p>` : ''}
+
+        ${workspacePreview()}
 
         <!-- Colors -->
         <section>
@@ -304,7 +439,7 @@
                 ${g.keys.filter(k => colors[k]).map(k => {
                   const c = colors[k];
                   return `<div class="color-card">
-                    <div class="color-swatch" style="background-color:${c.hex}"></div>
+                    <div class="color-swatch" style="background-color:var(--color-${k})"></div>
                     <div class="color-info">
                       <div class="color-name">${h(k)}</div>
                       <div class="color-value">${h(c.hex)}</div>
@@ -335,7 +470,7 @@
         <section>
           <h2>Typography</h2>
           <p class="section-desc">Material Design 3 type scale — 15 styles across 5 categories</p>
-          <table class="type-table">
+          <div class="table-scroll"><table class="type-table">
             <thead><tr><th>Style</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th><th>Preview</th></tr></thead>
             <tbody>
               ${Object.entries(typeScale).map(([k, t]) => `
@@ -349,7 +484,7 @@
                 </tr>
               `).join('')}
             </tbody>
-          </table>
+          </table></div>
         </section>
 
         <!-- Spacing -->
@@ -407,8 +542,7 @@
       const data = themes[activeTheme];
       const root = document.documentElement;
       for (const [k, c] of Object.entries(data.colors)) {
-        const alpha = c.alpha != null ? ` / ${c.alpha * 100}%` : '';
-        root.style.setProperty(`--color-${k}`, `oklch(${c.l * 100}% ${c.c} ${c.h}${alpha})`);
+        root.style.setProperty(`--color-${k}`, previewColor(c));
       }
       for (const [k, v] of Object.entries(data.shape)) {
         if (k.startsWith('radius') || k.startsWith('size') || k === 'border') {
@@ -420,6 +554,25 @@
     function switchTheme(name) {
       activeTheme = name;
       render();
+      document.querySelector('.theme-btn.active').focus();
+    }
+
+    function setPreviewMode(mode) {
+      previewMode = mode;
+      render();
+      document.getElementById('preview-mode').focus();
+    }
+
+    function previewAction(label) {
+      document.getElementById('preview-message').textContent = `Preview only: ${label}. No production data changed.`;
+    }
+
+    function selectPanel(button) {
+      document.querySelectorAll('.workspace-nav button').forEach(entry => {
+        entry.setAttribute('aria-pressed', String(entry === button));
+        entry.textContent = `${entry === button ? '◈' : '◇'} ${entry.textContent.replace(/^[◈◇]\s*/, '')}`;
+      });
+      previewAction(button.textContent.trim());
     }
 
     // ── Init ──
