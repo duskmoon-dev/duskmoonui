@@ -61,7 +61,9 @@ Avatars are visual representations of users or entities. @duskmoon-dev/core prov
 
 ## Sizes
 
-Six sizes are available, from extra small to 2x large:
+Six size classes are available. The default Avatar is medium at 3rem (48px).
+`avatar-xl` and `avatar-2xl` both render at 6rem (96px); `avatar-2xl` is a
+compatibility alias that preserves the existing extra-large size.
 
 <ComponentShowcase
   title="Avatar Sizes"
@@ -77,10 +79,10 @@ Six sizes are available, from extra small to 2x large:
 
 - **Extra Small** (`avatar-xs`): 1.5rem (24px)
 - **Small** (`avatar-sm`): 2rem (32px)
-- **Medium** (`avatar-md`): 2.5rem (40px) - default
-- **Large** (`avatar-lg`): 3rem (48px)
-- **Extra Large** (`avatar-xl`): 4rem (64px)
-- **2X Large** (`avatar-2xl`): 6rem (96px)
+- **Medium** (`avatar-md`): 3rem (48px) - default
+- **Large** (`avatar-lg`): 4rem (64px)
+- **Extra Large** (`avatar-xl`): 6rem (96px)
+- **2X Large** (`avatar-2xl`): 6rem (96px), equivalent to `avatar-xl`
 
 ## Shapes
 
@@ -640,11 +642,11 @@ export function AvatarGroup({ max, size, dense = false, children }: AvatarGroupP
 | Class | Dimensions | Font Size |
 |-------|-----------|-----------|
 | `.avatar-xs` | 1.5rem (24px) | 0.625rem |
-| `.avatar-sm` | 2rem (32px) | 0.813rem |
-| `.avatar-md` | 2.5rem (40px) - default | 1rem |
-| `.avatar-lg` | 3rem (48px) | 1.25rem |
-| `.avatar-xl` | 4rem (64px) | 1.5rem |
-| `.avatar-2xl` | 6rem (96px) | 2rem |
+| `.avatar-sm` | 2rem (32px) | 0.75rem |
+| `.avatar-md` | 3rem (48px) - default | 1rem |
+| `.avatar-lg` | 4rem (64px) | 1.5rem |
+| `.avatar-xl` | 6rem (96px) | 2rem |
+| `.avatar-2xl` | 6rem (96px), equivalent to `.avatar-xl` | 2rem |
 
 ### Shape Classes
 

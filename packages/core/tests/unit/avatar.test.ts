@@ -6,6 +6,7 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { avatarStyles } from '../../src/components/avatar';
 
 describe('Avatar Component', () => {
   let css: string;
@@ -109,6 +110,7 @@ describe('Avatar Component', () => {
       { name: 'md', dim: '3rem' },
       { name: 'lg', dim: '4rem' },
       { name: 'xl', dim: '6rem' },
+      { name: '2xl', dim: '6rem' },
     ];
 
     for (const { name, dim } of sizes) {
@@ -131,7 +133,18 @@ describe('Avatar Component', () => {
         );
         expect(css).toMatch(regex);
       });
+
+      it(`keeps legacy plugin avatar-${name} dimensions aligned with CSS`, () => {
+        expect(avatarStyles[`.avatar-${name}`]).toMatchObject({
+          width: dim,
+          height: dim,
+        });
+      });
     }
+
+    it('keeps the legacy plugin default aligned with the medium size', () => {
+      expect(avatarStyles['.avatar']).toMatchObject({ width: '3rem', height: '3rem' });
+    });
   });
 
   describe('Shape Variants', () => {
