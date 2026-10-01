@@ -32,7 +32,15 @@ Use a real button with `popovertarget` and a matching `.dropdown-content[popover
   </div>
 </div>`} />
 
-Supporting browsers use CSS Anchor Positioning and automatically try alternate block and inline placements when space is constrained. A safe fixed viewport position keeps the content usable where anchor positioning is unavailable.
+Supporting browsers use CSS Anchor Positioning and automatically try alternate block and inline placements when space is constrained. Core gives the direct-child `button[popovertarget]` an explicit anchor and scopes it to its `.dropdown`, so separate and nested dropdowns each use their own trigger. Keep the button and `.dropdown-content[popover]` as direct children, with a unique Popover ID for each instance.
+
+Native button activation supplies an implicit invoker anchor. Core's explicit binding also keeps the same surface beside its trigger when application code calls `showPopover()` without an invoker:
+
+```js
+document.getElementById('demo-dropdown-popover').showPopover();
+```
+
+The browser still owns Popover visibility and dismissal. A safe fixed viewport position keeps the content usable where anchor positioning or anchor scoping is unavailable.
 
 ## Placement API
 
