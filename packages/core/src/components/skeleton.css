@@ -79,6 +79,12 @@
     border-radius: var(--radius-sm);
   }
 
+  .skeleton-input {
+    height: 2.75rem;
+    width: 100%;
+    border-radius: var(--radius-xs);
+  }
+
   .skeleton-image {
     aspect-ratio: 16 / 9;
     width: 100%;
