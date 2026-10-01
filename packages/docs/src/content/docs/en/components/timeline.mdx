@@ -211,6 +211,44 @@ Use different colors to categorize events or show status:
 </div>`}
 />
 
+### Accent, Neutral, and Base Markers
+
+Use `timeline-marker-accent`, `timeline-marker-neutral`, and `timeline-marker-base`
+for semantic marker colors. Accent and neutral use their matching content tokens;
+base uses `base-300` with `base-content`. Icons can appear on the marker itself or
+inside it, and nested dots use the matching content color.
+
+<ComponentShowcase
+  title="Semantic Marker Colors"
+  code={`<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-accent timeline-marker-icon" aria-hidden="true">★</div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">Featured Event</h3>
+      <p class="timeline-description">Accent marker with an icon.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-neutral" aria-hidden="true">
+      <span class="timeline-marker-icon">✓</span>
+    </div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">Routine Update</h3>
+      <p class="timeline-description">Neutral marker with a nested icon.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-marker timeline-marker-base" aria-hidden="true">
+      <span class="timeline-marker-dot"></span>
+    </div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">Background Event</h3>
+      <p class="timeline-description">Base marker with a contrasting dot.</p>
+    </div>
+  </div>
+</div>`}
+/>
+
 ## Icon Markers
 
 Add icons to markers for better visual communication:
@@ -571,7 +609,7 @@ interface TimelineItemProps {
   time: string;
   title: string;
   description: string;
-  markerColor?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'error';
+  markerColor?: 'primary' | 'secondary' | 'tertiary' | 'accent' | 'neutral' | 'base' | 'success' | 'error';
   state?: 'active' | 'pending';
   icon?: React.ReactNode;
 }
@@ -767,9 +805,13 @@ const markerClasses = (item) => {
 | `.timeline-marker` | Timeline marker dot (required) |
 | `.timeline-marker-secondary` | Secondary color marker |
 | `.timeline-marker-tertiary` | Tertiary color marker |
+| `.timeline-marker-accent` | Accent marker with accent content color |
+| `.timeline-marker-neutral` | Neutral marker with neutral content color |
+| `.timeline-marker-base` | Base-300 marker with base content color |
 | `.timeline-marker-success` | Success/green marker |
 | `.timeline-marker-error` | Error/red marker |
 | `.timeline-marker-icon` | Marker with icon content |
+| `.timeline-marker-dot` | Nested dot using the semantic marker content color |
 
 ### Content Classes
 
