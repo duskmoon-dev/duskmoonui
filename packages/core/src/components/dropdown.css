@@ -58,10 +58,20 @@
     }
   }
 
-  @supports (position-area: block-end) {
+  @supports (position-area: block-end) and (anchor-scope: --dm-dropdown-trigger) {
+    /* Keep the shared anchor name local to each dropdown, including nested ones. */
+    .dropdown {
+      anchor-scope: --dm-dropdown-trigger;
+    }
+
+    .dropdown > [popovertarget] {
+      anchor-name: --dm-dropdown-trigger;
+    }
+
     .dropdown > .dropdown-content[popover] {
       inset: auto;
       margin: 0.25rem;
+      position-anchor: --dm-dropdown-trigger;
       position-area: block-end span-inline-end;
       position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
     }
