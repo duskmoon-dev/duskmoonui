@@ -392,6 +392,8 @@ Place `.chat-status` below the bubble to show generation state, token speed, and
 
 Use `.chat-actions` for a row of existing buttons. Add `.chat-actions-hover` to reveal the actions when the message is hovered or contains keyboard focus. Actions remain visible on devices without hover. Omit the modifier when actions should always be visible.
 
+Use square icon buttons with descriptive `aria-label` attributes. Pair each button with a native [Tooltip](/duskmoonui/docs/en/components/tooltip/) through `interestfor` and `aria-describedby` to show its action name.
+
 The application supplies status text and metric values and handles each action. The buttons below demonstrate styling; they do not edit, retry, copy, or stop a response.
 
 <ComponentShowcase
@@ -408,7 +410,10 @@ The application supplies status text and metric values and handles each action. 
       <span class="chat-status-item"><span class="chat-status-value">12</span> tokens</span>
     </div>
     <div class="chat-actions chat-actions-hover">
-      <button type="button" class="btn btn-ghost btn-xs" aria-label="Edit your deployment question">Edit</button>
+      <button type="button" class="btn btn-ghost btn-xs btn-square" aria-label="Edit your deployment question" interestfor="demo-chat-edit-tip" aria-describedby="demo-chat-edit-tip" style="anchor-name: --demo-chat-edit">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m16 3 5 5-12 12H4v-5Z"/><path d="m14 5 5 5"/></svg>
+      </button>
+      <div id="demo-chat-edit-tip" popover="hint" class="tooltip" role="tooltip" style="position-anchor: --demo-chat-edit">Edit</div>
     </div>
   </div>
 
@@ -424,7 +429,10 @@ The application supplies status text and metric values and handles each action. 
       <span class="chat-status-item"><span class="chat-status-value">256</span> tokens</span>
     </div>
     <div class="chat-actions">
-      <button type="button" class="btn btn-ghost btn-xs" aria-label="Stop generating the deployment summary">Stop</button>
+      <button type="button" class="btn btn-ghost btn-xs btn-square" aria-label="Stop generating the deployment summary" interestfor="demo-chat-stop-tip" aria-describedby="demo-chat-stop-tip" style="anchor-name: --demo-chat-stop">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+      </button>
+      <div id="demo-chat-stop-tip" popover="hint" class="tooltip" role="tooltip" style="position-anchor: --demo-chat-stop">Stop</div>
     </div>
   </div>
 
@@ -440,8 +448,14 @@ The application supplies status text and metric values and handles each action. 
       <span class="chat-status-item"><span class="chat-status-value">1,248</span> tokens</span>
     </div>
     <div class="chat-actions chat-actions-hover">
-      <button type="button" class="btn btn-ghost btn-xs" aria-label="Retry the deployment summary">Retry</button>
-      <button type="button" class="btn btn-ghost btn-xs" aria-label="Copy the deployment summary">Copy</button>
+      <button type="button" class="btn btn-ghost btn-xs btn-square" aria-label="Retry the deployment summary" interestfor="demo-chat-retry-tip" aria-describedby="demo-chat-retry-tip" style="anchor-name: --demo-chat-retry">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11a9 9 0 1 1 2.6 7.4"/><path d="M3 4v7h7"/></svg>
+      </button>
+      <div id="demo-chat-retry-tip" popover="hint" class="tooltip" role="tooltip" style="position-anchor: --demo-chat-retry">Retry</div>
+      <button type="button" class="btn btn-ghost btn-xs btn-square" aria-label="Copy the deployment summary" interestfor="demo-chat-copy-tip" aria-describedby="demo-chat-copy-tip" style="anchor-name: --demo-chat-copy">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+      <div id="demo-chat-copy-tip" popover="hint" class="tooltip" role="tooltip" style="position-anchor: --demo-chat-copy">Copy</div>
     </div>
   </div>
 </div>`}
