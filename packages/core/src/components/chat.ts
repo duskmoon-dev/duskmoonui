@@ -32,7 +32,7 @@ export const chatStyles: Record<string, any> = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 'var(--chat-scroll-indicator-gap)',
+    gap: '0',
     width: 'calc(var(--chat-scroll-indicator-active-size) * var(--chat-scroll-indicator-hover-scale))',
     height: '100cqh',
     margin: '0',
@@ -49,33 +49,47 @@ export const chatStyles: Record<string, any> = {
   },
 
   '.chat-scroll-indicator': {
-    display: 'block',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     flexShrink: '0',
-    width: 'var(--chat-scroll-indicator-size)',
-    height: 'var(--chat-scroll-indicator-thickness)',
+    width: '100%',
+    height: 'calc(var(--chat-scroll-indicator-thickness) + var(--chat-scroll-indicator-gap))',
     border: '0',
-    borderRadius: '999px',
     padding: '0',
+    margin: '0',
+    boxSizing: 'border-box',
     appearance: 'none',
-    backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 28%, transparent)',
+    backgroundColor: 'transparent',
     color: 'inherit',
     font: 'inherit',
-    opacity: '0.45',
     pointerEvents: 'auto',
     textDecoration: 'none',
     cursor: 'pointer',
+  },
+
+  '.chat-scroll-indicator::before': {
+    content: '""',
+    width: 'var(--chat-scroll-indicator-size)',
+    height: 'var(--chat-scroll-indicator-thickness)',
+    borderRadius: '999px',
+    backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 28%, transparent)',
+    opacity: '0.45',
+    pointerEvents: 'none',
     transform: 'scaleX(1)',
     transformOrigin: 'center',
     transition: 'transform 140ms ease, opacity 140ms ease, background-color 140ms ease',
   },
 
-  '.chat-scroll-indicator:hover, .chat-scroll-indicator:focus-visible': {
+  '.chat-scroll-indicator:hover::before, .chat-scroll-indicator:focus-visible::before': {
+    animation: 'none',
     transform: 'scaleX(var(--chat-scroll-indicator-hover-scale)) scaleY(1.35)',
     backgroundColor: 'var(--color-on-surface)',
     opacity: '1',
   },
 
-  '.chat-scroll-indicator:hover + .chat-scroll-indicator, .chat-scroll-indicator:has(+ .chat-scroll-indicator:hover)': {
+  '.chat-scroll-indicator:hover + .chat-scroll-indicator::before, .chat-scroll-indicator:has(+ .chat-scroll-indicator:hover)::before': {
+    animation: 'none',
     transform: 'scaleX(var(--chat-scroll-indicator-neighbor-scale)) scaleY(1.15)',
     backgroundColor: 'color-mix(in oklch, var(--color-on-surface) 55%, transparent)',
     opacity: '0.75',
@@ -88,6 +102,16 @@ export const chatStyles: Record<string, any> = {
   '.chat-scroll-indicator:focus-visible': {
     outline: 'none',
     boxShadow: '0 0 0 3px color-mix(in oklch, var(--color-primary) 20%, transparent)',
+  },
+
+  '@supports (animation-timeline: --chat-1)': {
+    '.chat-scroll-indicator::before': {
+      animationName: 'chat-scroll-indicator-activate',
+      animationDuration: '1ms',
+      animationTimingFunction: 'linear',
+      animationFillMode: 'both',
+      animationRange: 'entry 0% exit 100%',
+    },
   },
 
   '.chat[data-chat-tl="1"]': {
@@ -187,76 +211,76 @@ export const chatStyles: Record<string, any> = {
     viewTimelineAxis: 'block',
   },
 
-  '.chat-scroll-indicator[data-chat-tl="1"]': {
+  '.chat-scroll-indicator[data-chat-tl="1"]::before': {
     animationTimeline: '--chat-1',
   },
-  '.chat-scroll-indicator[data-chat-tl="2"]': {
+  '.chat-scroll-indicator[data-chat-tl="2"]::before': {
     animationTimeline: '--chat-2',
   },
-  '.chat-scroll-indicator[data-chat-tl="3"]': {
+  '.chat-scroll-indicator[data-chat-tl="3"]::before': {
     animationTimeline: '--chat-3',
   },
-  '.chat-scroll-indicator[data-chat-tl="4"]': {
+  '.chat-scroll-indicator[data-chat-tl="4"]::before': {
     animationTimeline: '--chat-4',
   },
-  '.chat-scroll-indicator[data-chat-tl="5"]': {
+  '.chat-scroll-indicator[data-chat-tl="5"]::before': {
     animationTimeline: '--chat-5',
   },
-  '.chat-scroll-indicator[data-chat-tl="6"]': {
+  '.chat-scroll-indicator[data-chat-tl="6"]::before': {
     animationTimeline: '--chat-6',
   },
-  '.chat-scroll-indicator[data-chat-tl="7"]': {
+  '.chat-scroll-indicator[data-chat-tl="7"]::before': {
     animationTimeline: '--chat-7',
   },
-  '.chat-scroll-indicator[data-chat-tl="8"]': {
+  '.chat-scroll-indicator[data-chat-tl="8"]::before': {
     animationTimeline: '--chat-8',
   },
-  '.chat-scroll-indicator[data-chat-tl="9"]': {
+  '.chat-scroll-indicator[data-chat-tl="9"]::before': {
     animationTimeline: '--chat-9',
   },
-  '.chat-scroll-indicator[data-chat-tl="10"]': {
+  '.chat-scroll-indicator[data-chat-tl="10"]::before': {
     animationTimeline: '--chat-10',
   },
-  '.chat-scroll-indicator[data-chat-tl="11"]': {
+  '.chat-scroll-indicator[data-chat-tl="11"]::before': {
     animationTimeline: '--chat-11',
   },
-  '.chat-scroll-indicator[data-chat-tl="12"]': {
+  '.chat-scroll-indicator[data-chat-tl="12"]::before': {
     animationTimeline: '--chat-12',
   },
-  '.chat-scroll-indicator[data-chat-tl="13"]': {
+  '.chat-scroll-indicator[data-chat-tl="13"]::before': {
     animationTimeline: '--chat-13',
   },
-  '.chat-scroll-indicator[data-chat-tl="14"]': {
+  '.chat-scroll-indicator[data-chat-tl="14"]::before': {
     animationTimeline: '--chat-14',
   },
-  '.chat-scroll-indicator[data-chat-tl="15"]': {
+  '.chat-scroll-indicator[data-chat-tl="15"]::before': {
     animationTimeline: '--chat-15',
   },
-  '.chat-scroll-indicator[data-chat-tl="16"]': {
+  '.chat-scroll-indicator[data-chat-tl="16"]::before': {
     animationTimeline: '--chat-16',
   },
-  '.chat-scroll-indicator[data-chat-tl="17"]': {
+  '.chat-scroll-indicator[data-chat-tl="17"]::before': {
     animationTimeline: '--chat-17',
   },
-  '.chat-scroll-indicator[data-chat-tl="18"]': {
+  '.chat-scroll-indicator[data-chat-tl="18"]::before': {
     animationTimeline: '--chat-18',
   },
-  '.chat-scroll-indicator[data-chat-tl="19"]': {
+  '.chat-scroll-indicator[data-chat-tl="19"]::before': {
     animationTimeline: '--chat-19',
   },
-  '.chat-scroll-indicator[data-chat-tl="20"]': {
+  '.chat-scroll-indicator[data-chat-tl="20"]::before': {
     animationTimeline: '--chat-20',
   },
-  '.chat-scroll-indicator[data-chat-tl="21"]': {
+  '.chat-scroll-indicator[data-chat-tl="21"]::before': {
     animationTimeline: '--chat-21',
   },
-  '.chat-scroll-indicator[data-chat-tl="22"]': {
+  '.chat-scroll-indicator[data-chat-tl="22"]::before': {
     animationTimeline: '--chat-22',
   },
-  '.chat-scroll-indicator[data-chat-tl="23"]': {
+  '.chat-scroll-indicator[data-chat-tl="23"]::before': {
     animationTimeline: '--chat-23',
   },
-  '.chat-scroll-indicator[data-chat-tl="24"]': {
+  '.chat-scroll-indicator[data-chat-tl="24"]::before': {
     animationTimeline: '--chat-24',
   },
 
@@ -328,6 +352,53 @@ export const chatStyles: Record<string, any> = {
     marginBottom: '0',
   },
 
+  '.chat-status': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '0.25rem 0.75rem',
+    color: 'var(--color-on-surface-variant)',
+    fontSize: '0.75rem',
+    lineHeight: '1rem',
+    fontVariantNumeric: 'tabular-nums',
+  },
+
+  '.chat-status-item': {
+    display: 'inline-flex',
+    alignItems: 'baseline',
+    gap: '0.25rem',
+  },
+
+  '.chat-status-value': {
+    color: 'var(--color-on-surface)',
+    fontWeight: '500',
+  },
+
+  '.chat-actions': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '0.25rem',
+  },
+
+  '.chat-actions-hover': {
+    opacity: '0',
+    pointerEvents: 'none',
+    transition: 'opacity 140ms ease',
+  },
+
+  '.chat:hover .chat-actions-hover, .chat:focus-within .chat-actions-hover': {
+    opacity: '1',
+    pointerEvents: 'auto',
+  },
+
+  '@media (hover: none)': {
+    '.chat-actions-hover': {
+      opacity: '1',
+      pointerEvents: 'auto',
+    },
+  },
+
   '.chat-bubble': {
     '--chat-bubble-bg': 'var(--color-surface-container-highest)',
     '--chat-bubble-fg': 'var(--color-on-surface)',
@@ -337,11 +408,12 @@ export const chatStyles: Record<string, any> = {
     alignItems: 'stretch',
     gap: '0.5rem',
     maxWidth: 'min(80ch, 100%)',
+    minInlineSize: '0',
+    boxSizing: 'border-box',
     padding: '0.625rem 0.875rem',
     borderRadius: '1rem',
     backgroundColor: 'var(--chat-bubble-bg)',
     color: 'var(--chat-bubble-fg)',
-    boxShadow: 'inset 0 0 0 1px var(--color-outline-variant)',
     fontSize: '0.875rem',
     lineHeight: '1.45',
     overflowWrap: 'anywhere',
@@ -352,51 +424,52 @@ export const chatStyles: Record<string, any> = {
     minWidth: '0',
   },
 
-  '.chat-start .chat-bubble::before, .chat-end .chat-bubble::before, .chat-start .chat-bubble::after, .chat-end .chat-bubble::after': {
+  '.chat-bubble pre': {
+    maxInlineSize: '100%',
+    minInlineSize: '0',
+    overflow: 'auto',
+    whiteSpace: 'pre',
+  },
+
+  '.chat-bubble a': {
+    overflowWrap: 'anywhere',
+    textDecoration: 'underline',
+  },
+
+  '.chat-start .chat-bubble::before, .chat-end .chat-bubble::before': {
     content: '""',
     position: 'absolute',
-    top: '0',
-    clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
+    insetBlockEnd: '0',
+    inlineSize: '0.75rem',
+    blockSize: '0.75rem',
+    backgroundColor: 'var(--chat-bubble-bg)',
+    maskImage: 'radial-gradient(ellipse at 0 0, transparent 68%, black 72%)',
+    pointerEvents: 'none',
   },
 
   '.chat-start .chat-bubble::before': {
-    left: '-0.625rem',
-    width: '1rem',
-    height: '1rem',
-    backgroundColor: 'var(--color-outline-variant)',
-  },
-
-  '.chat-start .chat-bubble::after': {
-    left: '-0.5rem',
-    width: 'calc(1rem - 2px)',
-    height: 'calc(1rem - 2px)',
-    top: '1px',
-    backgroundColor: 'var(--chat-bubble-bg)',
+    insetInlineStart: '-0.5rem',
   },
 
   '.chat-start .chat-bubble': {
-    borderTopLeftRadius: '0',
+    borderEndStartRadius: '0',
   },
 
   '.chat-end .chat-bubble::before': {
-    right: '-0.625rem',
-    width: '1rem',
-    height: '1rem',
-    backgroundColor: 'var(--color-outline-variant)',
-    transform: 'scaleX(-1)',
-  },
-
-  '.chat-end .chat-bubble::after': {
-    right: '-0.5rem',
-    width: 'calc(1rem - 2px)',
-    height: 'calc(1rem - 2px)',
-    top: '1px',
-    backgroundColor: 'var(--chat-bubble-bg)',
+    insetInlineEnd: '-0.5rem',
     transform: 'scaleX(-1)',
   },
 
   '.chat-end .chat-bubble': {
-    borderTopRightRadius: '0',
+    borderEndEndRadius: '0',
+  },
+
+  '.chat-start:dir(rtl) .chat-bubble::before': {
+    transform: 'scaleX(-1)',
+  },
+
+  '.chat-end:dir(rtl) .chat-bubble::before': {
+    transform: 'none',
   },
 
   '.chat-bubble-primary': {
@@ -631,13 +704,21 @@ export const chatStyles: Record<string, any> = {
 
   '.chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after': {
     content: '""',
+    position: 'static',
+    inset: 'auto',
     display: 'inline-block',
     width: '1px',
     height: '1em',
     marginLeft: '0.25rem',
     backgroundColor: 'currentColor',
+    clipPath: 'none',
+    transform: 'none',
     verticalAlign: '-0.125em',
     animation: 'chat-stream-caret 1s step-end infinite',
+  },
+
+  '.chat-bubble.chat-bubble-streaming:not(:has(.chat-reasoning, .chat-tool, .chat-bubble-content))': {
+    display: 'block',
   },
 
   '.chat-bubble.chat-bubble-streaming:has(.chat-reasoning, .chat-tool, .chat-bubble-content)::after': {
@@ -672,6 +753,25 @@ export const chatStyles: Record<string, any> = {
   '@keyframes chat-tool-spin': {
     to: {
       transform: 'rotate(360deg)',
+    },
+  },
+
+  '@media (prefers-reduced-motion: reduce)': {
+    '.chat-scroll': {
+      scrollBehavior: 'auto',
+    },
+    '.chat-scroll-indicator::before': {
+      animation: 'none',
+      transition: 'none',
+    },
+    '.chat-actions-hover': {
+      transition: 'none',
+    },
+    '.chat-typing::before, .chat-typing::after, .chat-typing span, .chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after, .chat-tool-running .chat-tool-header::before': {
+      animation: 'none',
+    },
+    '.chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after': {
+      opacity: '1',
     },
   },
 };

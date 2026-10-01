@@ -38,9 +38,9 @@ test('Chat curved tails follow start/end in both directions and preserve variant
     await fixture(page, ['start','end'].map(side => ['','primary','secondary','tertiary','info','success','warning','error'].map(role => `<div class="chat chat-${side}"><div class="chat-bubble ${role ? `chat-bubble-${role}` : ''}">${role || 'Default'} bubble</div></div>`).join('')).join(''), 'sunshine', dir);
     const bubbles=page.locator('.chat-bubble');
     for (const bubble of await bubbles.all()) {
-      const tail=await bubble.evaluate(el => { const s=getComputedStyle(el,'::before'); return {mask:s.maskImage,top:s.top,bg:s.backgroundColor,body:getComputedStyle(el).backgroundColor}; });
+      const tail=await bubble.evaluate(el => { const s=getComputedStyle(el,'::before'); return {mask:s.maskImage,bottom:s.bottom,bg:s.backgroundColor,body:getComputedStyle(el).backgroundColor}; });
       expect(tail.mask).toContain('radial-gradient');
-      expect(tail.top).toBe('0px');
+      expect(tail.bottom).toBe('0px');
       expect(tail.bg).toBe(tail.body);
     }
     await page.screenshot({path:testInfo.outputPath(`chat-tails-${dir}.png`),fullPage:true});

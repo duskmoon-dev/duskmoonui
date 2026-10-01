@@ -35,6 +35,11 @@ describe('Chat Component', () => {
         '.chat-avatar',
         '.chat-header',
         '.chat-footer',
+        '.chat-status',
+        '.chat-status-item',
+        '.chat-status-value',
+        '.chat-actions',
+        '.chat-actions-hover',
         '.chat-bubble',
       ]) {
         expect(css).toContain(className);
@@ -61,10 +66,8 @@ describe('Chat Component', () => {
       );
     });
 
-    it('should outline default bubbles for dark surface contrast', () => {
-      expect(css).toMatch(
-        /\.chat-bubble\s*\{[^}]*box-shadow:\s*inset 0 0 0 1px var\(--color-outline-variant\)/s,
-      );
+    it('should keep the bubble and tail fill seamless', () => {
+      expect(css).not.toMatch(/\.chat-bubble\s*\{[^}]*box-shadow:\s*inset/s);
     });
 
     it('should use on-surface text color on default bubble', () => {
@@ -107,10 +110,10 @@ describe('Chat Component', () => {
       );
       expect(css).toContain('animation-range: entry 0% exit 100%');
       expect(css).toContain(
-        '.chat-scroll-indicator[data-chat-tl="1"]',
+        '.chat-scroll-indicator[data-chat-tl="1"]::before',
       );
       expect(css).toMatch(
-        /\.chat-scroll-indicator\[data-chat-tl="1"\]\s*\{[^}]*animation-timeline:\s*--chat-1/s,
+        /\.chat-scroll-indicator\[data-chat-tl="1"\]::before\s*\{[^}]*animation-timeline:\s*--chat-1/s,
       );
     });
 
@@ -127,7 +130,7 @@ describe('Chat Component', () => {
 
     it('should enlarge indicators on hover with neighbor fisheye', () => {
       expect(css).toMatch(
-        /\.chat-scroll-indicator:hover,\s*\.chat-scroll-indicator:focus-visible\s*\{[^}]*scaleX\(var\(--chat-scroll-indicator-hover-scale\)\)/s,
+        /\.chat-scroll-indicator:hover::before,\s*\.chat-scroll-indicator:focus-visible::before\s*\{[^}]*scaleX\(var\(--chat-scroll-indicator-hover-scale\)\)/s,
       );
       expect(css).toContain(
         '.chat-scroll-indicator:hover + .chat-scroll-indicator',
@@ -152,17 +155,17 @@ describe('Chat Component', () => {
         /prefers-reduced-motion:[^)]+reduce[^}]*\.chat-scroll\s*\{[^}]*scroll-behavior:\s*auto/s,
       );
       expect(css).toMatch(
-        /prefers-reduced-motion:[^)]+reduce[\s\S]*\.chat-scroll-indicator\s*\{[^}]*animation:\s*none/s,
+        /prefers-reduced-motion:[^)]+reduce[\s\S]*\.chat-scroll-indicator::before\s*\{[^}]*animation:\s*none/s,
       );
     });
   });
 
   describe('Bubble tail', () => {
-    it('uses curved matching-fill tails with logical top placement', () => {
-      expect(css).toMatch(/\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*inset-block-start:\s*0[^}]*background-color:\s*var\(--chat-bubble-bg\)[^}]*mask-image:\s*radial-gradient/s);
+    it('uses curved matching-fill tails with logical bottom placement', () => {
+      expect(css).toMatch(/\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*inset-block-end:\s*0[^}]*background-color:\s*var\(--chat-bubble-bg\)[^}]*mask-image:\s*radial-gradient\(ellipse at 0 0/s);
       expect(css).toMatch(/\.chat-end \.chat-bubble::before\s*\{[^}]*inset-inline-end:\s*-0\.5rem[^}]*transform:\s*scaleX\(-1\)/s);
-      expect(css).toContain('border-start-start-radius: 0');
-      expect(css).toContain('border-start-end-radius: 0');
+      expect(css).toContain('border-end-start-radius: 0');
+      expect(css).toContain('border-end-end-radius: 0');
       expect(css).toContain('.chat-start:dir(rtl)');
       expect(css).toContain('.chat-end:dir(rtl)');
     });

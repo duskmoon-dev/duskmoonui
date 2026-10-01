@@ -26,7 +26,7 @@ Chat provides CSS-only primitives for conversational interfaces. It supports use
 
 ## Basic Usage
 
-Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put any existing `.avatar` inside `.chat-avatar`.
+Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put any existing `.avatar` inside `.chat-avatar`. Bubbles have a curved tail at the lower corner beside the avatar. Start and end alignment follow the text direction, including RTL transcripts.
 
 Wrap a transcript in `.chat-scroll` when the conversation should scroll inside a fixed-height panel. Scroll behavior defaults to `smooth`. Pair **agent replies** with matching indicators via `data-chat-tl` so Scroll-Driven Animations can sync the rail with visible assistant rows.
 
@@ -58,6 +58,8 @@ Wrap a transcript in `.chat-scroll` when the conversation should scroll inside a
 `.chat-scroll` hoists named view timelines with `timeline-scope` (`--chat-1` … `--chat-24`). Pair **agent / assistant rows only** (`.chat-start`) with matching indicators: `.chat[data-chat-tl="N"]` declares `view-timeline-name`, and `.chat-scroll-indicator[data-chat-tl="N"]` binds `animation-timeline` + `animation-range: entry 0% exit 100%`.
 
 User turns stay in the transcript but do not get ticks. Click an indicator to jump to that agent response **inside** `.chat-scroll` — use `button` + `data-chat-target` (not bare `href="#…"`), otherwise the document will scroll. Docs demos wire the click handler; app code should call `scroller.scrollTo(...)` the same way.
+
+The dashes keep their visual spacing, while adjacent buttons have continuous hover and click areas. Moving through the space between dashes still selects an indicator.
 
 Requires a browser that supports Scroll-Driven Animations. Unsupported browsers still scroll smoothly; indicators stay in the idle style.
 
@@ -236,6 +238,30 @@ Color variants use soft container tones by default. Add `.chat-bubble-filled` wh
 </div>`}
 />
 
+## Right-To-Left Chat
+
+Set `dir="rtl"` on the transcript. `.chat-start` moves to the right and `.chat-end` to the left, with each bubble tail beside its avatar.
+
+<ComponentShowcase
+  title="RTL Bubble Alignment"
+  code={`<div id="demo-chat-rtl" dir="rtl" lang="ar" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+  <div class="chat chat-start">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-primary">AI</div>
+    </div>
+    <div class="chat-header">المساعد</div>
+    <div class="chat-bubble">كيف يمكنني مساعدتك اليوم؟</div>
+  </div>
+  <div class="chat chat-end">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm">GA</div>
+    </div>
+    <div class="chat-header">أنت</div>
+    <div class="chat-bubble chat-bubble-primary">أرني مثالاً للمحادثة.</div>
+  </div>
+</div>`}
+/>
+
 ## Bubble Sizes
 
 Use bubble size modifiers for dense history views or larger conversational layouts.
@@ -360,6 +386,67 @@ Use `.chat-typing` inside an empty bubble while waiting for the first token. Use
 </div>`}
 />
 
+## Message Status And Actions
+
+Place `.chat-status` below the bubble to show generation state, token speed, and token count. Group each metric in `.chat-status-item` and emphasize its number with `.chat-status-value`. Metrics wrap on narrow screens and use tabular numerals.
+
+Use `.chat-actions` for a row of existing buttons. Add `.chat-actions-hover` to reveal the actions when the message is hovered or contains keyboard focus. Actions remain visible on devices without hover. Omit the modifier when actions should always be visible.
+
+The application supplies status text and metric values and handles each action. The buttons below demonstrate styling; they do not edit, retry, copy, or stop a response.
+
+<ComponentShowcase
+  title="Token Metrics and Message Actions"
+  code={`<div id="demo-chat-status-actions" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+  <div class="chat chat-end">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm">GA</div>
+    </div>
+    <div class="chat-header">You</div>
+    <div class="chat-bubble chat-bubble-primary">Summarize the deployment checks.</div>
+    <div class="chat-status">
+      <span class="chat-status-item">Sent</span>
+      <span class="chat-status-item"><span class="chat-status-value">12</span> tokens</span>
+    </div>
+    <div class="chat-actions chat-actions-hover">
+      <button type="button" class="btn btn-ghost btn-xs" aria-label="Edit your deployment question">Edit</button>
+    </div>
+  </div>
+
+  <div class="chat chat-start">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-secondary">AI</div>
+    </div>
+    <div class="chat-header">Assistant · Generating</div>
+    <div class="chat-bubble chat-bubble-streaming">Checking the build and smoke-test results</div>
+    <div class="chat-status">
+      <span class="chat-status-item">Generating</span>
+      <span class="chat-status-item"><span class="chat-status-value">42</span> token/s</span>
+      <span class="chat-status-item"><span class="chat-status-value">256</span> tokens</span>
+    </div>
+    <div class="chat-actions">
+      <button type="button" class="btn btn-ghost btn-xs" aria-label="Stop generating the deployment summary">Stop</button>
+    </div>
+  </div>
+
+  <div class="chat chat-start">
+    <div class="chat-avatar">
+      <div class="avatar avatar-sm avatar-primary">AI</div>
+    </div>
+    <div class="chat-header">Assistant · Completed</div>
+    <div class="chat-bubble">The build completed and all deployment smoke tests passed.</div>
+    <div class="chat-status">
+      <span class="chat-status-item">Completed</span>
+      <span class="chat-status-item"><span class="chat-status-value">42</span> token/s</span>
+      <span class="chat-status-item"><span class="chat-status-value">1,248</span> tokens</span>
+    </div>
+    <div class="chat-actions chat-actions-hover">
+      <button type="button" class="btn btn-ghost btn-xs" aria-label="Retry the deployment summary">Retry</button>
+      <button type="button" class="btn btn-ghost btn-xs" aria-label="Copy the deployment summary">Copy</button>
+    </div>
+  </div>
+</div>`}
+/>
+
 ## Tool Status
 
 Tool blocks use status modifiers so state is visible in both color and text.
@@ -430,16 +517,21 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 | `.chat-scroll` | Scrollable transcript (`overflow-y: auto`, `scroll-behavior: smooth`, `timeline-scope` for `--chat-1`…`--chat-24`) |
 | `.chat-scroll-track` | Sticky indicator rail (use `aria-hidden="true"` when indicators are decorative/duplicative) |
 | `.chat-scroll-body` | Message column that holds `.chat` rows |
-| `.chat-scroll-indicator` | Dash indicator for an agent reply; bind with `data-chat-tl="N"` + `data-chat-target="message-id"` (prefer `<button>`, not hash links) |
+| `.chat-scroll-indicator` | Visually spaced dash with a continuous hover/click area beside adjacent indicators; bind with `data-chat-tl="N"` + `data-chat-target="message-id"` (prefer `<button>`, not hash links) |
 | `[data-chat-tl="N"]` | Shared slot `1`–`24` on **agent** `.chat` rows and their indicators |
 | `[data-chat-target]` | Message id to scroll to inside `.chat-scroll` (docs demo wires the click handler) |
 | `.chat` | Row wrapper for avatar and message stack |
-| `.chat-start` | Left-aligned row, commonly used for assistant messages |
-| `.chat-end` | Right-aligned row, commonly used for user messages |
+| `.chat-start` | Row aligned to the inline start (left in LTR, right in RTL), commonly used for assistant messages |
+| `.chat-end` | Row aligned to the inline end (right in LTR, left in RTL), commonly used for user messages |
 | `.chat-avatar` | Avatar slot; compose with the existing `.avatar` component |
 | `.chat-header` | Small muted metadata above the message stack |
 | `.chat-footer` | Small muted metadata below the message stack |
-| `.chat-bubble` | Message bubble with directional tail; may contain reasoning, tools, and `.chat-bubble-content` |
+| `.chat-status` | Wrapping muted status and metrics row below the bubble, with tabular numerals |
+| `.chat-status-item` | Inline group for one state label or metric |
+| `.chat-status-value` | Emphasized number within a metric |
+| `.chat-actions` | Always-visible action row; compose with existing button classes |
+| `.chat-actions-hover` | Modifier for `.chat-actions`; reveals on message hover or keyboard focus and stays visible on devices without hover |
+| `.chat-bubble` | Message bubble with a curved lower tail toward its avatar; may contain reasoning, tools, and `.chat-bubble-content` |
 | `.chat-bubble-content` | Final answer slot when the bubble also holds collapsible blocks |
 
 ### Bubble Modifiers
@@ -481,6 +573,8 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 - Use visible text for tool statuses such as `Pending`, `Running...`, `Done`, and `Failed`.
 - Add `aria-label="Assistant is typing"` to the bubble that contains `.chat-typing`, or place `aria-live="polite"` on the row stack.
 - Prefer native `<details>` and `<summary>` for reasoning and tool blocks so keyboard interaction works without custom JavaScript.
+- Use native buttons for message actions, with descriptive accessible names when repeated labels need context. Hover actions reveal when a button receives keyboard focus; they remain visible on touch devices without hover.
+- Keep status and token metrics readable as text. Let the application choose which state changes to announce; avoid announcing every token-count update.
 - `.chat-scroll` respects `prefers-reduced-motion` by switching `scroll-behavior` to `auto` and disabling indicator animations. Give the scroll container a reachable height. Map ticks only to agent reply starts. Prefer `<button data-chat-target>` over hash links so navigation stays inside the panel; give each indicator an `aria-label`.
 
 ## Related Components
