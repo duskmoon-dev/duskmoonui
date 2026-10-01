@@ -515,11 +515,11 @@
   .chat-end .chat-bubble::before {
     content: "";
     position: absolute;
-    inset-block-end: 0;
+    inset-block-start: 0;
     inline-size: 0.75rem;
     block-size: 0.75rem;
     background-color: var(--chat-bubble-bg);
-    mask-image: radial-gradient(ellipse at 0 0, transparent 68%, black 72%);
+    mask-image: radial-gradient(ellipse at 0 100%, transparent 68%, black 72%);
     pointer-events: none;
   }
 
@@ -528,7 +528,7 @@
   }
 
   .chat-start .chat-bubble {
-    border-end-start-radius: 0;
+    border-start-start-radius: 0;
   }
 
   .chat-end .chat-bubble::before {
@@ -537,7 +537,7 @@
   }
 
   .chat-end .chat-bubble {
-    border-end-end-radius: 0;
+    border-start-end-radius: 0;
   }
 
   .chat-start:dir(rtl) .chat-bubble::before { transform: scaleX(-1); }

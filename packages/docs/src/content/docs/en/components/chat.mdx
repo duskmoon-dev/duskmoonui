@@ -26,7 +26,7 @@ Chat provides CSS-only primitives for conversational interfaces. It supports use
 
 ## Basic Usage
 
-Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put any existing `.avatar` inside `.chat-avatar`. Bubbles have a curved tail at the lower corner beside the avatar. Start and end alignment follow the text direction, including RTL transcripts.
+Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put any existing `.avatar` inside `.chat-avatar`. Bubbles have a curved tail at the upper corner beside the top-aligned avatar. Start and end alignment follow the text direction, including RTL transcripts.
 
 Wrap a transcript in `.chat-scroll` when the conversation should scroll inside a fixed-height panel. Scroll behavior defaults to `smooth`. Pair **agent replies** with matching indicators via `data-chat-tl` so Scroll-Driven Animations can sync the rail with visible assistant rows.
 
@@ -531,7 +531,7 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 | `.chat-status-value` | Emphasized number within a metric |
 | `.chat-actions` | Always-visible action row; compose with existing button classes |
 | `.chat-actions-hover` | Modifier for `.chat-actions`; reveals on message hover or keyboard focus and stays visible on devices without hover |
-| `.chat-bubble` | Message bubble with a curved lower tail toward its avatar; may contain reasoning, tools, and `.chat-bubble-content` |
+| `.chat-bubble` | Message bubble with a curved upper tail toward its top-aligned avatar; may contain reasoning, tools, and `.chat-bubble-content` |
 | `.chat-bubble-content` | Final answer slot when the bubble also holds collapsible blocks |
 
 ### Bubble Modifiers

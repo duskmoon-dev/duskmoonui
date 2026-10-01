@@ -439,11 +439,11 @@ export const chatStyles: Record<string, any> = {
   '.chat-start .chat-bubble::before, .chat-end .chat-bubble::before': {
     content: '""',
     position: 'absolute',
-    insetBlockEnd: '0',
+    insetBlockStart: '0',
     inlineSize: '0.75rem',
     blockSize: '0.75rem',
     backgroundColor: 'var(--chat-bubble-bg)',
-    maskImage: 'radial-gradient(ellipse at 0 0, transparent 68%, black 72%)',
+    maskImage: 'radial-gradient(ellipse at 0 100%, transparent 68%, black 72%)',
     pointerEvents: 'none',
   },
 
@@ -452,7 +452,7 @@ export const chatStyles: Record<string, any> = {
   },
 
   '.chat-start .chat-bubble': {
-    borderEndStartRadius: '0',
+    borderStartStartRadius: '0',
   },
 
   '.chat-end .chat-bubble::before': {
@@ -461,7 +461,7 @@ export const chatStyles: Record<string, any> = {
   },
 
   '.chat-end .chat-bubble': {
-    borderEndEndRadius: '0',
+    borderStartEndRadius: '0',
   },
 
   '.chat-start:dir(rtl) .chat-bubble::before': {

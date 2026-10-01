@@ -35,7 +35,7 @@ describe('Data Display contracts', () => {
   });
   it('uses curved logical Chat tails instead of triangular corner flags', () => {
     const css = source('chat');
-    expect(css).toContain('border-end-start-radius');
+    expect(css).toContain('border-start-start-radius');
     expect(css).toContain('radial-gradient');
     expect(css).not.toContain('clip-path: polygon(0 0, 100% 0, 100% 100%)');
   });

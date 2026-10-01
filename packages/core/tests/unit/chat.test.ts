@@ -161,11 +161,11 @@ describe('Chat Component', () => {
   });
 
   describe('Bubble tail', () => {
-    it('uses curved matching-fill tails with logical bottom placement', () => {
-      expect(css).toMatch(/\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*inset-block-end:\s*0[^}]*background-color:\s*var\(--chat-bubble-bg\)[^}]*mask-image:\s*radial-gradient\(ellipse at 0 0/s);
+    it('uses curved matching-fill tails with logical top placement', () => {
+      expect(css).toMatch(/\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*inset-block-start:\s*0[^}]*background-color:\s*var\(--chat-bubble-bg\)[^}]*mask-image:\s*radial-gradient\(ellipse at 0 100%/s);
       expect(css).toMatch(/\.chat-end \.chat-bubble::before\s*\{[^}]*inset-inline-end:\s*-0\.5rem[^}]*transform:\s*scaleX\(-1\)/s);
-      expect(css).toContain('border-end-start-radius: 0');
-      expect(css).toContain('border-end-end-radius: 0');
+      expect(css).toContain('border-start-start-radius: 0');
+      expect(css).toContain('border-start-end-radius: 0');
       expect(css).toContain('.chat-start:dir(rtl)');
       expect(css).toContain('.chat-end:dir(rtl)');
     });
