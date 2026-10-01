@@ -82,6 +82,54 @@ export const timelineStyles: Record<string, any> = {
     fontSize: '0.875rem',
   },
 
+  '.timeline-marker-accent': {
+    backgroundColor: 'var(--color-accent)',
+    borderColor: 'var(--color-accent)',
+    color: 'var(--color-accent-content)',
+    boxShadow: '0 0 0 2px var(--color-accent)',
+  },
+
+  '.timeline-marker-accent .timeline-marker-icon': {
+    backgroundColor: 'var(--color-accent)',
+    color: 'var(--color-accent-content)',
+  },
+
+  '.timeline-marker-accent .timeline-marker-dot': {
+    backgroundColor: 'var(--color-accent-content)',
+  },
+
+  '.timeline-marker-neutral': {
+    backgroundColor: 'var(--color-neutral)',
+    borderColor: 'var(--color-neutral)',
+    color: 'var(--color-neutral-content)',
+    boxShadow: '0 0 0 2px var(--color-neutral)',
+  },
+
+  '.timeline-marker-neutral .timeline-marker-icon': {
+    backgroundColor: 'var(--color-neutral)',
+    color: 'var(--color-neutral-content)',
+  },
+
+  '.timeline-marker-neutral .timeline-marker-dot': {
+    backgroundColor: 'var(--color-neutral-content)',
+  },
+
+  '.timeline-marker-base': {
+    backgroundColor: 'var(--color-base-300)',
+    borderColor: 'var(--color-base-300)',
+    color: 'var(--color-base-content)',
+    boxShadow: '0 0 0 2px var(--color-base-300)',
+  },
+
+  '.timeline-marker-base .timeline-marker-icon': {
+    backgroundColor: 'var(--color-base-300)',
+    color: 'var(--color-base-content)',
+  },
+
+  '.timeline-marker-base .timeline-marker-dot': {
+    backgroundColor: 'var(--color-base-content)',
+  },
+
   // Timeline content
   '.timeline-content': {
     flex: '1',

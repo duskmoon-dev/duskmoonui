@@ -168,6 +168,47 @@
   .timeline-marker-tertiary { border-color: var(--color-tertiary); background: var(--color-tertiary-container); }
   .timeline-marker-success { border-color: var(--color-success); background: var(--color-success-container); }
   .timeline-marker-error { border-color: var(--color-error); background: var(--color-error-container); }
+  .timeline-marker-accent {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+
+  .timeline-marker-accent .timeline-marker-icon {
+    color: var(--color-accent-content);
+  }
+
+  .timeline-marker-accent .timeline-marker-dot {
+    background-color: var(--color-accent-content);
+  }
+
+  .timeline-marker-neutral {
+    border-color: var(--color-neutral);
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
+  }
+
+  .timeline-marker-neutral .timeline-marker-icon {
+    color: var(--color-neutral-content);
+  }
+
+  .timeline-marker-neutral .timeline-marker-dot {
+    background-color: var(--color-neutral-content);
+  }
+
+  .timeline-marker-base {
+    border-color: var(--color-base-300);
+    background-color: var(--color-base-300);
+    color: var(--color-base-content);
+  }
+
+  .timeline-marker-base .timeline-marker-icon {
+    color: var(--color-base-content);
+  }
+
+  .timeline-marker-base .timeline-marker-dot {
+    background-color: var(--color-base-content);
+  }
   .timeline-item-active > .timeline-marker { border-color: var(--color-primary); background: var(--color-primary-container); }
   .timeline-item-pending > .timeline-marker { border-style: dashed; }
   .timeline-compact > .timeline-item { padding-block-end: 0.75rem; gap: 0.5rem; }

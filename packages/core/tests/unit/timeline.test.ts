@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { timelineStyles } from '../../src/components/timeline';
 
 describe('Timeline Component', () => {
   let css: string;
@@ -40,4 +41,27 @@ describe('Timeline Component', () => {
   it('should define color variants for timeline items', () => {
     expect(css).toMatch(/\.timeline-item-primary|\.timeline-primary/);
   });
+
+  for (const [role, background, content] of [
+    ['accent', 'accent', 'accent-content'],
+    ['neutral', 'neutral', 'neutral-content'],
+    ['base', 'base-300', 'base-content'],
+  ]) {
+    it(`styles ${role} markers and their content in the legacy plugin`, () => {
+      const selector = `.timeline-marker-${role}`;
+      expect(timelineStyles[selector]).toMatchObject({
+        backgroundColor: `var(--color-${background})`,
+        borderColor: `var(--color-${background})`,
+        color: `var(--color-${content})`,
+        boxShadow: `0 0 0 2px var(--color-${background})`,
+      });
+      expect(timelineStyles[`${selector} .timeline-marker-icon`]).toMatchObject({
+        backgroundColor: `var(--color-${background})`,
+        color: `var(--color-${content})`,
+      });
+      expect(timelineStyles[`${selector} .timeline-marker-dot`]).toEqual({
+        backgroundColor: `var(--color-${content})`,
+      });
+    });
+  }
 });
