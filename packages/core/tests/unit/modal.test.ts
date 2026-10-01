@@ -6,6 +6,7 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { modalStyles } from '../../src/components/modal';
 
 describe('Modal Component', () => {
   let modalCSS: string;
@@ -32,16 +33,13 @@ describe('Modal Component', () => {
       expect(modalCSS).toMatch(/\.modal[^}]*(inset:\s*0|top:\s*0)/s);
     });
 
-    it('should use flexbox for centering', () => {
-      expect(modalCSS).toMatch(/\.modal[^}]*display:\s*(flex|grid)/s);
+    it('should use native dialog margins for centering', () => {
+      expect(modalCSS).toMatch(/dialog\.modal[^}]*margin:\s*auto/s);
     });
 
-    it('should center content', () => {
-      expect(modalCSS).toMatch(/\.modal[^}]*(align-items:\s*center|place-items:\s*center|justify-content:\s*center)/s);
-    });
-
-    it('should have high z-index', () => {
-      expect(modalCSS).toMatch(/\.modal[^}]*z-index/s);
+    it('should reset the native dialog border and padding', () => {
+      expect(modalCSS).toMatch(/dialog\.modal[^}]*padding:\s*0/s);
+      expect(modalCSS).toMatch(/dialog\.modal[^}]*border:\s*none/s);
     });
   });
 
@@ -63,7 +61,7 @@ describe('Modal Component', () => {
     });
 
     it('should have max-width for content', () => {
-      expect(modalCSS).toMatch(/\.modal-box[^}]*max-width/s);
+      expect(modalCSS).toMatch(/dialog\.modal[^}]*max-width/s);
     });
 
     it('should have max-height for scrollability', () => {
@@ -101,56 +99,28 @@ describe('Modal Component', () => {
     });
   });
 
-  describe('Modal Backdrop', () => {
-    it('should define .modal-backdrop class', () => {
-      expect(modalCSS).toContain('.modal-backdrop');
+  describe('Native Modal Contract', () => {
+    it('uses the browser backdrop instead of an overlay element', () => {
+      expect(modalCSS).toContain('dialog.modal::backdrop');
+      expect(modalCSS).toMatch(/dialog\.modal::backdrop[^}]*background-color/s);
+      expect(modalCSS).not.toMatch(/\.modal-backdrop\s*\{/);
     });
 
-    it('should use fixed positioning', () => {
-      expect(modalCSS).toMatch(/\.modal-backdrop[^}]*position:\s*(fixed|absolute)/s);
+    it('keeps closed dialogs hidden and derives state from open', () => {
+      expect(modalCSS).toMatch(/dialog\.modal:not\(\[open\]\)[^}]*display:\s*none/s);
+      expect(modalCSS).toMatch(/dialog\.modal\[open\][^}]*opacity:\s*1/s);
+      expect(modalCSS).not.toContain('.modal-open');
+      expect(modalCSS).not.toContain('.modal-toggle');
+      expect(modalCSS).not.toContain(':target');
+      expect(modalCSS).not.toContain('.modal-focus-trap');
     });
 
-    it('should cover full area', () => {
-      expect(modalCSS).toMatch(/\.modal-backdrop[^}]*(inset:\s*0|width:\s*100%)/s);
-    });
-
-    it('should have semi-transparent background', () => {
-      expect(modalCSS).toMatch(/\.modal-backdrop[^}]*background/s);
-    });
-
-    it('should be behind modal content', () => {
-      expect(modalCSS).toMatch(/\.modal-backdrop[^}]*z-index/s);
-    });
-  });
-
-  describe('Modal States', () => {
-    it('should be hidden by default', () => {
-      expect(modalCSS).toMatch(/\.modal[^}]*(visibility:\s*hidden|opacity:\s*0|display:\s*none)/s);
-    });
-
-    it('should define .modal-open class for visibility', () => {
-      expect(modalCSS).toContain('.modal-open');
-    });
-
-    it('should show modal when open', () => {
-      expect(modalCSS).toMatch(/\.modal-open[^}]*(visibility:\s*visible|opacity:\s*1|display:\s*flex)/s);
-    });
-
-    it('should support :target for pure CSS modal', () => {
-      expect(modalCSS).toMatch(/\.modal:target/);
-    });
-
-    it('should remain a legacy class API rather than styling native dialog', () => {
-      expect(modalCSS).not.toMatch(/dialog\.modal/);
-    });
-  });
-
-  describe('Modal Toggle', () => {
-    it('should define modal toggle mechanism', () => {
-      const hasToggle = modalCSS.includes('.modal-toggle') ||
-                        modalCSS.includes('input[type="checkbox"]') ||
-                        modalCSS.includes(':target');
-      expect(hasToggle).toBe(true);
+    it('keeps the Tailwind plugin on the same native contract', () => {
+      expect(modalStyles['dialog.modal']).toBeDefined();
+      expect(modalStyles['dialog.modal:not([open])']).toEqual({ display: 'none' });
+      expect(modalStyles['dialog.modal::backdrop']).toBeDefined();
+      expect(Object.keys(modalStyles).join(' ')).not.toMatch(/modal-open|modal-toggle|:target/);
+      expect(modalStyles['.modal']).toBeUndefined();
     });
   });
 

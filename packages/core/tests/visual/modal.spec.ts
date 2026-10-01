@@ -23,8 +23,7 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-96 bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-open">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal ">
             <div class="modal-box">
               <h3 class="modal-title">Modal Title</h3>
               <div class="modal-body">
@@ -35,12 +34,13 @@ test.describe('Visual Regression - Modal Component', () => {
                 <button class="btn btn-primary">Confirm</button>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('sunshine-modal-basic.png');
     });
 
@@ -50,8 +50,7 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-96 bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-sm modal-open">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal modal-sm ">
             <div class="modal-box">
               <h3 class="modal-title">Small Modal</h3>
               <div class="modal-body">
@@ -61,12 +60,13 @@ test.describe('Visual Regression - Modal Component', () => {
                 <button class="btn btn-primary btn-sm">OK</button>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('sunshine-modal-small.png');
     });
 
@@ -76,21 +76,21 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-96 bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-open">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal ">
             <div class="modal-box">
-              <button class="modal-close">×</button>
+              <button class="modal-close" aria-label="Close modal">×</button>
               <h3 class="modal-title">Closable Modal</h3>
               <div class="modal-body">
                 <p>Click the X button to close this modal.</p>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('sunshine-modal-closable.png');
     });
 
@@ -100,8 +100,7 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-96 bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-open alert-dialog">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal  alert-dialog">
             <div class="modal-box">
               <div class="modal-icon warning">⚠️</div>
               <h3 class="modal-title">Warning</h3>
@@ -113,12 +112,13 @@ test.describe('Visual Regression - Modal Component', () => {
                 <button class="btn btn-error">Delete</button>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('sunshine-alert-dialog.png');
     });
 
@@ -128,8 +128,7 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-96 bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-open modal-top">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal  modal-top">
             <div class="modal-box">
               <h3 class="modal-title">Top Positioned</h3>
               <div class="modal-body">
@@ -139,12 +138,13 @@ test.describe('Visual Regression - Modal Component', () => {
                 <button class="btn">Close</button>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('sunshine-modal-top.png');
     });
 
@@ -154,8 +154,7 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-[600px] bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-lg modal-open">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal modal-lg ">
             <div class="modal-box">
               <h3 class="modal-title">Large Modal</h3>
               <div class="modal-body">
@@ -175,12 +174,13 @@ test.describe('Visual Regression - Modal Component', () => {
                 <button class="btn btn-primary">Save Changes</button>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('sunshine-modal-large.png');
     });
   });
@@ -198,8 +198,7 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-96 bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-open">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal ">
             <div class="modal-box">
               <h3 class="modal-title">Dark Theme Modal</h3>
               <div class="modal-body">
@@ -210,12 +209,13 @@ test.describe('Visual Regression - Modal Component', () => {
                 <button class="btn btn-primary">Confirm</button>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('moonlight-modal.png');
     });
 
@@ -225,8 +225,7 @@ test.describe('Visual Regression - Modal Component', () => {
         container.id = 'modal-test';
         container.className = 'relative h-96 bg-base-200';
         container.innerHTML = `
-          <div class="modal modal-open alert-dialog">
-            <div class="modal-backdrop"></div>
+          <dialog class="modal  alert-dialog">
             <div class="modal-box">
               <div class="modal-icon error">❌</div>
               <h3 class="modal-title">Error</h3>
@@ -237,12 +236,13 @@ test.describe('Visual Regression - Modal Component', () => {
                 <button class="btn btn-error">Try Again</button>
               </div>
             </div>
-          </div>
+          </dialog>
         `;
         document.body.appendChild(container);
+        container.querySelector<HTMLDialogElement>('dialog.modal')!.showModal();
       });
 
-      const modal = page.locator('#modal-test');
+      const modal = page.locator('#modal-test dialog.modal');
       await expect(modal).toHaveScreenshot('moonlight-alert-error.png');
     });
   });

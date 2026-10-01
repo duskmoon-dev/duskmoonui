@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { generatePluginCSS } from '../../src/index';
 
 describe('Dialog Component', () => {
   let css: string;
@@ -15,6 +16,27 @@ describe('Dialog Component', () => {
 
   it('should define dialog.dialog class for native dialog element', () => {
     expect(css).toContain('dialog.dialog');
+  });
+
+  it('keeps generated plugin dialogs native and lets the browser own visibility', () => {
+    const generated = generatePluginCSS({ components: ['dialog'], base: false });
+    expect(generated).toContain('dialog.dialog {');
+    expect(generated).toContain('dialog.dialog::backdrop {');
+    expect(generated).not.toContain('.dialog-backdrop');
+    const base = generated.match(/dialog\.dialog\s*\{([^}]+)\}/)?.[1];
+    expect(base).toBeDefined();
+    expect(base).not.toMatch(/(?:display|visibility|opacity|transform):/);
+  });
+
+  it('prefixes native dialog roots, backdrops, modifiers, and state descendants', () => {
+    const generated = generatePluginCSS({ components: ['modal', 'dialog'], base: false, prefix: 'dm-' });
+    expect(generated).toContain('dialog.dm-dialog {');
+    expect(generated).toContain('dialog.dm-dialog::backdrop {');
+    expect(generated).toContain('dialog.dm-dialog.dm-dialog-sm {');
+    expect(generated).toContain('dialog.dm-modal {');
+    expect(generated).toContain('dialog.dm-modal::backdrop {');
+    expect(generated).toContain('dialog.dm-modal[open] .dm-modal-box {');
+    expect(generated).toContain('dialog.dm-modal.dm-modal-sm {');
   });
 
   it('should define .dialog-box class', () => {

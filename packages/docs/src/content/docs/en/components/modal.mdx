@@ -1,82 +1,76 @@
 ---
 title: Modal
-description: Legacy CSS modal API with size, placement, backdrop, and motion variants
+description: Native HTML dialog with size, placement, backdrop, and motion variants
 category: components
 order: 40
 published: true
-tags: ['modal', 'legacy', 'overlay', 'components', 'material-design']
+tags: ['modal', 'dialog', 'overlay', 'components', 'material-design']
 ---
 
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
 
 # Modal
 
-Modal is DuskMoon's legacy CSS overlay API. It uses a regular element with `.modal`; it does **not** style or replace the native HTML dialog element. For new accessible modal interactions, use the [Dialog](/duskmoonui/docs/en/components/dialog/) component.
+Modal uses only the native HTML `<dialog>` element. Both Modal and [Dialog](/duskmoonui/docs/en/components/dialog/) share the browser's dialog behavior with different styling classes.
 
-The legacy API remains available for existing applications that already own visibility, focus management, Escape handling, background inertness, and focus restoration.
-
-> Adding `.modal-open`, `aria-modal="true"`, or visible CSS does not create native modal behavior. Keep existing Modal integrations working, but start new modal tasks with `<dialog class="dialog">` opened through `showModal()`.
+Open a modal with `showModal()` or an Invoker Command. The browser owns the top layer, background inertness, keyboard focus containment, Escape dismissal, and focus restoration. CSS controls appearance only.
 
 ## Basic usage
 
-The complete structure places `.modal-box` and `.modal-backdrop` inside `.modal`. This CSS-only example uses `:target` so the preview works without documentation-side JavaScript.
+Use `<dialog class="modal">` with a `.modal-box` child. These examples use native `commandfor` buttons to open and close the dialog.
 
-<ComponentShowcase title="Basic Legacy Modal" code={`<a id="demo-modal-basic-trigger" class="btn btn-primary" href="#demo-modal-basic">
+<ComponentShowcase title="Basic Modal" code={`<button id="demo-modal-basic-trigger" class="btn btn-primary" commandfor="demo-modal-basic" command="show-modal">
   Open modal
-</a>
+</button>
 
-<div class="modal" id="demo-modal-basic" role="dialog" aria-labelledby="demo-modal-basic-title">
+<dialog class="modal" id="demo-modal-basic" aria-labelledby="demo-modal-basic-title">
   <div class="modal-box">
     <div class="modal-header">
       <h2 class="modal-title" id="demo-modal-basic-title">Review changes</h2>
-      <a class="modal-close" href="#demo-modal-basic-trigger" aria-label="Close modal">×</a>
+      <button class="modal-close" commandfor="demo-modal-basic" command="close" aria-label="Close modal">×</button>
     </div>
     <div class="modal-body">
       <p>Your changes are ready to save.</p>
     </div>
     <div class="modal-footer">
-      <a class="btn btn-outlined" href="#demo-modal-basic-trigger">Cancel</a>
-      <a class="btn btn-primary" href="#demo-modal-basic-trigger">Save</a>
+      <button class="btn btn-outlined" commandfor="demo-modal-basic" command="close">Cancel</button>
+      <button class="btn btn-primary" commandfor="demo-modal-basic" command="close">Save</button>
     </div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-basic-trigger" aria-label="Close modal"></a>
-</div>`} />
+</dialog>`} />
 
-The links above demonstrate the CSS state only. In an application, use buttons and your existing controller to add or remove `.modal-open`, then implement the accessibility responsibilities described below.
+The browser opens and closes this modal through native commands. A form with `method="dialog"` can also provide closing actions.
 
 ## Sizes
 
-Apply the size modifier to `.modal`; the width is applied to its `.modal-box` child.
+Apply size modifiers to the dialog; the `.modal-box` child fills its width.
 
-<ComponentShowcase title="Legacy Modal Sizes" code={`<div class="flex flex-wrap gap-3">
-  <a id="demo-modal-size-sm-trigger" class="btn btn-outlined" href="#demo-modal-size-sm">Small</a>
-  <a id="demo-modal-size-lg-trigger" class="btn btn-outlined" href="#demo-modal-size-lg">Large</a>
-  <a id="demo-modal-size-full-trigger" class="btn btn-outlined" href="#demo-modal-size-full">Full</a>
+<ComponentShowcase title="Modal Sizes" code={`<div class="flex flex-wrap gap-3">
+  <button id="demo-modal-size-sm-trigger" class="btn btn-outlined" commandfor="demo-modal-size-sm" command="show-modal">Small</button>
+  <button id="demo-modal-size-lg-trigger" class="btn btn-outlined" commandfor="demo-modal-size-lg" command="show-modal">Large</button>
+  <button id="demo-modal-size-full-trigger" class="btn btn-outlined" commandfor="demo-modal-size-full" command="show-modal">Full</button>
 </div>
 
-<div class="modal modal-sm" id="demo-modal-size-sm" role="dialog" aria-label="Small modal">
+<dialog class="modal modal-sm" id="demo-modal-size-sm" aria-label="Small modal">
   <div class="modal-box">
     <div class="modal-body"><p>Useful for a short confirmation.</p></div>
-    <div class="modal-footer"><a class="btn btn-primary" href="#demo-modal-size-sm-trigger">Done</a></div>
+    <div class="modal-footer"><button class="btn btn-primary" commandfor="demo-modal-size-sm" command="close">Done</button></div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-size-sm-trigger" aria-label="Close small modal"></a>
-</div>
+</dialog>
 
-<div class="modal modal-lg" id="demo-modal-size-lg" role="dialog" aria-label="Large modal">
+<dialog class="modal modal-lg" id="demo-modal-size-lg" aria-label="Large modal">
   <div class="modal-box">
     <div class="modal-body"><p>Provides more room for a form or detailed content.</p></div>
-    <div class="modal-footer"><a class="btn btn-primary" href="#demo-modal-size-lg-trigger">Done</a></div>
+    <div class="modal-footer"><button class="btn btn-primary" commandfor="demo-modal-size-lg" command="close">Done</button></div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-size-lg-trigger" aria-label="Close large modal"></a>
-</div>
+</dialog>
 
-<div class="modal modal-full" id="demo-modal-size-full" role="dialog" aria-label="Full modal">
+<dialog class="modal modal-full" id="demo-modal-size-full" aria-label="Full modal">
   <div class="modal-box">
     <div class="modal-body"><p>Use the full variant for an immersive workflow.</p></div>
-    <div class="modal-footer"><a class="btn btn-primary" href="#demo-modal-size-full-trigger">Close</a></div>
+    <div class="modal-footer"><button class="btn btn-primary" commandfor="demo-modal-size-full" command="close">Close</button></div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-size-full-trigger" aria-label="Close full modal"></a>
-</div>`} />
+</dialog>`} />
 
 | Class | Maximum content width |
 | --- | --- |
@@ -90,54 +84,50 @@ Apply the size modifier to `.modal`; the width is applied to its `.modal-box` ch
 
 The default and `.modal-middle` positions are centered. `.modal-top` and `.modal-bottom` align the box to a viewport edge.
 
-<ComponentShowcase title="Legacy Modal Placement" code={`<div class="flex flex-wrap gap-3">
-  <a id="demo-modal-top-trigger" class="btn btn-outlined" href="#demo-modal-top">Top</a>
-  <a id="demo-modal-middle-trigger" class="btn btn-outlined" href="#demo-modal-middle">Middle</a>
-  <a id="demo-modal-bottom-trigger" class="btn btn-outlined" href="#demo-modal-bottom">Bottom</a>
+<ComponentShowcase title="Modal Placement" code={`<div class="flex flex-wrap gap-3">
+  <button id="demo-modal-top-trigger" class="btn btn-outlined" commandfor="demo-modal-top" command="show-modal">Top</button>
+  <button id="demo-modal-middle-trigger" class="btn btn-outlined" commandfor="demo-modal-middle" command="show-modal">Middle</button>
+  <button id="demo-modal-bottom-trigger" class="btn btn-outlined" commandfor="demo-modal-bottom" command="show-modal">Bottom</button>
 </div>
 
-<div class="modal modal-top" id="demo-modal-top" role="dialog" aria-label="Top modal">
+<dialog class="modal modal-top" id="demo-modal-top" aria-label="Top modal">
   <div class="modal-box">
     <div class="modal-body"><p>This modal is aligned to the top.</p></div>
-    <div class="modal-footer"><a class="btn btn-primary" href="#demo-modal-top-trigger">Close</a></div>
+    <div class="modal-footer"><button class="btn btn-primary" commandfor="demo-modal-top" command="close">Close</button></div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-top-trigger" aria-label="Close top modal"></a>
-</div>
+</dialog>
 
-<div class="modal modal-middle" id="demo-modal-middle" role="dialog" aria-label="Centered modal">
+<dialog class="modal modal-middle" id="demo-modal-middle" aria-label="Centered modal">
   <div class="modal-box">
     <div class="modal-body"><p>This modal uses the explicit middle modifier.</p></div>
-    <div class="modal-footer"><a class="btn btn-primary" href="#demo-modal-middle-trigger">Close</a></div>
+    <div class="modal-footer"><button class="btn btn-primary" commandfor="demo-modal-middle" command="close">Close</button></div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-middle-trigger" aria-label="Close centered modal"></a>
-</div>
+</dialog>
 
-<div class="modal modal-bottom" id="demo-modal-bottom" role="dialog" aria-label="Bottom modal">
+<dialog class="modal modal-bottom" id="demo-modal-bottom" aria-label="Bottom modal">
   <div class="modal-box">
     <div class="modal-body"><p>This modal is aligned to the bottom.</p></div>
-    <div class="modal-footer"><a class="btn btn-primary" href="#demo-modal-bottom-trigger">Close</a></div>
+    <div class="modal-footer"><button class="btn btn-primary" commandfor="demo-modal-bottom" command="close">Close</button></div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-bottom-trigger" aria-label="Close bottom modal"></a>
-</div>`} />
+</dialog>`} />
 
 ## Motion and backdrop
 
-Motion modifiers change the box transition. Backdrop modifiers belong on the `.modal-backdrop` child. Reduced-motion preferences remove the transitions.
+Motion modifiers change the box transition. Backdrop modifiers belong on the dialog and style its native `::backdrop`. Reduced-motion preferences remove the transitions.
 
-<ComponentShowcase title="Legacy Modal Motion and Backdrop" code={`<a id="demo-modal-motion-trigger" class="btn btn-primary" href="#demo-modal-motion">
+<ComponentShowcase title="Modal Motion and Backdrop" code={`<button id="demo-modal-motion-trigger" class="btn btn-primary" commandfor="demo-modal-motion" command="show-modal">
   Open blurred modal
-</a>
+</button>
 
-<div class="modal modal-slide-up" id="demo-modal-motion" role="dialog" aria-labelledby="demo-modal-motion-title">
+<dialog class="modal modal-slide-up modal-backdrop-blur" id="demo-modal-motion" aria-labelledby="demo-modal-motion-title">
   <div class="modal-box">
     <div class="modal-header">
       <h2 class="modal-title" id="demo-modal-motion-title">Slide-up modal</h2>
-      <a class="modal-close" href="#demo-modal-motion-trigger" aria-label="Close modal">×</a>
+      <button class="modal-close" commandfor="demo-modal-motion" command="close" aria-label="Close modal">×</button>
     </div>
     <div class="modal-body"><p>This surface uses the blurred backdrop variant.</p></div>
   </div>
-  <a class="modal-backdrop modal-backdrop-blur" href="#demo-modal-motion-trigger" aria-label="Close modal"></a>
-</div>`} />
+</dialog>`} />
 
 Motion classes are `.modal-slide-up`, `.modal-slide-down`, and `.modal-zoom`. Backdrop classes are `.modal-backdrop-light`, `.modal-backdrop-blur`, and `.modal-no-backdrop`.
 
@@ -145,20 +135,19 @@ Motion classes are `.modal-slide-up`, `.modal-slide-down`, and `.modal-zoom`. Ba
 
 `.modal-responsive` becomes a bottom-aligned sheet on narrow screens. `.modal-scrollable` constrains a long body. Other content modifiers are `.modal-centered` and `.modal-no-padding`.
 
-<ComponentShowcase title="Responsive Legacy Modal" code={`<a id="demo-modal-responsive-trigger" class="btn btn-primary" href="#demo-modal-responsive">
+<ComponentShowcase title="Responsive Modal" code={`<button id="demo-modal-responsive-trigger" class="btn btn-primary" commandfor="demo-modal-responsive" command="show-modal">
   Open responsive modal
-</a>
+</button>
 
-<div
+<dialog
   class="modal modal-responsive modal-scrollable"
   id="demo-modal-responsive"
-  role="dialog"
   aria-labelledby="demo-modal-responsive-title"
 >
   <div class="modal-box">
     <div class="modal-header">
       <h2 class="modal-title" id="demo-modal-responsive-title">Terms and conditions</h2>
-      <a class="modal-close" href="#demo-modal-responsive-trigger" aria-label="Close modal">×</a>
+      <button class="modal-close" commandfor="demo-modal-responsive" command="close" aria-label="Close modal">×</button>
     </div>
     <div class="modal-body">
       <p>Review the terms before continuing.</p>
@@ -166,64 +155,57 @@ Motion classes are `.modal-slide-up`, `.modal-slide-down`, and `.modal-zoom`. Ba
       <p>On a narrow viewport, the surface moves to the bottom edge.</p>
     </div>
     <div class="modal-footer">
-      <a class="btn btn-outlined" href="#demo-modal-responsive-trigger">Decline</a>
-      <a class="btn btn-primary" href="#demo-modal-responsive-trigger">Accept</a>
+      <button class="btn btn-outlined" commandfor="demo-modal-responsive" command="close">Decline</button>
+      <button class="btn btn-primary" commandfor="demo-modal-responsive" command="close">Accept</button>
     </div>
   </div>
-  <a class="modal-backdrop" href="#demo-modal-responsive-trigger" aria-label="Close modal"></a>
-</div>`} />
+</dialog>`} />
 
-## State APIs
+## Native state and dismissal
 
-Modal retains three legacy state mechanisms:
+Use `commandfor="dialog-id" command="show-modal"` to open and `command="close"` to dismiss. Applications can call the same native methods when Invoker Commands are unavailable:
 
-- Add `.modal-open` to `.modal` from an existing application controller.
-- Navigate to a `.modal` ID to activate its `:target` state.
-- Place `.modal-toggle` immediately before `.modal` and control the checkbox with associated labels.
-
-```html
-<input class="modal-toggle" id="legacy-modal-toggle" type="checkbox" />
-<div class="modal" role="dialog" aria-labelledby="legacy-modal-title">
-  <div class="modal-box">
-    <h2 class="modal-title" id="legacy-modal-title">Legacy modal</h2>
-    <label for="legacy-modal-toggle">Close</label>
-  </div>
-  <label class="modal-backdrop" for="legacy-modal-toggle" aria-label="Close modal"></label>
-</div>
+```js
+const modal = document.querySelector('dialog.modal');
+modal.showModal();
+modal.close();
 ```
 
-Use `body.modal-open` when your controller's scroll-lock policy must prevent background scrolling. Scroll locking is separate from background inertness: the body class does not make background controls inert, contain focus, or create modal semantics. The CSS class does not manage application state by itself.
+A `<form method="dialog">` also closes the modal when submitted and sets its native `returnValue`. Read the `close` event to handle the result. Use `autofocus` on the appropriate initial control.
 
-## Accessibility responsibilities
+Use `showModal()` for modal interactions. `show()` and the static `open` attribute display a non-modal dialog and do not make the background inert. Visibility follows the native `open` state; do not toggle CSS classes to open a modal.
 
-Legacy Modal supplies styling, not modal behavior. Consumers must:
+Escape closes the modal through the native `cancel` event. For flows that must prevent dismissal, the application may cancel that event. Backdrop dismissal is optional: set `closedby="any"` when supported to allow native light dismissal, or keep an explicit close or cancel button. The backdrop is the browser's `::backdrop` pseudo-element.
 
-- Move focus into the modal when it opens and restore focus to the trigger when it closes.
-- Contain keyboard focus and make background content inert while the modal is active.
-- Add Escape dismissal and ensure every close control has an accessible name.
-- Provide an accessible name through `aria-labelledby` or `aria-label`.
-- Add `aria-modal="true"` only after the implementation actually prevents interaction with background content.
+## Accessibility
 
-The CSS-only `:target` and checkbox examples demonstrate appearance and state changes; they are not complete accessible modal implementations. Prefer [Dialog](/duskmoonui/docs/en/components/dialog/) when native browser behavior is available to the application.
+- Give each dialog an accessible name with `aria-labelledby` or `aria-label`.
+- Give every close button an accessible name.
+- Let `showModal()` handle focus containment, background inertness, Escape, and focus restoration.
+- Use `aria-describedby` for a short description when useful, and `role="alertdialog"` only for urgent confirmation content.
 
-Backdrop dismissal is also an application decision. `.modal-backdrop` supplies the visual/click target used by existing markup, but the controller must decide whether backdrop activation closes a particular task. Destructive and multi-step flows may require an explicit close or cancel action.
+Native modal behavior requires browser support for HTML dialog. Applications may use `showModal()` and `close()` directly; do not replace dialog semantics with a regular overlay element.
+
+## Migration from legacy overlays
+
+Replace regular overlay elements with `<dialog class="modal">`, keep `.modal-box` and the appearance modifiers, and open with `showModal()` or Invoker Commands. Replace hash links and checkbox labels with buttons. Remove custom backdrop elements and apply backdrop modifiers to the dialog itself. Remove application focus traps and inertness handlers that duplicate native modal behavior.
 
 ## API reference
 
-| Area | Classes |
+| Area | Classes / API |
 | --- | --- |
-| Structure | `.modal`, `.modal-box`, `.modal-header`, `.modal-title`, `.modal-body`, `.modal-footer`, `.modal-action`, `.modal-close`, `.modal-backdrop` |
+| Structure | `dialog.modal`, `.modal-box`, `.modal-header`, `.modal-title`, `.modal-body`, `.modal-footer`, `.modal-action`, `.modal-close` |
 | Size | `.modal-sm`, `.modal-md`, `.modal-lg`, `.modal-xl`, `.modal-full` |
 | Placement | `.modal-top`, `.modal-middle`, `.modal-bottom` |
 | Motion | `.modal-slide-up`, `.modal-slide-down`, `.modal-zoom` |
-| Backdrop | `.modal-backdrop-light`, `.modal-backdrop-blur`, `.modal-no-backdrop` |
+| Backdrop | `.modal-backdrop-light`, `.modal-backdrop-blur`, `.modal-no-backdrop` on the dialog |
 | Content | `.modal-responsive`, `.modal-scrollable`, `.modal-centered`, `.modal-no-padding`, `.alert-dialog` |
-| State | `.modal-open`, `.modal-toggle`, `:target`, `body.modal-open` |
+| State | Native `open` attribute, `showModal()`, `close()`, Invoker Commands, `method="dialog"` |
 
-Modal does not define public custom properties. It consumes DuskMoon surface, content, radius, shadow, scrim, and motion tokens across themes.
+Modal consumes DuskMoon surface, content, radius, shadow, scrim, and motion tokens across themes.
 
 ## Related components
 
-- [Dialog](/duskmoonui/docs/en/components/dialog/) — native modal interactions and the recommended API for new work.
+- [Dialog](/duskmoonui/docs/en/components/dialog/) — an alternative appearance for the same native HTML dialog contract.
 - [Popover](/duskmoonui/docs/en/components/popover/) — non-modal contextual content.
 - [Drawer](/duskmoonui/docs/en/components/drawer/) and [Bottom Sheet](/duskmoonui/docs/en/components/bottom-sheet/) — edge-attached navigation and tasks.

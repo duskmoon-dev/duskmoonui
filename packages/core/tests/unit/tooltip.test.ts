@@ -5,6 +5,8 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { tooltipStyles } from '../../src/components/tooltip';
+import { generatePluginCSS } from '../../src';
 
 describe('Tooltip Component', () => {
   let css: string;
@@ -34,6 +36,37 @@ describe('Tooltip Component', () => {
       expect(css).not.toContain('.tooltip:focus-within .tooltip-content');
       expect(css).not.toContain('.tooltip-open .tooltip-content');
       expect(css).not.toContain('.tooltip-content');
+    });
+
+    it('should leave display and visibility to the native popover lifecycle', () => {
+      expect(css).not.toMatch(/\b(?:display|visibility)\s*:/);
+      expect(css).not.toMatch(/\.tooltip[^{}]*:(?:hover|focus)/);
+      expect(css).not.toMatch(/\.tooltip-(?:open|show)\b/);
+      expect(css).not.toContain('content: attr(data-tip)');
+    });
+
+    it('should keep the legacy style export on the native popover contract', () => {
+      expect(tooltipStyles['.tooltip[popover]']).toBeDefined();
+      expect(tooltipStyles['.tooltip[popover]:popover-open'].opacity).toBe('1');
+
+      for (const [selector, declarations] of Object.entries(tooltipStyles)) {
+        expect(selector).not.toMatch(/:(?:hover|focus)/);
+        expect(selector).not.toMatch(/\.tooltip-(?:open|show|content)\b/);
+        expect(declarations).not.toHaveProperty('display');
+        expect(declarations).not.toHaveProperty('visibility');
+        if (declarations.opacity === '1') {
+          expect(selector).toContain('[popover]:popover-open');
+        }
+      }
+    });
+
+    it('should emit only native tooltip visibility through the plugin generator', () => {
+      const generated = generatePluginCSS({ components: ['tooltip'], base: false });
+      expect(generated).toContain('.tooltip[popover]');
+      expect(generated).toMatch(/\.tooltip\[popover\]:popover-open\s*\{[^}]*opacity:\s*1/s);
+      expect(generated).not.toMatch(/\b(?:display|visibility)\s*:/);
+      expect(generated).not.toMatch(/:(?:hover|focus)/);
+      expect(generated).not.toMatch(/\.tooltip-(?:open|show|content)\b/);
     });
   });
 

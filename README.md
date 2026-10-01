@@ -16,6 +16,13 @@
 - **Tailwind CSS v4** - Native CSS imports, modern color functions
 - **Accessible** - WCAG AA contrast ratios with on-color variants
 
+## Native Overlay Principles
+
+- Tooltips use only the HTML Popover API: `popover="hint"`, `interestfor`, and browser-owned `:popover-open` state.
+- Modal and Dialog use only HTML `<dialog>`, opened with `command="show-modal"` / `commandfor` or `showModal()`, and closed with native commands, `close()`, or `method="dialog"`. The browser manages the backdrop, inertness, keyboard focus, and Escape.
+
+Legacy div-based Modal markup, `.modal-open`, `.modal-toggle`, and URL-target visibility are no longer supported. Migrate the outer element to `<dialog>` and use native opening/closing actions; `.modal-box` and presentation modifiers remain available.
+
 ## Quick Start
 
 ### Installation

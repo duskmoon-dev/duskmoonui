@@ -77,7 +77,11 @@ function convertComponentStylesToCSS(styles: Record<string, any>, prefix: string
   let css = '';
 
   for (const [selector, rules] of Object.entries(styles)) {
-    const prefixedSelector = prefix ? selector.replace(/^\./, `.${prefix}`) : selector;
+    const prefixedSelector = prefix
+      ? selector.startsWith('dialog.')
+        ? selector.replace(/\.(?=[a-zA-Z_-])/g, `.${prefix}`)
+        : selector.replace(/^\./, `.${prefix}`)
+      : selector;
 
     if (selector.startsWith('@keyframes')) {
       // Handle keyframes

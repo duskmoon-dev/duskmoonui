@@ -13,6 +13,8 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 Tooltips are brief, non-interactive descriptions. The core contract uses native `popover="hint"`, `interestfor`, and CSS anchor positioning; it does not polyfill missing browser capabilities. Keep critical information inline, and move links, buttons, and other actions to [Popover](/duskmoonui/docs/en/components/popover/).
 
+**Design principle:** Every tooltip surface must be an HTML popover. The browser owns visibility through `:popover-open`; use `interestfor` with `popover="hint"` for normal tooltips, or native `showPopover()` / `hidePopover()` when application code needs to control one. Do not implement tooltip visibility with wrapper hover/focus selectors, pseudo-elements, `data-tip`, or open/show classes.
+
 The core intentionally has no arrow: automatic placement may flip at viewport edges, and an arrow tied only to the preferred side would be misleading. Keyboard focus, Escape dismissal, pointer persistence for `.tooltip-interactive`, and viewport fallback are browser-managed when the relevant features are available. On unsupported browsers, use inline help or an explicit disclosure owned by the consumer; a `title` attribute is only a limited fallback, not a complete accessible equivalent.
 
 Tooltips display brief, helpful text when users show interest in an element (hover, focus, or long-press).

@@ -31,6 +31,13 @@ npm install @duskmoon-dev/core tailwindcss@^4.0.0
 pnpm add @duskmoon-dev/core tailwindcss@^4.0.0
 ```
 
+## Native Overlay Principles
+
+- Tooltips use only the HTML Popover API: `popover="hint"`, `interestfor`, and browser-owned `:popover-open` state.
+- Modal and Dialog use only HTML `<dialog>`, opened with `command="show-modal"` / `commandfor` or `showModal()`, and closed with native commands, `close()`, or `method="dialog"`. The browser manages the backdrop, inertness, keyboard focus, and Escape.
+
+Legacy div-based Modal markup, `.modal-open`, `.modal-toggle`, and URL-target visibility are no longer supported. Migrate the outer element to `<dialog>` and use native opening/closing actions; `.modal-box` and presentation modifiers remain available.
+
 ## Quick Start
 
 ### 1. Add DuskMoonUI to your CSS
@@ -107,7 +114,7 @@ Theme switching is instant and uses pure CSS custom properties.
 | Input | `.input`, `.input-bordered`, `.input-primary` | Text inputs with sizes and states |
 | Form | `.form-control`, `.label`, `.checkbox`, `.radio`, `.toggle`, `.select`, `.textarea` | Form elements and layouts |
 | Navigation | `.navbar`, `.megamenu`, `.menu`, `.link`, `.breadcrumbs`, `.tabs`, `.pagination`, `.dropdown` | Navigation patterns |
-| Modal | `.modal`, `.modal-box`, `.modal-action` | Dialog overlays |
+| Modal | `dialog.modal`, `.modal-box`, `.modal-action` | Native HTML dialog overlays |
 
 ### Data Display (5)
 

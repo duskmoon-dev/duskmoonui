@@ -11,7 +11,7 @@ import ComponentShowcase from '../../../../components/showcase/ComponentShowcase
 
 # Modal / Dialog
 
-Dialog is the recommended modal path for new work. It styles the native HTML `<dialog>` element and relies on `showModal()` semantics for background inertness, focus containment, Escape dismissal, and focus restoration. The separate [Modal](/duskmoonui/docs/en/components/modal/) page documents DuskMoon's legacy CSS presentation API.
+Modal and Dialog use only the native HTML `<dialog>` element. Dialog styles `<dialog class="dialog">` and relies on `showModal()` semantics for background inertness, focus containment, Escape dismissal, and focus restoration. The [Modal](/duskmoonui/docs/en/components/modal/) component uses the same native behavior with `.modal` and `.modal-box` presentation classes. Custom div overlays, visibility classes, and custom focus traps are not supported.
 
 ## Why Native Dialog?
 

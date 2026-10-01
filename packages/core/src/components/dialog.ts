@@ -1,53 +1,36 @@
 
 
 /**
- * Dialog (Modal) component styles
- * Material Design 3-inspired dialogs
+ * Native HTML <dialog> component styles (legacy plugin interface)
+ * Authoritative styles live in dialog.css
  */
 export const dialogStyles: Record<string, any> = {
-  // Dialog overlay/backdrop
-  '.dialog-backdrop': {
+  // Only the native element owns visibility, modality, and focus.
+  'dialog.dialog': {
     position: 'fixed',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
+    margin: 'auto',
+    padding: '0',
+    border: 'none',
+    width: 'calc(100% - 2rem)',
+    maxWidth: '28rem',
+    maxHeight: 'calc(100dvh - 2rem)',
+    boxSizing: 'border-box',
+    backgroundColor: 'var(--color-surface)',
+    color: 'var(--color-on-surface)',
+    borderRadius: 'var(--radius-2xl)',
+    boxShadow: 'var(--shadow-2xl)',
+    overflow: 'hidden',
+  },
+
+  'dialog.dialog::backdrop': {
     backgroundColor: 'color-mix(in srgb, var(--color-scrim) 50%, transparent)',
-    zIndex: '999',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '1rem',
-    opacity: '0',
-    visibility: 'hidden',
-    transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
-  '.dialog-backdrop-show': {
-    opacity: '1',
-    visibility: 'visible',
-  },
-
-  // Base dialog
-  '.dialog': {
-    position: 'relative',
+  '.dialog-box': {
     display: 'flex',
     flexDirection: 'column',
-    width: '100%',
-    maxWidth: '28rem',
-    maxHeight: 'calc(100vh - 2rem)',
-    backgroundColor: 'var(--color-surface-container-high)',
-    color: 'var(--color-on-surface)',
-    borderRadius: '1.75rem',
-    boxShadow: 'var(--shadow-xl)',
-    transform: 'scale(0.9)',
-    opacity: '0',
-    transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-  },
-
-  '.dialog-backdrop-show .dialog': {
-    transform: 'scale(1)',
-    opacity: '1',
+    maxHeight: 'calc(100dvh - 2rem)',
+    overflow: 'hidden',
   },
 
   // Dialog header
@@ -125,29 +108,29 @@ export const dialogStyles: Record<string, any> = {
   },
 
   // Size variants
-  '.dialog-sm': {
+  'dialog.dialog.dialog-sm': {
     maxWidth: '20rem',
   },
 
-  '.dialog-md': {
+  'dialog.dialog.dialog-md': {
     maxWidth: '28rem',
   },
 
-  '.dialog-lg': {
+  'dialog.dialog.dialog-lg': {
     maxWidth: '36rem',
   },
 
-  '.dialog-xl': {
+  'dialog.dialog.dialog-xl': {
     maxWidth: '48rem',
   },
 
-  '.dialog-full': {
+  'dialog.dialog.dialog-full': {
     maxWidth: 'calc(100vw - 2rem)',
     maxHeight: 'calc(100vh - 2rem)',
   },
 
   // Fullscreen dialog (mobile)
-  '.dialog-fullscreen': {
+  'dialog.dialog.dialog-fullscreen': {
     maxWidth: '100vw',
     maxHeight: '100vh',
     width: '100vw',
@@ -156,7 +139,7 @@ export const dialogStyles: Record<string, any> = {
   },
 
   // Centered variant
-  '.dialog-center': {
+  'dialog.dialog.dialog-center': {
     textAlign: 'center',
   },
 
@@ -165,7 +148,7 @@ export const dialogStyles: Record<string, any> = {
   },
 
   // Alert dialog (simple confirm/alert)
-  '.dialog-alert': {
+  'dialog.dialog.dialog-alert': {
     maxWidth: '20rem',
   },
 

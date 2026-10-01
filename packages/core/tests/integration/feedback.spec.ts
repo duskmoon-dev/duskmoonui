@@ -174,15 +174,20 @@ test.describe('Feedback components', () => {
 
   test('tooltip uses native focus and Escape when supported', async ({ page }) => {
     const supported = await page.evaluate(() =>
-      'showPopover' in HTMLElement.prototype && 'interestForElement' in HTMLElement.prototype,
+      'showPopover' in HTMLElement.prototype && 'interestForElement' in HTMLButtonElement.prototype,
     );
     test.skip(!supported, 'Popover or Interest Invoker is unavailable in this browser');
     await page.evaluate(() => {
-      document.body.innerHTML = `<button id="tip-trigger" interestfor="tip" aria-describedby="tip">Help</button><div id="tip" popover="hint" class="tooltip" role="tooltip">Helpful text</div>`;
+      document.body.innerHTML = `<button id="tip-trigger" interestfor="tip" aria-describedby="tip" style="anchor-name: --tip; interest-delay: 0s">Help</button><div id="tip" popover="hint" class="tooltip" role="tooltip" style="position-anchor: --tip">Helpful text</div>`;
     });
+    const tip = page.locator('#tip');
+    await expect(tip).toBeHidden();
     await page.locator('#tip-trigger').focus();
-    await expect(page.locator('#tip')).toHaveAttribute('popover', 'hint');
+    await expect(tip).toBeVisible();
+    expect(await tip.evaluate(el => el.matches(':popover-open'))).toBe(true);
     await page.keyboard.press('Escape');
-    await expect(page.locator('#tip')).not.toHaveCSS('opacity', '1');
+    await expect(tip).toBeHidden();
+    expect(await tip.evaluate(el => el.matches(':popover-open'))).toBe(false);
+    await expect(page.locator('#tip-trigger')).toBeFocused();
   });
 });

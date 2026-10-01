@@ -1,242 +1,270 @@
-
-
 /**
- * Modal component styles
- * Material Design 3-inspired modal dialog component
+ * Native HTML dialog modal styles for the Tailwind plugin.
+ * The browser owns open state, focus containment, and Escape dismissal.
  */
 export const modalStyles: Record<string, any> = {
-  // Base modal overlay/backdrop
-  '.modal-backdrop': {
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    backgroundColor: 'color-mix(in oklch, black 50%, transparent)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: '1000',
-    opacity: '0',
-    visibility: 'hidden',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  'dialog.modal': {
+    'position': 'fixed',
+    'inset': '0',
+    'margin': 'auto',
+    'padding': '0',
+    'border': 'none',
+    'width': 'calc(100% - 2rem)',
+    'maxWidth': '32rem',
+    'maxHeight': 'calc(100dvh - 2rem)',
+    'boxSizing': 'border-box',
+    'backgroundColor': 'transparent',
+    'color': 'var(--color-on-surface)',
+    'borderRadius': 'var(--radius-lg)',
+    'overflow': 'visible',
+    'opacity': '0',
+    'transition': 'opacity 200ms ease-out, display 200ms allow-discrete, overlay 200ms allow-discrete'
   },
-
-  // Open state
-  '.modal-backdrop.modal-open': {
-    opacity: '1',
-    visibility: 'visible',
+  'dialog.modal[open]': {
+    'opacity': '1'
   },
-
-  // Modal container
-  '.modal': {
-    position: 'relative',
-    backgroundColor: 'var(--color-surface)',
-    borderRadius: '1rem',
-    boxShadow: '0 10px 40px color-mix(in oklch, black 20%, transparent)',
-    maxWidth: '90vw',
-    maxHeight: '90vh',
-    width: '32rem',
-    display: 'flex',
-    flexDirection: 'column',
-    transform: 'scale(0.9)',
-    transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  'dialog.modal:not([open])': {
+    'display': 'none'
   },
-
-  // Modal open animation
-  '.modal-backdrop.modal-open .modal': {
-    transform: 'scale(1)',
+  '.modal-box': {
+    'position': 'relative',
+    'width': '100%',
+    'boxSizing': 'border-box',
+    'maxHeight': 'calc(100dvh - 2rem)',
+    'padding': '1.5rem',
+    'backgroundColor': 'var(--color-surface)',
+    'color': 'var(--color-on-surface)',
+    'borderRadius': 'var(--radius-lg)',
+    'boxShadow': 'var(--shadow-2xl)',
+    'overflowY': 'auto',
+    'transform': 'scale(0.95)',
+    'transition': 'transform 200ms ease-out'
   },
-
-  // Modal header
-  '.modal-header': {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1.5rem',
-    borderBottom: '1px solid var(--color-outline-variant)',
+  'dialog.modal[open] .modal-box': {
+    'transform': 'scale(1)'
   },
-
-  // Modal title
-  '.modal-title': {
-    fontSize: '1.25rem',
-    fontWeight: '600',
-    color: 'var(--color-on-surface)',
-    lineHeight: '1.5',
+  'dialog.modal::backdrop': {
+    'backgroundColor': 'color-mix(in srgb, var(--color-scrim) 50%, transparent)',
+    'opacity': '0',
+    'transition': 'opacity 200ms ease-out, display 200ms allow-discrete, overlay 200ms allow-discrete'
   },
-
-  // Modal close button
+  'dialog.modal[open]::backdrop': {
+    'opacity': '1'
+  },
+  '.modal-action,\n  .modal-footer': {
+    'display': 'flex',
+    'flexWrap': 'wrap',
+    'justifyContent': 'flex-end',
+    'gap': '0.5rem',
+    'marginTop': '1.5rem',
+    'paddingTop': '1rem'
+  },
+  'dialog.modal.modal-sm': {
+    'maxWidth': '20rem'
+  },
+  'dialog.modal.modal-md': {
+    'maxWidth': '32rem'
+  },
+  'dialog.modal.modal-lg': {
+    'maxWidth': '48rem'
+  },
+  'dialog.modal.modal-xl': {
+    'maxWidth': '64rem'
+  },
+  'dialog.modal.modal-full': {
+    'maxWidth': 'calc(100vw - 2rem)',
+    'maxHeight': 'calc(100dvh - 2rem)',
+    'width': 'calc(100% - 2rem)',
+    'height': 'calc(100dvh - 2rem)'
+  },
+  'dialog.modal.modal-full .modal-box': {
+    'height': '100%'
+  },
+  'dialog.modal.modal-top': {
+    'marginTop': '2rem',
+    'marginBottom': 'auto'
+  },
+  'dialog.modal.modal-bottom': {
+    'marginTop': 'auto',
+    'marginBottom': '2rem'
+  },
+  'dialog.modal.modal-middle': {
+    'margin': 'auto'
+  },
+  '.modal-slide-up .modal-box': {
+    'transform': 'translateY(6rem) scale(0.95)'
+  },
+  '.modal-slide-down .modal-box': {
+    'transform': 'translateY(-6rem) scale(0.95)'
+  },
+  '.modal-zoom .modal-box': {
+    'transform': 'scale(0.75)'
+  },
+  'dialog.modal:is(.modal-slide-up, .modal-slide-down, .modal-zoom)[open] .modal-box': {
+    'transform': 'translateY(0) scale(1)'
+  },
+  'dialog.modal.modal-backdrop-light::backdrop': {
+    'backgroundColor': 'color-mix(in srgb, white 80%, transparent)'
+  },
+  'dialog.modal.modal-backdrop-blur::backdrop': {
+    'backgroundColor': 'color-mix(in srgb, var(--color-scrim) 30%, transparent)',
+    'backdropFilter': 'blur(8px)'
+  },
+  'dialog.modal.modal-no-backdrop::backdrop': {
+    'backgroundColor': 'transparent'
+  },
   '.modal-close': {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '2rem',
-    height: '2rem',
-    padding: '0',
-    fontSize: '1.5rem',
-    color: 'var(--color-on-surface-variant)',
-    backgroundColor: 'transparent',
-    border: 'none',
-    borderRadius: '50%',
-    cursor: 'pointer',
-    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+    'position': 'absolute',
+    'top': '0.75rem',
+    'right': '0.75rem',
+    'display': 'flex',
+    'alignItems': 'center',
+    'justifyContent': 'center',
+    'width': '2rem',
+    'height': '2rem',
+    'fontSize': '1.25rem',
+    'color': 'var(--color-on-surface-variant)',
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'borderRadius': 'var(--radius-full)',
+    'cursor': 'pointer',
+    'transition': 'background-color 150ms ease-in-out, color 150ms ease-in-out'
   },
-
   '.modal-close:hover': {
-    backgroundColor: 'var(--color-surface-variant)',
-    color: 'var(--color-on-surface)',
+    'backgroundColor': 'var(--color-surface-container)',
+    'color': 'var(--color-on-surface)'
   },
-
-  // Modal body
+  '.modal-close:focus-visible': {
+    'outline': 'none',
+    'boxShadow': '0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)'
+  },
+  '.modal-header': {
+    'marginBottom': '1rem',
+    'paddingRight': '2rem'
+  },
+  '.modal-title': {
+    'fontSize': '1.25rem',
+    'fontWeight': '600',
+    'color': 'var(--color-on-surface)',
+    'margin': '0'
+  },
   '.modal-body': {
-    padding: '1.5rem',
-    overflowY: 'auto',
-    flex: '1',
-    color: 'var(--color-on-surface)',
+    'color': 'var(--color-on-surface-variant)',
+    'lineHeight': '1.5'
   },
-
-  // Modal footer
-  '.modal-footer': {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    gap: '0.75rem',
-    padding: '1.5rem',
-    borderTop: '1px solid var(--color-outline-variant)',
-  },
-
-  // Size variants
-  '.modal-sm': {
-    width: '20rem',
-  },
-
-  '.modal-md': {
-    width: '32rem',
-  },
-
-  '.modal-lg': {
-    width: '48rem',
-  },
-
-  '.modal-xl': {
-    width: '64rem',
-  },
-
-  '.modal-full': {
-    width: '95vw',
-    height: '95vh',
-    maxWidth: '95vw',
-    maxHeight: '95vh',
-  },
-
-  // Position variants
-  '.modal-backdrop-center': {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  '.modal-backdrop-top': {
-    alignItems: 'flex-start',
-    paddingTop: '2rem',
-  },
-
-  '.modal-backdrop-bottom': {
-    alignItems: 'flex-end',
-    paddingBottom: '2rem',
-  },
-
-  // Animation variants
-  '.modal-slide-up': {
-    transform: 'translateY(100px) scale(0.9)',
-  },
-
-  '.modal-backdrop.modal-open .modal-slide-up': {
-    transform: 'translateY(0) scale(1)',
-  },
-
-  '.modal-slide-down': {
-    transform: 'translateY(-100px) scale(0.9)',
-  },
-
-  '.modal-backdrop.modal-open .modal-slide-down': {
-    transform: 'translateY(0) scale(1)',
-  },
-
-  '.modal-zoom': {
-    transform: 'scale(0.7)',
-  },
-
-  '.modal-backdrop.modal-open .modal-zoom': {
-    transform: 'scale(1)',
-  },
-
-  // Backdrop variants
-  '.modal-backdrop-light': {
-    backgroundColor: 'color-mix(in oklch, white 80%, transparent)',
-  },
-
-  '.modal-backdrop-blur': {
-    backdropFilter: 'blur(8px)',
-    backgroundColor: 'color-mix(in oklch, black 30%, transparent)',
-  },
-
-  // No backdrop
-  '.modal-no-backdrop': {
-    backgroundColor: 'transparent',
-  },
-
-  // Scrollable body
   '.modal-scrollable .modal-body': {
-    maxHeight: '60vh',
-    overflowY: 'auto',
+    'maxHeight': '60vh',
+    'overflowY': 'auto'
   },
-
-  // No padding variants
   '.modal-no-padding .modal-body': {
-    padding: '0',
+    'padding': '0'
   },
-
-  '.modal-no-padding .modal-header': {
-    padding: '1.5rem 1.5rem 1rem',
-    borderBottom: 'none',
-  },
-
-  '.modal-no-padding .modal-footer': {
-    padding: '1rem 1.5rem 1.5rem',
-    borderTop: 'none',
-  },
-
-  // Centered content
   '.modal-centered .modal-body': {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
+    'display': 'flex',
+    'alignItems': 'center',
+    'justifyContent': 'center',
+    'textAlign': 'center'
   },
-
-  // Mobile responsive
   '@media (max-width: 640px)': {
-    '.modal': {
-      width: '95vw',
-      maxWidth: '95vw',
+    'dialog.modal.modal-responsive': {
+      'width': '100%',
+      'maxWidth': '100%',
+      'maxHeight': '90dvh',
+      'margin': 'auto 0 0',
+      'borderRadius': 'var(--radius-lg) var(--radius-lg) 0 0'
     },
-
-    '.modal-lg, .modal-xl': {
-      width: '95vw',
+    '.modal-responsive .modal-box': {
+      'maxHeight': '90dvh',
+      'borderRadius': 'var(--radius-lg) var(--radius-lg) 0 0'
+    }
+  },
+  'dialog.modal.drawer-modal': {
+    'width': 'min(20rem, 100%)',
+    'maxWidth': '20rem',
+    'maxHeight': '100dvh',
+    'height': '100dvh',
+    'margin': '0 0 0 auto',
+    'borderRadius': '0'
+  },
+  '.drawer-modal .modal-box': {
+    'maxHeight': '100dvh',
+    'height': '100%',
+    'borderRadius': '0',
+    'transform': 'translateX(100%)'
+  },
+  'dialog.modal.drawer-modal[open] .modal-box': {
+    'transform': 'translateX(0)'
+  },
+  'dialog.modal.drawer-modal-left': {
+    'margin': '0 auto 0 0'
+  },
+  '.drawer-modal-left .modal-box': {
+    'transform': 'translateX(-100%)'
+  },
+  'dialog.modal.drawer-modal-left[open] .modal-box': {
+    'transform': 'translateX(0)'
+  },
+  '.alert-dialog': {
+    'textAlign': 'center'
+  },
+  'dialog.modal.alert-dialog': {
+    'maxWidth': '24rem'
+  },
+  '.alert-dialog .modal-icon': {
+    'width': '4rem',
+    'height': '4rem',
+    'margin': '0 auto 1rem',
+    'display': 'flex',
+    'alignItems': 'center',
+    'justifyContent': 'center',
+    'borderRadius': 'var(--radius-full)',
+    'fontSize': '2rem'
+  },
+  '.alert-dialog .modal-icon.info': {
+    'backgroundColor': 'var(--color-info-container)',
+    'color': 'var(--color-on-info-container)'
+  },
+  '.alert-dialog .modal-icon.success': {
+    'backgroundColor': 'var(--color-success-container)',
+    'color': 'var(--color-on-success-container)'
+  },
+  '.alert-dialog .modal-icon.warning': {
+    'backgroundColor': 'var(--color-warning-container)',
+    'color': 'var(--color-on-warning-container)'
+  },
+  '.alert-dialog .modal-icon.error': {
+    'backgroundColor': 'var(--color-error-container)',
+    'color': 'var(--color-on-error-container)'
+  },
+  '.alert-dialog .modal-action': {
+    'justifyContent': 'center'
+  },
+  '@starting-style': {
+    'dialog.modal[open],\n    dialog.modal[open]::backdrop': {
+      'opacity': '0'
     },
-
-    '.modal-header, .modal-body, .modal-footer': {
-      padding: '1rem',
+    'dialog.modal[open] .modal-box': {
+      'transform': 'scale(0.95)'
     },
+    'dialog.modal.modal-slide-up[open] .modal-box': {
+      'transform': 'translateY(6rem) scale(0.95)'
+    },
+    'dialog.modal.modal-slide-down[open] .modal-box': {
+      'transform': 'translateY(-6rem) scale(0.95)'
+    },
+    'dialog.modal.modal-zoom[open] .modal-box': {
+      'transform': 'scale(0.75)'
+    },
+    'dialog.modal.drawer-modal[open] .modal-box': {
+      'transform': 'translateX(100%)'
+    },
+    'dialog.modal.drawer-modal-left[open] .modal-box': {
+      'transform': 'translateX(-100%)'
+    }
   },
-
-  // Prevent body scroll when modal is open
-  'body.modal-open': {
-    overflow: 'hidden',
-  },
-
-  // Focus trap (for accessibility)
-  '.modal:focus': {
-    outline: 'none',
-  },
+  '@media (prefers-reduced-motion: reduce)': {
+    'dialog.modal,\n    dialog.modal::backdrop,\n    .modal-box': {
+      'transition': 'none'
+    }
+  }
 };

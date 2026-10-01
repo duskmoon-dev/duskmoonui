@@ -131,6 +131,12 @@ http://localhost:4321/duskmoonui/docs/en/components/{name}/
 ```
 (Astro i18n uses `prefixDefaultLocale: false`, so English content under `content/docs/en/` is served without the `/en/` prefix in the `pages/` routes — but the content collection slug still includes `en/`, making the effective URL `/duskmoonui/docs/en/components/{name}/`.)
 
+### Native Overlay Design Principles
+
+- **Tooltip uses only the HTML Popover API.** Render `.tooltip[popover="hint"]` with `role="tooltip"`, connect the trigger with `interestfor` and `aria-describedby`, and let `:popover-open` control visibility. Do not implement wrapper, pseudo-element, `:hover`/`:focus`, or `.tooltip-open` visibility APIs. Compatibility code may call `showPopover()` / `hidePopover()` on the same native element.
+- **Modal and Dialog use only HTML `<dialog>`.** Render `<dialog class="modal">` or `<dialog class="dialog">`. Open modal interactions with `command="show-modal"` + `commandfor`, or `showModal()`; close with `command="close"`, `close()`, or a `method="dialog"` form. The browser owns modality, background inertness, focus containment/restoration, Escape dismissal, and `::backdrop`.
+- Do not create modal/dialog overlays from ordinary elements, checkbox state, URL `:target`, `.modal-open`, custom backdrop elements, or custom focus traps. Setting `open` directly does not create modal behavior. These rules apply to component CSS, plugin styles, docs, examples, and tests.
+
 ### CSS Anchor Positioning
 
 Tooltip and popover use CSS Anchor Positioning with `anchor-name` / `position-anchor` / `position-area` / `position-try-fallbacks` (not `anchor()` inset functions). Notes:
