@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { skeletonStyles } from '../../src/components/skeleton';
 
 describe('Skeleton Component', () => {
   let css: string;
@@ -38,5 +39,15 @@ describe('Skeleton Component', () => {
 
   it('should define size variants', () => {
     expect(css).toMatch(/\.skeleton-sm|\.skeleton-lg/);
+  });
+
+  it('defines the documented input skeleton dimensions', () => {
+    expect(css).toMatch(/\.skeleton-input\s*\{[^}]*height:\s*2\.75rem/s);
+    expect(css).toMatch(/\.skeleton-input\s*\{[^}]*width:\s*100%/s);
+    expect(css).toMatch(/\.skeleton-input\s*\{[^}]*border-radius:\s*var\(--radius-xs\)/s);
+    expect(skeletonStyles['.skeleton-input']).toMatchObject({
+      height: '2.75rem',
+      width: '100%',
+    });
   });
 });
