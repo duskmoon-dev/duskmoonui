@@ -71,6 +71,12 @@
     font-size: 2rem;
   }
 
+  .avatar-2xl {
+    width: 6rem;
+    height: 6rem;
+    font-size: 2rem;
+  }
+
   /* Shape Variants */
   .avatar-rounded {
     border-radius: var(--radius-sm);

@@ -10,8 +10,8 @@ export const avatarStyles: Record<string, any> = {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '2.5rem',
-    height: '2.5rem',
+    width: '3rem',
+    height: '3rem',
     fontSize: '1rem',
     fontWeight: '500',
     color: 'var(--color-on-tertiary-container)',
@@ -39,25 +39,25 @@ export const avatarStyles: Record<string, any> = {
   '.avatar-sm': {
     width: '2rem',
     height: '2rem',
-    fontSize: '0.813rem',
+    fontSize: '0.75rem',
   },
 
   '.avatar-md': {
-    width: '2.5rem',
-    height: '2.5rem',
+    width: '3rem',
+    height: '3rem',
     fontSize: '1rem',
   },
 
   '.avatar-lg': {
-    width: '3rem',
-    height: '3rem',
-    fontSize: '1.25rem',
-  },
-
-  '.avatar-xl': {
     width: '4rem',
     height: '4rem',
     fontSize: '1.5rem',
+  },
+
+  '.avatar-xl': {
+    width: '6rem',
+    height: '6rem',
+    fontSize: '2rem',
   },
 
   '.avatar-2xl': {
