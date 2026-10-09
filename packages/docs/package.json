@@ -22,22 +22,22 @@
     "@duskmoon-dev/css-art": "workspace:*",
     "@tailwindcss/postcss": "4.3.3",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.2.4",
-    "marked": "18.0.10",
+    "astro": "7.3.8",
+    "marked": "18.1.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
-    "@playwright/test": "1.62.1",
+    "@playwright/test": "1.64.0",
     "@types/bun": "latest",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
-    "autoprefixer": "10.5.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "autoprefixer": "10.6.1",
     "pagefind": "1.5.2",
-    "postcss": "8.5.26",
-    "postcss-selector-parser": "7.1.5",
+    "postcss": "8.5.29",
+    "postcss-selector-parser": "7.1.6",
     "typescript": "6.0.3"
   }
 }

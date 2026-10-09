@@ -10,19 +10,19 @@
   },
   "dependencies": {
     "@duskmoon-dev/core": "^0.1.0",
-    "next": "16.3.1",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
-    "@types/node": "26.2.0",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
-    "autoprefixer": "10.5.4",
-    "eslint": "10.8.1",
-    "eslint-config-next": "16.3.1",
-    "postcss": "8.5.26",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "autoprefixer": "10.6.1",
+    "eslint": "10.12.0",
+    "eslint-config-next": "16.4.0",
+    "postcss": "8.5.29",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2"
   }

@@ -23,10 +23,11 @@
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "6.0.3",
-    "postcss": "8.5.26",
+    "postcss": "8.5.29",
     "postcss-js": "5.1.0",
-    "postcss-selector-parser": "7.1.5",
-    "autoprefixer": "10.5.4"
+    "postcss-selector-parser": "7.1.6",
+    "autoprefixer": "10.6.1",
+    "playwright-core": "1.64.0"
   },
   "resolutions": {
     "postcss": "^8.4.47",
