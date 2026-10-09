@@ -2,7 +2,6 @@
 
 let
   pkgs-stable = import inputs.nixpkgs-stable { system = pkgs.stdenv.system; };
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in
 {
   env.GREET = "Duskmoon UI";
@@ -16,10 +15,11 @@ in
 
     # JavaScript/TypeScript ecosystem
     pkgs-stable.bun
-    pkgs-stable.nodePackages.typescript
+    pkgs-stable.typescript
+    pkgs-stable.tailwindcss_4
 
     # Code quality and formatting
-    pkgs-stable.nodePackages.prettier
+    pkgs-stable.prettier
     pkgs-stable.oxlint
 
     # Additional useful tools
