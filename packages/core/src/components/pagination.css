@@ -46,6 +46,10 @@
   .pagination-item-active,
   .pagination-item-active-primary,
   .pagination-item[aria-current="page"],
+  .pagination li > a.pagination-item-active,
+  .pagination li > button.pagination-item-active,
+  .pagination li > a.pagination-item-active-primary,
+  .pagination li > button.pagination-item-active-primary,
   .pagination li > a.active,
   .pagination li > button.active,
   .pagination li > a[aria-current="page"],
@@ -55,13 +59,19 @@
     border-color: var(--color-primary);
   }
 
-  .pagination-item-active-secondary {
+  .pagination-item-active-secondary,
+  .pagination-item-active-secondary[aria-current="page"],
+  .pagination li > a.pagination-item-active-secondary,
+  .pagination li > button.pagination-item-active-secondary {
     background-color: var(--color-secondary);
     color: var(--color-secondary-content);
     border-color: var(--color-secondary);
   }
 
-  .pagination-item-active-tertiary {
+  .pagination-item-active-tertiary,
+  .pagination-item-active-tertiary[aria-current="page"],
+  .pagination li > a.pagination-item-active-tertiary,
+  .pagination li > button.pagination-item-active-tertiary {
     background-color: var(--color-tertiary);
     color: var(--color-tertiary-content);
     border-color: var(--color-tertiary);
@@ -70,9 +80,27 @@
   .pagination-item-active:hover,
   .pagination-item-active-primary:hover,
   .pagination-item[aria-current="page"]:hover,
+  .pagination li > a.pagination-item-active:hover,
+  .pagination li > button.pagination-item-active:hover,
+  .pagination li > a.pagination-item-active-primary:hover,
+  .pagination li > button.pagination-item-active-primary:hover,
   .pagination li > a[aria-current="page"]:hover,
   .pagination li > button[aria-current="page"]:hover {
     background-color: color-mix(in oklch, var(--color-primary), black 10%);
+  }
+
+  .pagination-item-active-secondary:hover,
+  .pagination-item-active-secondary[aria-current="page"]:hover,
+  .pagination li > a.pagination-item-active-secondary:hover,
+  .pagination li > button.pagination-item-active-secondary:hover {
+    background-color: color-mix(in oklch, var(--color-secondary), black 10%);
+  }
+
+  .pagination-item-active-tertiary:hover,
+  .pagination-item-active-tertiary[aria-current="page"]:hover,
+  .pagination li > a.pagination-item-active-tertiary:hover,
+  .pagination li > button.pagination-item-active-tertiary:hover {
+    background-color: color-mix(in oklch, var(--color-tertiary), black 10%);
   }
 
   .pagination-item:focus-visible,
