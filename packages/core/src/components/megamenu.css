@@ -28,7 +28,9 @@
   .megamenu-panel[popover] {
     position-anchor: var(--megamenu-anchor);
     position-area: block-end span-inline-end;
-    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    /* Narrow viewports need candidates spanning the whole inline axis. */
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline,
+      block-end span-all, block-start span-all;
     display: none; box-sizing: border-box;
     width: min(48rem, calc(100vw - 2rem)); max-width: calc(100vw - 2rem);
     max-height: min(36rem, calc(100dvh - 2rem)); margin: 0.5rem; padding: 1rem;
