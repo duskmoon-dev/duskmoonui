@@ -12,27 +12,31 @@
   grid-template-columns: repeat(auto-fit, minmax(min(calc(--value(integer) * 0.25rem), 100%), 1fr));
 }
 
-/* Screen reader only utility - visually hidden but accessible */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
+/* Low-specificity fallbacks let Tailwind variants override either import order. */
+@layer utilities {
+  /* Screen reader only utility - visually hidden but accessible */
+  :where(.sr-only) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
 
-/* Undo sr-only for focus states (useful for skip links) */
-.not-sr-only {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
+  /* Undo sr-only for focus states (useful for skip links) */
+  :where(.not-sr-only) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
 }
