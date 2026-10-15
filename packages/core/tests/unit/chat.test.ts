@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeAll } from 'bun:test';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import postcss from 'postcss';
+import { chatStyles } from '../../src/components/chat';
 
 describe('Chat Component', () => {
   let css: string;
@@ -56,7 +58,7 @@ describe('Chat Component', () => {
       );
     });
 
-    it('should set relative positioning on .chat-bubble for tail rendering', () => {
+    it('should set relative positioning on .chat-bubble', () => {
       expect(css).toMatch(/\.chat-bubble\s*\{[^}]*position:\s*relative/s);
     });
 
@@ -66,7 +68,7 @@ describe('Chat Component', () => {
       );
     });
 
-    it('should keep the bubble and tail fill seamless', () => {
+    it('should not add inset shadows to bubble fills', () => {
       expect(css).not.toMatch(/\.chat-bubble\s*\{[^}]*box-shadow:\s*inset/s);
     });
 
@@ -160,14 +162,17 @@ describe('Chat Component', () => {
     });
   });
 
-  describe('Bubble tail', () => {
-    it('uses curved matching-fill tails with logical top placement', () => {
-      expect(css).toMatch(/\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*inset-block-start:\s*0[^}]*background-color:\s*var\(--chat-bubble-bg\)[^}]*mask-image:\s*radial-gradient\(ellipse at 0 100%/s);
-      expect(css).toMatch(/\.chat-end \.chat-bubble::before\s*\{[^}]*inset-inline-end:\s*-0\.5rem[^}]*transform:\s*scaleX\(-1\)/s);
-      expect(css).toContain('border-start-start-radius: 0');
-      expect(css).toContain('border-start-end-radius: 0');
-      expect(css).toContain('.chat-start:dir(rtl)');
-      expect(css).toContain('.chat-end:dir(rtl)');
+  describe('Bubble shape', () => {
+    it('keeps CSS and plugin bubbles fully rounded without tail pseudo-elements', () => {
+      const selectors: string[] = [];
+      postcss.parse(css).walkRules(rule => { selectors.push(rule.selector); });
+      expect(selectors.some(selector => selector.includes('.chat-bubble::before'))).toBe(false);
+      expect(Object.keys(chatStyles).some(selector => selector.includes('.chat-bubble::before'))).toBe(false);
+      expect(parseFloat(chatStyles['.chat-bubble'].borderRadius)).toBeGreaterThan(0);
+      for (const side of ['start', 'end']) {
+        expect(chatStyles[`.chat-${side} .chat-bubble`] ?? {}).not.toHaveProperty('borderStartStartRadius');
+        expect(chatStyles[`.chat-${side} .chat-bubble`] ?? {}).not.toHaveProperty('borderStartEndRadius');
+      }
     });
   });
 
@@ -278,16 +283,16 @@ describe('Chat Component', () => {
       expect(css).toContain('@keyframes chat-tool-spin');
     });
 
-    it('should keep the streaming caret separate from the bubble tail', () => {
-      expect(css).toMatch(
-        /\.chat-start \.chat-bubble::before,\s*\.chat-end \.chat-bubble::before\s*\{[^}]*mask-image:\s*radial-gradient/s,
-      );
+    it('should keep the streaming caret in normal content flow', () => {
       expect(css).toMatch(
         /\.chat-bubble\.chat-bubble-streaming:not\(:has\([^)]+\)\)\s*\{[^}]*display:\s*block/s,
       );
-      expect(css).toMatch(
-        /\.chat-bubble-streaming::after,\s*\.chat-bubble-content\.chat-bubble-streaming::after\s*\{[^}]*position:\s*static[^}]*clip-path:\s*none/s,
-      );
+      postcss.parse(css).walkRules(rule => {
+        if (!rule.selector.includes('.chat-bubble-streaming::after')) return;
+        const declarations = Object.fromEntries(rule.nodes.filter(node => node.type === 'decl').map(node => [node.prop, node.value]));
+        if (declarations.position) expect(declarations.position).toBe('static');
+        if (declarations['clip-path']) expect(declarations['clip-path']).toBe('none');
+      });
     });
 
     it('should include reduced motion fallbacks', () => {
@@ -299,6 +304,42 @@ describe('Chat Component', () => {
   });
 
   describe('Composition constraints', () => {
+    it.each([
+      ['queue', '.chat-queue'],
+      ['shared input area', '.chat-input-area'],
+      ['composer', '.chat-composer'],
+      ['collapsible bubble', '.chat-bubble-collapsible'],
+      ['collapse toggle', '.chat-bubble-toggle'],
+      ['agent layout', '.chat-agent'],
+      ['agent content', '.chat-content'],
+      ['agent work', '.chat-work'],
+      ['generic streaming', '.chat-streaming'],
+    ])('keeps %s declarations identical in the CSS and legacy plugin APIs', (_name, prefix) => {
+      const normalizeSelector = (selector: string) => selector.replace(/\s+/g, ' ').trim();
+      const includesSelector = (selector: string) => selector.split(',').some(part => part.trim().startsWith(prefix));
+      const cssQueue: Record<string, Record<string, string>> = {};
+      postcss.parse(css).walkRules(rule => {
+        if (!includesSelector(rule.selector)) return;
+        if (rule.parent?.type === 'atrule' && rule.parent.name !== 'layer') return;
+        const declarations: Record<string, string> = {};
+        rule.walkDecls(declaration => {
+          declarations[declaration.prop] = declaration.value;
+        });
+        cssQueue[normalizeSelector(rule.selector)] = declarations;
+      });
+      const pluginQueue = Object.fromEntries(
+        Object.entries(chatStyles)
+          .filter(([selector]) => includesSelector(selector))
+          .map(([selector, declarations]) => [normalizeSelector(selector), Object.fromEntries(
+            Object.entries(declarations).map(([property, value]) => [
+              property.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`), value,
+            ]),
+          )]),
+      );
+      expect(Object.keys(cssQueue).length).toBeGreaterThan(0);
+      expect(pluginQueue).toEqual(cssQueue);
+    });
+
     it('should not redefine composed component selectors', () => {
       expect(css).not.toMatch(/(?:^|\n)\s*\.avatar\s*\{/);
       expect(css).not.toMatch(/(?:^|\n)\s*\.code-block\s*\{/);

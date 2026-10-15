@@ -19,25 +19,14 @@ test.describe('Visual Regression - Chat Component', () => {
       container.className = 'p-8 bg-base-100 text-on-surface';
       container.style.width = '860px';
       container.innerHTML = `
-        <div class="chat chat-start">
+        <div class="chat chat-start chat-agent">
           <div class="chat-avatar">
             <div class="avatar avatar-sm avatar-primary">AI</div>
           </div>
           <div class="chat-header">Assistant · 10:24</div>
-          <div class="chat-bubble">
-            <details class="chat-reasoning" open>
-              <summary>Reasoning · 3s</summary>
-              <div class="chat-reasoning-body">
-                <div>Checked the input constraints and selected a compact response.</div>
-                <details class="chat-tool chat-tool-running" open>
-                  <summary class="chat-tool-header">
-                    <span>search_docs</span>
-                    <span class="chat-tool-status">Running</span>
-                  </summary>
-                  <div class="chat-tool-call">{ "query": "chat component" }</div>
-                </details>
-              </div>
-            </details>
+          <details class="chat-work">
+            <summary class="chat-work-summary">Worked · 1 tool call · 0 failed</summary>
+            <div class="chat-work-body">
             <details class="chat-tool chat-tool-success" open>
               <summary class="chat-tool-header">
                 <span>search_docs</span>
@@ -46,9 +35,11 @@ test.describe('Visual Regression - Chat Component', () => {
               <div class="chat-tool-call">{ "query": "chat component" }</div>
               <div class="chat-tool-result">2 matching documents found.</div>
             </details>
-            <div class="chat-bubble-content chat-bubble-streaming">
-              The chat component supports reasoning, tool calls, and streaming states.
             </div>
+          </details>
+          <div class="chat-content">
+            <p>The chat component supports reasoning, tool calls, and streaming states.</p>
+            <ul><li>Agent output uses the full message body.</li><li>User messages retain their colored bubbles.</li></ul>
           </div>
           <div class="chat-footer">Delivered</div>
         </div>
@@ -78,7 +69,7 @@ test.describe('Visual Regression - Chat Component', () => {
           <div class="chat-bubble chat-bubble-sm">SM bubble</div>
           <div class="chat-bubble chat-bubble-md">MD bubble</div>
           <div class="chat-bubble chat-bubble-lg">LG bubble</div>
-          <div class="chat-bubble" aria-label="Assistant is typing">
+          <div class="chat-content" aria-label="Assistant is typing">
             <span class="chat-typing"><span></span></span>
           </div>
         </div>
@@ -99,7 +90,11 @@ test.describe('Visual Regression - Chat Component', () => {
       container.className = 'p-8 bg-base-100 text-on-surface';
       container.style.width = '780px';
       container.innerHTML = `
-        <div style="display: grid; gap: 0.75rem;">
+        <div class="chat chat-start chat-agent">
+          <div class="chat-content">Checked the operations; the preview deploy needs attention.</div>
+          <details class="chat-work" open>
+            <summary class="chat-work-summary">4 commands · 1 failed</summary>
+            <div class="chat-work-body">
           <details class="chat-tool chat-tool-pending" open>
             <summary class="chat-tool-header">
               <span>queued_job</span>
@@ -127,6 +122,8 @@ test.describe('Visual Regression - Chat Component', () => {
               <span class="chat-tool-status">Failed</span>
             </summary>
             <div class="chat-tool-result">Preview deploy failed validation.</div>
+          </details>
+            </div>
           </details>
         </div>
       `;

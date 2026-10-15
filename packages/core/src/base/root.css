@@ -21,8 +21,8 @@ html {
   color: var(--color-base-content);
 }
 
-/* Focus ring utility */
-:focus-visible {
+/* Focus ring utility; the integrated chat input uses its composer's ring. */
+:focus-visible:not(:where(.chat-composer .chat-composer-input)) {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }

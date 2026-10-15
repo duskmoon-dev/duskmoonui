@@ -33,10 +33,10 @@ describe('Data Display contracts', () => {
     expect(css).toContain('.avatar-status-offline::after');
     expect(css).toMatch(/\.avatar\s*\{[^}]*overflow:\s*visible/s);
   });
-  it('uses curved logical Chat tails instead of triangular corner flags', () => {
+  it('keeps Chat bubbles fully rounded without decorative tails', () => {
     const css = source('chat');
-    expect(css).toContain('border-start-start-radius');
-    expect(css).toContain('radial-gradient');
+    expect(css).toMatch(/\.chat-bubble\s*\{[^}]*border-radius:\s*1rem/s);
+    expect(css).not.toContain('.chat-bubble::before');
     expect(css).not.toContain('clip-path: polygon(0 0, 100% 0, 100% 100%)');
   });
   it('provides explicit changed-value Countdown animation with motion fallback', () => {

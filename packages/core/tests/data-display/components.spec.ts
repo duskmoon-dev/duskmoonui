@@ -33,17 +33,19 @@ test('Collapse animates native and controlled height both ways with immediate in
   await page.locator('#native summary').click();
   expect(await page.locator('#native').evaluate(el=>getComputedStyle(el,'::details-content').transitionDuration)).toBe('0s');
 });
-test('Chat curved tails follow start/end in both directions and preserve variants', async ({page}, testInfo) => {
+test('Chat user bubbles keep rounded corners without tails and preserve variants in both directions', async ({page}, testInfo) => {
   for (const dir of ['ltr', 'rtl']) {
     await fixture(page, ['start','end'].map(side => ['','primary','secondary','tertiary','info','success','warning','error'].map(role => `<div class="chat chat-${side}"><div class="chat-bubble ${role ? `chat-bubble-${role}` : ''}">${role || 'Default'} bubble</div></div>`).join('')).join(''), 'sunshine', dir);
     const bubbles=page.locator('.chat-bubble');
     for (const bubble of await bubbles.all()) {
-      const tail=await bubble.evaluate(el => { const s=getComputedStyle(el,'::before'); return {mask:s.maskImage,top:s.top,bg:s.backgroundColor,body:getComputedStyle(el).backgroundColor}; });
-      expect(tail.mask).toContain('radial-gradient');
-      expect(tail.top).toBe('0px');
-      expect(tail.bg).toBe(tail.body);
+      const presentation=await bubble.evaluate(el => { const s=getComputedStyle(el); return {tail:getComputedStyle(el,'::before').content,bg:s.backgroundColor,corners:[s.borderTopLeftRadius,s.borderTopRightRadius,s.borderBottomLeftRadius,s.borderBottomRightRadius]}; });
+      expect(presentation.tail).toBe('none');
+      expect(presentation.bg).not.toBe('rgba(0, 0, 0, 0)');
+      expect(presentation.corners.every(radius => parseFloat(radius) > 0)).toBe(true);
     }
-    await page.screenshot({path:testInfo.outputPath(`chat-tails-${dir}.png`),fullPage:true});
+    // Allow the first compositor paint after setContent before capturing the page.
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    await page.screenshot({path:testInfo.outputPath(`chat-bubbles-${dir}.png`),fullPage:true});
   }
 });
 async function fixture(page: Page, markup: string, theme = 'sunshine', dir = 'ltr') {
@@ -264,7 +266,7 @@ for (const theme of ['sunshine','moonlight','ocean','forest']) {
       await page.setViewportSize({width:375,height:800});
       await fixture(page, `<h1>Data Display</h1><section aria-label="Statistics"><dl class="stats stats-responsive"><div class="stat"><dt class="stat-title">${'LongLabel'.repeat(10)}</dt><dd class="stat-value">12345678901234567890</dd><dd class="stat-desc">Last day</dd></div><div class="stat"><dt class="stat-title">Health</dt><dd class="stat-value">98%</dd></div></dl></section>
       <p><span class="badge badge-soft badge-success">Operational</span> <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">K</kbd></p><div class="avatar avatar-ring avatar-status-online"><span class="avatar-placeholder">LM</span></div>
-      <div class="chat chat-start"><div class="chat-bubble"><a href="#report">${'long-link'.repeat(30)}</a><pre tabindex="0" aria-label="Code sample">${'code'.repeat(100)}</pre></div></div>
+      <div class="chat chat-start chat-agent"><div class="chat-content"><a href="#report">${'long-link'.repeat(30)}</a><pre tabindex="0" aria-label="Code sample">${'code'.repeat(100)}</pre></div></div>
       <ol class="timeline"><li class="timeline-item"><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-content"><h2 class="timeline-title">Ready</h2><p>${'LongDescription'.repeat(10)}</p></div></li></ol>`,theme,dir);
       expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
       const result = await new AxeBuilder({page}).analyze();

@@ -8,8 +8,8 @@ async function fixture(page: Page, markup: string) {
   await page.setContent(`<!doctype html><html lang="en" data-theme="sunshine"><head><title>Chat</title><style>${css}</style></head><body><main><h1>Chat</h1>${markup}</main></body></html>`);
 }
 
-const message = `<div id="message" class="chat chat-start">
-  <div class="chat-bubble">The response is ready.</div>
+const message = `<div id="message" class="chat chat-start chat-agent">
+  <div class="chat-content">The response is ready.</div>
   <div class="chat-status" aria-label="Response metrics">
     <span class="chat-status-item"><span class="chat-status-value">42</span> token/s</span>
     <span class="chat-status-item"><span class="chat-status-value">1,248</span> tokens</span>
@@ -23,7 +23,7 @@ const message = `<div id="message" class="chat chat-start">
 test('marker gaps remain hoverable and clickable across the whole rail width', async ({ page }) => {
   await fixture(page, `<div class="chat-scroll" style="height:220px">
     <div class="chat-scroll-track" aria-label="Reply navigation">${[1,2,3].map(n => `<button type="button" class="chat-scroll-indicator" data-chat-tl="${n}" aria-label="Reply ${n}"></button>`).join('')}</div>
-    <div class="chat-scroll-body">${[1,2,3].map(n => `<div class="chat chat-start" data-chat-tl="${n}" style="height:180px"><div class="chat-bubble">Reply ${n}</div></div>`).join('')}</div>
+    <div class="chat-scroll-body">${[1,2,3].map(n => `<div class="chat chat-start chat-agent" data-chat-tl="${n}" style="height:180px"><div class="chat-content">Reply ${n}</div></div>`).join('')}</div>
   </div>`);
   const markers = page.locator('.chat-scroll-indicator');
   const boxes = await markers.evaluateAll(items => items.map(el => {
@@ -66,7 +66,7 @@ test('metrics stay visible and actions reveal on message hover and keyboard focu
   await expect(actions).toHaveCSS('opacity', '0');
   await expect(page.locator('.chat-status')).toBeVisible();
   const height = await page.locator('#message').evaluate(el => el.getBoundingClientRect().height);
-  await page.locator('.chat-bubble').hover();
+  await page.locator('.chat-content').hover();
   await expect(actions).toHaveCSS('opacity', '1');
   await page.getByRole('button', {name:'Retry'}).click();
   expect(await page.locator('#message').evaluate(el => el.getBoundingClientRect().height)).toBe(height);

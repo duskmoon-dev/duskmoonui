@@ -337,6 +337,102 @@ export const chatStyles: Record<string, any> = {
     justifySelf: 'end',
   },
 
+  '.chat-agent': {
+    alignItems: 'start',
+    rowGap: '0.5rem',
+    padding: '0.75rem 0',
+    minInlineSize: '0',
+    color: 'var(--color-on-surface)',
+  },
+
+  '.chat-agent:not(:has(> .chat-avatar))': {
+    gridTemplateColumns: 'minmax(0, 1fr)',
+  },
+
+  '.chat-agent:not(:has(> .chat-avatar)) > *': {
+    gridColumn: '1',
+  },
+
+  '.chat-agent .chat-avatar': {
+    gridRow: '1',
+  },
+
+  '.chat-content': {
+    width: '100%',
+    minInlineSize: '0',
+    boxSizing: 'border-box',
+    color: 'var(--color-on-surface)',
+    fontSize: '0.9375rem',
+    lineHeight: '1.6',
+    overflowWrap: 'anywhere',
+  },
+
+  '.chat-content pre': {
+    maxInlineSize: '100%',
+    minInlineSize: '0',
+    overflow: 'auto',
+    whiteSpace: 'pre',
+  },
+
+  '.chat-content a': {
+    overflowWrap: 'anywhere',
+    textDecoration: 'underline',
+  },
+
+  '.chat-work': {
+    width: '100%',
+    minInlineSize: '0',
+    border: '0',
+    padding: '0',
+    background: 'transparent',
+  },
+
+  '.chat-work-summary': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '0.5rem',
+    padding: '0.5rem 0',
+    borderBlockEnd: '1px solid var(--color-outline-variant)',
+    color: 'var(--color-on-surface-variant)',
+    fontSize: '0.8125rem',
+    lineHeight: '1.5',
+    overflowWrap: 'anywhere',
+    listStyle: 'none',
+    cursor: 'pointer',
+  },
+
+  '.chat-work-summary::-webkit-details-marker': {
+    display: 'none',
+  },
+
+  '.chat-work-summary::after': {
+    content: '"›"',
+    flexShrink: '0',
+  },
+
+  '.chat-work[open] > .chat-work-summary::after': {
+    transform: 'rotate(90deg)',
+  },
+
+  '.chat-work-summary:focus-visible': {
+    outline: 'none',
+    boxShadow: '0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)',
+  },
+
+  '.chat-work-body': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    padding: '0.75rem 0',
+  },
+
+  '.chat-agent .chat-reasoning, .chat-agent .chat-tool': {
+    width: '100%',
+    maxWidth: 'none',
+    boxSizing: 'border-box',
+  },
+
   '.chat-header, .chat-footer': {
     color: 'var(--color-on-surface-variant)',
     fontSize: '0.75rem',
@@ -399,6 +495,204 @@ export const chatStyles: Record<string, any> = {
     },
   },
 
+  // Waiting messages; the application owns dispatch, steer, and removal.
+  '.chat-input-area': {
+    display: 'flex',
+    flexDirection: 'column',
+    minInlineSize: '0',
+    boxSizing: 'border-box',
+    color: 'var(--color-on-surface)',
+  },
+
+  '.chat-input-area > .chat-queue': {
+    marginInline: '0.75rem',
+    marginBlockEnd: '-0.5rem',
+    padding: '0.125rem 0.5rem 0.625rem',
+    borderBlockEnd: '0',
+    borderRadius: 'var(--radius-xl) var(--radius-xl) 0 0',
+  },
+
+  '.chat-input-area > .chat-queue .chat-queue-header:not(.sr-only)': {
+    padding: '0.125rem 0 0.5rem',
+  },
+
+  '.chat-input-area > .chat-queue .chat-queue-list': {
+    padding: '0',
+  },
+
+  '.chat-queue': {
+    minInlineSize: '0',
+    maxInlineSize: '100%',
+    boxSizing: 'border-box',
+    border: '1px solid var(--color-outline-variant)',
+    borderRadius: 'var(--radius-md)',
+    backgroundColor: 'var(--color-surface-container-low)',
+    color: 'var(--color-on-surface)',
+    fontSize: '0.875rem',
+    lineHeight: '1.45',
+  },
+
+  '.chat-queue-header:not(.sr-only)': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '0.5rem',
+    padding: '0.625rem 0.875rem',
+  },
+
+  '.chat-queue-title': {
+    margin: '0',
+    fontSize: 'inherit',
+    fontWeight: '600',
+    overflowWrap: 'anywhere',
+  },
+
+  '.chat-queue-list': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0',
+    maxBlockSize: '16rem',
+    overflowY: 'auto',
+    overscrollBehavior: 'contain',
+    margin: '0',
+    padding: '0 0.875rem 0.875rem',
+    boxSizing: 'border-box',
+    listStyle: 'none',
+  },
+
+  '.chat-queue-item': {
+    display: 'flex',
+    flexShrink: '0',
+    flexWrap: 'nowrap',
+    alignItems: 'center',
+    gap: '0.375rem',
+    minInlineSize: '0',
+    maxInlineSize: '100%',
+    boxSizing: 'border-box',
+    padding: '0.375rem 0.5rem',
+    border: '0',
+    backgroundColor: 'transparent',
+  },
+
+  '.chat-queue-icon': {
+    flexShrink: '0',
+    inlineSize: '1rem',
+    blockSize: '1rem',
+    color: 'var(--color-on-surface-variant)',
+  },
+
+  '.chat-queue-item-active .chat-queue-icon': {
+    color: 'var(--color-on-surface)',
+  },
+
+  '.chat-queue-attachment': {
+    flexShrink: '0',
+    inlineSize: '2rem',
+    blockSize: '2rem',
+    objectFit: 'cover',
+    borderRadius: 'var(--radius-xs)',
+  },
+
+  '.chat-queue-number': {
+    flexShrink: '0',
+    color: 'var(--color-on-surface-variant)',
+    fontVariantNumeric: 'tabular-nums',
+  },
+
+  '.chat-queue-count': {
+    whiteSpace: 'nowrap',
+  },
+
+  '.chat-queue-content': {
+    flex: '1 1 8rem',
+    minInlineSize: '0',
+    margin: '0',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  },
+
+  '.chat-queue-actions': {
+    flexWrap: 'nowrap',
+    flexShrink: '0',
+    marginInlineStart: 'auto',
+  },
+
+  '.chat-queue-steer, .chat-queue-remove': {
+    flexShrink: '0',
+  },
+
+  '.chat-queue[hidden], .chat-queue-item[hidden]': {
+    display: 'none',
+  },
+
+  '.chat-composer': {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    minInlineSize: '0',
+    boxSizing: 'border-box',
+    margin: '0',
+    padding: '1rem',
+    border: '1px solid currentColor',
+    borderRadius: 'var(--radius-xl)',
+    backgroundColor: 'var(--color-surface-container-high)',
+    color: 'var(--color-on-surface)',
+  },
+
+  '.chat-composer:focus-within': {
+    boxShadow: '0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)',
+  },
+
+  '.chat-composer-input': {
+    display: 'block',
+    width: '100%',
+    minInlineSize: '0',
+    minBlockSize: '3rem',
+    boxSizing: 'border-box',
+    margin: '0',
+    padding: '0',
+    border: '0',
+    outline: 'none',
+    backgroundColor: 'transparent',
+    color: 'var(--color-on-surface)',
+    font: 'inherit',
+    fontSize: '0.9375rem',
+    lineHeight: '1.5',
+    resize: 'vertical',
+  },
+
+  '.chat-composer-input::placeholder': {
+    color: 'var(--color-on-surface-variant)',
+    opacity: '1',
+  },
+
+  '.chat-composer-actions': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    gap: '0.5rem',
+  },
+
+  '.chat-composer-hint': {
+    fontFamily: 'inherit',
+    fontSize: '0.75rem',
+    fontWeight: '400',
+    opacity: '1',
+  },
+
+  '.chat-composer-primary': { color: 'var(--color-primary)' },
+  '.chat-composer-secondary': { color: 'var(--color-secondary)' },
+  '.chat-composer-tertiary': { color: 'var(--color-tertiary)' },
+  '.chat-composer-info': { color: 'var(--color-info)' },
+  '.chat-composer-success': { color: 'var(--color-success)' },
+  '.chat-composer-warning': { color: 'var(--color-warning)' },
+  '.chat-composer-error': { color: 'var(--color-error)' },
+  '.chat-composer-ghost': { borderColor: 'transparent' },
+
   '.chat-bubble': {
     '--chat-bubble-bg': 'var(--color-surface-container-highest)',
     '--chat-bubble-fg': 'var(--color-on-surface)',
@@ -424,6 +718,26 @@ export const chatStyles: Record<string, any> = {
     minWidth: '0',
   },
 
+  '.chat-bubble-collapsible > .chat-bubble-content': {
+    maxBlockSize: '6lh',
+    overflow: 'hidden',
+    whiteSpace: 'pre-wrap',
+  },
+
+  '.chat-bubble-collapsible:has(> .chat-bubble-toggle[aria-expanded="true"]) > .chat-bubble-content': {
+    maxBlockSize: 'none',
+    overflow: 'visible',
+  },
+
+  '.chat-bubble-toggle': {
+    alignSelf: 'flex-end',
+    color: 'inherit',
+  },
+
+  '.chat-bubble-toggle[hidden]': {
+    display: 'none',
+  },
+
   '.chat-bubble pre': {
     maxInlineSize: '100%',
     minInlineSize: '0',
@@ -434,42 +748,6 @@ export const chatStyles: Record<string, any> = {
   '.chat-bubble a': {
     overflowWrap: 'anywhere',
     textDecoration: 'underline',
-  },
-
-  '.chat-start .chat-bubble::before, .chat-end .chat-bubble::before': {
-    content: '""',
-    position: 'absolute',
-    insetBlockStart: '0',
-    inlineSize: '0.75rem',
-    blockSize: '0.75rem',
-    backgroundColor: 'var(--chat-bubble-bg)',
-    maskImage: 'radial-gradient(ellipse at 0 100%, transparent 68%, black 72%)',
-    pointerEvents: 'none',
-  },
-
-  '.chat-start .chat-bubble::before': {
-    insetInlineStart: '-0.5rem',
-  },
-
-  '.chat-start .chat-bubble': {
-    borderStartStartRadius: '0',
-  },
-
-  '.chat-end .chat-bubble::before': {
-    insetInlineEnd: '-0.5rem',
-    transform: 'scaleX(-1)',
-  },
-
-  '.chat-end .chat-bubble': {
-    borderStartEndRadius: '0',
-  },
-
-  '.chat-start:dir(rtl) .chat-bubble::before': {
-    transform: 'scaleX(-1)',
-  },
-
-  '.chat-end:dir(rtl) .chat-bubble::before': {
-    transform: 'none',
   },
 
   '.chat-bubble-primary': {
@@ -702,7 +980,7 @@ export const chatStyles: Record<string, any> = {
     animationDelay: '300ms',
   },
 
-  '.chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after': {
+  '.chat-streaming::after, .chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after': {
     content: '""',
     position: 'static',
     inset: 'auto',
@@ -767,10 +1045,10 @@ export const chatStyles: Record<string, any> = {
     '.chat-actions-hover': {
       transition: 'none',
     },
-    '.chat-typing::before, .chat-typing::after, .chat-typing span, .chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after, .chat-tool-running .chat-tool-header::before': {
+    '.chat-typing::before, .chat-typing::after, .chat-typing span, .chat-streaming::after, .chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after, .chat-tool-running .chat-tool-header::before': {
       animation: 'none',
     },
-    '.chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after': {
+    '.chat-streaming::after, .chat-bubble-streaming::after, .chat-bubble-content.chat-bubble-streaming::after': {
       opacity: '1',
     },
   },
