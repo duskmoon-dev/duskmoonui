@@ -1,6 +1,6 @@
 ---
 title: Chat
-description: CSS-only conversational UI primitives for user messages, assistant turns, reasoning traces, tool calls, and live states
+description: Agent conversations with unboxed answers, activity disclosures, user bubbles, long-message collapse, waiting queues, and steering
 category: components
 order: 23
 published: true
@@ -8,10 +8,13 @@ tags: ['chat', 'components', 'conversation', 'llm', 'messages']
 ---
 
 import ComponentShowcase from '../../../../components/showcase/ComponentShowcase.astro';
+import ChatQueueDemo from '../../../../components/showcase/ChatQueueDemo.astro';
+import ChatMessageCollapseDemo from '../../../../components/showcase/ChatMessageCollapseDemo.astro';
+import ChatAgentDemo from '../../../../components/showcase/ChatAgentDemo.astro';
 
 ## Long Messages And Links
 
-Messages wrap long text and links; `pre` blocks scroll within the bubble instead
+Messages wrap long text and links; `pre` blocks scroll within their message body instead
 of widening the transcript. Keep readable link text and native keyboard focus.
 Scrollable code blocks should use `tabindex="0"` and a descriptive accessible
 label so Safari keyboard users can reach and scroll them.
@@ -22,23 +25,23 @@ loading or scroll-position management.
 
 # Chat
 
-Chat provides CSS-only primitives for conversational interfaces. It supports user and assistant rows, avatars, message bubbles, reasoning traces, tool calls, and live streaming states without requiring JavaScript.
+Chat provides CSS-only primitives for agent conversations. User messages appear in rounded bubbles; agent answers render directly in the transcript, with optional avatars, activity disclosures, reasoning traces, tool calls, and streaming states.
 
 ## Basic Usage
 
-Use `.chat` with either `.chat-start` or `.chat-end` to place a message row. Put any existing `.avatar` inside `.chat-avatar`. Bubbles have a curved tail at the upper corner beside the top-aligned avatar. Start and end alignment follow the text direction, including RTL transcripts.
+Use `.chat.chat-end` with `.chat-bubble` for user messages. Use `.chat.chat-start.chat-agent` with `.chat-content` for agent output: it takes the available width with no bubble background, border, or padding. Put any existing `.avatar` inside an optional `.chat-avatar`; omit the slot when no avatar is needed. Start and end alignment follow the text direction, including RTL transcripts.
 
 Wrap a transcript in `.chat-scroll` when the conversation should scroll inside a fixed-height panel. Scroll behavior defaults to `smooth`. Pair **agent replies** with matching indicators via `data-chat-tl` so Scroll-Driven Animations can sync the rail with visible assistant rows.
 
 <ComponentShowcase
   title="Basic Chat"
   code={`<div id="demo-basic-chat" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
-  <div class="chat chat-start">
+  <div class="chat chat-start chat-agent">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-primary">AI</div>
     </div>
-    <div class="chat-header">Assistant - 2:15 PM</div>
-    <div class="chat-bubble">How can I help you today?</div>
+    <div class="chat-header">Agent - 2:15 PM</div>
+    <div class="chat-content">How can I help you today?</div>
     <div class="chat-footer">Delivered</div>
   </div>
 
@@ -53,6 +56,186 @@ Wrap a transcript in `.chat-scroll` when the conversation should scroll inside a
 </div>`}
 />
 
+## Agent Answers And Activity
+
+Keep the answer in a direct `.chat-content` block, adding `.markdown-body` for rich text.
+Group work records in native `<details class="chat-work">` with a `.chat-work-summary`
+and `.chat-work-body`. The compact summary can show **Worked**, tool or command counts,
+and failed operations; the application supplies those labels and values.
+
+Place the work disclosure before a completed answer. During progress, a brief content
+update may come first, with the activity summary below it. The answer stays visible
+when the work disclosure is closed. Reasoning and tool records can be nested inside
+the work body or placed directly in the agent row. All disclosures use native
+`<details>` / `<summary>` interaction and need no toggle script.
+
+This static example illustrates completed checks and a pending preview retry; it does
+not execute tools or make network requests.
+
+<ChatAgentDemo />
+
+```html
+<div class="chat chat-end">
+  <div class="chat-bubble chat-bubble-primary">Review the chat components.</div>
+</div>
+<div class="chat chat-start chat-agent">
+  <div class="chat-avatar"><div class="avatar avatar-sm avatar-primary">AI</div></div>
+  <details class="chat-work">
+    <summary class="chat-work-summary">Worked · 3 tool calls · 1 failed</summary>
+    <div class="chat-work-body">
+      <p>Source and scoped tests checked. The mobile preview needs a retry.</p>
+    </div>
+  </details>
+  <div class="chat-content markdown-body">
+    <p><strong>Review complete.</strong> Queue, steer, and long-message checks passed.</p>
+  </div>
+</div>
+```
+
+## Collapsible Sent Messages
+
+Add `.chat-bubble-collapsible` to sent **user** bubbles to keep messages taller than
+six rendered lines compact. Put the message text in a direct `.chat-bubble-content`
+child and a native `.chat-bubble-toggle` button after it. The collapsed content preserves
+newlines and wraps naturally; **Show more** reveals the complete message and changes to
+**Show less**. Short messages and messages of exactly six rendered lines need no toggle.
+Assistant replies and waiting queue items keep their existing presentation.
+
+<ChatMessageCollapseDemo />
+
+```html
+<div class="chat chat-end">
+  <div class="chat-header">You</div>
+  <div class="chat-bubble chat-bubble-primary chat-bubble-collapsible">
+    <div class="chat-bubble-content" id="demo-long-message" tabindex="-1">Review the chat view.
+Keep the waiting queue.
+Support immediate steer.
+Preserve message order.
+Keep multiline text.
+Check keyboard focus.
+Check narrow screens.
+Share the results.</div>
+    <button class="btn btn-ghost btn-xs chat-bubble-toggle" type="button"
+      aria-controls="demo-long-message" aria-expanded="false" hidden>Show more</button>
+  </div>
+</div>
+```
+
+The application wires the toggle and decides when it is needed. After rendering, compare
+the content's natural `scrollHeight` against `6 * parseFloat(getComputedStyle(content).lineHeight)`,
+allowing one pixel for rounding. Reveal the button only when content exceeds that limit.
+On click, switch its `aria-expanded` value and **Show more** / **Show less** label;
+core CSS reads `aria-expanded="true"` to remove the height limit. Give each content
+element a unique ID and reference it through `aria-controls`.
+
+Use `ResizeObserver` to remeasure actual wrapped lines when the available width changes,
+and refresh after message text updates (or observe them with `MutationObserver`). If a
+message becomes short enough, hide its button and reset `aria-expanded` to `false`.
+Before hiding a focused button, move focus to the controlled content with `tabindex="-1"`.
+Disconnect observers when removing messages or leaving the page. The demos use a shared
+controller with cleanup on Astro navigation; this controller is documentation code,
+and core remains CSS-only. Sent, steered, and automatically dispatched user messages
+in the waiting-queue demo all use this same behavior.
+
+## Waiting Queue And Steer
+
+Keep messages sent during an active reply in a separate `.chat-queue`, in sending order.
+A waiting message enters the transcript when the application dispatches it after the
+current reply completes. **Steer** dispatches that message immediately: remove it from
+the waiting queue, add its user row to the current conversation, and use it to guide
+the active reply. Steer does not cancel the active reply or start another assistant turn.
+**Remove** discards a waiting message without sending it.
+
+This demo starts with an active simulated reply and two waiting messages so the queue
+is visible immediately. Use a row's **Steer** to add it to the same current reply, or
+**Complete response** to finish that reply and send the oldest waiting message first.
+**Start fresh** returns to the idle greeting. The demo has no backend or generated answer.
+
+<ChatQueueDemo />
+
+Place the queue and composer in one `.chat-input-area`. The queue forms a shallow,
+inset tray tucked behind the rounded composer, with one message per row and no
+individual card borders or colored fills. A leading `.chat-queue-icon` introduces the
+single-line preview; a native `title` preserves the full message. Keep the queue's
+accessible heading and ordered positions visually hidden, and announce the waiting
+count through the polite status region. Every row keeps its plain **Steer** action
+and icon-only Remove action available. The application still marks the next message
+with `.chat-queue-item-active` and updates its position when the queue changes; the
+leading icon provides emphasis without an active border highlight.
+
+Multiple rows share the same tray. Add an optional `.chat-queue-attachment` thumbnail
+beside a message preview when the caller already has attached media. The caller supplies
+the image source and meaningful alternative text; this presentation primitive does not
+upload files or manage attachment state. The live demo uses text-only drafts.
+
+Use `.chat-composer` with a labelled native `.chat-composer-input` textarea and adjacent
+ghost actions. The primary action reads **Send** while idle and **Queue** during a reply.
+The composer's **Steer** action sends the current draft directly into the active
+conversation without adding it to the waiting queue. It is disabled while idle.
+The draft clears only after successful admission; blank drafts are rejected. Use
+`.chat-composer-ghost` for the reference's transparent border while retaining its
+keyboard focus treatment.
+
+| Key | Action |
+|---|---|
+| `Enter` | Send while idle; queue while a reply is active |
+| `Shift+Enter` | Insert a native textarea newline |
+| `Ctrl+Enter` or `⌘+Enter` | Steer the current draft immediately while a reply is active |
+
+Ignore shortcuts during input-method composition, including `isComposing` and legacy
+key code `229`, so pressing Enter to confirm an IME candidate never sends the draft.
+Keep the native textarea's selection, editing, and resize behavior. **Complete response**
+is a separate demo control that simulates completion; it is not a composer action.
+
+```html
+<div class="chat-input-area">
+  <section class="chat-queue" aria-labelledby="demo-waiting-title">
+    <div class="chat-queue-header sr-only">
+      <h3 class="chat-queue-title" id="demo-waiting-title">Message Queue (1)</h3>
+      <span class="chat-queue-count">1 Queued</span>
+    </div>
+    <ol class="chat-queue-list" role="list" tabindex="0" aria-label="Waiting messages">
+      <li class="chat-queue-item chat-queue-item-active">
+        <svg class="chat-queue-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 6 4 4-4 4"/><path d="M12 10H5m10-4h4m-4 6h4m-4 6h4"/></svg>
+        <span class="chat-queue-number sr-only">#1</span>
+        <img class="chat-queue-attachment" src="mockup.png" alt="Attached mockup" />
+        <div class="chat-queue-content" title="Also include the accessibility checks.">Also include the accessibility checks.</div>
+        <div class="chat-actions chat-queue-actions">
+          <button class="btn btn-ghost btn-sm chat-queue-steer" type="button" aria-label="Steer waiting message 1">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 4 5 5-5 5"/><path d="M20 9h-9a6 6 0 0 0-6 6v4"/></svg>
+            Steer
+          </button>
+          <button class="btn btn-ghost btn-sm btn-square chat-queue-remove" type="button" aria-label="Remove waiting message 1">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></svg>
+          </button>
+        </div>
+      </li>
+    </ol>
+  </section>
+  <form class="chat-composer chat-composer-ghost">
+    <label class="sr-only" for="demo-waiting-message">Message</label>
+    <textarea class="chat-composer-input" id="demo-waiting-message" name="message" rows="3" required placeholder="Message the agent…"></textarea>
+    <div class="chat-composer-actions">
+      <button class="btn btn-ghost" type="submit" aria-label="Queue message" aria-keyshortcuts="Enter">Queue <kbd class="chat-composer-hint">Enter</kbd></button>
+      <button class="btn btn-ghost" type="button" aria-label="Steer current message" aria-keyshortcuts="Control+Enter Meta+Enter">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 4 5 5-5 5"/><path d="M20 9h-9a6 6 0 0 0-6 6v4"/></svg>
+        Steer <kbd class="chat-composer-hint">Ctrl/⌘+Enter</kbd>
+      </button>
+    </div>
+  </form>
+</div>
+<p class="chat-status" role="status" aria-live="polite" aria-atomic="true">1 message waiting.</p>
+```
+
+Core supplies presentation only; the application owns queue state, completion events,
+network requests, steering support, and keyboard handlers. Wire Enter to the form's
+native submission and Ctrl/⌘+Enter to immediate steering, keeping Shift+Enter native.
+The sample buttons need application handlers and composition guards.
+For real asynchronous integrations, await successful dispatch or steering acknowledgment
+before dequeuing a message; keep rejected messages available for retry. Give each message
+a stable identity so a completed or steered message cannot be dispatched twice. Hide an
+empty queue with `hidden` rather than leaving an empty panel in the layout.
+
 ## Scroll-Driven Indicators
 
 `.chat-scroll` hoists named view timelines with `timeline-scope` (`--chat-1` … `--chat-24`). Pair **agent / assistant rows only** (`.chat-start`) with matching indicators: `.chat[data-chat-tl="N"]` declares `view-timeline-name`, and `.chat-scroll-indicator[data-chat-tl="N"]` binds `animation-timeline` + `animation-range: entry 0% exit 100%`.
@@ -63,9 +246,13 @@ The dashes keep their visual spacing, while adjacent buttons have continuous hov
 
 Requires a browser that supports Scroll-Driven Animations. Unsupported browsers still scroll smoothly; indicators stay in the idle style.
 
+Keep `.chat-input-area` outside `.chat-scroll` so the composer stays visible while
+browsing replies. Connect the Send button to your application's message handler.
+
 <ComponentShowcase
   title="Scroll-Driven Chat Indicators"
-  code={`<div id="demo-chat-scroll" class="chat-scroll" style="width: min(48rem, 100%); height: 22rem;">
+  code={`<div id="demo-chat-scroll-layout" style="width: min(48rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+<div id="demo-chat-scroll" class="chat-scroll" style="height: 22rem;">
   <div class="chat-scroll-track" aria-label="Assistant replies">
     <button type="button" class="chat-scroll-indicator" data-chat-tl="1" data-chat-target="demo-chat-agent-1" aria-label="Jump to assistant reply 1"></button>
     <button type="button" class="chat-scroll-indicator" data-chat-tl="2" data-chat-target="demo-chat-agent-2" aria-label="Jump to assistant reply 2"></button>
@@ -78,12 +265,12 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
   </div>
 
   <div class="chat-scroll-body">
-    <div id="demo-chat-agent-1" class="chat chat-start" data-chat-tl="1">
+    <div id="demo-chat-agent-1" class="chat chat-start chat-agent" data-chat-tl="1">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:00 PM</div>
-      <div class="chat-bubble">Welcome back. The left ticks mark each assistant reply — scroll or click a tick to jump to that response.</div>
+      <div class="chat-header">Agent - 2:00 PM</div>
+      <div class="chat-content">Welcome back. The left ticks mark each assistant reply — scroll or click a tick to jump to that response.</div>
     </div>
 
     <div class="chat chat-end">
@@ -94,12 +281,12 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
       <div class="chat-bubble chat-bubble-primary">Can we use Scroll-Driven Animations for the rail?</div>
     </div>
 
-    <div id="demo-chat-agent-2" class="chat chat-start" data-chat-tl="2">
+    <div id="demo-chat-agent-2" class="chat chat-start chat-agent" data-chat-tl="2">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:01 PM</div>
-      <div class="chat-bubble">Yes. Each agent row exposes a named view-timeline. The parent raises timeline-scope so indicators can bind animation-timeline without living in the same subtree.</div>
+      <div class="chat-header">Agent - 2:01 PM</div>
+      <div class="chat-content">Yes. Each agent row exposes a named view-timeline. The parent raises timeline-scope so indicators can bind animation-timeline without living in the same subtree.</div>
     </div>
 
     <div class="chat chat-end">
@@ -110,12 +297,12 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
       <div class="chat-bubble chat-bubble-primary">Should user messages also get ticks?</div>
     </div>
 
-    <div id="demo-chat-agent-3" class="chat chat-start" data-chat-tl="3">
+    <div id="demo-chat-agent-3" class="chat chat-start chat-agent" data-chat-tl="3">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:02 PM</div>
-      <div class="chat-bubble">No. Ticks only navigate to the start of an agent response. User turns stay in the transcript but are skipped by the rail.</div>
+      <div class="chat-header">Agent - 2:02 PM</div>
+      <div class="chat-content">No. Ticks only navigate to the start of an agent response. User turns stay in the transcript but are skipped by the rail.</div>
     </div>
 
     <div class="chat chat-end">
@@ -126,12 +313,12 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
       <div class="chat-bubble chat-bubble-primary">What about animation-range?</div>
     </div>
 
-    <div id="demo-chat-agent-4" class="chat chat-start" data-chat-tl="4">
+    <div id="demo-chat-agent-4" class="chat chat-start chat-agent" data-chat-tl="4">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:03 PM</div>
-      <div class="chat-bubble">Indicators use entry 0% exit 100%, so they brighten while the paired assistant message is in view and fade as it leaves.</div>
+      <div class="chat-header">Agent - 2:03 PM</div>
+      <div class="chat-content">Indicators use entry 0% exit 100%, so they brighten while the paired assistant message is in view and fade as it leaves.</div>
     </div>
 
     <div class="chat chat-end">
@@ -142,12 +329,12 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
       <div class="chat-bubble chat-bubble-primary">Why not use href hash links for the ticks?</div>
     </div>
 
-    <div id="demo-chat-agent-5" class="chat chat-start" data-chat-tl="5">
+    <div id="demo-chat-agent-5" class="chat chat-start chat-agent" data-chat-tl="5">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:04 PM</div>
-      <div class="chat-bubble">Hash navigation scrolls the document. For an overflow panel, use a button with data-chat-target and scroll the .chat-scroll container itself.</div>
+      <div class="chat-header">Agent - 2:04 PM</div>
+      <div class="chat-content">Hash navigation scrolls the document. For an overflow panel, use a button with data-chat-target and scroll the .chat-scroll container itself.</div>
     </div>
 
     <div class="chat chat-end">
@@ -158,12 +345,12 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
       <div class="chat-bubble chat-bubble-primary">Can clicks land exactly on the agent row start?</div>
     </div>
 
-    <div id="demo-chat-agent-6" class="chat chat-start" data-chat-tl="6">
+    <div id="demo-chat-agent-6" class="chat chat-start chat-agent" data-chat-tl="6">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:05 PM</div>
-      <div class="chat-bubble">Yes. The handler computes the target offset inside the scroller and calls scrollTo with smooth behavior, aligning to the agent row top (plus scroll-margin).</div>
+      <div class="chat-header">Agent - 2:05 PM</div>
+      <div class="chat-content">Yes. The handler computes the target offset inside the scroller and calls scrollTo with smooth behavior, aligning to the agent row top (plus scroll-margin).</div>
     </div>
 
     <div class="chat chat-end">
@@ -174,12 +361,12 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
       <div class="chat-bubble chat-bubble-primary">Add one more long answer so the list actually overflows.</div>
     </div>
 
-    <div id="demo-chat-agent-7" class="chat chat-start" data-chat-tl="7">
+    <div id="demo-chat-agent-7" class="chat chat-start chat-agent" data-chat-tl="7">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:06 PM</div>
-      <div class="chat-bubble">Here is a denser turn for scrolling practice: timeline-scope lifts --chat-N names, view-timeline-name is set on each agent .chat, and indicators stay sticky in .chat-scroll-track while .chat-scroll-body carries the messages.</div>
+      <div class="chat-header">Agent - 2:06 PM</div>
+      <div class="chat-content">Here is a denser turn for scrolling practice: timeline-scope lifts --chat-N names, view-timeline-name is set on each agent .chat, and indicators stay sticky in .chat-scroll-track while .chat-scroll-body carries the messages.</div>
     </div>
 
     <div class="chat chat-end">
@@ -190,46 +377,59 @@ Requires a browser that supports Scroll-Driven Animations. Unsupported browsers 
       <div class="chat-bubble chat-bubble-primary">Great — last tick should jump to that reply.</div>
     </div>
 
-    <div id="demo-chat-agent-8" class="chat chat-start" data-chat-tl="8">
+    <div id="demo-chat-agent-8" class="chat chat-start chat-agent" data-chat-tl="8">
       <div class="chat-avatar">
         <div class="avatar avatar-sm avatar-primary">AI</div>
       </div>
-      <div class="chat-header">Assistant - 2:07 PM</div>
-      <div class="chat-bubble">Done. Click the last dash to return to this agent response start without moving the page behind the panel.</div>
+      <div class="chat-header">Agent - 2:07 PM</div>
+      <div class="chat-content">Done. Click the last dash to return to this agent response start without moving the page behind the panel.</div>
     </div>
   </div>
+</div>
+<div class="chat-input-area">
+  <div class="chat-composer chat-composer-ghost">
+    <label class="sr-only" for="demo-chat-scroll-message">Message</label>
+    <textarea class="chat-composer-input" id="demo-chat-scroll-message" name="message" rows="3" placeholder="Message the agent…"></textarea>
+    <div class="chat-composer-actions">
+      <button class="btn btn-ghost" type="button" aria-label="Send message">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7M12 19V5"/></svg>
+        Send
+      </button>
+    </div>
+  </div>
+</div>
 </div>`}
 />
 
 ## Bubble Variants
 
-Color variants use soft container tones by default. Add `.chat-bubble-filled` when a saturated bubble is needed.
+User bubble color variants use soft container tones by default. Add `.chat-bubble-filled` when a saturated bubble is needed.
 
 <ComponentShowcase
   title="Bubble Colors"
   code={`<div id="demo-chat-colors" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 0.75rem;">
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble">Default bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-primary">Primary bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-secondary">Secondary bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-tertiary">Tertiary bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-info">Info bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-success">Success bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-warning">Warning bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-error">Error bubble</div>
   </div>
   <div class="chat chat-end">
@@ -240,17 +440,17 @@ Color variants use soft container tones by default. Add `.chat-bubble-filled` wh
 
 ## Right-To-Left Chat
 
-Set `dir="rtl"` on the transcript. `.chat-start` moves to the right and `.chat-end` to the left, with each bubble tail beside its avatar.
+Set `dir="rtl"` on the transcript. Agent rows start on the right and user bubbles move to the left; optional avatars follow the same direction.
 
 <ComponentShowcase
-  title="RTL Bubble Alignment"
+  title="RTL User And Agent Alignment"
   code={`<div id="demo-chat-rtl" dir="rtl" lang="ar" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
-  <div class="chat chat-start">
+  <div class="chat chat-start chat-agent">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-primary">AI</div>
     </div>
     <div class="chat-header">المساعد</div>
-    <div class="chat-bubble">كيف يمكنني مساعدتك اليوم؟</div>
+    <div class="chat-content">كيف يمكنني مساعدتك اليوم؟</div>
   </div>
   <div class="chat chat-end">
     <div class="chat-avatar">
@@ -264,21 +464,21 @@ Set `dir="rtl"` on the transcript. `.chat-start` moves to the right and `.chat-e
 
 ## Bubble Sizes
 
-Use bubble size modifiers for dense history views or larger conversational layouts.
+Use user bubble size modifiers for dense history views or larger conversational layouts.
 
 <ComponentShowcase
   title="Bubble Sizes"
   code={`<div id="demo-chat-sizes" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 0.75rem;">
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-xs">Extra small transcript bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-sm">Small dense chat bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-md">Medium default chat bubble</div>
   </div>
-  <div class="chat chat-start">
+  <div class="chat chat-end">
     <div class="chat-bubble chat-bubble-lg">Large accessible chat bubble</div>
   </div>
 </div>`}
@@ -286,76 +486,78 @@ Use bubble size modifiers for dense history views or larger conversational layou
 
 ## LLM Chat
 
-Put reasoning and tool calls **inside** the `.chat-bubble` as collapsible `<details>` blocks. Streaming tool calls may nest inside `.chat-reasoning-body`. Put the final answer in `.chat-bubble-content`.
+Put reasoning and tool calls in an agent row, optionally grouping them in `.chat-work-body`. Streaming tool calls may nest inside `.chat-reasoning-body`. Put the final answer in a separate `.chat-content` block so closing work records does not hide it.
 
 <ComponentShowcase
   title="Reasoning, Tool Call, and Streaming"
   code={`<div id="demo-llm-chat" style="width: min(48rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
-  <div class="chat chat-start" aria-live="polite">
+  <div class="chat chat-start chat-agent" aria-live="polite">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-info">AI</div>
     </div>
-    <div class="chat-header">Assistant - 2:18 PM</div>
+    <div class="chat-header">Agent - 2:18 PM</div>
 
-    <div class="chat-bubble">
-      <details class="chat-reasoning" open>
-        <summary>Thinking (3s)</summary>
-        <div class="chat-reasoning-body">
-          <div>I should call the weather tool, then summarize the result in one sentence.</div>
+    <details class="chat-work" open>
+      <summary class="chat-work-summary">Working · 2 tool calls · 0 failed</summary>
+      <div class="chat-work-body">
+        <details class="chat-reasoning" open>
+          <summary>Thinking (3s)</summary>
+          <div class="chat-reasoning-body">
+            <div>I should call the weather tool, then summarize the result in one sentence.</div>
 
-          <details class="chat-tool chat-tool-running" open>
-            <summary class="chat-tool-header">
-              <span>get_weather</span>
-              <span class="chat-tool-status">Running...</span>
-            </summary>
-            <div class="chat-tool-call">
-              <div class="code-block code-block-compact">
-                <div class="code-header">
-                  <span class="code-title">Call</span>
-                  <span class="code-language">json</span>
-                </div>
-                <div class="code-content">
-                  <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+            <details class="chat-tool chat-tool-running" open>
+              <summary class="chat-tool-header">
+                <span>get_weather</span>
+                <span class="chat-tool-status">Running...</span>
+              </summary>
+              <div class="chat-tool-call">
+                <div class="code-block code-block-compact">
+                  <div class="code-header">
+                    <span class="code-title">Call</span>
+                    <span class="code-language">json</span>
+                  </div>
+                  <div class="code-content">
+                    <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+                  </div>
                 </div>
               </div>
-            </div>
-          </details>
+            </details>
 
-          <div>Tool returned cloudy at 18 C. Drafting the final answer.</div>
-        </div>
-      </details>
+            <div>Tool returned cloudy at 18 C. Drafting the final answer.</div>
+          </div>
+        </details>
 
-      <details class="chat-tool chat-tool-success" open>
-        <summary class="chat-tool-header">
-          <span>get_weather</span>
-          <span class="chat-tool-status">Done</span>
-        </summary>
-        <div class="chat-tool-call">
-          <div class="code-block code-block-compact">
-            <div class="code-header">
-              <span class="code-title">Call</span>
-              <span class="code-language">json</span>
-            </div>
-            <div class="code-content">
-              <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+        <details class="chat-tool chat-tool-success" open>
+          <summary class="chat-tool-header">
+            <span>get_weather</span>
+            <span class="chat-tool-status">Done</span>
+          </summary>
+          <div class="chat-tool-call">
+            <div class="code-block code-block-compact">
+              <div class="code-header">
+                <span class="code-title">Call</span>
+                <span class="code-language">json</span>
+              </div>
+              <div class="code-content">
+                <pre><code>{&quot;city&quot;:&quot;Tokyo&quot;}</code></pre>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="chat-tool-result">
-          <div class="code-block code-block-compact">
-            <div class="code-header">
-              <span class="code-title">Result</span>
-              <span class="code-language">json</span>
-            </div>
-            <div class="code-content">
-              <pre><code>{&quot;temperature&quot;:&quot;18 C&quot;,&quot;condition&quot;:&quot;cloudy&quot;}</code></pre>
+          <div class="chat-tool-result">
+            <div class="code-block code-block-compact">
+              <div class="code-header">
+                <span class="code-title">Result</span>
+                <span class="code-language">json</span>
+              </div>
+              <div class="code-content">
+                <pre><code>{&quot;temperature&quot;:&quot;18 C&quot;,&quot;condition&quot;:&quot;cloudy&quot;}</code></pre>
+              </div>
             </div>
           </div>
-        </div>
-      </details>
-
-      <div class="chat-bubble-content chat-bubble-streaming">It is 18 C and cloudy in Tokyo right now.</div>
-    </div>
+        </details>
+      </div>
+    </details>
+    <div class="chat-content chat-streaming">It is 18 C and cloudy in Tokyo right now.</div>
     <div class="chat-footer">Streaming</div>
   </div>
 </div>`}
@@ -363,32 +565,32 @@ Put reasoning and tool calls **inside** the `.chat-bubble` as collapsible `<deta
 
 ## Live States
 
-Use `.chat-typing` inside an empty bubble while waiting for the first token. Use `.chat-bubble-streaming` while message text is still arriving.
+Use `.chat-typing` inside `.chat-content` while waiting for the first token. Add `.chat-streaming` to `.chat-content` while message text is still arriving. The existing `.chat-bubble-streaming` modifier remains a compatibility alias.
 
 <ComponentShowcase
   title="Typing and Streaming"
   code={`<div id="demo-chat-live-states" style="width: min(42rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
-  <div class="chat chat-start" aria-live="polite">
+  <div class="chat chat-start chat-agent" aria-live="polite">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-secondary">AI</div>
     </div>
-    <div class="chat-bubble" aria-label="Assistant is typing">
+    <div class="chat-content" aria-label="Agent is typing">
       <span class="chat-typing"></span>
     </div>
   </div>
 
-  <div class="chat chat-start" aria-live="polite">
+  <div class="chat chat-start chat-agent" aria-live="polite">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-secondary">AI</div>
     </div>
-    <div class="chat-bubble chat-bubble-streaming">Generating a response</div>
+    <div class="chat-content chat-streaming">Generating a response</div>
   </div>
 </div>`}
 />
 
 ## Message Status And Actions
 
-Place `.chat-status` below the bubble to show generation state, token speed, and token count. Group each metric in `.chat-status-item` and emphasize its number with `.chat-status-value`. Metrics wrap on narrow screens and use tabular numerals.
+Place `.chat-status` below agent content or a user bubble to show generation state, token speed, and token count. Group each metric in `.chat-status-item` and emphasize its number with `.chat-status-value`. Metrics wrap on narrow screens and use tabular numerals.
 
 Use `.chat-actions` for a row of existing buttons. Add `.chat-actions-hover` to reveal the actions when the message is hovered or contains keyboard focus. Actions remain visible on devices without hover. Omit the modifier when actions should always be visible.
 
@@ -417,12 +619,12 @@ The application supplies status text and metric values and handles each action. 
     </div>
   </div>
 
-  <div class="chat chat-start">
+  <div class="chat chat-start chat-agent">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-secondary">AI</div>
     </div>
-    <div class="chat-header">Assistant · Generating</div>
-    <div class="chat-bubble chat-bubble-streaming">Checking the build and smoke-test results</div>
+    <div class="chat-header">Agent · Generating</div>
+    <div class="chat-content chat-streaming">Checking the build and smoke-test results</div>
     <div class="chat-status">
       <span class="chat-status-item">Generating</span>
       <span class="chat-status-item"><span class="chat-status-value">42</span> token/s</span>
@@ -436,12 +638,12 @@ The application supplies status text and metric values and handles each action. 
     </div>
   </div>
 
-  <div class="chat chat-start">
+  <div class="chat chat-start chat-agent">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-primary">AI</div>
     </div>
-    <div class="chat-header">Assistant · Completed</div>
-    <div class="chat-bubble">The build completed and all deployment smoke tests passed.</div>
+    <div class="chat-header">Agent · Completed</div>
+    <div class="chat-content">The build completed and all deployment smoke tests passed.</div>
     <div class="chat-status">
       <span class="chat-status-item">Completed</span>
       <span class="chat-status-item"><span class="chat-status-value">42</span> token/s</span>
@@ -500,23 +702,21 @@ Tool blocks use status modifiers so state is visible in both color and text.
 
 ## With Markdown
 
-Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant output. The bubble handles spacing and max width, while markdown handles typography.
+Use `.chat-content.markdown-body` directly in the agent row for a rich answer. Agent content handles available width and long text; markdown supplies typography without enclosing the answer in a bubble.
 
 <ComponentShowcase
-  title="Markdown Body in a Bubble"
+  title="Agent Markdown Answer"
   code={`<div id="demo-chat-markdown" style="width: min(42rem, 100%);">
-  <div class="chat chat-start">
+  <div class="chat chat-start chat-agent">
     <div class="chat-avatar">
       <div class="avatar avatar-sm avatar-tertiary">AI</div>
     </div>
-    <div class="chat-bubble">
-      <div class="markdown-body">
-        <p><strong>Summary:</strong> the deployment is ready.</p>
-        <ul>
-          <li>Build completed</li>
-          <li>Smoke test passed</li>
-        </ul>
-      </div>
+    <div class="chat-content markdown-body">
+      <p><strong>Summary:</strong> the deployment is ready.</p>
+      <ul>
+        <li>Build completed</li>
+        <li>Smoke test passed</li>
+      </ul>
     </div>
   </div>
 </div>`}
@@ -535,18 +735,49 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 | `[data-chat-tl="N"]` | Shared slot `1`–`24` on **agent** `.chat` rows and their indicators |
 | `[data-chat-target]` | Message id to scroll to inside `.chat-scroll` (docs demo wires the click handler) |
 | `.chat` | Row wrapper for avatar and message stack |
-| `.chat-start` | Row aligned to the inline start (left in LTR, right in RTL), commonly used for assistant messages |
-| `.chat-end` | Row aligned to the inline end (right in LTR, left in RTL), commonly used for user messages |
-| `.chat-avatar` | Avatar slot; compose with the existing `.avatar` component |
+| `.chat-start` | Row aligned to the inline start (left in LTR, right in RTL); compose with `.chat-agent` for agent output |
+| `.chat-end` | User row aligned to the inline end (right in LTR, left in RTL) |
+| `.chat-agent` | Full-width agent row with top-aligned optional avatar; uses one column when the avatar is omitted |
+| `.chat-content` | Transparent unboxed agent answer or progress block; compose with `.markdown-body` for rich text |
+| `.chat-streaming` | Streaming caret for `.chat-content`; respects reduced motion |
+| `.chat-avatar` | Optional avatar slot; compose with the existing `.avatar` component |
 | `.chat-header` | Small muted metadata above the message stack |
 | `.chat-footer` | Small muted metadata below the message stack |
-| `.chat-status` | Wrapping muted status and metrics row below the bubble, with tabular numerals |
+| `.chat-status` | Wrapping muted status and metrics row below the message body, with tabular numerals |
 | `.chat-status-item` | Inline group for one state label or metric |
 | `.chat-status-value` | Emphasized number within a metric |
 | `.chat-actions` | Always-visible action row; compose with existing button classes |
 | `.chat-actions-hover` | Modifier for `.chat-actions`; reveals on message hover or keyboard focus and stays visible on devices without hover |
-| `.chat-bubble` | Message bubble with a curved upper tail toward its top-aligned avatar; may contain reasoning, tools, and `.chat-bubble-content` |
-| `.chat-bubble-content` | Final answer slot when the bubble also holds collapsible blocks |
+| `.chat-bubble` | Rounded user message bubble; agent output uses `.chat-content` |
+| `.chat-bubble-content` | Text slot for a collapsible sent user message |
+| `.chat-bubble-collapsible` | Opt-in sent user bubble; limits its direct `.chat-bubble-content` child to six rendered lines until expanded |
+| `.chat-bubble-toggle` | Native Show more / Show less button; connect its `aria-controls` to the content ID and synchronize `aria-expanded` |
+
+### Waiting Queue
+
+| Class | Description |
+|---|---|
+| `.chat-input-area` | Structural stack attaching an inset waiting-message tray above the rounded composer |
+| `.chat-queue` | Subdued waiting-message tray above the composer; supports the native `hidden` attribute |
+| `.chat-queue-header` | Queue heading/count wrapper; use `.sr-only` for the attached-strip layout |
+| `.chat-queue-title` | Queue heading; use it to name the section with `aria-labelledby` |
+| `.chat-queue-count` | Optional queue count; keep it visually hidden in the attached strip and announce counts through status text |
+| `.chat-queue-list` | Vertical list with one full-width message per row; use `<ol role="list">` and a named keyboard scroll target |
+| `.chat-queue-item` | One unboxed waiting-message row with inline actions; respects `hidden` |
+| `.chat-queue-item-active` | Next message to dispatch; the application updates this state marker after queue changes |
+| `.chat-queue-icon` | Decorative leading queue glyph |
+| `.chat-queue-attachment` | Optional small image thumbnail; the caller supplies media and alternative text |
+| `.chat-queue-number` | Current ordered position; use `.sr-only` in the attached-strip layout |
+| `.chat-queue-content` | Single-line message preview; preserve the full text and provide a native `title` |
+| `.chat-queue-actions` | Queue action group; compose with `.chat-actions` and existing button classes |
+| `.chat-queue-steer` | Plain Steer action with a curved-arrow icon; compose with `.btn.btn-ghost.btn-sm` |
+| `.chat-queue-remove` | Remove icon action; compose with a ghost square button and a specific accessible name |
+| `.chat-composer` | Native message form with a textarea and adjacent submission/steering actions |
+| `.chat-composer-{primary,secondary,tertiary,info,success,warning,error}` | Semantic composer color variants; focus treatment follows the chosen color |
+| `.chat-composer-ghost` | Transparent composer border |
+| `.chat-composer-input` | Native borderless textarea inside the composer; retains vertical resizing |
+| `.chat-composer-actions` | Wrapping action group for Send/Queue and Steer, with visible keyboard hints |
+| `.chat-composer-hint` | Compact native `<kbd>` shortcut hint inside a composer action |
 
 ### Bubble Modifiers
 
@@ -564,15 +795,18 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 | `.chat-bubble-sm` | Small bubble |
 | `.chat-bubble-md` | Medium bubble, explicit alias of the base size |
 | `.chat-bubble-lg` | Large bubble |
-| `.chat-bubble-streaming` | Adds a streaming caret after bubble content |
+| `.chat-bubble-streaming` | Existing streaming caret modifier; compatibility alias on agent content (prefer `.chat-streaming`) |
 
 ### LLM Classes
 
 | Class | Description |
 |---|---|
-| `.chat-reasoning` | Collapsible reasoning trace using `<details>`; place inside `.chat-bubble` |
+| `.chat-work` | Native `<details>` activity disclosure in an agent row; place before an answer or after a progress update |
+| `.chat-work-summary` | Compact native `<summary>` with application-supplied work labels/counts and a disclosure chevron |
+| `.chat-work-body` | Stack of disclosed work records, reasoning, and tool calls |
+| `.chat-reasoning` | Collapsible reasoning trace using `<details>` in an agent row or its work body |
 | `.chat-reasoning-body` | Reasoning content stack; may nest streaming `.chat-tool` blocks |
-| `.chat-tool` | Collapsible tool call block using `<details>`; inside the bubble, or nested in reasoning |
+| `.chat-tool` | Collapsible tool call block using `<details>` in an agent row, its work body, or reasoning |
 | `.chat-tool-header` | Summary content for tool name and status text |
 | `.chat-tool-call` | Tool call payload slot |
 | `.chat-tool-result` | Tool result payload slot |
@@ -585,10 +819,15 @@ Place `.markdown-body` inside a `.chat-bubble` when rendering rich assistant out
 ## Accessibility
 
 - Use visible text for tool statuses such as `Pending`, `Running...`, `Done`, and `Failed`.
-- Add `aria-label="Assistant is typing"` to the bubble that contains `.chat-typing`, or place `aria-live="polite"` on the row stack.
-- Prefer native `<details>` and `<summary>` for reasoning and tool blocks so keyboard interaction works without custom JavaScript.
+- Add `aria-label="Agent is typing"` to the content that contains `.chat-typing`, or let the application announce the state through a polite status region.
+- Use native `<details>` and `<summary>` for activity, reasoning, and tool records so keyboard interaction works without custom JavaScript. Keep work counts and failures readable as text; keep the final answer outside the disclosure.
 - Use native buttons for message actions, with descriptive accessible names when repeated labels need context. Hover actions reveal when a button receives keyboard focus; they remain visible on touch devices without hover.
 - Keep status and token metrics readable as text. Let the application choose which state changes to announce; avoid announcing every token-count update.
+- Use a native Show more / Show less button for long sent messages, with `aria-expanded` and `aria-controls` synchronized to the controlled content. Hide it for six or fewer rendered lines; move focus to the content before hiding a focused toggle after remeasurement.
+- Name the waiting queue and its list. Keep `role="list"` when list markers are removed, and use `tabindex="0"` with an accessible name on the scrollable list so keyboard users can scroll it.
+- Give repeated Steer and icon-only Remove buttons names that identify their waiting message. Keep all row actions reachable, including rows after the next message to dispatch. After consuming or removing a focused queue row, move focus to a surviving row action or the message textarea.
+- Announce queue transitions and the waiting count through one polite `role="status"` region. Avoid announcing the same change through a live transcript as well.
+- Label the native textarea. Show keyboard hints and expose shortcuts through `aria-keyshortcuts`; use Shift+Enter for newlines and never dispatch during IME composition. Render user input as text, such as with `textContent`, instead of interpolating it into HTML.
 - `.chat-scroll` respects `prefers-reduced-motion` by switching `scroll-behavior` to `auto` and disabling indicator animations. Give the scroll container a reachable height. Map ticks only to agent reply starts. Prefer `<button data-chat-target>` over hash links so navigation stays inside the panel; give each indicator an `aria-label`.
 
 ## Related Components

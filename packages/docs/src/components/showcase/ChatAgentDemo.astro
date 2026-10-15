@@ -1,0 +1,66 @@
+<div data-chat-agent-demo style="width: min(48rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+  <div class="chat chat-end" data-chat-role="user">
+    <div class="chat-header">You</div>
+    <div class="chat-bubble chat-bubble-primary">Review the chat components and summarize the checks, including any failures.</div>
+  </div>
+
+  <div class="chat chat-start chat-agent" data-chat-role="assistant" data-chat-agent-state="completed">
+    <div class="chat-avatar"><div class="avatar avatar-sm avatar-primary">AI</div></div>
+    <details class="chat-work">
+      <summary class="chat-work-summary">Worked · 3 tool calls · 1 failed</summary>
+      <div class="chat-work-body">
+        <details class="chat-reasoning">
+          <summary>Review approach</summary>
+          <div class="chat-reasoning-body">Check the source, run the focused tests, then inspect the narrow-screen layout.</div>
+        </details>
+        <details class="chat-tool chat-tool-success">
+          <summary class="chat-tool-header"><span>read_component_source</span><span class="chat-tool-status">Done</span></summary>
+          <div class="chat-tool-result">User bubbles and agent content use separate primitives.</div>
+        </details>
+        <details class="chat-tool chat-tool-success">
+          <summary class="chat-tool-header"><span>run_scoped_tests</span><span class="chat-tool-status">Done</span></summary>
+          <div class="chat-tool-result">Queue, steer, and long-message checks passed.</div>
+        </details>
+        <details class="chat-tool chat-tool-error">
+          <summary class="chat-tool-header"><span>capture_mobile_preview</span><span class="chat-tool-status">Failed</span></summary>
+          <div class="chat-tool-result">The preview server was unavailable. The mobile capture still needs a retry.</div>
+        </details>
+      </div>
+    </details>
+    <div class="chat-content markdown-body">
+      <p><strong>Reviewed the chat components.</strong> The focused behavior checks passed; the mobile preview needs another attempt.</p>
+      <ul>
+        <li>Waiting messages keep their sending order.</li>
+        <li>Steer adds a message to the active conversation immediately.</li>
+        <li>Sent user messages taller than six lines can be expanded.</li>
+      </ul>
+      <p>Use a direct agent content block for the answer:</p>
+      <div class="code-block code-block-compact">
+        <div class="code-header"><span class="code-title">Agent answer</span><span class="code-language">html</span></div>
+        <div class="code-content"><pre tabindex="0" aria-label="Agent answer markup"><code>&lt;div class="chat-content markdown-body"&gt;Answer&lt;/div&gt;</code></pre></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat chat-start chat-agent" data-chat-role="assistant" data-chat-agent-state="progress">
+    <div class="chat-avatar"><div class="avatar avatar-sm avatar-primary">AI</div></div>
+    <div class="chat-content">I will retry the mobile preview and keep its result separate from the completed checks.</div>
+    <details class="chat-work">
+      <summary class="chat-work-summary">2 commands · 1 other operation · 1 failed</summary>
+      <div class="chat-work-body">
+        <details class="chat-tool chat-tool-error">
+          <summary class="chat-tool-header"><span>check_preview_server</span><span class="chat-tool-status">Failed</span></summary>
+          <div class="chat-tool-result">The preview server did not respond.</div>
+        </details>
+        <details class="chat-tool chat-tool-success">
+          <summary class="chat-tool-header"><span>start_preview_server</span><span class="chat-tool-status">Done</span></summary>
+          <div class="chat-tool-result">A fresh preview server was started.</div>
+        </details>
+        <details class="chat-tool chat-tool-running" open>
+          <summary class="chat-tool-header"><span>retry_mobile_preview</span><span class="chat-tool-status">Running...</span></summary>
+          <div class="chat-tool-call">Waiting for the documentation preview to respond.</div>
+        </details>
+      </div>
+    </details>
+  </div>
+</div>

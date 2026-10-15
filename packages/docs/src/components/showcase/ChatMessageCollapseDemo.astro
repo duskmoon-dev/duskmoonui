@@ -1,0 +1,31 @@
+---
+const examples = [
+  { kind: 'short', label: 'Short message', text: 'Please summarize the accessibility checks.' },
+  { kind: 'six-lines', label: 'Exactly six lines', text: 'Check keyboard focus.\nCheck accessible names.\nCheck contrast.\nCheck touch targets.\nCheck reduced motion.\nShare the results.' },
+  { kind: 'long', label: 'More than six lines', text: 'Review the chat view.\nKeep the waiting queue.\nSupport immediate steer.\nPreserve message order.\nKeep multiline text.\nCheck keyboard focus.\nCheck narrow screens.\nShare the results.' },
+];
+---
+
+<div data-chat-message-collapse-demo style="width: min(48rem, 100%); display: flex; flex-direction: column; gap: 1rem;">
+  {examples.map(example => (
+    <div class="chat chat-end" data-chat-collapse-case={example.kind}>
+      <div class="chat-header">You · {example.label}</div>
+      <div class="chat-bubble chat-bubble-primary chat-bubble-collapsible">
+        <div class="chat-bubble-content" id={`demo-chat-collapse-${example.kind}`} tabindex="-1">{example.text}</div>
+        <button class="btn btn-ghost btn-xs chat-bubble-toggle" type="button" aria-controls={`demo-chat-collapse-${example.kind}`} aria-expanded="false" hidden>Show more</button>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  import { initChatBubbleCollapse } from './chatBubbleCollapse';
+
+  function initChatMessageCollapseDemos() {
+    document.querySelectorAll<HTMLElement>('[data-chat-message-collapse-demo] .chat-bubble-collapsible')
+      .forEach(initChatBubbleCollapse);
+  }
+
+  initChatMessageCollapseDemos();
+  document.addEventListener('astro:page-load', initChatMessageCollapseDemos);
+</script>
