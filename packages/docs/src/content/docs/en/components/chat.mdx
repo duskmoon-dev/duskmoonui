@@ -722,6 +722,22 @@ Use `.chat-content.markdown-body` directly in the agent row for a rich answer. A
 </div>`}
 />
 
+For user messages, nest `.markdown-body` inside `.chat-bubble`. Prose, links and quotations inherit the bubble foreground in tonal and filled variants; code, keyboard keys and table surfaces keep their matching surface foreground.
+
+<ComponentShowcase
+  title="User Bubble with Markdown"
+  code={`<div class="chat chat-end">
+  <div class="chat-bubble chat-bubble-primary chat-bubble-filled">
+    <div class="markdown-body">
+      <p>Please review <a href="#demo-chat-markdown">the deployment summary</a>.</p>
+      <blockquote><p>Keep the public API compatible.</p></blockquote>
+      <pre><code>console.log("Ready to deploy");</code></pre>
+      <p>Press <kbd>Enter</kbd> to continue.</p>
+    </div>
+  </div>
+</div>`}
+/>
+
 ## API Reference
 
 ### Structure
