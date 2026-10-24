@@ -47,9 +47,8 @@ describe('Badge Component', () => {
       expect(css).toMatch(/font-weight:\s*500/);
     });
 
-    it('should keep long labels readable in narrow containers', () => {
-      expect(css).toMatch(/\.badge\s*\{[^}]*white-space:\s*normal/s);
-      expect(css).toMatch(/\.badge\s*\{[^}]*overflow-wrap:\s*anywhere/s);
+    it('should keep labels on one line', () => {
+      expect(css).toMatch(/\.badge\s*\{[^}]*white-space:\s*nowrap/s);
     });
 
     it('should use surface-container background by default', () => {

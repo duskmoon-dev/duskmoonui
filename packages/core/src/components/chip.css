@@ -13,6 +13,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
+    white-space: nowrap;
     border-radius: var(--radius-sm);
     background-color: var(--color-surface-container);
     color: var(--color-on-surface);

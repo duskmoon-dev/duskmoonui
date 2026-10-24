@@ -182,6 +182,7 @@ export const autocompleteStyles: Record<string, any> = {
 
   '.autocomplete-chip': {
     display: 'inline-flex',
+    whiteSpace: 'nowrap',
     alignItems: 'center',
     gap: '0.375rem',
     padding: '0.25rem 0.5rem',
