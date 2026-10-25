@@ -34,7 +34,6 @@ export const alertStyles: Record<string, any> = {
   '.alert-description': {
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    opacity: '0.9',
     margin: '0',
   },
 
@@ -221,19 +220,19 @@ export const alertStyles: Record<string, any> = {
   },
 
   '.alert-tonal.alert-info .alert-icon, .alert-outlined.alert-info .alert-icon, .alert-standard.alert-info .alert-icon': {
-    color: 'var(--color-info)',
+    color: 'var(--color-on-info-container)',
   },
 
   '.alert-tonal.alert-success .alert-icon, .alert-outlined.alert-success .alert-icon, .alert-standard.alert-success .alert-icon': {
-    color: 'var(--color-success)',
+    color: 'var(--color-on-success-container)',
   },
 
   '.alert-tonal.alert-warning .alert-icon, .alert-outlined.alert-warning .alert-icon, .alert-standard.alert-warning .alert-icon': {
-    color: 'var(--color-warning)',
+    color: 'var(--color-on-warning-container)',
   },
 
   '.alert-tonal.alert-error .alert-icon, .alert-outlined.alert-error .alert-icon, .alert-standard.alert-error .alert-icon': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   // Title colors for tonal/outlined/standard variants
@@ -242,18 +241,18 @@ export const alertStyles: Record<string, any> = {
   },
 
   '.alert-tonal.alert-info .alert-title, .alert-outlined.alert-info .alert-title, .alert-standard.alert-info .alert-title': {
-    color: 'var(--color-info)',
+    color: 'var(--color-on-info-container)',
   },
 
   '.alert-tonal.alert-success .alert-title, .alert-outlined.alert-success .alert-title, .alert-standard.alert-success .alert-title': {
-    color: 'var(--color-success)',
+    color: 'var(--color-on-success-container)',
   },
 
   '.alert-tonal.alert-warning .alert-title, .alert-outlined.alert-warning .alert-title, .alert-standard.alert-warning .alert-title': {
-    color: 'var(--color-warning)',
+    color: 'var(--color-on-warning-container)',
   },
 
   '.alert-tonal.alert-error .alert-title, .alert-outlined.alert-error .alert-title, .alert-standard.alert-error .alert-title': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 };

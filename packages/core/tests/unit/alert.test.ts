@@ -186,7 +186,7 @@ describe('Alert Component', () => {
       it(`should use ${variant} border-color for outlined ${variant}`, () => {
         expect(css).toMatch(
           new RegExp(
-            `\\.alert-outlined\\.alert-${variant}[^}]*border-color:\\s*var\\(--color-${variant}\\)`,
+            `\\.alert-outlined\\.alert-${variant}[^}]*border-color:\\s*currentColor`,
             's',
           ),
         );
@@ -195,7 +195,7 @@ describe('Alert Component', () => {
       it(`should use ${variant} text color for outlined ${variant}`, () => {
         expect(css).toMatch(
           new RegExp(
-            `\\.alert-outlined\\.alert-${variant}[^}]*color:\\s*var\\(--color-${variant}\\)`,
+            `\\.alert-outlined\\.alert-${variant}[^}]*color:\\s*var\\(--color-on-${variant}-container\\)`,
             's',
           ),
         );
@@ -238,7 +238,7 @@ describe('Alert Component', () => {
       it(`should use ${variant} text color for ghost ${variant}`, () => {
         expect(css).toMatch(
           new RegExp(
-            `\\.alert-ghost\\.alert-${variant}[^}]*color:\\s*var\\(--color-${variant}\\)`,
+            `\\.alert-ghost\\.alert-${variant}[^}]*color:\\s*var\\(--color-on-${variant}-container\\)`,
           ),
         );
       });
@@ -298,8 +298,8 @@ describe('Alert Component', () => {
       expect(css).toContain('.alert-description');
     });
 
-    it('should set alert-description opacity to 0.9', () => {
-      expect(css).toMatch(/\.alert-description\s*\{[^}]*opacity:\s*0\.9/s);
+    it('keeps description text at full contrast against filled backgrounds', () => {
+      expect(css).not.toMatch(/\.alert-description\s*\{[^}]*opacity:/s);
     });
 
     it('should define .alert-actions class', () => {

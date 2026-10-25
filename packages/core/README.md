@@ -292,6 +292,8 @@ Theme switching is instant and uses pure CSS custom properties.
 DuskMoonUI v2.0 uses the OKLCH color format for perceptually uniform color manipulation.
 
 ### Brand Colors (12 tokens)
+
+Use `on-primary-container`, `on-secondary-container`, and `on-tertiary-container` for colored text on surfaces. Bright role colors are fills: pair `primary` with `primary-content`, for example. The same foreground rule applies to semantic roles. Components keep these uses separate so outlined/text controls remain readable without changing the theme palette. For accent text, use `light-dark(var(--color-accent-content), var(--color-accent))` with the theme's `color-scheme`.
 - `primary`, `primary-content`, `primary-container`, `on-primary-container`
 - `secondary`, `secondary-content`, `secondary-container`, `on-secondary-container`
 - `tertiary`, `tertiary-content`, `tertiary-container`, `on-tertiary-container`

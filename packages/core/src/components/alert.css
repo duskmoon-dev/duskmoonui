@@ -80,7 +80,6 @@
     margin: 0;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    opacity: 0.9;
   }
 
   /* Alert Close Button */
@@ -230,43 +229,43 @@
   }
 
   .alert-outlined.alert-info {
-    border-color: var(--color-info);
-    color: var(--color-info);
+    border-color: currentColor;
+    color: var(--color-on-info-container);
   }
 
   .alert-outlined.alert-success {
-    border-color: var(--color-success);
-    color: var(--color-success);
+    border-color: currentColor;
+    color: var(--color-on-success-container);
   }
 
   .alert-outlined.alert-warning {
-    border-color: var(--color-warning);
-    color: var(--color-warning);
+    border-color: currentColor;
+    color: var(--color-on-warning-container);
   }
 
   .alert-outlined.alert-error {
-    border-color: var(--color-error);
-    color: var(--color-error);
+    border-color: currentColor;
+    color: var(--color-on-error-container);
   }
 
   .alert-outlined.alert-primary {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: currentColor;
+    color: var(--color-on-primary-container);
   }
 
   .alert-outlined.alert-secondary {
-    border-color: var(--color-secondary);
-    color: var(--color-secondary);
+    border-color: currentColor;
+    color: var(--color-on-secondary-container);
   }
 
   .alert-outlined.alert-tertiary {
-    border-color: var(--color-tertiary);
-    color: var(--color-tertiary);
+    border-color: currentColor;
+    color: var(--color-on-tertiary-container);
   }
 
   .alert-outlined.alert-accent {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    border-color: currentColor;
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
 
   .alert-outlined.alert-neutral {
@@ -285,14 +284,14 @@
     border-color: transparent;
   }
 
-  .alert-ghost.alert-primary   { color: var(--color-primary); }
-  .alert-ghost.alert-secondary { color: var(--color-secondary); }
-  .alert-ghost.alert-tertiary  { color: var(--color-tertiary); }
-  .alert-ghost.alert-info      { color: var(--color-info); }
-  .alert-ghost.alert-success   { color: var(--color-success); }
-  .alert-ghost.alert-warning   { color: var(--color-warning); }
-  .alert-ghost.alert-error     { color: var(--color-error); }
-  .alert-ghost.alert-accent    { color: var(--color-accent); }
+  .alert-ghost.alert-primary   { color: var(--color-on-primary-container); }
+  .alert-ghost.alert-secondary { color: var(--color-on-secondary-container); }
+  .alert-ghost.alert-tertiary  { color: var(--color-on-tertiary-container); }
+  .alert-ghost.alert-info      { color: var(--color-on-info-container); }
+  .alert-ghost.alert-success   { color: var(--color-on-success-container); }
+  .alert-ghost.alert-warning   { color: var(--color-on-warning-container); }
+  .alert-ghost.alert-error     { color: var(--color-on-error-container); }
+  .alert-ghost.alert-accent    { color: light-dark(var(--color-accent-content), var(--color-accent)); }
   .alert-ghost.alert-neutral   { color: var(--color-neutral); }
   .alert-ghost.alert-base      { color: var(--color-base-content); }
 

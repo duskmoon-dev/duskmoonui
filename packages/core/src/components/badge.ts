@@ -54,20 +54,20 @@ export const badgeStyles: Record<string, any> = {
   // Outlined variant
   '.badge-outlined': {
     backgroundColor: 'transparent',
-    color: 'var(--color-primary)',
-    border: '1px solid var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
+    border: '1px solid currentColor',
   },
 
   '.badge-outlined-secondary': {
     backgroundColor: 'transparent',
-    color: 'var(--color-secondary)',
-    border: '1px solid var(--color-secondary)',
+    color: 'var(--color-on-secondary-container)',
+    border: '1px solid currentColor',
   },
 
   '.badge-outlined-tertiary': {
     backgroundColor: 'transparent',
-    color: 'var(--color-tertiary)',
-    border: '1px solid var(--color-tertiary)',
+    color: 'var(--color-on-tertiary-container)',
+    border: '1px solid currentColor',
   },
 
   // Semantic colors

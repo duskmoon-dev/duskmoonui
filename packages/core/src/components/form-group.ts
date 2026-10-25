@@ -29,7 +29,7 @@ export const formGroupStyles: Record<string, any> = {
 
   '.form-label-required::after': {
     content: "' *'",
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   '.fieldset': {

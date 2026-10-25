@@ -247,9 +247,9 @@
   .accordion-item-disabled > .accordion-header { opacity: 0.6; cursor: not-allowed; }
   .accordion-no-animation .accordion-content, .accordion-no-animation .accordion-expand { transition: none; }
   .accordion-secondary > .accordion-item:not(details):is(.open, .accordion-item-open) > .accordion-header,
-  .accordion-secondary > details.accordion-item[open] > .accordion-header { color: var(--color-secondary); }
+  .accordion-secondary > details.accordion-item[open] > .accordion-header { color: var(--color-on-secondary-container); }
   .accordion-tertiary > .accordion-item:not(details):is(.open, .accordion-item-open) > .accordion-header,
-  .accordion-tertiary > details.accordion-item[open] > .accordion-header { color: var(--color-tertiary); }
+  .accordion-tertiary > details.accordion-item[open] > .accordion-header { color: var(--color-on-tertiary-container); }
   details.accordion-item > summary { list-style: none; }
   details.accordion-item > summary::-webkit-details-marker { display: none; }
   details.accordion-item:not([open]) > .accordion-content,

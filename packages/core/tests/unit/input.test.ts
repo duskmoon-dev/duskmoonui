@@ -68,16 +68,16 @@ describe('Input Component', () => {
       expect(inputCSS).toContain('.input-tertiary');
     });
 
-    it('should use primary color for primary variant border', () => {
-      expect(inputCSS).toContain('var(--color-primary)');
+    it('should use readable primary ink for the primary variant and its border', () => {
+      expect(inputCSS).toMatch(/\.input-primary\s*\{[^}]*color:\s*var\(--color-on-primary-container\)/s);
     });
 
     it('should use secondary color for secondary variant', () => {
-      expect(inputCSS).toContain('var(--color-secondary)');
+      expect(inputCSS).toMatch(/\.input-secondary\s*\{[^}]*color:\s*var\(--color-on-secondary-container\)/s);
     });
 
     it('should use tertiary color for tertiary variant', () => {
-      expect(inputCSS).toContain('var(--color-tertiary)');
+      expect(inputCSS).toMatch(/\.input-tertiary\s*\{[^}]*color:\s*var\(--color-on-tertiary-container\)/s);
     });
   });
 

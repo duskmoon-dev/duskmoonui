@@ -185,22 +185,22 @@ export const dialogStyles: Record<string, any> = {
 
   '.dialog-icon-success': {
     backgroundColor: 'color-mix(in oklch, var(--color-success) 15%, transparent)',
-    color: 'var(--color-success)',
+    color: 'var(--color-on-success-container)',
   },
 
   '.dialog-icon-error': {
     backgroundColor: 'color-mix(in oklch, var(--color-error) 15%, transparent)',
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   '.dialog-icon-warning': {
     backgroundColor: 'color-mix(in oklch, var(--color-warning) 15%, transparent)',
-    color: 'var(--color-warning)',
+    color: 'var(--color-on-warning-container)',
   },
 
   '.dialog-icon-info': {
     backgroundColor: 'color-mix(in oklch, var(--color-info) 15%, transparent)',
-    color: 'var(--color-info)',
+    color: 'var(--color-on-info-container)',
   },
 
   // Scrollable body

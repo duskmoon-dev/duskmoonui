@@ -54,7 +54,7 @@
     left: 0.75rem;
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
     background-color: var(--color-surface);
     padding: 0 0.25rem;
   }
@@ -201,19 +201,19 @@
 
   /* Color Variants — base .textarea:focus-visible uses currentColor 20%, so no per-variant
      focus-visible overrides needed; setting color: here is sufficient. */
-  .textarea-primary   { color: var(--color-primary); }
-  .textarea-secondary { color: var(--color-secondary); }
-  .textarea-tertiary  { color: var(--color-tertiary); }
+  .textarea-primary   { color: var(--color-on-primary-container); }
+  .textarea-secondary { color: var(--color-on-secondary-container); }
+  .textarea-tertiary  { color: var(--color-on-tertiary-container); }
 
   /* ============================================
    * SEMANTIC COLORS
    * ============================================ */
 
-  .textarea-info    { color: var(--color-info); }
-  .textarea-success { color: var(--color-success); }
-  .textarea-warning { color: var(--color-warning); }
-  .textarea-error   { color: var(--color-error); }
-  .textarea-accent  { color: var(--color-accent); }
+  .textarea-info    { color: var(--color-on-info-container); }
+  .textarea-success { color: var(--color-on-success-container); }
+  .textarea-warning { color: var(--color-on-warning-container); }
+  .textarea-error   { color: var(--color-on-error-container); }
+  .textarea-accent  { color: light-dark(var(--color-accent-content), var(--color-accent)); }
   .textarea-neutral { color: var(--color-neutral); }
   .textarea-base    { color: var(--color-base-content); }
 
@@ -286,7 +286,7 @@
 
   .textarea-counter-error,
   .textarea-counter-exceeded {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   /* ============================================
@@ -294,35 +294,35 @@
    * ============================================ */
 
   .textarea-container-error .textarea-label {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .textarea-container-error .textarea-helper {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .textarea-container-error .textarea-label-floating {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .textarea-container-error .textarea:focus ~ .textarea-label-floating {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .textarea-container-success .textarea-label {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   .textarea-container-success .textarea-helper {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   .textarea-container-success .textarea-label-floating {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   .textarea-container-success .textarea:focus ~ .textarea-label-floating {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   /* ============================================

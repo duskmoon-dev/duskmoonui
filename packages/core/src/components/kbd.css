@@ -17,12 +17,12 @@
   .kbd-xs { font-size: 0.625rem; }
   .kbd-sm { font-size: 0.75rem; }
   .kbd-lg { font-size: 1rem; padding: 0.25rem 0.5rem; }
-  .kbd-primary { color: var(--color-primary); }
-  .kbd-secondary { color: var(--color-secondary); }
-  .kbd-tertiary { color: var(--color-tertiary); }
-  .kbd-info { color: var(--color-info); }
-  .kbd-success { color: var(--color-success); }
-  .kbd-warning { color: var(--color-warning); }
-  .kbd-error { color: var(--color-error); }
+  .kbd-primary { color: var(--color-on-primary-container); }
+  .kbd-secondary { color: var(--color-on-secondary-container); }
+  .kbd-tertiary { color: var(--color-on-tertiary-container); }
+  .kbd-info { color: var(--color-on-info-container); }
+  .kbd-success { color: var(--color-on-success-container); }
+  .kbd-warning { color: var(--color-on-warning-container); }
+  .kbd-error { color: var(--color-on-error-container); }
   .kbd-ghost { border-color: transparent; }
 }

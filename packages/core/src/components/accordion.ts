@@ -154,15 +154,15 @@ export const accordionStyles: Record<string, any> = {
 
   // Color variants for open state
   '.accordion-primary .accordion-item-open .accordion-header': {
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.accordion-secondary .accordion-item-open .accordion-header': {
-    color: 'var(--color-secondary)',
+    color: 'var(--color-on-secondary-container)',
   },
 
   '.accordion-tertiary .accordion-item-open .accordion-header': {
-    color: 'var(--color-tertiary)',
+    color: 'var(--color-on-tertiary-container)',
   },
 
   // With icon in header

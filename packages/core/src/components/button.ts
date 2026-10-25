@@ -82,7 +82,7 @@ export const buttonStyles: Record<string, any> = {
   // Outlined variant
   '.btn-outlined': {
     backgroundColor: 'transparent',
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
     border: '1px solid var(--color-outline)',
 
     '&:hover': {
@@ -97,7 +97,7 @@ export const buttonStyles: Record<string, any> = {
 
   '.btn-outlined-secondary': {
     backgroundColor: 'transparent',
-    color: 'var(--color-secondary)',
+    color: 'var(--color-on-secondary-container)',
     border: '1px solid var(--color-outline)',
 
     '&:hover': {
@@ -112,7 +112,7 @@ export const buttonStyles: Record<string, any> = {
 
   '.btn-outlined-tertiary': {
     backgroundColor: 'transparent',
-    color: 'var(--color-tertiary)',
+    color: 'var(--color-on-tertiary-container)',
     border: '1px solid var(--color-outline)',
 
     '&:hover': {
@@ -128,7 +128,7 @@ export const buttonStyles: Record<string, any> = {
   // Text variant
   '.btn-text': {
     backgroundColor: 'transparent',
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
@@ -142,7 +142,7 @@ export const buttonStyles: Record<string, any> = {
 
   '.btn-text-secondary': {
     backgroundColor: 'transparent',
-    color: 'var(--color-secondary)',
+    color: 'var(--color-on-secondary-container)',
     padding: '0.625rem 0.75rem',
 
     '&:hover': {
@@ -156,7 +156,7 @@ export const buttonStyles: Record<string, any> = {
 
   '.btn-text-tertiary': {
     backgroundColor: 'transparent',
-    color: 'var(--color-tertiary)',
+    color: 'var(--color-on-tertiary-container)',
     padding: '0.625rem 0.75rem',
 
     '&:hover': {

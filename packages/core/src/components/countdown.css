@@ -12,11 +12,11 @@
     to { transform: translateY(0); opacity: 1; }
   }
   @media print { .countdown-value.countdown-tick { animation: none; } }
-  .countdown-primary { color: var(--color-primary); }
-  .countdown-secondary { color: var(--color-secondary); }
-  .countdown-tertiary { color: var(--color-tertiary); }
-  .countdown-info { color: var(--color-info); }
-  .countdown-success { color: var(--color-success); }
-  .countdown-warning { color: var(--color-warning); }
-  .countdown-error { color: var(--color-error); }
+  .countdown-primary { color: var(--color-on-primary-container); }
+  .countdown-secondary { color: var(--color-on-secondary-container); }
+  .countdown-tertiary { color: var(--color-on-tertiary-container); }
+  .countdown-info { color: var(--color-on-info-container); }
+  .countdown-success { color: var(--color-on-success-container); }
+  .countdown-warning { color: var(--color-on-warning-container); }
+  .countdown-error { color: var(--color-on-error-container); }
 }

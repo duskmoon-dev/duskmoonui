@@ -130,7 +130,7 @@
 
   /* Color Variants */
   .otp-input-primary .otp-input-field {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
 
   .otp-input-primary .otp-input-field:focus {
@@ -138,7 +138,7 @@
   }
 
   .otp-input-secondary .otp-input-field {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
 
   .otp-input-secondary .otp-input-field:focus {
@@ -146,7 +146,7 @@
   }
 
   .otp-input-tertiary .otp-input-field {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
 
   .otp-input-tertiary .otp-input-field:focus {
@@ -154,7 +154,7 @@
   }
 
   .otp-input-info .otp-input-field {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
 
   .otp-input-info .otp-input-field:focus {
@@ -162,7 +162,7 @@
   }
 
   .otp-input-success .otp-input-field {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   .otp-input-success .otp-input-field:focus {
@@ -170,7 +170,7 @@
   }
 
   .otp-input-warning .otp-input-field {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
 
   .otp-input-warning .otp-input-field:focus {
@@ -178,7 +178,7 @@
   }
 
   .otp-input-error .otp-input-field {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .otp-input-error .otp-input-field:focus {
@@ -186,7 +186,7 @@
   }
 
   .otp-input-accent .otp-input-field {
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
 
   .otp-input-accent .otp-input-field:focus {
@@ -249,7 +249,7 @@
   .otp-error-message,
   .otp-input-helper-error {
     font-size: 0.75rem;
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   /* One complete native code. Length guides never create separate fields. */
@@ -275,14 +275,14 @@
   .otp-code-4 { --otp-length: 4; }
   .otp-code:focus { outline: 2px solid currentColor; outline-offset: 3px; }
   .otp-code:disabled { opacity: 0.38; cursor: not-allowed; }
-  .otp-code-primary { color: var(--color-primary); }
-  .otp-code-secondary { color: var(--color-secondary); }
-  .otp-code-tertiary { color: var(--color-tertiary); }
-  .otp-code-info { color: var(--color-info); }
-  .otp-code-success { color: var(--color-success); }
-  .otp-code-warning { color: var(--color-warning); }
-  .otp-code-error { color: var(--color-error); }
-  .otp-input-helper-success { font-size: 0.75rem; color: var(--color-success); }
+  .otp-code-primary { color: var(--color-on-primary-container); }
+  .otp-code-secondary { color: var(--color-on-secondary-container); }
+  .otp-code-tertiary { color: var(--color-on-tertiary-container); }
+  .otp-code-info { color: var(--color-on-info-container); }
+  .otp-code-success { color: var(--color-on-success-container); }
+  .otp-code-warning { color: var(--color-on-warning-container); }
+  .otp-code-error { color: var(--color-on-error-container); }
+  .otp-input-helper-success { font-size: 0.75rem; color: var(--color-on-success-container); }
 
   @supports (background-image: repeating-linear-gradient(to right, transparent 0 1ch)) {
     .otp-code {
@@ -316,7 +316,7 @@
     block-size: var(--otp-height);
     font: 1.5rem / 1 ui-monospace, monospace;
     direction: ltr;
-    color: var(--dm-validation-color, var(--color-on-surface));
+    color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-surface)));
     border-radius: var(--radius-sm);
     /* Reserve space for the trailing native caret and cell focus rings. */
     clip-path: inset(-4px -4px -4px -4px);
@@ -415,23 +415,25 @@
   .otp-input-filled > span { background-color: var(--color-surface-container); }
   .otp-input-underline > span { border-width: 0 0 1px; border-radius: 0; background-color: transparent; }
 
-  .otp-input-primary:has(> .otp-code) { color: var(--dm-validation-color, var(--color-primary)); }
-  .otp-input-secondary:has(> .otp-code) { color: var(--dm-validation-color, var(--color-secondary)); }
-  .otp-input-tertiary:has(> .otp-code) { color: var(--dm-validation-color, var(--color-tertiary)); }
-  .otp-input-info:has(> .otp-code) { color: var(--dm-validation-color, var(--color-info)); }
-  .otp-input-success:has(> .otp-code) { color: var(--dm-validation-color, var(--color-success)); }
-  .otp-input-warning:has(> .otp-code) { color: var(--dm-validation-color, var(--color-warning)); }
-  .otp-input-error:has(> .otp-code) { color: var(--dm-validation-color, var(--color-error)); }
-  .otp-input-accent:has(> .otp-code) { color: var(--dm-validation-color, var(--color-accent)); }
-  .otp-input-neutral:has(> .otp-code) { color: var(--dm-validation-color, var(--color-neutral)); }
-  .otp-input-base:has(> .otp-code) { color: var(--dm-validation-color, var(--color-base-content)); }
+  .otp-input-primary:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-primary-container))); }
+  .otp-input-secondary:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-secondary-container))); }
+  .otp-input-tertiary:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-tertiary-container))); }
+  .otp-input-info:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-info-container))); }
+  .otp-input-success:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-success-container))); }
+  .otp-input-warning:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-warning-container))); }
+  .otp-input-error:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-on-error-container))); }
+  .otp-input-accent:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, light-dark(var(--color-accent-content), var(--color-accent)))); }
+  .otp-input-neutral:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-neutral))); }
+  .otp-input-base:has(> .otp-code) { color: var(--dm-validation-text, var(--dm-validation-color, var(--color-base-content))); }
 
   .otp-input:has(> .otp-code:is(.validate :valid, .validate:valid, .validator.validator-success:user-valid):not([aria-invalid="true"]):not(:disabled)):not(:where(.form-group-error *, .form-control.error *)) {
     --dm-validation-color: var(--color-success);
+    --dm-validation-text: var(--color-on-success-container);
   }
   .otp-input:has(> .otp-code:is([aria-invalid="true"], .validator:user-invalid, .validate :invalid, .validate:invalid):not(:disabled)),
   :is(.form-group-error, .form-control.error) .otp-input {
     --dm-validation-color: var(--color-error);
+    --dm-validation-text: var(--color-on-error-container);
   }
   .otp-input:has(> .otp-code:is([aria-invalid="true"], .validator:user-invalid, .validate :invalid, .validate:invalid):not(:disabled)) > span,
   :is(.form-group-error, .form-control.error) .otp-input > span {

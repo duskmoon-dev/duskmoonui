@@ -182,7 +182,7 @@ export const textareaStyles: Record<string, any> = {
 
   '.textarea:focus ~ .textarea-label-floating, .textarea:not(:placeholder-shown) ~ .textarea-label-floating': {
     transform: 'translateY(-1.5rem) scale(0.75)',
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
   },
 
   // Helper text
@@ -194,11 +194,11 @@ export const textareaStyles: Record<string, any> = {
   },
 
   '.textarea-error ~ .textarea-helper, .textarea-container-error .textarea-helper': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   '.textarea-success ~ .textarea-helper, .textarea-container-success .textarea-helper': {
-    color: 'var(--color-success)',
+    color: 'var(--color-on-success-container)',
   },
 
   // Character counter
@@ -211,7 +211,7 @@ export const textareaStyles: Record<string, any> = {
   },
 
   '.textarea-counter-exceeded': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   // Auto-resize

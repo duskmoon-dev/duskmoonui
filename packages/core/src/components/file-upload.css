@@ -204,7 +204,7 @@
   /* Error Message */
   .file-upload-error {
     font-size: 0.75rem;
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   /* Image Preview */
@@ -300,56 +300,56 @@
 
   /* Color Variants */
   .file-upload-primary .file-upload-dropzone {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
   .file-upload-primary .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
   .file-upload-secondary .file-upload-dropzone {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
   .file-upload-secondary .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
   .file-upload-tertiary .file-upload-dropzone {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
   .file-upload-tertiary .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
   .file-upload-info .file-upload-dropzone {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
   .file-upload-info .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
   .file-upload-success .file-upload-dropzone {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
   .file-upload-success .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
 
   .file-upload-warning .file-upload-dropzone {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
   .file-upload-warning .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
   .file-upload-error .file-upload-dropzone {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
   .file-upload-error .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
   .file-upload-accent .file-upload-dropzone {
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
   .file-upload-accent .file-upload-dropzone:focus-within {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);

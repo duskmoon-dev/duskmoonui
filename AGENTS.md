@@ -118,7 +118,7 @@ DuskMoonUI follows Material Design 3's color role system with semantic extension
 Form elements (input, select, textarea) and interactive controls (button, chip, switch, toggle) use the `currentColor` border pattern:
 
 - **Default border**: `border: 1px solid currentColor` — the border matches the element's text color. Do **not** use `var(--color-outline)` or `transparent` for the base border.
-- **Color variants** (e.g., `input-primary`, `btn-error`): set `color: var(--color-{variant})` only. The border inherits via `currentColor` — never set `border-color` separately.
+- **Surface foregrounds** (e.g., `input-primary`, outlined/text buttons): use `var(--color-on-{variant}-container)` for readable colored text. Accent has no container role; use `light-dark(var(--color-accent-content), var(--color-accent))`. The border inherits via `currentColor`. Filled components keep the `{variant}` background and its matching `{variant}-content` foreground.
 - **Focus ring**: `box-shadow: 0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)`.
 
 Layout/container components (alert, card) may use `var(--color-outline)` or other border strategies as appropriate for their role.

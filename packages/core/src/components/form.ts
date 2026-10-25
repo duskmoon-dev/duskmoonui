@@ -40,15 +40,15 @@ export const formStyles: Record<string, any> = {
   },
 
   '.helper-text.error': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   '.helper-text.success': {
-    color: 'var(--color-success)',
+    color: 'var(--color-on-success-container)',
   },
 
   '.label-text.required::after': {
     content: "' *'",
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 };

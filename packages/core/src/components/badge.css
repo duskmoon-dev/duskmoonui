@@ -83,28 +83,28 @@
   .badge-outlined,
   .badge-outlined.badge-primary,
   .badge-outline.badge-primary {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    color: var(--color-on-primary-container);
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-secondary,
   .badge-outlined-secondary,
   .badge-outline.badge-secondary {
-    color: var(--color-secondary);
-    border-color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-tertiary,
   .badge-outlined-tertiary,
   .badge-outline.badge-tertiary {
-    color: var(--color-tertiary);
-    border-color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-accent,
   .badge-outline.badge-accent {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-neutral,
@@ -121,26 +121,26 @@
 
   .badge-outlined.badge-info,
   .badge-outline.badge-info {
-    color: var(--color-info);
-    border-color: var(--color-info);
+    color: var(--color-on-info-container);
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-success,
   .badge-outline.badge-success {
-    color: var(--color-success);
-    border-color: var(--color-success);
+    color: var(--color-on-success-container);
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-warning,
   .badge-outline.badge-warning {
-    color: var(--color-warning);
-    border-color: var(--color-warning);
+    color: var(--color-on-warning-container);
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-error,
   .badge-outline.badge-error {
-    color: var(--color-error);
-    border-color: var(--color-error);
+    color: var(--color-on-error-container);
+    border-color: currentColor;
   }
 
   /* Soft/Tonal Variants */

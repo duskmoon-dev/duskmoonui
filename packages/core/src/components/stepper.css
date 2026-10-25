@@ -113,11 +113,11 @@
 
   .stepper-step-active .stepper-step-label,
   .stepper-step[aria-current="step"] .stepper-step-label {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
 
   .stepper-step-error .stepper-step-label {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .stepper-step-description {
@@ -195,7 +195,7 @@
 
   .stepper-secondary .stepper-step-active .stepper-step-label,
   .stepper-secondary .stepper-step[aria-current="step"] .stepper-step-label {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
 
   .stepper-tertiary .stepper-step-active .stepper-step-icon,
@@ -212,7 +212,7 @@
 
   .stepper-tertiary .stepper-step-active .stepper-step-label,
   .stepper-tertiary .stepper-step[aria-current="step"] .stepper-step-label {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
 
   /* Compact/Small Variant */

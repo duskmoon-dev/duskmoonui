@@ -34,7 +34,7 @@ export const markdownBodyStyles: Record<string, any> = {
   },
 
   '.markdown-body a': {
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
     textDecoration: 'none',
 
     '&:hover': {

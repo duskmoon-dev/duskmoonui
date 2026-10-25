@@ -54,6 +54,13 @@ jobs:
       - name: Run unit tests
         run: bun run --filter @duskmoon-dev/core test
 
+      - name: Install Chromium for contrast regression tests
+        working-directory: packages/core
+        run: bunx playwright install --with-deps chromium
+
+      - name: Check component contrast in Chromium
+        run: bun run --filter @duskmoon-dev/core test:contrast
+
   lint:
     name: Lint
     runs-on: ubuntu-latest

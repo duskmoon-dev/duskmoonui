@@ -145,7 +145,7 @@
 
   .navbar-item-active,
   .navbar-item[aria-current="page"] {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
     background-color: color-mix(in oklch, var(--color-primary) 12%, transparent);
   }
 

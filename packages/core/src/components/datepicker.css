@@ -703,28 +703,28 @@
 
   /* Input Color Variants */
   .datepicker-primary .datepicker-input {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
   .datepicker-primary .datepicker-input:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
   .datepicker-secondary .datepicker-input {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
   .datepicker-secondary .datepicker-input:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
   .datepicker-tertiary .datepicker-input {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
   .datepicker-tertiary .datepicker-input:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
   .datepicker-info .datepicker-input {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
   .datepicker-info .datepicker-input:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
@@ -738,7 +738,7 @@
   }
 
   .datepicker-success .datepicker-input {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
   .datepicker-success .datepicker-input:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
@@ -752,7 +752,7 @@
   }
 
   .datepicker-warning .datepicker-input {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
   .datepicker-warning .datepicker-input:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
@@ -766,7 +766,7 @@
   }
 
   .datepicker-accent .datepicker-input {
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
   .datepicker-accent .datepicker-input:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);
@@ -832,7 +832,7 @@
   /* Error State */
   .datepicker-error .datepicker-input,
   .datetime-picker-error .datetime-picker-input {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .datepicker-error .datepicker-input:focus,

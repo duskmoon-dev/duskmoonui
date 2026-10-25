@@ -152,7 +152,7 @@
   }
 
   .chip-outlined.chip-primary {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
 
   .chip-outlined.chip-primary:hover {
@@ -160,7 +160,7 @@
   }
 
   .chip-outlined.chip-secondary {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
 
   .chip-outlined.chip-secondary:hover {
@@ -168,7 +168,7 @@
   }
 
   .chip-outlined.chip-tertiary {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
 
   .chip-outlined.chip-tertiary:hover {
@@ -176,7 +176,7 @@
   }
 
   .chip-outlined.chip-accent {
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
 
   .chip-outlined.chip-accent:hover {
@@ -200,7 +200,7 @@
   }
 
   .chip-outlined.chip-info {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
 
   .chip-outlined.chip-info:hover {
@@ -208,7 +208,7 @@
   }
 
   .chip-outlined.chip-success {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   .chip-outlined.chip-success:hover {
@@ -216,7 +216,7 @@
   }
 
   .chip-outlined.chip-warning {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
 
   .chip-outlined.chip-warning:hover {
@@ -224,7 +224,7 @@
   }
 
   .chip-outlined.chip-error {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .chip-outlined.chip-error:hover {
@@ -299,14 +299,14 @@
 
   /* Ghost + color sub-variants: transparent bg/border, colored text.
      Hover uses container color (matches .chip-outlined.chip-*:hover pattern). */
-  .chip-ghost.chip-primary   { background-color: transparent; color: var(--color-primary); }
-  .chip-ghost.chip-secondary { background-color: transparent; color: var(--color-secondary); }
-  .chip-ghost.chip-tertiary  { background-color: transparent; color: var(--color-tertiary); }
-  .chip-ghost.chip-info      { background-color: transparent; color: var(--color-info); }
-  .chip-ghost.chip-success   { background-color: transparent; color: var(--color-success); }
-  .chip-ghost.chip-warning   { background-color: transparent; color: var(--color-warning); }
-  .chip-ghost.chip-error     { background-color: transparent; color: var(--color-error); }
-  .chip-ghost.chip-accent    { background-color: transparent; color: var(--color-accent); }
+  .chip-ghost.chip-primary   { background-color: transparent; color: var(--color-on-primary-container); }
+  .chip-ghost.chip-secondary { background-color: transparent; color: var(--color-on-secondary-container); }
+  .chip-ghost.chip-tertiary  { background-color: transparent; color: var(--color-on-tertiary-container); }
+  .chip-ghost.chip-info      { background-color: transparent; color: var(--color-on-info-container); }
+  .chip-ghost.chip-success   { background-color: transparent; color: var(--color-on-success-container); }
+  .chip-ghost.chip-warning   { background-color: transparent; color: var(--color-on-warning-container); }
+  .chip-ghost.chip-error     { background-color: transparent; color: var(--color-on-error-container); }
+  .chip-ghost.chip-accent    { background-color: transparent; color: light-dark(var(--color-accent-content), var(--color-accent)); }
   .chip-ghost.chip-neutral   { background-color: transparent; color: var(--color-neutral); }
   .chip-ghost.chip-base      { background-color: transparent; color: var(--color-base-content); }
 

@@ -195,7 +195,7 @@
 
   .btn-outline.btn-primary,
   .btn-outlined.btn-primary {
-    --btn-text-color: var(--color-primary);
+    --btn-text-color: var(--color-on-primary-container);
     border-color: currentColor;
   }
 
@@ -207,7 +207,7 @@
 
   .btn-outline.btn-secondary,
   .btn-outlined.btn-secondary {
-    --btn-text-color: var(--color-secondary);
+    --btn-text-color: var(--color-on-secondary-container);
     border-color: currentColor;
   }
 
@@ -219,7 +219,7 @@
 
   .btn-outline.btn-tertiary,
   .btn-outlined.btn-tertiary {
-    --btn-text-color: var(--color-tertiary);
+    --btn-text-color: var(--color-on-tertiary-container);
     border-color: currentColor;
   }
 
@@ -231,7 +231,7 @@
 
   .btn-outline.btn-accent,
   .btn-outlined.btn-accent {
-    --btn-text-color: var(--color-accent);
+    --btn-text-color: light-dark(var(--color-accent-content), var(--color-accent));
     border-color: currentColor;
   }
 
@@ -267,7 +267,7 @@
 
   .btn-outline.btn-info,
   .btn-outlined.btn-info {
-    --btn-text-color: var(--color-info);
+    --btn-text-color: var(--color-on-info-container);
     border-color: currentColor;
   }
 
@@ -279,7 +279,7 @@
 
   .btn-outline.btn-success,
   .btn-outlined.btn-success {
-    --btn-text-color: var(--color-success);
+    --btn-text-color: var(--color-on-success-container);
     border-color: currentColor;
   }
 
@@ -291,7 +291,7 @@
 
   .btn-outline.btn-warning,
   .btn-outlined.btn-warning {
-    --btn-text-color: var(--color-warning);
+    --btn-text-color: var(--color-on-warning-container);
     border-color: currentColor;
   }
 
@@ -303,7 +303,7 @@
 
   .btn-outline.btn-error,
   .btn-outlined.btn-error {
-    --btn-text-color: var(--color-error);
+    --btn-text-color: var(--color-on-error-container);
     border-color: currentColor;
   }
 
@@ -326,7 +326,7 @@
   }
 
   .btn-ghost.btn-primary {
-    --btn-text-color: var(--color-primary);
+    --btn-text-color: var(--color-on-primary-container);
   }
 
   .btn-ghost.btn-primary:hover {
@@ -335,7 +335,7 @@
   }
 
   .btn-ghost.btn-secondary {
-    --btn-text-color: var(--color-secondary);
+    --btn-text-color: var(--color-on-secondary-container);
   }
 
   .btn-ghost.btn-secondary:hover {
@@ -344,7 +344,7 @@
   }
 
   .btn-ghost.btn-tertiary {
-    --btn-text-color: var(--color-tertiary);
+    --btn-text-color: var(--color-on-tertiary-container);
   }
 
   .btn-ghost.btn-tertiary:hover {
@@ -352,16 +352,16 @@
     background-color: var(--color-tertiary-container);
   }
 
-  .btn-ghost.btn-info    { --btn-text-color: var(--color-info); }
-  .btn-ghost.btn-success { --btn-text-color: var(--color-success); }
-  .btn-ghost.btn-warning { --btn-text-color: var(--color-warning); }
-  .btn-ghost.btn-error   { --btn-text-color: var(--color-error); }
-  .btn-ghost.btn-accent  { --btn-text-color: var(--color-accent); }
+  .btn-ghost.btn-info    { --btn-text-color: var(--color-on-info-container); }
+  .btn-ghost.btn-success { --btn-text-color: var(--color-on-success-container); }
+  .btn-ghost.btn-warning { --btn-text-color: var(--color-on-warning-container); }
+  .btn-ghost.btn-error   { --btn-text-color: var(--color-on-error-container); }
+  .btn-ghost.btn-accent  { --btn-text-color: light-dark(var(--color-accent-content), var(--color-accent)); }
   .btn-ghost.btn-neutral { --btn-text-color: var(--color-neutral); }
   .btn-ghost.btn-base    { --btn-text-color: var(--color-base-content); }
 
   .btn-ghost.btn-accent:hover {
-    --btn-text-color: var(--color-accent);
+    --btn-text-color: light-dark(var(--color-accent-content), var(--color-accent));
     background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
   }
 
@@ -408,7 +408,7 @@
   }
 
   .btn-text.btn-primary {
-    --btn-text-color: var(--color-primary);
+    --btn-text-color: var(--color-on-primary-container);
   }
 
   .btn-text.btn-primary:hover {
@@ -417,7 +417,7 @@
   }
 
   .btn-text.btn-secondary {
-    --btn-text-color: var(--color-secondary);
+    --btn-text-color: var(--color-on-secondary-container);
   }
 
   .btn-text.btn-secondary:hover {
@@ -426,7 +426,7 @@
   }
 
   .btn-text.btn-tertiary {
-    --btn-text-color: var(--color-tertiary);
+    --btn-text-color: var(--color-on-tertiary-container);
   }
 
   .btn-text.btn-tertiary:hover {
@@ -434,16 +434,16 @@
     background-color: var(--color-tertiary-container);
   }
 
-  .btn-text.btn-info    { --btn-text-color: var(--color-info); }
-  .btn-text.btn-success { --btn-text-color: var(--color-success); }
-  .btn-text.btn-warning { --btn-text-color: var(--color-warning); }
-  .btn-text.btn-error   { --btn-text-color: var(--color-error); }
-  .btn-text.btn-accent  { --btn-text-color: var(--color-accent); }
+  .btn-text.btn-info    { --btn-text-color: var(--color-on-info-container); }
+  .btn-text.btn-success { --btn-text-color: var(--color-on-success-container); }
+  .btn-text.btn-warning { --btn-text-color: var(--color-on-warning-container); }
+  .btn-text.btn-error   { --btn-text-color: var(--color-on-error-container); }
+  .btn-text.btn-accent  { --btn-text-color: light-dark(var(--color-accent-content), var(--color-accent)); }
   .btn-text.btn-neutral { --btn-text-color: var(--color-neutral); }
   .btn-text.btn-base    { --btn-text-color: var(--color-base-content); }
 
   .btn-text.btn-accent:hover {
-    --btn-text-color: var(--color-accent);
+    --btn-text-color: light-dark(var(--color-accent-content), var(--color-accent));
     background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
   }
 

@@ -160,7 +160,7 @@
   /* Color Variants */
   .time-input-primary .time-input-field,
   .time-input-primary .time-input-segments {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
 
   .time-input-primary .time-input-field:focus {
@@ -169,7 +169,7 @@
 
   .time-input-secondary .time-input-field,
   .time-input-secondary .time-input-segments {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
 
   .time-input-secondary .time-input-field:focus {
@@ -178,7 +178,7 @@
 
   .time-input-tertiary .time-input-field,
   .time-input-tertiary .time-input-segments {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
 
   .time-input-tertiary .time-input-field:focus {
@@ -187,7 +187,7 @@
 
   .time-input-info .time-input-field,
   .time-input-info .time-input-segments {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
 
   .time-input-info .time-input-field:focus {
@@ -196,7 +196,7 @@
 
   .time-input-success .time-input-field,
   .time-input-success .time-input-segments {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   .time-input-success .time-input-field:focus {
@@ -205,7 +205,7 @@
 
   .time-input-warning .time-input-field,
   .time-input-warning .time-input-segments {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
 
   .time-input-warning .time-input-field:focus {
@@ -214,7 +214,7 @@
 
   .time-input-error .time-input-field,
   .time-input-error .time-input-segments {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .time-input-error .time-input-field:focus {
@@ -223,7 +223,7 @@
 
   .time-input-accent .time-input-field,
   .time-input-accent .time-input-segments {
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
 
   .time-input-accent .time-input-field:focus {

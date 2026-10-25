@@ -84,10 +84,10 @@ export const treeSelectStyles: Record<string, any> = {
   },
 
   '.tree-select-primary .tree-select-trigger': {
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.tree-select-error .tree-select-trigger': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 };

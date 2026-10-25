@@ -85,16 +85,16 @@
 
   /* Color Variants — base .select:focus-visible uses currentColor 20%, so no per-variant
      focus-visible overrides needed; setting color: here is sufficient. */
-  .select-primary   { color: var(--color-primary); }
-  .select-secondary { color: var(--color-secondary); }
-  .select-tertiary  { color: var(--color-tertiary); }
+  .select-primary   { color: var(--color-on-primary-container); }
+  .select-secondary { color: var(--color-on-secondary-container); }
+  .select-tertiary  { color: var(--color-on-tertiary-container); }
 
   /* Semantic Colors */
-  .select-info    { color: var(--color-info); }
-  .select-success { color: var(--color-success); }
-  .select-warning { color: var(--color-warning); }
-  .select-error   { color: var(--color-error); }
-  .select-accent  { color: var(--color-accent); }
+  .select-info    { color: var(--color-on-info-container); }
+  .select-success { color: var(--color-on-success-container); }
+  .select-warning { color: var(--color-on-warning-container); }
+  .select-error   { color: var(--color-on-error-container); }
+  .select-accent  { color: light-dark(var(--color-accent-content), var(--color-accent)); }
   .select-neutral { color: var(--color-neutral); }
   .select-base    { color: var(--color-base-content); }
 
@@ -149,7 +149,7 @@
   }
 
   .select-container-error .select-helper {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   /* Select Group */

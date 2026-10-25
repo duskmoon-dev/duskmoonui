@@ -88,11 +88,11 @@ describe('Stepper Component', () => {
     });
 
     it('should color active label with primary', () => {
-      expect(css).toMatch(/\.stepper-step-active .stepper-step-label[^}]*var\(--color-primary\)/s);
+      expect(css).toMatch(/\.stepper-step-active .stepper-step-label[^}]*var\(--color-on-primary-container\)/s);
     });
 
     it('should color error label with error', () => {
-      expect(css).toMatch(/\.stepper-step-error .stepper-step-label[^}]*var\(--color-error\)/s);
+      expect(css).toMatch(/\.stepper-step-error .stepper-step-label[^}]*var\(--color-on-error-container\)/s);
     });
 
     it('should define optional step marker', () => {

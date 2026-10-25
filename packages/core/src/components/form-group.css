@@ -41,7 +41,7 @@
 
   .form-label-required::after {
     content: ' *';
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .form-label-optional::after {
@@ -78,19 +78,19 @@
   }
 
   .helper-text-error {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   .helper-text-success {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
 
   .helper-text-warning {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
 
   .helper-text-info {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
 
   /* Helper Text with Icon */
@@ -277,7 +277,7 @@
   }
 
   .form-counter-error {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
   /* Legacy label and helper APIs share the composition implementation. */
@@ -306,13 +306,13 @@
   .form-label[aria-required="true"]::after,
   label[aria-required="true"]::after {
     content: ' *';
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
 
-  .helper-text.error { color: var(--color-error); }
-  .helper-text.success { color: var(--color-success); }
-  .helper-text.warning { color: var(--color-warning); }
-  .helper-text.info { color: var(--color-info); }
+  .helper-text.error { color: var(--color-on-error-container); }
+  .helper-text.success { color: var(--color-on-success-container); }
+  .helper-text.warning { color: var(--color-on-warning-container); }
+  .helper-text.info { color: var(--color-on-info-container); }
 
   .form-group-disabled { opacity: 0.5; pointer-events: none; }
   .fieldset { min-inline-size: 0; }

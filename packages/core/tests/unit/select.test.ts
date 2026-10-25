@@ -78,19 +78,19 @@ describe('Select Component', () => {
 
     it('should set color to primary token for primary variant', () => {
       expect(css).toMatch(
-        /\.select-primary\s*\{[^}]*color:\s*var\(--color-primary\)/s,
+        /\.select-primary\s*\{[^}]*color:\s*var\(--color-on-primary-container\)/s,
       );
     });
 
     it('should set color to secondary token for secondary variant', () => {
       expect(css).toMatch(
-        /\.select-secondary\s*\{[^}]*color:\s*var\(--color-secondary\)/s,
+        /\.select-secondary\s*\{[^}]*color:\s*var\(--color-on-secondary-container\)/s,
       );
     });
 
     it('should set color to tertiary token for tertiary variant', () => {
       expect(css).toMatch(
-        /\.select-tertiary\s*\{[^}]*color:\s*var\(--color-tertiary\)/s,
+        /\.select-tertiary\s*\{[^}]*color:\s*var\(--color-on-tertiary-container\)/s,
       );
     });
   });
@@ -114,25 +114,25 @@ describe('Select Component', () => {
 
     it('should use info color token', () => {
       expect(css).toMatch(
-        /\.select-info\s*\{[^}]*color:\s*var\(--color-info\)/s,
+        /\.select-info\s*\{[^}]*color:\s*var\(--color-on-info-container\)/s,
       );
     });
 
     it('should use success color token', () => {
       expect(css).toMatch(
-        /\.select-success\s*\{[^}]*color:\s*var\(--color-success\)/s,
+        /\.select-success\s*\{[^}]*color:\s*var\(--color-on-success-container\)/s,
       );
     });
 
     it('should use warning color token', () => {
       expect(css).toMatch(
-        /\.select-warning\s*\{[^}]*color:\s*var\(--color-warning\)/s,
+        /\.select-warning\s*\{[^}]*color:\s*var\(--color-on-warning-container\)/s,
       );
     });
 
     it('should use error color token', () => {
       expect(css).toMatch(
-        /\.select-error\s*\{[^}]*color:\s*var\(--color-error\)/s,
+        /\.select-error\s*\{[^}]*color:\s*var\(--color-on-error-container\)/s,
       );
     });
   });
@@ -364,7 +364,7 @@ describe('Select Component', () => {
 
     it('should use error color for helper in error container', () => {
       expect(css).toMatch(
-        /\.select-container-error\s+\.select-helper\s*\{[^}]*color:\s*var\(--color-error\)/s,
+        /\.select-container-error\s+\.select-helper\s*\{[^}]*color:\s*var\(--color-on-error-container\)/s,
       );
     });
   });

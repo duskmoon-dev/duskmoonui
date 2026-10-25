@@ -30,12 +30,12 @@
   .file-input-xs::file-selector-button { padding: 0.375rem 0.625rem; }
   .file-input-sm::file-selector-button { padding: 0.5rem 0.75rem; }
   .file-input-lg::file-selector-button { padding: 1rem 1.25rem; }
-  .file-input-primary { color: var(--color-primary); }
-  .file-input-secondary { color: var(--color-secondary); }
-  .file-input-tertiary { color: var(--color-tertiary); }
-  .file-input-info { color: var(--color-info); }
-  .file-input-success { color: var(--color-success); }
-  .file-input-warning { color: var(--color-warning); }
-  .file-input-error { color: var(--color-error); }
+  .file-input-primary { color: var(--color-on-primary-container); }
+  .file-input-secondary { color: var(--color-on-secondary-container); }
+  .file-input-tertiary { color: var(--color-on-tertiary-container); }
+  .file-input-info { color: var(--color-on-info-container); }
+  .file-input-success { color: var(--color-on-success-container); }
+  .file-input-warning { color: var(--color-on-warning-container); }
+  .file-input-error { color: var(--color-on-error-container); }
   .file-input-ghost { border-color: transparent; }
 }

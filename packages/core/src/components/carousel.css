@@ -18,11 +18,11 @@
   .carousel:focus-visible, .carousel-item:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
   @media (prefers-reduced-motion: reduce) { .carousel { scroll-behavior: auto; } }
   @media print { .carousel { flex-wrap: wrap; overflow: visible; max-block-size: none; } }
-  .carousel-primary { color: var(--color-primary); }
-  .carousel-secondary { color: var(--color-secondary); }
-  .carousel-tertiary { color: var(--color-tertiary); }
-  .carousel-info { color: var(--color-info); }
-  .carousel-success { color: var(--color-success); }
-  .carousel-warning { color: var(--color-warning); }
-  .carousel-error { color: var(--color-error); }
+  .carousel-primary { color: var(--color-on-primary-container); }
+  .carousel-secondary { color: var(--color-on-secondary-container); }
+  .carousel-tertiary { color: var(--color-on-tertiary-container); }
+  .carousel-info { color: var(--color-on-info-container); }
+  .carousel-success { color: var(--color-on-success-container); }
+  .carousel-warning { color: var(--color-on-warning-container); }
+  .carousel-error { color: var(--color-on-error-container); }
 }

@@ -104,22 +104,22 @@ export const chipStyles: Record<string, any> = {
 
   '.chip-success': {
     backgroundColor: 'color-mix(in oklch, var(--color-success) 15%, transparent)',
-    color: 'var(--color-success)',
+    color: 'var(--color-on-success-container)',
   },
 
   '.chip-error': {
     backgroundColor: 'color-mix(in oklch, var(--color-error) 15%, transparent)',
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   '.chip-warning': {
     backgroundColor: 'color-mix(in oklch, var(--color-warning) 15%, transparent)',
-    color: 'var(--color-warning)',
+    color: 'var(--color-on-warning-container)',
   },
 
   '.chip-info': {
     backgroundColor: 'color-mix(in oklch, var(--color-info) 15%, transparent)',
-    color: 'var(--color-info)',
+    color: 'var(--color-on-info-container)',
   },
 
   // Leading icon

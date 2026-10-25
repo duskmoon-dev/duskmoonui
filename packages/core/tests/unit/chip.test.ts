@@ -193,7 +193,7 @@ describe('Chip Component', () => {
 
       it(`should set border-color for outlined ${color}`, () => {
         const regex = new RegExp(
-          `\\.chip-outlined\\.chip-${color}\\s*\\{[^}]*color:\\s*var\\(--color-${color}\\)`,
+          `\\.chip-outlined\\.chip-${color}\\s*\\{[^}]*color:\\s*var\\(--color-on-${color}-container\\)`,
           's',
         );
         expect(css).toMatch(regex);

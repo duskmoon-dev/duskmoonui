@@ -71,7 +71,7 @@
 
   /* Links */
   .markdown-body a {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
     text-decoration: none;
   }
 

@@ -65,10 +65,10 @@ export const timeInputStyles: Record<string, any> = {
   },
 
   '.time-input-primary .time-input-field, .time-input-primary .time-input-segments': {
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.time-input-error .time-input-field, .time-input-error .time-input-segments': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 };

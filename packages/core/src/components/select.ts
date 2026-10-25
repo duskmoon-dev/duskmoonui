@@ -160,7 +160,7 @@ export const selectStyles: Record<string, any> = {
 
   '.select:focus ~ .select-label-floating, .select:not(:placeholder-shown) ~ .select-label-floating': {
     transform: 'translateY(-0.5rem) scale(0.75)',
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
   },
 
   // Helper text
@@ -172,7 +172,7 @@ export const selectStyles: Record<string, any> = {
   },
 
   '.select-error ~ .select-helper, .select-container-error .select-helper': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   // Option styles

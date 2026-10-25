@@ -159,7 +159,7 @@ export const toastStyles: Record<string, any> = {
     padding: '0.375rem 0.75rem',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
     backgroundColor: 'transparent',
     border: '1px solid var(--color-primary)',
     borderRadius: '0.25rem',

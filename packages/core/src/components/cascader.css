@@ -370,56 +370,56 @@
 
   /* Color Variants */
   .cascader-primary .cascader-trigger {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
   .cascader-primary .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
   .cascader-secondary .cascader-trigger {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
   .cascader-secondary .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
   .cascader-tertiary .cascader-trigger {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
   .cascader-tertiary .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
   .cascader-info .cascader-trigger {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
   .cascader-info .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
   .cascader-success .cascader-trigger {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
   .cascader-success .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
 
   .cascader-warning .cascader-trigger {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
   .cascader-warning .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
   .cascader-error .cascader-trigger {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
   .cascader-error .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
   .cascader-accent .cascader-trigger {
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
   .cascader-accent .cascader-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);

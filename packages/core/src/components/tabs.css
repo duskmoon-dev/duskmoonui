@@ -24,10 +24,10 @@
   .tab:disabled,
   .tab[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
   .tab:is(.tab-active, .tab-active-primary, [aria-selected="true"], [aria-current="page"]) {
-    color: var(--color-primary); border-block-end-color: var(--color-primary);
+    color: var(--color-on-primary-container); border-block-end-color: var(--color-primary);
   }
-  .tab.tab-active-secondary { color: var(--color-secondary); border-block-end-color: var(--color-secondary); }
-  .tab.tab-active-tertiary { color: var(--color-tertiary); border-block-end-color: var(--color-tertiary); }
+  .tab.tab-active-secondary { color: var(--color-on-secondary-container); border-block-end-color: var(--color-secondary); }
+  .tab.tab-active-tertiary { color: var(--color-on-tertiary-container); border-block-end-color: var(--color-tertiary); }
 
   .tabs-pill,
   .tabs-tonal,

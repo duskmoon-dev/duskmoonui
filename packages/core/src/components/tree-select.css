@@ -380,56 +380,56 @@
 
   /* Color Variants */
   .tree-select-primary .tree-select-trigger {
-    color: var(--color-primary);
+    color: var(--color-on-primary-container);
   }
   .tree-select-primary .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 10%, transparent);
   }
 
   .tree-select-secondary .tree-select-trigger {
-    color: var(--color-secondary);
+    color: var(--color-on-secondary-container);
   }
   .tree-select-secondary .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-secondary) 10%, transparent);
   }
 
   .tree-select-tertiary .tree-select-trigger {
-    color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
   }
   .tree-select-tertiary .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-tertiary) 10%, transparent);
   }
 
   .tree-select-info .tree-select-trigger {
-    color: var(--color-info);
+    color: var(--color-on-info-container);
   }
   .tree-select-info .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-info) 10%, transparent);
   }
 
   .tree-select-success .tree-select-trigger {
-    color: var(--color-success);
+    color: var(--color-on-success-container);
   }
   .tree-select-success .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-success) 10%, transparent);
   }
 
   .tree-select-warning .tree-select-trigger {
-    color: var(--color-warning);
+    color: var(--color-on-warning-container);
   }
   .tree-select-warning .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-warning) 10%, transparent);
   }
 
   .tree-select-error .tree-select-trigger {
-    color: var(--color-error);
+    color: var(--color-on-error-container);
   }
   .tree-select-error .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-error) 10%, transparent);
   }
 
   .tree-select-accent .tree-select-trigger {
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
   .tree-select-accent .tree-select-trigger:focus {
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 10%, transparent);

@@ -42,7 +42,7 @@ test('server invalid wins over native-valid success and focused filled color mod
     for (const variant of ['', `${name}-filled`, `${name}-outlined`, `${name}-ghost`]) {
       const attrs = `id="field" class="${name} ${variant} ${name}-success validator validator-success" required aria-invalid="true"`;
       const control = name === 'input' ? `<input ${attrs} value="accepted">` : name === 'select' ? `<select ${attrs}><option selected>accepted</option><option>still valid</option></select>` : `<textarea ${attrs}>accepted</textarea>`;
-      await fixture(page, `<form><div class="form-group form-group-success">${control}<p class="helper-text-error">Error: rejected by the server.</p></div></form><button id="blur">Next</button><span id="error" style="color:var(--color-error)"></span>`);
+      await fixture(page, `<form><div class="form-group form-group-success">${control}<p class="helper-text-error">Error: rejected by the server.</p></div></form><button id="blur">Next</button><span id="error" style="color:var(--color-on-error-container)"></span>`);
       const field = page.locator('#field');
       await field.focus();
       if (name !== 'select') await field.fill('still valid');
@@ -89,7 +89,7 @@ test('explicit errors beat every semantic palette and segmented OTP appearance',
     const type = name === 'file-input' ? 'file' : name === 'radio' ? 'radio' : ['checkbox', 'switch', 'toggle'].includes(name) ? 'checkbox' : 'text';
     return `<input ${attrs} type="${type}" value="001234" checked>`;
   }).join('');
-  await fixture(page, `<form>${markup}<div id="segments" class="otp-input"><input id="segment" class="otp-input-field validator validator-success" value="1" aria-invalid="true"></div><button type="button">Blur</button></form><span id="error" style="color:var(--color-error)"></span>`);
+  await fixture(page, `<form>${markup}<div id="segments" class="otp-input"><input id="segment" class="otp-input-field validator validator-success" value="1" aria-invalid="true"></div><button type="button">Blur</button></form><span id="error" style="color:var(--color-on-error-container)"></span>`);
   const error = await page.locator('#error').evaluate(el => getComputedStyle(el).color);
   for (const color of colors) {
     for (const name of controls) {
@@ -179,7 +179,7 @@ test('aggregate, individual, legacy, standalone and adopted module rendering agr
 
 test('all semantic controls preserve explicit invalid on focus and native reset', async ({ page }) => {
   const names = ['checkbox', 'radio', 'switch', 'toggle', 'file-input', 'otp-input-field', 'otp-code'];
-  await fixture(page, `<form>${names.map(name => `<label>${name}<input id="${name}" name="${name}" type="${name === 'file-input' ? 'file' : ['otp-code', 'otp-input-field'].includes(name) ? 'text' : name === 'radio' ? 'radio' : 'checkbox'}" class="${name} ${name}-success validator validator-success" ${['checkbox', 'radio', 'switch', 'toggle'].includes(name) ? 'checked' : 'value="001234"'} aria-invalid="true"></label>`).join('')}<button type="reset">Reset</button></form><span id="error" style="color:var(--color-error)"></span>`);
+  await fixture(page, `<form>${names.map(name => `<label>${name}<input id="${name}" name="${name}" type="${name === 'file-input' ? 'file' : ['otp-code', 'otp-input-field'].includes(name) ? 'text' : name === 'radio' ? 'radio' : 'checkbox'}" class="${name} ${name}-success validator validator-success" ${['checkbox', 'radio', 'switch', 'toggle'].includes(name) ? 'checked' : 'value="001234"'} aria-invalid="true"></label>`).join('')}<button type="reset">Reset</button></form><span id="error" style="color:var(--color-on-error-container)"></span>`);
   const error = await page.locator('#error').evaluate(el => getComputedStyle(el).color);
   for (const name of names) {
     const control = page.locator('#' + name);
@@ -314,7 +314,7 @@ test('OTP joined, colors, errors and masked PIN use the same single-input contra
     const control = root.locator('input');
     await control.fill('001234');
     await control.evaluate(el => el.setAttribute('aria-invalid', 'true'));
-    const errorColor = await page.evaluate(() => { const probe = document.createElement('span'); probe.style.color = 'var(--color-error)'; document.body.append(probe); const color = getComputedStyle(probe).color; probe.remove(); return color; });
+    const errorColor = await page.evaluate(() => { const probe = document.createElement('span'); probe.style.color = 'var(--color-on-error-container)'; document.body.append(probe); const color = getComputedStyle(probe).color; probe.remove(); return color; });
     expect(await root.evaluate(el => getComputedStyle(el).color)).toBe(errorColor);
     await expect.poll(() => root.locator('span').first().evaluate(el => getComputedStyle(el).borderColor)).toBe(await root.evaluate(el => getComputedStyle(el).color));
   }

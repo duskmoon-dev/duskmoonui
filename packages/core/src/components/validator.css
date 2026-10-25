@@ -1,35 +1,40 @@
 /** Opt-in native presentation. Applications own errors, messages and announcements. */
 @layer components {
+  /* Keep validation fills paired with their content; use container ink for text. */
   /* Compatibility wrapper states are intentionally immediate. */
-  :is(.form-group-info, .form-control.info) { --dm-validation-color: var(--color-info); }
-  :is(.form-group-warning, .form-control.warning) { --dm-validation-color: var(--color-warning); }
-  :is(.form-group-success, .form-control.success) { --dm-validation-color: var(--color-success); }
+  :is(.form-group-info, .form-control.info) { --dm-validation-color: var(--color-info); --dm-validation-text: var(--color-on-info-container); }
+  :is(.form-group-warning, .form-control.warning) { --dm-validation-color: var(--color-warning); --dm-validation-text: var(--color-on-warning-container); }
+  :is(.form-group-success, .form-control.success) { --dm-validation-color: var(--color-success); --dm-validation-text: var(--color-on-success-container); }
 
   :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is(.validate :valid, .validate:valid, .validator.validator-success:user-valid):not([aria-invalid="true"]):not(:where(.form-group-error *, .form-control.error *)):not(:disabled) {
     --dm-validation-color: var(--color-success);
+    --dm-validation-text: var(--color-on-success-container);
     --dm-validation-content: var(--color-success-content);
   }
 
   :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is(.validate :invalid, .validate:invalid, .validator:user-invalid):not(:disabled) {
     --dm-validation-color: var(--color-error);
+    --dm-validation-text: var(--color-on-error-container);
     --dm-validation-content: var(--color-error-content);
   }
 
   :is(.form-group-error, .form-control.error) {
     --dm-validation-color: var(--color-error);
+    --dm-validation-text: var(--color-on-error-container);
     --dm-validation-content: var(--color-error-content);
   }
 
   /* Higher specificity than native states, including server-invalid + user-valid. */
   :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is([aria-invalid="true"], .form-group-error *, .form-control.error *):not(:disabled):is(:focus, :not(:focus)) {
     --dm-validation-color: var(--color-error);
+    --dm-validation-text: var(--color-on-error-container);
     --dm-validation-content: var(--color-error-content);
   }
 
   /* This shared selector wins over filled/ghost focus and semantic modifiers. */
   :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is([aria-invalid="true"], .validator:user-invalid, .validator.validator-success:user-valid, .validate :invalid, .validate :valid, .validate:invalid, .validate:valid, .form-group-error *, .form-group-success *, .form-group-warning *, .form-group-info *, .form-control.error *, .form-control.success *, .form-control.warning *, .form-control.info *):not(:disabled) {
-    color: var(--dm-validation-color);
-    border-color: var(--dm-validation-color);
+    color: var(--dm-validation-text, var(--dm-validation-color));
+    border-color: var(--dm-validation-text, var(--dm-validation-color));
     --checkbox-color: var(--dm-validation-color);
     --radio-color: var(--dm-validation-color);
     --switch-color: var(--dm-validation-color);
@@ -38,17 +43,17 @@
   }
 
   :is(.input, .select, .textarea, .checkbox, .radio, .switch, .toggle, .file-input, .otp-input-field, .otp-code, .datepicker-input):is([aria-invalid="true"], .validator:user-invalid, .validator.validator-success:user-valid, .validate :invalid, .validate :valid, .validate:invalid, .validate:valid, .form-group-error *, .form-group-success *, .form-group-warning *, .form-group-info *, .form-control.error *, .form-control.success *, .form-control.warning *, .form-control.info *):not(:disabled):focus {
-    border-color: var(--dm-validation-color);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--dm-validation-color) 20%, transparent);
+    border-color: var(--dm-validation-text, var(--dm-validation-color));
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--dm-validation-text, var(--dm-validation-color)) 20%, transparent);
   }
 
-  :is(.form-group-error, .form-control.error) :is(.form-label, .label-text) { color: var(--color-error); }
-  :is(.form-group-success, .form-control.success) :is(.form-label, .label-text) { color: var(--color-success); }
-  :is(.form-group-warning, .form-control.warning) :is(.form-label, .label-text) { color: var(--color-warning); }
-  :is(.form-group-info, .form-control.info) :is(.form-label, .label-text) { color: var(--color-info); }
+  :is(.form-group-error, .form-control.error) :is(.form-label, .label-text) { color: var(--color-on-error-container); }
+  :is(.form-group-success, .form-control.success) :is(.form-label, .label-text) { color: var(--color-on-success-container); }
+  :is(.form-group-warning, .form-control.warning) :is(.form-label, .label-text) { color: var(--color-on-warning-container); }
+  :is(.form-group-info, .form-control.info) :is(.form-label, .label-text) { color: var(--color-on-info-container); }
 
   .validator-hint { font-size: 0.75rem; color: var(--color-on-surface-variant); }
-  .validator-error { display: none; font-size: 0.75rem; color: var(--color-error); }
+  .validator-error { display: none; font-size: 0.75rem; color: var(--color-on-error-container); }
   /* Keep OTP actions stationary when blur reveals an error during a click. */
   :is(.otp-code, .otp-input) ~ .validator-error { display: block; visibility: hidden; }
   :is(.form-group, .form-control):has(:is([aria-invalid="true"], .validator:user-invalid, .validate :invalid, .validate:invalid):not(:disabled)) > .validator-error,

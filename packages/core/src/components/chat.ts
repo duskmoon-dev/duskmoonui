@@ -684,13 +684,13 @@ export const chatStyles: Record<string, any> = {
     opacity: '1',
   },
 
-  '.chat-composer-primary': { color: 'var(--color-primary)' },
-  '.chat-composer-secondary': { color: 'var(--color-secondary)' },
-  '.chat-composer-tertiary': { color: 'var(--color-tertiary)' },
-  '.chat-composer-info': { color: 'var(--color-info)' },
-  '.chat-composer-success': { color: 'var(--color-success)' },
-  '.chat-composer-warning': { color: 'var(--color-warning)' },
-  '.chat-composer-error': { color: 'var(--color-error)' },
+  '.chat-composer-primary': { color: 'var(--color-on-primary-container)' },
+  '.chat-composer-secondary': { color: 'var(--color-on-secondary-container)' },
+  '.chat-composer-tertiary': { color: 'var(--color-on-tertiary-container)' },
+  '.chat-composer-info': { color: 'var(--color-on-info-container)' },
+  '.chat-composer-success': { color: 'var(--color-on-success-container)' },
+  '.chat-composer-warning': { color: 'var(--color-on-warning-container)' },
+  '.chat-composer-error': { color: 'var(--color-on-error-container)' },
   '.chat-composer-ghost': { borderColor: 'transparent' },
 
   '.chat-bubble': {

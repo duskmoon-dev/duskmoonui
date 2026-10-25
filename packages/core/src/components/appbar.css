@@ -395,7 +395,7 @@
   .appbar-accent .appbar-action:hover,
   .appbar-accent .appbar-back:hover {
     background-color: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
-    color: var(--color-accent);
+    color: light-dark(var(--color-accent-content), var(--color-accent));
   }
 
   .appbar-accent .appbar-subtitle {

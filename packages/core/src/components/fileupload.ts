@@ -50,7 +50,7 @@ export const fileUploadStyles: Record<string, any> = {
   },
 
   '.file-upload-dropzone:hover .file-upload-icon, .file-upload-dropzone-dragover .file-upload-icon': {
-    color: 'var(--color-primary)',
+    color: 'var(--color-on-primary-container)',
   },
 
   // Drop zone text
@@ -174,7 +174,7 @@ export const fileUploadStyles: Record<string, any> = {
 
     '&:hover': {
       backgroundColor: 'color-mix(in oklch, var(--color-error) 10%, transparent)',
-      color: 'var(--color-error)',
+      color: 'var(--color-on-error-container)',
     },
   },
 
@@ -194,13 +194,13 @@ export const fileUploadStyles: Record<string, any> = {
   },
 
   '.file-upload-item-error .file-upload-item-icon': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   '.file-upload-item-error-message': {
     fontSize: '0.75rem',
     lineHeight: '1rem',
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
     marginTop: '0.25rem',
   },
 
@@ -210,7 +210,7 @@ export const fileUploadStyles: Record<string, any> = {
   },
 
   '.file-upload-item-success .file-upload-item-icon': {
-    color: 'var(--color-success)',
+    color: 'var(--color-on-success-container)',
   },
 
   // Compact variant

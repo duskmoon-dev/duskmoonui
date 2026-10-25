@@ -188,7 +188,7 @@ export const radioStyles: Record<string, any> = {
   },
 
   '.radio-error .radio-helper': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   // Loading state

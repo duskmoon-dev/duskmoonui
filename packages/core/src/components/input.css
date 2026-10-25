@@ -56,16 +56,16 @@
 
   /* Color Variants — base .input:focus-visible uses currentColor 20%, so no per-variant
      focus-visible overrides needed; setting color: here is sufficient. */
-  .input-primary   { color: var(--color-primary); }
-  .input-secondary { color: var(--color-secondary); }
-  .input-tertiary  { color: var(--color-tertiary); }
+  .input-primary   { color: var(--color-on-primary-container); }
+  .input-secondary { color: var(--color-on-secondary-container); }
+  .input-tertiary  { color: var(--color-on-tertiary-container); }
 
   /* Semantic Colors */
-  .input-info    { color: var(--color-info); }
-  .input-success { color: var(--color-success); }
-  .input-warning { color: var(--color-warning); }
-  .input-error   { color: var(--color-error); }
-  .input-accent  { color: var(--color-accent); }
+  .input-info    { color: var(--color-on-info-container); }
+  .input-success { color: var(--color-on-success-container); }
+  .input-warning { color: var(--color-on-warning-container); }
+  .input-error   { color: var(--color-on-error-container); }
+  .input-accent  { color: light-dark(var(--color-accent-content), var(--color-accent)); }
   .input-neutral { color: var(--color-neutral); }
   .input-base    { color: var(--color-base-content); }
 

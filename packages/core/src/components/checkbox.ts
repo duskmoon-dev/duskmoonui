@@ -191,7 +191,7 @@ export const checkboxStyles: Record<string, any> = {
   },
 
   '.checkbox-error .checkbox-helper': {
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
   },
 
   // Loading state

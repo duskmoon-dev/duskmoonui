@@ -159,7 +159,7 @@ export const inputStyles: Record<string, any> = {
   '.input-error-message': {
     fontSize: '0.75rem',
     lineHeight: '1rem',
-    color: 'var(--color-error)',
+    color: 'var(--color-on-error-container)',
     marginTop: '0.25rem',
   },
 

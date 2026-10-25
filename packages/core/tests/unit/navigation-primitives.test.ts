@@ -10,7 +10,7 @@ describe('Link primitive', () => {
 
   it('uses theme tokens and wraps long native link text', () => {
     expect(css).toContain('.link');
-    expect(css).toContain('var(--color-primary)');
+    expect(css).toContain('var(--color-on-primary-container)');
     expect(css).toContain('overflow-wrap: anywhere');
     expect(css).toContain('text-decoration-line: underline');
   });

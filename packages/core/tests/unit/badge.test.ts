@@ -150,13 +150,13 @@ describe('Badge Component', () => {
 
       it(`should set color and border-color for outline ${color}`, () => {
         const regex = new RegExp(
-          `\\.badge-outline\\.badge-${color}\\s*\\{[^}]*color:\\s*var\\(--color-${color}\\)`,
+          `\\.badge-outline\\.badge-${color}\\s*\\{[^}]*color:\\s*var\\(--color-on-${color}-container\\)`,
           's',
         );
         expect(css).toMatch(regex);
 
         const borderRegex = new RegExp(
-          `\\.badge-outline\\.badge-${color}\\s*\\{[^}]*border-color:\\s*var\\(--color-${color}\\)`,
+          `\\.badge-outline\\.badge-${color}\\s*\\{[^}]*border-color:\\s*currentColor`,
           's',
         );
         expect(css).toMatch(borderRegex);
@@ -242,7 +242,7 @@ describe('Badge Component', () => {
         );
         expect(css).toMatch(
           new RegExp(
-            `\\.badge-outlined\\.badge-${color},\\s*\\.badge-outlined-${color},\\s*\\.badge-outline\\.badge-${color}\\s*\\{[^}]*color:\\s*var\\(--color-${color}\\)[^}]*border-color:\\s*var\\(--color-${color}\\)`,
+            `\\.badge-outlined\\.badge-${color},\\s*\\.badge-outlined-${color},\\s*\\.badge-outline\\.badge-${color}\\s*\\{[^}]*color:\\s*var\\(--color-on-${color}-container\\)[^}]*border-color:\\s*currentColor`,
             's',
           ),
         );
@@ -275,7 +275,7 @@ describe('Badge Component', () => {
         /\.badge-tonal\.badge-success,\s*\.badge-soft\.badge-success\s*\{[^}]*background-color:\s*var\(--color-success-container\)[^}]*color:\s*var\(--color-on-success-container\)/s,
       );
       expect(css).toMatch(
-        /\.badge-outlined\.badge-warning,\s*\.badge-outline\.badge-warning\s*\{[^}]*color:\s*var\(--color-warning\)[^}]*border-color:\s*var\(--color-warning\)/s,
+        /\.badge-outlined\.badge-warning,\s*\.badge-outline\.badge-warning\s*\{[^}]*color:\s*var\(--color-on-warning-container\)[^}]*border-color:\s*currentColor/s,
       );
     });
   });
