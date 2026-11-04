@@ -178,3 +178,26 @@ test.describe('touch waiting queue', () => {
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   });
 });
+
+for (const theme of ['sunshine', 'moonlight']) {
+  test(`queue projection states keep actions visible and keyboard focus usable in ${theme}`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 700 });
+    await fixture(page, Array.from({ length: 4 }, (_, index) => item(index + 1)).join(''), { theme, dir: 'rtl', hidden: false });
+    const states = ['editing', 'stale', 'conflict', 'consuming'];
+    await page.locator('.chat-queue-item').evaluateAll((rows, values) => rows.forEach((row, index) => row.setAttribute('data-state', values[index])), states);
+    await page.locator('#before').focus();
+    for (let index = 0; index < states.length; index++) {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      const action = page.getByRole('button', { name: `Remove message ${index + 1}` });
+      await expect(action).toBeFocused();
+      await expect(action).toBeEnabled();
+      await expect(action).toHaveCSS('opacity', '1');
+      expect(await action.evaluate(el => { const style = getComputedStyle(el); return style.boxShadow !== 'none' || (style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) > 0); })).toBe(true);
+    }
+    const fills = await page.locator('.chat-queue-item').evaluateAll(rows => rows.map(row => getComputedStyle(row).backgroundColor));
+    expect(fills[0]).not.toBe(fills[1]);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+  });
+}

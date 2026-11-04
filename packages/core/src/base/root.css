@@ -22,7 +22,7 @@ html {
 }
 
 /* Focus ring utility; the integrated chat input uses its composer's ring. */
-:focus-visible:not(:where(.chat-composer .chat-composer-input)) {
+:focus-visible:not(:where(.chat-composer .chat-composer-input, .chat-composer .chat-composer-editor)) {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }

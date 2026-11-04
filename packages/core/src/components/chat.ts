@@ -646,11 +646,13 @@ export const chatStyles: Record<string, any> = {
     boxShadow: '0 0 0 3px color-mix(in oklch, currentColor 20%, transparent)',
   },
 
-  '.chat-composer-input': {
+  '.chat-composer-input, .chat-composer-editor': {
     display: 'block',
-    width: '100%',
+    inlineSize: '100%',
     minInlineSize: '0',
     minBlockSize: '3rem',
+    maxBlockSize: '16rem',
+    overflow: 'auto',
     boxSizing: 'border-box',
     margin: '0',
     padding: '0',
@@ -658,15 +660,33 @@ export const chatStyles: Record<string, any> = {
     outline: 'none',
     backgroundColor: 'transparent',
     color: 'var(--color-on-surface)',
+    caretColor: 'var(--color-on-surface)',
     font: 'inherit',
     fontSize: '0.9375rem',
     lineHeight: '1.5',
+    overflowWrap: 'anywhere',
     resize: 'vertical',
   },
 
-  '.chat-composer-input::placeholder': {
+  '.chat-composer-input::placeholder, .chat-composer-editor::placeholder': {
     color: 'var(--color-on-surface-variant)',
     opacity: '1',
+  },
+
+  '.chat-composer-editor[contenteditable]': {
+    whiteSpace: 'pre-wrap',
+    resize: 'none',
+  },
+
+  '.chat-composer-editor[contenteditable]:empty::before, .chat-composer-editor[contenteditable][data-empty="true"]::before': {
+    content: 'attr(data-placeholder)',
+    color: 'var(--color-on-surface-variant)',
+    pointerEvents: 'none',
+  },
+
+  '.chat-composer-input::selection, .chat-composer-editor::selection, .chat-composer-editor ::selection': {
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
   },
 
   '.chat-composer-actions': {
@@ -692,6 +712,256 @@ export const chatStyles: Record<string, any> = {
   '.chat-composer-warning': { color: 'var(--color-on-warning-container)' },
   '.chat-composer-error': { color: 'var(--color-on-error-container)' },
   '.chat-composer-ghost': { borderColor: 'transparent' },
+
+  '.chat-composer[aria-disabled="true"], .chat-composer[data-state="disabled"], .chat-composer[data-state="readonly"]': {
+    borderStyle: 'dashed',
+    backgroundColor: 'var(--color-surface-container-low)',
+  },
+
+  '.chat-composer[aria-invalid="true"], .chat-composer[data-state="error"]': { color: 'var(--color-on-error-container)' },
+
+  '.chat-composer-reference': {
+    maxInlineSize: '100%',
+    minInlineSize: '0',
+    boxSizing: 'border-box',
+    verticalAlign: 'middle',
+  },
+
+  '.chat-composer-label, .chat-composer-filename': {
+    display: 'block',
+    flex: '1 1 auto',
+    minInlineSize: '0',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  },
+
+  '.chat-composer-reference[aria-selected="true"], .chat-composer-reference[data-selected="true"], .chat-composer-quote[data-selected="true"]': {
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
+  },
+
+  '.chat-composer-reference[aria-invalid="true"]': {
+    backgroundColor: 'var(--color-error-container)',
+    color: 'var(--color-on-error-container)',
+  },
+
+  '.chat-composer-reference[aria-busy="true"]': { borderStyle: 'dashed' },
+
+  '.chat-composer-quote': {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr) auto',
+    alignItems: 'start',
+    gap: '0.5rem',
+    minInlineSize: '0',
+    margin: '0',
+    padding: '0.625rem 0.75rem',
+    borderInlineStart: '3px solid currentColor',
+    borderRadius: 'var(--radius-sm)',
+    backgroundColor: 'var(--color-surface-container-low)',
+    color: 'var(--color-on-surface)',
+  },
+
+  '.chat-composer-quote-text': {
+    minInlineSize: '0',
+    maxBlockSize: '6rem',
+    overflow: 'auto',
+    margin: '0',
+    whiteSpace: 'pre-wrap',
+    overflowWrap: 'anywhere',
+  },
+
+  '.chat-composer-attachments': {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(16rem, 100%), 1fr))',
+    gap: '0.5rem',
+    minInlineSize: '0',
+    maxBlockSize: '12rem',
+    overflow: 'auto',
+    overscrollBehavior: 'contain',
+    boxSizing: 'border-box',
+    margin: '0',
+    padding: '0.25rem',
+    listStyle: 'none',
+  },
+
+  '.chat-composer-attachment': {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    minInlineSize: '0',
+    padding: '0.5rem',
+    border: '1px solid var(--color-outline-variant)',
+    borderRadius: 'var(--radius-sm)',
+    backgroundColor: 'var(--color-surface-container)',
+    color: 'var(--color-on-surface)',
+  },
+
+  '.chat-composer-attachment > img, .chat-composer-preview': {
+    flex: '0 0 auto',
+    inlineSize: '2.5rem',
+    blockSize: '2.5rem',
+    objectFit: 'cover',
+    borderRadius: 'var(--radius-xs)',
+  },
+
+  '.chat-composer-attachment-info': {
+    flex: '1 1 auto',
+    minInlineSize: '0',
+    overflowWrap: 'anywhere',
+  },
+
+  '.chat-composer-description': {
+    display: 'block',
+    margin: '0',
+    color: 'inherit',
+    fontSize: '0.8125rem',
+    lineHeight: '1.5',
+    overflowWrap: 'anywhere',
+  },
+
+  '.chat-composer-attachment[data-state="validating"], .chat-composer-attachment[data-state="uploading"], .chat-composer-attachment[data-state="cancelled"]': { borderStyle: 'dashed' },
+
+  '.chat-composer-attachment[data-state="error"]': {
+    borderColor: 'currentColor',
+    backgroundColor: 'var(--color-error-container)',
+    color: 'var(--color-on-error-container)',
+  },
+
+  '.chat-composer-attachment[data-state="cancelled"]': {
+    backgroundColor: 'var(--color-surface-container-low)',
+    color: 'var(--color-on-surface-variant)',
+  },
+
+  '.chat-composer-toolbar': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '0.5rem',
+    minInlineSize: '0',
+  },
+
+  '.chat-composer-toolbar > .chat-composer-actions': { marginInlineStart: 'auto' },
+
+  '.chat-composer-toolbar :where(.btn, .select)': {
+    minInlineSize: '0',
+    maxInlineSize: '100%',
+  },
+
+  '.chat-composer-reference > .btn, .chat-composer-attachment > .btn, .chat-composer-actions > .btn': { flexShrink: '0' },
+
+  '.chat-composer-status': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '0.5rem',
+    minInlineSize: '0',
+    margin: '0',
+    padding: '0.5rem 0.625rem',
+    borderInlineStart: '2px solid currentColor',
+    borderRadius: 'var(--radius-xs)',
+    color: 'var(--color-on-surface)',
+    fontSize: '0.8125rem',
+    lineHeight: '1.5',
+    overflowWrap: 'anywhere',
+  },
+
+  '.chat-composer-status[data-state="unknown"], .chat-queue-item[data-state="stale"], .chat-queue-item[data-state="conflict"]': {
+    backgroundColor: 'var(--color-warning-container)',
+    color: 'var(--color-on-warning-container)',
+  },
+
+  '.chat-composer-status[data-state="error"]': {
+    backgroundColor: 'var(--color-error-container)',
+    color: 'var(--color-on-error-container)',
+  },
+
+  '.chat-queue-item[data-state="editing"]': { backgroundColor: 'var(--color-surface-container)' },
+
+  '.chat-queue-item[data-state="consuming"]': {
+    borderInlineStart: '2px solid currentColor',
+    color: 'var(--color-on-surface-variant)',
+  },
+
+  '.chat-composer-completions': {
+    minInlineSize: '0',
+    maxInlineSize: '100%',
+    maxBlockSize: '16rem',
+    overflow: 'auto',
+    overscrollBehavior: 'contain',
+    boxSizing: 'border-box',
+    margin: '0',
+    padding: '0.375rem',
+    border: '1px solid var(--color-outline-variant)',
+    borderRadius: 'var(--radius-md)',
+    backgroundColor: 'var(--color-surface-container)',
+    color: 'var(--color-on-surface)',
+    boxShadow: 'var(--shadow-lg)',
+    listStyle: 'none',
+  },
+
+  '.chat-composer-completions[popover]': {
+    display: 'none',
+    position: 'fixed',
+    inset: 'auto',
+    inlineSize: 'min(24rem, calc(100dvi - 2rem))',
+    maxInlineSize: 'calc(100dvi - 2rem)',
+    maxBlockSize: 'min(16rem, calc(100dvb - 2rem))',
+    margin: '0.5rem',
+    positionArea: 'block-start span-inline-end',
+    positionTryFallbacks: 'flip-block, flip-inline, flip-block flip-inline',
+  },
+
+  '.chat-composer-completions[popover]:popover-open': { display: 'block' },
+
+  '.chat-composer-completions[popover]::backdrop': { backgroundColor: 'transparent' },
+
+  '.chat-composer-group, .chat-composer-breadcrumb': {
+    margin: '0',
+    padding: '0.375rem 0.5rem',
+    color: 'var(--color-on-surface-variant)',
+    fontSize: '0.8125rem',
+    overflowWrap: 'anywhere',
+  },
+
+  '.chat-composer-group': { fontWeight: '600' },
+
+  '.chat-composer-option, .chat-composer-completions > [role="option"]': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.125rem',
+    inlineSize: '100%',
+    minInlineSize: '0',
+    boxSizing: 'border-box',
+    padding: '0.5rem',
+    border: '1px solid transparent',
+    borderRadius: 'var(--radius-sm)',
+    backgroundColor: 'transparent',
+    color: 'var(--color-on-surface)',
+    font: 'inherit',
+    textAlign: 'start',
+    overflowWrap: 'anywhere',
+    cursor: 'pointer',
+  },
+
+  '.chat-composer-option:is([aria-selected="true"], [data-active="true"]), .chat-composer-completions > [role="option"]:is([aria-selected="true"], [data-active="true"])': {
+    backgroundColor: 'var(--color-primary-container)',
+    color: 'var(--color-on-primary-container)',
+  },
+
+  '.chat-composer-option:is(:disabled, [aria-disabled="true"]), .chat-composer-completions > [role="option"][aria-disabled="true"]': {
+    borderStyle: 'dashed',
+    backgroundColor: 'var(--color-surface-container)',
+    color: 'var(--color-on-surface-variant)',
+    cursor: 'not-allowed',
+  },
+
+  '.chat-composer :where(button, a[href], [tabindex]:not(.chat-composer-input, .chat-composer-editor)):focus-visible, .chat-composer-completions :where(button, [role="option"], [tabindex]):focus-visible, .chat-queue :where(button, [tabindex]):focus-visible': {
+    outline: '2px solid currentColor',
+    outlineOffset: '-2px',
+  },
+
+  '.chat-composer-reference[hidden], .chat-composer-quote[hidden], .chat-composer-attachments[hidden], .chat-composer-attachment[hidden], .chat-composer-toolbar[hidden], .chat-composer-completions[hidden], .chat-composer-option[hidden], .chat-composer-completions > [role="option"][hidden], .chat-composer-status[hidden]': { display: 'none' },
 
   '.chat-bubble': {
     '--chat-bubble-bg': 'var(--color-surface-container-highest)',
