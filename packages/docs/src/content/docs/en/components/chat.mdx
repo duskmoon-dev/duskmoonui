@@ -236,6 +236,251 @@ before dequeuing a message; keep rejected messages available for retry. Give eac
 a stable identity so a completed or steered message cannot be dispatched twice. Hide an
 empty queue with `hidden` rather than leaving an empty panel in the layout.
 
+## Composer Parts
+
+Compose the existing shell with optional references, quote previews, attachments,
+suggestions, and a toolbar. These are visual parts: Core does not create an editor,
+resolve a reference, upload a file, submit a draft, or mutate a waiting queue.
+The examples below show static states. Their Send, Remove, Retry, and queue actions
+need application handlers; only the suggestion preview's native popover toggle works
+without JavaScript.
+
+### Anatomy And States
+
+Only the shell and a labelled editor are required for an editable composer. Keep
+submission actions outside scrolling editor, attachment, and suggestion regions.
+All other parts are optional; reuse existing button, chip, select, and progress classes.
+
+| Part / classes | Expected element and visual state contract |
+|---|---|
+| `.chat-composer` | Form or container; retains the currentColor border/focus ring, seven semantic variants, and ghost variant. `data-state="readonly"`, `data-state="disabled"` / `aria-disabled="true"`, and `data-state="error"` / `aria-invalid="true"` describe the displayed shell state. |
+| `.chat-composer-input`, `.chat-composer-editor` | Labelled native `<textarea>` or scoped contenteditable editor; shared text, caret, selection, and bounded overflow. Existing `.chat-composer-input` usage remains supported. |
+| `.chat-composer-editor[contenteditable]` | Give the editable surface `role="textbox"`, `aria-multiline="true"`, and an accessible name. `data-placeholder` plus application-managed `data-empty="true"` supplies the rich-editor placeholder. Native textareas use `placeholder`. |
+| `.chip.chat-composer-reference` | Atomic reference label, optionally with an existing button. Use `data-selected="true"`, `aria-invalid="true"`, or `aria-busy="true"` for selected, invalid, and resolving presentation; put `contenteditable="false"` on atomic nodes inside an editor. |
+| `.chat-composer-label` | Flexible, truncated label for references or suggestion rows. Retain full text and a native `title` when the preview is truncated. |
+| `.chat-composer-quote`, `.chat-composer-quote-text` | Quote preview container and `<blockquote>` text, with optional attribution and removal button. `data-selected="true"` marks a selected quote. The application retains the complete quote behind a bounded preview. |
+| `.chat-composer-attachments`, `.chat-composer-attachment` | Named `<ul role="list">` and `<li>` items. Item `data-state` values: `validating`, `uploading`, `ready`, `error`, `cancelled`. State text and available actions come from the application. |
+| `.chat-composer-preview`, `.chat-composer-attachment-info`, `.chat-composer-filename` | Optional image/icon preview, flexible metadata wrapper, and truncated filename. Images need alternative text; use existing native `.progress` for upload values. |
+| `.chat-composer-description` | Supporting text such as attribution, file status, or suggestion details. |
+| `.chat-composer-toolbar`, `.chat-composer-actions` | Wrapping control row and existing submission action group. Use native buttons/selects with labels; keep primary actions available at narrow widths. |
+| `.chat-composer-status` | Optional status text with `data-state="pending"`, `"unknown"`, or `"error"`. Use `role="status"` for polite updates or `role="alert"` for actionable validation errors, and connect the editor with `aria-describedby`. |
+| `.chat-composer-completions` | In-flow suggestion surface or native `[popover]` surface. The host supplies a unique `position-anchor`; Core supplies viewport bounds and block/inline flip fallbacks. |
+| `.chat-composer-breadcrumb`, `.chat-composer-group` | Optional directory navigation and labelled suggestion group heading. The application owns directory queries and drill-down behavior. |
+| `.chat-composer-option`, `.chat-composer-completions > [role="option"]` | Suggestion row; `data-active="true"` or `aria-selected="true"` displays the active row, and `aria-disabled="true"` displays an unavailable choice. Nested rows require `.chat-composer-option`; the host prevents unavailable selection. |
+| `.chat-queue-item[data-state]` | Existing queue row with optional `editing`, `stale`, `conflict`, or `consuming` presentation. Preserve stable row identities, visible actions, and application-owned queue revisions. |
+
+State attributes supply presentation only. Enforce disabled/read-only behavior with
+native `disabled` / `readonly`, `contenteditable="false"`, or the host's appropriate
+interaction boundary. Do not make an active model run imply a read-only editor.
+A selected visual node does not acquire selection or removal behavior from CSS.
+
+### Plain Composition
+
+<ComponentShowcase
+  title="Plain Composer With Toolbar"
+  code={`<div class="chat-composer">
+  <label class="sr-only" for="demo-composer-plain">Message</label>
+  <textarea class="chat-composer-input" id="demo-composer-plain" rows="3" placeholder="Describe the next change…" aria-describedby="demo-composer-plain-status"></textarea>
+  <div class="chat-composer-toolbar">
+    <button class="btn btn-ghost btn-sm" type="button">Attach files</button>
+    <label class="sr-only" for="demo-composer-model">Model</label>
+    <select class="select select-sm" id="demo-composer-model">
+      <option>Application-selected model</option>
+    </select>
+    <div class="chat-composer-actions">
+      <button class="btn btn-primary btn-sm" type="button">Send <kbd class="chat-composer-hint">Ctrl/⌘+Enter</kbd></button>
+    </div>
+  </div>
+  <p class="chat-composer-status" id="demo-composer-plain-status">Enter inserts a newline. Ctrl/⌘+Enter sends when the application enables that shortcut.</p>
+</div>`}
+/>
+
+The existing React Composer defaults to Enter for a newline and Ctrl/⌘+Enter for
+submission. The Waiting Queue demo above uses a different, explicitly configured
+policy. Core does not impose either policy: the displayed action and shortcut hint
+must match the application's policy, and IME composition must never submit a draft.
+
+### References And Quotes
+
+<ComponentShowcase
+  title="Semantic Draft And Quote Preview"
+  code={`<div class="chat-composer chat-composer-primary">
+  <span id="demo-composer-rich-label">Message with references</span>
+  <div class="chat-composer-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="demo-composer-rich-label" aria-describedby="demo-composer-rich-help" data-placeholder="Write a message…">
+    Review
+    <span class="chip chat-composer-reference" contenteditable="false" data-selected="true">
+      <span class="chat-composer-label" title="packages/core/src/components/chat.css">@packages/core/src/components/chat.css</span>
+      <button class="btn btn-ghost btn-sm btn-square" type="button" aria-label="Remove chat.css reference">×</button>
+    </span>
+    alongside
+    <span class="chip chat-composer-reference" contenteditable="false" aria-invalid="true">
+      <span class="chat-composer-label" title="Unavailable reference">Unavailable reference</span>
+      <button class="btn btn-ghost btn-sm btn-square" type="button" aria-label="Remove unavailable reference">×</button>
+    </span>
+    and
+    <span class="chip chat-composer-reference" contenteditable="false" aria-busy="true">
+      <span class="chat-composer-label">Resolving source…</span>
+    </span>
+  </div>
+  <div class="chat-composer-quote" data-selected="true">
+    <div>
+      <blockquote class="chat-composer-quote-text" tabindex="0" aria-label="Review-note quote">Keep existing public classes compatible.
+The editor owns transactions, selection, and undo history.</blockquote>
+      <p class="chat-composer-description">Quoted from the review notes</p>
+    </div>
+    <button class="btn btn-ghost btn-sm btn-square" type="button" aria-label="Remove review-note quote">×</button>
+  </div>
+  <div class="chat-composer-actions"><button class="btn btn-primary btn-sm" type="button">Send</button></div>
+  <p class="chat-composer-status" id="demo-composer-rich-help">One reference is unavailable. Resolve or remove it before sending.</p>
+</div>`}
+/>
+
+The optional editor adapter owns atomic nodes, keyboard navigation, clipboard,
+selection, and undo. Preserve repeated occurrences independently and retain full
+reference/quote data outside any truncated preview. Displayed labels do not grant
+permission to read a source. For an empty rich editor, render `data-empty="true"`
+with `data-placeholder`; update that attribute when the document changes, including
+when the editor emits an empty paragraph or `<br>`.
+
+### Attachment Progress And Errors
+
+<ComponentShowcase
+  title="Attachment Visual States"
+  code={`<div class="chat-composer">
+  <ul class="chat-composer-attachments" role="list" aria-label="Draft attachments">
+    <li class="chat-composer-attachment" data-state="uploading" aria-busy="true">
+      <span class="chat-composer-preview" aria-hidden="true">↑</span>
+      <div class="chat-composer-attachment-info">
+        <span class="chat-composer-filename" title="responsive-composer-preview.png">responsive-composer-preview.png</span>
+        <span class="chat-composer-description">Uploading · 45%</span>
+        <progress class="progress" value="45" max="100" aria-label="Uploading responsive-composer-preview.png"></progress>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" aria-label="Cancel responsive-composer-preview.png upload">Cancel</button>
+    </li>
+    <li class="chat-composer-attachment" data-state="error">
+      <div class="chat-composer-attachment-info">
+        <span class="chat-composer-filename" title="review-notes.txt">review-notes.txt</span>
+        <span class="chat-composer-description">Upload failed</span>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" aria-label="Retry review-notes.txt upload">Retry</button>
+      <button class="btn btn-ghost btn-sm btn-square" type="button" aria-label="Remove review-notes.txt">×</button>
+    </li>
+    <li class="chat-composer-attachment" data-state="ready">
+      <div class="chat-composer-attachment-info">
+        <span class="chat-composer-filename">accepted-image.png</span>
+        <span class="chat-composer-description">Ready</span>
+      </div>
+      <button class="btn btn-ghost btn-sm btn-square" type="button" aria-label="Remove accepted-image.png">×</button>
+    </li>
+    <li class="chat-composer-attachment" data-state="validating" aria-busy="true">
+      <div class="chat-composer-attachment-info"><span class="chat-composer-filename">new-file.txt</span><span class="chat-composer-description">Validating…</span></div>
+      <button class="btn btn-ghost btn-sm btn-square" type="button" aria-label="Remove new-file.txt">×</button>
+    </li>
+    <li class="chat-composer-attachment" data-state="cancelled">
+      <div class="chat-composer-attachment-info"><span class="chat-composer-filename">cancelled-image.png</span><span class="chat-composer-description">Cancelled · select again to retry</span></div>
+      <button class="btn btn-ghost btn-sm btn-square" type="button" aria-label="Remove cancelled-image.png">×</button>
+    </li>
+  </ul>
+  <label class="sr-only" for="demo-composer-files">Message about attachments</label>
+  <textarea class="chat-composer-input" id="demo-composer-files" rows="2" placeholder="Add a note…"></textarea>
+  <div class="chat-composer-actions"><button class="btn btn-primary btn-sm" type="button">Send ready attachments</button></div>
+</div>`}
+/>
+
+The application supplies file policy, picker/paste/drop intake, upload progress,
+retry, cancellation, and removal. A filename restored from a draft is not proof
+that an upload is ready. Keep pending admission separate from attachment progress;
+use one polite status region for updates that need an announcement.
+
+### Native Suggestion Surface
+
+<ComponentShowcase
+  title="Reference Suggestions"
+  code={`<div class="chat-composer">
+  <label class="sr-only" for="demo-composer-suggestion-editor">Message with source suggestions</label>
+  <textarea class="chat-composer-editor" id="demo-composer-suggestion-editor" rows="2">Review @components/</textarea>
+  <div class="chat-composer-toolbar">
+    <button class="btn btn-ghost btn-sm" type="button" popovertarget="demo-composer-suggestions" style="anchor-name: --demo-composer-suggestions-anchor">Preview suggestions</button>
+    <div class="chat-composer-actions"><button class="btn btn-primary btn-sm" type="button">Send</button></div>
+  </div>
+  <div class="chat-composer-completions" id="demo-composer-suggestions" popover tabindex="0" aria-label="Source suggestion preview" style="position-anchor: --demo-composer-suggestions-anchor">
+    <nav class="chat-composer-breadcrumb" aria-label="Source directory"><button class="btn btn-ghost btn-sm" type="button">Repository</button><span aria-hidden="true">/</span><span>components</span></nav>
+    <div role="listbox" aria-label="Source suggestions">
+      <div role="group" aria-labelledby="demo-composer-source-group">
+        <div class="chat-composer-group" id="demo-composer-source-group">Source files</div>
+        <div class="chat-composer-option" role="option" tabindex="0" aria-selected="true"><span class="chat-composer-label">chat.css</span><span class="chat-composer-description">Component styles</span></div>
+        <div class="chat-composer-option" role="option" tabindex="-1" aria-selected="false"><span class="chat-composer-label">chat.ts</span><span class="chat-composer-description">Legacy style API</span></div>
+        <div class="chat-composer-option" role="option" aria-selected="false" aria-disabled="true"><span class="chat-composer-label">restricted-source.txt</span><span class="chat-composer-description">Unavailable</span></div>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-sm" type="button" popovertarget="demo-composer-suggestions" popovertargetaction="hide">Close preview</button>
+  </div>
+</div>`}
+/>
+
+Use the native Popover API to escape composer and transcript clipping. The host
+chooses a unique anchor for the editor, trigger, or caret proxy; it also chooses
+when to call `showPopover()` / `hidePopover()`. CSS supplies sizing and positioning,
+not suggestion lookup, focus movement, selection, or directory navigation.
+Where CSS Anchor Positioning is unavailable, the host may position the same native
+popover with measured coordinates or choose the in-flow suggestion surface; no
+additional overlay or focus trap is needed.
+
+For a real editor completion, retain native textarea semantics and use
+`aria-haspopup="listbox"`, `aria-controls`, and `aria-activedescendant` while the
+listbox is open. Keep the active option's ID and `aria-selected` synchronized,
+ignore unavailable rows, and consume suggestion-selection keys before submission
+keys. Do not add `role="combobox"` to a textarea. The preview above uses native
+popover buttons and a focusable static option to demonstrate appearance only.
+Loading, empty, and failed provider results can replace the option list with a
+`.chat-composer-status` message and an existing Retry button; do not present a
+loading placeholder as a selectable result.
+
+### Pending Admission And Queue Mutations
+
+<ComponentShowcase
+  title="Queue Conflict And Uncertain Admission"
+  code={`<div class="chat-input-area">
+  <section class="chat-queue" aria-labelledby="demo-composer-queue-title">
+    <h3 class="chat-queue-title sr-only" id="demo-composer-queue-title">Confirmed waiting messages</h3>
+    <ol class="chat-queue-list" role="list" tabindex="0" aria-label="Waiting message states">
+      <li class="chat-queue-item" data-state="editing"><span class="chat-queue-content" title="Editing the next review request">Editing the next review request</span><div class="chat-actions chat-queue-actions"><button class="btn btn-ghost btn-sm" type="button" aria-label="Save edited review request">Save</button></div></li>
+      <li class="chat-queue-item" data-state="conflict"><span class="chat-queue-content" title="Review request changed on the server">Review request changed on the server</span><div class="chat-actions chat-queue-actions"><button class="btn btn-ghost btn-sm" type="button" aria-label="Refresh conflicted review request">Refresh</button></div></li>
+      <li class="chat-queue-item" data-state="stale"><span class="chat-queue-content" title="This queue projection is out of date">This queue projection is out of date</span><div class="chat-actions chat-queue-actions"><button class="btn btn-ghost btn-sm" type="button" aria-label="Refresh stale queue projection">Refresh</button></div></li>
+      <li class="chat-queue-item" data-state="consuming" aria-busy="true"><span class="chat-queue-content" title="Preparing the confirmed next message">Preparing the confirmed next message</span><div class="chat-actions chat-queue-actions"><button class="btn btn-ghost btn-sm chat-queue-remove" type="button" disabled aria-label="Remove message being consumed">Remove</button></div></li>
+    </ol>
+  </section>
+  <div class="chat-composer">
+    <label class="sr-only" for="demo-composer-recovery">Current draft</label>
+    <textarea class="chat-composer-input" id="demo-composer-recovery" rows="2" aria-describedby="demo-composer-recovery-status" placeholder="Keep editing while the earlier attempt is reconciled…"></textarea>
+    <p class="chat-composer-status" id="demo-composer-recovery-status" data-state="unknown" role="status">The earlier submission outcome is unknown. Its snapshot is retained; check its status before retrying.</p>
+    <div class="chat-composer-actions"><button class="btn btn-ghost btn-sm" type="button">Check submission status</button></div>
+  </div>
+</div>`}
+/>
+
+An unknown outcome is separate from rejection. Do not automatically resend it,
+clear its snapshot, or invent a confirmed queue item. React renders application
+projections; server admission and queue mutations remain authoritative. Pending
+status, such as `<p class="chat-composer-status" data-state="pending" role="status">Checking admission…</p>`,
+and validation errors use the same status part. Connect validation text to the
+editor and expose `aria-invalid="true"` when the draft is invalid.
+
+### Compatibility And Delivery
+
+These additive composer parts require **Core 1.21.0 or later**. Core 1.20.8 does
+not contain them. React integrations using the new parts must declare 1.21.0 as
+their minimum compatible Core version.
+Existing `.chat-composer-input`, `.chat-composer-actions`, `.chat-composer-hint`,
+composer variants, and queue classes retain their existing behavior.
+
+All parts ship through the aggregate CSS, component CSS, generated component ESM
+stylesheet, and standalone plugin outputs. With the package's token-only
+`@duskmoon-dev/core/plugin` entry, also import Core CSS as before. The generated
+`@duskmoon-dev/core/components/chat` module exports CSS text and a nullable
+constructable stylesheet, so server-side consumers can import it without a
+browser `CSSStyleSheet` implementation. No editor runtime is included in Core.
+
 ## Scroll-Driven Indicators
 
 `.chat-scroll` hoists named view timelines with `timeline-scope` (`--chat-1` … `--chat-24`). Pair **agent / assistant rows only** (`.chat-start`) with matching indicators: `.chat[data-chat-tl="N"]` declares `view-timeline-name`, and `.chat-scroll-indicator[data-chat-tl="N"]` binds `animation-timeline` + `animation-range: entry 0% exit 100%`.
@@ -788,10 +1033,10 @@ For user messages, nest `.markdown-body` inside `.chat-bubble`. Prose, links and
 | `.chat-queue-actions` | Queue action group; compose with `.chat-actions` and existing button classes |
 | `.chat-queue-steer` | Plain Steer action with a curved-arrow icon; compose with `.btn.btn-ghost.btn-sm` |
 | `.chat-queue-remove` | Remove icon action; compose with a ghost square button and a specific accessible name |
-| `.chat-composer` | Native message form with a textarea and adjacent submission/steering actions |
+| `.chat-composer` | Message form or container with a labelled editor and adjacent submission/steering actions; see Composer Parts for optional anatomy |
 | `.chat-composer-{primary,secondary,tertiary,info,success,warning,error}` | Semantic composer color variants; focus treatment follows the chosen color |
 | `.chat-composer-ghost` | Transparent composer border |
-| `.chat-composer-input` | Native borderless textarea inside the composer; retains vertical resizing |
+| `.chat-composer-input` | Existing native borderless textarea inside the composer; retains vertical resizing. `.chat-composer-editor` adds the same surface for textarea or contenteditable use |
 | `.chat-composer-actions` | Wrapping action group for Send/Queue and Steer, with visible keyboard hints |
 | `.chat-composer-hint` | Compact native `<kbd>` shortcut hint inside a composer action |
 
@@ -843,7 +1088,9 @@ For user messages, nest `.markdown-body` inside `.chat-bubble`. Prose, links and
 - Name the waiting queue and its list. Keep `role="list"` when list markers are removed, and use `tabindex="0"` with an accessible name on the scrollable list so keyboard users can scroll it.
 - Give repeated Steer and icon-only Remove buttons names that identify their waiting message. Keep all row actions reachable, including rows after the next message to dispatch. After consuming or removing a focused queue row, move focus to a surviving row action or the message textarea.
 - Announce queue transitions and the waiting count through one polite `role="status"` region. Avoid announcing the same change through a live transcript as well.
-- Label the native textarea. Show keyboard hints and expose shortcuts through `aria-keyshortcuts`; use Shift+Enter for newlines and never dispatch during IME composition. Render user input as text, such as with `textContent`, instead of interpolating it into HTML.
+- Label the native textarea or rich textbox. Show keyboard hints and expose configured shortcuts through `aria-keyshortcuts`; retain ordinary multiline editing and never dispatch during IME composition. The Waiting Queue demo uses Enter to send and Shift+Enter for a newline; the existing React default uses Enter for a newline. Render user input as text, such as with `textContent`, instead of interpolating it into HTML.
+- Composer state styling does not implement disabled/read-only semantics, reference selection, or a listbox keyboard model. The host maintains native control attributes, active-descendant relationships, focus restoration, and complete semantic data behind truncated previews. Keep attachment Retry/Remove and queue actions available without hover.
+- Give bounded quote or suggestion content a named `tabindex="0"` scroll target when it has no keyboard-focusable descendant. A suggestion list with only `tabindex="-1"` options still needs a reachable scroll target; alternatively, an application-managed roving-focus model keeps its active option keyboard-focusable.
 - `.chat-scroll` respects `prefers-reduced-motion` by switching `scroll-behavior` to `auto` and disabling indicator animations. Give the scroll container a reachable height. Map ticks only to agent reply starts. Prefer `<button data-chat-target>` over hash links so navigation stays inside the panel; give each indicator an `aria-label`.
 
 ## Related Components
