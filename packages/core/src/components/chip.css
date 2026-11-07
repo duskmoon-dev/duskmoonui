@@ -184,7 +184,8 @@
   }
 
   .chip-outlined.chip-neutral {
-    color: var(--color-neutral);
+    color: var(--color-on-surface);
+    border-color: currentColor;
   }
 
   .chip-outlined.chip-neutral:hover {
@@ -307,7 +308,7 @@
   .chip-ghost.chip-warning   { background-color: transparent; color: var(--color-on-warning-container); }
   .chip-ghost.chip-error     { background-color: transparent; color: var(--color-on-error-container); }
   .chip-ghost.chip-accent    { background-color: transparent; color: light-dark(var(--color-accent-content), var(--color-accent)); }
-  .chip-ghost.chip-neutral   { background-color: transparent; color: var(--color-neutral); }
+  .chip-ghost.chip-neutral   { background-color: transparent; color: var(--color-on-surface); }
   .chip-ghost.chip-base      { background-color: transparent; color: var(--color-base-content); }
 
   .chip-ghost.chip-primary:hover   { background-color: var(--color-primary-container); }

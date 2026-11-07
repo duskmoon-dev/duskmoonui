@@ -109,8 +109,8 @@
 
   .badge-outlined.badge-neutral,
   .badge-outline.badge-neutral {
-    color: var(--color-neutral);
-    border-color: var(--color-neutral);
+    color: var(--color-on-surface);
+    border-color: currentColor;
   }
 
   .badge-outlined.badge-base,

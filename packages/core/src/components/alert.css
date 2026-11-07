@@ -269,8 +269,8 @@
   }
 
   .alert-outlined.alert-neutral {
-    border-color: var(--color-neutral);
-    color: var(--color-neutral);
+    border-color: currentColor;
+    color: var(--color-on-surface);
   }
 
   .alert-outlined.alert-base {
@@ -292,7 +292,7 @@
   .alert-ghost.alert-warning   { color: var(--color-on-warning-container); }
   .alert-ghost.alert-error     { color: var(--color-on-error-container); }
   .alert-ghost.alert-accent    { color: light-dark(var(--color-accent-content), var(--color-accent)); }
-  .alert-ghost.alert-neutral   { color: var(--color-neutral); }
+  .alert-ghost.alert-neutral   { color: var(--color-on-surface); }
   .alert-ghost.alert-base      { color: var(--color-base-content); }
 
   /* Dismissible */

@@ -28,6 +28,7 @@ async function render(
   page: Page,
   theme: string | null,
   backgrounds = surfaces,
+  colorRoles = roles,
 ) {
   await page.goto('/tests/fixtures/test-fixture.html');
   await page.evaluate(
@@ -304,7 +305,7 @@ async function render(
         document.body.append(section);
       }
     },
-    { theme, backgrounds, roles },
+    { theme, backgrounds, roles: colorRoles },
   );
 }
 
@@ -558,6 +559,63 @@ test.describe('Surface foreground contrast (design#1)', () => {
       const selector =
         '[data-measure]:is(.link, .btn-outline, .btn-outlined, .btn-text, .btn-ghost, .badge-outline, .badge-outlined, .alert-outlined, .alert-ghost, .chip-outlined, .chip-ghost, .input, .textarea, .select, .toggle-btn-ghost, .kbd, .countdown, .stat-value), .tabs:not(.tabs-pill):not(.tabs-tonal) > [data-measure]';
       expect(await failures(page, selector)).toEqual([]);
+    });
+  }
+});
+
+test.describe('Neutral surface labels (core#78)', () => {
+  const unfilled =
+    '[data-case*="/neutral/"] [data-measure]:is(.btn-outline, .btn-outlined, .btn-text, .btn-ghost, .badge-outline, .badge-outlined, .chip-outlined, .chip-ghost, .alert-outlined, .alert-ghost), [data-case*="/neutral/alert-outlined"] .alert-description, [data-case*="/neutral/alert-ghost"] .alert-description';
+
+  for (const [theme, colorScheme] of [
+    ['sunshine', 'dark'],
+    ['moonlight', 'light'],
+    ['forest', 'dark'],
+    ['ocean', 'light'],
+    [null, 'light'],
+    [null, 'dark'],
+  ] as const) {
+    test(`${theme ?? `default ${colorScheme}`}: neutral labels meet AA across all surfaces and preserve filled pairs`, async ({ page }) => {
+      await page.emulateMedia({ colorScheme });
+      await render(page, theme, surfaces, ['neutral']);
+      expect(await page.locator(unfilled).count()).toBe(12 * surfaces.length);
+      expect(await failures(page, unfilled)).toEqual([]);
+
+      const filled = await page.evaluate(() => {
+        const expected = document.createElement('span');
+        expected.style.cssText = 'color:var(--color-neutral-content);background:var(--color-neutral)';
+        document.body.append(expected);
+        const style = getComputedStyle(expected);
+        const pair = { color: style.color, background: style.backgroundColor };
+        const actual = ['button-filled', 'badge-filled', '', 'alert-filled'].map((name) => {
+          const element = document.querySelector(`[data-case="surface/neutral/${name}"] [data-measure]`)!;
+          const style = getComputedStyle(element);
+          return { color: style.color, background: style.backgroundColor };
+        });
+        expected.remove();
+        return { pair, actual };
+      });
+      expect(filled.actual).toEqual(Array(4).fill(filled.pair));
+    });
+  }
+
+  for (const theme of ['sunshine', 'moonlight', 'forest', 'ocean']) {
+    test(`${theme}: neutral buttons and chips remain readable on hover, focus and active`, async ({ page }) => {
+      await render(page, theme, ['surface'], ['neutral']);
+      for (const name of ['button-btn-outline', 'button-btn-outlined', 'button-btn-text', 'button-btn-ghost', 'chip-outlined', 'chip-ghost']) {
+        const selector = `[data-case="surface/neutral/${name}"] [data-measure]`;
+        const element = page.locator(selector);
+        await element.hover();
+        expect(await failures(page, selector), `${name}: hover`).toEqual([]);
+        await element.focus();
+        expect(await failures(page, selector), `${name}: focus`).toEqual([]);
+        await page.mouse.down();
+        try {
+          expect(await failures(page, selector), `${name}: active`).toEqual([]);
+        } finally {
+          await page.mouse.up();
+        }
+      }
     });
   }
 });

@@ -243,14 +243,14 @@
 
   .btn-outline.btn-neutral,
   .btn-outlined.btn-neutral {
-    --btn-text-color: var(--color-neutral);
+    --btn-text-color: var(--color-on-surface);
     border-color: currentColor;
   }
 
   .btn-outline.btn-neutral:hover,
   .btn-outlined.btn-neutral:hover {
-    --btn-text-color: var(--color-neutral-content);
-    background-color: var(--color-neutral);
+    --btn-text-color: var(--color-on-surface);
+    background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
   }
 
   .btn-outline.btn-base,
@@ -357,7 +357,7 @@
   .btn-ghost.btn-warning { --btn-text-color: var(--color-on-warning-container); }
   .btn-ghost.btn-error   { --btn-text-color: var(--color-on-error-container); }
   .btn-ghost.btn-accent  { --btn-text-color: light-dark(var(--color-accent-content), var(--color-accent)); }
-  .btn-ghost.btn-neutral { --btn-text-color: var(--color-neutral); }
+  .btn-ghost.btn-neutral { --btn-text-color: var(--color-on-surface); }
   .btn-ghost.btn-base    { --btn-text-color: var(--color-base-content); }
 
   .btn-ghost.btn-accent:hover {
@@ -366,7 +366,7 @@
   }
 
   .btn-ghost.btn-neutral:hover {
-    --btn-text-color: var(--color-neutral);
+    --btn-text-color: var(--color-on-surface);
     background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
   }
 
@@ -439,7 +439,7 @@
   .btn-text.btn-warning { --btn-text-color: var(--color-on-warning-container); }
   .btn-text.btn-error   { --btn-text-color: var(--color-on-error-container); }
   .btn-text.btn-accent  { --btn-text-color: light-dark(var(--color-accent-content), var(--color-accent)); }
-  .btn-text.btn-neutral { --btn-text-color: var(--color-neutral); }
+  .btn-text.btn-neutral { --btn-text-color: var(--color-on-surface); }
   .btn-text.btn-base    { --btn-text-color: var(--color-base-content); }
 
   .btn-text.btn-accent:hover {
@@ -448,7 +448,7 @@
   }
 
   .btn-text.btn-neutral:hover {
-    --btn-text-color: var(--color-neutral);
+    --btn-text-color: var(--color-on-surface);
     background-color: color-mix(in oklch, var(--color-neutral) 15%, var(--color-surface));
   }
 
