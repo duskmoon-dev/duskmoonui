@@ -17,20 +17,27 @@ const pagefindEnabled = import.meta.env.PROD;
 
 <BaseLayout title={title} description={description} locale={locale}>
   <div class="docs-layout">
-    <header class="docs-header">
+    <header class="docs-header appbar-primary">
       <div class="container">
-        <nav class="header-nav">
+        <nav class="header-nav" aria-label="Primary navigation">
           <a href={base} class="logo">
             <span class="logo-text">@duskmoon-dev/core</span>
             <span class="badge badge-secondary">{version}</span>
           </a>
-          <div class="nav-links">
-            <a href={`${base}docs/en/getting-started/installation/`}>Docs</a>
-            <a href={`${base}components/`}>Components</a>
-            <a href={`${base}css-art/`}>CSS Art</a>
-            <a href={`${base}docs/en/theming/themes/`}>Themes</a>
-            {pagefindEnabled && <div id="search" class="header-search"></div>}
-            <a href="https://github.com/duskmoon-dev/duskmoonui" target="_blank">GitHub</a>
+          <div class="header-actions">
+            <div class="dropdown dropdown-block-end header-navigation">
+              <button class="appbar-nav header-menu-trigger" type="button" aria-label="Navigation menu" aria-controls="docs-header-menu" aria-expanded="false" popovertarget="docs-header-menu" hidden>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+              </button>
+              <div class="nav-links dropdown-content" id="docs-header-menu">
+                <a href={`${base}docs/en/getting-started/installation/`}>Docs</a>
+                <a href={`${base}components/`}>Components</a>
+                <a href={`${base}css-art/`}>CSS Art</a>
+                <a href={`${base}docs/en/theming/themes/`}>Themes</a>
+                {pagefindEnabled && <div id="search" class="header-search"></div>}
+                <a href="https://github.com/duskmoon-dev/duskmoonui" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
             <ThemeToggle client:load />
           </div>
         </nav>
@@ -72,3 +79,47 @@ const pagefindEnabled = import.meta.env.PROD;
     </script>
   )}
 </BaseLayout>
+
+<script>
+  function initHeaderNavigation() {
+    const menu = document.getElementById('docs-header-menu');
+    const trigger = document.querySelector<HTMLButtonElement>('.header-menu-trigger');
+    if (!menu || !trigger || menu.dataset.navigationInitialized) return;
+    menu.dataset.navigationInitialized = 'true';
+    // Leave room for the production Pagefind search as well as the links and theme control.
+    const compact = window.matchMedia('(max-width: 1279px)');
+    const links = menu.querySelectorAll<HTMLAnchorElement>(':scope > a');
+
+    const closeMenu = () => {
+      if (menu.matches(':popover-open')) menu.hidePopover();
+    };
+
+    const updateNavigation = () => {
+      const active = document.activeElement;
+      closeMenu();
+      if (compact.matches) menu.setAttribute('popover', 'auto');
+      else menu.removeAttribute('popover');
+      links.forEach(link => link.classList.toggle('popover-menu-item', compact.matches));
+      trigger.hidden = !compact.matches;
+      trigger.setAttribute('aria-expanded', 'false');
+      if (compact.matches && active && menu.contains(active)) trigger.focus();
+      else if (!compact.matches && active === trigger) links[0]?.focus();
+    };
+
+    menu.addEventListener('toggle', () => {
+      trigger.setAttribute('aria-expanded', String(menu.matches(':popover-open')));
+    });
+    menu.addEventListener('click', event => {
+      if ((event.target as Element).closest('a[href]')) closeMenu();
+    });
+    compact.addEventListener('change', updateNavigation);
+    document.addEventListener('astro:before-swap', () => {
+      closeMenu();
+      compact.removeEventListener('change', updateNavigation);
+    }, { once: true });
+    updateNavigation();
+  }
+
+  initHeaderNavigation();
+  document.addEventListener('astro:page-load', initHeaderNavigation);
+</script>

@@ -1,165 +1,151 @@
-/**
- * T065: Integration test for theme switcher functionality
- * Tests the theme-controller with three modes: auto, light (sunshine), dark (moonlight)
- */
+import { test, expect, type Page } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
-import { test, expect } from '@playwright/test';
+const docsUrl = process.env.DOCS_BASE_URL ?? '/duskmoonui/docs/en/components/button/';
+const MODES = [
+  { value: 'sunshine', label: 'Light', theme: 'sunshine' },
+  { value: 'moonlight', label: 'Dark', theme: 'moonlight' },
+  { value: 'auto', label: 'Auto (system)', theme: 'sunshine' },
+];
+
+async function chooseMode(page: Page, label: string) {
+  const toggle = page.locator('[data-theme-toggle]');
+  await toggle.getByRole('button', { name: /^Theme preference:/ }).click();
+  await toggle.getByText(label, { exact: true }).click();
+  await expect(toggle.locator('[popover]')).toBeHidden();
+}
 
 test.describe('Theme Switcher Functionality', () => {
+  test.use({ viewport: { width: 375, height: 800 } });
+
   test.beforeEach(async ({ page }) => {
-    // Clear stored mode before each test
-    await page.goto('/');
-    await page.evaluate(() => localStorage.removeItem('theme-mode'));
+    await page.goto(docsUrl);
+    await expect(page.getByRole('button', { name: /^Theme preference:/ })).toBeEnabled();
   });
 
-  test.describe('Theme Controller Visibility', () => {
-    test('theme controller is visible', async ({ page }) => {
-      const controller = page.locator('[data-theme-toggle]');
-      await expect(controller).toBeVisible();
-    });
-
-    test('theme controller has accessible radiogroup role', async ({ page }) => {
-      const controller = page.locator('[data-theme-toggle]');
-      await expect(controller).toHaveAttribute('role', 'radiogroup');
-    });
-
-    test('theme controller has accessible label', async ({ page }) => {
-      const controller = page.locator('[data-theme-toggle]');
-      const ariaLabel = await controller.getAttribute('aria-label');
-      expect(ariaLabel?.toLowerCase()).toMatch(/theme/);
-    });
-
-    test('has exactly three mode options (auto, light, dark)', async ({ page }) => {
-      const radios = page.locator('.theme-controller-item');
-      await expect(radios).toHaveCount(3);
-    });
+  test('keeps an independent theme dropdown visible while navigation is collapsed', async ({ page }) => {
+    const toggle = page.locator('[data-theme-toggle]');
+    const trigger = toggle.getByRole('button', { name: 'Theme preference: Auto (system)', exact: true });
+    const panel = toggle.locator('[popover]');
+    await expect(trigger).toBeVisible();
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    await expect(panel).toBeHidden();
+    await expect(page.locator('#docs-header-menu [data-theme-toggle]')).toHaveCount(0);
+    await trigger.click();
+    const group = toggle.getByRole('radiogroup', { name: 'Theme preference', exact: true });
+    await expect(group).toBeVisible();
+    await expect(group.getByRole('radio')).toHaveCount(3);
+    await expect(group.getByRole('radio', { name: 'Auto (system)', exact: true })).toBeChecked();
+    await expect(group.getByRole('radio', { name: 'Light', exact: true })).not.toBeChecked();
+    await expect(group.getByRole('radio', { name: 'Dark', exact: true })).not.toBeChecked();
   });
 
-  test.describe('Theme Application', () => {
-    test('defaults to auto mode', async ({ page }) => {
+  test('applies, remembers and indicates all three modes, then closes the dropdown', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'light' });
+    const toggle = page.locator('[data-theme-toggle]');
+    const backgrounds: string[] = [];
+    for (const { value, label, theme } of MODES) {
+      await chooseMode(page, label);
+      await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+      await expect(toggle.locator('input[value="' + value + '"]')).toBeChecked();
+      await expect(toggle.locator('input:checked')).toHaveCount(1);
+      await expect(toggle.getByRole('button', { name: 'Theme preference: ' + label, exact: true })).toBeFocused();
+      await expect(toggle.getByRole('button')).toHaveAttribute('aria-expanded', 'false');
+      expect(await page.evaluate(() => localStorage.getItem('theme-mode'))).toBe(value);
+      backgrounds.push(await page.evaluate(() => getComputedStyle(document.documentElement).backgroundColor));
+    }
+    expect(backgrounds[0]).not.toBe(backgrounds[1]);
+  });
+
+  test('restores a saved mode and its selected option after reload', async ({ page }) => {
+    await chooseMode(page, 'Dark');
+    await page.reload();
+    const toggle = page.locator('[data-theme-toggle]');
+    await expect(toggle.getByRole('button', { name: 'Theme preference: Dark', exact: true })).toBeEnabled();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'moonlight');
+    await expect(toggle.locator('input[value="moonlight"]')).toBeChecked();
+    await expect(toggle.locator('[popover]')).toBeHidden();
+  });
+
+  test('restores auto mode and follows system changes only while auto is selected', async ({ page }) => {
+    await chooseMode(page, 'Auto (system)');
+    await page.reload();
+    const toggle = page.locator('[data-theme-toggle]');
+    await expect(toggle.getByRole('button', { name: 'Theme preference: Auto (system)', exact: true })).toBeEnabled();
+    await expect(toggle.locator('input[value="auto"]')).toBeChecked();
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'moonlight');
+    await page.emulateMedia({ colorScheme: 'light' });
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'sunshine');
+    await chooseMode(page, 'Dark');
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.emulateMedia({ colorScheme: 'light' });
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'moonlight');
+    await chooseMode(page, 'Auto (system)');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'sunshine');
+  });
+
+  test('supports keyboard selection, Escape, outside dismissal and focus restoration', async ({ page }) => {
+    const toggle = page.locator('[data-theme-toggle]');
+    const trigger = toggle.getByRole('button', { name: /^Theme preference:/ });
+    const panel = toggle.locator('[popover]');
+    await trigger.focus();
+    await page.keyboard.press('Space');
+    await expect(panel).toBeVisible();
+    await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    await page.keyboard.press('Tab');
+    await expect(toggle.getByRole('radio', { name: 'Auto (system)', exact: true })).toBeFocused();
+    await page.keyboard.press('ArrowRight');
+    await expect(panel).toBeHidden();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'sunshine');
+    await expect(trigger).toHaveAccessibleName('Theme preference: Light');
+    await expect(trigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(panel).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(panel).toBeHidden();
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    await expect(trigger).toBeFocused();
+    await trigger.click();
+    await page.mouse.click(2, 400);
+    await expect(panel).toBeHidden();
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  test('opens the theme and navigation popovers independently with native light dismiss', async ({ page }) => {
+    const navigationTrigger = page.getByRole('button', { name: 'Navigation menu', exact: true });
+    const navigation = page.locator('#docs-header-menu');
+    const toggle = page.locator('[data-theme-toggle]');
+    const themeTrigger = toggle.getByRole('button', { name: /^Theme preference:/ });
+    const themePanel = toggle.locator('[popover]');
+    await navigationTrigger.click();
+    await expect(navigation).toBeVisible();
+    await themeTrigger.click();
+    await expect(themePanel).toBeVisible();
+    await expect(navigation).toBeHidden();
+    await expect(navigationTrigger).toHaveAttribute('aria-expanded', 'false');
+    await navigationTrigger.click();
+    await expect(navigation).toBeVisible();
+    await expect(themePanel).toBeHidden();
+    await expect(themeTrigger).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  for (const theme of ['sunshine', 'moonlight']) {
+    test('theme dropdown fits a 320px RTL viewport and is accessible in ' + theme, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 800 });
+      await page.addInitScript(theme => localStorage.setItem('theme-mode', theme), theme);
       await page.reload();
-      await page.waitForTimeout(200);
-
-      const autoRadio = page.locator('#theme-auto');
-      await expect(autoRadio).toBeChecked();
+      await page.evaluate(() => { document.documentElement.dir = 'rtl'; });
+      const toggle = page.locator('[data-theme-toggle]');
+      await toggle.getByRole('button', { name: /^Theme preference:/ }).click();
+      const panel = toggle.getByRole('radiogroup', { name: 'Theme preference', exact: true });
+      await expect(panel).toBeVisible();
+      const bounds = (await panel.boundingBox())!;
+      expect(bounds.x).toBeGreaterThanOrEqual(0);
+      expect(bounds.x + bounds.width).toBeLessThanOrEqual(320);
+      await expect(page.locator('.docs-header')).toHaveCSS('height', '64px');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+      expect((await new AxeBuilder({ page }).include('[data-theme-toggle]').analyze()).violations).toEqual([]);
     });
-
-    test('clicking light selects sunshine theme', async ({ page }) => {
-      const lightLabel = page.locator('label[for="theme-sunshine"]');
-      await lightLabel.click();
-      await page.waitForTimeout(100);
-
-      const theme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-      expect(theme).toBe('sunshine');
-    });
-
-    test('clicking dark selects moonlight theme', async ({ page }) => {
-      const darkLabel = page.locator('label[for="theme-moonlight"]');
-      await darkLabel.click();
-      await page.waitForTimeout(100);
-
-      const theme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-      expect(theme).toBe('moonlight');
-    });
-
-    test('auto mode resolves to a valid theme', async ({ page }) => {
-      const autoLabel = page.locator('label[for="theme-auto"]');
-      await autoLabel.click();
-      await page.waitForTimeout(100);
-
-      const theme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-      expect(['sunshine', 'moonlight']).toContain(theme);
-    });
-
-    test('theme colors differ between light and dark', async ({ page }) => {
-      // Set light
-      const lightLabel = page.locator('label[for="theme-sunshine"]');
-      await lightLabel.click();
-      await page.waitForTimeout(100);
-
-      const lightBg = await page.evaluate(() =>
-        window.getComputedStyle(document.body).backgroundColor
-      );
-
-      // Set dark
-      const darkLabel = page.locator('label[for="theme-moonlight"]');
-      await darkLabel.click();
-      await page.waitForTimeout(100);
-
-      const darkBg = await page.evaluate(() =>
-        window.getComputedStyle(document.body).backgroundColor
-      );
-
-      expect(lightBg).not.toBe(darkBg);
-    });
-  });
-
-  test.describe('Theme Persistence', () => {
-    test('mode preference is saved to localStorage', async ({ page }) => {
-      const darkLabel = page.locator('label[for="theme-moonlight"]');
-      await darkLabel.click();
-      await page.waitForTimeout(100);
-
-      const savedMode = await page.evaluate(
-        () => localStorage.getItem('theme-mode')
-      );
-      expect(savedMode).toBe('moonlight');
-    });
-
-    test('mode is restored from localStorage on page load', async ({ page }) => {
-      await page.evaluate(() => {
-        localStorage.setItem('theme-mode', 'moonlight');
-      });
-
-      await page.reload();
-      await page.waitForTimeout(300);
-
-      const theme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-      expect(theme).toBe('moonlight');
-    });
-
-    test('auto mode is restored from localStorage on page load', async ({ page }) => {
-      await page.evaluate(() => {
-        localStorage.setItem('theme-mode', 'auto');
-      });
-
-      await page.reload();
-      await page.waitForTimeout(300);
-
-      const theme = await page.evaluate(
-        () => document.documentElement.getAttribute('data-theme')
-      );
-      // Auto resolves based on system preference
-      expect(['sunshine', 'moonlight']).toContain(theme);
-    });
-  });
-
-  test.describe('Radio State', () => {
-    test('radio state updates when mode changes', async ({ page }) => {
-      const darkLabel = page.locator('label[for="theme-moonlight"]');
-      await darkLabel.click();
-      await page.waitForTimeout(100);
-
-      await expect(page.locator('#theme-moonlight')).toBeChecked();
-      await expect(page.locator('#theme-auto')).not.toBeChecked();
-      await expect(page.locator('#theme-sunshine')).not.toBeChecked();
-    });
-
-    test('switching between all three modes works', async ({ page }) => {
-      for (const mode of ['sunshine', 'moonlight', 'auto'] as const) {
-        const label = page.locator(`label[for="theme-${mode}"]`);
-        await label.click();
-        await page.waitForTimeout(100);
-        await expect(page.locator(`#theme-${mode}`)).toBeChecked();
-      }
-    });
-  });
+  }
 });
