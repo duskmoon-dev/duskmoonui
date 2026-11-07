@@ -650,7 +650,7 @@ export const chatStyles: Record<string, any> = {
     display: 'block',
     inlineSize: '100%',
     minInlineSize: '0',
-    minBlockSize: '3rem',
+    minBlockSize: '1lh',
     maxBlockSize: '16rem',
     overflow: 'auto',
     boxSizing: 'border-box',
@@ -665,7 +665,8 @@ export const chatStyles: Record<string, any> = {
     fontSize: '0.9375rem',
     lineHeight: '1.5',
     overflowWrap: 'anywhere',
-    resize: 'vertical',
+    fieldSizing: 'content',
+    resize: 'none',
   },
 
   '.chat-composer-input::placeholder, .chat-composer-editor::placeholder': {
@@ -847,6 +848,88 @@ export const chatStyles: Record<string, any> = {
     minInlineSize: '0',
     maxInlineSize: '100%',
   },
+
+  '.chat-composer-toolbar-compact': { flexWrap: 'nowrap', gap: '0.25rem' },
+
+  '.chat-composer-toolbar-compact > .btn': { flexShrink: '0' },
+
+  '.chat-composer-toolbar-compact > .chat-composer-actions': {
+    flex: '1 1 auto',
+    flexWrap: 'nowrap',
+    minInlineSize: '0',
+    gap: '0.25rem',
+  },
+
+  '.chat-composer-actions > .btn.chat-composer-config': {
+    flex: '0 1 auto',
+    minInlineSize: '0',
+    paddingInline: '0.5rem',
+  },
+
+  '.chat-composer-config > svg': { flexShrink: '0' },
+
+  '.chat-composer-thumbnails': { display: 'flex', flexWrap: 'nowrap', maxBlockSize: '7rem' },
+
+  '.chat-composer-attachment-tile': {
+    position: 'relative',
+    flex: '0 0 5.5rem',
+    inlineSize: '5.5rem',
+    blockSize: '5.5rem',
+    boxSizing: 'border-box',
+    padding: '0',
+    overflow: 'hidden',
+    borderRadius: 'var(--radius-md)',
+  },
+
+  '.chat-composer-attachment-tile > .chat-composer-preview': {
+    inlineSize: '100%',
+    blockSize: '100%',
+    borderRadius: 'inherit',
+  },
+
+  '.chat-composer-attachment-tile > .chat-composer-attachment-remove': {
+    position: 'absolute',
+    insetBlockStart: '0.125rem',
+    insetInlineEnd: '0.125rem',
+    backgroundColor: 'var(--color-surface-container)',
+    color: 'var(--color-on-surface)',
+  },
+
+  '.popover.chat-composer-menu[popover]': {
+    position: 'fixed',
+    inset: 'auto',
+    inlineSize: 'min(22rem, calc(100dvi - 2rem))',
+    minInlineSize: '0',
+    maxInlineSize: 'calc(100dvi - 2rem)',
+    maxBlockSize: 'min(24rem, calc(100dvb - 2rem))',
+    boxSizing: 'border-box',
+    overflow: 'auto',
+    overscrollBehavior: 'contain',
+    margin: '0.5rem',
+    positionArea: 'block-start span-inline-end',
+    positionTryFallbacks: 'flip-block, flip-inline, flip-block flip-inline',
+  },
+
+  '.popover.chat-composer-menu-end[popover]': { positionArea: 'block-start span-inline-start' },
+
+  '.popover.chat-composer-menu[popover]:popover-open::backdrop': { backgroundColor: 'transparent' },
+
+  '.chat-composer-menu-option[aria-pressed="true"]': { backgroundColor: 'var(--color-surface-container-high)' },
+
+  '.chat-composer-menu .chat-composer-menu-option-warning': { color: 'var(--color-on-warning-container)' },
+
+  '.chat-composer-menu .chat-composer-description': { whiteSpace: 'normal' },
+
+  '.chat-composer-menu-row': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '0.75rem',
+    padding: '0.5rem 0.75rem',
+    fontSize: '0.875rem',
+  },
+
+  '.chat-composer-menu-field': { display: 'grid', gap: '0.75rem', padding: '0.5rem 0.75rem' },
 
   '.chat-composer-reference > .btn, .chat-composer-attachment > .btn, .chat-composer-actions > .btn': { flexShrink: '0' },
 

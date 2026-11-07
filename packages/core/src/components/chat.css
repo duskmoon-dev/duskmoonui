@@ -739,7 +739,7 @@
     display: block;
     inline-size: 100%;
     min-inline-size: 0;
-    min-block-size: 3rem;
+    min-block-size: 1lh;
     max-block-size: 16rem;
     overflow: auto;
     box-sizing: border-box;
@@ -754,7 +754,8 @@
     font-size: 0.9375rem;
     line-height: 1.5;
     overflow-wrap: anywhere;
-    resize: vertical;
+    field-sizing: content;
+    resize: none;
   }
 
   .chat-composer-input::placeholder,
@@ -959,6 +960,116 @@
   .chat-composer-toolbar :where(.btn, .select) {
     min-inline-size: 0;
     max-inline-size: 100%;
+  }
+
+  /* Opt into one compact control row without changing wrapping toolbars. */
+  .chat-composer-toolbar-compact {
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
+
+  .chat-composer-toolbar-compact > .btn {
+    flex-shrink: 0;
+  }
+
+  .chat-composer-toolbar-compact > .chat-composer-actions {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    min-inline-size: 0;
+    gap: 0.25rem;
+  }
+
+  .chat-composer-actions > .btn.chat-composer-config {
+    flex: 0 1 auto;
+    min-inline-size: 0;
+    padding-inline: 0.5rem;
+  }
+
+  .chat-composer-config > svg {
+    flex-shrink: 0;
+  }
+
+  /* Selected media stays above the editor in a bounded, horizontal strip. */
+  .chat-composer-thumbnails {
+    display: flex;
+    flex-wrap: nowrap;
+    max-block-size: 7rem;
+  }
+
+  .chat-composer-attachment-tile {
+    position: relative;
+    flex: 0 0 5.5rem;
+    inline-size: 5.5rem;
+    block-size: 5.5rem;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+  }
+
+  .chat-composer-attachment-tile > .chat-composer-preview {
+    inline-size: 100%;
+    block-size: 100%;
+    border-radius: inherit;
+  }
+
+  .chat-composer-attachment-tile > .chat-composer-attachment-remove {
+    position: absolute;
+    inset-block-start: 0.125rem;
+    inset-inline-end: 0.125rem;
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface);
+  }
+
+  /* Compose configuration menus with the native .popover and its menu items. */
+  .popover.chat-composer-menu[popover] {
+    position: fixed;
+    inset: auto;
+    inline-size: min(22rem, calc(100dvi - 2rem));
+    min-inline-size: 0;
+    max-inline-size: calc(100dvi - 2rem);
+    max-block-size: min(24rem, calc(100dvb - 2rem));
+    box-sizing: border-box;
+    overflow: auto;
+    overscroll-behavior: contain;
+    margin: 0.5rem;
+    position-area: block-start span-inline-end;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+  }
+
+  .popover.chat-composer-menu-end[popover] {
+    position-area: block-start span-inline-start;
+  }
+
+  .popover.chat-composer-menu[popover]:popover-open::backdrop {
+    background-color: transparent;
+  }
+
+  .chat-composer-menu-option[aria-pressed="true"] {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .chat-composer-menu .chat-composer-menu-option-warning {
+    color: var(--color-on-warning-container);
+  }
+
+  .chat-composer-menu .chat-composer-description {
+    white-space: normal;
+  }
+
+  .chat-composer-menu-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .chat-composer-menu-field {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .chat-composer-reference > .btn,

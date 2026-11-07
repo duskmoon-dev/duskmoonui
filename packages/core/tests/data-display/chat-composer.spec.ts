@@ -4,6 +4,58 @@ import AxeBuilder from '@axe-core/playwright';
 
 const css = readFileSync(new URL('../../dist/index.css', import.meta.url), 'utf8');
 
+for (const theme of ['sunshine', 'moonlight']) {
+  for (const dir of ['ltr', 'rtl']) {
+    test(`compact controls, thumbnail strip and native settings remain bounded in ${theme}/${dir}`, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 720 });
+      const icon = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" /></svg>';
+      await page.setContent(`<!doctype html><html lang="en" data-theme="${theme}" dir="${dir}">
+        <head><title>Compact composer</title><style>${css}</style></head>
+        <body style="margin:0;padding:16px"><main><h1>Compact composer</h1>
+        <form class="chat-composer chat-composer-ghost">
+          <ul class="chat-composer-attachments chat-composer-thumbnails" role="list" aria-label="Attachments">
+            ${Array.from({ length: 8 }, (_, i) => `<li class="chat-composer-attachment chat-composer-attachment-tile"><img class="chat-composer-preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3C/svg%3E" alt="Attachment ${i + 1}" /><button class="btn btn-ghost btn-xs btn-circle chat-composer-attachment-remove" type="button" aria-label="Remove attachment ${i + 1}">${icon}</button></li>`).join('')}
+          </ul>
+          <label for="compact-message">Message</label>
+          <textarea class="chat-composer-input" id="compact-message" rows="1"></textarea>
+          <div class="chat-composer-toolbar chat-composer-toolbar-compact">
+            <button class="btn btn-ghost btn-sm btn-circle" type="button" aria-label="Add files">${icon}</button>
+            <button class="btn btn-ghost btn-sm btn-circle" type="button" aria-label="Approval mode">${icon}</button>
+            <div class="chat-composer-actions">
+              <button class="btn btn-ghost btn-sm chat-composer-config" type="button" aria-label="Model settings" popovertarget="compact-settings" style="anchor-name:--compact-settings"><span class="chat-composer-label">A model with a long descriptive name · Maximum</span>${icon}</button>
+              <button class="btn btn-primary btn-sm btn-circle" type="button" aria-label="Send message">${icon}</button>
+            </div>
+          </div>
+          <div class="popover popover-menu chat-composer-menu chat-composer-menu-end" id="compact-settings" popover style="position-anchor:--compact-settings"><button class="popover-menu-item" type="button">Model A</button></div>
+        </form></main></body></html>`);
+      const strip = page.getByRole('list', { name: 'Attachments' });
+      expect(await strip.evaluate(el => el.scrollWidth > el.clientWidth)).toBe(true);
+      expect((await strip.boundingBox())!.height).toBeLessThanOrEqual(112);
+      const toolbar = page.locator('.chat-composer-toolbar');
+      const controls = await toolbar.locator('button').all();
+      const bounds = (await Promise.all(controls.map(button => button.boundingBox()))).map(rect => rect!);
+      const centers = bounds.map(rect => rect.y + rect.height / 2);
+      expect(Math.max(...centers) - Math.min(...centers)).toBeLessThan(1);
+      const sorted = bounds.toSorted((a, b) => a.x - b.x);
+      for (let i = 1; i < sorted.length; i++) expect(sorted[i - 1].x + sorted[i - 1].width).toBeLessThanOrEqual(sorted[i].x);
+      const label = page.locator('.chat-composer-config .chat-composer-label');
+      expect(await label.evaluate(el => el.scrollWidth > el.clientWidth)).toBe(true);
+      await page.getByRole('button', { name: 'Model settings' }).click();
+      const menu = page.locator('#compact-settings');
+      await expect(menu).toBeVisible();
+      await expect(menu).toHaveCSS('position', 'fixed');
+      await expect.poll(async () => {
+        const rect = (await menu.boundingBox())!;
+        return rect.x >= 0 && rect.x + rect.width <= 320 && rect.y >= 0 && rect.y + rect.height <= 720;
+      }).toBe(true);
+      expect(await menu.evaluate(el => getComputedStyle(el, '::backdrop').backgroundColor)).toBe('rgba(0, 0, 0, 0)');
+      await page.keyboard.press('Escape');
+      await expect(menu).toBeHidden();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+    });
+  }
+}
+
 async function fixture(page: Page, variant = '', theme = 'sunshine', dir = 'ltr', editorClass = 'chat-composer-input') {
   await page.setContent(`<!doctype html><html lang="en" data-theme="${theme}" dir="${dir}">
     <head><title>Chat composer</title><style>${css}</style></head>
@@ -21,12 +73,12 @@ async function fixture(page: Page, variant = '', theme = 'sunshine', dir = 'ltr'
 
 for (const theme of ['sunshine', 'moonlight']) {
   for (const variant of ['', 'primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'error', 'ghost']) {
-    test(`native integrated composer ${variant || 'default'} exposes focus, resize and readable text in ${theme}`, async ({ page }) => {
+    test(`native integrated composer ${variant || 'default'} exposes focus, automatic sizing and readable text in ${theme}`, async ({ page }) => {
       await fixture(page, variant, theme);
       const input = page.getByRole('textbox', { name: 'Message', exact: true });
       await input.fill('A native multiline draft\nSecond line');
       await expect(input).toHaveValue('A native multiline draft\nSecond line');
-      await expect(input).toHaveCSS('resize', 'vertical');
+      await expect(input).toHaveCSS('resize', 'none');
       expect(await input.evaluate(el => getComputedStyle(el).color)).toBe(await page.locator('body').evaluate(el => getComputedStyle(el).color));
       await input.focus();
       await expect(input).toBeFocused();
@@ -91,12 +143,38 @@ for (const theme of ['sunshine', 'moonlight']) {
       await expect(input).toHaveCSS('border-width', '0px');
       await expect(input).toHaveCSS('outline-style', 'none');
       await expect(input).toHaveCSS('box-shadow', 'none');
-      await expect(input).toHaveCSS('resize', 'vertical');
+      await expect(input).toHaveCSS('resize', 'none');
       expect(await input.evaluate(el => getComputedStyle(el).caretColor)).toBe(await input.evaluate(el => getComputedStyle(el).color));
       expect(await page.locator('.chat-composer').evaluate(el => getComputedStyle(el).boxShadow)).not.toBe('none');
     }
     expect(placeholderColors[0]).toBe(placeholderColors[1]);
   });
+}
+
+for (const theme of ['sunshine', 'moonlight']) {
+  for (const editorClass of ['chat-composer-input', 'chat-composer-editor']) {
+    test(`${editorClass} grows, caps and shrinks with its content in ${theme}`, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 700 });
+      await fixture(page, '', theme, 'ltr', editorClass);
+      const input = page.getByRole('textbox', { name: 'Message', exact: true });
+      await expect(input).toHaveCSS('field-sizing', 'content');
+      await expect(input).toHaveCSS('resize', 'none');
+      const initial = (await input.boundingBox())!.height;
+      const lineHeight = await input.evaluate(el => parseFloat(getComputedStyle(el).lineHeight));
+      expect(initial).toBeLessThanOrEqual(lineHeight + 1);
+      await input.fill('Line one\nLine two\n第三行');
+      expect((await input.boundingBox())!.height).toBeGreaterThan(initial);
+      await input.fill('LongUnbrokenDraft'.repeat(100));
+      const metrics = await input.evaluate(el => ({ height: el.clientHeight, scroll: el.scrollHeight, max: parseFloat(getComputedStyle(el).maxBlockSize) }));
+      expect(metrics.height).toBeLessThanOrEqual(metrics.max + 1);
+      expect(metrics.scroll).toBeGreaterThan(metrics.height);
+      expect(await page.locator('.chat-composer').evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
+      await input.fill('Short');
+      expect((await input.boundingBox())!.height).toBeCloseTo(initial, 0);
+      await input.fill('');
+      expect((await input.boundingBox())!.height).toBeCloseTo(initial, 0);
+    });
+  }
 }
 
 const longLabel = 'src/项目/'.repeat(20) + 'composer.ts';
