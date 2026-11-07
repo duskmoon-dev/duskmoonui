@@ -28,6 +28,66 @@ test.beforeEach(async ({ page }) => {
   await expect(demo(page)).toBeVisible();
 });
 
+test('empty drafts disable icon actions without native validation or extra messages', async ({ page }) => {
+  const root = demo(page);
+  const input = root.getByRole('textbox', { name: 'Message', exact: true });
+  const submit = root.locator('[data-chat-queue-send]');
+  const steer = root.locator('[data-chat-queue-form] [data-chat-queue-steer]');
+  await input.evaluate(el => {
+    el.dataset.invalidCount = '0';
+    el.addEventListener('invalid', () => { el.dataset.invalidCount = String(Number(el.dataset.invalidCount) + 1); });
+  });
+  for (const busy of [true, false]) {
+    if (!busy) await startFresh(root);
+    const messages = await transcript(root).locator('.chat').count();
+    const status = await root.getByRole('status').textContent();
+    for (const text of ['', '  \n\t  ']) {
+      await input.fill(text);
+      await expect(submit).toBeDisabled();
+      await expect(steer).toBeDisabled();
+      await input.press('Enter');
+      await input.press('Control+Enter');
+      await root.locator('form').evaluate(el => (el as HTMLFormElement).requestSubmit());
+      await expect(transcript(root).locator('.chat')).toHaveCount(messages);
+      await expect(root.getByRole('status')).toHaveText(status!);
+      expect(await input.evaluate(el => (el as HTMLTextAreaElement).validationMessage)).toBe('');
+      await expect(input).toHaveAttribute('data-invalid-count', '0');
+    }
+    await input.fill('A usable draft');
+    await expect(submit).toBeEnabled();
+    if (busy) await expect(steer).toBeEnabled();
+    else await expect(steer).toBeDisabled();
+  }
+});
+
+test('icon controls expose help through native popovers and the editor shrinks after submission', async ({ page }) => {
+  const root = demo(page);
+  for (const button of await root.getByRole('button').all()) {
+    expect((await button.textContent())!.trim()).toBe('');
+    await expect(button).toHaveAttribute('aria-label', /.+/);
+  }
+  const help = root.getByRole('button', { name: 'Composer help', exact: true });
+  const popover = root.locator('#demo-chat-queue-help');
+  await help.click();
+  expect(await popover.evaluate(el => el.matches(':popover-open'))).toBe(true);
+  await expect(popover).toContainText('Ctrl/⌘+Enter');
+  await page.keyboard.press('Escape');
+  expect(await popover.evaluate(el => el.matches(':popover-open'))).toBe(false);
+  const input = root.getByRole('textbox', { name: 'Message', exact: true });
+  const initial = (await input.boundingBox())!.height;
+  await input.fill('Line one\nLine two\nLine three');
+  expect((await input.boundingBox())!.height).toBeGreaterThan(initial);
+  const submit = root.locator('[data-chat-queue-send]');
+  await submit.hover();
+  await expect(root.locator('#demo-chat-queue-send-tip')).toBeVisible();
+  expect(await root.locator('#demo-chat-queue-send-tip').evaluate(el => el.matches(':popover-open'))).toBe(true);
+  await submit.click();
+  await expect(input).toHaveValue('');
+  await expect(submit).toBeDisabled();
+  expect((await input.boundingBox())!.height).toBeCloseTo(initial, 0);
+  await expect(page.locator('[aria-labelledby="demo-composer-rich-label"]')).toHaveCount(0);
+});
+
 test('initial queued samples can steer the active reply and Start fresh restores a usable idle conversation', async ({ page }) => {
   const root = demo(page);
   const active = transcript(root).locator('[data-chat-state="active"]');
@@ -37,8 +97,8 @@ test('initial queued samples can steer the active reply and Start fresh restores
   await expect(root.locator('.chat-queue')).toBeVisible();
   await expect(root.locator('.chat-queue-item')).toHaveCount(2);
   await expect(active).toHaveCount(1);
-  await expect(root.getByRole('button', { name: 'Queue message', exact: true })).toBeEnabled();
-  await expect(draftSteer).toBeEnabled();
+  await expect(root.getByRole('button', { name: 'Queue message', exact: true })).toBeDisabled();
+  await expect(draftSteer).toBeDisabled();
   await expect(root.getByRole('button', { name: 'Complete response', exact: true })).toBeEnabled();
   const initialQueue = await queuedTexts(root);
   const assistantCount = await assistants.count();
@@ -62,7 +122,7 @@ test('initial queued samples can steer the active reply and Start fresh restores
   await expect(input).toHaveValue('');
   await expect(draftSteer).toBeDisabled();
   await expect(root.getByRole('button', { name: 'Complete response', exact: true })).toBeDisabled();
-  await expect(root.getByRole('button', { name: 'Send message', exact: true })).toBeEnabled();
+  await expect(root.getByRole('button', { name: 'Send message', exact: true })).toBeDisabled();
   await send(root, 'A fresh request');
   await expect(active).toHaveCount(1);
   await expect(transcript(root).locator('[data-chat-role="user"] .chat-bubble-content')).toHaveText('A fresh request');
@@ -132,7 +192,7 @@ test('draft Steer immediately guides the same reply while preserving every waiti
   const steer = root.locator('[data-chat-queue-form]').getByRole('button', { name: 'Steer current message', exact: true });
   await expect(steer).toBeDisabled();
   await send(root, 'Original request');
-  await expect(steer).toBeEnabled();
+  await expect(steer).toBeDisabled();
   await send(root, 'Waiting first');
   await send(root, 'Waiting second');
   const active = transcript(root).locator('[data-chat-state="active"]');
@@ -140,6 +200,7 @@ test('draft Steer immediately guides the same reply while preserving every waiti
   await active.evaluate(el => el.setAttribute('data-test-draft-turn', 'true'));
   const correction = 'Use the exact text <strong>without HTML</strong>\nKeep the existing queue.';
   await input.fill(correction);
+  await expect(steer).toBeEnabled();
   await steer.click();
   await expect(active).toHaveAttribute('data-test-draft-turn', 'true');
   await expect(active.locator('.chat-content')).toContainText(correction);
@@ -328,11 +389,21 @@ for (const width of [320, 375]) {
     expect(numberBounds!.width).toBeLessThanOrEqual(1);
     await expect(root.getByRole('status')).toHaveCount(1);
     const input = root.getByRole('textbox', { name: 'Message', exact: true });
+    await input.fill('Another draft');
     await input.focus();
     await expect(input).toHaveCSS('border-width', '0px');
     await expect(input).toHaveCSS('outline-style', 'none');
     await expect(input).toHaveCSS('box-shadow', 'none');
     expect(await root.locator('.chat-composer').evaluate(el => getComputedStyle(el).boxShadow)).not.toBe('none');
+    await page.keyboard.press('Tab');
+    const help = root.getByRole('button', { name: 'Composer help', exact: true });
+    await expect(help).toBeFocused();
+    await page.keyboard.press('Enter');
+    const helpBounds = await root.locator('#demo-chat-queue-help').boundingBox();
+    expect(helpBounds!.x).toBeGreaterThanOrEqual(0);
+    expect(helpBounds!.x + helpBounds!.width).toBeLessThanOrEqual(width);
+    await page.keyboard.press('Escape');
+    await expect(help).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(root.getByRole('button', { name: 'Queue message', exact: true })).toBeFocused();
     await page.keyboard.press('Tab');

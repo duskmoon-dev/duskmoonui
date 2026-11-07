@@ -1,0 +1,249 @@
+---
+import ComponentShowcase from './ComponentShowcase.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  attachment?: boolean;
+}
+
+const { id, title, attachment = false } = Astro.props;
+const base = `demo-${id}`;
+const paths = {
+  add: '<path d="M12 5v14M5 12h14"/>',
+  shield: '<path d="m12 3 8 4v5c0 5-8 9-8 9s-8-4-8-9V7l8-4Z"/><path d="m9 12 2 2 4-4"/>',
+  file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
+  attach: '<path d="m8 12 7-7a3 3 0 0 1 4 4L9 19a5 5 0 0 1-7-7L12 2m-7 12 9-9"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',
+  check: '<path d="m5 12 4 4L19 6"/>',
+  down: '<path d="m6 9 6 6 6-6"/>',
+  right: '<path d="m9 6 6 6-6 6"/>',
+  send: '<path d="M12 19V5m-7 7 7-7 7 7"/>',
+  stop: '<rect x="6" y="6" width="12" height="12" rx="1" fill="currentColor" stroke="none"/>',
+  close: '<path d="m6 6 12 12M6 18 18 6"/>',
+  reset: '<path d="M3 11a9 9 0 1 1 2.6 7.4M3 4v7h7"/>',
+};
+const icon = (name: keyof typeof paths) => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${paths[name]}</svg>`;
+const tip = (name: string, text: string) => `<div id="${base}-${name}-tip" class="tooltip" popover="hint" role="tooltip" style="position-anchor: --${base}-${name}; position-area: top">${text}</div>`;
+const tile = `<li class="chat-composer-attachment chat-composer-attachment-tile" data-state="ready">
+    <img class="chat-composer-preview" src="${import.meta.env.BASE_URL}images/data-display-after.jpg" alt="Mountain landscape attachment" data-preview />
+    <button class="btn btn-ghost btn-xs btn-circle chat-composer-attachment-remove" type="button" aria-label="Remove landscape.jpg" data-remove-attachment>${icon('close')}</button>
+  </li>`;
+
+// One source for both the rendered preview and the copyable markup.
+const code = `<div class="chat-input-area" style="width: min(48rem, 100%)">
+<form class="chat-composer chat-composer-ghost" data-compact-composer="${id}">
+  <ul class="chat-composer-attachments chat-composer-thumbnails" role="list" aria-label="Draft attachments" data-attachments${attachment ? '' : ' hidden'}>
+    ${attachment ? tile : ''}
+  </ul>
+  <label class="sr-only" for="${base}-message">Message</label>
+  <textarea class="chat-composer-input" id="${base}-message" rows="1" placeholder="Describe the next change…"></textarea>
+  <input type="file" multiple hidden aria-label="Attach files" data-file-input />
+  <div class="chat-composer-toolbar chat-composer-toolbar-compact">
+    <button class="btn btn-ghost btn-sm btn-circle" type="button" aria-label="Add files and more" popovertarget="${base}-add" interestfor="${base}-add-tip" aria-describedby="${base}-add-tip" style="anchor-name: --${base}-add">${icon('add')}</button>
+    <button class="btn btn-ghost btn-sm btn-circle" type="button" aria-label="Approval mode: Ask for approval" data-permission-trigger popovertarget="${base}-permissions" interestfor="${base}-permissions-tip" aria-describedby="${base}-permissions-tip" style="anchor-name: --${base}-permissions">${icon('shield')}</button>
+    <div class="chat-composer-actions">
+      <button class="btn btn-ghost btn-sm chat-composer-config" type="button" aria-label="Model and reasoning: Model A, Medium" data-config-trigger popovertarget="${base}-settings" style="anchor-name: --${base}-settings"><span class="chat-composer-label" data-config-label>Model A · Medium</span>${icon('down')}</button>
+      <button class="btn btn-primary btn-sm btn-circle" type="submit" aria-label="Send message" aria-keyshortcuts="Control+Enter Meta+Enter" data-send interestfor="${base}-send-tip" aria-describedby="${base}-send-tip" style="anchor-name: --${base}-send" disabled><span data-send-icon>${icon('send')}</span><span data-stop-icon hidden>${icon('stop')}</span></button>
+    </div>
+  </div>
+  <div class="popover popover-menu chat-composer-menu" id="${base}-add" popover aria-label="Add files and more" style="position-anchor: --${base}-add">
+    <div class="chat-composer-group">Add</div>
+    <button class="popover-menu-item" type="button" data-attach-files>${icon('attach')}<span>Files</span></button>
+    <button class="popover-menu-item" type="button" popovertarget="${base}-sources">${icon('file')}<span>Source reference</span></button>
+    <button class="popover-menu-item" type="button" popovertarget="${base}-help">${icon('help')}<span>Composer help</span></button>
+  </div>
+  <div class="popover popover-menu chat-composer-menu" id="${base}-permissions" popover aria-label="Approval mode" style="position-anchor: --${base}-permissions">
+    <div class="chat-composer-group">Approval mode</div>
+    ${[
+      ['Ask for approval', 'Review each action before it runs.'],
+      ['Approve for me', 'Request review for sensitive actions.'],
+      ['Full access', 'Allow actions without an approval prompt.'],
+    ].map(([label, description], i) => `<button class="popover-menu-item chat-composer-menu-option${i === 2 ? ' chat-composer-menu-option-warning' : ''}" type="button" data-permission="${label}" aria-pressed="${i === 0}"><span class="popover-menu-item-icon">${icon('shield')}</span><span class="chat-composer-label">${label}<span class="chat-composer-description">${description}</span></span><span data-check${i === 0 ? '' : ' hidden'}>${icon('check')}</span></button>`).join('\n    ')}
+  </div>
+  <div class="popover popover-menu chat-composer-menu chat-composer-menu-end" id="${base}-settings" popover aria-label="Model and reasoning" style="position-anchor: --${base}-settings">
+    <button class="popover-menu-item" type="button" popovertarget="${base}-models"><span class="chat-composer-label">Model<span class="chat-composer-description" data-current-model>Model A</span></span>${icon('right')}</button>
+    <div class="chat-composer-menu-row"><label for="${base}-effort">Reasoning effort</label><span data-current-effort>Medium</span></div>
+    <div class="chat-composer-menu-field"><input class="range range-sm" id="${base}-effort" type="range" min="0" max="3" step="1" value="1" aria-valuetext="Medium" data-effort /></div>
+    <div class="chat-composer-menu-row"><span class="chat-composer-description">Low → Maximum</span><button class="btn btn-ghost btn-xs btn-circle" type="button" aria-label="Reset reasoning effort" data-reset-effort>${icon('reset')}</button></div>
+  </div>
+  <div class="popover popover-menu chat-composer-menu chat-composer-menu-end" id="${base}-models" popover aria-label="Choose a model" style="position-anchor: --${base}-settings">
+    <div class="chat-composer-group">Model</div>
+    ${['Model A', 'Model B', 'Model C'].map((model, i) => `<button class="popover-menu-item chat-composer-menu-option" type="button" data-model="${model}" aria-pressed="${i === 0}"><span class="chat-composer-label">${model}</span><span data-check${i === 0 ? '' : ' hidden'}>${icon('check')}</span></button>`).join('\n    ')}
+  </div>
+  <div class="popover popover-menu chat-composer-menu" id="${base}-sources" popover aria-label="Source references" style="position-anchor: --${base}-add">
+    <div class="chat-composer-group">components /</div>
+    ${['chat.css', 'chat.ts'].map(file => `<button class="popover-menu-item" type="button" data-source="components/${file}">${icon('file')}<span>${file}</span></button>`).join('\n    ')}
+  </div>
+  <div class="popover chat-composer-menu" id="${base}-help" popover aria-label="Composer help" style="position-anchor: --${base}-add">
+    <div class="popover-body">Ctrl/⌘+Enter sends. Enter adds a new line. Add files with +, change approval with the shield, and choose a model or reasoning effort on the right. These controls use local demo state; files stay in your browser.</div>
+  </div>
+  ${tip('add', 'Add files and more')}
+  ${tip('permissions', 'Approval mode: Ask for approval')}
+  ${tip('send', 'Send · Ctrl/⌘+Enter')}
+  <span class="sr-only" role="status" aria-live="polite" data-composer-status></span>
+  <template data-attachment-template>${tile}</template>
+</form>
+</div>`;
+---
+
+<ComponentShowcase title={title} code={code} />
+
+<script>
+  function initCompactComposers() {
+    document.querySelectorAll<HTMLFormElement>('[data-compact-composer]').forEach(form => {
+      if (form.dataset.initialized) return;
+      form.dataset.initialized = 'true';
+      const input = form.querySelector<HTMLTextAreaElement>('textarea')!;
+      const send = form.querySelector<HTMLButtonElement>('[data-send]')!;
+      const status = form.querySelector<HTMLElement>('[data-composer-status]')!;
+      const files = form.querySelector<HTMLInputElement>('[data-file-input]')!;
+      const attachments = form.querySelector<HTMLElement>('[data-attachments]')!;
+      const effort = form.querySelector<HTMLInputElement>('[data-effort]')!;
+      const permission = form.querySelector<HTMLButtonElement>('[data-permission-trigger]')!;
+      const config = form.querySelector<HTMLButtonElement>('[data-config-trigger]')!;
+      const levels = ['Low', 'Medium', 'High', 'Maximum'];
+      const urls = new Map<Element, string>();
+      let model = 'Model A';
+      let composing = false;
+      let running = false;
+
+      function closeMenus(trigger: HTMLElement) {
+        form.querySelectorAll<HTMLElement>('.chat-composer-menu:popover-open').forEach(menu => menu.hidePopover());
+        trigger.focus();
+      }
+
+      function updateActions() {
+        attachments.hidden = !attachments.children.length;
+        send.disabled = !running && (composing || (!input.value.trim() && !attachments.children.length));
+      }
+
+      function updateConfig() {
+        const level = levels[Number(effort.value)];
+        form.querySelector<HTMLElement>('[data-config-label]')!.textContent = `${model} · ${level}`;
+        form.querySelector<HTMLElement>('[data-current-model]')!.textContent = model;
+        form.querySelector<HTMLElement>('[data-current-effort]')!.textContent = level;
+        config.setAttribute('aria-label', `Model and reasoning: ${model}, ${level}`);
+        effort.setAttribute('aria-valuetext', level);
+      }
+
+      function clearAttachments() {
+        urls.forEach(url => URL.revokeObjectURL(url));
+        urls.clear();
+        attachments.replaceChildren();
+      }
+
+      input.addEventListener('input', updateActions);
+      input.addEventListener('compositionstart', () => { composing = true; updateActions(); });
+      input.addEventListener('compositionend', () => { composing = false; updateActions(); });
+      input.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' || !(event.ctrlKey || event.metaKey) || event.shiftKey || event.altKey || event.isComposing || composing || event.keyCode === 229 || running) return;
+        event.preventDefault();
+        if (!send.disabled) form.requestSubmit(send);
+      });
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (running) {
+          running = false;
+          status.textContent = 'Demo response stopped.';
+        } else {
+          if (send.disabled || composing) return;
+          running = true;
+          input.value = '';
+          clearAttachments();
+          status.textContent = 'Demo response started. Stop to finish the preview.';
+        }
+        send.setAttribute('aria-label', running ? 'Stop response' : 'Send message');
+        if (running) send.removeAttribute('aria-keyshortcuts');
+        else send.setAttribute('aria-keyshortcuts', 'Control+Enter Meta+Enter');
+        form.querySelector<HTMLElement>('[data-send-icon]')!.hidden = running;
+        form.querySelector<HTMLElement>('[data-stop-icon]')!.hidden = !running;
+        document.getElementById(send.getAttribute('aria-describedby')!)!.textContent = running ? 'Stop response' : 'Send · Ctrl/⌘+Enter';
+        updateActions();
+        input.focus();
+      });
+      form.querySelector<HTMLButtonElement>('[data-attach-files]')!.addEventListener('click', () => {
+        closeMenus(input);
+        files.click();
+      });
+      files.addEventListener('change', () => {
+        for (const file of files.files ?? []) {
+          const template = form.querySelector<HTMLTemplateElement>('[data-attachment-template]')!;
+          const tile = template.content.firstElementChild!.cloneNode(true) as HTMLElement;
+          const preview = tile.querySelector<HTMLImageElement>('[data-preview]')!;
+          tile.title = file.name;
+          tile.setAttribute('aria-label', file.name);
+          if (file.type.startsWith('image/')) {
+            const url = URL.createObjectURL(file);
+            urls.set(tile, url);
+            preview.src = url;
+            preview.alt = file.name;
+          } else {
+            const name = document.createElement('span');
+            name.className = 'chat-composer-filename';
+            name.textContent = file.name;
+            preview.replaceWith(name);
+          }
+          tile.querySelector('button')!.setAttribute('aria-label', `Remove ${file.name}`);
+          attachments.append(tile);
+        }
+        files.value = '';
+        updateActions();
+        input.focus();
+      });
+      attachments.addEventListener('click', event => {
+        const button = (event.target as Element).closest('[data-remove-attachment]');
+        const tile = button?.closest('li');
+        if (!tile) return;
+        const url = urls.get(tile);
+        if (url) URL.revokeObjectURL(url);
+        urls.delete(tile);
+        tile.remove();
+        updateActions();
+        input.focus();
+      });
+      form.querySelectorAll<HTMLButtonElement>('[data-permission]').forEach(button => {
+        button.addEventListener('click', () => {
+          form.querySelectorAll<HTMLButtonElement>('[data-permission]').forEach(option => {
+            option.setAttribute('aria-pressed', String(option === button));
+            option.querySelector<HTMLElement>('[data-check]')!.hidden = option !== button;
+          });
+          const label = `Approval mode: ${button.dataset.permission}`;
+          permission.setAttribute('aria-label', label);
+          permission.classList.toggle('btn-warning', button.dataset.permission === 'Full access');
+          document.getElementById(permission.getAttribute('aria-describedby')!)!.textContent = label;
+          status.textContent = `Demo ${label.toLowerCase()}.`;
+          closeMenus(permission);
+        });
+      });
+      form.querySelectorAll<HTMLButtonElement>('[data-model]').forEach(button => {
+        button.addEventListener('click', () => {
+          model = button.dataset.model!;
+          form.querySelectorAll<HTMLButtonElement>('[data-model]').forEach(option => {
+            option.setAttribute('aria-pressed', String(option === button));
+            option.querySelector<HTMLElement>('[data-check]')!.hidden = option !== button;
+          });
+          updateConfig();
+          closeMenus(config);
+        });
+      });
+      effort.addEventListener('input', updateConfig);
+      form.querySelector<HTMLButtonElement>('[data-reset-effort]')!.addEventListener('click', () => {
+        effort.value = '1';
+        updateConfig();
+      });
+      form.querySelectorAll<HTMLButtonElement>('[data-source]').forEach(button => {
+        button.addEventListener('click', () => {
+          input.setRangeText(`@${button.dataset.source} `, input.selectionStart, input.selectionEnd, 'end');
+          updateActions();
+          closeMenus(input);
+        });
+      });
+      document.addEventListener('astro:before-swap', clearAttachments, { once: true });
+      updateActions();
+    });
+  }
+
+  initCompactComposers();
+  document.addEventListener('astro:page-load', initCompactComposers);
+</script>
