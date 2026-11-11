@@ -84,6 +84,14 @@ export const markdownBodyStyles: Record<string, any> = {
     backgroundColor: 'var(--color-surface-container)',
   },
 
+  '.markdown-body img': {
+    display: 'inline',
+    verticalAlign: 'middle',
+    maxWidth: '100%',
+    height: 'auto',
+    boxSizing: 'border-box',
+  },
+
   // Chat prose follows the bubble; embedded surfaces keep their own color pair.
   '.chat-bubble .markdown-body, .chat-bubble .markdown-body :is(a, blockquote, h6, del, s, figcaption)': {
     color: 'inherit',

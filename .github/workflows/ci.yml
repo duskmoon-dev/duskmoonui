@@ -61,8 +61,8 @@ jobs:
       - name: Check component contrast in Chromium
         run: bun run --filter @duskmoon-dev/core test:contrast
 
-      - name: Check Chat settings, context and approval contracts
-        run: bunx playwright test --config=packages/core/playwright.data-display.config.ts chat-requests.spec.ts
+      - name: Check Chat and Markdown contracts
+        run: bunx playwright test --config=packages/core/playwright.data-display.config.ts chat-requests.spec.ts chat-markdown.spec.ts
 
   lint:
     name: Lint

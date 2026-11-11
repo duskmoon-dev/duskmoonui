@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { test, expect } from '@playwright/test';
 import { compile } from 'tailwindcss';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const preflight = readFileSync(require.resolve('tailwindcss/preflight.css'), 'utf8');
 
 const roles = ['', 'primary', 'secondary', 'tertiary', 'info', 'success', 'warning', 'error', 'accent', 'neutral', 'base'];
 const sources: Record<string, string> = {
@@ -67,4 +70,27 @@ for (const theme of ['sunshine', 'moonlight', 'ocean', 'forest']) {
       }
     });
   }
+}
+
+for (const source of Object.keys(sources)) {
+  test(`${source}: README badges remain inline under Tailwind preflight`, async ({ page }) => {
+    const badge = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="60" height="20"><rect width="60" height="20" fill="green"/></svg>');
+    const wide = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300"><rect width="600" height="300" fill="blue"/></svg>');
+    for (const width of [320, 900]) {
+      await page.setViewportSize({ width, height: 800 });
+      await page.setContent(`<style>@layer base, components; @layer base { ${preflight} } ${sources[source]}</style>
+        <img id="outside-image" src="${badge}" alt="Outside Markdown">
+        <div class="markdown-body"><p id="badges"><a href="#ci"><img src="${badge}" alt="CI"></a> <a href="#version"><img src="${badge}" alt="Version"></a></p>
+        <p><img id="wide-image" src="${wide}" alt="Wide image"></p></div>`);
+      await page.locator('img').evaluateAll(images => Promise.all(images.map(image => (image as HTMLImageElement).decode())));
+      await expect(page.locator('#outside-image')).toHaveCSS('display', 'block');
+      for (const image of await page.locator('#badges img').all()) await expect(image).toHaveCSS('display', 'inline');
+      const boxes = await page.locator('#badges img').evaluateAll(images => images.map(image => { const r=image.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}; }));
+      expect(boxes[0].y).toBe(boxes[1].y);
+      expect(boxes[1].x).toBeGreaterThanOrEqual(boxes[0].x + boxes[0].width);
+      const image = await page.locator('#wide-image').boundingBox();
+      expect(image!.width).toBeLessThanOrEqual(width);
+      expect(image!.width / image!.height).toBe(2);
+    }
+  });
 }
