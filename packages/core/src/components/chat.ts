@@ -628,6 +628,7 @@ export const chatStyles: Record<string, any> = {
   },
 
   '.chat-composer': {
+    '--chat-composer-inset': '1rem',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
@@ -635,7 +636,7 @@ export const chatStyles: Record<string, any> = {
     minInlineSize: '0',
     boxSizing: 'border-box',
     margin: '0',
-    padding: '1rem',
+    padding: 'var(--chat-composer-inset)',
     border: '1px solid currentColor',
     borderRadius: 'var(--radius-xl)',
     backgroundColor: 'var(--color-surface-container-high)',
@@ -867,6 +868,221 @@ export const chatStyles: Record<string, any> = {
   },
 
   '.chat-composer-config > svg': { flexShrink: '0' },
+
+  ".chat-composer-actions > .chat-composer-access": {
+    "marginInlineEnd": "auto"
+  },
+
+  ".chat-composer-model": {
+    "borderRadius": "var(--radius-full, 9999px)",
+    "backgroundColor": "var(--color-surface-container-highest)"
+  },
+
+  ".chat-composer-effort": {
+    "color": "var(--color-on-surface-variant)"
+  },
+
+  ".chat-composer-access[data-active=\"true\"]": {
+    "color": "var(--color-on-warning-container)"
+  },
+
+  ".chat-composer-compact": {
+    "--chat-composer-inset": "0.625rem",
+    "borderRadius": "var(--radius-md)"
+  },
+
+  ".chat-composer-context": {
+    "display": "flex",
+    "flexWrap": "wrap",
+    "alignItems": "center",
+    "gap": "0.375rem 0.75rem",
+    "minInlineSize": "0",
+    "marginBlockStart": "calc(-1 * var(--chat-composer-inset))",
+    "marginInline": "calc(-1 * var(--chat-composer-inset))",
+    "padding": "0.5rem var(--chat-composer-inset)",
+    "borderBlockEnd": "1px solid var(--color-outline-variant)",
+    "borderStartStartRadius": "inherit",
+    "borderStartEndRadius": "inherit",
+    "backgroundColor": "inherit",
+    "color": "var(--color-on-surface)",
+    "fontSize": "0.75rem"
+  },
+
+  ".chat-composer-context-item,\n  .chat-composer-context-end": {
+    "display": "flex",
+    "alignItems": "center",
+    "gap": "0.375rem",
+    "minInlineSize": "0",
+    "maxInlineSize": "100%"
+  },
+
+  ".chat-composer-context-item": {
+    "flex": "0 1 auto"
+  },
+
+  ".chat-composer-context-end": {
+    "flexWrap": "wrap",
+    "marginInlineStart": "auto"
+  },
+
+  ".chat-composer-context-label": {
+    "minInlineSize": "0",
+    "overflow": "hidden",
+    "whiteSpace": "nowrap",
+    "textOverflow": "ellipsis"
+  },
+
+  ".chat-composer-context-icon": {
+    "flex": "0 0 auto",
+    "inlineSize": "1rem",
+    "blockSize": "1rem"
+  },
+
+  ".chat-composer-context-item > .btn": {
+    "flexShrink": "0"
+  },
+
+  ".chat-composer-connection": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "gap": "0.375rem",
+    "padding": "0.125rem 0.375rem",
+    "borderRadius": "var(--radius-full, 9999px)",
+    "backgroundColor": "var(--color-surface-container-highest)",
+    "color": "var(--color-on-surface)"
+  },
+
+  ".chat-composer-connection::before": {
+    "content": "\"\"",
+    "flex": "0 0 auto",
+    "inlineSize": "0.5rem",
+    "blockSize": "0.5rem",
+    "borderRadius": "50%",
+    "backgroundColor": "currentColor"
+  },
+
+  ".chat-composer-connection[data-state=\"connected\"]": {
+    "backgroundColor": "var(--color-success-container)",
+    "color": "var(--color-on-success-container)"
+  },
+
+  ".chat-composer-connection[data-state=\"connecting\"]": {
+    "backgroundColor": "var(--color-warning-container)",
+    "color": "var(--color-on-warning-container)"
+  },
+
+  ".chat-composer-connection[data-state=\"disconnected\"]": {
+    "backgroundColor": "var(--color-error-container)",
+    "color": "var(--color-on-error-container)"
+  },
+
+  ".chat-approval": {
+    "display": "grid",
+    "gap": "0.75rem",
+    "inlineSize": "100%",
+    "minInlineSize": "0",
+    "boxSizing": "border-box",
+    "padding": "0.75rem",
+    "border": "1px solid var(--color-outline-variant)",
+    "borderRadius": "var(--radius-md)",
+    "backgroundColor": "var(--color-surface-container)",
+    "color": "var(--color-on-surface)",
+    "fontSize": "0.875rem",
+    "fontStyle": "normal"
+  },
+
+  ".chat-approval-header": {
+    "display": "flex",
+    "flexWrap": "wrap",
+    "alignItems": "center",
+    "gap": "0.5rem",
+    "minInlineSize": "0"
+  },
+
+  ".chat-approval-title": {
+    "flex": "1 1 auto",
+    "minInlineSize": "0",
+    "margin": "0",
+    "fontSize": "inherit",
+    "fontWeight": "600",
+    "overflowWrap": "anywhere"
+  },
+
+  ".chat-approval-status": {
+    "padding": "0.125rem 0.5rem",
+    "borderRadius": "var(--radius-full, 9999px)",
+    "backgroundColor": "var(--color-surface-container-highest)",
+    "color": "var(--color-on-surface)",
+    "fontSize": "0.75rem",
+    "overflowWrap": "anywhere"
+  },
+
+  ".chat-approval[data-state=\"pending\"] .chat-approval-status": {
+    "backgroundColor": "var(--color-warning-container)",
+    "color": "var(--color-on-warning-container)"
+  },
+
+  ".chat-approval:is([data-state=\"approved\"], [data-state=\"approved-for-session\"]) .chat-approval-status": {
+    "backgroundColor": "var(--color-success-container)",
+    "color": "var(--color-on-success-container)"
+  },
+
+  ".chat-approval[data-state=\"declined\"] .chat-approval-status": {
+    "backgroundColor": "var(--color-error-container)",
+    "color": "var(--color-on-error-container)"
+  },
+
+  ".chat-approval[data-state=\"expired\"] .chat-approval-status": {
+    "border": "1px dashed currentColor",
+    "color": "var(--color-on-surface-variant)"
+  },
+
+  ".chat-approval[data-state=\"answer-elsewhere\"] .chat-approval-status": {
+    "backgroundColor": "var(--color-info-container)",
+    "color": "var(--color-on-info-container)"
+  },
+
+  ".chat-approval-details": {
+    "display": "grid",
+    "gap": "0.5rem",
+    "minInlineSize": "0",
+    "overflowWrap": "anywhere"
+  },
+
+  ".chat-approval-details > *": {
+    "minInlineSize": "0",
+    "maxInlineSize": "100%",
+    "margin": "0"
+  },
+
+  ".chat-approval-details pre": {
+    "overflow": "auto"
+  },
+
+  ".chat-approval-actions": {
+    "display": "flex",
+    "flexWrap": "wrap",
+    "gap": "0.5rem"
+  },
+
+  ".chat-approval-actions > .btn": {
+    "minInlineSize": "0",
+    "maxInlineSize": "100%",
+    "whiteSpace": "normal"
+  },
+
+  ".chat-approval[aria-busy=\"true\"]": {
+    "borderStyle": "dashed"
+  },
+
+  ".chat-approval-actions > .btn:focus-visible, .chat-approval-details [tabindex]:focus-visible": {
+    "outline": "2px solid currentColor",
+    "outlineOffset": "2px"
+  },
+
+  ".chat-approval[data-state=\"answer-elsewhere\"] .chat-approval-actions,\n  .chat-approval[hidden],\n  .chat-approval-actions[hidden],\n  .chat-composer-context[hidden],\n  .chat-composer-context-item[hidden],\n  .chat-composer-context-end[hidden],\n  .chat-composer-connection[hidden]": {
+    "display": "none"
+  },
 
   '.chat-composer-thumbnails': { display: 'flex', flexWrap: 'nowrap', maxBlockSize: '7rem' },
 

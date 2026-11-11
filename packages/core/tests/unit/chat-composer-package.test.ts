@@ -8,7 +8,7 @@ import { pathToFileURL } from 'node:url';
 import { compile } from 'tailwindcss';
 
 const core = join(import.meta.dir, '../..');
-const parts = ['chat-composer', 'chat-composer-input', 'chat-composer-editor', 'chat-composer-reference', 'chat-composer-label', 'chat-composer-quote', 'chat-composer-quote-text', 'chat-composer-attachments', 'chat-composer-attachment', 'chat-composer-attachment-info', 'chat-composer-filename', 'chat-composer-description', 'chat-composer-completions', 'chat-composer-option', 'chat-composer-group', 'chat-composer-breadcrumb', 'chat-composer-toolbar', 'chat-composer-actions', 'chat-composer-status', 'chat-composer-toolbar-compact', 'chat-composer-config', 'chat-composer-thumbnails', 'chat-composer-attachment-tile', 'chat-composer-attachment-remove', 'chat-composer-menu', 'chat-composer-menu-end', 'chat-composer-menu-option', 'chat-composer-menu-option-warning', 'chat-composer-menu-row', 'chat-composer-menu-field'];
+const parts = ['chat-composer-access', 'chat-composer-model', 'chat-composer-effort', 'chat-composer-compact', 'chat-composer-context', 'chat-composer-context-item', 'chat-composer-context-label', 'chat-composer-context-icon', 'chat-composer-context-end', 'chat-composer-connection', 'chat-approval', 'chat-approval-header', 'chat-approval-title', 'chat-approval-status', 'chat-approval-details', 'chat-approval-actions', 'chat-composer', 'chat-composer-input', 'chat-composer-editor', 'chat-composer-reference', 'chat-composer-label', 'chat-composer-quote', 'chat-composer-quote-text', 'chat-composer-attachments', 'chat-composer-attachment', 'chat-composer-attachment-info', 'chat-composer-filename', 'chat-composer-description', 'chat-composer-completions', 'chat-composer-option', 'chat-composer-group', 'chat-composer-breadcrumb', 'chat-composer-toolbar', 'chat-composer-actions', 'chat-composer-status', 'chat-composer-toolbar-compact', 'chat-composer-config', 'chat-composer-thumbnails', 'chat-composer-attachment-tile', 'chat-composer-attachment-remove', 'chat-composer-menu', 'chat-composer-menu-end', 'chat-composer-menu-option', 'chat-composer-menu-option-warning', 'chat-composer-menu-row', 'chat-composer-menu-field'];
 
 describe('Packed composer visual contract', () => {
   let staging: string;
@@ -30,7 +30,7 @@ describe('Packed composer visual contract', () => {
     for (const path of ['dist/index.css', 'dist/components/index.css', 'dist/components/chat.css', 'dist/standalone/duskmoonui.css']) {
       const css = readFileSync(join(packed, path), 'utf8');
       for (const part of parts) expect(css).toContain(`.${part}`);
-      for (const state of ['uploading', 'cancelled', 'unknown', 'conflict']) expect(css).toContain(`data-state="${state}"`);
+      for (const state of ['uploading', 'cancelled', 'unknown', 'conflict', 'connected', 'connecting', 'disconnected', 'pending', 'approved', 'approved-for-session', 'declined', 'expired', 'answer-elsewhere']) expect(css).toContain(`data-state="${state}"`);
     }
     execFileSync('node', ['--input-type=module', '-e', `
       import { createRequire } from 'node:module';
@@ -51,7 +51,7 @@ describe('Packed composer visual contract', () => {
     });
     const css = compiler.build([...parts, 'chat-queue-item', 'chip', 'btn', 'progress', 'select']);
     for (const part of parts) expect(css).toContain(`.${part}`);
-    for (const state of ['uploading', 'cancelled', 'unknown', 'conflict']) expect(css).toContain(`data-state="${state}"`);
+    for (const state of ['uploading', 'cancelled', 'unknown', 'conflict', 'connected', 'connecting', 'disconnected', 'pending', 'approved', 'approved-for-session', 'declined', 'expired', 'answer-elsewhere']) expect(css).toContain(`data-state="${state}"`);
     expect(css).toContain('position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline');
   });
 

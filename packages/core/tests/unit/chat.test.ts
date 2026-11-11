@@ -308,6 +308,7 @@ describe('Chat Component', () => {
       ['queue', '.chat-queue'],
       ['shared input area', '.chat-input-area'],
       ['composer', '.chat-composer'],
+      ['approval requests', '.chat-approval'],
       ['collapsible bubble', '.chat-bubble-collapsible'],
       ['collapse toggle', '.chat-bubble-toggle'],
       ['agent layout', '.chat-agent'],

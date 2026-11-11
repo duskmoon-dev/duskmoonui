@@ -312,6 +312,70 @@ Model names, reasoning levels, approval choices, and available add-menu actions
 come from the application. These sample choices only change local demo state.
 Core supplies layout and presentation without granting permissions or calling providers.
 
+### Settings Trigger Styles
+
+Compose native buttons with `.chat-composer-access` (pushes following controls toward the end),
+`.chat-composer-model` (rounded surface pill), and `.chat-composer-effort` (muted effort text).
+Set `data-active="true"` on the access trigger for a warning foreground when a dangerous
+permission is active. The application supplies labels and values; opening a menu or
+choosing an item does not grant permission or change a setting in Core.
+
+<ComponentShowcase title="Public Settings Triggers" code={`<form class="chat-composer">
+  <textarea class="chat-composer-input" aria-label="Message" placeholder="Ask a question"></textarea>
+  <div class="chat-composer-actions">
+    <button class="btn btn-ghost btn-sm chat-composer-access" type="button" data-active="true" popovertarget="demo-chat-access" style="anchor-name: --demo-chat-access">Full access</button>
+    <button class="btn btn-ghost btn-sm chat-composer-config chat-composer-model" type="button" popovertarget="demo-chat-model" style="anchor-name: --demo-chat-model">
+      <span class="chat-composer-label">Model A <span class="chat-composer-effort">Medium</span></span><span aria-hidden="true">⌄</span>
+    </button>
+    <button class="btn btn-primary btn-sm" type="button">Send</button>
+  </div>
+</form>
+<div class="popover popover-menu chat-composer-menu" id="demo-chat-access" popover style="position-anchor: --demo-chat-access" aria-label="Access choices">
+  <button class="popover-menu-item chat-composer-menu-option" type="button" aria-pressed="false"><span class="chat-composer-label">Ask first<span class="chat-composer-description">Review actions before they run.</span></span></button>
+  <button class="popover-menu-item chat-composer-menu-option chat-composer-menu-option-warning" type="button" aria-pressed="true"><span class="chat-composer-label">Full access<span class="chat-composer-description">Allow actions without individual approval.</span></span><span aria-hidden="true">✓</span></button>
+</div>
+<div class="popover popover-menu chat-composer-menu chat-composer-menu-end" id="demo-chat-model" popover style="position-anchor: --demo-chat-model" aria-label="Model and effort">
+  <button class="popover-menu-item" type="button">Model A</button>
+  <div class="chat-composer-menu-row"><label for="demo-chat-effort">Effort</label><button class="btn btn-ghost btn-xs" type="button">Reset</button></div>
+  <div class="chat-composer-menu-field"><input class="range range-sm" id="demo-chat-effort" type="range" min="0" max="3" value="1" /></div>
+</div>`} />
+
+Use the same triggers in `.chat-composer-toolbar-compact`; the model label truncates
+via `.chat-composer-config` and `.chat-composer-label`. Native Popovers retain their
+anchor positioning, Escape dismissal, and keyboard focus behavior. The host owns
+choice selection, nested model menus, slider commits, reset behavior, and announcements.
+
+### Attached Context Bar
+
+Place `.chat-composer-context` as the **first direct child** of `.chat-composer`,
+above the editor. It shares the composer's surface and top corners; its inset follows
+`--chat-composer-inset` (1rem by default, 0.625rem with `.chat-composer-compact`).
+The compact shell also uses the medium radius. `.chat-composer-ghost` retains its
+transparent border, including when combined with compact.
+
+<ComponentShowcase title="Composer With Attached Context" code={`<form class="chat-composer chat-composer-compact chat-composer-ghost">
+  <div class="chat-composer-context" role="group" aria-label="Session context">
+    <span class="chat-composer-context-item" title="workspace/project/src">
+      <svg class="chat-composer-context-icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 3h5l2 2h7v9H1z" /></svg>
+      <span class="chat-composer-context-label">workspace/project/src</span>
+    </span>
+    <div class="chat-composer-context-end">
+      <span class="chat-composer-context-item"><span class="chat-composer-context-label">Plan mode</span><button class="btn btn-ghost btn-xs" type="button" aria-label="Clear plan mode">×</button></span>
+      <span class="chat-composer-connection" data-state="connected" role="status">Connected</span>
+    </div>
+  </div>
+  <textarea class="chat-composer-input" aria-label="Contextual message" placeholder="Continue in this workspace"></textarea>
+  <div class="chat-composer-actions"><button class="btn btn-primary btn-sm" type="button">Send</button></div>
+</form>`} />
+
+Items use `.chat-composer-context-item`, optional `.chat-composer-context-icon`, and
+`.chat-composer-context-label` for truncation. Retain the full value in the DOM and
+provide a `title` or another accessible way to inspect truncated values. Put trailing
+items in `.chat-composer-context-end`; both groups wrap at narrow widths. Optional
+actions are native labelled buttons. `.chat-composer-connection[data-state]` supports
+`connected`, `connecting`, and `disconnected`; always include a visible text label,
+and use `role="status"` for host-driven polite updates. Core never changes connection state.
+
 ### Attachment Previews
 
 <ChatComposerDemo id="composer-files" title="Composer With An Attachment" attachment />
@@ -838,6 +902,62 @@ Tool blocks use status modifiers so state is visible in both color and text.
   </details>
 </div>`}
 />
+
+## Timeline Approval Requests
+
+Use `.chat-approval` inside a `.chat-agent .chat-content` timeline, alongside `.chat-tool`.
+The host supplies command, file, and reason children in `.chat-approval-details`, and
+sets `data-state` to `pending`, `approved`, `approved-for-session`, `declined`, `expired`,
+or `answer-elsewhere`. These are presentation states; Core never resolves a request.
+
+<ComponentShowcase title="Timeline Approval Request" code={`<div class="chat chat-start chat-agent">
+  <div class="chat-content">
+    <details class="chat-tool" open><summary class="chat-tool-header">Run checks</summary><div class="chat-tool-call">npm test</div></details>
+    <section class="chat-approval" data-state="pending" aria-labelledby="demo-chat-approval-title">
+      <div class="chat-approval-header"><h3 class="chat-approval-title" id="demo-chat-approval-title">Allow this command?</h3><span class="chat-approval-status" role="status">Awaiting approval</span></div>
+      <div class="chat-approval-details"><pre tabindex="0" role="region" aria-label="Requested command"><code>npm test</code></pre><p>Runs the project's test suite in the workspace.</p></div>
+      <div class="chat-approval-actions">
+        <button class="btn btn-primary btn-sm" type="button">Approve</button>
+        <button class="btn btn-outlined btn-sm" type="button">Approve for session</button>
+        <button class="btn btn-error btn-sm" type="button">Decline</button>
+      </div>
+    </section>
+  </div>
+</div>`} />
+
+`.chat-approval-header` contains the title and a text status. `.chat-approval-actions`
+keeps host DOM order and wraps responsively; reuse `.btn-primary` for the primary
+decision and `.btn-error` for a danger action. While awaiting a decision acknowledgment,
+set `aria-busy="true"` on the request **and native `disabled` on every decision button**.
+An attribute alone does not disable interaction. Keep `data-state="pending"` until
+the host confirms the outcome. The following example deliberately has disabled actions.
+
+<ComponentShowcase title="Decision Awaiting Host Confirmation" code={`<section class="chat-approval" data-state="pending" aria-busy="true" aria-label="Test command approval">
+  <div class="chat-approval-header"><strong class="chat-approval-title">Run npm test</strong><span class="chat-approval-status" role="status">Sending decision…</span></div>
+  <div class="chat-approval-actions"><button class="btn btn-primary btn-sm" type="button" disabled>Approve</button><button class="btn btn-error btn-sm" type="button" disabled>Decline</button></div>
+</section>`} />
+
+Resolved and unanswerable examples retain request details in the timeline. Omit actions
+when no decision is available. `answer-elsewhere` also hides an accidentally retained
+action group; provide an explanation of where the user must answer.
+
+<ComponentShowcase title="Approval Outcomes" code={[
+  ['approved', 'Approved', 'The host accepted this command.'],
+  ['approved-for-session', 'Approved for session', 'The host accepted this permission for this session.'],
+  ['declined', 'Declined', 'The command will not run.'],
+  ['expired', 'Expired', 'This request is no longer valid.'],
+  ['answer-elsewhere', 'Answer elsewhere', 'Respond in the terminal where this command was requested.'],
+].map(([state, label, reason]) => `<section class="chat-approval" data-state="${state}" aria-label="${label} request">
+  <div class="chat-approval-header"><strong class="chat-approval-title">Run npm test</strong><span class="chat-approval-status" role="status">${label}</span></div>
+  <div class="chat-approval-details"><code>npm test</code><p>${reason}</p></div>
+</section>`).join('\n')} />
+
+Give horizontally scrollable command blocks `tabindex="0"`, `role="region"`, and an accessible name so keyboard users can inspect long commands.
+
+The host owns callbacks, pending enforcement, polite announcements, and focus restoration
+when actions disappear. Do not autofocus a new request or steal focus from the composer.
+Use `.chat-approval-status[role="status"]` for updates, and keep an accessible name on
+each request and action. Core supplies no networking, permission decisions, or focus scripts.
 
 ## With Markdown
 

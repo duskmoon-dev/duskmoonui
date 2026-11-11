@@ -715,6 +715,7 @@
   }
 
   .chat-composer {
+    --chat-composer-inset: 1rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -722,7 +723,7 @@
     min-inline-size: 0;
     box-sizing: border-box;
     margin: 0;
-    padding: 1rem;
+    padding: var(--chat-composer-inset);
     border: 1px solid currentColor;
     border-radius: var(--radius-xl);
     background-color: var(--color-surface-container-high);
@@ -987,6 +988,232 @@
 
   .chat-composer-config > svg {
     flex-shrink: 0;
+  }
+
+  /* Settings triggers compose with .btn, .chat-composer-config and native popovers. */
+  .chat-composer-actions > .chat-composer-access {
+    margin-inline-end: auto;
+  }
+
+  .chat-composer-model {
+    border-radius: var(--radius-full, 9999px);
+    background-color: var(--color-surface-container-highest);
+  }
+
+  .chat-composer-effort {
+    color: var(--color-on-surface-variant);
+  }
+
+  .chat-composer-access[data-active="true"] {
+    color: var(--color-on-warning-container);
+  }
+
+  /* Place the context bar first inside the composer so its surface and corners join. */
+  .chat-composer-compact {
+    --chat-composer-inset: 0.625rem;
+    border-radius: var(--radius-md);
+  }
+
+  .chat-composer-context {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem 0.75rem;
+    min-inline-size: 0;
+    margin-block-start: calc(-1 * var(--chat-composer-inset));
+    margin-inline: calc(-1 * var(--chat-composer-inset));
+    padding: 0.5rem var(--chat-composer-inset);
+    border-block-end: 1px solid var(--color-outline-variant);
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+    background-color: inherit;
+    color: var(--color-on-surface);
+    font-size: 0.75rem;
+  }
+
+  .chat-composer-context-item,
+  .chat-composer-context-end {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+  }
+
+  .chat-composer-context-item {
+    flex: 0 1 auto;
+  }
+
+  .chat-composer-context-end {
+    flex-wrap: wrap;
+    margin-inline-start: auto;
+  }
+
+  .chat-composer-context-label {
+    min-inline-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .chat-composer-context-icon {
+    flex: 0 0 auto;
+    inline-size: 1rem;
+    block-size: 1rem;
+  }
+
+  .chat-composer-context-item > .btn {
+    flex-shrink: 0;
+  }
+
+  .chat-composer-connection {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-full, 9999px);
+    background-color: var(--color-surface-container-highest);
+    color: var(--color-on-surface);
+  }
+
+  .chat-composer-connection::before {
+    content: "";
+    flex: 0 0 auto;
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+
+  .chat-composer-connection[data-state="connected"] {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .chat-composer-connection[data-state="connecting"] {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .chat-composer-connection[data-state="disconnected"] {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
+  /* Approval state is supplied by the host; native buttons enforce pending decisions. */
+  .chat-approval {
+    display: grid;
+    gap: 0.75rem;
+    inline-size: 100%;
+    min-inline-size: 0;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface);
+    font-size: 0.875rem;
+    font-style: normal;
+  }
+
+  .chat-approval-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    min-inline-size: 0;
+  }
+
+  .chat-approval-title {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    margin: 0;
+    font-size: inherit;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  .chat-approval-status {
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-full, 9999px);
+    background-color: var(--color-surface-container-highest);
+    color: var(--color-on-surface);
+    font-size: 0.75rem;
+    overflow-wrap: anywhere;
+  }
+
+  .chat-approval[data-state="pending"] .chat-approval-status {
+    background-color: var(--color-warning-container);
+    color: var(--color-on-warning-container);
+  }
+
+  .chat-approval:is([data-state="approved"], [data-state="approved-for-session"]) .chat-approval-status {
+    background-color: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+
+  .chat-approval[data-state="declined"] .chat-approval-status {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+
+  .chat-approval[data-state="expired"] .chat-approval-status {
+    border: 1px dashed currentColor;
+    color: var(--color-on-surface-variant);
+  }
+
+  .chat-approval[data-state="answer-elsewhere"] .chat-approval-status {
+    background-color: var(--color-info-container);
+    color: var(--color-on-info-container);
+  }
+
+  .chat-approval-details {
+    display: grid;
+    gap: 0.5rem;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .chat-approval-details > * {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    margin: 0;
+  }
+
+  .chat-approval-details pre {
+    overflow: auto;
+  }
+
+  .chat-approval-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chat-approval-actions > .btn {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    white-space: normal;
+  }
+
+  .chat-approval[aria-busy="true"] {
+    border-style: dashed;
+  }
+
+  .chat-approval-actions > .btn:focus-visible,
+  .chat-approval-details [tabindex]:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .chat-approval[data-state="answer-elsewhere"] .chat-approval-actions,
+  .chat-approval[hidden],
+  .chat-approval-actions[hidden],
+  .chat-composer-context[hidden],
+  .chat-composer-context-item[hidden],
+  .chat-composer-context-end[hidden],
+  .chat-composer-connection[hidden] {
+    display: none;
   }
 
   /* Selected media stays above the editor in a bounded, horizontal strip. */
