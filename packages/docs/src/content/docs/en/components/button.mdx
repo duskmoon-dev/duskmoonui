@@ -89,6 +89,15 @@ Semantic colors work with all variants:
 <button class="btn btn-tonal btn-warning">Warning Tonal</button>`}
 />
 
+## Icon Button Shapes
+
+Combine `btn-circle` or `btn-square` with `btn-xs`, `btn-sm`, `btn-md`, or `btn-lg` for fixed square dimensions of 24, 32, 40, or 48px (at the default root font size). The default is 40px. Provide an accessible label for icon-only actions.
+
+<ComponentShowcase title="Circular Button Sizes" code={`<button class="btn btn-primary btn-circle btn-xs" aria-label="Add item">+</button>
+<button class="btn btn-primary btn-circle btn-sm" aria-label="Add item">+</button>
+<button class="btn btn-primary btn-circle" aria-label="Add item">+</button>
+<button class="btn btn-primary btn-circle btn-lg" aria-label="Add item">+</button>`} />
+
 ## Sizes
 
 Three sizes are available:
@@ -343,8 +352,8 @@ defineProps({
 | `.btn-icon-lg` | Large icon button |
 | `.btn-block` | Full-width button |
 | `.btn-loading` | Loading state with spinner |
-| `.btn-circle` | Circular button (1:1 aspect ratio) |
-| `.btn-square` | Square button (1:1 aspect ratio) |
+| `.btn-circle` | Circular icon button; combines with size modifiers |
+| `.btn-square` | Square icon button; combines with size modifiers |
 
 ### Combinations
 
