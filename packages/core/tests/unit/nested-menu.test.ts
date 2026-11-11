@@ -109,7 +109,7 @@ describe('Nested Menu Component', () => {
         /\.nested-menu li\.disabled\s*\{[^}]*opacity:\s*1\s*!important/s,
       );
       expect(css).toMatch(
-        /\.nested-menu li\.disabled > (?:a|button)[^{]*\{[^}]*color:\s*var\(--color-on-surface-variant\)/s,
+        /\.nested-menu li\.disabled > (?:a|button)[^{]*\{[^}]*color:\s*var\(--nested-menu-muted, var\(--color-on-surface-variant\)\)/s,
       );
     });
 

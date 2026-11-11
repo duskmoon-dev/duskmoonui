@@ -16,7 +16,7 @@
     padding: 0.5rem;
     gap: 0.125rem;
     font-size: 0.875rem;
-    color: var(--color-on-surface);
+    color: var(--nested-menu-fg, var(--color-on-surface));
   }
 
   /* ============================================
@@ -29,7 +29,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--color-on-surface-variant);
+    color: var(--nested-menu-muted, var(--color-on-surface-variant));
     user-select: none;
   }
 
@@ -45,7 +45,7 @@
     width: 100%;
     padding: 0.5rem 0.75rem;
     font-size: inherit;
-    color: var(--color-on-surface);
+    color: var(--nested-menu-fg, var(--color-on-surface));
     text-decoration: none;
     background-color: transparent;
     border: none;
@@ -56,7 +56,7 @@
 
   .nested-menu li > a:hover,
   .nested-menu li > button:hover {
-    background-color: var(--color-surface-container);
+    background-color: var(--nested-menu-hover, var(--color-surface-container));
   }
 
   .nested-menu li > a:focus-visible,
@@ -70,15 +70,15 @@
   .nested-menu li > button.active,
   .nested-menu li > a[aria-current="page"],
   .nested-menu li > button[aria-current="page"] {
-    background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
+    background-color: var(--nested-menu-active-bg, var(--color-primary-container));
+    color: var(--nested-menu-active-fg, var(--color-on-primary-container));
   }
 
   .nested-menu li > a.active:hover,
   .nested-menu li > button.active:hover,
   .nested-menu li > a[aria-current="page"]:hover,
   .nested-menu li > button[aria-current="page"]:hover {
-    background-color: color-mix(in oklch, var(--color-primary-container), var(--color-on-primary-container) 8%);
+    background-color: color-mix(in oklch, var(--nested-menu-active-bg, var(--color-primary-container)), var(--nested-menu-active-fg, var(--color-on-primary-container)) 8%);
   }
 
   /* Disabled state */
@@ -91,7 +91,7 @@
   .nested-menu li.disabled > button,
   .nested-menu li > button:disabled,
   .nested-menu li > a[aria-disabled="true"] {
-    color: var(--color-on-surface-variant);
+    color: var(--nested-menu-muted, var(--color-on-surface-variant));
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -112,7 +112,7 @@
     width: 100%;
     padding: 0.5rem 0.75rem;
     font-size: inherit;
-    color: var(--color-on-surface);
+    color: var(--nested-menu-fg, var(--color-on-surface));
     background-color: transparent;
     border: none;
     border-radius: var(--radius-field, 0.375rem);
@@ -131,7 +131,7 @@
   }
 
   .nested-menu summary:hover {
-    background-color: var(--color-surface-container);
+    background-color: var(--nested-menu-hover, var(--color-surface-container));
   }
 
   .nested-menu summary:focus-visible {
@@ -240,10 +240,81 @@
 
   /* Bordered — sidebar panel look */
   .nested-menu-bordered {
-    background-color: var(--color-surface);
+    background-color: var(--nested-menu-bg, var(--color-surface));
     border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-card, 0.75rem);
     box-shadow: var(--shadow-sm);
+  }
+
+  /* Filled color variants for sidebar navigation. */
+  .nested-menu-primary {
+    --nested-menu-bg: var(--color-primary);
+    --nested-menu-fg: var(--color-primary-content);
+    --nested-menu-muted: var(--color-primary-content);
+    --nested-menu-hover: color-mix(in oklch, var(--color-primary-content) 8%, var(--color-primary));
+    --nested-menu-active-bg: var(--color-primary-content);
+    --nested-menu-active-fg: var(--color-primary);
+    background-color: var(--nested-menu-bg);
+  }
+
+  .nested-menu-secondary {
+    --nested-menu-bg: var(--color-secondary);
+    --nested-menu-fg: var(--color-secondary-content);
+    --nested-menu-muted: var(--color-secondary-content);
+    --nested-menu-hover: color-mix(in oklch, var(--color-secondary-content) 8%, var(--color-secondary));
+    --nested-menu-active-bg: var(--color-secondary-content);
+    --nested-menu-active-fg: var(--color-secondary);
+    background-color: var(--nested-menu-bg);
+  }
+
+  .nested-menu-tertiary {
+    --nested-menu-bg: var(--color-tertiary);
+    --nested-menu-fg: var(--color-tertiary-content);
+    --nested-menu-muted: var(--color-tertiary-content);
+    --nested-menu-hover: color-mix(in oklch, var(--color-tertiary-content) 8%, var(--color-tertiary));
+    --nested-menu-active-bg: var(--color-tertiary-content);
+    --nested-menu-active-fg: var(--color-tertiary);
+    background-color: var(--nested-menu-bg);
+  }
+
+  .nested-menu-info {
+    --nested-menu-bg: var(--color-info);
+    --nested-menu-fg: var(--color-info-content);
+    --nested-menu-muted: var(--color-info-content);
+    --nested-menu-hover: color-mix(in oklch, var(--color-info-content) 8%, var(--color-info));
+    --nested-menu-active-bg: var(--color-info-content);
+    --nested-menu-active-fg: var(--color-info);
+    background-color: var(--nested-menu-bg);
+  }
+
+  .nested-menu-success {
+    --nested-menu-bg: var(--color-success);
+    --nested-menu-fg: var(--color-success-content);
+    --nested-menu-muted: var(--color-success-content);
+    --nested-menu-hover: color-mix(in oklch, var(--color-success-content) 8%, var(--color-success));
+    --nested-menu-active-bg: var(--color-success-content);
+    --nested-menu-active-fg: var(--color-success);
+    background-color: var(--nested-menu-bg);
+  }
+
+  .nested-menu-warning {
+    --nested-menu-bg: var(--color-warning);
+    --nested-menu-fg: var(--color-warning-content);
+    --nested-menu-muted: var(--color-warning-content);
+    --nested-menu-hover: color-mix(in oklch, var(--color-warning-content) 8%, var(--color-warning));
+    --nested-menu-active-bg: var(--color-warning-content);
+    --nested-menu-active-fg: var(--color-warning);
+    background-color: var(--nested-menu-bg);
+  }
+
+  .nested-menu-error {
+    --nested-menu-bg: var(--color-error);
+    --nested-menu-fg: var(--color-error-content);
+    --nested-menu-muted: var(--color-error-content);
+    --nested-menu-hover: color-mix(in oklch, var(--color-error-content) 8%, var(--color-error));
+    --nested-menu-active-bg: var(--color-error-content);
+    --nested-menu-active-fg: var(--color-error);
+    background-color: var(--nested-menu-bg);
   }
 
   /* Compact — tighter padding throughout */

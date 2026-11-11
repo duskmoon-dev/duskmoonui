@@ -21,8 +21,8 @@ describe('Radio Component', () => {
     expect(css).toMatch(/appearance:\s*none/);
   });
 
-  it('should have border-radius 50% for circular shape', () => {
-    expect(css).toMatch(/border-radius:\s*var\(--radius-full\)/);
+  it('should keep the outer circle and inner dot round without shared spacing tokens', () => {
+    expect(css.match(/border-radius:\s*var\(--radius-full, 9999px\)/g)).toHaveLength(2);
   });
 
   it('should use primary color token', () => {

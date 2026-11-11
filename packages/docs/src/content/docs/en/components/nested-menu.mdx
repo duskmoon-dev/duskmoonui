@@ -25,6 +25,19 @@ A simple nested menu with links and a section title:
   <li><a href="#demo-usage">Usage Guide</a></li>
 </ul>`} />
 
+## Color Variants
+
+Use `nested-menu-secondary` for a secondary sidebar. Items, section titles, and summaries use `secondary-content`; active items reverse the pair for a strong highlight. The same API supports `primary`, `tertiary`, `info`, `success`, `warning`, and `error`.
+
+<ComponentShowcase title="Secondary Sidebar" code={`<ul class="nested-menu nested-menu-secondary nested-menu-bordered">
+  <li class="nested-menu-title">Workspace</li>
+  <li><a href="#demo-overview" aria-current="page">Overview</a></li>
+  <li><details open><summary>Settings</summary><ul>
+    <li><a href="#demo-appearance">Appearance</a></li>
+    <li><button type="button">Preferences</button></li>
+  </ul></details></li>
+</ul>`} />
+
 ## Collapsible Sections
 
 Use `<details>` and `<summary>` for collapsible groups. Add the `open` attribute to expand a section by default:

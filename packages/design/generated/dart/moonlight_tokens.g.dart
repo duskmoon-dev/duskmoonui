@@ -69,7 +69,7 @@ abstract final class DuskMoonMoonlightTokens {
   static const Color warningContainer = Color(0xFF4B3711);
   static const Color onWarningContainer = Color(0xFFF3DAB2);
   static const Color error = Color(0xFFAA0101);
-  static const Color errorContent = Color(0xFFFF6C00);
+  static const Color errorContent = Color(0xFFFCF3F3);
   static const Color errorContainer = Color(0xFF4F1A18);
   static const Color onErrorContainer = Color(0xFFFDC9C4);
 
