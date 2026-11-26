@@ -1,5 +1,7 @@
 # DuskMoonUI
 
+> **This project has moved to [Duskmoon Web](https://github.com/duskmoon-dev/duskmoon-web).**
+
 > A CSS-only component library for Tailwind CSS v4 with Material Design 3's extended color system
 
 [![CI](https://github.com/duskmoon-dev/duskmoonui/actions/workflows/ci.yml/badge.svg)](https://github.com/duskmoon-dev/duskmoonui/actions/workflows/ci.yml)
